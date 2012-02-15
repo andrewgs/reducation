@@ -63,17 +63,17 @@ class Users_interface extends CI_Controller{
 			$_POST['submit'] == NULL;
 			$userinfo = $this->adminmodel->auth_user($this->input->post('login'),$this->input->post('password'));
 			if(!$userinfo):
-				$msg = $this->session->set_userdata('msg','Имя пользователя и пароль не совпадают');
+				$this->session->set_userdata('msg','Имя пользователя и пароль не совпадают');
 				redirect($this->uri->uri_string());
 			else:
 				$session_data = array('logon'=>md5($userinfo['login'].$userinfo['password']),'userid'=>$userinfo['id'],'utype'=>substr($userinfo['login'],0,3));
                 $this->session->set_userdata($session_data);
-                redirect("admin-panel");
+                redirect("admin-panel/actions/control");
 			endif;
 		endif;
 		if($this->loginstatus['status']):
 			if($this->loginstatus['adm']):
-				redirect('admin-panel');
+				redirect('admin-panel/actions/control');
 			elseif($this->loginstatus['cus']):
 				redirect('');
 			elseif($this->loginstatus['aud']):

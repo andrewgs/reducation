@@ -17,9 +17,9 @@ class Trendsmodel extends CI_Model{
 			
 		$this->code 	= $data['code'];
 		$this->title 	= $data['title'];
-		$this->note		= $data['note'];
+		$this->note		= '';
 		$this->courses 	= 0;
-		$this->view 	= 0;
+		$this->view 	= $data['view'];
 		
 		$this->db->insert('trends',$this);
 		return $this->db->insert_id();

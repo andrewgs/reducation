@@ -14,8 +14,8 @@ $route['admin-logoff'] = "admin_interface/admin_logoff";
 $route['admin-panel/actions/control'] 		= "admin_interface/admin_panel";
 $route['admin-panel/actions/cabinet'] 		= "admin_interface/admin_cabinet";
 /*==========================================================  trends  ====================================================*/
-$route['admin-panel/references/trends']				= "admin_interface/references_trends";
-$route['admin-panel/references/trends/add-trend']	= "admin_interface/references_add_trend";
+$route['admin-panel/references/trends']						= "admin_interface/references_trends";
+$route['admin-panel/references/trends/delete-trend/:num']	= "admin_interface/references_delete_trend";
 
 /*==========================================================  courses  ===================================================*/
 $route['admin-panel/references/courses']	= "admin_interface/references_courses";

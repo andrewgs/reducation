@@ -4,7 +4,7 @@
 			<?=$form_title;?>
 		</legend>
 	<?php if($msg):?>
-		<div class="alert alert-block" id="msgalert">
+		<div class="alert alert-error" id="msgalert">
 			<a class="close" id="msgclose">×</a>
 			<h4 class="alert-heading">Внимание!</h4>
 			<?=$msg;?>

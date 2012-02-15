@@ -89,22 +89,45 @@ class Admin_interface extends CI_Controller {
 					'title'			=> 'РосЦентр ДПО - Список направлений обучения',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'trends'		=> $this->trendsmodel->read_records()
+					'trends'		=> $this->trendsmodel->read_records(),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		if($this->input->post('submit')):
+			$_POST['submit'] == NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('code',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Направление не создано. Не заполены необходимые поля.');
+			else:
+				if(!isset($_POST['view'])):
+					$_POST['view'] = 0;
+				endif;
+				$id = $this->trendsmodel->insert_record($_POST);
+				if($id):
+					$this->session->set_userdata('msgs','Направление создано успешно.');
+				endif;
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
 		$this->load->view("admin_interface/admin-trends-list",$pagevar);
 	}
 	
-	public function references_add_trend(){
+	public function references_delete_trend(){
 		
-		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Список направлений обучения',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'trends'		=> $this->trendsmodel->read_records()
-			);
-		$this->load->view("admin_interface/admin-trends-list",$pagevar);
+		$id = $this->uri->segment(5);
+		if($id):
+			$result = $this->trendsmodel->delete_record($id);
+			if($result):
+				$this->session->set_userdata('msgs','Направление удалено успешно.');
+			else:
+				$this->session->set_userdata('msgr','Направление не удалено.');
+			endif;
+			redirect('admin-panel/references/trends');
+		endif;
 	}
 	
 	public function references_courses(){
