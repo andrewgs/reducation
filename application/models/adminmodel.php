@@ -1,10 +1,11 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Adminsmodel extends CI_Model {
+class Adminmodel extends CI_Model {
 
     var $id   			= 0;
     var $login 			= '';
     var $password    	= '';
+    var $cryptpassword 	= '';
     var $email  		= '';
     var $online    		= '';
 
@@ -14,10 +15,11 @@ class Adminsmodel extends CI_Model {
 	
 	function insert_record($data){
 			
-		$this->login 	= $data['login'];
-		$this->password	= $this->encrypt->encode($insertdata['password']);
-		$this->email 	= $data['email'];
-		$this->online 	= 0;
+		$this->login 			= $data['login'];
+		$this->password			= md5($data['password']);
+		$this->cryptpassword	= $this->encrypt->encode($data['password']);
+		$this->email 			= $data['email'];
+		$this->online 			= 0;
 		
 		$this->db->insert('admins',$this);
 		return $this->db->insert_id();
@@ -49,7 +51,7 @@ class Adminsmodel extends CI_Model {
 	function auth_user($login,$password){
 		
 		$this->db->where('login',$login);
-		$this->db->where('password',$this->encrypt->encode($insertdata['password']););
+		$this->db->where('password',md5($password));
 		$query = $this->db->get('admins',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];

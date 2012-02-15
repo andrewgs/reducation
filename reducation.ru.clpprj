@@ -4699,43 +4699,410 @@
 			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\system\index.html" crc="-1574479902">
 		</csfile><csfile name="S:\home\reducation.ru\www\system\.htaccess" crc="-643410220">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\index.php" crc="1604745361">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\admin-login.php" crc="321069624">
+		</csfile><csfile name="S:\home\reducation.ru\www\js\libs\jquery.stickr.js" crc="-115044826">
+			<jstree>
+				<treenode node="bottom;JS:JS Var Name;76;22;82;22;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="className;JS:JS Var Name;3;13;12;13;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="document;JS:JS Var Name;2;44;10;44;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="exit;JS:JS Var Name;7;28;11;28;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="jQuery;JS:JS Var Name;3;43;9;43;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="left;JS:JS Var Name;53;22;57;22;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="note;JS:JS Var Name;3;12;7;12;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="o;JS:JS Var Name;21;8;22;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="position;JS:JS Var Name;3;15;11;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="right;JS:JS Var Name;19;15;24;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="speed;JS:JS Var Name;3;11;8;11;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="stick;JS:JS Var Name;6;23;11;23;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="sticked;JS:JS Var Name;3;14;10;14;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="stickers;JS:JS Var Name;6;17;14;17;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="time;JS:JS Var Name;3;10;7;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="top;JS:JS Var Name;13;15;16;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</jstree>
+		</csfile><csfile name="S:\home\reducation.ru\www\js\libs\jquery-1.7.1.min.js" crc="-248691372">
+		</csfile><csfile name="S:\home\reducation.ru\www\js\bootstrap.min.js" crc="763193408">
+		</csfile><csfile name="S:\home\reducation.ru\www\js\bootstrap.js" crc="869081901">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\scripts.php" crc="633327810">
+			<phptree>
+				<treenode node="baseurl;Php:Var Name;16;2;24;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+			<jstree>
+				<treenode node="document;JS:JS Var Name;25;1;33;1;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="window;JS:JS Var Name;8;1;14;1;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</jstree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\rightbarcus.php" crc="-220835655">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\rightbaraud.php" crc="-220835655">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\rightbaradm.php" crc="-887892216">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\index.php" crc="-1855660408">
+			<phptree>
+				<treenode node="loginstatus;Php:Var Name;11;33;23;33;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\header.php" crc="-1873236267">
+			<phptree>
+				<treenode node="loginstatus;Php:Var Name;11;10;23;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="userinfo;Php:Var Name;65;12;74;12;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\head.php" crc="1228270019">
+			<phptree>
+				<treenode node="author;Php:Var Name;33;4;40;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="baseurl;Php:Var Name;16;10;24;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="description;Php:Var Name;38;3;50;3;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="title;Php:Var Name;11;2;17;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\footer.php" crc="-1860841649">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\admin-login.php" crc="-1054808291">
+			<phptree>
+				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+			<jstree>
+				<treenode node="document;JS:JS Var Name;4;13;12;13;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="element;JS:JS Var Name;39;18;46;18;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="err;JS:JS Var Name;8;15;11;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="event;JS:JS Var Name;29;14;34;14;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="i;JS:JS Var Name;37;18;38;18;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="location;JS:JS Var Name;32;27;40;27;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</jstree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\forms\autorization.php" crc="-456652824">
+			<phptree>
+				<treenode node="form_title;Php:Var Name;6;3;17;3;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="msg;Php:Var Name;10;5;14;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="this;Php:Var Name;55;0;60;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\company_interface\index.php" crc="1604745361">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\audience_interface\index.php" crc="1604745361">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\scripts.php" crc="633327810">
+			<phptree>
+				<treenode node="baseurl;Php:Var Name;16;2;24;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+			<jstree>
+				<treenode node="document;JS:JS Var Name;25;1;33;1;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="window;JS:JS Var Name;8;1;14;1;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</jstree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\rightbarmsg.php" crc="1416789392">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\index.php" crc="1604745361">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\head.php" crc="1228270019">
+			<phptree>
+				<treenode node="author;Php:Var Name;33;4;40;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="baseurl;Php:Var Name;16;10;24;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="description;Php:Var Name;38;3;50;3;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="title;Php:Var Name;11;2;17;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-panel.php" crc="405916303">
+			<phptree>
+				<treenode node="baseurl;Php:Var Name;17;28;25;28;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+			<jstree>
+				<treenode node="document;JS:JS Var Name;26;27;34;27;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="window;JS:JS Var Name;9;27;15;27;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</jstree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-cabinet.php" crc="667159524">
+			<phptree>
+				<treenode node="baseurl;Php:Var Name;17;30;25;30;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+			<jstree>
+				<treenode node="document;JS:JS Var Name;26;29;34;29;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="window;JS:JS Var Name;9;29;15;29;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</jstree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\index.html" crc="-1574479902">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\third_party\index.html" crc="-1574479902">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\models\ordersmodel.php" crc="-1012653256">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\trendsmodel.php" crc="-811764222">
 			<phptree>
-				<treenode node="Adminsmodel;Php:Class Name;0;2;1;63;34;;;vCI_Model;;c;;r;;d35,2;;b0,0;;m">
+				<treenode node="Trendsmodel;Php:Class Name;0;2;1;63;34;;;vCI_Model;;c;;r;;d34,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;4;10;5;12;34;;;v;;r;;d26,10;;b0,0;;m">
 					</treenode>
 					<treenode node="active_status;Php:Function Name;1;25;2;30;34;;;v;;r;;d28,25;;b0,0;;mid;;p">
 					</treenode>
 					<treenode node="deactive_status;Php:Function Name;1;32;2;37;34;;;v;;r;;d30,32;;b0,0;;mid;;p">
 					</treenode>
-					<treenode node="delete_record;Php:Function Name;1;57;2;62;34;;;v;;r;;d28,85;;b0,0;;mid;;p">
+					<treenode node="delete_record;Php:Function Name;1;57;2;62;34;;;v;;r;;d28,57;;b0,0;;mid;;p">
 					</treenode>
 					<treenode node="insert_record;Php:Function Name;1;14;2;23;34;;;v;;r;;d30,14;;b0,0;;mdata;;p">
 					</treenode>
-					<treenode node="read_field;Php:Function Name;1;48;2;55;34;;;v;;r;;d32,76;;b0,0;;mid;;pfield;;p">
+					<treenode node="read_field;Php:Function Name;1;48;2;55;34;;;v;;r;;d32,48;;b0,0;;mid;;pfield;;p">
 					</treenode>
-					<treenode node="read_record;Php:Function Name;1;39;2;46;34;;;v;;r;;d26,25;;b0,0;;mid;;p">
+					<treenode node="read_record;Php:Function Name;1;39;2;46;34;;;v;;r;;d26,39;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="courses;Php:Var Name;8;7;16;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="id;Php:Var Name;8;4;11;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="note;Php:Var Name;8;6;13;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="title;Php:Var Name;8;5;14;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="view;Php:Var Name;8;8;13;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\testsmodel.php" crc="1923029884">
+			<phptree>
+				<treenode node="Testsmodel;Php:Class Name;0;2;1;71;34;;;vCI_Model;;c;;r;;d33,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;4;14;5;16;34;;;v;;r;;d26,14;;b0,0;;m">
+					</treenode>
+					<treenode node="active_status;Php:Function Name;1;33;2;38;34;;;v;;r;;d28,33;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="deactive_status;Php:Function Name;1;40;2;45;34;;;v;;r;;d30,40;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="delete_record;Php:Function Name;1;65;2;70;34;;;v;;r;;d28,65;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="insert_record;Php:Function Name;1;18;2;31;34;;;v;;r;;d30,18;;b0,0;;mdata;;p">
+					</treenode>
+					<treenode node="read_field;Php:Function Name;1;56;2;63;34;;;v;;r;;d32,56;;b0,0;;mid;;pfield;;p">
+					</treenode>
+					<treenode node="read_record;Php:Function Name;1;47;2;54;34;;;v;;r;;d26,47;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="chapter;Php:Var Name;8;10;16;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="count;Php:Var Name;8;8;14;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="courses;Php:Var Name;8;11;16;11;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="id;Php:Var Name;8;4;11;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="note;Php:Var Name;8;7;13;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="number;Php:Var Name;8;5;15;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="timetest;Php:Var Name;8;9;17;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="title;Php:Var Name;8;6;14;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="view;Php:Var Name;8;12;13;12;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\testquestionsmodel.php" crc="352015528">
+			<phptree>
+				<treenode node="Testquestionsmodel;Php:Class Name;0;2;1;69;34;;;vCI_Model;;c;;r;;d41,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;4;13;5;15;34;;;v;;r;;d26,13;;b0,0;;m">
+					</treenode>
+					<treenode node="active_status;Php:Function Name;1;31;2;36;34;;;v;;r;;d28,31;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="deactive_status;Php:Function Name;1;38;2;43;34;;;v;;r;;d30,38;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="delete_record;Php:Function Name;1;63;2;68;34;;;v;;r;;d28,63;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="insert_record;Php:Function Name;1;17;2;29;34;;;v;;r;;d30,17;;b0,0;;mdata;;p">
+					</treenode>
+					<treenode node="read_field;Php:Function Name;1;54;2;61;34;;;v;;r;;d32,54;;b0,0;;mid;;pfield;;p">
+					</treenode>
+					<treenode node="read_record;Php:Function Name;1;45;2;52;34;;;v;;r;;d26,45;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="chapter;Php:Var Name;8;9;16;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="courses;Php:Var Name;8;10;16;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="id;Php:Var Name;8;4;11;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="note;Php:Var Name;8;7;13;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="number;Php:Var Name;8;5;15;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="test;Php:Var Name;8;8;13;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="title;Php:Var Name;8;6;14;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="view;Php:Var Name;8;11;13;11;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\testanswersmodel.php" crc="374276246">
+			<phptree>
+				<treenode node="Testanswersmodel;Php:Class Name;0;2;1;73;34;;;vCI_Model;;c;;r;;d39,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;1;15;2;17;34;;;v;;r;;d23,15;;b0,0;;m">
+					</treenode>
+					<treenode node="active_status;Php:Function Name;1;35;2;40;34;;;v;;r;;d28,35;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="deactive_status;Php:Function Name;1;42;2;47;34;;;v;;r;;d30,42;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="delete_record;Php:Function Name;1;67;2;72;34;;;v;;r;;d28,67;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="insert_record;Php:Function Name;1;19;2;33;34;;;v;;r;;d30,19;;b0,0;;mdata;;p">
+					</treenode>
+					<treenode node="read_field;Php:Function Name;1;58;2;65;34;;;v;;r;;d32,58;;b0,0;;mid;;pfield;;p">
+					</treenode>
+					<treenode node="read_record;Php:Function Name;1;49;2;56;34;;;v;;r;;d26,49;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="chapter;Php:Var Name;5;11;13;11;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="correct;Php:Var Name;5;8;13;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="courses;Php:Var Name;5;12;13;12;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="id;Php:Var Name;5;4;8;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="note;Php:Var Name;5;7;10;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="number;Php:Var Name;5;5;12;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="test;Php:Var Name;5;9;10;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="testquestion;Php:Var Name;5;10;18;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="title;Php:Var Name;5;6;11;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="view;Php:Var Name;5;13;10;13;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\ordersmodel.php" crc="-1613363617">
+			<phptree>
+				<treenode node="Ordersmodel;Php:Class Name;0;2;1;69;34;;;vCI_Model;;c;;r;;d35,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;4;13;5;15;34;;;v;;r;;d26,13;;b0,0;;m">
+					</treenode>
+					<treenode node="active_status;Php:Function Name;1;31;2;36;34;;;v;;r;;d28,31;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="deactive_status;Php:Function Name;1;38;2;43;34;;;v;;r;;d30,38;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="delete_record;Php:Function Name;1;63;2;68;34;;;v;;r;;d28,63;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="insert_record;Php:Function Name;1;17;2;29;34;;;v;;r;;d30,17;;b0,0;;mdata;;p">
+					</treenode>
+					<treenode node="read_field;Php:Function Name;1;54;2;61;34;;;v;;r;;d32,54;;b0,0;;mid;;pfield;;p">
+					</treenode>
+					<treenode node="read_record;Php:Function Name;1;45;2;52;34;;;v;;r;;d26,45;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="act;Php:Var Name;8;11;12;11;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="company;Php:Var Name;8;5;16;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="contract;Php:Var Name;8;10;17;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="id;Php:Var Name;8;4;11;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="invoice;Php:Var Name;8;9;16;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="orderdate;Php:Var Name;8;6;18;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="price;Php:Var Name;8;7;14;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="status;Php:Var Name;8;8;15;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="view;Php:Var Name;8;8;13;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\lecturesmodel.php" crc="56945251">
+			<phptree>
+				<treenode node="Lecturesmodel;Php:Class Name;0;2;1;70;34;;;vCI_Model;;c;;r;;d36,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;4;14;5;16;34;;;v;;r;;d26,14;;b0,0;;m">
+					</treenode>
+					<treenode node="active_status;Php:Function Name;1;32;2;37;34;;;v;;r;;d28,32;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="deactive_status;Php:Function Name;1;39;2;44;34;;;v;;r;;d30,39;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="delete_record;Php:Function Name;1;64;2;69;34;;;v;;r;;d28,64;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="insert_record;Php:Function Name;1;18;2;30;34;;;v;;r;;d30,18;;b0,0;;mdata;;p">
+					</treenode>
+					<treenode node="read_field;Php:Function Name;1;55;2;62;34;;;v;;r;;d32,55;;b0,0;;mid;;pfield;;p">
+					</treenode>
+					<treenode node="read_record;Php:Function Name;1;46;2;53;34;;;v;;r;;d26,46;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="chapter;Php:Var Name;8;10;16;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="courses;Php:Var Name;8;11;16;11;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="document;Php:Var Name;8;8;17;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="id;Php:Var Name;8;4;11;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="loaddate;Php:Var Name;8;9;17;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="note;Php:Var Name;8;7;13;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="number;Php:Var Name;8;5;15;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="title;Php:Var Name;8;6;14;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="view;Php:Var Name;8;12;13;12;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\models\index.html" crc="-1574479902">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\coursesmodel.php" crc="-371715492">
+			<phptree>
+				<treenode node="Coursesmodel;Php:Class Name;0;2;1;65;34;;;vCI_Model;;c;;r;;d35,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;4;11;5;13;34;;;v;;r;;d26,11;;b0,0;;m">
+					</treenode>
+					<treenode node="active_status;Php:Function Name;1;27;2;32;34;;;v;;r;;d28,27;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="deactive_status;Php:Function Name;1;34;2;39;34;;;v;;r;;d30,34;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="delete_record;Php:Function Name;1;59;2;64;34;;;v;;r;;d28,59;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="insert_record;Php:Function Name;1;15;2;25;34;;;v;;r;;d30,15;;b0,0;;mdata;;p">
+					</treenode>
+					<treenode node="read_field;Php:Function Name;1;50;2;57;34;;;v;;r;;d32,50;;b0,0;;mid;;pfield;;p">
+					</treenode>
+					<treenode node="read_record;Php:Function Name;1;41;2;48;34;;;v;;r;;d26,41;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="id;Php:Var Name;8;4;11;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="note;Php:Var Name;8;6;13;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="price;Php:Var Name;8;7;14;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="title;Php:Var Name;8;5;14;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="trend;Php:Var Name;8;8;14;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="view;Php:Var Name;8;9;13;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\models\companymodel.php" crc="-1436015090">
 			<phptree>
 				<treenode node="Companymodel;Php:Class Name;0;2;1;131;34;;;vCI_Model;;c;;r;;d36,2;;b0,0;;m">
@@ -4811,6 +5178,31 @@
 					</treenode>
 				</treenode>
 			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\chaptermodel.php" crc="-389985446">
+			<phptree>
+				<treenode node="Chaptermodel;Php:Class Name;0;2;1;49;34;;;vCI_Model;;c;;r;;d35,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;4;10;5;12;34;;;v;;r;;d26,10;;b0,0;;m">
+					</treenode>
+					<treenode node="delete_record;Php:Function Name;1;43;2;48;34;;;v;;r;;d28,43;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="insert_record;Php:Function Name;1;14;2;23;34;;;v;;r;;d30,14;;b0,0;;mdata;;p">
+					</treenode>
+					<treenode node="read_field;Php:Function Name;1;34;2;41;34;;;v;;r;;d32,34;;b0,0;;mid;;pfield;;p">
+					</treenode>
+					<treenode node="read_record;Php:Function Name;1;25;2;32;34;;;v;;r;;d26,25;;b0,0;;mid;;p">
+					</treenode>
+					<treenode node="course;Php:Var Name;8;7;15;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="id;Php:Var Name;8;4;11;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="note;Php:Var Name;8;6;13;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="number;Php:Var Name;8;8;15;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="title;Php:Var Name;8;5;14;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\models\audiencemodel.php" crc="-1983043623">
 			<phptree>
 				<treenode node="Audiencemodel;Php:Class Name;0;2;1;114;34;;;vCI_Model;;c;;r;;d37,2;;b0,0;;m">
@@ -4868,36 +5260,38 @@
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\models\adminmodel.php" crc="-1237597978">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\adminmodel.php" crc="-1825005745">
 			<phptree>
-				<treenode node="Adminsmodel;Php:Class Name;0;2;1;91;34;;;vCI_Model;;c;;r;;d35,2;;b0,0;;m">
-					<treenode node="__construct;Php:Function Name;4;10;5;12;34;;;v;;r;;d26,10;;b0,0;;m">
+				<treenode node="Adminmodel;Php:Class Name;0;2;1;93;34;;;vCI_Model;;c;;r;;d34,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;4;11;5;13;34;;;v;;r;;d26,11;;b0,0;;m">
 					</treenode>
-					<treenode node="active_user;Php:Function Name;1;34;2;39;34;;;v;;r;;d26,34;;b0,0;;mid;;p">
+					<treenode node="active_user;Php:Function Name;1;36;2;41;34;;;v;;r;;d26,36;;b0,0;;mid;;p">
 					</treenode>
-					<treenode node="auth_user;Php:Function Name;1;48;2;56;34;;;v;;r;;d37,48;;b0,0;;mlogin;;ppassword;;p">
+					<treenode node="auth_user;Php:Function Name;1;50;2;58;34;;;v;;r;;d37,50;;b0,0;;mlogin;;ppassword;;p">
 					</treenode>
-					<treenode node="deactive_user;Php:Function Name;1;41;2;46;34;;;v;;r;;d28,41;;b0,0;;mid;;p">
+					<treenode node="deactive_user;Php:Function Name;1;43;2;48;34;;;v;;r;;d28,43;;b0,0;;mid;;p">
 					</treenode>
-					<treenode node="delete_record;Php:Function Name;1;85;2;90;34;;;v;;r;;d28,85;;b0,0;;mid;;p">
+					<treenode node="delete_record;Php:Function Name;1;87;2;92;34;;;v;;r;;d28,87;;b0,0;;mid;;p">
 					</treenode>
-					<treenode node="insert_record;Php:Function Name;1;14;2;23;34;;;v;;r;;d30,14;;b0,0;;mdata;;p">
+					<treenode node="insert_record;Php:Function Name;1;15;2;25;34;;;v;;r;;d30,15;;b0,0;;mdata;;p">
 					</treenode>
-					<treenode node="read_field;Php:Function Name;1;76;2;83;34;;;v;;r;;d32,76;;b0,0;;mid;;pfield;;p">
+					<treenode node="read_field;Php:Function Name;1;78;2;85;34;;;v;;r;;d32,78;;b0,0;;mid;;pfield;;p">
 					</treenode>
-					<treenode node="read_record;Php:Function Name;1;25;2;32;34;;;v;;r;;d26,25;;b0,0;;mid;;p">
+					<treenode node="read_record;Php:Function Name;1;27;2;34;34;;;v;;r;;d26,27;;b0,0;;mid;;p">
 					</treenode>
-					<treenode node="user_exist;Php:Function Name;1;58;2;65;34;;;v;;r;;d39,58;;b0,0;;mfield;;pparameter;;p">
+					<treenode node="user_exist;Php:Function Name;1;60;2;67;34;;;v;;r;;d39,60;;b0,0;;mfield;;pparameter;;p">
 					</treenode>
-					<treenode node="user_id;Php:Function Name;1;67;2;74;34;;;v;;r;;d36,67;;b0,0;;mfield;;pparameter;;p">
+					<treenode node="user_id;Php:Function Name;1;69;2;76;34;;;v;;r;;d36,69;;b0,0;;mfield;;pparameter;;p">
 					</treenode>
-					<treenode node="email;Php:Var Name;8;7;14;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="cryptpassword;Php:Var Name;8;7;22;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="email;Php:Var Name;8;8;14;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="id;Php:Var Name;8;4;11;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="login;Php:Var Name;8;5;14;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="online;Php:Var Name;8;8;15;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="online;Php:Var Name;8;9;15;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="password;Php:Var Name;8;6;17;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -4998,14 +5392,22 @@
 				</treenode>
 			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\core\index.html" crc="-1574479902">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\users_interface.php" crc="-351739030">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\users_interface.php" crc="-566520541">
 			<phptree>
-				<treenode node="Users_interface;Php:Class Name;0;2;1;18;34;;;vCI_Controller;;c;;r;;d44,2;;b0,0;;m">
-					<treenode node="__construct;Php:Function Name;1;4;2;7;34;;;v;;r;;d23,4;;b0,0;;m">
+				<treenode node="Users_interface;Php:Class Name;0;2;1;95;34;;;vCI_Controller;;c;;r;;d43,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;1;8;2;33;34;;;v;;r;;d23,8;;b0,0;;m">
 					</treenode>
-					<treenode node="admin_login;Php:Function Name;8;14;2;17;34;;;v;;r;;d30,15;;b1,0;;m">
+					<treenode node="admin_login;Php:Function Name;8;48;2;83;34;;;v;;r;;d30,48;;b1,0;;m">
 					</treenode>
-					<treenode node="index;Php:Function Name;8;9;2;12;34;;;v;;r;;d24,10;;b1,0;;m">
+					<treenode node="definition_model;Php:Function Name;8;85;2;94;34;;;v;;r;;d41,85;;b1,0;;mutype;;p">
+					</treenode>
+					<treenode node="index;Php:Function Name;8;35;2;46;34;;;v;;r;;d24,35;;b1,0;;m">
+					</treenode>
+					<treenode node="loginstatus;Php:Var Name;5;5;17;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="months;Php:Var Name;5;6;12;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="user;Php:Var Name;5;4;10;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 			</phptree>
@@ -5028,12 +5430,28 @@
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\admin_interface.php" crc="433590896">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\admin_interface.php" crc="1016196807">
 			<phptree>
-				<treenode node="Admin_interface;Php:Class Name;0;2;1;13;34;;;vCI_Controller;;c;;r;;d44,2;;b0,0;;m">
-					<treenode node="__construct;Php:Function Name;1;4;2;7;34;;;v;;r;;d23,4;;b0,0;;m">
+				<treenode node="Admin_interface;Php:Class Name;0;2;1;100;34;;;vCI_Controller;;c;;r;;d44,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;1;8;2;43;34;;;v;;r;;d23,8;;b0,0;;m">
 					</treenode>
-					<treenode node="index;Php:Function Name;8;9;2;12;34;;;v;;r;;d24,9;;b1,0;;m">
+					<treenode node="admin_cabinet;Php:Function Name;8;72;2;82;34;;;v;;r;;d32,72;;b1,0;;m">
+					</treenode>
+					<treenode node="admin_logoff;Php:Function Name;8;84;2;89;34;;;v;;r;;d31,84;;b1,0;;m">
+					</treenode>
+					<treenode node="admin_panel;Php:Function Name;8;50;2;70;34;;;v;;r;;d30,50;;b1,0;;m">
+					</treenode>
+					<treenode node="index;Php:Function Name;8;45;2;48;34;;;v;;r;;d24,45;;b1,0;;m">
+					</treenode>
+					<treenode node="references_courses;Php:Function Name;8;97;2;99;34;;;v;;r;;d37,97;;b1,0;;m">
+					</treenode>
+					<treenode node="references_trends;Php:Function Name;8;93;2;95;34;;;v;;r;;d36,93;;b1,0;;m">
+					</treenode>
+					<treenode node="loginstatus;Php:Var Name;5;5;17;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="months;Php:Var Name;5;6;12;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="user;Php:Var Name;5;4;10;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 			</phptree>
@@ -5053,7 +5471,7 @@
 				<treenode node="smileys;Php:Var Name;0;14;8;14;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\config\routes.php" crc="-1876373112">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\config\routes.php" crc="-1572471675">
 			<phptree>
 				<treenode node="route;Php:Var Name;0;2;6;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5091,7 +5509,7 @@
 				</treenode>
 			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\config\constants.php" crc="1276116486">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\config\config.php" crc="843471403">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\config\config.php" crc="-1447038816">
 			<phptree>
 				<treenode node="config;Php:Var Name;0;16;7;16;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
