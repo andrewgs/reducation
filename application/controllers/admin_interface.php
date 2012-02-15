@@ -55,18 +55,8 @@ class Admin_interface extends CI_Controller {
 					'author'		=> '',
 					'title'			=> 'РосЦентр ДПО - Панель администрирования',
 					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'paramstatus'	=> array('trend'=>$this->session->userdata('trend'),'course'=>$this->session->userdata('course'),'chapter'=>$this->session->userdata('chapter'),'lecture'=>$this->session->userdata('lecture'),'test'=>$this->session->userdata('test'),'tansw'=>$this->session->userdata('tansw'),'tqes'=>$this->session->userdata('tqes')),
-					'paramvalue'	=> array('trend'=>'','course'=>'','chapter'=>'','lecture'=>'','test'=>'','tqes'=>'','tansw'=>'')
+					'userinfo'		=> $this->user
 			);
-		$pagevar['paramvalue']['trend'] = $this->trendsmodel->read_field($pagevar['paramstatus']['trend'],'title');
-		$pagevar['paramvalue']['course'] = $this->coursesmodel->read_field($pagevar['paramstatus']['course'],'title');
-		$pagevar['paramvalue']['chapter'] = $this->chaptermodel->read_field($pagevar['paramstatus']['chapter'],'title');
-		$pagevar['paramvalue']['lecture'] = $this->lecturesmodel->read_field($pagevar['paramstatus']['lecture'],'title');
-		$pagevar['paramvalue']['test'] = $this->testsmodel->read_field($pagevar['paramstatus']['test'],'title');
-		$pagevar['paramvalue']['tqes'] = $this->testquestionsmodel->read_field($pagevar['paramstatus']['tqes'],'title');
-		$pagevar['paramvalue']['tansw'] = $this->testanswersmodel->read_field($pagevar['paramstatus']['tansw'],'title');
-		
 		$this->load->view("admin_interface/admin-panel",$pagevar);
 	}
 	
@@ -93,9 +83,75 @@ class Admin_interface extends CI_Controller {
 	
 	public function references_trends(){
 		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Список направлений обучения',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'trends'		=> $this->trendsmodel->read_records()
+			);
+		$this->load->view("admin_interface/admin-trends-list",$pagevar);
+	}
+	
+	public function references_add_trend(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Список направлений обучения',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'trends'		=> $this->trendsmodel->read_records()
+			);
+		$this->load->view("admin_interface/admin-trends-list",$pagevar);
 	}
 	
 	public function references_courses(){
 		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Список курсов',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("admin_interface/admin-courses-list",$pagevar);
+	}
+
+	public function private_messages(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Личные сообщения',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("admin_interface/admin-private-messages",$pagevar);
+	}
+	
+	public function support_messages(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Техническая поддержка',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("admin_interface/admin-support-messages",$pagevar);
+	}
+	
+	public function applications_messages(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Заявки',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("admin_interface/admin-applications-messages",$pagevar);
 	}
 }

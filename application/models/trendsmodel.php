@@ -3,6 +3,7 @@
 class Trendsmodel extends CI_Model{
 
     var $id   		= 0;
+    var $code 		= '';
     var $title 		= '';
     var $note  		= '';
     var $courses  	= 0;
@@ -14,6 +15,7 @@ class Trendsmodel extends CI_Model{
 	
 	function insert_record($data){
 			
+		$this->code 	= $data['code'];
 		$this->title 	= $data['title'];
 		$this->note		= $data['note'];
 		$this->courses 	= 0;
@@ -35,6 +37,14 @@ class Trendsmodel extends CI_Model{
 		$this->db->set('view',0);
 		$this->db->where('id',$id);
 		$this->db->update('trends');
+	}
+	
+	function read_records(){
+		
+		$query = $this->db->get('trends');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
 	}
 	
 	function read_record($id){
@@ -60,5 +70,19 @@ class Trendsmodel extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->delete('trends');
 		return $this->db->affected_rows();
-	}	
+	}
+	
+	function insert_course($id){
+	
+		$this->db->set('courses','courses+1',FALSE);
+		$this->db->where('id',$id);
+		$this->db->update('trends');
+	}
+	
+	function delete_courses($id){
+	
+		$this->db->set('courses','courses-1',FALSE);
+		$this->db->where('id',$id);
+		$this->db->update('trends');
+	}
 }

@@ -8,6 +8,8 @@ class Coursesmodel extends CI_Model{
     var $price  = '';
     var $trend  = 0;
     var $view  	= 0;
+    var $days  	= 0;
+    var $code  	= '';
 
     function __construct(){
         parent::__construct();
@@ -20,6 +22,8 @@ class Coursesmodel extends CI_Model{
 		$this->price 	= $data['price'];
 		$this->trend  	= $data['trend'];
 		$this->view  	= 0;
+		$this->days  	= $data['days'];
+		$this->code  	= $data['code'];
 		
 		$this->db->insert('courses',$this);
 		return $this->db->insert_id();
