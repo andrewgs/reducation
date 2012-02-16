@@ -1,22 +1,23 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
-	<div id="addTrend" class="modal hide fade">
+	<input type="hidden" id="idTrend" value="" name="idt" />
+	<div id="editTrend" class="modal hide fade">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
-			<h3>Добавление направления обучения</h3>
+			<h3>Редактирование направления обучения</h3>
 		</div>
 		<div class="modal-body">
 			<fieldset>
 				<div class="control-group">
 					<label for="login" class="control-label">Название: </label>
 					<div class="controls">
-						<input type="text" id="TitleTrend" class="input-xlarge ainput" name="title">
+						<input type="text" id="eTitleTrend" class="input-xlarge einput" name="title" value="">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label for="password" class="control-label">Код: </label>
 					<div class="controls">
-						<input type="text" id="CodeTrend" class="input-xlarge ainput" name="code">
+						<input type="text" id="eCodeTrend" class="input-xlarge einput" name="code" value="">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
@@ -24,7 +25,7 @@
 					<label for="ViewTrend" class="control-label">Видимость: </label>
 					<div class="controls">
 						<label class="checkbox">
-							<input type="checkbox" value="1" id="ViewTrend" name="view">
+							<input type="checkbox" value="1" id="eViewTrend" name="view">
 							Показывать направление пользователям
 						</label>
 					</div>
@@ -33,7 +34,7 @@
 		</div>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal">Отменить</button>
-			<button class="btn btn-success" type="submit" id="send" name="submit" value="send">Добавить</button>
+			<button class="btn btn-success" type="submit" id="saveTrend" name="esubmit" value="esend">Сохранить</button>
 		</div>
 	</div>
 <?= form_close(); ?>

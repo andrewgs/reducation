@@ -21,13 +21,13 @@
 						<tbody>
 						<?php for($i=0;$i<count($trends);$i++):?>
 							<tr>
-								<td><?=anchor('#','<i class="icon-pencil" title="Редактировать"></i>');?></td>
-								<td><?=$trends[$i]['code'];?></td>
-								<td><h5><?=$trends[$i]['title'];?> <small>(курсов: <?=$trends[$i]['courses'];?>)</small></h5></td>
+								<td><a href="#editTrend" class="editTrend" data-toggle="modal" title="Редактировать" idtrend="<?=$trends[$i]['id'];?>"><i class="icon-pencil"></i></a></td>
+								<td idtrend="<?=$trends[$i]['id'];?>"><?=$trends[$i]['code'];?></td>
+								<td><h5><span idtrend="<?=$trends[$i]['id'];?>"><?=$trends[$i]['title'];?></span> <small>(курсов: <?=$trends[$i]['courses'];?>)</small></h5></td>
 								<?php if($trends[$i]['view']):?>
-									<td><i class="icon-eye-open" title="Виден"></i></td>
+									<td><i class="icon-eye-open" title="Виден" idtrend="<?=$trends[$i]['id'];?>" view="1"></i></td>
 								<?php else:?>
-									<td><i class="icon-eye-close" title="Не виден"></i></td>
+									<td><i class="icon-eye-close" title="Не виден" idtrend="<?=$trends[$i]['id'];?>" view="0"></i></td>
 								<?php endif;?>
 								<td><a class="close" data-toggle="modal" href="#deleteTrend" idtrend="<?=$trends[$i]['id'];?>">&times;</a></td>
 							</tr>
@@ -37,6 +37,7 @@
 					<p><a class="btn btn-primary" data-toggle="modal" href="#addTrend"><i class="icon-plus"></i> Добавить направление</a></p>
 					<?php $this->load->view('admin_interface/modal/admin-add-trend');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-trend');?>
+					<?php $this->load->view('admin_interface/modal/admin-edit-trend');?>
 				</div>
 			</div>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
@@ -50,7 +51,20 @@
 				var err = false;
 				$(".control-group").removeClass('error');
 				$(".help-inline").hide();
-				$(".input-xlarge").each(function(i,element){
+				$(".ainput").each(function(i,element){
+					if($(this).val()==''){
+						$(this).parents(".control-group").addClass('error');
+						$(this).siblings(".help-inline").html("Поле не может быть пустым").show();
+						err = true;
+					}
+				});
+				if(err){event.preventDefault();}
+			});
+			$("#saveTrend").click(function(event){
+				var err = false;
+				$(".control-group").removeClass('error');
+				$(".help-inline").hide();
+				$(".einput").each(function(i,element){
 					if($(this).val()==''){
 						$(this).parents(".control-group").addClass('error');
 						$(this).siblings(".help-inline").html("Поле не может быть пустым").show();
@@ -60,13 +74,20 @@
 				if(err){event.preventDefault();}
 			});
 			$(".close").click(function(){DTrend = $(this).attr('idtrend');});
-			$("#DelTrend").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trends/delete-trend/'+DTrend;});
-			$("#addTrend").on("hidden",function(){
-				$(".control-group").removeClass('error');
-				$(".help-inline").hide();
-				$(".input-xlarge").val('');
-				$("#ViewTrend").removeAttr('checked');
+			$(".editTrend").click(function(){
+				DTrend = $(this).attr('idtrend');
+				var title = $("span[idtrend = "+DTrend+"]").html();
+				var code = $("td[idtrend = "+DTrend+"]").html();
+				var view = $("i[idtrend = "+DTrend+"]").attr('view');
+				$("#idTrend").val(DTrend);
+				$("#eTitleTrend").val(title);
+				$("#eCodeTrend").val(code);
+				if(view == 1){$("#eViewTrend").attr('checked','checked');}else{$("#eViewTrend").removeAttr('checked');}
+				
 			});
+			$("#DelTrend").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trends/delete-trend/'+DTrend;});
+			$("#addTrend").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$("#ViewTrend").removeAttr('checked');});
+			$("#editTrend").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();});
 			$(".close").alert();
 			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
 		});

@@ -96,7 +96,7 @@ class Admin_interface extends CI_Controller {
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		if($this->input->post('submit')):
-			$_POST['submit'] == NULL;
+			$_POST['submit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
 			$this->form_validation->set_rules('code',' ','required|trim');
 			if(!$this->form_validation->run()):
@@ -109,6 +109,22 @@ class Admin_interface extends CI_Controller {
 				if($id):
 					$this->session->set_userdata('msgs','Направление создано успешно.');
 				endif;
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		if($this->input->post('esubmit')):
+			$_POST['esubmit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('code',' ','required|trim');
+			$this->form_validation->set_rules('idt',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				if(!isset($_POST['view'])):
+					$_POST['view'] = 0;
+				endif;
+				$this->trendsmodel->update_record($_POST);
+				$this->session->set_userdata('msgs','Информация по направлению успешно сохранена.');
 			endif;
 			redirect($this->uri->uri_string());
 		endif;

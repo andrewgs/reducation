@@ -4837,7 +4837,7 @@
 				<treenode node="msgr;Php:Var Name;9;0;14;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-trend.php" crc="333786521">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-trend.php" crc="783211992">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-trend.php" crc="1072747867">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
@@ -4867,7 +4867,7 @@
 				<treenode node="title;Php:Var Name;11;2;17;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-trends-list.php" crc="-665387135">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-trends-list.php" crc="607720648">
 			<phptree>
 				<treenode node="i;Php:Var Name;16;21;18;21;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4879,13 +4879,17 @@
 			<jstree>
 				<treenode node="document;JS:JS Var Name;4;46;12;46;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="element;JS:JS Var Name;39;51;46;51;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="DTrend;JS:JS Var Name;7;47;13;47;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="err;JS:JS Var Name;8;48;11;48;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="element;JS:JS Var Name;39;52;46;52;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="event;JS:JS Var Name;29;47;34;47;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="err;JS:JS Var Name;8;49;11;49;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="i;JS:JS Var Name;37;51;38;51;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="event;JS:JS Var Name;29;48;34;48;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="i;JS:JS Var Name;37;52;38;52;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="location;JS:JS Var Name;35;62;43;62;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-support-messages.php" crc="1258190303">

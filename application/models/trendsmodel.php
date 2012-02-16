@@ -25,6 +25,17 @@ class Trendsmodel extends CI_Model{
 		return $this->db->insert_id();
 	}
 	
+	function update_record($data){
+			
+		$this->db->set('code',$data['code']);
+		$this->db->set('title',$data['title']);
+		$this->db->set('note','');
+		$this->db->set('view',$data['view']);
+		$this->db->where('id',$data['idt']);
+		$this->db->update('trends');
+		return $this->db->affected_rows();
+	}
+	
 	function active_status($id){
 		
 		$this->db->set('view',1);
