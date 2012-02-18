@@ -1,22 +1,37 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
-	<div id="addTrend" class="modal hide fade">
+	<input type="hidden" id="idTrend" value="" name="trend" />
+	<div id="addCourse" class="modal hide fade">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
-			<h3>Добавление направления обучения</h3>
+			<h3>Добавление курса обучения</h3>
 		</div>
 		<div class="modal-body">
 			<fieldset>
 				<div class="control-group">
 					<label for="title" class="control-label">Название: </label>
 					<div class="controls">
-						<input type="text" id="TitleTrend" class="input-xlarge ainput" name="title">
+						<input type="text" id="TitleCourse" class="input-xlarge ainput" name="title">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label for="code" class="control-label">Код: </label>
 					<div class="controls">
-						<input type="text" id="CodeTrend" class="input-xlarge ainput" name="code">
+						<input type="text" id="CodeCourse" class="input-xlarge ainput" name="code">
+						<span class="help-inline" style="display:none;">&nbsp;</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label for="price" class="control-label">Цена (руб.): </label>
+					<div class="controls">
+						<input type="text" id="PriceCourse" class="input-xlarge ainput" name="price">
+						<span class="help-inline" style="display:none;">&nbsp;</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label for="hours" class="control-label">Время (час): </label>
+					<div class="controls">
+						<input type="text" id="HoursCourse" class="input-xlarge ainput" name="hours">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
@@ -24,8 +39,8 @@
 					<label for="ViewTrend" class="control-label">Видимость: </label>
 					<div class="controls">
 						<label class="checkbox">
-							<input type="checkbox" value="1" id="ViewTrend" name="view">
-							Показывать направление пользователям
+							<input type="checkbox" value="1" id="ViewCourse" name="view">
+							Показывать курс пользователям
 						</label>
 					</div>
 				</div>

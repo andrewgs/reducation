@@ -124,6 +124,11 @@ class Admin_interface extends CI_Controller {
 					$_POST['view'] = 0;
 				endif;
 				$this->trendsmodel->update_record($_POST);
+				if(!$_POST['view']):
+					$this->coursesmodel->deactive_status_trend($_POST['idt']);
+				else:
+					$this->coursesmodel->active_status_trend($_POST['idt']);
+				endif;
 				$this->session->set_userdata('msgs','Информация по направлению успешно сохранена.');
 			endif;
 			redirect($this->uri->uri_string());
@@ -153,11 +158,77 @@ class Admin_interface extends CI_Controller {
 					'author'		=> '',
 					'title'			=> 'РосЦентр ДПО - Список курсов',
 					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user
+					'userinfo'		=> $this->user,
+					'trends'		=> $this->trendsmodel->read_records(),
+					'courses'		=> $this->coursesmodel->read_records(),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		if($this->input->post('submit')):
+			$_POST['submit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('code',' ','required|trim');
+			$this->form_validation->set_rules('price',' ','required|trim');
+			$this->form_validation->set_rules('hours',' ','required|trim');
+			$this->form_validation->set_rules('trend',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				if(!isset($_POST['view'])):
+					$_POST['view'] = 0;
+				endif;
+				$id = $this->coursesmodel->insert_record($_POST);
+				if($id):
+					$this->trendsmodel->insert_course($_POST['trend']);
+					$this->session->set_userdata('msgs','Курс создан успешно.');
+				endif;
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		if($this->input->post('esubmit')):
+			$_POST['esubmit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('code',' ','required|trim');
+			$this->form_validation->set_rules('price',' ','required|trim');
+			$this->form_validation->set_rules('hours',' ','required|trim');
+			$this->form_validation->set_rules('icrs',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				if(!isset($_POST['view'])):
+					$_POST['view'] = 0;
+				endif;
+				$this->coursesmodel->update_record($_POST);
+				/*if(!$_POST['view']):
+					$this->coursesmodel->deactive_status_trend($_POST['idt']);
+				else:
+					$this->coursesmodel->active_status_trend($_POST['idt']);
+				endif;*/
+				$this->session->set_userdata('msgs','Информация по курсу успешно сохранена.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
 		$this->load->view("admin_interface/admin-courses-list",$pagevar);
 	}
-
+	
+	public function references_delete_course(){
+		
+		$course = $this->uri->segment(5);
+		$trend = $this->uri->segment(7);
+		if($course || $trend):
+			$result = $this->coursesmodel->delete_record($course);
+			if($result):
+				$this->session->set_userdata('msgs','Курс удален успешно.');
+				$this->trendsmodel->delete_courses($trend);
+			else:
+				$this->session->set_userdata('msgr','Курс не удален.');
+			endif;
+			redirect('admin-panel/references/courses');
+		endif;
+	}
+	
 	public function private_messages(){
 		
 		$pagevar = array(

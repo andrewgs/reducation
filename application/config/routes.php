@@ -16,10 +16,11 @@ $route['admin-panel/actions/cabinet'] 		= "admin_interface/admin_cabinet";
 /*==========================================================  trends  ====================================================*/
 $route['admin-panel/references/trends']						= "admin_interface/references_trends";
 $route['admin-panel/references/trends/delete-trend/:num']	= "admin_interface/references_delete_trend";
+/*==========================================================  course  ====================================================*/
+$route['admin-panel/references/courses']								= "admin_interface/references_courses";
+$route['admin-panel/references/courses/delete-course/:num/trend/:num']	= "admin_interface/references_delete_course";
 
-/*==========================================================  courses  ===================================================*/
-$route['admin-panel/references/courses']	= "admin_interface/references_courses";
-
+/*==========================================================  messages  ===================================================*/
 $route['admin-panel/messages/private']		= "admin_interface/private_messages";
 $route['admin-panel/messages/support']		= "admin_interface/support_messages";
 $route['admin-panel/messages/applications']	= "admin_interface/applications_messages";

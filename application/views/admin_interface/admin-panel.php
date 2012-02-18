@@ -2,11 +2,14 @@
 <html lang="en">
 <?php $this->load->view('admin_interface/head');?>
 <body>
+	<?php $this->load->view('admin_interface/header');?>
 	<div class="container">
 		<div class="row">
 			<div class="span9">
-				<ul class="nav nav-pills">
-					<li class="active"><?=anchor('admin-panel/actions/control','<i class="icon-cog"></i> Панель управления');?></li>
+				<ul class="breadcrumb">
+					<li class="active">
+						<?=anchor('admin-panel/actions/control','Панель управления');?>
+					</li>
 				</ul>
 			</div>
 		<?php $this->load->view('admin_interface/rightbarmsg');?>

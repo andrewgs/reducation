@@ -2,12 +2,15 @@
 <html lang="en">
 <?php $this->load->view('admin_interface/head');?>
 <body>
+	<?php $this->load->view('admin_interface/header');?>
 	<div class="container">
 		<div class="row">
 			<div class="span9">
 				<div>
-					<ul class="nav nav-pills">
-						<li class="active"><?=anchor('admin-panel/references/trends','<i class="icon-list-alt"></i> Список направлений обучания');?></li>
+					<ul class="breadcrumb">
+						<li class="active">
+							<?=anchor('admin-panel/references/trends','Направления');?>
+						</li>
 					</ul>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
@@ -83,7 +86,6 @@
 				$("#eTitleTrend").val(title);
 				$("#eCodeTrend").val(code);
 				if(view == 1){$("#eViewTrend").attr('checked','checked');}else{$("#eViewTrend").removeAttr('checked');}
-				
 			});
 			$("#DelTrend").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trends/delete-trend/'+DTrend;});
 			$("#addTrend").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$("#ViewTrend").removeAttr('checked');});

@@ -8,7 +8,7 @@ class Coursesmodel extends CI_Model{
     var $price  = '';
     var $trend  = 0;
     var $view  	= 0;
-    var $days  	= 0;
+    var $hours 	= 0;
     var $code  	= '';
 
     function __construct(){
@@ -18,15 +18,28 @@ class Coursesmodel extends CI_Model{
 	function insert_record($data){
 			
 		$this->title 	= $data['title'];
-		$this->note		= $data['note'];
+		$this->note		= '';
 		$this->price 	= $data['price'];
 		$this->trend  	= $data['trend'];
 		$this->view  	= 0;
-		$this->days  	= $data['days'];
+		$this->hours  	= $data['hours'];
 		$this->code  	= $data['code'];
 		
 		$this->db->insert('courses',$this);
 		return $this->db->insert_id();
+	}
+	
+	function update_record($data){
+			
+		$this->db->set('code',$data['code']);
+		$this->db->set('title',$data['title']);
+		$this->db->set('price',$data['price']);
+		$this->db->set('hours',$data['hours']);
+		$this->db->set('note','');
+		$this->db->set('view',$data['view']);
+		$this->db->where('id',$data['icrs']);
+		$this->db->update('courses');
+		return $this->db->affected_rows();
 	}
 	
 	function active_status($id){
@@ -36,11 +49,33 @@ class Coursesmodel extends CI_Model{
 		$this->db->update('courses');
 	}
 	
+	function deactive_status_trend($trend){
+		
+		$this->db->set('view',0);
+		$this->db->where('trend',$trend);
+		$this->db->update('courses');
+	}
+	
+	function active_status_trend($trend){
+		
+		$this->db->set('view',1);
+		$this->db->where('trend',$trend);
+		$this->db->update('courses');
+	}
+	
 	function deactive_status($id){
 		
 		$this->db->set('view',0);
 		$this->db->where('id',$id);
 		$this->db->update('courses');
+	}
+	
+	function read_records(){
+		
+		$query = $this->db->get('courses');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
 	}
 	
 	function read_record($id){
