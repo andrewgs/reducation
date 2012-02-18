@@ -9,7 +9,7 @@
 				<div>
 					<ul class="breadcrumb">
 						<li class="active">
-							<?=anchor('admin-panel/references/trends','Направления');?>
+							<?=anchor($this->uri->uri_string(),'Направления');?>
 						</li>
 					</ul>
 					<?php $this->load->view('alert_messages/alert-error');?>

@@ -20,6 +20,11 @@ $route['admin-panel/references/trends/delete-trend/:num']	= "admin_interface/ref
 $route['admin-panel/references/courses']								= "admin_interface/references_courses";
 $route['admin-panel/references/courses/delete-course/:num/trend/:num']	= "admin_interface/references_delete_course";
 
+/*==========================================================  chapters  ====================================================*/
+$route['admin-panel/references/trend/:num/course/:num']						= "admin_interface/references_chapters";
+$route['admin-panel/references/trend/:num/course/:num/delete-lecture/:num']	= "admin_interface/references_delete_lecture";
+$route['admin-panel/references/trend/:num/course/:num/delete-chapter/:num']	= "admin_interface/references_delete_chapter";
+
 /*==========================================================  messages  ===================================================*/
 $route['admin-panel/messages/private']		= "admin_interface/private_messages";
 $route['admin-panel/messages/support']		= "admin_interface/support_messages";

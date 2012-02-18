@@ -9,7 +9,7 @@ class Lecturesmodel extends CI_Model{
     var $document 	= '';
     var $loaddate 	= '';
     var $chapter 	= 0;
-    var $courses 	= 0;
+    var $course 	= 0;
     var $view 		= 0;
 
     function __construct(){
@@ -20,7 +20,7 @@ class Lecturesmodel extends CI_Model{
 			
 		$this->number 	= $data['number'];
 		$this->title 	= $data['title'];
-		$this->note		= $data['note'];
+		$this->note		= '';
 		$this->document	= $data['document'];
 		$this->loaddate	= date("Y-m-d");
 		$this->chapter	= $data['chapter'];
@@ -50,6 +50,27 @@ class Lecturesmodel extends CI_Model{
 		$query = $this->db->get('lectures',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
+		return NULL;
+	}
+	
+	function read_records($course){
+		
+		$this->db->order_by('number','ASC');
+		$this->db->order_by('id','DESC');
+		$this->db->where('course',$course);
+		$query = $this->db->get('lectures');
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function read_records_chapter($course,$chapter){
+		
+		$this->db->where('course',$course);
+		$this->db->where('chapter',$chapter);
+		$query = $this->db->get('lectures');
+		$data = $query->result_array();
+		if(count($data)) return $data;
 		return NULL;
 	}
 	

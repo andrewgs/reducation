@@ -96,4 +96,13 @@ class Trendsmodel extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->update('trends');
 	}
+
+	function exist_course($id){
+		
+		$this->db->where('id',$id);
+		$query = $this->db->get('trends',1);
+		$data = $query->result_array();
+		if(count($data)) return TRUE;
+		return FALSE;
+	}
 }

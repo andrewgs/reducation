@@ -78,6 +78,15 @@ class Coursesmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_new_courses($count){
+		
+		$this->db->order_by('id','DESC');
+		$query = $this->db->get('courses',$count);
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
 	function read_record($id){
 		
 		$this->db->where('id',$id);
@@ -101,5 +110,31 @@ class Coursesmodel extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->delete('courses');
 		return $this->db->affected_rows();
-	}	
+	}
+	
+	function delete_trends($trend){
+	
+		$this->db->where('trend',$trend);
+		$this->db->delete('courses');
+		return $this->db->affected_rows();
+	}
+
+	function exist_course($id){
+		
+		$this->db->where('id',$id);
+		$query = $this->db->get('courses',1);
+		$data = $query->result_array();
+		if(count($data)) return TRUE;
+		return FALSE;
+	}
+
+	function ownew_course($id,$trend){
+		
+		$this->db->where('id',$id);
+		$this->db->where('trend',$trend);
+		$query = $this->db->get('courses',1);
+		$data = $query->result_array();
+		if(count($data)) return TRUE;
+		return FALSE;
+	}
 }

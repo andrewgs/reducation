@@ -8,11 +8,8 @@
 			<div class="span9">
 				<div>
 					<ul class="breadcrumb">
-						<li>
-							<?=anchor('admin-panel/references/trends','Направления');?> <span class="divider">/</span>
-						</li>
 						<li class="active">
-							<?=anchor('admin-panel/references/courses','Курсы');?>
+							<?=anchor($this->uri->uri_string(),'Курсы');?>
 						</li>
 					</ul>
 					<?php $this->load->view('alert_messages/alert-error');?>
@@ -30,7 +27,7 @@
 							<?php if($courses[$j]['trend'] == $trends[$i]['id']):?>
 								<tr>
 									<td><a href="#editCourse" class="editCourse" data-toggle="modal" title="Редактировать" idcourse="<?=$courses[$j]['id'];?>"><i class="icon-pencil"></i></a></td>
-									<td><?=anchor('#','<span idspan="cs'.$courses[$j]['id'].'">'.$courses[$j]['code'].'</span>. <span idspan="ts'.$courses[$j]['id'].'">'.$courses[$j]['title'].'</span>');?></td>
+									<td><?=anchor('admin-panel/references/trend/'.$trends[$i]['id'].'/course/'.$courses[$j]['id'],'<span idspan="cs'.$courses[$j]['id'].'">'.$courses[$j]['code'].'</span>. <span idspan="ts'.$courses[$j]['id'].'">'.$courses[$j]['title'].'</span>');?></td>
 									<td><nobr><span idspan="sp<?=$courses[$j]['id'];?>"><?=$courses[$j]['price'];?></span> руб.</nobr></td>
 									<td><nobr><span idspan="sh<?=$courses[$j]['id'];?>"><?=$courses[$j]['hours'];?></span> час.</nobr></td>
 								<?php if($courses[$j]['view']):?>

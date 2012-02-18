@@ -15,7 +15,7 @@ class Chaptermodel extends CI_Model{
 	function insert_record($data){
 			
 		$this->title 	= $data['title'];
-		$this->note		= $data['note'];
+		$this->note		= '';
 		$this->course 	= $data['course'];
 		$this->number 	= $data['number'];
 		
@@ -29,6 +29,17 @@ class Chaptermodel extends CI_Model{
 		$query = $this->db->get('chapter',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
+		return NULL;
+	}
+	
+	function read_records($course){
+		
+		$this->db->where('course',$course);
+		$this->db->order_by('number','ASC');
+		$this->db->order_by('id','DESC');
+		$query = $this->db->get('chapter');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
 		return NULL;
 	}
 	
