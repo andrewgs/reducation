@@ -276,7 +276,6 @@ class Admin_interface extends CI_Controller{
 		$pagevar['title'] .= 'Содержание курса "'.$pagevar['course'].'"'; 
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
@@ -287,7 +286,6 @@ class Admin_interface extends CI_Controller{
 				$_POST['course'] = $course;
 				$id = $this->chaptermodel->insert_record($_POST);
 				if($id):
-//					$this->trendsmodel->insert_course($_POST['trend']);
 					$this->session->set_userdata('msgs','Глава добавлена успешно.');
 				endif;
 			endif;
@@ -300,6 +298,10 @@ class Admin_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
 			else:
+				if($_FILES['document']['error'] == 1):
+					$this->session->set_userdata('msgr','Ошибка при загрузке документа. Размер принятого файла превысил максимально допустимый размер.');
+					redirect($this->uri->uri_string());
+				endif;
 				if($_FILES['document']['error'] == 4):
 					$this->session->set_userdata('msgr','Ошибка при загрузке документа. Не указан файл.');
 					redirect($this->uri->uri_string());
@@ -313,13 +315,37 @@ class Admin_interface extends CI_Controller{
 				$_POST['course'] = $course;
 				$id = $this->lecturesmodel->insert_record($_POST);
 				if($id):
-//					$this->trendsmodel->insert_course($_POST['trend']);
 					$this->session->set_userdata('msgs','Лекция добавлена успешно.');
 				endif;
 			endif;
 			redirect($this->uri->uri_string());
 		endif;
-		
+		if($this->input->post('elsubmit')):
+			$_POST['elsubmit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('number',' ','required|trim');
+			$this->form_validation->set_rules('idlec',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
+			else:
+				if($_FILES['document']['error'] != 4):
+					$_FILES['document']['name'] = preg_replace('/.+(.)(\.)+/',date("Ymdhis")."\$2", $_FILES['document']['name']);
+					$_POST['document'] = 'documents/lectures/'.$_FILES['document']['name'];
+					if(!$this->fileupload('document',FALSE)):
+						$this->session->set_userdata('msgr','Ошибка при загрузке документа.');
+						redirect($this->uri->uri_string());
+					else:
+						$document = $this->lecturesmodel->read_field($_POST['idlec'],'document');
+						$this->filedelete($document);
+					endif;
+				else:
+					$_POST['document'] = '';
+				endif;
+				$this->lecturesmodel->update_record($_POST);
+				$this->session->set_userdata('msgs','Информация по курсу успешно сохранена.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
 		$this->load->view("admin_interface/admin-chapters-list",$pagevar);
 	}
 	
@@ -372,6 +398,59 @@ class Admin_interface extends CI_Controller{
 		endif;
 	}
 	
+	public function references_lecture_card(){
+		
+		$trend = $this->uri->segment(4);
+		if(!$this->trendsmodel->exist_course($trend)):
+			redirect('admin-panel/references/trends');
+		endif;
+		$course = $this->uri->segment(6);
+		if(!$this->coursesmodel->ownew_course($course,$trend)):
+			redirect('admin-panel/references/courses');
+		endif;
+		$lecture = $this->uri->segment(8);
+		if(!$this->lecturesmodel->ownew_course($lecture,$course)):
+			redirect('admin-panel/references/courses');
+		endif;
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'lecture'		=> $this->lecturesmodel->read_record($lecture),
+					'trend'			=> $this->trendsmodel->read_field($trend,'code'),
+					'course'		=> $this->coursesmodel->read_field($course,'code'),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
+					'filesize'		=> 'Размер не определен.',
+					'filename'		=> 'Имя не определено. Возможно файл отсутствует на диске или не доступен',
+					'fileextension'	=> 'Hасширение не определено.',
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$pagevar['title'] .= 'Содержание курса "'.$pagevar['course'].'"'; 
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		$file = getcwd().'/'.$pagevar['lecture']['document'];
+		if(file_exists($file)):
+			$pagevar['filesize'] = filesize($file);
+			$fileexp = explode('/',$pagevar['lecture']['document']);
+			if($fileexp && isset($fileexp[2])):
+				$pagevar['filename'] = $fileexp[2];
+				$fileextension = explode('.',$pagevar['filename']);
+				$pagevar['fileextension'] = $fileextension[1];
+			endif;
+		endif;
+		if($pagevar['filesize'] > 1048576):
+			$pagevar['filesize'] = round($pagevar['filesize']/1048576,2).' Мбайт';
+		elseif($pagevar['filesize'] > 1024):
+			$pagevar['filesize'] = round($pagevar['filesize']/1024,1).' кбайт';
+		elseif($pagevar['filesize'] < 1024):
+			$pagevar['filesize'] = $pagevar['filesize'].' байт';
+		endif;
+		$this->load->view("admin_interface/admin-lecture-card",$pagevar);
+	}
+	
 	public function private_messages(){
 		
 		$pagevar = array(
@@ -413,12 +492,11 @@ class Admin_interface extends CI_Controller{
 
 	public function fileupload($userfile,$overwrite){
 		
-		$this->load->library('upload');
 		$config['upload_path'] 		= getcwd().'/documents/lectures/';
 		$config['allowed_types'] 	= 'doc|docx|xls|xlsx|txt|pdf';
 		$config['remove_spaces'] 	= TRUE;
 		$config['overwrite'] 		= $overwrite;
-		$this->upload->initialize($config);
+		$this->load->library('upload',$config);
 		if(!$this->upload->do_upload($userfile)):
 			return FALSE;
 		endif;

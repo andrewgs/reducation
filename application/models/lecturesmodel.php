@@ -25,6 +25,7 @@ class Lecturesmodel extends CI_Model{
 		$this->loaddate	= date("Y-m-d");
 		$this->chapter	= $data['chapter'];
 		$this->course 	= $data['course'];
+		$this->view 	= 1;
 		
 		$this->db->insert('lectures',$this);
 		return $this->db->insert_id();
@@ -62,6 +63,31 @@ class Lecturesmodel extends CI_Model{
 		$data = $query->result_array();
 		if(count($data)) return $data;
 		return NULL;
+	}
+	
+	function update_record($data){
+		
+		$this->db->set('number',$data['number']);
+		$this->db->set('title',$data['title']);
+		$this->db->set('note','');
+		if(!empty($data['document'])):
+			$this->db->set('document',$data['document']);
+		endif;
+		$this->db->set('loaddate',date("Y-m-d"));
+		$this->db->where('id',$data['idlec']);
+		
+		$this->db->update('lectures');
+		return $this->db->affected_rows();
+	}
+	
+	function ownew_course($id,$course){
+		
+		$this->db->where('id',$id);
+		$this->db->where('course',$course);
+		$query = $this->db->get('lectures',1);
+		$data = $query->result_array();
+		if(count($data)) return TRUE;
+		return FALSE;
 	}
 	
 	function read_records_chapter($course,$chapter){

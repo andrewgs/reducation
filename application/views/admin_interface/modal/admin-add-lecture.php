@@ -10,14 +10,14 @@
 				<div class="control-group">
 					<label for="title" class="control-label">Название: </label>
 					<div class="controls">
-						<input type="text" id="TitleChapter" class="input-xlarge linput" name="title">
+						<input type="text" id="TitleLecture" class="input-xlarge linput" name="title">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label for="number" class="control-label">Порядковый номер: </label>
 					<div class="controls">
-						<input type="text" id="NumberChapter" class="input-xlarge linput" name="number">
+						<input type="text" id="NumberLecture" class="input-xlarge linput" name="number">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
