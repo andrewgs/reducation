@@ -225,7 +225,6 @@ class Admin_interface extends CI_Controller{
 		$course = $this->uri->segment(5);
 		$trend = $this->uri->segment(7);
 		if($course || $trend):
-			
 			$chapters = $this->chaptermodel->read_records($course);
 			for($i=0;$i<count($chapters);$i++):
 				$lectures = $this->lecturesmodel->read_records_chapter($course,$chapters[$i]['id']);
@@ -234,6 +233,11 @@ class Admin_interface extends CI_Controller{
 					$this->filedelete($filepath);
 					$result = $this->lecturesmodel->delete_record($lectures[$j]['id']);
 				endfor;
+				$test = $this->testsmodel->read_record_chapter($chapters[$i]['id']);
+				if($test):
+					// тут удаляются ответы и вопросы
+					$this->testsmodel->delete_record($test['id']);
+				endif;
 				$this->chaptermodel->delete_record($chapters[$i]['id']);
 			endfor;
 			$result = $this->coursesmodel->delete_record($course);
@@ -276,6 +280,10 @@ class Admin_interface extends CI_Controller{
 		$pagevar['title'] .= 'Содержание курса "'.$pagevar['course'].'"'; 
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
+		
+		for($i=0;$i<count($pagevar['chapters']);$i++):
+			$pagevar['chapters'][$i]['test'] = $this->testsmodel->read_record_chapter($pagevar['chapters'][$i]['id']);
+		endfor;
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
@@ -346,6 +354,25 @@ class Admin_interface extends CI_Controller{
 			endif;
 			redirect($this->uri->uri_string());
 		endif;
+		if($this->input->post('mtsubmit')):
+			$_POST['mtsubmit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('count',' ','required|trim');
+			$this->form_validation->set_rules('time',' ','required|trim');
+			$this->form_validation->set_rules('chapter',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
+			else:
+				$_POST['course'] = $course;
+				$_POST['number'] = $this->chaptermodel->read_field($_POST['chapter'],'number');
+				$id = $this->testsmodel->insert_record($_POST);
+				if($id):
+					$this->session->set_userdata('msgs','Промежуточное тестирование добавлено успешно.');
+					$this->chaptermodel->active_test($_POST['chapter']);
+				endif;
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
 		$this->load->view("admin_interface/admin-chapters-list",$pagevar);
 	}
 	
@@ -388,6 +415,11 @@ class Admin_interface extends CI_Controller{
 					$this->session->set_userdata('msgr','Часть лекций не удалена.');
 				endif;
 			endfor;
+			$test = $this->testsmodel->read_record_chapter($chapter);
+			if($test):
+				// nут удаляются ответы и вопросы
+				$this->testsmodel->delete_record($test['id']);
+			endif;
 			if($error):
 				$this->chaptermodel->delete_record($chapter);
 				$this->session->set_userdata('msgs','Глава удалена успешно.');
@@ -449,6 +481,23 @@ class Admin_interface extends CI_Controller{
 			$pagevar['filesize'] = $pagevar['filesize'].' байт';
 		endif;
 		$this->load->view("admin_interface/admin-lecture-card",$pagevar);
+	}
+	
+	public function references_delete_test(){
+		
+		$trend = $this->uri->segment(4);
+		$course = $this->uri->segment(6);
+		$chapter = $this->uri->segment(8);
+		$test = $this->uri->segment(10);
+		if($chapter || $test):
+			// nут удаляются ответы и вопросы
+			$this->testsmodel->delete_record($test);
+			$this->chaptermodel->deactive_test($chapter);
+			$this->session->set_userdata('msgs','Тест удалена успешно.');
+			redirect('admin-panel/references/trend/'.$trend.'/course/'.$course);
+		else:
+			show_404();
+		endif;
 	}
 	
 	public function private_messages(){

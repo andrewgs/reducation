@@ -9,8 +9,8 @@ class Testsmodel extends CI_Model{
     var $count 		= 5;
     var $timetest 	= '';
     var $chapter 	= 0;
-    var $courses 	= 0;
-    var $view 		= 0;
+    var $course 	= 0;
+    var $view 		= 1;
 
     function __construct(){
         parent::__construct();
@@ -20,12 +20,12 @@ class Testsmodel extends CI_Model{
 			
 		$this->number 	= $data['number'];
 		$this->title 	= $data['title'];
-		$this->note		= $data['note'];
+		$this->note		= '';
 		$this->count	= $data['count'];
-		$this->timetest	= $data['timetest'];
+		$this->timetest	= $data['time'];
 		$this->chapter	= $data['chapter'];
 		$this->course 	= $data['course'];
-		$this->view 	= 0;
+		$this->view 	= 1;
 		
 		$this->db->insert('tests',$this);
 		return $this->db->insert_id();
@@ -48,6 +48,15 @@ class Testsmodel extends CI_Model{
 	function read_record($id){
 		
 		$this->db->where('id',$id);
+		$query = $this->db->get('tests',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0];
+		return NULL;
+	}
+	
+	function read_record_chapter($chapter){
+		
+		$this->db->where('chapter',$chapter);
 		$query = $this->db->get('tests',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];

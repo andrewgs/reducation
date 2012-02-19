@@ -1,30 +1,30 @@
-<?=form_open_multipart($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
+<?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
 	<input type="hidden" class="idChapter" value="" name="chapter" />
-	<div id="addLecture" class="modal hide fade">
+	<div id="addMTest" class="modal hide fade">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
-			<h3>Добавление лекции</h3>
+			<h3>Добавление промежуточного тестирования</h3>
 		</div>
 		<div class="modal-body">
 			<fieldset>
 				<div class="control-group">
 					<label for="title" class="control-label">Название: </label>
 					<div class="controls">
-						<input type="text" id="TitleLecture" class="input-xlarge linput" name="title">
+						<input type="text" id="TitleMTest" class="input-xlarge amtinput" name="title">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label for="number" class="control-label">Порядковый номер: </label>
+					<label for="count" class="control-label">Количество попыток: </label>
 					<div class="controls">
-						<input type="text" id="NumberLecture" class="input-xlarge linput" name="number">
+						<input type="text" id="СountMTest" class="input-xlarge amtinput" name="count">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
 				<div class="control-group">
-					<label for="DocumentFile" class="control-label">Документ</label>
+					<label for="time" class="control-label">Время на тест (мин): </label>
 					<div class="controls">
-						<input type="file" id="DocumentFile" class="input-file linput" name="document" size="30">
+						<input type="text" id="timeMTest" class="input-xlarge amtinput" name="time">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 		</div>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal">Отменить</button>
-			<button class="btn btn-success" type="submit" id="lsend" name="lsubmit" value="lsend">Добавить</button>
+			<button class="btn btn-success" type="submit" id="mtsend" name="mtsubmit" value="send">Добавить</button>
 		</div>
 	</div>
 <?= form_close(); ?>

@@ -7,6 +7,7 @@ class Chaptermodel extends CI_Model{
     var $note  	= '';
     var $course = 0;
     var $number = 0;
+    var $test 	= 0;
 
     function __construct(){
         parent::__construct();
@@ -18,9 +19,24 @@ class Chaptermodel extends CI_Model{
 		$this->note		= '';
 		$this->course 	= $data['course'];
 		$this->number 	= $data['number'];
+		$this->test 	= 0;
 		
 		$this->db->insert('chapter',$this);
 		return $this->db->insert_id();
+	}
+	
+	function active_test($id){
+		
+		$this->db->set('test',1);
+		$this->db->where('id',$id);
+		$this->db->update('chapter');
+	}
+	
+	function deactive_test($id){
+		
+		$this->db->set('test',0);
+		$this->db->where('id',$id);
+		$this->db->update('chapter');
 	}
 	
 	function read_record($id){

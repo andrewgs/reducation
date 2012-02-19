@@ -28,7 +28,7 @@
 						<?php for($j=0,$num=1;$j<count($lectures);$j++):?>
 							<?php if($lectures[$j]['chapter'] == $chapters[$i]['id']):?>
 								<tr>
-									<td><a href="#editLecture" class="editLecture" data-toggle="modal" title="Редактировать" idlecture="<?=$lectures[$j]['id'];?>"><i class="icon-pencil"></i></a></td>
+									<td><a href="#editLecture" title="Редактировать" class="editLecture" data-toggle="modal" title="Редактировать" idlecture="<?=$lectures[$j]['id'];?>"><i class="icon-pencil"></i></a></td>
 									<td><?=$num;?></td>
 									<td><?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/lecture/'.$lectures[$j]['id'],'Лекция: <span idlecture="st'.$lectures[$j]['id'].'" numb="'.$lectures[$j]['number'].'"> '.$lectures[$j]['title'].'</span>');?><a href="#"></a></td>
 									<td><a class="close" data-toggle="modal" href="#deleteLecture" idlecture="<?=$lectures[$j]['id'];?>">&times;</a></td>
@@ -46,9 +46,13 @@
 						</p>
 						<div class="btn-toolbar">
 							<div class="btn-group">
+							<?php if(!$chapters[$i]['test']):?>
+								<a data-toggle="modal" href="#addMTest" idchapter="<?=$chapters[$i]['id'];?>" class="btn btn-info addMTest">Создать промежуточное тестирование</a>
+							<?php else:?>
 								<a href="#" class="btn btn-info">Промежуточное тестирование</a>
-								<a href="#" class="btn"><i class="icon-pencil"></i></a>
-								<a href="#" class="btn"><i class="icon-trash"></i></a>
+								<a href="#" class="btn" title="Редактировать"><i class="icon-pencil"></i></a>
+								<a class="btn deleteTest" idtest="<?=$chapters[$i]['test']['id'];?>" idchapter="<?=$chapters[$i]['id'];?>" title="Удалить" data-toggle="modal" href="#deleteTest" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-trash"></i></a>
+							<?php endif;?>
 							</div>
 						</div>
 					</div>
@@ -57,8 +61,6 @@
 					<div class="btn-toolbar">
 						<div class="btn-group">
 							<a href="#" class="btn btn-info">Итоговое тестирование</a>
-							<a href="#" class="btn"><i class="icon-pencil"></i></a>
-							<a href="#" class="btn"><i class="icon-trash"></i></a>
 						</div>
 					</div>
 					<p><a class="btn btn-primary" data-toggle="modal" href="#addChapter"><i class="icon-plus"></i> Добавить главу</a></p>
@@ -67,6 +69,8 @@
 					<?php $this->load->view('admin_interface/modal/admin-edit-lecture');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-lecture');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-chapter');?>
+					<?php $this->load->view('admin_interface/modal/admin-add-middle-test');?>
+					<?php $this->load->view('admin_interface/modal/admin-delete-middle-test');?>
 				</div>
 			</div>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
@@ -77,6 +81,7 @@
 		$(document).ready(function(){
 			var DTrend = -1; var DCourse = -1;
 			var DChapter = -1; var DLecture = -1;
+			var DTest = -1;
 			$("#send").click(function(event){
 				var err = false;
 				$(".control-group").removeClass('error');
@@ -103,13 +108,33 @@
 				});
 				if(err){event.preventDefault();}
 			});
+			$("#mtsend").click(function(event){
+				var err = false;
+				$(".control-group").removeClass('error');
+				$(".help-inline").hide();
+				$(".amtinput").each(function(i,element){
+					if($(this).val()==''){
+						$(this).parents(".control-group").addClass('error');
+						$(this).siblings(".help-inline").html("Поле не может быть пустым").show();
+						err = true;
+					}
+				});
+				if(err){event.preventDefault();}
+			});
 			$(".deleteChapter").click(function(){DChapter = $(this).attr('idchapter');});
 			$(".addLecture").click(function(){
 				$("#msgalert").remove();
 				$(".control-group").removeClass('error');
 				$(".help-inline").hide();
 				$(".input-xlarge").val('');
-				$("#idChapter").val($(this).attr('idchapter'));
+				$(".idChapter").val($(this).attr('idchapter'));
+			});
+			$(".addMTest").click(function(){
+				$("#msgalert").remove();
+				$(".control-group").removeClass('error');
+				$(".help-inline").hide();
+				$(".input-xlarge").val('');
+				$(".idChapter").val($(this).attr('idchapter'));
 			});
 			$(".editLecture").click(function(){
 				$("#msgalert").remove();
@@ -120,8 +145,16 @@
 				$("#eTitleLecture").val(title);
 				$("#eNumberLecture").val(numb);
 			});
+			
+			$(".deleteTest").click(function(){DChapter = $(this).attr('idchapter'); DTest = $(this).attr('idtest');});
+			
 			$(".close").click(function(){DLecture = $(this).attr('idlecture');});
 			$("#DelLecture").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/delete-lecture/'+DLecture;});
+			
+			
+			$("#DelMTest").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/chapter/'+DChapter+'/delete-test/'+DTest;});
+			
+			
 			$("#DelChapter").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/delete-chapter/'+DChapter;});
 			$("#addChapter").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$(".input-file").val('');});
 			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});

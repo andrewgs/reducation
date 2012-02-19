@@ -21,10 +21,11 @@ $route['admin-panel/references/courses']								= "admin_interface/references_co
 $route['admin-panel/references/courses/delete-course/:num/trend/:num']	= "admin_interface/references_delete_course";
 
 /*==========================================================  chapters  ====================================================*/
-$route['admin-panel/references/trend/:num/course/:num']						= "admin_interface/references_chapters";
-$route['admin-panel/references/trend/:num/course/:num/delete-lecture/:num']	= "admin_interface/references_delete_lecture";
-$route['admin-panel/references/trend/:num/course/:num/delete-chapter/:num']	= "admin_interface/references_delete_chapter";
-$route['admin-panel/references/trend/:num/course/:num/lecture/:num']		= "admin_interface/references_lecture_card";
+$route['admin-panel/references/trend/:num/course/:num']										= "admin_interface/references_chapters";
+$route['admin-panel/references/trend/:num/course/:num/delete-lecture/:num']					= "admin_interface/references_delete_lecture";
+$route['admin-panel/references/trend/:num/course/:num/delete-chapter/:num']					= "admin_interface/references_delete_chapter";
+$route['admin-panel/references/trend/:num/course/:num/lecture/:num']						= "admin_interface/references_lecture_card";
+$route['admin-panel/references/trend/:num/course/:num/chapter/:num/delete-test/:num']		= "admin_interface/references_delete_test";
 
 /*==========================================================  messages  ===================================================*/
 $route['admin-panel/messages/private']		= "admin_interface/private_messages";
