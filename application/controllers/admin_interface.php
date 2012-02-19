@@ -142,11 +142,16 @@ class Admin_interface extends CI_Controller{
 	
 	public function references_delete_trend(){
 		
-		$id = $this->uri->segment(5);
-		if($id):
-			$result = $this->trendsmodel->delete_record($id);
+		$trend = $this->uri->segment(5);
+		if($trend):
+			$courses = $this->coursesmodel->exist_courses_trend($trend);
+			if($courses):
+				$this->session->set_userdata('msgr','Направление не удалено. На направлении есть курсы.');
+				redirect('admin-panel/references/trends');
+			endif;
+			$result = $this->trendsmodel->delete_record($trend);
 			if($result):
-				$this->coursesmodel->delete_trends($id);
+				$this->coursesmodel->delete_trends($trend);
 				$this->session->set_userdata('msgs','Направление удалено успешно.');
 			else:
 				$this->session->set_userdata('msgr','Направление не удалено.');
@@ -235,7 +240,8 @@ class Admin_interface extends CI_Controller{
 				endfor;
 				$test = $this->testsmodel->read_record_chapter($chapters[$i]['id']);
 				if($test):
-					// тут удаляются ответы и вопросы
+					$this->testanswersmodel->delete_records_course($course);
+					$this->testquestionsmodel->delete_records_course($course);
 					$this->testsmodel->delete_record($test['id']);
 				endif;
 				$this->chaptermodel->delete_record($chapters[$i]['id']);
@@ -274,6 +280,7 @@ class Admin_interface extends CI_Controller{
 					'trend'			=> $this->trendsmodel->read_field($trend,'code'),
 					'course'		=> $this->coursesmodel->read_field($course,'code'),
 					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
+					'finaltest'		=> $this->testsmodel->read_record_course($course),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -284,6 +291,12 @@ class Admin_interface extends CI_Controller{
 		for($i=0;$i<count($pagevar['chapters']);$i++):
 			$pagevar['chapters'][$i]['test'] = $this->testsmodel->read_record_chapter($pagevar['chapters'][$i]['id']);
 		endfor;
+		$finaltest = $this->testsmodel->exit_course_final($course);
+		if(!$finaltest):
+			$insertdata = array('title'=>'Итоговое тестирование по курсу "'.$pagevar['course'].'"','count'=>5,'time'=>30,'number'=>0,'chapter'=>0,'course'=>$course);
+			$idtest = $this->testsmodel->insert_record($insertdata);
+			$pagevar['finaltest'] = $this->testsmodel->read_record($idtest);
+		endif;
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
@@ -294,6 +307,8 @@ class Admin_interface extends CI_Controller{
 				$_POST['course'] = $course;
 				$id = $this->chaptermodel->insert_record($_POST);
 				if($id):
+					$insertdata = array('title'=>'Итоговое тестирование по курсу "'.$pagevar['course'].'"','count'=>5,'time'=>30,'number'=>0,'chapter'=>0,'course'=>$course);
+					$this->testsmodel->insert_record($insertdata);
 					$this->session->set_userdata('msgs','Глава добавлена успешно.');
 				endif;
 			endif;
@@ -373,6 +388,38 @@ class Admin_interface extends CI_Controller{
 			endif;
 			redirect($this->uri->uri_string());
 		endif;
+		if($this->input->post('emtsubmit')):
+			$_POST['emtsubmit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('count',' ','required|trim');
+			$this->form_validation->set_rules('time',' ','required|trim');
+			$this->form_validation->set_rules('idt',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
+			else:
+				$_POST['course'] = $course;
+				$_POST['number'] = $this->chaptermodel->read_field($_POST['chapter'],'number');
+				$id = $this->testsmodel->update_record($_POST);
+				$this->session->set_userdata('msgs','Информация о промежуточном тестировании сохранена успешно.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		if($this->input->post('eftsubmit')):
+			$_POST['eftsubmit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('count',' ','required|trim');
+			$this->form_validation->set_rules('time',' ','required|trim');
+			$this->form_validation->set_rules('idt',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
+			else:
+				$_POST['course'] = $course;
+				$_POST['number'] = 0;
+				$id = $this->testsmodel->update_record($_POST);
+				$this->session->set_userdata('msgs','Информация о итоговом тестировании сохранена успешно.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
 		$this->load->view("admin_interface/admin-chapters-list",$pagevar);
 	}
 	
@@ -417,7 +464,8 @@ class Admin_interface extends CI_Controller{
 			endfor;
 			$test = $this->testsmodel->read_record_chapter($chapter);
 			if($test):
-				// nут удаляются ответы и вопросы
+				$this->testanswersmodel->delete_records_course($course);
+				$this->testquestionsmodel->delete_records_course($course);
 				$this->testsmodel->delete_record($test['id']);
 			endif;
 			if($error):
@@ -499,6 +547,105 @@ class Admin_interface extends CI_Controller{
 			show_404();
 		endif;
 	}
+	
+	public function references_edit_test(){
+		
+		$trend = $this->uri->segment(4);
+		if(!$this->trendsmodel->exist_course($trend)):
+			redirect('admin-panel/references/trends');
+		endif;
+		$course = $this->uri->segment(6);
+		if(!$this->coursesmodel->ownew_course($course,$trend)):
+			redirect('admin-panel/references/courses');
+		endif;
+		$chapter = $this->uri->segment(8);
+		$test	= $this->uri->segment(10);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'trend'			=> $this->trendsmodel->read_field($trend,'code'),
+					'course'		=> $this->coursesmodel->read_field($course,'code'),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
+					'questions'		=> $this->testquestionsmodel->read_records($test),
+					'answers'		=> $this->testanswersmodel->read_records($test),
+					'test'			=> $this->testsmodel->read_record($test),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$pagevar['title'] .= 'Содержание теста "'.$pagevar['test']['title'].'"'; 
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		if($this->input->post('qsubmit')):
+			$_POST['submit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('number',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
+			else:
+				$_POST['course'] = $course;	$_POST['test'] = $test;	$_POST['chapter'] = $chapter;
+				$id = $this->testquestionsmodel->insert_record($_POST);
+				if($id):
+					$this->session->set_userdata('msgs','Вопрос добавлен успешно.');
+				endif;
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		if($this->input->post('eqsubmit')):
+			$_POST['submit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('number',' ','required|trim');
+			$this->form_validation->set_rules('idqes',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				$this->testquestionsmodel->update_record($_POST);
+				$this->session->set_userdata('msgs','Вопрос сохранен успешно.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		if($this->input->post('asubmit')):
+			$_POST['submit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('number',' ','required|trim');
+			$this->form_validation->set_rules('idqes',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
+			else:
+				if(!isset($_POST['correct'])):
+					$_POST['correct'] = 0;
+				endif;
+				$_POST['course'] = $course;	$_POST['test'] = $test;	$_POST['chapter'] = $chapter;
+				$this->testanswersmodel->insert_record($_POST);
+				$this->session->set_userdata('msgs','Ответ добавлени успешно.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
+		$this->load->view("admin_interface/admin-test-edit",$pagevar);
+	}
+	
+	public function references_delete_question(){
+		
+		$trend = $this->uri->segment(4);
+		$course = $this->uri->segment(6);
+		$chapter = $this->uri->segment(8);
+		$test = $this->uri->segment(10);
+		$question = $this->uri->segment(12);
+		if($test || $question):
+			$this->testanswersmodel->delete_records_question($question);
+			$this->testquestionsmodel->delete_record($question);
+			$this->session->set_userdata('msgs','Вопрос удален успешно.');
+			redirect('admin-panel/references/trend/'.$trend.'/course/'.$course.'/chapter/'.$chapter.'/testing/'.$test);
+		else:
+			show_404();
+		endif;
+	}
+	
+	/******************************************************** messages ***********************************************************/
 	
 	public function private_messages(){
 		

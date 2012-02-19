@@ -17,7 +17,7 @@ class Coursesmodel extends CI_Model{
 	
 	function insert_record($data){
 			
-		$this->title 	= $data['title'];
+		$this->title 	= htmlspecialchars($data['title']);
 		$this->note		= '';
 		$this->price 	= $data['price'];
 		$this->trend  	= $data['trend'];
@@ -32,7 +32,7 @@ class Coursesmodel extends CI_Model{
 	function update_record($data){
 			
 		$this->db->set('code',$data['code']);
-		$this->db->set('title',$data['title']);
+		$this->db->set('title',htmlspecialchars($data['title']));
 		$this->db->set('price',$data['price']);
 		$this->db->set('hours',$data['hours']);
 		$this->db->set('note','');
@@ -127,7 +127,16 @@ class Coursesmodel extends CI_Model{
 		if(count($data)) return TRUE;
 		return FALSE;
 	}
-
+	
+	function exist_courses_trend($trend){
+		
+		$this->db->where('trend',$trend);
+		$query = $this->db->get('courses');
+		$data = $query->result_array();
+		if(count($data)>0) return TRUE;
+		return FALSE;
+	}
+	
 	function ownew_course($id,$trend){
 		
 		$this->db->where('id',$id);

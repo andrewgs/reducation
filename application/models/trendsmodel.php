@@ -16,7 +16,7 @@ class Trendsmodel extends CI_Model{
 	function insert_record($data){
 			
 		$this->code 	= $data['code'];
-		$this->title 	= $data['title'];
+		$this->title 	= htmlspecialchars($data['title']);
 		$this->note		= '';
 		$this->courses 	= 0;
 		$this->view 	= $data['view'];
@@ -28,7 +28,7 @@ class Trendsmodel extends CI_Model{
 	function update_record($data){
 			
 		$this->db->set('code',$data['code']);
-		$this->db->set('title',$data['title']);
+		$this->db->set('title',htmlspecialchars($data['title']));
 		$this->db->set('note','');
 		$this->db->set('view',$data['view']);
 		$this->db->where('id',$data['idt']);

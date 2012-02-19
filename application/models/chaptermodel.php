@@ -15,7 +15,7 @@ class Chaptermodel extends CI_Model{
 	
 	function insert_record($data){
 			
-		$this->title 	= $data['title'];
+		$this->title 	= htmlspecialchars($data['title']);
 		$this->note		= '';
 		$this->course 	= $data['course'];
 		$this->number 	= $data['number'];

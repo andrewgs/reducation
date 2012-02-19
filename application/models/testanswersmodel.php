@@ -10,7 +10,7 @@ class Testanswersmodel extends CI_Model{
 	var $test	 		= 0;
 	var $testquestion 	= 0;
 	var $chapter 		= 0;
-	var $courses 		= 0;
+	var $course 		= 0;
 	var $view 			= 0;
 
 	function __construct(){
@@ -20,11 +20,11 @@ class Testanswersmodel extends CI_Model{
 	function insert_record($data){
 			
 		$this->number 		= $data['number'];
-		$this->title 		= $data['title'];
-		$this->note			= $data['note'];
+		$this->title 		= htmlspecialchars($data['title']);
+		$this->note			= '';
 		$this->correct		= $data['correct'];
 		$this->test			= $data['test'];
-		$this->testquestion	= $data['testquestion'];
+		$this->testquestion	= $data['idqes'];
 		$this->chapter		= $data['chapter'];
 		$this->course 		= $data['course'];
 		$this->view 		= 0;
@@ -45,6 +45,17 @@ class Testanswersmodel extends CI_Model{
 		$this->db->set('view',0);
 		$this->db->where('id',$id);
 		$this->db->update('testanswers');
+	}
+	
+	function read_records($test){
+		
+		$this->db->where('test',$test);
+		$this->db->order_by('number','ASC');
+		$this->db->order_by('id','ASC');
+		$query = $this->db->get('testanswers');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
 	}
 	
 	function read_record($id){
@@ -68,6 +79,20 @@ class Testanswersmodel extends CI_Model{
 	function delete_record($id){
 	
 		$this->db->where('id',$id);
+		$this->db->delete('testanswers');
+		return $this->db->affected_rows();
+	}
+								  
+	function delete_records_course($course){
+	
+		$this->db->where('course',$course);
+		$this->db->delete('testanswers');
+		return $this->db->affected_rows();
+	}
+
+	function delete_records_question($question){
+	
+		$this->db->where('testquestion',$question);
 		$this->db->delete('testanswers');
 		return $this->db->affected_rows();
 	}	

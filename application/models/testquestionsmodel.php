@@ -8,8 +8,8 @@ class Testquestionsmodel extends CI_Model{
     var $note  		= '';
     var $test	 	= 0;
     var $chapter 	= 0;
-    var $courses 	= 0;
-    var $view 		= 0;
+    var $course 	= 0;
+    var $view 		= 1;
 
     function __construct(){
         parent::__construct();
@@ -18,12 +18,12 @@ class Testquestionsmodel extends CI_Model{
 	function insert_record($data){
 			
 		$this->number 	= $data['number'];
-		$this->title 	= $data['title'];
-		$this->note		= $data['note'];
+		$this->title 	= htmlspecialchars($data['title']);
+		$this->note		= '';
 		$this->test		= $data['test'];
 		$this->chapter	= $data['chapter'];
 		$this->course 	= $data['course'];
-		$this->view 	= 0;
+		$this->view 	= 1;
 		
 		$this->db->insert('testquestions',$this);
 		return $this->db->insert_id();
@@ -52,6 +52,29 @@ class Testquestionsmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_records($test){
+		
+		$this->db->where('test',$test);
+		$this->db->order_by('number','ASC');
+		$this->db->order_by('id','DESC');
+		$query = $this->db->get('testquestions');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
+	function update_record($data){
+	
+		$this->db->set('number',$data['number']);
+		$this->db->set('title',htmlspecialchars($data['title']));
+		$this->db->set('note','');
+		$this->db->set('view',1);
+		$this->db->where('id',$data['idqes']);
+		
+		$this->db->update('testquestions');
+		return $this->db->affected_rows();
+	}
+	
 	function read_field($id,$field){
 			
 		$this->db->where('id',$id);
@@ -66,5 +89,12 @@ class Testquestionsmodel extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->delete('testquestions');
 		return $this->db->affected_rows();
-	}	
+	}
+
+	function delete_records_course($course){
+	
+		$this->db->where('course',$course);
+		$this->db->delete('testquestions');
+		return $this->db->affected_rows();
+	}
 }

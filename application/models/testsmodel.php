@@ -19,7 +19,7 @@ class Testsmodel extends CI_Model{
 	function insert_record($data){
 			
 		$this->number 	= $data['number'];
-		$this->title 	= $data['title'];
+		$this->title 	= htmlspecialchars($data['title']);
 		$this->note		= '';
 		$this->count	= $data['count'];
 		$this->timetest	= $data['time'];
@@ -54,6 +54,20 @@ class Testsmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function update_record($data){
+	
+		$this->db->set('number',$data['number']);
+		$this->db->set('title',htmlspecialchars($data['title']));
+		$this->db->set('note','');
+		$this->db->set('count',$data['count']);
+		$this->db->set('timetest',$data['time']);
+		$this->db->set('view',1);
+		$this->db->where('id',$data['idt']);
+		
+		$this->db->update('tests');
+		return $this->db->affected_rows();
+	}
+	
 	function read_record_chapter($chapter){
 		
 		$this->db->where('chapter',$chapter);
@@ -61,6 +75,25 @@ class Testsmodel extends CI_Model{
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
 		return NULL;
+	}
+	
+	function read_record_course($course){
+		
+		$this->db->where('course',$course);
+		$query = $this->db->get('tests',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0];
+		return NULL;
+	}
+	
+	function exit_course_final($course){
+		
+		$this->db->where('course',$course);
+		$this->db->where('chapter',0);
+		$query = $this->db->get('tests');
+		$data = $query->result_array();
+		if(count($data)) return TRUE;
+		return FALSE;
 	}
 	
 	function read_field($id,$field){

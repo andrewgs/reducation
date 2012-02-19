@@ -19,7 +19,7 @@ class Lecturesmodel extends CI_Model{
 	function insert_record($data){
 			
 		$this->number 	= $data['number'];
-		$this->title 	= $data['title'];
+		$this->title 	= htmlspecialchars($data['title']);
 		$this->note		= '';
 		$this->document	= $data['document'];
 		$this->loaddate	= date("Y-m-d");
@@ -68,7 +68,7 @@ class Lecturesmodel extends CI_Model{
 	function update_record($data){
 		
 		$this->db->set('number',$data['number']);
-		$this->db->set('title',$data['title']);
+		$this->db->set('title',htmlspecialchars($data['title']));
 		$this->db->set('note','');
 		if(!empty($data['document'])):
 			$this->db->set('document',$data['document']);
