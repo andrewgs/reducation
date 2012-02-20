@@ -11,7 +11,7 @@ class Testanswersmodel extends CI_Model{
 	var $testquestion 	= 0;
 	var $chapter 		= 0;
 	var $course 		= 0;
-	var $view 			= 0;
+	var $view 			= 1;
 
 	function __construct(){
 		parent::__construct();
@@ -27,7 +27,7 @@ class Testanswersmodel extends CI_Model{
 		$this->testquestion	= $data['idqes'];
 		$this->chapter		= $data['chapter'];
 		$this->course 		= $data['course'];
-		$this->view 		= 0;
+		$this->view 		= 1;
 		
 		$this->db->insert('testanswers',$this);
 		return $this->db->insert_id();
@@ -74,6 +74,19 @@ class Testanswersmodel extends CI_Model{
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0][$field];
 		return FALSE;
+	}
+	
+	function update_record($data){
+		
+		$this->db->set('number',$data['number']);
+		$this->db->set('title',htmlspecialchars($data['title']));
+		$this->db->set('note','');
+		$this->db->set('correct',$data['correct']);
+		$this->db->set('view',1);
+		$this->db->where('id',$data['idans']);
+		
+		$this->db->update('testanswers');
+		return $this->db->affected_rows();
 	}
 	
 	function delete_record($id){

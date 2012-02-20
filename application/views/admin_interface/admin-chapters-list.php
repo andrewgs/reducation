@@ -60,7 +60,7 @@
 					<hr size="2"/>
 					<div class="btn-toolbar">
 						<div class="btn-group">
-							<?=anchor('#','Итоговое тестирование',array('class'=>'btn btn-info'));?>
+							<?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/chapter/0/testing/'.$finaltest['id'],'Итоговое тестирование',array('class'=>'btn btn-info'));?>
 							<a class="btn editFTest" idtest="<?=$finaltest['id'];?>" ttitle="<?=$finaltest['title'];?>" ttime="<?=$finaltest['timetest'];?>" tcount="<?=$finaltest['count'];?>" data-toggle="modal" href="#editFTest" title="Редактировать"><i class="icon-pencil"></i></a>
 						</div>
 					</div>

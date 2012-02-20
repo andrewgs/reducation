@@ -578,9 +578,9 @@ class Admin_interface extends CI_Controller{
 		$pagevar['title'] .= 'Содержание теста "'.$pagevar['test']['title'].'"'; 
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
+
 		if($this->input->post('qsubmit')):
-			$_POST['submit'] = NULL;
+			$_POST['qsubmit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
 			$this->form_validation->set_rules('number',' ','required|trim');
 			if(!$this->form_validation->run()):
@@ -595,7 +595,7 @@ class Admin_interface extends CI_Controller{
 			redirect($this->uri->uri_string());
 		endif;
 		if($this->input->post('eqsubmit')):
-			$_POST['submit'] = NULL;
+			$_POST['eqsubmit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
 			$this->form_validation->set_rules('number',' ','required|trim');
 			$this->form_validation->set_rules('idqes',' ','required|trim');
@@ -608,7 +608,7 @@ class Admin_interface extends CI_Controller{
 			redirect($this->uri->uri_string());
 		endif;
 		if($this->input->post('asubmit')):
-			$_POST['submit'] = NULL;
+			$_POST['asubmit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
 			$this->form_validation->set_rules('number',' ','required|trim');
 			$this->form_validation->set_rules('idqes',' ','required|trim');
@@ -621,6 +621,22 @@ class Admin_interface extends CI_Controller{
 				$_POST['course'] = $course;	$_POST['test'] = $test;	$_POST['chapter'] = $chapter;
 				$this->testanswersmodel->insert_record($_POST);
 				$this->session->set_userdata('msgs','Ответ добавлени успешно.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		if($this->input->post('easubmit')):
+			$_POST['easubmit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('number',' ','required|trim');
+			$this->form_validation->set_rules('idans',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				if(!isset($_POST['correct'])):
+					$_POST['correct'] = 0;
+				endif;
+				$this->testanswersmodel->update_record($_POST);
+				$this->session->set_userdata('msgs','Ответ успешно сохранен.');
 			endif;
 			redirect($this->uri->uri_string());
 		endif;
@@ -639,6 +655,22 @@ class Admin_interface extends CI_Controller{
 			$this->testanswersmodel->delete_records_question($question);
 			$this->testquestionsmodel->delete_record($question);
 			$this->session->set_userdata('msgs','Вопрос удален успешно.');
+			redirect('admin-panel/references/trend/'.$trend.'/course/'.$course.'/chapter/'.$chapter.'/testing/'.$test);
+		else:
+			show_404();
+		endif;
+	}
+	
+	public function references_delete_answer(){
+		
+		$trend = $this->uri->segment(4);
+		$course = $this->uri->segment(6);
+		$chapter = $this->uri->segment(8);
+		$test = $this->uri->segment(10);
+		$answer = $this->uri->segment(12);
+		if($test || $answer):
+			$this->testanswersmodel->delete_record($answer);
+			$this->session->set_userdata('msgs','Ответ удален успешно.');
 			redirect('admin-panel/references/trend/'.$trend.'/course/'.$course.'/chapter/'.$chapter.'/testing/'.$test);
 		else:
 			show_404();

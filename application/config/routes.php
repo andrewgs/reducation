@@ -28,6 +28,7 @@ $route['admin-panel/references/trend/:num/course/:num/lecture/:num']						= "adm
 $route['admin-panel/references/trend/:num/course/:num/chapter/:num/delete-test/:num']		= "admin_interface/references_delete_test";
 $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num']			= "admin_interface/references_edit_test";
 $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/delete-question/:num']	= "admin_interface/references_delete_question";
+$route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/delete-answer/:num']	= "admin_interface/references_delete_answer";
 
 /*==========================================================  messages  ===================================================*/
 $route['admin-panel/messages/private']		= "admin_interface/private_messages";
