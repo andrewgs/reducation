@@ -41,7 +41,7 @@
 							</tbody>
 						</table>
 						<p>
-							<a class="btn addLecture" data-toggle="modal" href="#addLecture" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-plus"></i> Добавить лекцию</a>
+							<a class="btn btn-primary addLecture" data-toggle="modal" href="#addLecture" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-plus icon-white"></i> Добавить лекцию</a>
 							<a class="btn btn-danger deleteChapter" data-toggle="modal" href="#deleteChapter" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-trash icon-white"></i> Удалить главу</a>
 						</p>
 						<div class="btn-toolbar">
@@ -64,7 +64,7 @@
 							<a class="btn editFTest" idtest="<?=$finaltest['id'];?>" ttitle="<?=$finaltest['title'];?>" ttime="<?=$finaltest['timetest'];?>" tcount="<?=$finaltest['count'];?>" data-toggle="modal" href="#editFTest" title="Редактировать"><i class="icon-pencil"></i></a>
 						</div>
 					</div>
-					<p><a class="btn btn-primary" data-toggle="modal" href="#addChapter"><i class="icon-plus"></i> Добавить главу</a></p>
+					<p><a class="btn btn-primary" data-toggle="modal" href="#addChapter"><i class="icon-plus icon-white"></i> Добавить главу</a></p>
 					<?php $this->load->view('admin_interface/modal/admin-add-chapter');?>
 					<?php $this->load->view('admin_interface/modal/admin-add-lecture');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-lecture');?>
