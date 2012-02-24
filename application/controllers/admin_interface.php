@@ -319,7 +319,7 @@ class Admin_interface extends CI_Controller{
 		if($this->input->post('lsubmit')):
 			$_POST['lsubmit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
-			$this->form_validation->set_rules('number',' ','required|trim');
+			$this->form_validation->set_rules('chapter',' ','required|trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
 			else:
@@ -339,6 +339,7 @@ class Admin_interface extends CI_Controller{
 					$this->session->set_userdata('msgr','Ошибка при загрузке документа.');
 					redirect($this->uri->uri_string());
 				endif;
+				$_POST['number'] = $this->lecturesmodel->next_number($_POST['chapter']);
 				$_POST['course'] = $course;
 				$id = $this->lecturesmodel->insert_record($_POST);
 				if($id):
@@ -576,6 +577,7 @@ class Admin_interface extends CI_Controller{
 					'questions'		=> $this->testquestionsmodel->read_records($test),
 					'answers'		=> $this->testanswersmodel->read_records($test),
 					'test'			=> $this->testsmodel->read_record($test),
+					'cntquestions'	=> $this->testquestionsmodel->count_records($test),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);

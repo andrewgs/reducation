@@ -15,13 +15,6 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label for="number" class="control-label">Порядковый номер: </label>
-					<div class="controls">
-						<input type="text" id="NumberLecture" class="input-xlarge linput" name="number" value="">
-						<span class="help-inline" style="display:none;">&nbsp;</span>
-					</div>
-				</div>
-				<div class="control-group">
 					<label for="DocumentFile" class="control-label">Документ</label>
 					<div class="controls">
 						<input type="file" id="DocumentFile" class="input-file linput" name="document" size="30">

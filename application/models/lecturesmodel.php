@@ -124,5 +124,14 @@ class Lecturesmodel extends CI_Model{
 		$data = $query->result_array();
 		return $data[0]['cnt'];
 	}
+
+	function next_number($chapter){
+		
+		$this->db->select('MAX(number) as number');
+		$this->db->where('chapter',$chapter);
+		$query = $this->db->get('lectures');
+		$data = $query->result_array();
+		return $data[0]['number']+1;
+	}
 	
 }

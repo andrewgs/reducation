@@ -2,27 +2,28 @@
 <div id="addQA" class="modal hide fade">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
-		<h3>Мастер создание теста: Вопрос №<span id="nQ">1</span></h3>
+		<h3>Вопрос №<span id="nQ">1</span></h3>
 	</div>
 	<div class="modal-body">
 		<fieldset>
 			<div class="control-group">
 				<label for="title" class="control-label">Вопрос: </label>
 				<div class="controls">
-					<textarea rows="2" id="mTitleQuestion" class="input-xlarge mqinput"></textarea>
-					<span class="help-inline" style="display:none;">&nbsp;</span>
+					<textarea rows="1" id="mTitleQuestion" class="input-xlarge mqinput"></textarea>
+					<span class="help-inline"  style="display:none;">&nbsp;</span>
 				</div>
 			</div>
-			<hr size="2"/>
 		<?php for($i=0;$i<5;$i++):?>
 			<div class="control-group">
 				<label for="answer<?=$i?>" class="control-label">Ответ: </label>
 				<div class="controls">
-					<input type="text" class="input-xlarge mainput" name="answer<?=$i?>">
+					<input type="text" class="input-xlarge mainput" num="<?=$i;?>" name="answer<?=$i?>">
 					<input type="checkbox" value="1" class="MCAnswer" name="correct" title="Установите если ответ является верным">
+					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
 		<?php endfor;?>
+			<span class="help-inline" id="chError" style="display:none;">&nbsp;</span>
 		</fieldset>
 	</div>
 	<div class="modal-footer">

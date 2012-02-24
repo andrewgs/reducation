@@ -58,11 +58,7 @@
 					</div>
 				<?php endfor;?>
 					<hr size="2"/>
-					<p><a class="btn btn-primary" data-toggle="modal" href="#addQuestion"><i class="icon-plus"></i> Добавить вопрос</a>
-				<?php if(count($questions)==0):?>
-					<a class="btn btn-primary" data-toggle="modal" href="#addQA"><i class="icon-star-empty"></i> Мастер создания</a></p>
-				<?php endif;?>
-					<?php $this->load->view('admin_interface/modal/admin-add-question');?>
+					<p><a class="btn btn-primary" data-toggle="modal" href="#addQA"><i class="icon-plus"></i> Добавить вопрос</a></p>
 					<?php $this->load->view('admin_interface/modal/admin-delete-question');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-question');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-answer');?>
@@ -77,8 +73,7 @@
 	<?php $this->load->view('admin_interface/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var DQuestion = -1; var DAnswer = -1; var MQuestion = 1;
-			$("#qsend").click(function(event){var err = false;$(".control-group").removeClass("error");$(".help-inline").hide();$(".aqinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
+			var DQuestion = -1; var DAnswer = -1; var MQuestion = <?=$cntquestions+1?>;
 			$("#asend").click(function(event){var err = false;$(".control-group").removeClass("error");$(".help-inline").hide();$(".aainput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass("error");$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 
 			$(".editQuestion").click(function(){$("#msgalert").remove();DQuestion = $(this).attr("idquestion"); var title = $("span[idquestion="+DQuestion+"]").html(); var numb = $("span[idquestion="+DQuestion+"]").attr("numb"); $(".idQuestion").val(DQuestion); $("#eTitleQuestion").val(title); $("#eNumberQuestion").val(numb);});
@@ -91,9 +86,10 @@
 			
 			$(".deleteAnswer").click(function(){DAnswer = $(this).attr('idanswer');});
 			
-		<?php if(count($questions)==0):?>
 			$("#MasterNext").click(function(event){
+				
 				if($(this).attr('disabled')){return false;}
+				var cntans = 0;
 				var err = false;
 				$(".control-group").removeClass("error");$(".help-inline").hide();
 				$(".mqinput").each(function(i,element){
@@ -103,6 +99,17 @@
 						err = true;
 					}
 				});
+				$(".mainput").each(function(i,element){
+					if($(this).val()=='' && $(this).attr('num')<2){
+						$(this).parents(".control-group").addClass('error');
+						$(this).siblings(".help-inline").html("Поле не может быть пустым").show();
+						err = true;
+					}
+				});
+				if(!err && $(".MCAnswer:checked").length == 0){
+					$("#chError").html("Должен быть верный ответ").show()
+					err = true;
+				}
 				if(err){
 					event.preventDefault();
 				}else{
@@ -144,8 +151,6 @@
 			$("#addQA").on("hidden",function(){location.href="<?=$baseurl.$this->uri->uri_string();?>";});
 			
 			$("#addQA").on("show",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$(".MCAnswer").removeAttr('checked'); $("#nQ").html(MQuestion);});
-			
-		<?php endif;?>
 			
 			$("#eqsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".eqinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			

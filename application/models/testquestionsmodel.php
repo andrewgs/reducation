@@ -111,4 +111,13 @@ class Testquestionsmodel extends CI_Model{
 		$this->db->delete('testquestions');
 		return $this->db->affected_rows();
 	}
+
+	function count_records($test){
+	
+		$this->db->select('count(*) as cnt');
+		$this->db->where('test',$test);
+		$query = $this->db->get('testquestions');
+		$data = $query->result_array();
+		return $data[0]['cnt'];
+	}
 }
