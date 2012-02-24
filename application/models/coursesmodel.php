@@ -21,7 +21,7 @@ class Coursesmodel extends CI_Model{
 		$this->note		= '';
 		$this->price 	= $data['price'];
 		$this->trend  	= $data['trend'];
-		$this->view  	= 0;
+		$this->view  	= $data['view'];
 		$this->hours  	= $data['hours'];
 		$this->code  	= $data['code'];
 		
