@@ -48,7 +48,7 @@
 		</div>
 		<div class="modal-footer">
 			<button class="btn" data-dismiss="modal">Отменить</button>
-			<button class="btn btn-info" type="submit" id="saveCourse" name="esubmit" value="esend">Сохранить</button>
+			<button class="btn btn-success" type="submit" id="saveCourse" name="esubmit" value="esend">Сохранить</button>
 		</div>
 	</div>
 <?= form_close(); ?>

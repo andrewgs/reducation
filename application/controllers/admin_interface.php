@@ -146,7 +146,7 @@ class Admin_interface extends CI_Controller{
 		if($trend):
 			$courses = $this->coursesmodel->exist_courses_trend($trend);
 			if($courses):
-				$this->session->set_userdata('msgr','Направление не удалено. На направлении есть курсы.');
+				$this->session->set_userdata('msgr','Направление не удалено. Направление имеет вложенные курсы.');
 				redirect('admin-panel/references/trends');
 			endif;
 			$result = $this->trendsmodel->delete_record($trend);
@@ -639,7 +639,7 @@ class Admin_interface extends CI_Controller{
 				endif;
 				$_POST['course'] = $course;	$_POST['test'] = $test;	$_POST['chapter'] = $chapter;
 				$this->testanswersmodel->insert_record($_POST);
-				$this->session->set_userdata('msgs','Ответ добавлени успешно.');
+				$this->session->set_userdata('msgs','Ответ добавлен успешно.');
 			endif;
 			redirect($this->uri->uri_string());
 		endif;

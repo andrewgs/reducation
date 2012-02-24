@@ -8,6 +8,6 @@
 	</div>
 	<div class="modal-footer">
 		<button class="btn" data-dismiss="modal">Отменить</button>
-		<button class="btn btn-warning" id="DelAnswer" type="submit">Удалить</button>
+		<button class="btn btn-danger" id="DelAnswer" type="submit">Удалить</button>
 	</div>
 </div>

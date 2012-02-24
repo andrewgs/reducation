@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php $this->load->view('admin_interface/head');?>
+<style type="text/css">
+	h4 { margin: 0 0 10px; }
+</style>
 <body>
 	<?php $this->load->view('admin_interface/header');?>
 	<div class="container">
@@ -23,25 +26,25 @@
 					</ul>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
-					<h5>Тест: <?=$test['title'];?></h5>
-					<hr size="2">
+					<h3><small>Тест:</small> <?=$test['title'];?></h3>
+					<hr>
 				<?php for($i=0;$i<count($questions);$i++):?>
 					<div>
-						Вопрос №<?=$i+1;?>.<h5><span idquestion="<?=$questions[$i]['id'];?>" numb="<?=$questions[$i]['number'];?>"><?=$questions[$i]['title'];?></span></h5>
-						<table class="table table-striped table-bordered">
+						<h4><small>Вопрос №<?=$i+1;?>.</small> <span idquestion="<?=$questions[$i]['id'];?>" numb="<?=$questions[$i]['number'];?>"><?=$questions[$i]['title'];?></span></h4>
+						<table class="table table-condensed">
 							<tbody>
 						<?php for($j=0,$num=1;$j<count($answers);$j++):?>
 							<?php if($answers[$j]['testquestion'] == $questions[$i]['id']):?>
 								<tr>
-									<td><a href="#editAnswer" title="Редактировать" class="editAnswer" idanswer="<?=$answers[$j]['id'];?>" data-toggle="modal"><i class="icon-pencil"></i></a></td>
-									<td><?=$num;?></td>
+									<td class="short"><a href="#editAnswer" title="Редактировать" class="editAnswer" idanswer="<?=$answers[$j]['id'];?>" data-toggle="modal"><i class="icon-pencil"></i></a></td>
+									<td class="short"><?=$num;?></td>
 									<td><span idspan="st<?=$answers[$j]['id'];?>" numb="<?=$answers[$j]['number'];?>"><?=$answers[$j]['title'];?></span></td>
 								<?php if($answers[$j]['correct']):?>
-									<td><i class="icon-ok-sign" title="Верный ответ" idi="i<?=$answers[$j]['id'];?>" correct="1"></i></td>
+									<td class="short"><i class="icon-ok-sign" title="Верный ответ" idi="i<?=$answers[$j]['id'];?>" correct="1"></i></td>
 								<?php else:?>
-									<td><i class="icon-remove-sign" title="Не верный ответ" idi="i<?=$answers[$j]['id'];?>" correct="0"></i></td>
+									<td class="short"><i class="icon-remove-sign" title="Не верный ответ" idi="i<?=$answers[$j]['id'];?>" correct="0"></i></td>
 								<?php endif;?>
-									<td><a class="close deleteAnswer" idanswer="<?=$answers[$j]['id'];?>" data-toggle="modal" href="#deleteAnswer">&times;</a></td>
+									<td class="short"><a class="close deleteAnswer" idanswer="<?=$answers[$j]['id'];?>" data-toggle="modal" href="#deleteAnswer">&times;</a></td>
 								</tr>
 								<?php $num++;?>
 							<?php else:?>
@@ -50,15 +53,17 @@
 						<?php endfor;?>
 							</tbody>
 						</table>
-						<p>
-							<a class="btn addAnswer" data-toggle="modal" idquestion="<?=$questions[$i]['id'];?>" href="#addAnswer"><i class="icon-plus"></i> Добавить ответ</a>
-							<a class="btn btn-info editQuestion" data-toggle="modal" href="#editQuestion" idquestion="<?=$questions[$i]['id'];?>"><i class="icon-pencil icon-white"></i> Редактировать вопрос</a>
-							<a class="btn btn-danger deleteQuestion" idquestion="<?=$questions[$i]['id'];?>" data-toggle="modal" href="#deleteQuestion"><i class="icon-trash icon-white"></i> Удалить вопрос</a>
-						</p>
+						<div class="btn-toolbar">
+							<div class="btn-group">
+								<a class="btn addAnswer" data-toggle="modal" idquestion="<?=$questions[$i]['id'];?>" href="#addAnswer"><i class="icon-plus"></i> Добавить ответ</a>
+								<a class="btn editQuestion" data-toggle="modal" href="#editQuestion" idquestion="<?=$questions[$i]['id'];?>"><i class="icon-pencil"></i> Редактировать вопрос</a>
+								<a class="btn deleteQuestion" idquestion="<?=$questions[$i]['id'];?>" data-toggle="modal" href="#deleteQuestion"><i class="icon-trash"></i> Удалить вопрос</a>
+							</div>
+						</div>
 					</div>
 				<?php endfor;?>
 					<hr size="2"/>
-					<p><a class="btn btn-primary" data-toggle="modal" href="#addQA"><i class="icon-plus"></i> Добавить вопрос</a></p>
+					<p><a class="btn btn-info" data-toggle="modal" href="#addQA"><i class="icon-plus icon-white"></i> Добавить вопрос</a></p>
 					<?php $this->load->view('admin_interface/modal/admin-delete-question');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-question');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-answer');?>
@@ -107,7 +112,9 @@
 					}
 				});
 				if(!err && $(".MCAnswer:checked").length == 0){
-					$("#chError").html("Должен быть верный ответ").show()
+					$("#chError")
+						.find("span.error-text").html("Должен быть выбран хотя бы один правильный ответ.")
+						.end().show();
 					err = true;
 				}
 				if(err){

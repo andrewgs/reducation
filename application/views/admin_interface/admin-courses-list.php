@@ -46,7 +46,7 @@
 						<?php endfor;?>
 							</tbody>
 						</table>
-						<p><a class="btn btn-primary addCourse" data-toggle="modal" href="#addCourse" idtrend="<?=$trends[$i]['id'];?>"><i class="icon-plus icon-white"></i> Добавить курс</a></p>
+						<p><a class="btn btn-info addCourse" data-toggle="modal" href="#addCourse" idtrend="<?=$trends[$i]['id'];?>"><i class="icon-plus icon-white"></i> Добавить курс</a></p>
 					</div>
 				<?php endfor;?>
 					<?php $this->load->view('admin_interface/modal/admin-add-course');?>
