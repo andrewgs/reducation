@@ -39,6 +39,17 @@ class Chaptermodel extends CI_Model{
 		$this->db->update('chapter');
 	}
 	
+	function update_record($data){
+		
+		$this->db->set('number',$data['number']);
+		$this->db->set('title',htmlspecialchars($data['title']));
+		$this->db->set('note','');
+		$this->db->where('id',$data['idchp']);
+		
+		$this->db->update('chapter');
+		return $this->db->affected_rows();
+	}
+	
 	function read_record($id){
 		
 		$this->db->where('id',$id);
@@ -84,4 +95,12 @@ class Chaptermodel extends CI_Model{
 		return $data[0]['cnt'];
 	}
 	
+	function next_number($course){
+		
+		$this->db->select('MAX(number) as number');
+		$this->db->where('course',$course);
+		$query = $this->db->get('chapter');
+		$data = $query->result_array();
+		return $data[0]['number']+1;
+	}
 }

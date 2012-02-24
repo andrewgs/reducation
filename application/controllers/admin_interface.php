@@ -302,17 +302,30 @@ class Admin_interface extends CI_Controller{
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
-			$this->form_validation->set_rules('number',' ','required|trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
 			else:
 				$_POST['course'] = $course;
+				$_POST['number'] = $this->chaptermodel->next_number($course);
 				$id = $this->chaptermodel->insert_record($_POST);
 				if($id):
 					$insertdata = array('title'=>'Итоговое тестирование по курсу "'.$pagevar['course'].'"','count'=>5,'time'=>30,'number'=>0,'chapter'=>0,'course'=>$course);
 					$this->testsmodel->insert_record($insertdata);
 					$this->session->set_userdata('msgs','Глава добавлена успешно.');
 				endif;
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		if($this->input->post('echsubmit')):
+			$_POST['submit'] = NULL;
+			$this->form_validation->set_rules('title',' ','required|trim');
+			$this->form_validation->set_rules('number',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				$_POST['course'] = $course;
+				$id = $this->chaptermodel->update_record($_POST);
+				$this->session->set_userdata('msgs','Глава успешно сохранена.');
 			endif;
 			redirect($this->uri->uri_string());
 		endif;

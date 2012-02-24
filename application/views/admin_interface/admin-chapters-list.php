@@ -12,7 +12,7 @@
 							<?=anchor('admin-panel/references/courses','Все направления');?> <span class="divider">/</span>
 						</li>
 						<li>
-							<?=$trend;?> <span class="divider">/</span>
+							<?=$trend;?><span class="divider">/</span>
 						</li>
 						<li class="active">
 							<?=anchor($this->uri->uri_string(),$course);?>
@@ -22,7 +22,7 @@
 					<?php $this->load->view('alert_messages/alert-success');?>
 				<?php for($i=0;$i<count($chapters);$i++):?>
 					<div id="d<?=$chapters[$i]['id'];?>">
-						<h2 idchapter="<?=$chapters[$i]['id'];?>"><?=$chapters[$i]['title'];?></h2>
+						<h2 idchapter="<?=$chapters[$i]['id'];?>" numb="<?=$chapters[$i]['number'];?>"><?=$chapters[$i]['title'];?></h2>
 						<table class="table table-striped table-bordered">
 							<tbody>
 						<?php for($j=0,$num=1;$j<count($lectures);$j++):?>
@@ -43,6 +43,7 @@
 						<div class="btn-toolbar">
 							<div class="btn-group">
 								<a class="btn addLecture" data-toggle="modal" href="#addLecture" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-plus"></i> Добавить лекцию</a>
+								<a class="btn editChapter" data-toggle="modal" href="#editChapter" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-pencil"></i> Редактировать главу</a>
 								<a class="btn deleteChapter" data-toggle="modal" href="#deleteChapter" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-trash"></i> Удалить главу</a>
 							</div>
 							<div class="btn-group">
@@ -68,6 +69,7 @@
 						</div>
 					</div>
 					<?php $this->load->view('admin_interface/modal/admin-add-chapter');?>
+					<?php $this->load->view('admin_interface/modal/admin-edit-chapter');?>
 					<?php $this->load->view('admin_interface/modal/admin-add-lecture');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-lecture');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-lecture');?>
@@ -85,7 +87,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var DTrend = -1; var DCourse = -1; var DChapter = -1; var DLecture = -1; var DTest = -1; var CChapter = <?=$cntchapter+1;?>;
-			$("#send").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".ainput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
+			$("#send").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".achinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#lsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".linput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#elsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".elinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#mtsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".amtinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
@@ -95,6 +97,23 @@
 			$(".addLecture").click(function(){$("#msgalert").remove();$(".idChapter").val($(this).attr('idchapter'));});
 			$(".addMTest").click(function(){$("#msgalert").remove();$(".idChapter").val($(this).attr('idchapter'));});
 			$(".editLecture").click(function(){$("#msgalert").remove();DLecture  = $(this).attr('idlecture');var title = $("span[idlecture = st"+DLecture+"]").html();var numb = $("span[idlecture = st"+DLecture+"]").attr('numb');$("#idLecture").val(DLecture);$("#eTitleLecture").val(title);$("#eNumberLecture").val(numb);});
+			
+			$("#echsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".echinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
+			
+			
+			
+			$(".editChapter").click(function(){
+				$("#msgalert").remove();
+				var chapter = $(this).attr('idchapter');
+				$(".idChapter").val(chapter);
+				$("#eTitleChapter").val($("h2[idchapter = "+chapter+"]").html());
+				$("#eNumberChapter").val($("h2[idchapter = "+chapter+"]").attr('numb'));
+			});
+			
+			
+			
+			
+			
 			$(".editMTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleMTest").val($(this).attr('ttitle'));$("#eСountMTest").val($(this).attr('tcount'));$("#eTimeMTest").val($(this).attr('ttime'));});
 			$(".editFTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleFTest").val($(this).attr('ttitle'));$("#eСountFTest").val($(this).attr('tcount'));$("#eTimeFTest").val($(this).attr('ttime'));});
 			$("#addChapter").on("show",function(){$("#NumberChapter").val(CChapter);});
