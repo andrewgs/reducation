@@ -58,13 +58,17 @@
 					</div>
 				<?php endfor;?>
 					<hr size="2"/>
-					<p><a class="btn btn-primary" data-toggle="modal" href="#addQuestion"><i class="icon-plus"></i> Добавить вопрос</a></p>
+					<p><a class="btn btn-primary" data-toggle="modal" href="#addQuestion"><i class="icon-plus"></i> Добавить вопрос</a>
+				<?php if(count($questions)==0):?>
+					<a class="btn btn-primary" data-toggle="modal" href="#addQA"><i class="icon-star-empty"></i> Мастер создания</a></p>
+				<?php endif;?>
 					<?php $this->load->view('admin_interface/modal/admin-add-question');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-question');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-question');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-answer');?>
 					<?php $this->load->view('admin_interface/modal/admin-add-answer');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-answer');?>
+					<?php $this->load->view('admin_interface/modal/admin-master-qa');?>
 				</div>
 			</div>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
@@ -73,38 +77,75 @@
 	<?php $this->load->view('admin_interface/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var DQuestion = -1; var DAnswer = -1;
-			$("#qsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".aqinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
-			$("#asend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".aainput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
-			
-			$(".editQuestion").click(function(){
-				$("#msgalert").remove();
-				DQuestion = $(this).attr('idquestion');
-				var title  = $("span[idquestion="+DQuestion+"]").html();
-				var numb  = $("span[idquestion="+DQuestion+"]").attr('numb');
-				$(".idQuestion").val(DQuestion);
-				$("#eTitleQuestion").val(title);
-				$("#eNumberQuestion").val(numb);
-			});
-			
-			$(".editAnswer").click(function(){
-				$("#msgalert").remove();
-				DAnswer = $(this).attr('idanswer');
-				var title  = $("span[idspan=st"+DAnswer+"]").html();
-				var numb  = $("span[idspan=st"+DAnswer+"]").attr('numb');
-				var correct  = $("i[idi=i"+DAnswer+"]").attr('correct');
-				$(".idAnswer").val(DAnswer);
-				$("#eTitleAnswer").val(title);
-				$("#eNumberAnswer").val(numb);
-				$("#eNumberAnswer").val(numb);
-				if(correct == 1){$("#eCorrectAnswer").attr('checked','checked');}else{$("#eCorrectAnswer").removeAttr('checked');}
-			});
+			var DQuestion = -1; var DAnswer = -1; var MQuestion = 1;
+			$("#qsend").click(function(event){var err = false;$(".control-group").removeClass("error");$(".help-inline").hide();$(".aqinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
+			$("#asend").click(function(event){var err = false;$(".control-group").removeClass("error");$(".help-inline").hide();$(".aainput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass("error");$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
+
+			$(".editQuestion").click(function(){$("#msgalert").remove();DQuestion = $(this).attr("idquestion"); var title = $("span[idquestion="+DQuestion+"]").html(); var numb = $("span[idquestion="+DQuestion+"]").attr("numb"); $(".idQuestion").val(DQuestion); $("#eTitleQuestion").val(title); $("#eNumberQuestion").val(numb);});
+
+			$(".editAnswer").click(function(){$("#msgalert").remove(); DAnswer = $(this).attr('idanswer'); var title = $("span[idspan=st"+DAnswer+"]").html(); var numb = $("span[idspan=st"+DAnswer+"]").attr("numb"); var correct = $("i[idi=i"+DAnswer+"]").attr("correct"); $(".idAnswer").val(DAnswer); $("#eTitleAnswer").val(title); $("#eNumberAnswer").val(numb); $("#eNumberAnswer").val(numb); if(correct == 1){$("#eCorrectAnswer").attr('checked','checked');}else{$("#eCorrectAnswer").removeAttr("checked");}});
 			
 			$(".addAnswer").click(function(){$("#msgalert").remove();$(".idQuestion").val($(this).attr('idquestion'));});
 			
 			$(".deleteQuestion").click(function(){DQuestion = $(this).attr('idquestion');});
 			
 			$(".deleteAnswer").click(function(){DAnswer = $(this).attr('idanswer');});
+			
+		<?php if(count($questions)==0):?>
+			$("#MasterNext").click(function(event){
+				if($(this).attr('disabled')){return false;}
+				var err = false;
+				$(".control-group").removeClass("error");$(".help-inline").hide();
+				$(".mqinput").each(function(i,element){
+					if($(this).val()==''){
+						$(this).parents(".control-group").addClass('error');
+						$(this).siblings(".help-inline").html("Поле не может быть пустым").show();
+						err = true;
+					}
+				});
+				if(err){
+					event.preventDefault();
+				}else{
+					var correct = $(".MCAnswer");
+					var answers = {}; var count = 0;
+					$(".mainput").each(function(i){
+						answers['answers['+i+'][title]'] = $(this).val();
+						if($(correct[i]).attr('checked')){$(correct[i]).val('1');}else{$(correct[i]).val('0');}
+						answers['answers['+i+'][correct]'] = $(correct[i]).val();
+						count++;
+					});
+					answers['answers['+count+'][question]'] = $("#mTitleQuestion").val();
+					answers['answers['+count+'][numb]'] = MQuestion;
+					$.ajax({
+						url:'<?=$baseurl.$this->uri->uri_string();?>/create-master-test',
+						type:'POST',
+						data: answers,
+						beforeSend: function(){
+							$(this).html('Ожидайте');
+							$(this).addClass('disabled');
+							$(this).attr('disabled','disabled');
+						},
+						success: function(){
+							MQuestion++;
+							$(this).html('Продолжить');
+							$(this).removeClass('disabled');
+							$(this).removeAttr('disabled');
+							$("#msgalert").remove();
+							$(".control-group").removeClass('error');
+							$(".help-inline").hide();
+							$(".input-xlarge").val('');
+							$(".MCAnswer").removeAttr('checked');
+							$("#nQ").html(MQuestion);
+						}
+					})
+				}
+			});
+			
+			$("#addQA").on("hidden",function(){location.href="<?=$baseurl.$this->uri->uri_string();?>";});
+			
+			$("#addQA").on("show",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$(".MCAnswer").removeAttr('checked'); $("#nQ").html(MQuestion);});
+			
+		<?php endif;?>
 			
 			$("#eqsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".eqinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			

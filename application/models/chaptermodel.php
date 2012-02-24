@@ -2,16 +2,16 @@
 
 class Chaptermodel extends CI_Model{
 
-    var $id   	= 0;
-    var $title 	= '';
-    var $note  	= '';
-    var $course = 0;
-    var $number = 0;
-    var $test 	= 0;
+	var $id		= 0;
+	var $title	= '';
+	var $note	= '';
+	var $course	= 0;
+	var $number = 0;
+	var $test 	= 0;
 
-    function __construct(){
-        parent::__construct();
-    }
+	function __construct(){
+		parent::__construct();
+	}
 	
 	function insert_record($data){
 			
@@ -73,5 +73,15 @@ class Chaptermodel extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->delete('chapter');
 		return $this->db->affected_rows();
-	}	
+	}
+	
+	function count_records($course){
+	
+		$this->db->select('count(*) as cnt');
+		$this->db->where('course',$course);
+		$query = $this->db->get('chapter');
+		$data = $query->result_array();
+		return $data[0]['cnt'];
+	}
+	
 }

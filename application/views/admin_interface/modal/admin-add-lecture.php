@@ -17,7 +17,7 @@
 				<div class="control-group">
 					<label for="number" class="control-label">Порядковый номер: </label>
 					<div class="controls">
-						<input type="text" id="NumberLecture" class="input-xlarge linput" name="number">
+						<input type="text" id="NumberLecture" class="input-xlarge linput" name="number" value="">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>

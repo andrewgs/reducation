@@ -93,4 +93,59 @@ class Users_interface extends CI_Controller{
 		endswitch;
 		return $model;
 	}
+
+	public function registration_customer(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("users_interface/registration/begin-registration",$pagevar);
+		
+	}
+	
+	public function registration_customer_step_1(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("users_interface/registration/begin-registration-step-1",$pagevar);
+		
+	}
+	
+	public function catalog_courses(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("users_interface/catalog-courses",$pagevar);
+		
+	}
+
+	public function contacts(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("users_interface/contacts",$pagevar);
+	}
 }

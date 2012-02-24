@@ -281,15 +281,17 @@ class Admin_interface extends CI_Controller{
 					'course'		=> $this->coursesmodel->read_field($course,'code'),
 					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
 					'finaltest'		=> $this->testsmodel->read_record_course($course),
+					'cntchapter'	=> $this->chaptermodel->count_records($course),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
-		$pagevar['title'] .= 'Содержание курса "'.$pagevar['course'].'"'; 
+		$pagevar['title'] .= 'Содержание курса "'.$pagevar['course'].'"';
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
 		for($i=0;$i<count($pagevar['chapters']);$i++):
 			$pagevar['chapters'][$i]['test'] = $this->testsmodel->read_record_chapter($pagevar['chapters'][$i]['id']);
+			$pagevar['chapters'][$i]['clectures'] = $this->lecturesmodel->count_records($pagevar['chapters'][$i]['id']);
 		endfor;
 		$finaltest = $this->testsmodel->exit_course_final($course);
 		if(!$finaltest):
@@ -674,6 +676,20 @@ class Admin_interface extends CI_Controller{
 			redirect('admin-panel/references/trend/'.$trend.'/course/'.$course.'/chapter/'.$chapter.'/testing/'.$test);
 		else:
 			show_404();
+		endif;
+	}
+	
+	public function references_master_test(){
+		
+		$answers = $this->input->post('answers');
+		if(!$answers) show_404();
+		$idqes = $this->testquestionsmodel->insert_ajax_record($answers[count($answers)-1]['numb'],$answers[count($answers)-1]['question'],$this->uri->segment(10),$this->uri->segment(8),$this->uri->segment(6));
+		if($idqes):
+			for($i=0;$i<count($answers)-1;$i++):
+				if(!empty($answers[$i]['title'])):
+					$this->testanswersmodel->insert_ajax_record($i+1,$answers[$i]['title'],$this->uri->segment(10),$this->uri->segment(8),$this->uri->segment(6),$answers[$i]['correct'],$idqes);
+				endif;
+			endfor;
 		endif;
 	}
 	

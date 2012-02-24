@@ -41,7 +41,7 @@
 							</tbody>
 						</table>
 						<p>
-							<a class="btn addLecture" data-toggle="modal" href="#addLecture" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-plus"></i> Добавить лекцию</a>
+							<a class="btn addLecture" clectures="<?=$chapters[$i]['clectures']+1;?>" data-toggle="modal" href="#addLecture" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-plus"></i> Добавить лекцию</a>
 							<a class="btn btn-danger deleteChapter" data-toggle="modal" href="#deleteChapter" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-trash icon-white"></i> Удалить главу</a>
 						</p>
 						<div class="btn-toolbar">
@@ -82,7 +82,7 @@
 	<?php $this->load->view('admin_interface/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var DTrend = -1; var DCourse = -1; var DChapter = -1; var DLecture = -1; var DTest = -1;
+			var DTrend = -1; var DCourse = -1; var DChapter = -1; var DLecture = -1; var DTest = -1; var CChapter = <?=$cntchapter+1;?>;
 			$("#send").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".ainput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#lsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".linput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#elsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".elinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
@@ -92,9 +92,11 @@
 			$(".deleteChapter").click(function(){DChapter = $(this).attr('idchapter');});
 			$(".addLecture").click(function(){$("#msgalert").remove();$(".idChapter").val($(this).attr('idchapter'));});
 			$(".addMTest").click(function(){$("#msgalert").remove();$(".idChapter").val($(this).attr('idchapter'));});
-			$(".editLecture").click(function(){$("#msgalert").remove();DLecture  = $(this).attr('idlecture');var title = $("span[idlecture = st"+DLecture+"]").html();var numb  = $("span[idlecture = st"+DLecture+"]").attr('numb');$("#idLecture").val(DLecture);$("#eTitleLecture").val(title);$("#eNumberLecture").val(numb);});
+			$(".editLecture").click(function(){$("#msgalert").remove();DLecture  = $(this).attr('idlecture');var title = $("span[idlecture = st"+DLecture+"]").html();var numb = $("span[idlecture = st"+DLecture+"]").attr('numb');$("#idLecture").val(DLecture);$("#eTitleLecture").val(title);$("#eNumberLecture").val(numb);});
 			$(".editMTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleMTest").val($(this).attr('ttitle'));$("#eСountMTest").val($(this).attr('tcount'));$("#eTimeMTest").val($(this).attr('ttime'));});
 			$(".editFTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleFTest").val($(this).attr('ttitle'));$("#eСountFTest").val($(this).attr('tcount'));$("#eTimeFTest").val($(this).attr('ttime'));});
+			$("#addChapter").on("show",function(){$("#NumberChapter").val(CChapter);});
+			$(".addLecture").click(function(){$("#NumberLecture").val($(this).attr('clectures'));})
 			$(".deleteTest").click(function(){DChapter = $(this).attr('idchapter'); DTest = $(this).attr('idtest');});
 			$(".close").click(function(){DLecture = $(this).attr('idlecture');});
 			$("#DelLecture").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/delete-lecture/'+DLecture;});

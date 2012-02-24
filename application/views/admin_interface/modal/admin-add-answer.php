@@ -25,7 +25,7 @@
 					<label for="correct" class="control-label">Правильный ответ: </label>
 					<div class="controls">
 						<label class="checkbox">
-							<input type="checkbox" value="1" id="CorrectAnswer" name="correct">
+							<input type="checkbox" value="1" class="CorrectAnswer" name="correct">
 							Установите если ответ является верным
 						</label>
 					</div>

@@ -2,19 +2,19 @@
 
 class Lecturesmodel extends CI_Model{
 
-    var $id   		= 0;
-    var $number		= 0;
-    var $title 		= '';
-    var $note  		= '';
-    var $document 	= '';
-    var $loaddate 	= '';
-    var $chapter 	= 0;
-    var $course 	= 0;
-    var $view 		= 0;
-
-    function __construct(){
-        parent::__construct();
-    }
+	var $id			= 0;
+	var $number		= 0;
+	var $title		= '';
+	var $note		= '';
+	var $document	= '';
+	var $loaddate	= '';
+	var $chapter	= 0;
+	var $course		= 0;
+	var $view		= 0;
+	
+	function __construct(){
+		parent::__construct();
+	}
 	
 	function insert_record($data){
 			
@@ -114,5 +114,15 @@ class Lecturesmodel extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->delete('lectures');
 		return $this->db->affected_rows();
-	}	
+	}
+	
+	function count_records($chapter){
+	
+		$this->db->select('count(*) as cnt');
+		$this->db->where('chapter',$chapter);
+		$query = $this->db->get('lectures');
+		$data = $query->result_array();
+		return $data[0]['cnt'];
+	}
+	
 }

@@ -33,6 +33,22 @@ class Testanswersmodel extends CI_Model{
 		return $this->db->insert_id();
 	}
 	
+	function insert_ajax_record($number,$title,$test,$chapter,$course,$correct,$idqes){
+			
+		$this->number 		= $number;
+		$this->title 		= htmlspecialchars($title);
+		$this->note			= '';
+		$this->correct		= $correct;
+		$this->test			= $test;
+		$this->testquestion	= $idqes;
+		$this->chapter		= $chapter;
+		$this->course 		= $course;
+		$this->view 		= 1;
+		
+		$this->db->insert('testanswers',$this);
+		return $this->db->insert_id();
+	}
+	
 	function active_status($id){
 		
 		$this->db->set('view',1);
