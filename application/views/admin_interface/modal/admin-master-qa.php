@@ -13,7 +13,7 @@
 					<span class="help-inline"  style="display:none;">&nbsp;</span>
 				</div>
 			</div>
-		<?php for($i=0;$i<5;$i++):?>
+			<?php for ( $i = 0; $i < 5; $i++ ): ?>
 			<div class="control-group">
 				<label for="answer<?=$i?>" class="control-label">Ответ: </label>
 				<div class="controls">
@@ -22,8 +22,11 @@
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
-		<?php endfor;?>
-			<span class="help-inline" id="chError" style="display:none;">&nbsp;</span>
+			<?php endfor;?>
+			<div id="chError" style="display:none;" class="alert alert-error">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				<strong>Ошибка!</strong> <span class="error-text">Должен быть выбран хотя бы один правильный ответ.</span>
+			</div>
 		</fieldset>
 	</div>
 	<div class="modal-footer">

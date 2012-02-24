@@ -23,15 +23,13 @@
 					</ul>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
-					<h4>Лекция: <?=$lecture['title'];?></h4>
-					<div>
-						<span>Скачайте и прочтите лекцию <?=$lecture['number'];?></span>
-						<p>Скачайте и прочтите лекцию <?=$lecture['number'];?>. Лекция является самостоятельным модулем, включающим текст лекции, словарь терминов, справочник, активный список литературы и блок вопросов для самопроверки. Формат лекции - защищенный структурированный pdf-файл.</p>
+					<h3>Лекция: <?=$lecture['title'];?></h3>
+					<div class="alert alert-success">
+						<p><strong>Скачайте и прочтите лекцию.</strong> Лекция является самостоятельным модулем, включающим текст лекции, словарь терминов, справочник, активный список литературы и блок вопросов для самопроверки. Формат лекции - защищенный структурированный pdf-файл.</p>
 					</div>
 					<div>
-						<p>Лекция: <?=$lecture['title'];?></p>
 						<p>Лекция: <?=$fileextension;?>, <?=$filesize;?></p>
-						<a class="btn btn-info" data-toggle="modal" href="#getDocument" id="getDoc" doc="<?=$lecture['document'];?>"><i class="icon-download-alt"></i> Скачать лекцию</a>
+						<a class="btn btn-info" data-toggle="modal" href="#getDocument" id="getDoc" doc="<?=$lecture['document'];?>"><i class="icon-download-alt icon-white"></i> Скачать лекцию</a>
 					</div>
 					<?php $this->load->view('admin_interface/modal/admin-get-document');?>
 				</div>
