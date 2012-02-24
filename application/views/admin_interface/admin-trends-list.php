@@ -37,7 +37,7 @@
 						<?php endfor; ?>
 						</tbody>
 					</table>
-					<p><a class="btn btn-primary" data-toggle="modal" href="#addTrend"><i class="icon-plus"></i> Добавить направление</a></p>
+					<p><a class="btn btn-primary" data-toggle="modal" href="#addTrend"><i class="icon-plus icon-white"></i> Добавить направление</a></p>
 					<?php $this->load->view('admin_interface/modal/admin-add-trend');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-trend');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-trend');?>

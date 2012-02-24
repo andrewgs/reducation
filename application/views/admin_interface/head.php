@@ -12,6 +12,7 @@
 	<style type="text/css">
 		body {padding-top: 10px;padding-bottom: 40px;}
 		.sidebar-nav {padding: 9px 0;}
+		td.short { width: 10px; }		
 	</style>
 	<link href="<?=$baseurl;?>css/bootstrap-responsive.css" rel="stylesheet">
 	<!-- Le fav and touch icons -->

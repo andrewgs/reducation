@@ -323,6 +323,7 @@ class Admin_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
 			else:
+				// --andrewg SHOULD BE NECESSARY REFACTORED
 				if($_FILES['document']['error'] == 1):
 					$this->session->set_userdata('msgr','Ошибка при загрузке документа. Размер принятого файла превысил максимально допустимый размер.');
 					redirect($this->uri->uri_string());
@@ -333,6 +334,7 @@ class Admin_interface extends CI_Controller{
 				endif;
 				$_FILES['document']['name'] = preg_replace('/.+(.)(\.)+/',date("Ymdhis")."\$2", $_FILES['document']['name']);
 				$_POST['document'] = 'documents/lectures/'.$_FILES['document']['name'];
+				// --end refactored
 				if(!$this->fileupload('document',FALSE)):
 					$this->session->set_userdata('msgr','Ошибка при загрузке документа.');
 					redirect($this->uri->uri_string());
@@ -736,14 +738,17 @@ class Admin_interface extends CI_Controller{
 
 	public function fileupload($userfile,$overwrite){
 		
-		$config['upload_path'] 		= getcwd().'/documents/lectures/';
+		$config['upload_path'] 		= './documents/lectures/';
 		$config['allowed_types'] 	= 'doc|docx|xls|xlsx|txt|pdf';
 		$config['remove_spaces'] 	= TRUE;
 		$config['overwrite'] 		= $overwrite;
+		
 		$this->load->library('upload',$config);
+		
 		if(!$this->upload->do_upload($userfile)):
 			return FALSE;
 		endif;
+		
 		return TRUE;
 	}
 

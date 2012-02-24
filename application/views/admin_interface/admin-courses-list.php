@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php $this->load->view('admin_interface/head');?>
+<style type="text/css">
+	h5 { line-height: 18px; margin-bottom: 5px; }
+</style>
 <body>
 	<?php $this->load->view('admin_interface/header');?>
 	<div class="container">
@@ -21,7 +24,7 @@
 						<small>(курсов: <?=$trends[$i]['courses'];?>)</small>
 					</h5>
 					<div id="tbl<?=$trends[$i]['id'];?>" style="display:none;">
-						<table class="table table-striped table-bordered table-condensed">
+						<table class="table table-striped table-bordered">
 							<tbody>
 						<?php for($j=0;$j<count($courses);$j++):?>
 							<?php if($courses[$j]['trend'] == $trends[$i]['id']):?>
@@ -43,7 +46,7 @@
 						<?php endfor;?>
 							</tbody>
 						</table>
-						<p><a class="btn btn-primary addCourse" data-toggle="modal" href="#addCourse" idtrend="<?=$trends[$i]['id'];?>"><i class="icon-plus"></i> Добавить курс</a></p>
+						<p><a class="btn btn-primary addCourse" data-toggle="modal" href="#addCourse" idtrend="<?=$trends[$i]['id'];?>"><i class="icon-plus icon-white"></i> Добавить курс</a></p>
 					</div>
 				<?php endfor;?>
 					<?php $this->load->view('admin_interface/modal/admin-add-course');?>
