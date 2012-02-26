@@ -31,6 +31,12 @@
 									<td class="short"><a href="#editLecture" title="Редактировать" class="editLecture" data-toggle="modal" idlecture="<?=$lectures[$j]['id'];?>" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-pencil"></i></a></td>
 									<td class="short"><?=$num;?></td>
 									<td><?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/lecture/'.$lectures[$j]['id'],'Лекция: <span idlecture="st'.$lectures[$j]['id'].'" numb="'.$lectures[$j]['number'].'"> '.$lectures[$j]['title'].'</span>');?><a href="#"></a></td>
+									<td class="short"><a class="curriculum" data-toggle="modal" href="#addCurriculum" idlecture="<?=$lectures[$j]['id'];?>" title="Загрузить учебный план"><i class="icon-refresh"></i></a></td>
+								<?php if($lectures[$j]['curriculum']):?>
+									<td class="short"><a class="downCUR" data-toggle="modal" href="#getCurriculum" dfile="<?=$lectures[$j]['curriculum'];?>" title="Скачать"><i class="icon-download-alt"></i></a></td>
+								<?php else:?>
+									<td class="short"><a class="close" title="Документ не загружен"><i class="icon-download-alt"></i></a></td>
+								<?php endif;?>
 									<td class="short"><a class="close" data-toggle="modal" href="#deleteLecture" idlecture="<?=$lectures[$j]['id'];?>">&times;</a></td>
 								</tr>
 								<?php $num++;?>
@@ -64,11 +70,19 @@
 							<a class="btn btn-success" data-toggle="modal" href="#addChapter"><i class="icon-plus icon-white"></i> Добавить главу</a>
 						</div>
 						<div class="btn-group">
+							<a class="btn btn-success" data-toggle="modal" href="#addDoc"><i class="icon-plus icon-white"></i> Добавить список литературы</a>
+						<?php if($document):?>
+							<a class="btn" data-toggle="modal" href="#getDocument" title="Скачать"><i class="icon-download-alt"></i></a>
+						<?php endif;?>
+						</div>
+						<div class="btn-group">
 							<?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/chapter/0/testing/'.$finaltest['id'],'Итоговое тестирование',array('class'=>'btn'));?>
 							<a class="btn editFTest" idtest="<?=$finaltest['id'];?>" ttitle="<?=$finaltest['title'];?>" ttime="<?=$finaltest['timetest'];?>" tcount="<?=$finaltest['count'];?>" data-toggle="modal" href="#editFTest" title="Редактировать"><i class="icon-pencil"></i></a>
 						</div>
 					</div>
 					<?php $this->load->view('admin_interface/modal/admin-add-chapter');?>
+					<?php $this->load->view('admin_interface/modal/admin-add-libraries');?>
+					<?php $this->load->view('admin_interface/modal/admin-add-curriculum');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-chapter');?>
 					<?php $this->load->view('admin_interface/modal/admin-add-lecture');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-lecture');?>
@@ -78,6 +92,8 @@
 					<?php $this->load->view('admin_interface/modal/admin-edit-middle-test');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-middle-test');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-final-test');?>
+					<?php $this->load->view('admin_interface/modal/admin-get-document');?>
+					<?php $this->load->view('admin_interface/modal/admin-get-curriculum');?>
 				</div>
 			</div>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
@@ -87,6 +103,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var DTrend = -1; var DCourse = -1; var DChapter = -1; var DLecture = -1; var DTest = -1; var CChapter = <?=$cntchapter+1;?>;
+			var Curriculum = '';
 			$("#send").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".achinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#lsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".linput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#elsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".elinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
@@ -96,13 +113,19 @@
 			$(".deleteChapter").click(function(){DChapter = $(this).attr('idchapter');});
 			$(".addLecture").click(function(){$("#msgalert").remove();$(".idChapter").val($(this).attr('idchapter'));});
 			$(".addMTest").click(function(){$("#msgalert").remove();$(".idChapter").val($(this).attr('idchapter'));});
-			$(".editLecture").click(function(){$("#msgalert").remove();DLecture  = $(this).attr('idlecture');var title = $("span[idlecture = st"+DLecture+"]").html();var numb = $("span[idlecture = st"+DLecture+"]").attr('numb');$("#idLecture").val(DLecture);$(".idChapter").val($(this).attr('idchapter'));$("#eTitleLecture").val(title);$("#eNumberLecture").val(numb);});
+			$(".editLecture").click(function(){$("#msgalert").remove();DLecture  = $(this).attr('idlecture');var title = $("span[idlecture = st"+DLecture+"]").html();var numb = $("span[idlecture = st"+DLecture+"]").attr('numb');$(".idLecture").val(DLecture);$(".idChapter").val($(this).attr('idchapter'));$("#eTitleLecture").val(title);$("#eNumberLecture").val(numb);});
+			
+			$(".curriculum").click(function(){$("#msgalert").remove();$(".idLecture").val($(this).attr('idlecture'));});
+			$(".downCUR").click(function(){$("#msgalert").remove(); Curriculum = $(this).attr('dfile');});
+			
 			$("#echsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".echinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
+			$("#lbsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".lbinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
+			$("#crsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".crinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$(".editChapter").click(function(){$("#msgalert").remove();var chapter = $(this).attr('idchapter');$(".idChapter").val(chapter);$("#eTitleChapter").val($("h2[idchapter = "+chapter+"]").html());$("#eNumberChapter").val($("h2[idchapter = "+chapter+"]").attr('numb'));});
-			
 			$(".editMTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleMTest").val($(this).attr('ttitle'));$("#eСountMTest").val($(this).attr('tcount'));$("#eTimeMTest").val($(this).attr('ttime'));});
-			
 			$(".editFTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleFTest").val($(this).attr('ttitle'));$("#eСountFTest").val($(this).attr('tcount'));$("#eTimeFTest").val($(this).attr('ttime'));});
+			$("#download").click(function(){window.open("<?=$baseurl.$document;?>")});
+			$("#dwlCur").click(function(){window.open("<?=$baseurl;?>"+Curriculum)});
 			$("#addChapter").on("show",function(){$("#NumberChapter").val(CChapter);});
 			$(".addLecture").click(function(){$("#NumberLecture").val($(this).attr('clectures'));})
 			$(".deleteTest").click(function(){DChapter = $(this).attr('idchapter'); DTest = $(this).attr('idtest');});

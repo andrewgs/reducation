@@ -40,7 +40,7 @@
 	<?php $this->load->view('admin_interface/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#download").click(function(){window.open("<?=$baseurl.$lecture['document'];?>")});
+			$("#download").click(function(){window.open("<?=$baseurl.$document;?>")});
 			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
 		});
 	</script>

@@ -2,14 +2,15 @@
 
 class Coursesmodel extends CI_Model{
 
-    var $id   	= 0;
-    var $title 	= '';
-    var $note  	= '';
-    var $price  = '';
-    var $trend  = 0;
-    var $view  	= 0;
-    var $hours 	= 0;
-    var $code  	= '';
+    var $id   		= 0;
+    var $title 		= '';
+    var $note  		= '';
+    var $price  	= '';
+    var $trend  	= 0;
+    var $view  		= 0;
+    var $hours 		= 0;
+    var $code  		= '';
+	var $libraries 	= '';
 
     function __construct(){
         parent::__construct();
@@ -17,13 +18,14 @@ class Coursesmodel extends CI_Model{
 	
 	function insert_record($data){
 			
-		$this->title 	= htmlspecialchars($data['title']);
-		$this->note		= '';
-		$this->price 	= $data['price'];
-		$this->trend  	= $data['trend'];
-		$this->view  	= $data['view'];
-		$this->hours  	= $data['hours'];
-		$this->code  	= $data['code'];
+		$this->title 		= htmlspecialchars($data['title']);
+		$this->note			= '';
+		$this->price 		= $data['price'];
+		$this->trend  		= $data['trend'];
+		$this->view  		= $data['view'];
+		$this->hours  		= $data['hours'];
+		$this->code  		= $data['code'];
+		$this->libraries  	= '';
 		
 		$this->db->insert('courses',$this);
 		return $this->db->insert_id();
@@ -145,5 +147,14 @@ class Coursesmodel extends CI_Model{
 		$data = $query->result_array();
 		if(count($data)) return TRUE;
 		return FALSE;
+	}
+
+	function update_library($id,$document){
+		
+		$this->db->set('libraries',$document);
+		$this->db->where('id',$id);
+		
+		$this->db->update('courses');
+		return $this->db->affected_rows();
 	}
 }
