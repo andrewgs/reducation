@@ -80,6 +80,15 @@ class Lecturesmodel extends CI_Model{
 		return $this->db->affected_rows();
 	}
 	
+	function change_number($oldnumber,$number,$chapter){
+		
+		$this->db->set('number',$number);
+		$this->db->where('chapter',$chapter);
+		$this->db->where('number',$oldnumber);
+		$this->db->update('lectures');
+		return $this->db->affected_rows();
+	}
+	
 	function ownew_course($id,$course){
 		
 		$this->db->where('id',$id);

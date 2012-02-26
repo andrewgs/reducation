@@ -36,7 +36,7 @@
 						<?php for($j=0,$num=1;$j<count($answers);$j++):?>
 							<?php if($answers[$j]['testquestion'] == $questions[$i]['id']):?>
 								<tr>
-									<td class="short"><a href="#editAnswer" title="Редактировать" class="editAnswer" idanswer="<?=$answers[$j]['id'];?>" data-toggle="modal"><i class="icon-pencil"></i></a></td>
+									<td class="short"><a href="#editAnswer" title="Редактировать" class="editAnswer" idanswer="<?=$answers[$j]['id'];?>" idquestion="<?=$questions[$i]['id'];?>" data-toggle="modal"><i class="icon-pencil"></i></a></td>
 									<td class="short"><?=$num;?></td>
 									<td><span idspan="st<?=$answers[$j]['id'];?>" numb="<?=$answers[$j]['number'];?>"><?=$answers[$j]['title'];?></span></td>
 								<?php if($answers[$j]['correct']):?>
@@ -81,9 +81,15 @@
 			var DQuestion = -1; var DAnswer = -1; var MQuestion = <?=$cntquestions+1?>;
 			$("#asend").click(function(event){var err = false;$(".control-group").removeClass("error");$(".help-inline").hide();$(".aainput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass("error");$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 
-			$(".editQuestion").click(function(){$("#msgalert").remove();DQuestion = $(this).attr("idquestion"); var title = $("span[idquestion="+DQuestion+"]").html(); var numb = $("span[idquestion="+DQuestion+"]").attr("numb"); $(".idQuestion").val(DQuestion); $("#eTitleQuestion").val(title); $("#eNumberQuestion").val(numb);});
+			$(".editQuestion").click(function(){$("#msgalert").remove();
+				DQuestion = $(this).attr("idquestion");
+				var title = $("span[idquestion="+DQuestion+"]").html();
+				var numb = $("span[idquestion="+DQuestion+"]").attr("numb");
+				$(".idQuestion").val(DQuestion);
+				$("#eTitleQuestion").val(title);
+				$("#eNumberQuestion").val(numb);});
 
-			$(".editAnswer").click(function(){$("#msgalert").remove(); DAnswer = $(this).attr('idanswer'); var title = $("span[idspan=st"+DAnswer+"]").html(); var numb = $("span[idspan=st"+DAnswer+"]").attr("numb"); var correct = $("i[idi=i"+DAnswer+"]").attr("correct"); $(".idAnswer").val(DAnswer); $("#eTitleAnswer").val(title); $("#eNumberAnswer").val(numb); $("#eNumberAnswer").val(numb); if(correct == 1){$("#eCorrectAnswer").attr('checked','checked');}else{$("#eCorrectAnswer").removeAttr("checked");}});
+			$(".editAnswer").click(function(){$("#msgalert").remove(); DAnswer = $(this).attr('idanswer'); var title = $("span[idspan=st"+DAnswer+"]").html(); var numb = $("span[idspan=st"+DAnswer+"]").attr("numb"); var correct = $("i[idi=i"+DAnswer+"]").attr("correct"); $(".idAnswer").val(DAnswer); $(".idQuestion").val($(this).attr('idquestion')); $("#eTitleAnswer").val(title); $("#eNumberAnswer").val(numb); $("#eNumberAnswer").val(numb); if(correct == 1){$("#eCorrectAnswer").attr('checked','checked');}else{$("#eCorrectAnswer").removeAttr("checked");}});
 			
 			$(".addAnswer").click(function(){$("#msgalert").remove();$(".idQuestion").val($(this).attr('idquestion'));});
 			

@@ -4874,21 +4874,21 @@
 				<treenode node="msgr;Php:Var Name;9;0;14;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-master-qa.php" crc="-1672578262">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-master-qa.php" crc="1746946876">
 			<phptree>
 				<treenode node="i;Php:Var Name;12;15;14;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-get-document.php" crc="-1193150390">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-get-document.php" crc="-670181947">
 			<phptree>
 				<treenode node="filename;Php:Var Name;42;9;51;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 				<treenode node="lecture;Php:Var Name;18;7;26;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-trend.php" crc="-1030461868">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-trend.php" crc="-1043798748">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4913,12 +4913,12 @@
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-course.php" crc="-648568796">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-course.php" crc="-1961325085">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-chapter.php" crc="-1612565987">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-chapter.php" crc="952550507">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4928,14 +4928,14 @@
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-trend.php" crc="1315146112">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-question.php" crc="1946915577">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-middle-test.php" crc="-395432088">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-lecture.php" crc="1625953736">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-course.php" crc="-1294843951">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-chapter.php" crc="95615013">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-answer.php" crc="-2083329875">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-trend.php" crc="-1060941992">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-trend.php" crc="1796989083">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-question.php" crc="-798301406">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-middle-test.php" crc="1701943312">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-lecture.php" crc="-1578648348">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-course.php" crc="1414481688">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-chapter.php" crc="-620185236">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-answer.php" crc="-731668195">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-trend.php" crc="591487629">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4950,17 +4950,17 @@
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-lecture.php" crc="-1707326877">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-lecture.php" crc="-380843705">
 			<phptree>
 				<treenode node="this;Php:Var Name;23;0;28;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-course.php" crc="1483512721">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-course.php" crc="503476664">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-chapter.php" crc="-851754339">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-chapter.php" crc="-1293077944">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5005,7 +5005,7 @@
 				<treenode node="title;Php:Var Name;11;2;17;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-trends-list.php" crc="269869662">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-trends-list.php" crc="1945070218">
 			<phptree>
 				<treenode node="i;Php:Var Name;16;24;18;24;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5036,7 +5036,7 @@
 				<treenode node="view;JS:JS Var Name;8;83;12;83;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php" crc="-80703668">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php" crc="2034810516">
 			<phptree>
 				<treenode node="answers;Php:Var Name;37;32;45;32;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5116,7 +5116,7 @@
 				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-lecture-card.php" crc="-1875142038">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-lecture-card.php" crc="574301995">
 			<phptree>
 				<treenode node="course;Php:Var Name;106;17;113;17;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5137,7 +5137,7 @@
 				<treenode node="window;JS:JS Var Name;35;44;41;44;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php" crc="-1794925959">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php" crc="1815960103">
 			<phptree>
 				<treenode node="courses;Php:Var Name;30;28;38;28;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5587,7 +5587,7 @@
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\models\coursesmodel.php" crc="-1827943545">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\coursesmodel.php" crc="-1221289269">
 			<phptree>
 				<treenode node="Coursesmodel;Php:Class Name;0;2;1;148;34;;;vCI_Model;;c;;r;;d35,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;4;13;5;15;34;;;v;;r;;d26,13;;b0,0;;m">
@@ -5914,7 +5914,7 @@
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\admin_interface.php" crc="1570621001">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\admin_interface.php" crc="1617457146">
 			<phptree>
 				<treenode node="Admin_interface;Php:Class Name;0;2;1;778;34;;;vCI_Controller;;c;;r;;d43,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;1;8;2;43;34;;;v;;r;;d23,8;;b0,0;;m">

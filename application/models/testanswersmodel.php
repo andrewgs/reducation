@@ -105,6 +105,15 @@ class Testanswersmodel extends CI_Model{
 		return $this->db->affected_rows();
 	}
 	
+	function change_number($oldnumber,$number,$testquestion){
+		
+		$this->db->set('number',$number);
+		$this->db->where('testquestion',$testquestion);
+		$this->db->where('number',$oldnumber);
+		$this->db->update('testanswers');
+		return $this->db->affected_rows();
+	}
+	
 	function delete_record($id){
 	
 		$this->db->where('id',$id);
@@ -124,5 +133,14 @@ class Testanswersmodel extends CI_Model{
 		$this->db->where('testquestion',$question);
 		$this->db->delete('testanswers');
 		return $this->db->affected_rows();
-	}	
+	}
+
+	function next_number($testquestion){
+		
+		$this->db->select('MAX(number) as number');
+		$this->db->where('testquestion',$testquestion);
+		$query = $this->db->get('testanswers');
+		$data = $query->result_array();
+		return $data[0]['number']+1;
+	}
 }

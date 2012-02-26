@@ -15,13 +15,6 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label for="number" class="control-label">Порядковый номер: </label>
-					<div class="controls">
-						<input type="text" id="NumberAnswer" class="input-xlarge aainput" name="number">
-						<span class="help-inline" style="display:none;">&nbsp;</span>
-					</div>
-				</div>
-				<div class="control-group">
 					<label for="correct" class="control-label">Правильный ответ: </label>
 					<div class="controls">
 						<label class="checkbox">

@@ -111,7 +111,25 @@ class Testquestionsmodel extends CI_Model{
 		$this->db->delete('testquestions');
 		return $this->db->affected_rows();
 	}
-
+	
+	function next_number($chapter){
+		
+		$this->db->select('MAX(number) as number');
+		$this->db->where('chapter',$chapter);
+		$query = $this->db->get('testquestions');
+		$data = $query->result_array();
+		return $data[0]['number']+1;
+	}
+	
+	function change_number($oldnumber,$number,$test){
+		
+		$this->db->set('number',$number);
+		$this->db->where('test',$test);
+		$this->db->where('number',$oldnumber);
+		$this->db->update('testquestions');
+		return $this->db->affected_rows();
+	}
+	
 	function count_records($test){
 	
 		$this->db->select('count(*) as cnt');

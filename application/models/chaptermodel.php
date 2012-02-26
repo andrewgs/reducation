@@ -50,6 +50,15 @@ class Chaptermodel extends CI_Model{
 		return $this->db->affected_rows();
 	}
 	
+	function change_number($oldnumber,$number,$course){
+		
+		$this->db->set('number',$number);
+		$this->db->where('course',$course);
+		$this->db->where('number',$oldnumber);
+		$this->db->update('chapter');
+		return $this->db->affected_rows();
+	}
+	
 	function read_record($id){
 		
 		$this->db->where('id',$id);

@@ -324,7 +324,11 @@ class Admin_interface extends CI_Controller{
 				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
 			else:
 				$_POST['course'] = $course;
-				$id = $this->chaptermodel->update_record($_POST);
+				$oldnumber = $this->chaptermodel->read_field($_POST['idchp'],'number');
+				if($oldnumber != $_POST['number']):
+					$this->chaptermodel->change_number($_POST['number'],$oldnumber,$course);
+				endif;
+				$this->chaptermodel->update_record($_POST);
 				$this->session->set_userdata('msgs','Глава успешно сохранена.');
 			endif;
 			redirect($this->uri->uri_string());
@@ -382,6 +386,12 @@ class Admin_interface extends CI_Controller{
 				else:
 					$_POST['document'] = '';
 				endif;
+				
+				$oldnumber = $this->lecturesmodel->read_field($_POST['idlec'],'number');
+				if($oldnumber != $_POST['number']):
+					$this->lecturesmodel->change_number($_POST['number'],$oldnumber,$_POST['idchp']);
+				endif;
+				
 				$this->lecturesmodel->update_record($_POST);
 				$this->session->set_userdata('msgs','Информация по курсу успешно сохранена.');
 			endif;
@@ -621,6 +631,10 @@ class Admin_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
 			else:
+				$oldnumber = $this->testquestionsmodel->read_field($_POST['idqes'],'number');
+				if($oldnumber != $_POST['number']):
+					$this->testquestionsmodel->change_number($_POST['number'],$oldnumber,$test);
+				endif;
 				$this->testquestionsmodel->update_record($_POST);
 				$this->session->set_userdata('msgs','Вопрос сохранен успешно.');
 			endif;
@@ -629,7 +643,6 @@ class Admin_interface extends CI_Controller{
 		if($this->input->post('asubmit')):
 			$_POST['asubmit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
-			$this->form_validation->set_rules('number',' ','required|trim');
 			$this->form_validation->set_rules('idqes',' ','required|trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
@@ -637,7 +650,8 @@ class Admin_interface extends CI_Controller{
 				if(!isset($_POST['correct'])):
 					$_POST['correct'] = 0;
 				endif;
-				$_POST['course'] = $course;	$_POST['test'] = $test;	$_POST['chapter'] = $chapter;
+				$_POST['course'] = $course;	$_POST['test'] = $test;	$_POST['chapter'] = $chapter; 
+				$_POST['number'] = $this->testanswersmodel->next_number($_POST['idqes']);
 				$this->testanswersmodel->insert_record($_POST);
 				$this->session->set_userdata('msgs','Ответ добавлен успешно.');
 			endif;
@@ -653,6 +667,10 @@ class Admin_interface extends CI_Controller{
 			else:
 				if(!isset($_POST['correct'])):
 					$_POST['correct'] = 0;
+				endif;
+				$oldnumber = $this->testanswersmodel->read_field($_POST['idans'],'number');
+				if($oldnumber != $_POST['number']):
+					$this->testanswersmodel->change_number($_POST['number'],$oldnumber,$_POST['idqes']);
 				endif;
 				$this->testanswersmodel->update_record($_POST);
 				$this->session->set_userdata('msgs','Ответ успешно сохранен.');

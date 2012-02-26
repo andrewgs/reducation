@@ -28,7 +28,7 @@
 						<?php for($j=0,$num=1;$j<count($lectures);$j++):?>
 							<?php if($lectures[$j]['chapter'] == $chapters[$i]['id']):?>
 								<tr>
-									<td class="short"><a href="#editLecture" title="Редактировать" class="editLecture" data-toggle="modal" idlecture="<?=$lectures[$j]['id'];?>"><i class="icon-pencil"></i></a></td>
+									<td class="short"><a href="#editLecture" title="Редактировать" class="editLecture" data-toggle="modal" idlecture="<?=$lectures[$j]['id'];?>" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-pencil"></i></a></td>
 									<td class="short"><?=$num;?></td>
 									<td><?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/lecture/'.$lectures[$j]['id'],'Лекция: <span idlecture="st'.$lectures[$j]['id'].'" numb="'.$lectures[$j]['number'].'"> '.$lectures[$j]['title'].'</span>');?><a href="#"></a></td>
 									<td class="short"><a class="close" data-toggle="modal" href="#deleteLecture" idlecture="<?=$lectures[$j]['id'];?>">&times;</a></td>
@@ -51,7 +51,7 @@
 								<a data-toggle="modal" href="#addMTest" idchapter="<?=$chapters[$i]['id'];?>" class="btn addMTest">Создать промежуточное тестирование</a>
 							<?php else:?>
 								<?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/chapter/'.$chapters[$i]['id'].'/testing/'.$chapters[$i]['test']['id'],'Промежуточное тестирование',array('class'=>'btn'));?>
-								<a class="btn editMTest" idchapter="<?=$chapters[$i]['id'];?>" idtest="<?=$chapters[$i]['test']['id'];?>" Доtitle="<?=$chapters[$i]['test']['title'];?>" ttime="<?=$chapters[$i]['test']['timetest'];?>" tcount="<?=$chapters[$i]['test']['count'];?>" data-toggle="modal" href="#editMTest" title="Редактировать"><i class="icon-pencil"></i></a>
+								<a class="btn editMTest" idchapter="<?=$chapters[$i]['id'];?>" idtest="<?=$chapters[$i]['test']['id'];?>" ttitle="<?=$chapters[$i]['test']['title'];?>" ttime="<?=$chapters[$i]['test']['timetest'];?>" tcount="<?=$chapters[$i]['test']['count'];?>" data-toggle="modal" href="#editMTest" title="Редактировать"><i class="icon-pencil"></i></a>
 								<a class="btn deleteTest" idtest="<?=$chapters[$i]['test']['id'];?>" idchapter="<?=$chapters[$i]['id'];?>" title="Удалить" data-toggle="modal" href="#deleteTest"><i class="icon-trash"></i></a>
 							<?php endif;?>
 							</div>
@@ -96,25 +96,12 @@
 			$(".deleteChapter").click(function(){DChapter = $(this).attr('idchapter');});
 			$(".addLecture").click(function(){$("#msgalert").remove();$(".idChapter").val($(this).attr('idchapter'));});
 			$(".addMTest").click(function(){$("#msgalert").remove();$(".idChapter").val($(this).attr('idchapter'));});
-			$(".editLecture").click(function(){$("#msgalert").remove();DLecture  = $(this).attr('idlecture');var title = $("span[idlecture = st"+DLecture+"]").html();var numb = $("span[idlecture = st"+DLecture+"]").attr('numb');$("#idLecture").val(DLecture);$("#eTitleLecture").val(title);$("#eNumberLecture").val(numb);});
-			
+			$(".editLecture").click(function(){$("#msgalert").remove();DLecture  = $(this).attr('idlecture');var title = $("span[idlecture = st"+DLecture+"]").html();var numb = $("span[idlecture = st"+DLecture+"]").attr('numb');$("#idLecture").val(DLecture);$(".idChapter").val($(this).attr('idchapter'));$("#eTitleLecture").val(title);$("#eNumberLecture").val(numb);});
 			$("#echsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".echinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
-			
-			
-			
-			$(".editChapter").click(function(){
-				$("#msgalert").remove();
-				var chapter = $(this).attr('idchapter');
-				$(".idChapter").val(chapter);
-				$("#eTitleChapter").val($("h2[idchapter = "+chapter+"]").html());
-				$("#eNumberChapter").val($("h2[idchapter = "+chapter+"]").attr('numb'));
-			});
-			
-			
-			
-			
+			$(".editChapter").click(function(){$("#msgalert").remove();var chapter = $(this).attr('idchapter');$(".idChapter").val(chapter);$("#eTitleChapter").val($("h2[idchapter = "+chapter+"]").html());$("#eNumberChapter").val($("h2[idchapter = "+chapter+"]").attr('numb'));});
 			
 			$(".editMTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleMTest").val($(this).attr('ttitle'));$("#eСountMTest").val($(this).attr('tcount'));$("#eTimeMTest").val($(this).attr('ttime'));});
+			
 			$(".editFTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleFTest").val($(this).attr('ttitle'));$("#eСountFTest").val($(this).attr('tcount'));$("#eTimeFTest").val($(this).attr('ttime'));});
 			$("#addChapter").on("show",function(){$("#NumberChapter").val(CChapter);});
 			$(".addLecture").click(function(){$("#NumberLecture").val($(this).attr('clectures'));})
