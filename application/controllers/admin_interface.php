@@ -236,8 +236,6 @@ class Admin_interface extends CI_Controller{
 				for($j=0;$j<count($lectures);$j++):
 					$filepath = getcwd().'/'.$lectures[$j]['document'];
 					$this->filedelete($filepath);
-					$curriculum = getcwd().'/'.$this->lecturesmodel->read_field($lectures[$j]['id'],'curriculum');
-					$this->filedelete($curriculum);
 					$result = $this->lecturesmodel->delete_record($lectures[$j]['id']);
 				endfor;
 				$test = $this->testsmodel->read_record_chapter($chapters[$i]['id']);
@@ -250,6 +248,8 @@ class Admin_interface extends CI_Controller{
 			endfor;
 			$libraries = getcwd().'/'.$this->coursesmodel->read_field($course,'libraries');
 			$this->filedelete($libraries);
+			$curriculum = getcwd().'/'.$this->coursesmodel->read_field($course,'curriculum');
+			$this->filedelete($curriculum);
 			$result = $this->coursesmodel->delete_record($course);
 			if($result):
 				$this->session->set_userdata('msgs','Курс удален успешно.');
@@ -288,6 +288,7 @@ class Admin_interface extends CI_Controller{
 					'cntchapter'	=> $this->chaptermodel->count_records($course),
 					'document'		=> $this->coursesmodel->read_field($course,'libraries'),
 					'docvalue'		=> 'Список литературы',
+					'curriculum'	=> $this->coursesmodel->read_field($course,'curriculum'),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -346,7 +347,6 @@ class Admin_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при добавлении. Не заполены необходимые поля.');
 			else:
-				// --andrewg SHOULD BE NECESSARY REFACTORED
 				if($_FILES['document']['error'] == 1):
 					$this->session->set_userdata('msgr','Ошибка при загрузке документа. Размер принятого файла превысил максимально допустимый размер.');
 					redirect($this->uri->uri_string());
@@ -357,7 +357,6 @@ class Admin_interface extends CI_Controller{
 				endif;
 				$_FILES['document']['name'] = preg_replace('/.+(.)(\.)+/',date("Ymdhis")."\$2", $_FILES['document']['name']);
 				$_POST['document'] = 'documents/lectures/'.$_FILES['document']['name'];
-				// --end refactored
 				if(!$this->fileupload('document',FALSE,'lectures')):
 					$this->session->set_userdata('msgr','Ошибка при загрузке документа.');
 					redirect($this->uri->uri_string());
@@ -406,14 +405,14 @@ class Admin_interface extends CI_Controller{
 			endif;
 			$_FILES['document']['name'] = preg_replace('/.+(.)(\.)+/',date("Ymdhis")."\$2", $_FILES['document']['name']);
 			$document = 'documents/curriculum/'.$_FILES['document']['name'];
-			$olddoc = $this->lecturesmodel->read_field($_POST['idlec'],'curriculum');
+			$olddoc = $this->coursesmodel->read_field($course,'curriculum');
 			if(!$this->fileupload('document',FALSE,'curriculum')):
 				$this->session->set_userdata('msgr','Ошибка при загрузке документа.');
 				redirect($this->uri->uri_string());
 			else:
 				$this->filedelete($olddoc);
 			endif;
-			$this->lecturesmodel->update_curriculum($_POST['idlec'],$document);
+			$this->coursesmodel->update_curriculum($course,$document);
 			$this->session->set_userdata('msgs','Учебный план добавлен успешно.');
 			redirect($this->uri->uri_string());
 		endif;
@@ -509,10 +508,6 @@ class Admin_interface extends CI_Controller{
 		if($course || $trend || $lecture):
 			$filepath = getcwd().'/'.$this->lecturesmodel->read_field($lecture,'document');
 			if(!$this->filedelete($filepath)):
-				$this->session->set_userdata('msgr','Отсутствует файл на диске.');
-			endif;
-			$curriculum = getcwd().'/'.$this->lecturesmodel->read_field($lecture,'curriculum');
-			if(!$this->filedelete($curriculum)):
 				$this->session->set_userdata('msgr','Отсутствует файл на диске.');
 			endif;
 			$result = $this->lecturesmodel->delete_record($lecture);

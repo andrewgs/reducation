@@ -8,6 +8,11 @@ $route[''] = "users_interface/index";
 $route['admin'] 						= "users_interface/admin_login";
 $route['registration/customer'] 		= "users_interface/registration_customer";
 $route['registration/customer/step/1'] 	= "users_interface/registration_customer_step_1";
+$route['registration/customer/step/2'] 	= "users_interface/registration_customer_step_2";
+$route['registration/customer/step/3'] 	= "users_interface/registration_customer_step_3";
+$route['registration/customer/step/4'] 	= "users_interface/registration_customer_step_4";
+$route['registration/customer/finish'] 	= "users_interface/registration_customer_step_4";
+$route['registration/customer/close-registration'] 	= "users_interface/registration_close";
 $route['catalog/courses'] 				= "users_interface/catalog_courses";
 $route['contacts'] 						= "users_interface/contacts";
 

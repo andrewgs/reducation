@@ -11,6 +11,7 @@ class Coursesmodel extends CI_Model{
     var $hours 		= 0;
     var $code  		= '';
 	var $libraries 	= '';
+	var $curriculum	= '';
 
     function __construct(){
         parent::__construct();
@@ -26,6 +27,7 @@ class Coursesmodel extends CI_Model{
 		$this->hours  		= $data['hours'];
 		$this->code  		= $data['code'];
 		$this->libraries  	= '';
+		$this->curriculum  	= '';
 		
 		$this->db->insert('courses',$this);
 		return $this->db->insert_id();
@@ -152,6 +154,15 @@ class Coursesmodel extends CI_Model{
 	function update_library($id,$document){
 		
 		$this->db->set('libraries',$document);
+		$this->db->where('id',$id);
+		
+		$this->db->update('courses');
+		return $this->db->affected_rows();
+	}
+
+	function update_curriculum($id,$curriculum){
+		
+		$this->db->set('curriculum',$curriculum);
 		$this->db->where('id',$id);
 		
 		$this->db->update('courses');

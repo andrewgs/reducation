@@ -142,13 +142,4 @@ class Lecturesmodel extends CI_Model{
 		$data = $query->result_array();
 		return $data[0]['number']+1;
 	}
-	
-	function update_curriculum($id,$document){
-		
-		$this->db->set('curriculum',$document);
-		$this->db->where('id',$id);
-		
-		$this->db->update('lectures');
-		return $this->db->affected_rows();
-	}
 }

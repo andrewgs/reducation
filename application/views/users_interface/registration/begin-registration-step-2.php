@@ -6,12 +6,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
-				<h5>Регистрация заказчика (Шаг 1)</h5>
+				<h5>Регистрация заказчика (Шаг 2)</h5>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
-				<?php $this->load->view('users_interface/registration/customer-form-1');?>
+				<?php $this->load->view('users_interface/registration/customer-form-2');?>
 			</div>
 		<?php if($loginstatus['status'] && $loginstatus['cus']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
@@ -33,11 +33,6 @@
 			$(".digital").keypress(function(e){
 				if(e.which!=8 && e.which!=46 && e.which!=0 && (e.which<48 || e.which>57)){return false;}
 			});
-			
-		<?php if($this->session->userdata('regcustomer')):?>
-			$("#accounttype").val("<?=$this->session->userdata('accounttype');?>");
-		<?php endif;?>
-			
 			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
 		});
 	</script>

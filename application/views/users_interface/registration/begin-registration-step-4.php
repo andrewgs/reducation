@@ -6,12 +6,24 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
-				<h5>Регистрация заказчика (Шаг 1)</h5>
+			<?php if(!$finishreg):?>
+				<h5>Регистрация заказчика (Шаг 4)</h5>
+			<?php else:?>
+				<h5>Регистрация заказчика завершена успешно</h5>
+				<h5>На Ваш E-mail выслано уведомлени.</h5>
+				<h5>Доступ к личному кабинету будет открыт после проверки указанной Вами информации администраторами сайта</h5>
+				<h5>Спасибо что пользуетесь нашим ресурсом.</h5>
+				<p><?=anchor('registration/customer/close-registration','<i class="icon-arrow-right"></i> Продолжить',array('class'=>'btn btn-info'));?></p>
+			<?php endif;?>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
-				<?php $this->load->view('users_interface/registration/customer-form-1');?>
+			<?php if(!$finishreg):?>
+				<?php $this->load->view('users_interface/registration/customer-form-4');?>
+			<?php else:?>
+				
+			<?php endif;?>
 			</div>
 		<?php if($loginstatus['status'] && $loginstatus['cus']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
@@ -29,15 +41,6 @@
 	<?php $this->load->view('users_interface/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#send").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".inpval").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
-			$(".digital").keypress(function(e){
-				if(e.which!=8 && e.which!=46 && e.which!=0 && (e.which<48 || e.which>57)){return false;}
-			});
-			
-		<?php if($this->session->userdata('regcustomer')):?>
-			$("#accounttype").val("<?=$this->session->userdata('accounttype');?>");
-		<?php endif;?>
-			
 			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
 		});
 	</script>
