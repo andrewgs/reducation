@@ -18,6 +18,8 @@ class Audiencemodel extends CI_Model {
     var $signupdate    	= '';
     var $company    	= '';
     var $online    		= 0;
+	var $access			= 0;
+	var $cryptpassword	= '';
 
     function __construct(){
         parent::__construct();
@@ -41,6 +43,8 @@ class Audiencemodel extends CI_Model {
 		$this->signupdate 		= date("Y-m-d");
 		$this->customer 		= $data['customer'];
 		$this->online 			= 0;
+		$this->access 			= 0;
+		$this->cryptpassword	= '';
 		
 		$this->db->insert('audience',$this);
 		return $this->db->insert_id();
@@ -72,7 +76,8 @@ class Audiencemodel extends CI_Model {
 	function auth_user($login,$password){
 		
 		$this->db->where('login',$login);
-		$this->db->where('password',$this->encrypt->encode($insertdata['password']););
+		$this->db->where('password',md5($password));
+		$this->db->where('access',1);
 		$query = $this->db->get('audience',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
@@ -87,6 +92,15 @@ class Audiencemodel extends CI_Model {
 		if(count($data) > 0) return $data[0]['id'];
 		return FALSE;
 	}
+	
+	function update_field($id,$field,$data){
+			
+		$this->db->set($field,$data);
+		$this->db->where('id',$id);
+		$this->db->update('audience');
+		return $this->db->affected_rows();
+	}
+	
 	
 	function user_id($field,$parameter){
 			

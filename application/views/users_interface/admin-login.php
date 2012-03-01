@@ -26,7 +26,6 @@
 				if(err){event.preventDefault();}
 			});
 			$("#reset").click(function(){location.href='<?=$baseurl;?>';})
-			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
 		});
 	</script>
 </body>

@@ -19,7 +19,7 @@
 		</div>
 	</fieldset>
 	<div class="modal-footer">
-		<button class="btn">Отменить</button>
+		<button class="btn" id="cancel" data-toggle="modal" href="#cancelRegistration">Отменить</button>
 		<button class="btn btn-primary" type="submit" id="send" name="submit" value="send">Далее <i class="icon-forward icon-white"></i></button>
 		<?=anchor('registration/customer/step/2','<i class="icon-backward icon-white"></i> Назад',array('class'=>'btn btn-primary'));?>
 	</div>

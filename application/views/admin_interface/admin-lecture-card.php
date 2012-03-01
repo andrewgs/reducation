@@ -41,7 +41,6 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#download").click(function(){window.open("<?=$baseurl.$document;?>")});
-			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
 		});
 	</script>
 </body>

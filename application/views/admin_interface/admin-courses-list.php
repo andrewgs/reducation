@@ -113,7 +113,6 @@
 			$(".close").alert();
 			$("#DelCourse").click(function(){location.href='<?=$baseurl;?>admin-panel/references/courses/delete-course/'+DCourse+'/trend/'+DTrend;});
 			$("#addCourse").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$("#ViewTrend").removeAttr('checked');});
-			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
 		});
 	</script>
 </body>

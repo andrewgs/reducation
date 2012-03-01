@@ -3,4 +3,5 @@
 <script src="<?=$baseurl;?>js/bootstrap.js"></script>
 <script type="text/javascript">
 		$("li[num='<?=$this->uri->segment(3);?>']").addClass('active');
+		$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
 </script>

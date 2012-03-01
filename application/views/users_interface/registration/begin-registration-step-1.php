@@ -22,6 +22,7 @@
 		<?php if($loginstatus['status'] && $loginstatus['adm']):?>
 			<?php $this->load->view('users_interface/rightbaradm');?>
 		<?php endif;?>
+		<?php $this->load->view('users_interface/modal/registration-cancel');?>
 		</div>
 		<hr>
 	<?php $this->load->view('users_interface/footer');?>	
@@ -38,7 +39,7 @@
 			$("#accounttype").val("<?=$this->session->userdata('accounttype');?>");
 		<?php endif;?>
 			
-			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
+			$("#YesCancel").click(function(){location.href="<?=$baseurl;?>registration/customer/cancel-registration"});
 		});
 	</script>
 </body>

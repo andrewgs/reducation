@@ -7,6 +7,21 @@
 		<div class="row">
 			<div class="span9">
 				<h5>Оформление заявки на повышение квалификации</h5>
+				<div>
+					<?php $this->load->view('alert_messages/alert-error');?>
+					<?php $this->load->view('alert_messages/alert-success');?>
+				</div>
+				<pre><strong>Уважаемый заказчик!</strong>
+				
+Для оформления заявки на повышениея квалификации Вам необходимо пройти систему регистрации.
+
+Все поля являются обязательными для заполнения. После заполнения полей нажмите кнопку "Далее". 
+Чтобы вернуться и изменить данные сделаны на предыдущем шаге нажмите "Назад".
+
+По завершению регистации будет выслано письмо-уведомление на указанный Вами E-mail.
+
+<strong>Желаем Вам удачи!</strong> 
+</pre>
 				<p><?=anchor('registration/customer/step/1','<i class="icon-arrow-right"></i> Начать оформление',array('class'=>'btn btn-info'));?></p>
 			</div>
 		<?php if($loginstatus['status'] && $loginstatus['cus']):?>
@@ -23,5 +38,19 @@
 	<?php $this->load->view('users_interface/footer');?>	
 	</div>
 	<?php $this->load->view('users_interface/scripts');?>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#send").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".inpval").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
+			$(".digital").keypress(function(e){
+				if(e.which!=8 && e.which!=46 && e.which!=0 && (e.which<48 || e.which>57)){return false;}
+			});
+			
+		<?php if($this->session->userdata('regcustomer')):?>
+			$("#accounttype").val("<?=$this->session->userdata('accounttype');?>");
+		<?php endif;?>
+			
+			$("#YesCancel").click(function(){location.href="<?=$baseurl;?>registration/customer/cancel-registration"});
+		});
+	</script>
 </body>
 </html>

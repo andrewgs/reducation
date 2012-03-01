@@ -22,6 +22,7 @@
 		<?php if($loginstatus['status'] && $loginstatus['adm']):?>
 			<?php $this->load->view('users_interface/rightbaradm');?>
 		<?php endif;?>
+		<?php $this->load->view('users_interface/modal/registration-cancel');?>
 		</div>
 		<hr>
 	<?php $this->load->view('users_interface/footer');?>	
@@ -33,7 +34,7 @@
 			$(".digital").keypress(function(e){
 				if(e.which!=8 && e.which!=46 && e.which!=0 && (e.which<48 || e.which>57)){return false;}
 			});
-			$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
+			$("#YesCancel").click(function(){location.href="<?=$baseurl;?>registration/customer/cancel-registration"});
 		});
 	</script>
 </body>

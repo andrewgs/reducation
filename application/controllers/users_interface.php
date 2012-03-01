@@ -11,6 +11,7 @@ class Users_interface extends CI_Controller{
 		parent::__construct();
 		$this->load->model('adminmodel');
 		$this->load->model('customersmodel');
+		$this->load->model('audiencemodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -27,7 +28,7 @@ class Users_interface extends CI_Controller{
 				endif;
 			endif;
 			
-			if($this->session->userdata('logon') != md5($userinfo['login'].$userinfo['password'])):
+			if($this->session->userdata('logon') != md5($userinfo['login'])):
 				$this->loginstatus['status'] = FALSE;
 				$this->user = array();
 			endif;
@@ -42,11 +43,50 @@ class Users_interface extends CI_Controller{
 					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user
+					'userinfo'		=> $this->user,
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		if($this->input->post('lsubmit')):
+			$login = trim($this->input->post('login'));
+			$pass = trim($this->input->post('password'));
+			if(!$login || !$pass):
+				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
+				redirect($this->uri->uri_string());
+			else:
+				$utype = substr($login,0,3);
+				switch ($utype):
+					case 'CUS':  
+								$user = $this->customersmodel->auth_user($login,$pass);
+								if(!$user):
+									$this->session->set_userdata('msgr','Ошибка. Не верные данные для авторизации. В доступе отказано.');
+									redirect($this->uri->uri_string());
+								endif;
+                   				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'cus'));
+                   				redirect($this->uri->uri_string());
+								break;
+					case 'AUD': 
+								$user = $this->audiencemodel->auth_user($login,$pass);
+								if(!$user):
+									$this->session->set_userdata('msgr','Ошибка. Не верные данные для авторизации. В доступе отказано.');
+									redirect($this->uri->uri_string());
+								endif;
+                   				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'cus'));
+                   				redirect($this->uri->uri_string());
+								break;
+					default : 
+								$this->session->set_userdata('msgr','Ошибка. Не верные данные для авторизации.');
+								redirect($this->uri->uri_string());break;
+				endswitch;
+				exit; 
+			endif;
+		endif;
 		$this->load->view("users_interface/index",$pagevar);
 	}
-
+	
 	public function admin_login(){
 	
 		$pagevar = array(
@@ -83,13 +123,19 @@ class Users_interface extends CI_Controller{
 		endif;
 		$this->load->view("users_interface/admin-login",$pagevar);
 	}
-
+	
+	public function logoff(){
+	
+		$this->session->sess_destroy();
+        redirect('');
+	}
+	
 	public function definition_model($utype){
 		
 		$model = '';
 		switch ($utype):
 			case 'adm': $model = 'adminmodel'; break;
-			case 'cus': $model = 'companymodel'; break;
+			case 'cus': $model = 'customersmodel'; break;
 			case 'aud': $model = 'audiencemodel'; break;
 		endswitch;
 		return $model;
@@ -103,13 +149,22 @@ class Users_interface extends CI_Controller{
 					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user
+					'userinfo'		=> $this->user,
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
 		$this->load->view("users_interface/registration/begin-registration",$pagevar);
 		
 	}
 	
 	public function registration_customer_step_1(){
+		
+		if($this->session->userdata('logon')):
+			$this->session->set_userdata('msgr','Авторизованные пользователи не могут оформлять заявки на регистрацию');
+			redirect('registration/customer');
+		endif;
 		
 		$pagevar = array(
 					'description'	=> '',
@@ -234,7 +289,6 @@ class Users_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-	
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
 			$customer = $this->session->all_userdata();
@@ -242,7 +296,8 @@ class Users_interface extends CI_Controller{
 			$login = 'CUS000'.$id;
 			$password = $this->randomPassword(8);
 			$this->customersmodel->update_field($id,'login',$login);
-			$this->customersmodel->update_field($id,'password',$password);
+			$this->customersmodel->update_field($id,'password',md5($password));
+			$this->customersmodel->update_field($id,'cryptpassword',$this->encrypt->encode($password));
 			
 			$email = $this->session->userdata('personemail');
 			ob_start();
@@ -288,6 +343,12 @@ class Users_interface extends CI_Controller{
 		else:
 			redirect('registration/customer');
 		endif;	
+	}
+	
+	public function registration_cancel(){
+	
+		$this->session->unset_userdata(array('finishregcustomer'=>'','regcustomer'=>'','step'=>'','organization'=>'','inn'=>'','kpp'=>'','accounttype'=>'','accountnumber'=>'','uraddress'=>'','bank'=>'','accountkornumber'=>'','bik'=>'','uraddress'=>'','postaddress'=>'','personemail'=>'','person'=>''));
+		redirect('registration/customer');
 	}
 	
 	public function catalog_courses(){

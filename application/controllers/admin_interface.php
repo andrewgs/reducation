@@ -10,6 +10,8 @@ class Admin_interface extends CI_Controller{
 		
 		parent::__construct();
 		$this->load->model('adminmodel');
+		$this->load->model('customersmodel');
+		$this->load->model('audiencemodel');
 		$this->load->model('trendsmodel');
 		$this->load->model('coursesmodel');
 		$this->load->model('chaptermodel');
@@ -56,7 +58,7 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'РосЦентр ДПО - Панель администрирования',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3)
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
 			);
 		$this->load->view("admin_interface/admin-panel",$pagevar);
 	}
@@ -69,7 +71,7 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'РосЦентр ДПО - Личный кабинет',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3)
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
 			);
 		$this->load->view("admin_interface/admin-cabinet",$pagevar);
 	}
@@ -92,7 +94,7 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'trends'		=> $this->trendsmodel->read_records(),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -172,7 +174,7 @@ class Admin_interface extends CI_Controller{
 					'userinfo'		=> $this->user,
 					'trends'		=> $this->trendsmodel->read_records(),
 					'courses'		=> $this->coursesmodel->read_records(),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -283,7 +285,7 @@ class Admin_interface extends CI_Controller{
 					'lectures'		=> $this->lecturesmodel->read_records($course),
 					'trend'			=> $this->trendsmodel->read_field($trend,'code'),
 					'course'		=> $this->coursesmodel->read_field($course,'code'),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'finaltest'		=> $this->testsmodel->read_record_course($course),
 					'cntchapter'	=> $this->chaptermodel->count_records($course),
 					'document'		=> $this->coursesmodel->read_field($course,'libraries'),
@@ -580,7 +582,7 @@ class Admin_interface extends CI_Controller{
 					'lecture'		=> $this->lecturesmodel->read_record($lecture),
 					'trend'			=> $this->trendsmodel->read_field($trend,'code'),
 					'course'		=> $this->coursesmodel->read_field($course,'code'),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'filesize'		=> 'Размер не определен.',
 					'filename'		=> 'Имя не определено. Возможно файл отсутствует на диске или не доступен',
 					'fileextension'	=> 'Hасширение не определено.',
@@ -651,7 +653,7 @@ class Admin_interface extends CI_Controller{
 					'userinfo'		=> $this->user,
 					'trend'			=> $this->trendsmodel->read_field($trend,'code'),
 					'course'		=> $this->coursesmodel->read_field($course,'code'),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'questions'		=> $this->testquestionsmodel->read_records($test),
 					'answers'		=> $this->testanswersmodel->read_records($test),
 					'test'			=> $this->testsmodel->read_record($test),
@@ -793,7 +795,7 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'РосЦентр ДПО - Личные сообщения',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3)
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
 			);
 		$this->load->view("admin_interface/admin-private-messages",$pagevar);
 	}
@@ -806,7 +808,7 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'РосЦентр ДПО - Техническая поддержка',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3)
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
 			);
 		$this->load->view("admin_interface/admin-support-messages",$pagevar);
 	}
@@ -819,11 +821,67 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'РосЦентр ДПО - Заявки',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3)
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
 			);
 		$this->load->view("admin_interface/admin-applications-messages",$pagevar);
 	}
 
+	/******************************************************** users ***********************************************************/
+	
+	public function users_customer(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Заказчики',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'customers'		=> $this->customersmodel->read_records()
+			);
+		$this->load->view("admin_interface/admin-users-customer",$pagevar);
+	}
+	
+	public function customer_access(){
+		
+		$customer = $this->input->post('customer');
+		if(!$customer) show_404();
+		$access = $this->input->post('access');
+		if(!$access) $access = 0;
+		$this->customersmodel->set_access($customer,$access);
+	}
+	
+	public function delete_customer(){
+		
+		$customer = $this->uri->segment(5);
+		if($customer):
+			$result = $this->customersmodel->delete_record($customer);
+			if($result):
+				$this->session->set_userdata('msgs','Заказчик удален успешно.');
+			else:
+				$this->session->set_userdata('msgr','Заказчик не удален.');
+			endif;
+			redirect('admin-panel/users/customer');
+		else:
+			show_404();
+		endif;
+	}
+	
+	public function users_audience(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Личные Слушатели',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
+			);
+		$this->load->view("admin_interface/admin-users-audience",$pagevar);
+	}
+	
+	/******************************************************** functions ***********************************************************/	
+	
 	public function fileupload($userfile,$overwrite,$catalog){
 		
 		$config['upload_path'] 		= './documents/'.$catalog.'/';

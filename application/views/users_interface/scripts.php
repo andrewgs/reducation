@@ -8,4 +8,5 @@
 			<?php $nav = 'main';?>
 		<?php endif;?>
 		$("li[nav='<?=$nav;?>']").addClass('active');
+		$("#msgclose").click(function(){$("#msgalert").fadeOut(1000,function(){$(this).remove();});});
 </script>

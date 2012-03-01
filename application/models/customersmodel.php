@@ -19,6 +19,8 @@ class Customersmodel extends CI_Model {
 	var $online			= 0;
 	var $accountnumber	= 0;
 	var $accountkornumber= 0;
+	var $access			= 0;
+	var $cryptpassword	= '';
 
 	function __construct(){
 		parent::__construct();
@@ -42,6 +44,8 @@ class Customersmodel extends CI_Model {
 		$this->online 			= 0;
 		$this->accountnumber	= $data['accountnumber'];
 		$this->accountkornumber	= $data['accountkornumber'];
+		$this->access			= 0;
+		$this->cryptpassword	= '';
 		
 		$this->db->insert('customers',$this);
 		return $this->db->insert_id();
@@ -53,6 +57,17 @@ class Customersmodel extends CI_Model {
 		$query = $this->db->get('customers',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
+		return NULL;
+	}
+	
+	function read_records(){
+		
+		$this->db->order_by('access','DESC');
+		$this->db->order_by('signupdate','DESC');
+		$this->db->order_by('id','DESC');
+		$query = $this->db->get('customers');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
 		return NULL;
 	}
 	
@@ -73,7 +88,8 @@ class Customersmodel extends CI_Model {
 	function auth_user($login,$password){
 		
 		$this->db->where('login',$login);
-		$this->db->where('password',$this->encrypt->encode($insertdata['password']));
+		$this->db->where('password',md5($password));
+		$this->db->where('access',1);
 		$query = $this->db->get('customers',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
@@ -120,5 +136,15 @@ class Customersmodel extends CI_Model {
 		$this->db->where('id',$id);
 		$this->db->delete('customers');
 		return $this->db->affected_rows();
-	}	
+	}
+	
+	function set_access($customer,$access){
+		
+		$this->db->set('access',$access);
+		$this->db->where('id',$customer);
+		
+		$this->db->update('customers');
+		return $this->db->affected_rows();
+	}
+	
 }

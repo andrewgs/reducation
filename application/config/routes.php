@@ -6,6 +6,7 @@ $route['404_override'] = '';
 /***************************************************	USERS INTRERFACE	***********************************************/
 $route[''] = "users_interface/index";
 $route['admin'] 						= "users_interface/admin_login";
+$route['logoff'] 						= "users_interface/logoff";
 $route['registration/customer'] 		= "users_interface/registration_customer";
 $route['registration/customer/step/1'] 	= "users_interface/registration_customer_step_1";
 $route['registration/customer/step/2'] 	= "users_interface/registration_customer_step_2";
@@ -13,6 +14,7 @@ $route['registration/customer/step/3'] 	= "users_interface/registration_customer
 $route['registration/customer/step/4'] 	= "users_interface/registration_customer_step_4";
 $route['registration/customer/finish'] 	= "users_interface/registration_customer_step_4";
 $route['registration/customer/close-registration'] 	= "users_interface/registration_close";
+$route['registration/customer/cancel-registration'] = "users_interface/registration_cancel";
 $route['catalog/courses'] 				= "users_interface/catalog_courses";
 $route['contacts'] 						= "users_interface/contacts";
 
@@ -44,3 +46,9 @@ $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/
 $route['admin-panel/messages/private']		= "admin_interface/private_messages";
 $route['admin-panel/messages/support']		= "admin_interface/support_messages";
 $route['admin-panel/messages/applications']	= "admin_interface/applications_messages";
+
+/*===========================================================  users  =====================================================*/
+$route['admin-panel/users/customer']						= "admin_interface/users_customer";
+$route['admin-panel/users/customer/set-customer-access']	= "admin_interface/customer_access";
+$route['admin-panel/users/customer/delete-customer/:num']	= "admin_interface/delete_customer";
+$route['admin-panel/users/audience']						= "admin_interface/users_audience";

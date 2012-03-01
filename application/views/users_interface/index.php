@@ -31,6 +31,9 @@
 					</div>
 				</div>
 			</div>
+		<?php if(!$loginstatus['status']):?>
+			<?php $this->load->view('users_interface/rightbarauth');?>
+		<?php endif;?>
 		<?php if($loginstatus['status'] && $loginstatus['cus']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
 		<?php endif;?>
@@ -45,5 +48,11 @@
 	<?php $this->load->view('users_interface/footer');?>	
 	</div>
 	<?php $this->load->view('users_interface/scripts');?>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#lsend").click(function(event){var err = false;$(".help-inline").hide();$(".focused").each(function(i,element){if($(this).val()==''){$(this).siblings(".help-inline").html('<i class="icon-exclamation-sign" title="Поле не может быть пустым"></i>').show();err = true;}});if(err){event.preventDefault()};});
+			$("#authCancel").click(function(){$(".help-inline").html('').hide();});
+		});
+	</script>
 </body>
 </html>
