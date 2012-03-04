@@ -82,6 +82,16 @@ class Coursesmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_trend_records($trend){
+		
+		$this->db->where('trend',$trend);
+		$this->db->where('view',1);
+		$query = $this->db->get('courses');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
 	function read_new_courses($count){
 		
 		$this->db->order_by('id','DESC');

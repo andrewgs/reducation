@@ -19,11 +19,15 @@ class Admin_interface extends CI_Controller{
 		$this->load->model('testsmodel');
 		$this->load->model('testquestionsmodel');
 		$this->load->model('testanswersmodel');
+		$this->load->model('unionmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
 			$this->user['uid'] = $this->session->userdata('userid');
 			if($this->user['uid']):
+				if($this->session->userdata('utype') != 'adm'):
+					redirect('');
+				endif;
 				$userinfo = $this->adminmodel->read_record($this->user['uid']);
 				if($userinfo):
 					$this->user['ulogin'] 			= $userinfo['login'];
@@ -36,7 +40,7 @@ class Admin_interface extends CI_Controller{
 				endif;
 			endif;
 			
-			if($this->session->userdata('logon') != md5($userinfo['login'].$userinfo['password'])):
+			if($this->session->userdata('logon') != md5($userinfo['login'])):
 				$this->loginstatus['status'] = FALSE;
 				redirect('');
 			endif;
@@ -83,7 +87,7 @@ class Admin_interface extends CI_Controller{
         redirect('');
 	}
 
-	/******************************************************** references **********************************************************/
+	/******************************************************** references ****************************************************/
 	
 	public function references_trends(){
 		
@@ -785,7 +789,7 @@ class Admin_interface extends CI_Controller{
 		endif;
 	}
 	
-	/******************************************************** messages ***********************************************************/
+	/******************************************************** messages ********************************************************/
 	
 	public function private_messages(){
 		
@@ -857,6 +861,7 @@ class Admin_interface extends CI_Controller{
 		if($customer):
 			$result = $this->customersmodel->delete_record($customer);
 			if($result):
+				$this->audiencemodel->delete_records($customer);
 				$this->session->set_userdata('msgs','Заказчик удален успешно.');
 			else:
 				$this->session->set_userdata('msgr','Заказчик не удален.');
@@ -872,15 +877,41 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Личные Слушатели',
+					'title'			=> 'РосЦентр ДПО - Слушатели',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'audience'		=> $this->unionmodel->read_audience()
 			);
 		$this->load->view("admin_interface/admin-users-audience",$pagevar);
 	}
 	
-	/******************************************************** functions ***********************************************************/	
+	public function audience_access(){
+		
+		$audience = $this->input->post('audience');
+		if(!$audience) show_404();
+		$access = $this->input->post('access');
+		if(!$access) $access = 0;
+		$this->audiencemodel->set_access($audience,$access);
+	}
+	
+	public function delete_audience(){
+		
+		$audience = $this->uri->segment(5);
+		if($audience):
+			$result = $this->audiencemodel->delete_record($audience);
+			if($result):
+				$this->session->set_userdata('msgs','Слушатель удален успешно.');
+			else:
+				$this->session->set_userdata('msgr','Слушатель не удален.');
+			endif;
+			redirect('admin-panel/users/audience');
+		else:
+			show_404();
+		endif;
+	}
+	
+	/******************************************************** functions ******************************************************/	
 	
 	public function fileupload($userfile,$overwrite,$catalog){
 		

@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Audiencemodel extends CI_Model {
+class Audiencemodel extends CI_Model{
 
     var $id   			= 0;
     var $login 			= '';
@@ -8,42 +8,43 @@ class Audiencemodel extends CI_Model {
     var $lastname   	= '';
     var $name    		= '';
     var $middlename   	= '';
-    var $country    	= '';
-    var $area    		= '';
-    var $city    		= '';
+    var $address    	= '';
     var $graduated    	= '';
     var $year    		= '';
-    var $diplom    		= '';
+    var $documentnumber	= '';
     var $specialty    	= '';
     var $signupdate    	= '';
-    var $company    	= '';
+    var $customer    	= '';
     var $online    		= 0;
 	var $access			= 0;
 	var $cryptpassword	= '';
+	var $personaemail	= '';
+	var $personaphone	= '';
+	var $qualification	= '';
 
     function __construct(){
         parent::__construct();
     }
 	
-	function insert_record($data){
+	function insert_record($customer,$data){
 			
-		$this->login 			= $data['login'];
-		$this->password			= $this->encrypt->encode($insertdata['password']);
+		$this->login 			= '';
+		$this->password			= '';
 		$this->lastname 		= $data['lastname'];
 		$this->name 			= $data['name'];
 		$this->middlename		= $data['middlename'];
-		$this->country 			= $data['country'];
-		$this->area 			= $data['area'];
-		$this->city 			= $data['city'];
+		$this->address 			= $data['address'];
+		$this->personaemail		= $data['personaemail'];
+		$this->personaphone		= $data['personaphone'];
 		$this->graduated		= $data['graduated'];
 		$this->year 			= $data['year'];
-		$this->diplom 			= $data['diplom'];
+		$this->documentnumber 	= $data['documentnumber'];
 		$this->specialty 		= $data['specialty'];
-		$this->uconfirmation	= $data['confirm'];
+		$this->qualification 	= $data['qualification'];
 		$this->signupdate 		= date("Y-m-d");
-		$this->customer 		= $data['customer'];
+		$this->customer 		= $customer;
 		$this->online 			= 0;
-		$this->access 			= 0;
+		$this->access 			= 1;
 		$this->cryptpassword	= '';
 		
 		$this->db->insert('audience',$this);
@@ -56,6 +57,29 @@ class Audiencemodel extends CI_Model {
 		$query = $this->db->get('audience',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
+		return NULL;
+	}
+	
+	function read_view_record($customer){
+		
+		$this->db->where('access',1);
+		$this->db->where('customer',$customer);
+		$this->db->order_by('lastname');
+		$this->db->order_by('id');
+		$query = $this->db->get('audience');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
+	function read_customer_record($customer){
+		
+		$this->db->where('customer',$customer);
+		$this->db->order_by('lastname');
+		$this->db->order_by('id');
+		$query = $this->db->get('audience');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
 		return NULL;
 	}
 	
@@ -101,7 +125,6 @@ class Audiencemodel extends CI_Model {
 		return $this->db->affected_rows();
 	}
 	
-	
 	function user_id($field,$parameter){
 			
 		$this->db->where($field,$parameter);
@@ -125,5 +148,22 @@ class Audiencemodel extends CI_Model {
 		$this->db->where('id',$id);
 		$this->db->delete('audience');
 		return $this->db->affected_rows();
-	}	
+	}
+	
+	function delete_records($customer){
+	
+		$this->db->where('customer',$customer);
+		$this->db->delete('audience');
+		return $this->db->affected_rows();
+	}
+	
+	function set_access($customer,$access){
+		
+		$this->db->set('access',$access);
+		$this->db->where('id',$customer);
+		
+		$this->db->update('audience');
+		return $this->db->affected_rows();
+	}
+	
 }

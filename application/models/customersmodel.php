@@ -71,6 +71,26 @@ class Customersmodel extends CI_Model {
 		return NULL;
 	}
 	
+	function update_record($id,$data){
+		
+		$this->db->set('organization',htmlspecialchars($data['organization']));
+		$this->db->set('inn',$data['inn']);
+		$this->db->set('kpp',$data['kpp']);
+		$this->db->set('uraddress',strip_tags($data['uraddress']));
+		$this->db->set('postaddress',strip_tags($data['postaddress']));
+		$this->db->set('bik',$data['bik']);
+		$this->db->set('bank',strip_tags($data['bank']));
+		$this->db->set('person',htmlspecialchars($data['person']));
+		$this->db->set('personemail',$data['personemail']);
+		$this->db->set('accounttype',$data['accounttype']);
+		$this->db->set('accountnumber',$data['accountnumber']);
+		$this->db->set('accountkornumber',$data['accountkornumber']);
+		$this->db->where('id',$id);
+		
+		$this->db->update('customers');
+		return $this->db->affected_rows();
+	}
+	
 	function active_user($id){
 		
 		$this->db->set('online',1);

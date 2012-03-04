@@ -67,6 +67,16 @@ class Trendsmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_view_records(){
+		
+		$this->db->where('view',1);
+		$this->db->where('courses >',0);
+		$query = $this->db->get('trends');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
 	function read_field($id,$field){
 			
 		$this->db->where('id',$id);

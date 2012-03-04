@@ -57,9 +57,9 @@ class Users_interface extends CI_Controller{
 				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
 				redirect($this->uri->uri_string());
 			else:
-				$utype = substr($login,0,3);
+				$utype = substr(strtolower($login),0,3);
 				switch ($utype):
-					case 'CUS':  
+					case 'cus':  
 								$user = $this->customersmodel->auth_user($login,$pass);
 								if(!$user):
 									$this->session->set_userdata('msgr','Ошибка. Не верные данные для авторизации. В доступе отказано.');
@@ -68,7 +68,7 @@ class Users_interface extends CI_Controller{
                    				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'cus'));
                    				redirect($this->uri->uri_string());
 								break;
-					case 'AUD': 
+					case 'aud': 
 								$user = $this->audiencemodel->auth_user($login,$pass);
 								if(!$user):
 									$this->session->set_userdata('msgr','Ошибка. Не верные данные для авторизации. В доступе отказано.');
@@ -107,7 +107,8 @@ class Users_interface extends CI_Controller{
 				$this->session->set_userdata('msg','Имя пользователя и пароль не совпадают');
 				redirect($this->uri->uri_string());
 			else:
-				$session_data = array('logon'=>md5($userinfo['login'].$userinfo['password']),'userid'=>$userinfo['id'],'utype'=>substr($userinfo['login'],0,3));
+				$session_data = array('logon'=>md5($userinfo['login']),'userid'=>$userinfo['id'],'utype'=>'adm');
+				$this->adminmodel->active_user($userinfo['id']);
                 $this->session->set_userdata($session_data);
                 redirect("admin-panel/actions/control");
 			endif;
@@ -125,22 +126,13 @@ class Users_interface extends CI_Controller{
 	}
 	
 	public function logoff(){
-	
+		
+		$model = $this->definition_model($this->session->userdata('utype'));
+		$this->$model->deactive_user($this->session->userdata('userid'));
 		$this->session->sess_destroy();
         redirect('');
 	}
 	
-	public function definition_model($utype){
-		
-		$model = '';
-		switch ($utype):
-			case 'adm': $model = 'adminmodel'; break;
-			case 'cus': $model = 'customersmodel'; break;
-			case 'aud': $model = 'audiencemodel'; break;
-		endswitch;
-		return $model;
-	}
-
 	public function registration_customer(){
 		
 		$pagevar = array(
@@ -205,7 +197,10 @@ class Users_interface extends CI_Controller{
 		if(!$this->session->userdata('regcustomer')):
 			redirect('registration/customer');
 		endif;
-	
+		if($this->session->userdata('logon')):
+			$this->session->set_userdata('msgr','Авторизованные пользователи не могут оформлять заявки на регистрацию');
+			redirect('registration/customer');
+		endif;
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
@@ -239,7 +234,10 @@ class Users_interface extends CI_Controller{
 		if(!$this->session->userdata('regcustomer')):
 			redirect('registration/customer');
 		endif;
-		
+		if($this->session->userdata('logon')):
+			$this->session->set_userdata('msgr','Авторизованные пользователи не могут оформлять заявки на регистрацию');
+			redirect('registration/customer');
+		endif;
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
@@ -276,6 +274,10 @@ class Users_interface extends CI_Controller{
 				redirect('registration/customer');
 			endif;
 		endif;
+		if($this->session->userdata('logon')):
+			$this->session->set_userdata('msgr','Авторизованные пользователи не могут оформлять заявки на регистрацию');
+			redirect('registration/customer');
+		endif;
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
@@ -293,7 +295,7 @@ class Users_interface extends CI_Controller{
 			$_POST['submit'] = NULL;
 			$customer = $this->session->all_userdata();
 			$id = $this->customersmodel->insert_record($customer);
-			$login = 'CUS000'.$id;
+			$login = 'cus000'.$id;
 			$password = $this->randomPassword(8);
 			$this->customersmodel->update_field($id,'login',$login);
 			$this->customersmodel->update_field($id,'password',md5($password));
@@ -302,15 +304,29 @@ class Users_interface extends CI_Controller{
 			$email = $this->session->userdata('personemail');
 			ob_start();
 			?>
-	Здравствуйте  <?=$this->session->userdata('person');?>
-	Вами была произведена регистрация на сайте reducation.ru.
-	
-	Ваши данные для доступа к личному кабинету: 
-	Логин: <?=$login;?>
-	Пароль: <?=$password;?>
-	
-	Активация учетной записи займет не более суток.
-	По ее завершению Вы будете проинформированы по E-mail. Спасибо что пользуетесь нашим ресурсом.
+			
+			<strong>Здравствуйте  <?=$this->session->userdata('person');?></strong>
+			
+Поздравляем! Вы успешно завершили оформление заявки.
+
+Вам доступны следующие документы:
+
+<ul>
+	<li>Счёт</li>
+	<li>Договор на оказание образовательных услуг</li>
+</ul>
+
+После оплаты заказа мы оформим весь пакет документов, а абитуриенты будут зачислены на обучение. Обучение будет осуществляться через личный кабинет слушателя.
+
+Для входа в личный кабинет используйте соответствующий логин и пароль.
+
+Логин: <?=$login;?>
+Пароль: <?=$password;?>
+
+Пользуйтесь в разделом «Мои заказы» на правой панели, чтобы следить за состоянием Ваших заказов.
+
+Желаем Вам удачи! 
+
 			<?
 			$mess['msg'] = ob_get_clean();
 			
@@ -376,6 +392,17 @@ class Users_interface extends CI_Controller{
 					'userinfo'		=> $this->user
 			);
 		$this->load->view("users_interface/contacts",$pagevar);
+	}
+	
+	public function definition_model($utype){
+		
+		$model = '';
+		switch ($utype):
+			case 'adm': $model = 'adminmodel'; break;
+			case 'cus': $model = 'customersmodel'; break;
+			case 'aud': $model = 'audiencemodel'; break;
+		endswitch;
+		return $model;
 	}
 	
 	public function randomPassword($length,$allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789"){

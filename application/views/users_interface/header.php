@@ -15,7 +15,7 @@
 			</div>
 		<?php if($loginstatus['status']):?>
 			<div class="span3">
-				<p class="navbar-text pull-right">Вы вошли как <?=anchor($this->uri->uri_string(),$userinfo['ulogin']);?></p>
+				<p class="navbar-text pull-right">Вы вошли как <?=anchor($this->uri->uri_string(),strtoupper($userinfo['ulogin']));?></p>
 			</div>
 		<?php endif;?>
 		</div>

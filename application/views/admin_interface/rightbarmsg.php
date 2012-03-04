@@ -19,7 +19,7 @@
 			<li><?=anchor('','Главная');?></li>
 			<li num="control"><?=anchor('admin-panel/actions/control','Панель управления');?></li>
 			<li num="cabinet"><?=anchor('admin-panel/actions/cabinet','Личный кабинет');?></li>
-			<li><?=anchor('admin-logoff','Завершить сеанс');?></li>
+			<li><?=anchor('admin-panel/logoff','Завершить сеанс');?></li>
 		</ul>
 	</div>
 </div>

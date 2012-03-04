@@ -18,9 +18,29 @@ $route['registration/customer/cancel-registration'] = "users_interface/registrat
 $route['catalog/courses'] 				= "users_interface/catalog_courses";
 $route['contacts'] 						= "users_interface/contacts";
 
+/***************************************************	CUSTOMER INTRERFACE	***********************************************/
+
+$route['customer/edit/profile']									= "customer_interface/customer_profile";
+$route['customer/registration/audience']						= "customer_interface/registration_audience";
+$route['customer/registration/ordering']						= "customer_interface/registration_ordering";
+$route['customer/audience/list']								= "customer_interface/audience_list";
+$route['customer/audience/orders']								= "customer_interface/orders_list";
+$route['customer/audience/orders/delete-order/:num']			= "customer_interface/orders_delete_order";
+$route['customer/audience/orders/order-information/id/:num']	= "customer_interface/orders_order_information";
+
+/*==========================================================  ordering  ===================================================*/
+
+$route['customer/registration/ordering/step/1']	= "customer_interface/registration_ordering_step1";
+$route['customer/registration/ordering/step/2']	= "customer_interface/registration_ordering_step2";
+$route['customer/registration/ordering/step/3']	= "customer_interface/registration_ordering_step3";
+
+$route['customer/registration/ordering/step/2/delete-course/:num']	= "customer_interface/registration_delete_course";
+$route['customer/registration/ordering/cancel-registration']		= "customer_interface/registration_ordering_cancel";
+
+$route['customer/registration/ordering/step/2/course/:num/delete-audience/:num']	= "customer_interface/registration_delete_audience";
 
 /***************************************************	ADMIN INTRERFACE	***********************************************/
-$route['admin-logoff'] = "admin_interface/admin_logoff";
+$route['admin-panel/logoff'] 				= "admin_interface/admin_logoff";
 
 $route['admin-panel/actions/control'] 		= "admin_interface/admin_panel";
 $route['admin-panel/actions/cabinet'] 		= "admin_interface/admin_cabinet";
@@ -52,3 +72,5 @@ $route['admin-panel/users/customer']						= "admin_interface/users_customer";
 $route['admin-panel/users/customer/set-customer-access']	= "admin_interface/customer_access";
 $route['admin-panel/users/customer/delete-customer/:num']	= "admin_interface/delete_customer";
 $route['admin-panel/users/audience']						= "admin_interface/users_audience";
+$route['admin-panel/users/audience/set-audience-access']	= "admin_interface/audience_access";
+$route['admin-panel/users/audience/delete-audience/:num']	= "admin_interface/delete_audience";

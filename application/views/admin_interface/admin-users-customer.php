@@ -15,7 +15,7 @@
 					<tbody>
 					<?php for($i=0,$num=1;$i<count($customers);$i++):?>
 						<tr>
-							<td class="short"><a title="Название" class="none"><?=$num;?></a></td>
+							<td class="short"><a title="Порядковый номер" class="none"><?=$num;?></a></td>
 							<td><a href="" title="Название" class="none"><?=$customers[$i]['organization'];?></a></td>
 							<td><a href="" title="Представитель" class="none"><?=$customers[$i]['person'].' ('.$customers[$i]['personemail'].')';?></a></td>
 						<?php if($customers[$i]['access']):?>

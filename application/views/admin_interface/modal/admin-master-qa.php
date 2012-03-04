@@ -13,7 +13,7 @@
 					<span class="help-inline"  style="display:none;">&nbsp;</span>
 				</div>
 			</div>
-			<?php for ( $i = 0; $i < 5; $i++ ): ?>
+			<?php for($i=0;$i<5;$i++): ?>
 			<div class="control-group">
 				<label for="answer<?=$i?>" class="control-label">Ответ: </label>
 				<div class="controls">
