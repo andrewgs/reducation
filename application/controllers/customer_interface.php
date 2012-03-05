@@ -357,8 +357,12 @@ class Customer_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не указан курс обучения.');
 			else:
-				$this->session->set_userdata('msgs','Курс обучения добавлен в заказ.');
-				$corder = $this->courseordermodel->insert_record($this->session->userdata('order'),$_POST['course'],$this->user['uid']);
+				if(!$this->courseordermodel->exist_course_order($_POST['course'],$this->session->userdata('order'),$this->user['uid'])):
+					$corder = $this->courseordermodel->insert_record($this->session->userdata('order'),$_POST['course'],$this->user['uid']);
+					$this->session->set_userdata('msgs','Курс обучения добавлен в заказ.');
+				else:
+					$this->session->set_userdata('msgr','Ошибка. Указанный курс уже прикреплены к данному заказу');
+				endif;
 			endif;
 			redirect($this->uri->uri_string());
 		endif;
@@ -369,15 +373,20 @@ class Customer_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не указаны слушатели.');
 			else:
-				$this->session->set_userdata('msgs','Слушатели добавлены успешно.');
 				$price = 0;
 				if(count($_POST['audience']) > 0):
-					for($i=0;$i<count($_POST['audience']);$i++):
-						$this->audienceordermodel->insert_record($_POST['idcur'],$_POST['audience'][$i],$this->session->userdata('order'),$this->user['uid']);
+					for($i=0,$cnt=0;$i<count($_POST['audience']);$i++):
+						if(!$this->audienceordermodel->exist_course_audience($_POST['audience'][$i],$_POST['idcur'],$this->session->userdata('order'),$this->user['uid'])):
+							$this->audienceordermodel->insert_record($_POST['idcur'],$_POST['audience'][$i],$this->session->userdata('order'),$this->user['uid']);
+							$this->session->set_userdata('msgs','Слушатели добавлены успешно.');
+							$cnt++;
+						else:
+							$this->session->set_userdata('msgr','Ошибка. Указанные слушатели уже прикреплены к данному курсу');
+						endif;
 					endfor;
 				endif;
 				$course = $this->courseordermodel->read_field($_POST['idcur'],'course');
-				$price = $this->coursesmodel->read_field($course,'price')*count($_POST['audience']);
+				$price = $this->coursesmodel->read_field($course,'price')*$cnt;
 				$this->ordersmodel->add_price($this->session->userdata('order'),$price);
 			endif;
 			redirect($this->uri->uri_string());

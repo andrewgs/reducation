@@ -89,4 +89,15 @@ class Courseordermodel extends CI_Model{
 		if(isset($data[0])) return TRUE;
 		return FALSE;
 	}
+
+	function exist_course_order($course,$order,$customer){
+		
+		$this->db->where('course',$course);
+		$this->db->where('order',$order);
+		$this->db->where('customer',$customer);
+		$query = $this->db->get('courseorder',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return TRUE;
+		return FALSE;
+	}
 }

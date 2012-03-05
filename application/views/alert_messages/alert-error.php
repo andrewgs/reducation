@@ -1,6 +1,6 @@
 <?php if($msgr):?>
-	<div class="alert alert-error" id="msgalert">
-		<a class="close" id="msgclose">×</a>
+	<div class="alert alert-error" id="msgdealert">
+		<a class="close" id="msgeclose">×</a>
 		<h4 class="alert-heading">Внимание!</h4>
 		<?=$msgr;?>
 	</div>

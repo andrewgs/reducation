@@ -20,6 +20,7 @@ class Audienceordermodel extends CI_Model{
 		$this->course	= $course;
 		$this->audience = $audience;
 		$this->order 	= $order;
+		$this->customer	= $customer;
 		$this->status	= 0;
 		$this->result	= 0;
 		$this->dateover	= '';
@@ -109,6 +110,18 @@ class Audienceordermodel extends CI_Model{
 		
 		$this->db->where('id',$id);
 		$this->db->where('course',$course);
+		$this->db->where('customer',$customer);
+		$query = $this->db->get('audienceorder',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return TRUE;
+		return FALSE;
+	}
+	
+	function exist_course_audience($audience,$course,$order,$customer){
+		
+		$this->db->where('audience',$audience);
+		$this->db->where('course',$course);
+		$this->db->where('order',$order);
 		$this->db->where('customer',$customer);
 		$query = $this->db->get('audienceorder',1);
 		$data = $query->result_array();
