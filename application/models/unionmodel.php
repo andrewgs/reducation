@@ -50,4 +50,22 @@ class Unionmodel extends CI_Model{
 		if(count($data)) return $data;
 		return NULL;
 	}
+
+	function valid_empty_course($order){
+		
+		$query = "SELECT COUNT(audienceorder.id) AS cnt FROM courseorder LEFT JOIN audienceorder ON courseorder.id=audienceorder.course WHERE courseorder.order = $order GROUP BY courseorder.course";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+
+	function read_audience_currect_courses($audience,$status){
+		
+		$query = "SELECT courses.id,courses.title,courses.code,courses.trend,courses.hours,audienceorder.start,audienceorder.id AS aud FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN audienceorder ON audienceorder.course = courseorder.id INNER JOIN orders ON courseorder.order=orders.id WHERE audienceorder.audience = $audience AND audienceorder.status = $status AND orders.paid = 1";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
 }

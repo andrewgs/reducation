@@ -21,6 +21,7 @@ class Audiencemodel extends CI_Model{
 	var $personaemail	= '';
 	var $personaphone	= '';
 	var $qualification	= '';
+	var $typedocument	= 1;
 
     function __construct(){
         parent::__construct();
@@ -46,6 +47,7 @@ class Audiencemodel extends CI_Model{
 		$this->online 			= 0;
 		$this->access 			= 1;
 		$this->cryptpassword	= '';
+		$this->typedocument		= $data['typedocument'];
 		
 		$this->db->insert('audience',$this);
 		return $this->db->insert_id();

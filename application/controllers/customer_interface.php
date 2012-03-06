@@ -127,7 +127,6 @@ class Customer_interface extends CI_Controller{
 		for($i=0;$i<count($pagevar['orders']);$i++):
 			$pagevar['orders'][$i]['orderdate'] = $this->operation_date($pagevar['orders'][$i]['orderdate']);
 		endfor;
-		
 		$this->load->view("customer_interface/customer-orders-list",$pagevar);
 	}
 	
@@ -314,7 +313,7 @@ class Customer_interface extends CI_Controller{
 				$this->session->set_userdata('msgr','Ошибка. Не указано направление обучения.');
 			else:
 				$this->session->set_userdata('msgs','Направление обучения выбрано.');
-				$order = $this->ordersmodel->insert_record($_POST['optRadio']);
+				$order = $this->ordersmodel->insert_record($_POST['optRadio'],$this->user['uid']);
 				$this->session->set_userdata(array('regordering'=>TRUE,'step'=>2,'ordering'=>$_POST['optRadio'],'order'=>$order));
 			endif;
 			redirect('customer/registration/ordering/step/2');
@@ -350,6 +349,13 @@ class Customer_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
+		
+		for($i=0;$i<count($pagevar['courses']);$i++):
+			if(mb_strlen($pagevar['courses'][$i]['title'],'UTF-8') > 90):									
+				$pagevar['courses'][$i]['title'] = mb_substr($pagevar['courses'][$i]['title'],0,90,'UTF-8');	
+				$pagevar['courses'][$i]['title'] .= ' ... ';
+			endif;
+		endfor;
 		
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
@@ -404,6 +410,15 @@ class Customer_interface extends CI_Controller{
 		if($aud == 0):
 			redirect('customer/registration/ordering/step/'.$this->session->userdata('step'));
 		endif;
+		
+		$validcourse = $this->unionmodel->valid_empty_course($this->session->userdata('order'));
+		for($i=0;$i<count($validcourse);$i++):
+			if($validcourse[$i]['cnt'] == 0):
+				$this->session->set_userdata('msgr','Вами выбраны курсы на которые не назначены слушатели');
+				redirect('customer/registration/ordering/step/'.$this->session->userdata('step'));
+			endif;
+		endfor;
+		
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',

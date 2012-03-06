@@ -110,5 +110,15 @@ class Testsmodel extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->delete('tests');
 		return $this->db->affected_rows();
-	}	
+	}
+
+	function count_course_record($course){
+	
+		$this->db->select('count(*) as cnt');
+		$this->db->where('course',$course);
+		$this->db->where('chapter >',0);
+		$query = $this->db->get('tests');
+		$data = $query->result_array();
+		return $data[0]['cnt'];
+	}
 }

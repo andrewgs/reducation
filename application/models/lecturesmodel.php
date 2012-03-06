@@ -133,7 +133,16 @@ class Lecturesmodel extends CI_Model{
 		$data = $query->result_array();
 		return $data[0]['cnt'];
 	}
-
+	
+	function count_course_record($course){
+	
+		$this->db->select('count(*) as cnt');
+		$this->db->where('course',$course);
+		$query = $this->db->get('lectures');
+		$data = $query->result_array();
+		return $data[0]['cnt'];
+	}
+	
 	function next_number($chapter){
 		
 		$this->db->select('MAX(number) as number');

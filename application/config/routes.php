@@ -18,7 +18,7 @@ $route['registration/customer/cancel-registration'] = "users_interface/registrat
 $route['catalog/courses'] 				= "users_interface/catalog_courses";
 $route['contacts'] 						= "users_interface/contacts";
 
-/***************************************************	CUSTOMER INTRERFACE	***********************************************/
+/******************************************************** CUSTOMER INTRERFACE ***********************************************/
 
 $route['customer/edit/profile']									= "customer_interface/customer_profile";
 $route['customer/registration/audience']						= "customer_interface/registration_audience";
@@ -27,6 +27,13 @@ $route['customer/audience/list']								= "customer_interface/audience_list";
 $route['customer/audience/orders']								= "customer_interface/orders_list";
 $route['customer/audience/orders/delete-order/:num']			= "customer_interface/orders_delete_order";
 $route['customer/audience/orders/order-information/id/:num']	= "customer_interface/orders_order_information";
+
+/******************************************************** AUDIENCE INTRERFACE ***********************************************/
+
+$route['audience/view/profile']									= "audience_interface/audience_profile";
+$route['audience/courses/current']								= "audience_interface/audience_courses_currect";
+$route['audience/courses/current/start-training/:num']			= "audience_interface/audience_start_training";
+$route['audience/courses/completed']							= "audience_interface/audience_courses_completed";
 
 /*==========================================================  ordering  ===================================================*/
 

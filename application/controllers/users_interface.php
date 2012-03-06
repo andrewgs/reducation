@@ -66,6 +66,7 @@ class Users_interface extends CI_Controller{
 									redirect($this->uri->uri_string());
 								endif;
                    				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'cus'));
+								$this->customersmodel->active_user($this->session->userdata('userid'));
                    				redirect($this->uri->uri_string());
 								break;
 					case 'aud': 
@@ -74,7 +75,8 @@ class Users_interface extends CI_Controller{
 									$this->session->set_userdata('msgr','Ошибка. Не верные данные для авторизации. В доступе отказано.');
 									redirect($this->uri->uri_string());
 								endif;
-                   				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'cus'));
+                   				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'aud'));
+								$this->audiencemodel->active_user($this->session->userdata('userid'));
                    				redirect($this->uri->uri_string());
 								break;
 					default : 

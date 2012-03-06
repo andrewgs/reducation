@@ -3,6 +3,7 @@
 class Ordersmodel extends CI_Model {
 
     var $id   		= 0;
+    var $trend 		= 0;
     var $customer 	= '';
     var $orderdate  = '';
     var $price  	= '';
@@ -17,8 +18,9 @@ class Ordersmodel extends CI_Model {
         parent::__construct();
     }
 	
-	function insert_record($customer){
+	function insert_record($trend,$customer){
 			
+		$this->trend	= $trend;
 		$this->customer	= $customer;
 		$this->orderdate= date("Y-m-d");
 		$this->price 	= '';
