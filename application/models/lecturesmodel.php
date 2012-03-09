@@ -65,6 +65,19 @@ class Lecturesmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_views_records($course,$chapter){
+		
+		$this->db->order_by('number','ASC');
+		$this->db->order_by('id','DESC');
+		$this->db->where('course',$course);
+		$this->db->where('chapter',$chapter);
+		$this->db->where('view',1);
+		$query = $this->db->get('lectures');
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
 	function update_record($data){
 		
 		$this->db->set('number',$data['number']);

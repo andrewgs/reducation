@@ -31,7 +31,7 @@
 						<p>Лекция: <?=$fileextension;?>, <?=$filesize;?></p>
 						<a class="btn btn-info" data-toggle="modal" href="#getDocument" id="getDoc" doc="<?=$lecture['document'];?>"><i class="icon-download-alt icon-white"></i> Скачать лекцию</a>
 					</div>
-					<?php $this->load->view('admin_interface/modal/admin-get-document');?>
+					<?php $this->load->view('users_interface/modal/user-get-document');?>
 				</div>
 			</div>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>

@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Audience_interface extends CI_Controller {
+class Audience_interface extends CI_Controller{
 	
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'');
 	var $loginstatus = array('cus'=>FALSE,'aud'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
@@ -22,6 +22,7 @@ class Audience_interface extends CI_Controller {
 		$this->load->model('ordersmodel');
 		$this->load->model('courseordermodel');
 		$this->load->model('audienceordermodel');
+		$this->load->model('audiencetestmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -110,12 +111,190 @@ class Audience_interface extends CI_Controller {
 				$this->session->set_userdata('msgr','Не возможно начать обучение.');
 				redirect('audience/courses/current');
 			endif;
+			if($this->audienceordermodel->read_field($training,'start')):
+				$this->session->set_userdata('msgr','Обучение уже начато.');
+				redirect('audience/courses/current');
+			endif;
+			$this->session->set_userdata('msgs','Обучение начато! Теперь Вам доступны лекции для ознакомления.<br/>Читайте лекции и сдавайте тесты. Удачи!');
 			$this->audienceordermodel->update_field($training,'start',1);
+			$tests = $this->unionmodel->get_courses_test($training,$this->user['uid'],0);
+			for($i=0;$i<count($tests);$i++):
+				$this->audiencetestmodel->insert_record($tests[$i]['aoid'],$this->user['uid'],$tests[$i]['ordid'],$tests[$i]['ordcus'],$tests[$i]['chapter'],$tests[$i]['id']);
+			endfor;
+			$test = $this->unionmodel->get_courses_examination($training,$this->user['uid'],0);
+			$this->audiencetestmodel->insert_record($test['aoid'],$this->user['uid'],$test['ordid'],$test['ordcus'],$test['chapter'],$test['id']);
 		endif;
 		redirect('audience/courses/current');
 	}
 	
-	function operation_date($field){
+	public function audience_courses_lectures(){
+		
+		$course = $this->uri->segment(5);
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+		
+		if(!$this->audienceordermodel->read_field($course,'start')):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
+			redirect('audience/courses/current');
+		endif;
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Список лекций',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'course'		=> $this->unionmodel->read_audience_currect_course($this->user['uid'],$course,0),
+					'chapters'		=> array(),
+					'test'			=> array(),
+					'docvalue'		=> 'Список литературы',
+					'document'		=> $this->unionmodel->read_course_libraries($this->user['uid'],$course,0),
+					'curriculum'	=> $this->unionmodel->read_course_curriculum($this->user['uid'],$course,0),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['chapters'] = $this->chaptermodel->read_records($pagevar['course']['id']);
+		
+		for($i=0;$i<count($pagevar['chapters']);$i++):
+			$pagevar['chapters'][$i]['lectures'] = $this->lecturesmodel->read_views_records($pagevar['course']['id'],$pagevar['chapters'][$i]['id']);
+			$pagevar['chapters'][$i]['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],$pagevar['chapters'][$i]['id'],$this->user['uid']);
+		endfor;
+		$pagevar['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],0,$this->user['uid']);
+		print_r($pagevar['chapters']);exit;
+		$this->load->view("audience_interface/courses-lectures",$pagevar);
+	}
+	
+	public function audience_courses_lecture(){
+		
+		$course = $this->uri->segment(5);
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'lecture'		=> $this->lecturesmodel->read_record($this->uri->segment(7)),
+					'course'		=> $this->unionmodel->read_audience_currect_course($this->user['uid'],$course,0),
+					'file_exist'	=> TRUE,
+					'filesize'		=> 'Размер не определен.',
+					'filename'		=> 'Имя не определено. Возможно файл отсутствует на диске или не доступен',
+					'fileextension'	=> 'Hасширение не определено.',
+					'docvalue'		=> '',
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$pagevar['title'] .= 'Содержание курса "'.$pagevar['course']['code'].'. '.$pagevar['course']['title'].'"'; 
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+
+		$file = getcwd().'/'.$pagevar['lecture']['document'];
+		$pagevar['document'] = $pagevar['lecture']['document'];
+		$pagevar['docvalue'] = $pagevar['lecture']['title'];
+		if(file_exists($file)):
+			$pagevar['filesize'] = filesize($file);
+			$fileexp = explode('/',$pagevar['lecture']['document']);
+			if($fileexp && isset($fileexp[2])):
+				$pagevar['filename'] = $fileexp[2];
+				$fileextension = explode('.',$pagevar['filename']);
+				$pagevar['fileextension'] = $fileextension[1];
+			endif;
+		else:
+			$pagevar['file_exist'] = FALSE;
+			$pagevar['msgr'] = 'Не возможно получить доступ к лекции. Возможно файл отсутствует на диске или не доступен.';
+		endif;
+		
+		if($pagevar['filesize'] > 1048576):
+			$pagevar['filesize'] = round($pagevar['filesize']/1048576,2).' Мбайт';
+		elseif($pagevar['filesize'] > 1024):
+			$pagevar['filesize'] = round($pagevar['filesize']/1024,1).' кбайт';
+		elseif($pagevar['filesize'] < 1024):
+			$pagevar['filesize'] = $pagevar['filesize'].' байт';
+		endif;
+		
+		$this->load->view("audience_interface/audience-lecture-card",$pagevar);
+	}
+	
+	public function audience_get_document(){
+		
+		$lecture = $this->uri->segment(7);
+		$course = $this->uri->segment(5);
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к лекции курса.');
+			redirect('audience/courses/current/course/'.$course.'/lecture/'.$lecture);
+		endif;
+		$this->load->helper('download');
+		$file = getcwd().'/'.$this->lecturesmodel->read_field($lecture,'document');
+		$data = file_get_contents($file);
+		$fileexp = explode('/',$this->lecturesmodel->read_field($lecture,'document'));
+		if($fileexp && isset($fileexp[2])):
+			$filename = $fileexp[2];
+		endif;
+		if($data && $filename):
+			force_download($filename,$data);
+		else:
+			$this->session->set_userdata('msgr','Ошибка при загузке лекции. Обратитесь к администрации сайта.');
+			redirect('audience/courses/current/course/'.$course.'/lecture/'.$lecture);
+		endif;
+	}
+	
+	public function audience_get_libraries(){
+		
+		$course = $this->uri->segment(5);
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к списку литературы курса.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+		
+		$this->load->helper('download');
+		$file = getcwd().'/'.$this->unionmodel->read_course_libraries($this->user['uid'],$course,0);
+		$data = file_get_contents($file);
+		$fileexp = explode('/',$this->unionmodel->read_course_libraries($this->user['uid'],$course,0));
+		if($fileexp && isset($fileexp[2])):
+			$filename = $fileexp[2];
+		endif;
+		if($data && $filename):
+			force_download($filename,$data);
+		else:
+			$this->session->set_userdata('msgr','Ошибка при загузке списка литературы. Обратитесь к администрации сайта.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+	}
+	
+	public function audience_get_curriculum(){
+		
+		$course = $this->uri->segment(5);
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к учебному плану курса.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+		
+		$this->load->helper('download');
+		$file = getcwd().'/'.$this->unionmodel->read_course_curriculum($this->user['uid'],$course,0);
+		$data = file_get_contents($file);
+		$fileexp = explode('/',$this->unionmodel->read_course_curriculum($this->user['uid'],$course,0));
+		if($fileexp && isset($fileexp[2])):
+			$filename = $fileexp[2];
+		endif;
+		if($data && $filename):
+			force_download($filename,$data);
+		else:
+			$this->session->set_userdata('msgr','Ошибка при загузке учебного плана. Обратитесь к администрации сайта.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+	}
+	
+	public function operation_date($field){
 			
 		$list = preg_split("/-/",$field);
 		$nmonth = $this->months[$list[1]];
@@ -124,7 +303,7 @@ class Audience_interface extends CI_Controller {
 		return preg_replace($pattern, $replacement,$field);
 	}
 
-	function operation_dot_date($field){
+	public function operation_dot_date($field){
 			
 		$list = preg_split("/-/",$field);
 		$pattern = "/(\d+)(-)(\w+)(-)(\d+)/i";

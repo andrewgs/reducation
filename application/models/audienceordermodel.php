@@ -117,6 +117,7 @@ class Audienceordermodel extends CI_Model{
 		if(isset($data[0])) return TRUE;
 		return FALSE;
 	}
+	
 	function owner_audience($id,$audience){
 		
 		$this->db->where('id',$id);

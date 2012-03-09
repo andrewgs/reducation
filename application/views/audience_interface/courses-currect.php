@@ -39,7 +39,7 @@
 
 
 <?php if($courses[$i]['start']):?>
-	<?php if($courses[$i]['lectures']):?>											<?=anchor('#','Читать лекции',array('class'=>'btn btn-info'));?>
+	<?php if($courses[$i]['lectures']):?>											<?=anchor('audience/courses/current/course/'.$courses[$i]['aud'].'/lectures/','Читать лекции',array('class'=>'btn btn-info'));?>
 	<?php endif;?>
 	<?php else:?>
 	

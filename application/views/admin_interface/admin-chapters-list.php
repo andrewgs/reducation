@@ -92,8 +92,8 @@
 					<?php $this->load->view('admin_interface/modal/admin-edit-middle-test');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-middle-test');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-final-test');?>
-					<?php $this->load->view('admin_interface/modal/admin-get-document');?>
-					<?php $this->load->view('admin_interface/modal/admin-get-curriculum');?>
+					<?php $this->load->view('users_interface/modal/user-get-document');?>
+					<?php $this->load->view('users_interface/modal/user-get-curriculum');?>
 				</div>
 			</div>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>

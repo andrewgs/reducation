@@ -68,4 +68,49 @@ class Unionmodel extends CI_Model{
 		if(count($data)) return $data;
 		return NULL;
 	}
+	
+	function read_audience_currect_course($audience,$course,$status){
+		
+		$query = "SELECT audienceorder.order AS ordid, courses.id,courses.title,courses.code,courses.trend,courses.hours,audienceorder.start,audienceorder.course FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN audienceorder ON audienceorder.course = courseorder.id INNER JOIN orders ON courseorder.order=orders.id WHERE audienceorder.audience = $audience AND audienceorder.id = $course AND audienceorder.status = $status AND orders.paid = 1";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data)) return $data[0];
+		return NULL;
+	}
+	
+	function read_course_libraries($audience,$course,$status){
+		
+		$query = "SELECT courses.libraries FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN audienceorder ON audienceorder.course = courseorder.id INNER JOIN orders ON courseorder.order=orders.id WHERE audienceorder.audience = $audience AND audienceorder.id = $course AND audienceorder.status = $status AND orders.paid = 1";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data)) return $data[0]['libraries'];
+		return NULL;
+	}
+	
+	function read_course_curriculum($audience,$course,$status){
+		
+		$query = "SELECT courses.curriculum FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN audienceorder ON audienceorder.course = courseorder.id INNER JOIN orders ON courseorder.order=orders.id WHERE audienceorder.audience = $audience AND audienceorder.id = $course AND audienceorder.status = $status AND orders.paid = 1";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data)) return $data[0]['curriculum'];
+		return NULL;
+	}
+	
+	function get_courses_test($audorder,$audience,$status){
+		
+		$query = "SELECT tests.*, courseorder.id AS coid,audienceorder.id AS aoid,courseorder.order AS ordid,courseorder.customer AS ordcus FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN tests ON courses.id = tests.course INNER JOIN audienceorder ON courseorder.id = audienceorder.course WHERE audienceorder.id = $audorder AND audienceorder.audience = $audience AND audienceorder.status = $status AND tests.chapter > 0 AND audienceorder.start = 1";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
+	function get_courses_examination($audorder,$audience,$status){
+		
+		$query = "SELECT tests.*, courseorder.id AS coid,audienceorder.id AS aoid,courseorder.order AS ordid,courseorder.customer AS ordcus FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN tests ON courses.id = tests.course INNER JOIN audienceorder ON courseorder.id = audienceorder.course WHERE audienceorder.id = $audorder AND audienceorder.audience = $audience AND audienceorder.status = $status AND tests.chapter = 0 AND audienceorder.start = 1";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data)) return $data[0];
+		return NULL;
+	}
 }

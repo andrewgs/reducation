@@ -1,29 +1,31 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Audienceordermodel extends CI_Model{
+class Audiencetestmodel extends CI_Model{
 
     var $id   			= 0;
     var $order 			= 0;
     var $course 		= 0;
     var $audience   	= 0;
-    var $customer   	= 0;
-    var $chapter		= 0;
+    var $chapter   		= 0;
+    var $test	   		= 0;
     var $attempt		= 0;
     var $result			= 0;
     var $time			= 0;
     var $attemptdate	= '';
+    var $customer		= 0;
 
     function __construct(){
         parent::__construct();
     }
 	
-	function insert_record($course,$audience,$order,$customer){
+	function insert_record($course,$audience,$order,$customer,$chapter,$test){
 			
 		$this->order	= $order;
 		$this->course	= $course;
 		$this->audience = $audience;
 		$this->customer	= $customer;
 		$this->chapter	= $chapter;
+		$this->test		= $test;
 
 		$this->db->insert('audiencetest',$this);
 		return $this->db->insert_id();
@@ -32,6 +34,18 @@ class Audienceordermodel extends CI_Model{
 	function read_record($id){
 		
 		$this->db->where('id',$id);
+		$query = $this->db->get('audiencetest',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0];
+		return NULL;
+	}
+	
+	function read_records($course,$order,$chapter,$audience){
+		
+		$this->db->where('course',$course);
+		$this->db->where('order',$order);
+		$this->db->where('chapter',$chapter);
+		$this->db->where('audience',$audience);
 		$query = $this->db->get('audiencetest',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];

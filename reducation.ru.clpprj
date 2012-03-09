@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="S:\home\reducation.ru\www\reducation.ru.clpprj">
-	<settings><PM_URL><![CDATA[sdo.ru]]></PM_URL><PM_HOME_URL><![CDATA[sdo.ru]]></PM_HOME_URL><PM_LIBS><![CDATA[]]></PM_LIBS><PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION><PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR><PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE></settings><removed value=";S:\home\reducation.ru\www\application\controllers\welcome.php;S:\home\reducation.ru\www\application\views\admin_interface\Codelobster0.php;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-final-test.php;S:\home\reducation.ru\www\application\views\customer_interface\ordering\ordering-trends-list.php;S:\home\reducation.ru\www\application\views\error.php;S:\home\reducation.ru\www\application\views\users_interface\index1.php;S:\home\reducation.ru\www\application\views\welcome_message.php;S:\home\sdo.ru\www\user_guide;S:\home\sdo.ru\www\user_guide\changelog.html;S:\home\sdo.ru\www\user_guide\database;S:\home\sdo.ru\www\user_guide\database\active_record.html;S:\home\sdo.ru\www\user_guide\database\caching.html;S:\home\sdo.ru\www\user_guide\database\call_function.html;S:\home\sdo.ru\www\user_guide\database\configuration.html;S:\home\sdo.ru\www\user_guide\database\connecting.html;S:\home\sdo.ru\www\user_guide\database\examples.html;S:\home\sdo.ru\www\user_guide\database\fields.html;S:\home\sdo.ru\www\user_guide\database\forge.html;S:\home\sdo.ru\www\user_guide\database\helpers.html;S:\home\sdo.ru\www\user_guide\database\index.html;S:\home\sdo.ru\www\user_guide\database\queries.html;S:\home\sdo.ru\www\user_guide\database\results.html;S:\home\sdo.ru\www\user_guide\database\table_data.html;S:\home\sdo.ru\www\user_guide\database\transactions.html;S:\home\sdo.ru\www\user_guide\database\utilities.html;S:\home\sdo.ru\www\user_guide\doc_style;S:\home\sdo.ru\www\user_guide\doc_style\index.html;S:\home\sdo.ru\www\user_guide\doc_style\template.html;S:\home\sdo.ru\www\user_guide\general;S:\home\sdo.ru\www\user_guide\general\alternative_php.html;S:\home\sdo.ru\www\user_guide\general\ancillary_classes.html;S:\home\sdo.ru\www\user_guide\general\autoloader.html;S:\home\sdo.ru\www\user_guide\general\caching.html;S:\home\sdo.ru\www\user_guide\general\cli.html;S:\home\sdo.ru\www\user_guide\general\common_functions.html;S:\home\sdo.ru\www\user_guide\general\controllers.html;S:\home\sdo.ru\www\user_guide\general\core_classes.html;S:\home\sdo.ru\www\user_guide\general\creating_drivers.html;S:\home\sdo.ru\www\user_guide\general\creating_libraries.html;S:\home\sdo.ru\www\user_guide\general\credits.html;S:\home\sdo.ru\www\user_guide\general\drivers.html;S:\home\sdo.ru\www\user_guide\general\environments.html;S:\home\sdo.ru\www\user_guide\general\errors.html;S:\home\sdo.ru\www\user_guide\general\helpers.html;S:\home\sdo.ru\www\user_guide\general\hooks.html;S:\home\sdo.ru\www\user_guide\general\libraries.html;S:\home\sdo.ru\www\user_guide\general\managing_apps.html;S:\home\sdo.ru\www\user_guide\general\models.html;S:\home\sdo.ru\www\user_guide\general\profiling.html;S:\home\sdo.ru\www\user_guide\general\quick_reference.html;S:\home\sdo.ru\www\user_guide\general\requirements.html;S:\home\sdo.ru\www\user_guide\general\reserved_names.html;S:\home\sdo.ru\www\user_guide\general\routing.html;S:\home\sdo.ru\www\user_guide\general\security.html;S:\home\sdo.ru\www\user_guide\general\styleguide.html;S:\home\sdo.ru\www\user_guide\general\urls.html;S:\home\sdo.ru\www\user_guide\general\views.html;S:\home\sdo.ru\www\user_guide\helpers;S:\home\sdo.ru\www\user_guide\helpers\array_helper.html;S:\home\sdo.ru\www\user_guide\helpers\captcha_helper.html;S:\home\sdo.ru\www\user_guide\helpers\cookie_helper.html;S:\home\sdo.ru\www\user_guide\helpers\date_helper.html;S:\home\sdo.ru\www\user_guide\helpers\directory_helper.html;S:\home\sdo.ru\www\user_guide\helpers\download_helper.html;S:\home\sdo.ru\www\user_guide\helpers\email_helper.html;S:\home\sdo.ru\www\user_guide\helpers\file_helper.html;S:\home\sdo.ru\www\user_guide\helpers\form_helper.html;S:\home\sdo.ru\www\user_guide\helpers\html_helper.html;S:\home\sdo.ru\www\user_guide\helpers\inflector_helper.html;S:\home\sdo.ru\www\user_guide\helpers\language_helper.html;S:\home\sdo.ru\www\user_guide\helpers\number_helper.html;S:\home\sdo.ru\www\user_guide\helpers\path_helper.html;S:\home\sdo.ru\www\user_guide\helpers\security_helper.html;S:\home\sdo.ru\www\user_guide\helpers\smiley_helper.html;S:\home\sdo.ru\www\user_guide\helpers\string_helper.html;S:\home\sdo.ru\www\user_guide\helpers\text_helper.html;S:\home\sdo.ru\www\user_guide\helpers\typography_helper.html;S:\home\sdo.ru\www\user_guide\helpers\url_helper.html;S:\home\sdo.ru\www\user_guide\helpers\xml_helper.html;S:\home\sdo.ru\www\user_guide\images;S:\home\sdo.ru\www\user_guide\index.html;S:\home\sdo.ru\www\user_guide\installation;S:\home\sdo.ru\www\user_guide\installation\downloads.html;S:\home\sdo.ru\www\user_guide\installation\index.html;S:\home\sdo.ru\www\user_guide\installation\troubleshooting.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_120.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_130.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_131.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_132.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_133.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_140.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_141.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_150.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_152.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_153.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_154.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_160.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_161.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_162.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_163.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_170.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_171.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_172.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_200.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_201.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_202.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_203.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_210.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_b11.html;S:\home\sdo.ru\www\user_guide\installation\upgrading.html;S:\home\sdo.ru\www\user_guide\libraries;S:\home\sdo.ru\www\user_guide\libraries\benchmark.html;S:\home\sdo.ru\www\user_guide\libraries\caching.html;S:\home\sdo.ru\www\user_guide\libraries\calendar.html;S:\home\sdo.ru\www\user_guide\libraries\cart.html;S:\home\sdo.ru\www\user_guide\libraries\config.html;S:\home\sdo.ru\www\user_guide\libraries\email.html;S:\home\sdo.ru\www\user_guide\libraries\encryption.html;S:\home\sdo.ru\www\user_guide\libraries\file_uploading.html;S:\home\sdo.ru\www\user_guide\libraries\form_validation.html;S:\home\sdo.ru\www\user_guide\libraries\ftp.html;S:\home\sdo.ru\www\user_guide\libraries\image_lib.html;S:\home\sdo.ru\www\user_guide\libraries\input.html;S:\home\sdo.ru\www\user_guide\libraries\javascript.html;S:\home\sdo.ru\www\user_guide\libraries\language.html;S:\home\sdo.ru\www\user_guide\libraries\loader.html;S:\home\sdo.ru\www\user_guide\libraries\migration.html;S:\home\sdo.ru\www\user_guide\libraries\output.html;S:\home\sdo.ru\www\user_guide\libraries\pagination.html;S:\home\sdo.ru\www\user_guide\libraries\parser.html;S:\home\sdo.ru\www\user_guide\libraries\security.html;S:\home\sdo.ru\www\user_guide\libraries\sessions.html;S:\home\sdo.ru\www\user_guide\libraries\table.html;S:\home\sdo.ru\www\user_guide\libraries\trackback.html;S:\home\sdo.ru\www\user_guide\libraries\typography.html;S:\home\sdo.ru\www\user_guide\libraries\unit_testing.html;S:\home\sdo.ru\www\user_guide\libraries\uri.html;S:\home\sdo.ru\www\user_guide\libraries\user_agent.html;S:\home\sdo.ru\www\user_guide\libraries\xmlrpc.html;S:\home\sdo.ru\www\user_guide\libraries\zip.html;S:\home\sdo.ru\www\user_guide\license.html;S:\home\sdo.ru\www\user_guide\nav;S:\home\sdo.ru\www\user_guide\nav\hacks.txt;S:\home\sdo.ru\www\user_guide\nav\moo.fx.js;S:\home\sdo.ru\www\user_guide\nav\nav.js;S:\home\sdo.ru\www\user_guide\nav\prototype.lite.js;S:\home\sdo.ru\www\user_guide\nav\user_guide_menu.js;S:\home\sdo.ru\www\user_guide\overview;S:\home\sdo.ru\www\user_guide\overview\appflow.html;S:\home\sdo.ru\www\user_guide\overview\at_a_glance.html;S:\home\sdo.ru\www\user_guide\overview\cheatsheets.html;S:\home\sdo.ru\www\user_guide\overview\features.html;S:\home\sdo.ru\www\user_guide\overview\getting_started.html;S:\home\sdo.ru\www\user_guide\overview\goals.html;S:\home\sdo.ru\www\user_guide\overview\index.html;S:\home\sdo.ru\www\user_guide\overview\mvc.html;S:\home\sdo.ru\www\user_guide\toc.html;S:\home\sdo.ru\www\user_guide\tutorial;S:\home\sdo.ru\www\user_guide\tutorial\conclusion.html;S:\home\sdo.ru\www\user_guide\tutorial\create_news_items.html;S:\home\sdo.ru\www\user_guide\tutorial\hard_coded_pages.html;S:\home\sdo.ru\www\user_guide\tutorial\index.html;S:\home\sdo.ru\www\user_guide\tutorial\news_section.html;S:\home\sdo.ru\www\user_guide\tutorial\static_pages.html;S:\home\sdo.ru\www\user_guide\userguide.css;"/><added value=""/><codestructure>
-		<csfile name="S:\home\reducation.ru\www\reducation.ru.clpprj" crc="1456817575">
+	<settings><PM_URL><![CDATA[sdo.ru]]></PM_URL><PM_HOME_URL><![CDATA[sdo.ru]]></PM_HOME_URL><PM_LIBS><![CDATA[]]></PM_LIBS><PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION><PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR><PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE></settings><removed value=";S:\home\reducation.ru\www\application\controllers\welcome.php;S:\home\reducation.ru\www\application\views\admin_interface\Codelobster0.php;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-final-test.php;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-get-curriculum.php;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-get-document.php;S:\home\reducation.ru\www\application\views\customer_interface\ordering\ordering-trends-list.php;S:\home\reducation.ru\www\application\views\error.php;S:\home\reducation.ru\www\application\views\users_interface\index1.php;S:\home\reducation.ru\www\application\views\welcome_message.php;S:\home\sdo.ru\www\user_guide;S:\home\sdo.ru\www\user_guide\changelog.html;S:\home\sdo.ru\www\user_guide\database;S:\home\sdo.ru\www\user_guide\database\active_record.html;S:\home\sdo.ru\www\user_guide\database\caching.html;S:\home\sdo.ru\www\user_guide\database\call_function.html;S:\home\sdo.ru\www\user_guide\database\configuration.html;S:\home\sdo.ru\www\user_guide\database\connecting.html;S:\home\sdo.ru\www\user_guide\database\examples.html;S:\home\sdo.ru\www\user_guide\database\fields.html;S:\home\sdo.ru\www\user_guide\database\forge.html;S:\home\sdo.ru\www\user_guide\database\helpers.html;S:\home\sdo.ru\www\user_guide\database\index.html;S:\home\sdo.ru\www\user_guide\database\queries.html;S:\home\sdo.ru\www\user_guide\database\results.html;S:\home\sdo.ru\www\user_guide\database\table_data.html;S:\home\sdo.ru\www\user_guide\database\transactions.html;S:\home\sdo.ru\www\user_guide\database\utilities.html;S:\home\sdo.ru\www\user_guide\doc_style;S:\home\sdo.ru\www\user_guide\doc_style\index.html;S:\home\sdo.ru\www\user_guide\doc_style\template.html;S:\home\sdo.ru\www\user_guide\general;S:\home\sdo.ru\www\user_guide\general\alternative_php.html;S:\home\sdo.ru\www\user_guide\general\ancillary_classes.html;S:\home\sdo.ru\www\user_guide\general\autoloader.html;S:\home\sdo.ru\www\user_guide\general\caching.html;S:\home\sdo.ru\www\user_guide\general\cli.html;S:\home\sdo.ru\www\user_guide\general\common_functions.html;S:\home\sdo.ru\www\user_guide\general\controllers.html;S:\home\sdo.ru\www\user_guide\general\core_classes.html;S:\home\sdo.ru\www\user_guide\general\creating_drivers.html;S:\home\sdo.ru\www\user_guide\general\creating_libraries.html;S:\home\sdo.ru\www\user_guide\general\credits.html;S:\home\sdo.ru\www\user_guide\general\drivers.html;S:\home\sdo.ru\www\user_guide\general\environments.html;S:\home\sdo.ru\www\user_guide\general\errors.html;S:\home\sdo.ru\www\user_guide\general\helpers.html;S:\home\sdo.ru\www\user_guide\general\hooks.html;S:\home\sdo.ru\www\user_guide\general\libraries.html;S:\home\sdo.ru\www\user_guide\general\managing_apps.html;S:\home\sdo.ru\www\user_guide\general\models.html;S:\home\sdo.ru\www\user_guide\general\profiling.html;S:\home\sdo.ru\www\user_guide\general\quick_reference.html;S:\home\sdo.ru\www\user_guide\general\requirements.html;S:\home\sdo.ru\www\user_guide\general\reserved_names.html;S:\home\sdo.ru\www\user_guide\general\routing.html;S:\home\sdo.ru\www\user_guide\general\security.html;S:\home\sdo.ru\www\user_guide\general\styleguide.html;S:\home\sdo.ru\www\user_guide\general\urls.html;S:\home\sdo.ru\www\user_guide\general\views.html;S:\home\sdo.ru\www\user_guide\helpers;S:\home\sdo.ru\www\user_guide\helpers\array_helper.html;S:\home\sdo.ru\www\user_guide\helpers\captcha_helper.html;S:\home\sdo.ru\www\user_guide\helpers\cookie_helper.html;S:\home\sdo.ru\www\user_guide\helpers\date_helper.html;S:\home\sdo.ru\www\user_guide\helpers\directory_helper.html;S:\home\sdo.ru\www\user_guide\helpers\download_helper.html;S:\home\sdo.ru\www\user_guide\helpers\email_helper.html;S:\home\sdo.ru\www\user_guide\helpers\file_helper.html;S:\home\sdo.ru\www\user_guide\helpers\form_helper.html;S:\home\sdo.ru\www\user_guide\helpers\html_helper.html;S:\home\sdo.ru\www\user_guide\helpers\inflector_helper.html;S:\home\sdo.ru\www\user_guide\helpers\language_helper.html;S:\home\sdo.ru\www\user_guide\helpers\number_helper.html;S:\home\sdo.ru\www\user_guide\helpers\path_helper.html;S:\home\sdo.ru\www\user_guide\helpers\security_helper.html;S:\home\sdo.ru\www\user_guide\helpers\smiley_helper.html;S:\home\sdo.ru\www\user_guide\helpers\string_helper.html;S:\home\sdo.ru\www\user_guide\helpers\text_helper.html;S:\home\sdo.ru\www\user_guide\helpers\typography_helper.html;S:\home\sdo.ru\www\user_guide\helpers\url_helper.html;S:\home\sdo.ru\www\user_guide\helpers\xml_helper.html;S:\home\sdo.ru\www\user_guide\images;S:\home\sdo.ru\www\user_guide\index.html;S:\home\sdo.ru\www\user_guide\installation;S:\home\sdo.ru\www\user_guide\installation\downloads.html;S:\home\sdo.ru\www\user_guide\installation\index.html;S:\home\sdo.ru\www\user_guide\installation\troubleshooting.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_120.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_130.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_131.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_132.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_133.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_140.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_141.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_150.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_152.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_153.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_154.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_160.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_161.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_162.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_163.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_170.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_171.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_172.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_200.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_201.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_202.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_203.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_210.html;S:\home\sdo.ru\www\user_guide\installation\upgrade_b11.html;S:\home\sdo.ru\www\user_guide\installation\upgrading.html;S:\home\sdo.ru\www\user_guide\libraries;S:\home\sdo.ru\www\user_guide\libraries\benchmark.html;S:\home\sdo.ru\www\user_guide\libraries\caching.html;S:\home\sdo.ru\www\user_guide\libraries\calendar.html;S:\home\sdo.ru\www\user_guide\libraries\cart.html;S:\home\sdo.ru\www\user_guide\libraries\config.html;S:\home\sdo.ru\www\user_guide\libraries\email.html;S:\home\sdo.ru\www\user_guide\libraries\encryption.html;S:\home\sdo.ru\www\user_guide\libraries\file_uploading.html;S:\home\sdo.ru\www\user_guide\libraries\form_validation.html;S:\home\sdo.ru\www\user_guide\libraries\ftp.html;S:\home\sdo.ru\www\user_guide\libraries\image_lib.html;S:\home\sdo.ru\www\user_guide\libraries\input.html;S:\home\sdo.ru\www\user_guide\libraries\javascript.html;S:\home\sdo.ru\www\user_guide\libraries\language.html;S:\home\sdo.ru\www\user_guide\libraries\loader.html;S:\home\sdo.ru\www\user_guide\libraries\migration.html;S:\home\sdo.ru\www\user_guide\libraries\output.html;S:\home\sdo.ru\www\user_guide\libraries\pagination.html;S:\home\sdo.ru\www\user_guide\libraries\parser.html;S:\home\sdo.ru\www\user_guide\libraries\security.html;S:\home\sdo.ru\www\user_guide\libraries\sessions.html;S:\home\sdo.ru\www\user_guide\libraries\table.html;S:\home\sdo.ru\www\user_guide\libraries\trackback.html;S:\home\sdo.ru\www\user_guide\libraries\typography.html;S:\home\sdo.ru\www\user_guide\libraries\unit_testing.html;S:\home\sdo.ru\www\user_guide\libraries\uri.html;S:\home\sdo.ru\www\user_guide\libraries\user_agent.html;S:\home\sdo.ru\www\user_guide\libraries\xmlrpc.html;S:\home\sdo.ru\www\user_guide\libraries\zip.html;S:\home\sdo.ru\www\user_guide\license.html;S:\home\sdo.ru\www\user_guide\nav;S:\home\sdo.ru\www\user_guide\nav\hacks.txt;S:\home\sdo.ru\www\user_guide\nav\moo.fx.js;S:\home\sdo.ru\www\user_guide\nav\nav.js;S:\home\sdo.ru\www\user_guide\nav\prototype.lite.js;S:\home\sdo.ru\www\user_guide\nav\user_guide_menu.js;S:\home\sdo.ru\www\user_guide\overview;S:\home\sdo.ru\www\user_guide\overview\appflow.html;S:\home\sdo.ru\www\user_guide\overview\at_a_glance.html;S:\home\sdo.ru\www\user_guide\overview\cheatsheets.html;S:\home\sdo.ru\www\user_guide\overview\features.html;S:\home\sdo.ru\www\user_guide\overview\getting_started.html;S:\home\sdo.ru\www\user_guide\overview\goals.html;S:\home\sdo.ru\www\user_guide\overview\index.html;S:\home\sdo.ru\www\user_guide\overview\mvc.html;S:\home\sdo.ru\www\user_guide\toc.html;S:\home\sdo.ru\www\user_guide\tutorial;S:\home\sdo.ru\www\user_guide\tutorial\conclusion.html;S:\home\sdo.ru\www\user_guide\tutorial\create_news_items.html;S:\home\sdo.ru\www\user_guide\tutorial\hard_coded_pages.html;S:\home\sdo.ru\www\user_guide\tutorial\index.html;S:\home\sdo.ru\www\user_guide\tutorial\news_section.html;S:\home\sdo.ru\www\user_guide\tutorial\static_pages.html;S:\home\sdo.ru\www\user_guide\userguide.css;"/><added value=""/><codestructure>
+		<csfile name="S:\home\reducation.ru\www\reducation.ru.clpprj" crc="-1819589749">
 		</csfile><csfile name="S:\home\reducation.ru\www\system\libraries\javascript\Jquery.php" crc="1251186840">
 			<phptree>
 				<treenode node="CI_Jquery;Php:Class Name;0;26;1;1067;34;;;vCI_Javascript;;c;;r;;d38,26;;b0,0;;m">
@@ -4904,6 +4904,12 @@
 				<treenode node="session;JS:JS Var Name;18;37;25;37;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\modal\user-get-document.php" crc="-524055255">
+			<phptree>
+				<treenode node="docvalue;Php:Var Name;28;6;37;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\modal\user-get-curriculum.php" crc="-1794644751">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\modal\registration-cancel.php" crc="-282534938">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\scripts.php" crc="-1554858108">
 			<phptree>
@@ -5293,6 +5299,7 @@
 				<treenode node="event;JS:JS Var Name;29;46;34;46;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\audience_interface\modal\audience-get-document.php" crc="0">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\audience_interface\scripts.php" crc="-1140697408">
 			<jstree>
 				<treenode node="document;JS:JS Var Name;25;1;33;1;34;;;v;;r;;d-1,-1;;b0,0;;m">
@@ -5311,7 +5318,34 @@
 				</treenode>
 			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\audience_interface\head.php" crc="1228270019">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\audience_interface\courses-currect.php" crc="1443485323">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php" crc="-1873443508">
+			<phptree>
+				<treenode node="chapters;Php:Var Name;29;23;38;23;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="course;Php:Var Name;42;14;49;14;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="curriculum;Php:Var Name;15;62;26;62;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="document;Php:Var Name;15;56;24;56;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="i;Php:Var Name;15;23;17;23;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="j;Php:Var Name;18;38;20;38;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="num;Php:Var Name;23;38;27;38;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+			<jstree>
+				<treenode node="document;JS:JS Var Name;4;80;12;80;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="event;JS:JS Var Name;33;81;38;81;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="window;JS:JS Var Name;4;82;10;82;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</jstree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\audience_interface\courses-currect.php" crc="-1307496854">
 			<phptree>
 				<treenode node="courses;Php:Var Name;29;18;37;18;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5329,6 +5363,27 @@
 				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\audience_interface\audience-lecture-card.php" crc="-788256500">
+			<phptree>
+				<treenode node="course;Php:Var Name;86;14;93;14;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="fileextension;Php:Var Name;20;29;34;29;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="filesize;Php:Var Name;42;29;51;29;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="lecture;Php:Var Name;41;17;49;17;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</phptree>
+			<jstree>
+				<treenode node="document;JS:JS Var Name;4;40;12;40;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="event;JS:JS Var Name;33;41;38;41;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="window;JS:JS Var Name;4;42;10;42;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+			</jstree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\alert_messages\alert-success.php" crc="566268108">
 			<phptree>
 				<treenode node="msgs;Php:Var Name;9;0;14;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
@@ -5346,12 +5401,6 @@
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-get-document.php" crc="-1007876839">
-			<phptree>
-				<treenode node="docvalue;Php:Var Name;28;6;37;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
-				</treenode>
-			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-get-curriculum.php" crc="-1794644751">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-trend.php" crc="-1043798748">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
@@ -5638,7 +5687,7 @@
 				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-lecture-card.php" crc="-1984701624">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-lecture-card.php" crc="1313333208">
 			<phptree>
 				<treenode node="course;Php:Var Name;106;17;113;17;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5702,7 +5751,7 @@
 				<treenode node="view;JS:JS Var Name;8;103;12;103;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php" crc="756930163">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php" crc="1134543552">
 			<phptree>
 				<treenode node="chapters;Php:Var Name;28;22;37;22;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5775,20 +5824,30 @@
 			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\index.html" crc="-1574479902">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\third_party\index.html" crc="-1574479902">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\models\unionmodel.php" crc="94854446">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\unionmodel.php" crc="-1370104582">
 			<phptree>
-				<treenode node="Unionmodel;Php:Class Name;0;2;1;70;34;;;vCI_Model;;c;;r;;d33,2;;b0,0;;m">
+				<treenode node="Unionmodel;Php:Class Name;0;2;1;115;34;;;vCI_Model;;c;;r;;d33,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;4;4;5;6;34;;;v;;r;;d26,4;;b0,0;;m">
 					</treenode>
 					<treenode node="audience_course;Php:Function Name;1;35;2;42;34;;;v;;r;;d34,35;;b0,0;;mcourse;;p">
 					</treenode>
+					<treenode node="get_courses_examination;Php:Function Name;1;107;2;114;34;;;v;;r;;d62,107;;b0,0;;maudorder;;paudience;;pstatus;;p">
+					</treenode>
+					<treenode node="get_courses_test;Php:Function Name;1;98;2;105;34;;;v;;r;;d55,98;;b0,0;;maudorder;;paudience;;pstatus;;p">
+					</treenode>
 					<treenode node="read_audience;Php:Function Name;1;8;2;15;34;;;v;;r;;d25,8;;b0,0;;m">
+					</treenode>
+					<treenode node="read_audience_currect_course;Php:Function Name;1;71;2;78;34;;;v;;r;;d65,71;;b0,0;;maudience;;pcourse;;pstatus;;p">
 					</treenode>
 					<treenode node="read_audience_currect_courses;Php:Function Name;1;62;2;69;34;;;v;;r;;d58,62;;b0,0;;maudience;;pstatus;;p">
 					</treenode>
 					<treenode node="read_caudience_records;Php:Function Name;1;26;2;33;34;;;v;;r;;d40,26;;b0,0;;morder;;p">
 					</treenode>
 					<treenode node="read_corder_records;Php:Function Name;1;17;2;24;34;;;v;;r;;d37,17;;b0,0;;morder;;p">
+					</treenode>
+					<treenode node="read_course_curriculum;Php:Function Name;1;89;2;96;34;;;v;;r;;d59,89;;b0,0;;maudience;;pcourse;;pstatus;;p">
+					</treenode>
+					<treenode node="read_course_libraries;Php:Function Name;1;80;2;87;34;;;v;;r;;d58,80;;b0,0;;maudience;;pcourse;;pstatus;;p">
 					</treenode>
 					<treenode node="read_courseorder_title;Php:Function Name;1;44;2;51;34;;;v;;r;;d40,44;;b0,0;;morder;;p">
 					</treenode>
@@ -6043,38 +6102,40 @@
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\models\lecturesmodel.php" crc="-677351202">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\lecturesmodel.php" crc="-2100345">
 			<phptree>
-				<treenode node="Lecturesmodel;Php:Class Name;0;2;1;153;34;;;vCI_Model;;c;;r;;d36,2;;b0,0;;m">
+				<treenode node="Lecturesmodel;Php:Class Name;0;2;1;166;34;;;vCI_Model;;c;;r;;d36,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;1;14;2;16;34;;;v;;r;;d23,14;;b0,0;;m">
 					</treenode>
 					<treenode node="active_status;Php:Function Name;1;33;2;38;34;;;v;;r;;d28,33;;b0,0;;mid;;p">
 					</treenode>
-					<treenode node="change_number;Php:Function Name;1;82;2;89;34;;;v;;r;;d52,82;;b0,0;;moldnumber;;pnumber;;pchapter;;p">
+					<treenode node="change_number;Php:Function Name;1;95;2;102;34;;;v;;r;;d52,95;;b0,0;;moldnumber;;pnumber;;pchapter;;p">
 					</treenode>
-					<treenode node="count_course_record;Php:Function Name;1;136;2;143;34;;;v;;r;;d38,136;;b0,0;;mcourse;;p">
+					<treenode node="count_course_record;Php:Function Name;1;149;2;156;34;;;v;;r;;d38,149;;b0,0;;mcourse;;p">
 					</treenode>
-					<treenode node="count_records;Php:Function Name;1;127;2;134;34;;;v;;r;;d33,127;;b0,0;;mchapter;;p">
+					<treenode node="count_records;Php:Function Name;1;140;2;147;34;;;v;;r;;d33,140;;b0,0;;mchapter;;p">
 					</treenode>
 					<treenode node="deactive_status;Php:Function Name;1;40;2;45;34;;;v;;r;;d30,40;;b0,0;;mid;;p">
 					</treenode>
-					<treenode node="delete_record;Php:Function Name;1;120;2;125;34;;;v;;r;;d28,120;;b0,0;;mid;;p">
+					<treenode node="delete_record;Php:Function Name;1;133;2;138;34;;;v;;r;;d28,133;;b0,0;;mid;;p">
 					</treenode>
 					<treenode node="insert_record;Php:Function Name;1;18;2;31;34;;;v;;r;;d30,18;;b0,0;;mdata;;p">
 					</treenode>
-					<treenode node="next_number;Php:Function Name;1;145;2;152;34;;;v;;r;;d31,145;;b0,0;;mchapter;;p">
+					<treenode node="next_number;Php:Function Name;1;158;2;165;34;;;v;;r;;d31,158;;b0,0;;mchapter;;p">
 					</treenode>
-					<treenode node="ownew_course;Php:Function Name;1;91;2;99;34;;;v;;r;;d35,91;;b0,0;;mid;;pcourse;;p">
+					<treenode node="ownew_course;Php:Function Name;1;104;2;112;34;;;v;;r;;d35,104;;b0,0;;mid;;pcourse;;p">
 					</treenode>
-					<treenode node="read_field;Php:Function Name;1;111;2;118;34;;;v;;r;;d32,111;;b0,0;;mid;;pfield;;p">
+					<treenode node="read_field;Php:Function Name;1;124;2;131;34;;;v;;r;;d32,124;;b0,0;;mid;;pfield;;p">
 					</treenode>
 					<treenode node="read_record;Php:Function Name;1;47;2;54;34;;;v;;r;;d26,47;;b0,0;;mid;;p">
 					</treenode>
 					<treenode node="read_records;Php:Function Name;1;56;2;65;34;;;v;;r;;d31,56;;b0,0;;mcourse;;p">
 					</treenode>
-					<treenode node="read_records_chapter;Php:Function Name;1;101;2;109;34;;;v;;r;;d48,101;;b0,0;;mcourse;;pchapter;;p">
+					<treenode node="read_records_chapter;Php:Function Name;1;114;2;122;34;;;v;;r;;d48,114;;b0,0;;mcourse;;pchapter;;p">
 					</treenode>
-					<treenode node="update_record;Php:Function Name;1;67;2;80;34;;;v;;r;;d30,67;;b0,0;;mdata;;p">
+					<treenode node="read_views_records;Php:Function Name;1;67;2;78;34;;;v;;r;;d46,67;;b0,0;;mcourse;;pchapter;;p">
+					</treenode>
+					<treenode node="update_record;Php:Function Name;1;80;2;93;34;;;v;;r;;d30,80;;b0,0;;mdata;;p">
 					</treenode>
 					<treenode node="chapter;Php:Var Name;5;10;13;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -6307,32 +6368,34 @@
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\models\audiencetestmodel.php" crc="1142477084">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\audiencetestmodel.php" crc="889110917">
 			<phptree>
-				<treenode node="Audienceordermodel;Php:Class Name;0;2;1;120;34;;;vCI_Model;;c;;r;;d41,2;;b0,0;;m">
-					<treenode node="__construct;Php:Function Name;4;15;5;17;34;;;v;;r;;d26,14;;b0,0;;m">
+				<treenode node="Audiencetestmodel;Php:Class Name;0;2;1;134;34;;;vCI_Model;;c;;r;;d40,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;4;16;5;18;34;;;v;;r;;d26,16;;b0,0;;m">
 					</treenode>
-					<treenode node="count_course_record;Php:Function Name;1;78;2;86;34;;;v;;r;;d38,79;;b0,0;;mcourse;;p">
+					<treenode node="count_course_record;Php:Function Name;1;92;2;100;34;;;v;;r;;d38,92;;b0,0;;mcourse;;p">
 					</treenode>
-					<treenode node="count_order_record;Php:Function Name;1;88;2;96;34;;;v;;r;;d36,89;;b0,0;;morder;;p">
+					<treenode node="count_order_record;Php:Function Name;1;102;2;110;34;;;v;;r;;d36,102;;b0,0;;morder;;p">
 					</treenode>
-					<treenode node="delete_order_records;Php:Function Name;1;71;2;76;34;;;v;;r;;d38,72;;b0,0;;morder;;p">
+					<treenode node="delete_order_records;Php:Function Name;1;85;2;90;34;;;v;;r;;d38,85;;b0,0;;morder;;p">
 					</treenode>
-					<treenode node="delete_record;Php:Function Name;1;57;2;62;34;;;v;;r;;d28,58;;b0,0;;mid;;p">
+					<treenode node="delete_record;Php:Function Name;1;71;2;76;34;;;v;;r;;d28,71;;b0,0;;mid;;p">
 					</treenode>
-					<treenode node="delete_records;Php:Function Name;1;64;2;69;34;;;v;;r;;d33,65;;b0,0;;mcourse;;p">
+					<treenode node="delete_records;Php:Function Name;1;78;2;83;34;;;v;;r;;d33,78;;b0,0;;mcourse;;p">
 					</treenode>
-					<treenode node="exist_course_audience;Php:Function Name;1;109;2;119;34;;;v;;r;;d67,129;;b0,0;;maudience;;pcourse;;porder;;pcustomer;;p">
+					<treenode node="exist_course_audience;Php:Function Name;1;123;2;133;34;;;v;;r;;d67,123;;b0,0;;maudience;;pcourse;;porder;;pcustomer;;p">
 					</treenode>
-					<treenode node="insert_record;Php:Function Name;1;19;2;29;34;;;v;;r;;d59,18;;b0,0;;mcourse;;paudience;;porder;;pcustomer;;p">
+					<treenode node="insert_record;Php:Function Name;1;20;2;31;34;;;v;;r;;d74,20;;b0,0;;mcourse;;paudience;;porder;;pcustomer;;pchapter;;ptest;;p">
 					</treenode>
-					<treenode node="owner_acorder;Php:Function Name;1;98;2;107;34;;;v;;r;;d46,109;;b0,0;;mid;;pcourse;;pcustomer;;p">
+					<treenode node="owner_acorder;Php:Function Name;1;112;2;121;34;;;v;;r;;d46,112;;b0,0;;mid;;pcourse;;pcustomer;;p">
 					</treenode>
-					<treenode node="read_field;Php:Function Name;1;48;2;55;34;;;v;;r;;d32,49;;b0,0;;mid;;pfield;;p">
+					<treenode node="read_field;Php:Function Name;1;62;2;69;34;;;v;;r;;d32,62;;b0,0;;mid;;pfield;;p">
 					</treenode>
-					<treenode node="read_record;Php:Function Name;1;31;2;38;34;;;v;;r;;d26,32;;b0,0;;mid;;p">
+					<treenode node="read_record;Php:Function Name;1;33;2;40;34;;;v;;r;;d26,33;;b0,0;;mid;;p">
 					</treenode>
-					<treenode node="update_field;Php:Function Name;1;40;2;46;34;;;v;;r;;d40,41;;b0,0;;mid;;pfield;;pdata;;p">
+					<treenode node="read_records;Php:Function Name;1;42;2;52;34;;;v;;r;;d57,42;;b0,0;;mcourse;;porder;;pchapter;;paudience;;p">
+					</treenode>
+					<treenode node="update_field;Php:Function Name;1;54;2;60;34;;;v;;r;;d40,54;;b0,0;;mid;;pfield;;pdata;;p">
 					</treenode>
 					<treenode node="attempt;Php:Var Name;8;10;16;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -6340,11 +6403,11 @@
 					</treenode>
 					<treenode node="audience;Php:Var Name;8;7;17;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="chapter;Php:Var Name;8;9;16;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="chapter;Php:Var Name;8;8;16;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="course;Php:Var Name;8;6;15;6;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="customer;Php:Var Name;8;8;17;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="customer;Php:Var Name;8;14;17;14;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="id;Php:Var Name;8;4;11;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -6352,14 +6415,16 @@
 					</treenode>
 					<treenode node="result;Php:Var Name;8;11;15;11;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
+					<treenode node="test;Php:Var Name;8;9;13;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="time;Php:Var Name;8;12;13;12;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\models\audienceordermodel.php" crc="-1584576560">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\audienceordermodel.php" crc="-1455534056">
 			<phptree>
-				<treenode node="Audienceordermodel;Php:Class Name;0;2;1;140;34;;;vCI_Model;;c;;r;;d41,2;;b0,0;;m">
-					<treenode node="__construct;Php:Function Name;4;14;5;16;34;;;v;;r;;d26,14;;b0,0;;m">
+				<treenode node="Audienceordermodel;Php:Class Name;0;2;1;141;34;;;vCI_Model;;c;;r;;d41,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;4;14;5;16;34;;;v;;r;;d26,16;;b0,0;;m">
 					</treenode>
 					<treenode node="count_course_record;Php:Function Name;1;79;2;87;34;;;v;;r;;d38,79;;b0,0;;mcourse;;p">
 					</treenode>
@@ -6371,15 +6436,15 @@
 					</treenode>
 					<treenode node="delete_records;Php:Function Name;1;65;2;70;34;;;v;;r;;d33,65;;b0,0;;mcourse;;p">
 					</treenode>
-					<treenode node="exist_course_audience;Php:Function Name;1;129;2;139;34;;;v;;r;;d67,129;;b0,0;;maudience;;pcourse;;porder;;pcustomer;;p">
+					<treenode node="exist_course_audience;Php:Function Name;1;130;2;140;34;;;v;;r;;d67,110;;b0,0;;maudience;;pcourse;;porder;;pcustomer;;p">
 					</treenode>
-					<treenode node="insert_record;Php:Function Name;1;18;2;30;34;;;v;;r;;d59,18;;b0,0;;mcourse;;paudience;;porder;;pcustomer;;p">
+					<treenode node="insert_record;Php:Function Name;1;18;2;30;34;;;v;;r;;d59,20;;b0,0;;mcourse;;paudience;;porder;;pcustomer;;p">
 					</treenode>
 					<treenode node="over_course;Php:Function Name;1;99;2;107;34;;;v;;r;;d42,99;;b0,0;;mid;;pstatus;;presult;;p">
 					</treenode>
-					<treenode node="owner_acorder;Php:Function Name;1;109;2;118;34;;;v;;r;;d46,109;;b0,0;;mid;;pcourse;;pcustomer;;p">
+					<treenode node="owner_acorder;Php:Function Name;1;109;2;118;34;;;v;;r;;d46,99;;b0,0;;mid;;pcourse;;pcustomer;;p">
 					</treenode>
-					<treenode node="owner_audience;Php:Function Name;1;119;2;127;34;;;v;;r;;d39,119;;b0,0;;mid;;paudience;;p">
+					<treenode node="owner_audience;Php:Function Name;1;120;2;128;34;;;v;;r;;d39,120;;b0,0;;mid;;paudience;;p">
 					</treenode>
 					<treenode node="read_field;Php:Function Name;1;49;2;56;34;;;v;;r;;d32,49;;b0,0;;mid;;pfield;;p">
 					</treenode>
@@ -6701,22 +6766,32 @@
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\audience_interface.php" crc="-522229171">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\audience_interface.php" crc="-1933514493">
 			<phptree>
-				<treenode node="Audience_interface;Php:Class Name;0;2;1;133;34;;;vCI_Controller;;c;;r;;d47,2;;b0,0;;m">
-					<treenode node="__construct;Php:Function Name;1;8;2;50;34;;;v;;r;;d23,8;;b0,0;;m">
+				<treenode node="Audience_interface;Php:Class Name;0;2;1;313;34;;;vCI_Controller;;c;;r;;d46,2;;b0,0;;m">
+					<treenode node="__construct;Php:Function Name;1;8;2;51;34;;;v;;r;;d23,8;;b0,0;;m">
 					</treenode>
-					<treenode node="audience_courses_completed;Php:Function Name;8;100;2;102;34;;;v;;r;;d45,100;;b1,0;;m">
+					<treenode node="audience_courses_completed;Php:Function Name;8;101;2;103;34;;;v;;r;;d45,101;;b1,0;;m">
 					</treenode>
-					<treenode node="audience_courses_currect;Php:Function Name;8;75;2;98;34;;;v;;r;;d43,75;;b1,0;;m">
+					<treenode node="audience_courses_currect;Php:Function Name;8;76;2;99;34;;;v;;r;;d43,76;;b1,0;;m">
 					</treenode>
-					<treenode node="audience_profile;Php:Function Name;8;52;2;73;34;;;v;;r;;d35,52;;b1,0;;m">
+					<treenode node="audience_courses_lecture;Php:Function Name;8;172;2;226;34;;;v;;r;;d43,172;;b1,0;;m">
 					</treenode>
-					<treenode node="audience_start_training;Php:Function Name;8;104;2;115;34;;;v;;r;;d42,104;;b1,0;;m">
+					<treenode node="audience_courses_lectures;Php:Function Name;8;129;2;170;34;;;v;;r;;d44,129;;b1,0;;m">
 					</treenode>
-					<treenode node="operation_date;Php:Function Name;1;117;2;124;34;;;v;;r;;d32,117;;b0,0;;mfield;;p">
+					<treenode node="audience_get_curriculum;Php:Function Name;8;274;2;295;34;;;v;;r;;d42,274;;b1,0;;m">
 					</treenode>
-					<treenode node="operation_dot_date;Php:Function Name;1;126;2;132;34;;;v;;r;;d36,126;;b0,0;;mfield;;p">
+					<treenode node="audience_get_document;Php:Function Name;8;228;2;249;34;;;v;;r;;d40,228;;b1,0;;m">
+					</treenode>
+					<treenode node="audience_get_libraries;Php:Function Name;8;251;2;272;34;;;v;;r;;d41,251;;b1,0;;m">
+					</treenode>
+					<treenode node="audience_profile;Php:Function Name;8;53;2;74;34;;;v;;r;;d35,53;;b1,0;;m">
+					</treenode>
+					<treenode node="audience_start_training;Php:Function Name;8;105;2;127;34;;;v;;r;;d42,105;;b1,0;;m">
+					</treenode>
+					<treenode node="operation_date;Php:Function Name;8;297;2;304;34;;;v;;r;;d39,297;;b1,0;;mfield;;p">
+					</treenode>
+					<treenode node="operation_dot_date;Php:Function Name;8;306;2;312;34;;;v;;r;;d43,306;;b1,0;;mfield;;p">
 					</treenode>
 					<treenode node="loginstatus;Php:Var Name;5;5;17;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -6811,7 +6886,7 @@
 				<treenode node="smileys;Php:Var Name;0;14;8;14;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\config\routes.php" crc="-855155241">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\config\routes.php" crc="-799863305">
 			<phptree>
 				<treenode node="route;Php:Var Name;0;2;6;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
