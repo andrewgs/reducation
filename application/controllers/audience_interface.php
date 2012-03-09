@@ -165,7 +165,7 @@ class Audience_interface extends CI_Controller{
 			$pagevar['chapters'][$i]['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],$pagevar['chapters'][$i]['id'],$this->user['uid']);
 		endfor;
 		$pagevar['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],0,$this->user['uid']);
-		print_r($pagevar['chapters']);exit;
+//		print_r($pagevar['chapters']);exit;
 		$this->load->view("audience_interface/courses-lectures",$pagevar);
 	}
 	
