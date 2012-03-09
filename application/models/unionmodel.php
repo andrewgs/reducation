@@ -60,9 +60,9 @@ class Unionmodel extends CI_Model{
 		return NULL;
 	}
 
-	function read_audience_currect_courses($audience,$status){
+	function read_audience_courses($audience,$status){
 		
-		$query = "SELECT courses.id,courses.title,courses.code,courses.trend,courses.hours,audienceorder.start,audienceorder.id AS aud FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN audienceorder ON audienceorder.course = courseorder.id INNER JOIN orders ON courseorder.order=orders.id WHERE audienceorder.audience = $audience AND audienceorder.status = $status AND orders.paid = 1";
+		$query = "SELECT courses.id,courses.title,courses.code,courses.trend,courses.hours,audienceorder.start,audienceorder.id AS aud,audienceorder.order FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN audienceorder ON audienceorder.course = courseorder.id INNER JOIN orders ON courseorder.order=orders.id WHERE audienceorder.audience = $audience AND audienceorder.status = $status AND orders.paid = 1";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
@@ -108,6 +108,15 @@ class Unionmodel extends CI_Model{
 	function get_courses_examination($audorder,$audience,$status){
 		
 		$query = "SELECT tests.*, courseorder.id AS coid,audienceorder.id AS aoid,courseorder.order AS ordid,courseorder.customer AS ordcus FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN tests ON courses.id = tests.course INNER JOIN audienceorder ON courseorder.id = audienceorder.course WHERE audienceorder.id = $audorder AND audienceorder.audience = $audience AND audienceorder.status = $status AND tests.chapter = 0 AND audienceorder.start = 1";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data)) return $data[0];
+		return NULL;
+	}
+
+	function read_audience_testing($id,$audience,$course){
+		
+		$query = "SELECT tests.id AS tid,tests.title AS ttitle,tests.count AS tcount,tests.timetest AS ttime, audiencetest.* FROM audiencetest INNER JOIN tests ON audiencetest.test = tests.id WHERE audiencetest.audience = $audience AND audiencetest.id = $id AND audiencetest.course = $course";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data)) return $data[0];

@@ -118,9 +118,10 @@ class Audienceordermodel extends CI_Model{
 		return FALSE;
 	}
 	
-	function owner_audience($id,$audience){
+	function owner_audience($id,$audience,$status){
 		
 		$this->db->where('id',$id);
+		$this->db->where('status',$status);
 		$this->db->where('audience',$audience);
 		$query = $this->db->get('audienceorder',1);
 		$data = $query->result_array();

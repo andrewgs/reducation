@@ -74,6 +74,18 @@ class Testanswersmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_correct_answers($test){
+		
+		$this->db->select('id,testquestion AS numb');
+		$this->db->where('correct',1);
+		$this->db->where('test',$test);
+		$this->db->order_by('id','ASC');
+		$query = $this->db->get('testanswers');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
 	function read_record($id){
 		
 		$this->db->where('id',$id);

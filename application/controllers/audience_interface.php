@@ -83,31 +83,52 @@ class Audience_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
-					'courses'		=> $this->unionmodel->read_audience_currect_courses($this->user['uid'],0),
+					'courses'		=> $this->unionmodel->read_audience_courses($this->user['uid'],0),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
 		for($i=0;$i<count($pagevar['courses']);$i++):
 			$pagevar['courses'][$i]['chapter'] = $this->chaptermodel->count_records($pagevar['courses'][$i]['id']);
 			$pagevar['courses'][$i]['tests'] = $this->testsmodel->count_course_record($pagevar['courses'][$i]['id']);
 			$pagevar['courses'][$i]['lectures'] = $this->lecturesmodel->count_course_record($pagevar['courses'][$i]['id']);
+			$pagevar['courses'][$i]['test'] = $this->audiencetestmodel->read_exam_test_info($pagevar['courses'][$i]['order'],$pagevar['courses'][$i]['aud'],$this->user['uid']);
+			$pagevar['courses'][$i]['test']['count'] = $this->testsmodel->read_field($pagevar['courses'][$i]['test']['test'],'count');
 		endfor;
-		
 		$this->load->view("audience_interface/courses-currect",$pagevar);
 	}
 	
 	public function audience_courses_completed(){
 		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Мои текущие курсы',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'courses'		=> $this->unionmodel->read_audience_courses($this->user['uid'],1),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		for($i=0;$i<count($pagevar['courses']);$i++):
+			$pagevar['courses'][$i]['chapter'] = $this->chaptermodel->count_records($pagevar['courses'][$i]['id']);
+			$pagevar['courses'][$i]['tests'] = $this->testsmodel->count_course_record($pagevar['courses'][$i]['id']);
+			$pagevar['courses'][$i]['lectures'] = $this->lecturesmodel->count_course_record($pagevar['courses'][$i]['id']);
+			$pagevar['courses'][$i]['test'] = $this->audiencetestmodel->read_exam_test_info($pagevar['courses'][$i]['order'],$pagevar['courses'][$i]['aud'],$this->user['uid']);
+			$pagevar['courses'][$i]['test']['count'] = $this->testsmodel->read_field($pagevar['courses'][$i]['test']['test'],'count');
+		endfor;
+		$this->load->view("audience_interface/courses-completed",$pagevar);
 	}
 	
 	public function audience_start_training(){
 		
 		$training = $this->uri->segment(5);
 		if($training):
-			if(!$this->audienceordermodel->owner_audience($training,$this->user['uid'])):
+			if(!$this->audienceordermodel->owner_audience($training,$this->user['uid'],0)):
 				$this->session->set_userdata('msgr','Не возможно начать обучение.');
 				redirect('audience/courses/current');
 			endif;
@@ -130,9 +151,9 @@ class Audience_interface extends CI_Controller{
 	public function audience_courses_lectures(){
 		
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			redirect('audience/courses/current');
 		endif;
 		
 		if(!$this->audienceordermodel->read_field($course,'start')):
@@ -149,6 +170,7 @@ class Audience_interface extends CI_Controller{
 					'course'		=> $this->unionmodel->read_audience_currect_course($this->user['uid'],$course,0),
 					'chapters'		=> array(),
 					'test'			=> array(),
+					'finaltest'		=> 0,
 					'docvalue'		=> 'Список литературы',
 					'document'		=> $this->unionmodel->read_course_libraries($this->user['uid'],$course,0),
 					'curriculum'	=> $this->unionmodel->read_course_curriculum($this->user['uid'],$course,0),
@@ -163,18 +185,106 @@ class Audience_interface extends CI_Controller{
 		for($i=0;$i<count($pagevar['chapters']);$i++):
 			$pagevar['chapters'][$i]['lectures'] = $this->lecturesmodel->read_views_records($pagevar['course']['id'],$pagevar['chapters'][$i]['id']);
 			$pagevar['chapters'][$i]['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],$pagevar['chapters'][$i]['id'],$this->user['uid']);
+			$pagevar['chapters'][$i]['test']['count'] = $this->testsmodel->read_field($pagevar['chapters'][$i]['test']['test'],'count');
 		endfor;
 		$pagevar['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],0,$this->user['uid']);
-//		print_r($pagevar['chapters']);exit;
+		$pagevar['test']['count'] = $this->testsmodel->read_field($pagevar['test']['test'],'count');
 		$this->load->view("audience_interface/courses-lectures",$pagevar);
+	}
+	
+	public function audience_testing(){
+		
+		$course = $this->uri->segment(5);
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к к лекциям курса.');
+			redirect('audience/courses/current');
+		endif;
+		
+		if(!$this->audienceordermodel->read_field($course,'start')):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
+			redirect('audience/courses/current');
+		endif;
+		$test = $this->uri->segment(9);
+		if(!$this->audiencetestmodel->owner_testing($test,$course,$this->user['uid'])):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+		
+		if($this->uri->segment(7) == 'final-testing'):
+			if(!$this->audiencetestmodel->owner_final_testing($test,$course,$this->user['uid'])):
+				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
+				redirect('audience/courses/current/course/'.$course.'/lectures');
+			endif;
+		endif;
+		if($this->uri->segment(7) == 'testing'):
+			if(!$this->audiencetestmodel->owner_nonfinal_testing($test,$course,$this->user['uid'])):
+				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
+				redirect('audience/courses/current/course/'.$course.'/lectures');
+			endif;
+		endif;
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - Тестирование',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'course'		=> $this->unionmodel->read_audience_currect_course($this->user['uid'],$course,0),
+					'test'			=> $this->unionmodel->read_audience_testing($test,$this->user['uid'],$course),
+					'questions'		=> array(),
+					'answers'		=> array(),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		
+		$ccount = $this->audiencetestmodel->read_field($test,'attempt');
+		$tcount = $this->testsmodel->read_field($pagevar['test']['test'],'count');
+		
+		if($ccount >= $tcount):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту. У вас закончились попытки.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+		
+		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
+		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
+		if($this->input->post('submit')):
+			unset($_POST['submit']);
+			$corranswers = $this->testanswersmodel->read_correct_answers($pagevar['test']['test']);
+			$ccanswer = 0; $i = 0;
+			foreach ($_POST AS $id=>$corr):
+				for($i=0;$i<count($corranswers);$i++):
+					if($id == $corranswers[$i]['numb']):
+						if($corr == $corranswers[$i]['id']):
+							$ccanswer++;
+						endif;
+					endif;
+				endfor;
+			endforeach;
+			$ccanswer = round($ccanswer/count($corranswers)*100);
+			$this->audiencetestmodel->update_result($test,$ccanswer,round($_POST['time']/60));
+			if($ccanswer > 60):
+				$this->session->set_userdata('msgs','Тест завершен!<br/>Поздравляем Вы успешно прошли тест и ответили верно на '.$ccanswer.'% вопросов.');
+				if($this->uri->segment(7) == 'final-testing'):
+					$this->audienceordermodel->update_field($course,'status',1);
+					redirect('audience/courses/completed');
+				endif;
+			else:
+				$this->session->set_userdata('msgr','Тест не завершен!<br/>Вы не прошли тест и ответили верно только на '.$ccanswer.'% вопросов.');
+			endif;
+			redirect('audience/courses/current/course/'.$this->uri->segment(5).'/lectures');
+		endif;
+		$this->load->view("audience_interface/courses-chapter-testing",$pagevar);
 	}
 	
 	public function audience_courses_lecture(){
 		
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			redirect('audience/courses/current');
 		endif;
 		
 		$pagevar = array(
@@ -229,12 +339,16 @@ class Audience_interface extends CI_Controller{
 		
 		$lecture = $this->uri->segment(7);
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к лекции курса.');
-			redirect('audience/courses/current/course/'.$course.'/lecture/'.$lecture);
+			redirect('audience/courses/current');
 		endif;
 		$this->load->helper('download');
 		$file = getcwd().'/'.$this->lecturesmodel->read_field($lecture,'document');
+		if(!file_exists($file)):
+			$this->session->set_userdata('msgr','Ошибка при загузке лекции. Отсутствует файл на сервере. Обратитесь к администрации сайта.');
+			redirect('audience/courses/current/course/'.$course.'/lecture/'.$lecture);
+		endif;
 		$data = file_get_contents($file);
 		$fileexp = explode('/',$this->lecturesmodel->read_field($lecture,'document'));
 		if($fileexp && isset($fileexp[2])):
@@ -251,13 +365,17 @@ class Audience_interface extends CI_Controller{
 	public function audience_get_libraries(){
 		
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к списку литературы курса.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			redirect('audience/courses/current');
 		endif;
 		
 		$this->load->helper('download');
 		$file = getcwd().'/'.$this->unionmodel->read_course_libraries($this->user['uid'],$course,0);
+		if(!file_exists($file)):
+			$this->session->set_userdata('msgr','Ошибка при загузке списка литературы. Отсутствует файл на сервере. Обратитесь к администрации сайта.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
 		$data = file_get_contents($file);
 		$fileexp = explode('/',$this->unionmodel->read_course_libraries($this->user['uid'],$course,0));
 		if($fileexp && isset($fileexp[2])):
@@ -274,13 +392,17 @@ class Audience_interface extends CI_Controller{
 	public function audience_get_curriculum(){
 		
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'])):
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к учебному плану курса.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			redirect('audience/courses/current');
 		endif;
 		
 		$this->load->helper('download');
 		$file = getcwd().'/'.$this->unionmodel->read_course_curriculum($this->user['uid'],$course,0);
+		if(!file_exists($file)):
+			$this->session->set_userdata('msgr','Ошибка при загузке учебного плана. Отсутствует файл на сервере. Обратитесь к администрации сайта.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
 		$data = file_get_contents($file);
 		$fileexp = explode('/',$this->unionmodel->read_course_curriculum($this->user['uid'],$course,0));
 		if($fileexp && isset($fileexp[2])):

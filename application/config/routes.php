@@ -30,15 +30,17 @@ $route['customer/audience/orders/order-information/id/:num']	= "customer_interfa
 
 /******************************************************** AUDIENCE INTRERFACE ***********************************************/
 
-$route['audience/view/profile']												= "audience_interface/audience_profile";
-$route['audience/courses/current']											= "audience_interface/audience_courses_currect";
-$route['audience/courses/current/start-training/:num']						= "audience_interface/audience_start_training";
-$route['audience/courses/completed']										= "audience_interface/audience_courses_completed";
-$route['audience/courses/current/course/:num/lectures']						= "audience_interface/audience_courses_lectures";
-$route['audience/courses/current/course/:num/lecture/:num']					= "audience_interface/audience_courses_lecture";
-$route['audience/courses/current/course/:num/lecture/:num/get-document']	= "audience_interface/audience_get_document";
-$route['audience/courses/current/course/:num/lectures/get-libraries']		= "audience_interface/audience_get_libraries";
-$route['audience/courses/current/course/:num/lectures/get-curriculum']		= "audience_interface/audience_get_curriculum";
+$route['audience/view/profile']													= "audience_interface/audience_profile";
+$route['audience/courses/current']												= "audience_interface/audience_courses_currect";
+$route['audience/courses/current/start-training/:num']							= "audience_interface/audience_start_training";
+$route['audience/courses/completed']											= "audience_interface/audience_courses_completed";
+$route['audience/courses/current/course/:num/lectures']							= "audience_interface/audience_courses_lectures";
+$route['audience/courses/current/course/:num/lecture/:num']						= "audience_interface/audience_courses_lecture";
+$route['audience/courses/current/course/:num/lecture/:num/get-document']		= "audience_interface/audience_get_document";
+$route['audience/courses/current/course/:num/lectures/get-libraries']			= "audience_interface/audience_get_libraries";
+$route['audience/courses/current/course/:num/lectures/get-curriculum']			= "audience_interface/audience_get_curriculum";
+$route['audience/courses/current/course/:num/lectures/testing/id/:num']			= "audience_interface/audience_testing";
+$route['audience/courses/current/course/:num/lectures/final-testing/id/:num'] 	= "audience_interface/audience_testing";
 
 /*==========================================================  ordering  ===================================================*/
 

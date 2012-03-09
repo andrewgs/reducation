@@ -40,6 +40,19 @@ class Audiencetestmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_exam_test_info($order,$course,$audience){
+		
+		$this->db->select('test,attempt,result,time');
+		$this->db->where('order',$order);
+		$this->db->where('course',$course);
+		$this->db->where('audience',$audience);
+		$this->db->where('chapter',0);
+		$query = $this->db->get('audiencetest',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0];
+		return NULL;
+	}
+	
 	function read_records($course,$order,$chapter,$audience){
 		
 		$this->db->where('course',$course);
@@ -55,6 +68,17 @@ class Audiencetestmodel extends CI_Model{
 	function update_field($id,$field,$data){
 			
 		$this->db->set($field,$data);
+		$this->db->where('id',$id);
+		$this->db->update('audiencetest');
+		return $this->db->affected_rows();
+	}
+	
+	function update_result($id,$result,$time){
+			
+		$this->db->set('result',$result);
+		$this->db->set('time',$time);
+		$this->db->set('attempt','attempt+1',FALSE);
+		$this->db->set('attemptdate',date("Y-m-d"));
 		$this->db->where('id',$id);
 		$this->db->update('audiencetest');
 		return $this->db->affected_rows();
@@ -115,6 +139,40 @@ class Audiencetestmodel extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->where('course',$course);
 		$this->db->where('customer',$customer);
+		$query = $this->db->get('audiencetest',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return TRUE;
+		return FALSE;
+	}
+	
+	function owner_testing($id,$course,$audience){
+		
+		$this->db->where('id',$id);
+		$this->db->where('course',$course);
+		$this->db->where('audience',$audience);
+		$query = $this->db->get('audiencetest',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return TRUE;
+		return FALSE;
+	}
+	
+	function owner_final_testing($id,$course,$audience){
+		
+		$this->db->where('id',$id);
+		$this->db->where('course',$course);
+		$this->db->where('audience',$audience);
+		$this->db->where('chapter',0);
+		$query = $this->db->get('audiencetest',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return TRUE;
+		return FALSE;
+	}
+	function owner_nonfinal_testing($id,$course,$audience){
+		
+		$this->db->where('id',$id);
+		$this->db->where('course',$course);
+		$this->db->where('audience',$audience);
+		$this->db->where('chapter >',0);
 		$query = $this->db->get('audiencetest',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return TRUE;

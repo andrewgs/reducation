@@ -8,7 +8,7 @@
 			<div class="span9">
 				<ul class="breadcrumb">
 					<li class="active">
-						<?=anchor($this->uri->uri_string(),'Мои текущие курсы');?>
+						<?=anchor($this->uri->uri_string(),'Мои пройденные курсы');?>
 					</li>
 				</ul>
 				<div>
@@ -37,14 +37,6 @@
 
 Количество лекций: <?=$courses[$i]['lectures'];?>
 
-
-<?php if($courses[$i]['start']):?>
-	<?php if($courses[$i]['lectures']):?>											<?=anchor('audience/courses/current/course/'.$courses[$i]['aud'].'/lectures/','Читать лекции',array('class'=>'btn btn-info'));?>
-	<?php endif;?>
-	<?php else:?>
-	
-												<?=anchor($this->uri->uri_string().'/start-training/'.$courses[$i]['aud'],'Начать обучение',array('class'=>'btn btn-success'));?>
-<?php endif;?>
 </pre>	
 					<?php if(isset($courses[$i]['test']['attempt'])):?>
 						<?php if($courses[$i]['test']['attempt'] > 0):?>

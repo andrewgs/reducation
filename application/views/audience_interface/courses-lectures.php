@@ -11,7 +11,7 @@
 						<li>
 							<?=anchor('audience/courses/current','Мои текущие курсы');?> <span class="divider">/</span>
 						</li>
-						<li>
+						<li class="active">
 							<?=anchor($this->uri->uri_string(),$course['code'].'. '.$course['title']);?>
 						</li>
 					</ul>
@@ -46,7 +46,19 @@
 									</tbody>
 								</table>
 							<?php if($chapters[$i]['test']):?>
+								<?php if($chapters[$i]['test']['attempt'] < $chapters[$i]['test']['count']):?>
 								<?=anchor($this->uri->uri_string().'/testing/id/'.$chapters[$i]['test']['id'],'Промежуточное тестирование',array('class'=>'btn'));?>
+								<?php endif;?>
+								<?php if($chapters[$i]['test']['attempt'] > 0 ):?>
+								<div style="margin-top: 10px;">
+									<pre>
+	Попытка: <?=$chapters[$i]['test']['attempt'];?> из <?=$chapters[$i]['test']['count'];?>
+	
+	Затрачено: <?=$chapters[$i]['test']['time'];?> мин.
+	Результат: <?=$chapters[$i]['test']['result'];?>% <?=($chapters[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
+									</pre>
+								</div>
+								<?php endif;?>
 							<?php endif;?>
 							</div>
 						</div>
@@ -54,20 +66,32 @@
 				<?php endfor;?>
 					<div class="btn-toolbar">
 						<div class="btn-group">
-						<?php if($document):?>
-							<button class="btn btn-success">Cписок литературы</button>
-							<a class="btn" data-toggle="modal" href="#getDocument" title="Скачать"><i class="icon-download-alt"></i></a>
-						<?php endif;?>
-						</div>
-						<div class="btn-group">
 						<?php if($curriculum):?>
 							<button class="btn btn-success">Учебный план</button>
 							<a class="btn" data-toggle="modal" href="#getCurriculum" title="Скачать"><i class="icon-download-alt"></i></a>
 						<?php endif;?>
 						</div>
 						<div class="btn-group">
-							<?=anchor('#','Итоговое тестирование',array('class'=>'btn'));?>
+						<?php if($document):?>
+							<button class="btn btn-success">Cписок литературы</button>
+							<a class="btn" data-toggle="modal" href="#getDocument" title="Скачать"><i class="icon-download-alt"></i></a>
+						<?php endif;?>
 						</div>
+					<?php if($test['attempt'] < $test['count']):?>
+						<div class="btn-group">
+							<?=anchor($this->uri->uri_string().'/final-testing/id/'.$test['id'],'Итоговое тестирование',array('class'=>'btn'));?>
+						</div>
+					<?php endif;?>
+					<?php if($test['attempt'] > 0 ):?>
+						<div style="margin-top: 10px;">
+								<pre>
+Попытка: <?=$test['attempt'];?> из <?=$test['count'];?>
+
+Затрачено: <?=$test['time'];?> мин.
+Результат: <?=$test['result'];?>% <?=($test['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
+								</pre>
+						</div>
+					<?php endif;?>
 					</div>
 					<?php $this->load->view('users_interface/modal/user-get-document');?>
 					<?php $this->load->view('users_interface/modal/user-get-curriculum');?>
