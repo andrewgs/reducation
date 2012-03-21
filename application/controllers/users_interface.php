@@ -299,6 +299,8 @@ class Users_interface extends CI_Controller{
 			$id = $this->customersmodel->insert_record($customer);
 			$login = 'cus000'.$id;
 			$password = $this->randomPassword(8);
+			$this->session->set_userdata('cuslogin',$login);
+			$this->session->set_userdata('cuspassword',$password);
 			$this->customersmodel->update_field($id,'login',$login);
 			$this->customersmodel->update_field($id,'password',md5($password));
 			$this->customersmodel->update_field($id,'cryptpassword',$this->encrypt->encode($password));
@@ -357,7 +359,16 @@ class Users_interface extends CI_Controller{
 		$finish = $this->session->userdata('finishregcustomer');
 		if($finish):
 			$this->session->unset_userdata('finishregcustomer');
-			redirect('');
+			$this->session->userdata('cuslogin');
+			$user = $this->customersmodel->auth_user($this->session->userdata('cuslogin'),$this->session->userdata('cuspassword'));
+			if(!$user):
+				redirect('');
+			endif;
+			$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'cus'));
+			$this->customersmodel->active_user($this->session->userdata('userid'));
+			$this->session->unset_userdata('cuslogin');
+			$this->session->unset_userdata('cuspassword');
+			redirect('customer/registration/ordering');
 		else:
 			redirect('registration/customer');
 		endif;	
@@ -377,8 +388,13 @@ class Users_interface extends CI_Controller{
 					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user
+					'userinfo'		=> $this->user,
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
 		$this->load->view("users_interface/catalog-courses",$pagevar);
 		
 	}
@@ -391,8 +407,12 @@ class Users_interface extends CI_Controller{
 					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user
+					'userinfo'		=> $this->user,
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
 		$this->load->view("users_interface/contacts",$pagevar);
 	}
 	

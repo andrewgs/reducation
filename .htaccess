@@ -5,7 +5,7 @@ DirectoryIndex index.php
 php_value upload_max_filesize 10M
 
 RewriteEngine On
-RewriteBase /roscenterdpo.ru/
+RewriteBase /
 RewriteCond $1 !^(index\.php|images|robots\.txt|public)
 RewriteCond %{REQUEST_URI} !\.(css│js│jpg│gif)$
 RewriteCond %{REQUEST_FILENAME} !-f

@@ -4,7 +4,8 @@ $route['default_controller'] = "users_interface";
 $route['404_override'] = '';
 
 /***************************************************	USERS INTRERFACE	***********************************************/
-$route[''] = "users_interface/index";
+$route[''] 								= "users_interface/index";
+$route['main-page'] 					= "users_interface/index";
 $route['admin'] 						= "users_interface/admin_login";
 $route['logoff'] 						= "users_interface/logoff";
 $route['registration/customer'] 		= "users_interface/registration_customer";
@@ -77,9 +78,12 @@ $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/
 $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/delete-answer/:num']	= "admin_interface/references_delete_answer";
 
 /*==========================================================  messages  ===================================================*/
-$route['admin-panel/messages/private']		= "admin_interface/private_messages";
-$route['admin-panel/messages/support']		= "admin_interface/support_messages";
-$route['admin-panel/messages/applications']	= "admin_interface/applications_messages";
+$route['admin-panel/messages/private']			= "admin_interface/private_messages";
+$route['admin-panel/messages/support']			= "admin_interface/support_messages";
+$route['admin-panel/messages/orders/all']		= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/active']	= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/deactive']	= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/paid-order']= "admin_interface/orders_paid";
 
 /*===========================================================  users  =====================================================*/
 $route['admin-panel/users/customer']						= "admin_interface/users_customer";

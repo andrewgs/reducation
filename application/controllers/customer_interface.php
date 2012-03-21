@@ -246,7 +246,7 @@ class Customer_interface extends CI_Controller{
 				$config['charset'] = 'utf-8';
 				$config['wordwrap'] = TRUE;
 				$this->email->initialize($config);
-				$this->email->to($this->session->userdata('personaemail'));
+				$this->email->to($_POST['personaemail']);
 				$this->email->from('admin@reducation.ru','Админстрация сайта REDUCATION.RU');
 				$this->email->bcc('');
 				$this->email->subject('REDUCATION.RU Данные для доступа к личному кабинету.');

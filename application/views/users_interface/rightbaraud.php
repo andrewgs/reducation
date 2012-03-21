@@ -8,9 +8,6 @@
 			<li><?=anchor('logoff','Выйти из кабинета');?></li>
 			<li class="nav-header">Настройка</li>
 			<li num="profile"><?=anchor('audience/view/profile','Регистрационные данные');?></li>
-			<li class="nav-header">Информация</li>
-			<li><a href="#">Рейтинг курсов</a></li>
-			<li><a href="#">Курсы в разработке</a></li>
 		</ul>
 	</div>
 </div>

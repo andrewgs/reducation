@@ -11,12 +11,12 @@
 			<li class="nav-header">Сообщения</li>
 			<li num="private"><?=anchor('admin-panel/messages/private','Личные сообщения');?></li>
 			<li num="support"><?=anchor('admin-panel/messages/support','Техническая поддержка');?></li>
-			<li num="applications"><?=anchor('admin-panel/messages/applications','Заявки');?></li>
 			<li class="nav-header">Пользователи</li>
 			<li num="customer"><?=anchor('admin-panel/users/customer','Заказчики');?></li>
 			<li num="audience"><?=anchor('admin-panel/users/audience','Слушатели');?></li>
 			<li class="nav-header">Действия</li>
 			<li><?=anchor('','Главная');?></li>
+			<li num="orders"><?=anchor('admin-panel/messages/orders/all','Заказы');?></li>
 			<li num="control"><?=anchor('admin-panel/actions/control','Панель управления');?></li>
 			<li num="cabinet"><?=anchor('admin-panel/actions/cabinet','Личный кабинет');?></li>
 			<li><?=anchor('admin-panel/logoff','Завершить сеанс');?></li>

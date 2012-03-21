@@ -9,7 +9,7 @@
 				<p class="authorized-user">Вы вошли как <i><?= $userinfo['ulogin']; ?></i> <?=anchor('logoff','Завершить сеанс', array('class'=>'btn'));?></p>
 			<? else: ?>
 				<div class="form-header">Вход в личный кабинет</div>
-				<?=form_open($this->uri->uri_string(),array('class'=>'form-inline right')); ?>
+				<?=form_open('main-page',array('class'=>'form-inline right')); ?>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 					<input type="text" id="login" class="input span2 focused" name="login" placeholder="Имя пользователя">

@@ -58,6 +58,38 @@ class Ordersmodel extends CI_Model {
 		return NULL;
 	}
 	
+	function read_records(){
+		
+		$this->db->order_by('orderdate','DESC');
+		$this->db->order_by('id','DESC');
+		$query = $this->db->get('orders');
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function read_active_orders(){
+		
+		$this->db->order_by('orderdate','DESC');
+		$this->db->order_by('id','DESC');
+		$this->db->where('paid','0');
+		$query = $this->db->get('orders');
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function read_deactive_orders(){
+		
+		$this->db->order_by('orderdate','DESC');
+		$this->db->order_by('id','DESC');
+		$this->db->where('paid','1');
+		$query = $this->db->get('orders');
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
 	function read_customer_record($customer){
 		
 		$this->db->order_by('orderdate','DESC');
