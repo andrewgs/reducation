@@ -33,7 +33,7 @@
 
 <strong>Желаем Вам удачи!</strong> 
 </pre>
-				<p><?=anchor('customer/registration/ordering/step/1','<i class="icon-arrow-right"></i> Начать оформление',array('class'=>'btn btn-info'));?></p>
+				<p><?=anchor('customer/registration/ordering/step/1','<i class="icon-arrow-right icon-white"></i> Начать оформление',array('class'=>'btn btn-info'));?></p>
 			</div>
 		<?php $this->load->view('users_interface/rightbarcus');?>
 		</div>
