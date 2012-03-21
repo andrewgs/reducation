@@ -4,7 +4,8 @@ $route['default_controller'] = "users_interface";
 $route['404_override'] = '';
 
 /***************************************************	USERS INTRERFACE	***********************************************/
-$route[''] = "users_interface/index";
+$route[''] 								= "users_interface/index";
+$route['main-page'] 					= "users_interface/index";
 $route['admin'] 						= "users_interface/admin_login";
 $route['logoff'] 						= "users_interface/logoff";
 $route['registration/customer'] 		= "users_interface/registration_customer";

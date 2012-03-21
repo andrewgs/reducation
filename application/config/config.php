@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url'] = "http://localhost/roscenterdpo.ru/";
+$config['base_url'] = "http://reducation.ru/";
 
 /*
 |--------------------------------------------------------------------------
