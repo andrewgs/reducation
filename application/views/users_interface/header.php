@@ -39,7 +39,7 @@
 						<li nav="registration"><?=anchor('registration/customer','Оформление заявки');?> <span class="lsep"> </span><span class="rsep"> </span></li>
 					<? endif; ?>
 					<li><?=anchor('catalog/courses','Каталог курсов');?> <span class="lsep"> </span><span class="rsep"> </span></li>
-					<li><?=anchor('info','Информация');?> <span class="lsep"> </span><span class="rsep"> </span></li>
+					<li><?=anchor('information','Информация');?> <span class="lsep"> </span><span class="rsep"> </span></li>
 					<li><?=anchor('contacts','Контакты');?></li>
 				</ul>
 			</nav>

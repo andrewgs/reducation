@@ -18,6 +18,7 @@ $route['registration/customer/close-registration'] 	= "users_interface/registrat
 $route['registration/customer/cancel-registration'] = "users_interface/registration_cancel";
 $route['catalog/courses'] 				= "users_interface/catalog_courses";
 $route['contacts'] 						= "users_interface/contacts";
+$route['information'] 					= "users_interface/information";
 
 /******************************************************** CUSTOMER INTRERFACE ***********************************************/
 

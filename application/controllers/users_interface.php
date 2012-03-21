@@ -89,6 +89,24 @@ class Users_interface extends CI_Controller{
 		$this->load->view("users_interface/index",$pagevar);
 	}
 	
+	public function information(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$this->load->view("users_interface/information",$pagevar);
+	}
+	
 	public function admin_login(){
 	
 		$pagevar = array(

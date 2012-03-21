@@ -7,9 +7,9 @@
 		<div class="row">
 			<div class="span9">
 				<div class="hero-unit">
-
 				</div>
 				<div class="row">
+					
 					<div class="span3">
 
 					</div>

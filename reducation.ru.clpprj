@@ -4757,27 +4757,28 @@
 				</treenode>
 			</jstree>
 		</csfile><csfile name="S:\home\reducation.ru\www\js\bootstrap-modal.js" crc="2036938993">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-4.php" crc="2121050918">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form.php" crc="-1628405678">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-4.php" crc="-302750692">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-3.php" crc="-2140359132">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-3.php" crc="-16893885">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-2.php" crc="-2146460358">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-2.php" crc="841898419">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-1.php" crc="-1522544838">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-1.php" crc="1659773308">
 			<phptree>
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration.php" crc="-784992984">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration.php" crc="109489841">
 			<phptree>
 				<treenode node="loginstatus;Php:Var Name;11;26;23;26;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4806,7 +4807,7 @@
 				<treenode node="session;JS:JS Var Name;18;47;25;47;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-4.php" crc="1058378225">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-4.php" crc="293962914">
 			<phptree>
 				<treenode node="finishreg;Php:Var Name;13;8;23;8;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4821,7 +4822,7 @@
 				<treenode node="location;JS:JS Var Name;36;47;44;47;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-3.php" crc="77281150">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-3.php" crc="1575182874">
 			<phptree>
 				<treenode node="loginstatus;Php:Var Name;11;15;23;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4852,7 +4853,7 @@
 				<treenode node="location;JS:JS Var Name;36;48;44;48;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-2.php" crc="-278658970">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-2.php" crc="2083677341">
 			<phptree>
 				<treenode node="loginstatus;Php:Var Name;11;15;23;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4875,7 +4876,7 @@
 				<treenode node="location;JS:JS Var Name;36;36;44;36;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-1.php" crc="-758011174">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-1.php" crc="-1407669296">
 			<phptree>
 				<treenode node="loginstatus;Php:Var Name;11;15;23;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4938,35 +4939,33 @@
 			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\rightbaraud.php" crc="-1826101112">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\rightbaradm.php" crc="1641199858">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\index.php" crc="-145375719">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\index.php" crc="1730078924">
 			<phptree>
-				<treenode node="loginstatus;Php:Var Name;12;33;24;33;34;;;v;;r;;d-1,-1;;b0,0;;m">
-				</treenode>
-				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="this;Php:Var Name;3;2;8;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
 			<jstree>
-				<treenode node="document;JS:JS Var Name;4;51;12;51;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="document;JS:JS Var Name;4;97;12;97;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="element;JS:JS Var Name;108;52;115;52;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="element;JS:JS Var Name;35;101;42;101;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="err;JS:JS Var Name;41;52;44;52;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="err;JS:JS Var Name;8;99;11;99;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="event;JS:JS Var Name;30;52;35;52;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="event;JS:JS Var Name;30;98;35;98;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="i;JS:JS Var Name;106;52;107;52;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="i;JS:JS Var Name;32;101;33;101;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\header.php" crc="2020014023">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\header.php" crc="-445911067">
 			<phptree>
-				<treenode node="loginstatus;Php:Var Name;11;15;23;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="loginstatus;Php:Var Name;9;7;21;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="this;Php:Var Name;13;7;18;7;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="this;Php:Var Name;11;16;16;16;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="userinfo;Php:Var Name;97;17;106;17;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="userinfo;Php:Var Name;25;9;34;9;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\head.php" crc="1228270019">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\head.php" crc="852632686">
 			<phptree>
 				<treenode node="author;Php:Var Name;33;4;40;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -4977,7 +4976,7 @@
 				<treenode node="title;Php:Var Name;11;2;17;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\footer.php" crc="-1860841649">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\footer.php" crc="-1961097520">
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\users_interface\contacts.php" crc="-1855660408">
 			<phptree>
 				<treenode node="loginstatus;Php:Var Name;11;33;23;33;34;;;v;;r;;d-1,-1;;b0,0;;m">
@@ -5016,7 +5015,7 @@
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\forms\ordering-trends-list.php" crc="627580254">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\forms\ordering-trends-list.php" crc="-1673887684">
 			<phptree>
 				<treenode node="i;Php:Var Name;13;5;15;5;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5072,7 +5071,7 @@
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering.php" crc="-517460075">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering.php" crc="801585272">
 			<phptree>
 				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5193,7 +5192,7 @@
 				</treenode>
 			</jstree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\views\customer_interface\index.php" crc="1604745361">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\customer_interface\header.php" crc="2020014023">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\customer_interface\header.php" crc="-1111217265">
 			<phptree>
 				<treenode node="loginstatus;Php:Var Name;11;15;23;15;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5202,7 +5201,7 @@
 				<treenode node="userinfo;Php:Var Name;97;17;106;17;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\views\customer_interface\head.php" crc="1228270019">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\views\customer_interface\head.php" crc="852632686">
 			<phptree>
 				<treenode node="author;Php:Var Name;33;4;40;4;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -6111,7 +6110,7 @@
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\models\ordersmodel.php" crc="-296577944">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\models\ordersmodel.php" crc="-2063014729">
 			<phptree>
 				<treenode node="Ordersmodel;Php:Class Name;0;2;1;173;34;;;vCI_Model;;c;;r;;d35,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;4;16;5;18;34;;;v;;r;;d26,16;;b0,0;;m">
@@ -6759,24 +6758,24 @@
 				</treenode>
 			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\application\core\index.html" crc="-1574479902">
-		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\users_interface.php" crc="-559498127">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\users_interface.php" crc="-535111003">
 			<phptree>
-				<treenode node="Users_interface;Php:Class Name;0;2;1;433;34;;;vCI_Controller;;c;;r;;d43,2;;b0,0;;m">
+				<treenode node="Users_interface;Php:Class Name;0;2;1;442;34;;;vCI_Controller;;c;;r;;d43,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;1;8;2;35;34;;;v;;r;;d23,8;;b0,0;;m">
 					</treenode>
 					<treenode node="admin_login;Php:Function Name;8;91;2;127;34;;;v;;r;;d30,91;;b1,0;;m">
 					</treenode>
-					<treenode node="catalog_courses;Php:Function Name;8;382;2;394;34;;;v;;r;;d34,382;;b1,0;;m">
+					<treenode node="catalog_courses;Php:Function Name;8;382;2;399;34;;;v;;r;;d34,382;;b1,0;;m">
 					</treenode>
-					<treenode node="contacts;Php:Function Name;8;396;2;407;34;;;v;;r;;d27,396;;b1,0;;m">
+					<treenode node="contacts;Php:Function Name;8;401;2;416;34;;;v;;r;;d27,401;;b1,0;;m">
 					</treenode>
-					<treenode node="definition_model;Php:Function Name;8;409;2;418;34;;;v;;r;;d41,409;;b1,0;;mutype;;p">
+					<treenode node="definition_model;Php:Function Name;8;418;2;427;34;;;v;;r;;d41,418;;b1,0;;mutype;;p">
 					</treenode>
 					<treenode node="index;Php:Function Name;8;37;2;89;34;;;v;;r;;d24,37;;b1,0;;m">
 					</treenode>
 					<treenode node="logoff;Php:Function Name;8;129;2;135;34;;;v;;r;;d25,129;;b1,0;;m">
 					</treenode>
-					<treenode node="randomPassword;Php:Function Name;8;420;2;432;34;;;v;;r;;d111,420;;b1,0;;mlength;;pallow;;p">
+					<treenode node="randomPassword;Php:Function Name;8;429;2;441;34;;;v;;r;;d111,429;;b1,0;;mlength;;pallow;;p">
 					</treenode>
 					<treenode node="registration_cancel;Php:Function Name;8;376;2;380;34;;;v;;r;;d38,376;;b1,0;;m">
 					</treenode>
@@ -6974,7 +6973,7 @@
 				<treenode node="smileys;Php:Var Name;0;14;8;14;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\config\routes.php" crc="866445465">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\config\routes.php" crc="424347761">
 			<phptree>
 				<treenode node="route;Php:Var Name;0;2;6;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -7002,7 +7001,7 @@
 				<treenode node="_doctypes;Php:Var Name;0;2;10;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\config\database.php" crc="1517276217">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\config\database.php" crc="-2115377574">
 			<phptree>
 				<treenode node="active_group;Php:Var Name;0;2;13;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -7033,7 +7032,6 @@
 				<treenode node="system_path;Php:Var Name;1;58;13;58;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\.htaccess" crc="1409158456">
-		</csfile></codestructure><dbgurls>
-	</dbgurls>
-</project>
+		</csfile><csfile name="S:\home\reducation.ru\www\index.html" crc="-626347057">
+		</csfile><csfile name="S:\home\reducation.ru\www\.htaccess" crc="139727451">
+		</csfile></codestructure></project>
