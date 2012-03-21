@@ -6,7 +6,7 @@ class Ordersmodel extends CI_Model {
     var $trend 		= 0;
     var $customer 	= '';
     var $orderdate  = '';
-    var $price  	= '';
+    var $price  	= 0;
     var $invoice   	= '';
     var $contract  	= '';
     var $act   		= '';
@@ -23,7 +23,7 @@ class Ordersmodel extends CI_Model {
 		$this->trend	= $trend;
 		$this->customer	= $customer;
 		$this->orderdate= date("Y-m-d");
-		$this->price 	= '';
+		$this->price 	= 0;
 		$this->invoice 	= '';
 		$this->contract = '';
 		$this->act 		= '';
