@@ -4,7 +4,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
-//$db['default']['port'] 	   = 3307;
+$db['default']['port'] 	   = 3307;
 $db['default']['username'] = "root";
 $db['default']['password'] ="{bvthfVecrkm57";
 $db['default']['database'] = "reducation";

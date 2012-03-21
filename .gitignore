@@ -2,7 +2,7 @@
 
 .sass-cache
 
-reducation.ru.clpprj
+*.clpprj
 .project
 .htaccess
 application/config/database.php
