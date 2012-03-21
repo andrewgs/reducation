@@ -3,3 +3,8 @@
 .sass-cache
 
 reducation.ru.clpprj
+.project
+.htaccess
+application/config/database.php
+application/config/config.php
+

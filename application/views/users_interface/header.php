@@ -1,23 +1,44 @@
 <header>
 	<div class="container">
 		<div class="row">
-			<div class="span9">
-				<ul class="nav nav-tabs">
-					<li nav="main"><?=anchor('','Главная');?></li>
-					<li nav="catalog"><?=anchor('catalog/courses','Каталог курсов');?></li>
-				<?php if($this->session->userdata('regcustomer')):?>	
-					<li nav="registration"><?=anchor('registration/customer/step/'.$this->session->userdata('step'),'Оформление заявки');?></li>
-				<?php else:?>
-					<li nav="registration"><?=anchor('registration/customer','Оформление заявки');?></li>
-				<?php endif;?>
-					<li nav="contacts"><?=anchor('contacts','Контакты');?></li>
+			<div class="span7">
+				<a href="#" id="logo">Образовательный портал <br />АНО ДПО <span>Система Дистанционного Образования</span></a>
+			</div>
+			<div class="span5">
+			<? if($loginstatus['status']):?>
+				<p class="authorized-user">Вы вошли как <i><?= $userinfo['ulogin']; ?></i> <?=anchor('logoff','Завершить сеанс', array('class'=>'btn'));?></p>
+			<? else: ?>
+				<div class="form-header">Вход в личный кабинет</div>
+				<?=form_open($this->uri->uri_string(),array('class'=>'form-inline right')); ?>
+					<?php $this->load->view('alert_messages/alert-error');?>
+					<?php $this->load->view('alert_messages/alert-success');?>
+					<input type="text" id="login" class="input span2 focused" name="login" placeholder="Имя пользователя">
+					<span class="help-inline" style="display:none; padding-left: 0px;">&nbsp;</span>
+					<input type="password" id="password" class="input-small focused" name="password" placeholder="Пароль">
+					<span class="help-inline" style="display:none; padding-left: 0px;">&nbsp;</span>
+					<button class="btn" type="submit" id="lsend" name="lsubmit" value="lsend">Войти</button>
+				<?= form_close(); ?>	
+			<? endif;?>
+				<div id="top-contacts">
+					<span class="desc">Телефон для справок:</span>
+					<b>(863)</b> 295-52-10
+				</div>			
+			</div>
+		</div>
+		<div class="row">
+			<nav class="span12">
+				<ul>
+					<li><?=anchor('','Главная');?> <span class="lsep"> </span><span class="rsep"> </span></li>
+					<? if($this->session->userdata('regcustomer')): ?>	
+					<li nav="registration"><?=anchor('registration/customer/step/'.$this->session->userdata('step'),'Оформление заявки');?> <span class="lsep"> </span><span class="rsep"> </span></li>
+					<? else: ?>
+						<li nav="registration"><?=anchor('registration/customer','Оформление заявки');?> <span class="lsep"> </span><span class="rsep"> </span></li>
+					<? endif; ?>
+					<li><?=anchor('catalog/courses','Каталог курсов');?> <span class="lsep"> </span><span class="rsep"> </span></li>
+					<li><?=anchor('info','Информация');?> <span class="lsep"> </span><span class="rsep"> </span></li>
+					<li><?=anchor('contacts','Контакты');?></li>
 				</ul>
-			</div>
-		<?php if($loginstatus['status']):?>
-			<div class="span3">
-				<p class="navbar-text pull-right">Вы вошли как <?=anchor($this->uri->uri_string(),strtoupper($userinfo['ulogin']));?></p>
-			</div>
-		<?php endif;?>
+			</nav>
 		</div>
 	</div>
 </header>
