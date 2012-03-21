@@ -11,6 +11,8 @@ class Users_interface extends CI_Controller{
 		parent::__construct();
 		$this->load->model('adminmodel');
 		$this->load->model('customersmodel');
+		$this->load->model('trendsmodel');
+		$this->load->model('coursesmodel');
 		$this->load->model('audiencemodel');
 		
 		$cookieuid = $this->session->userdata('logon');
@@ -407,6 +409,8 @@ class Users_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
+					'trends'		=> $this->trendsmodel->read_view_records(),
+					'courses'		=> $this->coursesmodel->read_view_records(),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
