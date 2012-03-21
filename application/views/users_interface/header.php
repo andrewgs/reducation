@@ -6,7 +6,11 @@
 			</div>
 			<div class="span5">
 			<? if($loginstatus['status']):?>
-				<p class="authorized-user">Вы вошли как <i><?= $userinfo['ulogin']; ?></i> <?=anchor('logoff','Завершить сеанс', array('class'=>'btn'));?></p>
+				<p class="authorized-user">
+					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
+					<?=anchor('customer/audience/orders','Личный кабинет', array('class'=>'auth-link'));?>
+					<?=anchor('logoff','Завершить сеанс', array('class'=>'auth-link'));?> 
+				</p>
 			<? else: ?>
 				<div class="form-header">Вход в личный кабинет</div>
 				<?=form_open('main-page',array('class'=>'form-inline right')); ?>

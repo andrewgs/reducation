@@ -7,16 +7,14 @@
 		<div class="row">
 			<div class="span9">
 			<?php if(!$finishreg):?>
-				<h5>Регистрация заказчика (Шаг 4)</h5>
+				<h1>Регистрация заказчика (Шаг 4)</h1>
 			<?php else:?>
-			<pre><strong>Уважаемый заказчик</strong> 
-Поздравляем! Вы успешно завершили процедуру регистрации.
-
-Для входа в кабинет заказчика используйте соответствующий логин и пароль, который был выслан Вам на E-mail.
-
-<strong>Желаем Вам удачи!</strong> 
-</pre>
-				<p><?=anchor('registration/customer/close-registration','<i class="icon-arrow-right"></i> Продолжить',array('class'=>'btn btn-info'));?></p>
+				<h1>Регистрация завершена</h1>
+				<p>
+					Поздравляем! Вы успешно завершили процедуру регистрации. Для входа в кабинет заказчика 
+					используйте соответствующий логин и пароль, который был выслан Вам на E-mail.
+				</p>
+				<p><?=anchor('registration/customer/close-registration','<i class="icon-arrow-right icon-white"></i> Продолжить',array('class'=>'btn btn-info'));?></p>
 			<?php endif;?>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>

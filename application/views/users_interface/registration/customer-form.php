@@ -67,7 +67,7 @@
 			</div>
 		</div>
 		<div class="form-actions">
-			<button class="btn btn-primary" type="submit">
+			<button class="btn btn-info" type="submit">
 				Зарегистрировать заявку
 			</button>
 			<button class="btn" type="reset">

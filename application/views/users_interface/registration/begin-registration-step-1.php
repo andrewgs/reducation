@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
-				<h5>Регистрация заказчика (Шаг 1)</h5>
+				<h1>Регистрация заказчика (Шаг 1)</h1>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
