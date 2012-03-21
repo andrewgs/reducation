@@ -44,7 +44,7 @@ class Customersmodel extends CI_Model {
 		$this->online 			= 0;
 		$this->accountnumber	= $data['accountnumber'];
 		$this->accountkornumber	= $data['accountkornumber'];
-		$this->access			= 0;
+		$this->access			= 1;
 		$this->cryptpassword	= '';
 		
 		$this->db->insert('customers',$this);

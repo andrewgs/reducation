@@ -20,6 +20,10 @@ class Admin_interface extends CI_Controller{
 		$this->load->model('testquestionsmodel');
 		$this->load->model('testanswersmodel');
 		$this->load->model('unionmodel');
+		$this->load->model('ordersmodel');
+		$this->load->model('courseordermodel');
+		$this->load->model('audienceordermodel');
+		$this->load->model('audiencetestmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -817,19 +821,48 @@ class Admin_interface extends CI_Controller{
 		$this->load->view("admin_interface/admin-support-messages",$pagevar);
 	}
 	
-	public function applications_messages(){
+	public function orders_messages(){
 		
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Заявки',
+					'title'			=> 'РосЦентр ДПО - ',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
+					'orders'		=> array(),
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
 			);
-		$this->load->view("admin_interface/admin-applications-messages",$pagevar);
+		
+		switch ($this->uri->segment(4)):
+		
+			case 'active' 	:	$pagevar['title'] .= 'Активные заявки';
+								$pagevar['orders'] = $this->ordersmodel->read_active_orders();
+								break;
+			case 'deactive' :	$pagevar['title'] .= 'Закрытые заявки';
+								$pagevar['orders'] = $this->ordersmodel->read_deactive_orders();
+								break;
+			default :	$pagevar['title'] .= 'Все заявки';
+						$pagevar['orders'] = $this->ordersmodel->read_records();
+						break;
+		endswitch;
+		
+		for($i=0;$i<count($pagevar['orders']);$i++):
+			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
+			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+		endfor;
+		
+		$this->load->view("admin_interface/admin-orders",$pagevar);
 	}
-
+	
+	public function orders_paid(){
+	
+		$order = $this->input->post('order');
+		if(!$order) show_404();
+		$access = $this->input->post('access');
+		if(!$access) $access = 0;
+		$this->ordersmodel->paid_order($order,$access);
+	}
+	
 	/******************************************************** users ***********************************************************/
 	
 	public function users_customer(){
@@ -937,5 +970,22 @@ class Admin_interface extends CI_Controller{
 		else:
 			return FALSE;
 		endif;
+	}
+
+	function operation_date($field){
+			
+		$list = preg_split("/-/",$field);
+		$nmonth = $this->months[$list[1]];
+		$pattern = "/(\d+)(-)(\w+)(-)(\d+)/i";
+		$replacement = "\$5 $nmonth \$1 г."; 
+		return preg_replace($pattern, $replacement,$field);
+	}
+
+	function operation_dot_date($field){
+			
+		$list = preg_split("/-/",$field);
+		$pattern = "/(\d+)(-)(\w+)(-)(\d+)/i";
+		$replacement = "\$5.$3.\$1"; 
+		return preg_replace($pattern, $replacement,$field);
 	}
 }
