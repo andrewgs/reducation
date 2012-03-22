@@ -22,9 +22,7 @@
 					<?php $this->load->view('alert_messages/alert-success');?>
 				<?php for($i=0;$i<count($chapters);$i++):?>
 					<div id="d<?=$chapters[$i]['id'];?>">
-						<h2 idchapter="<?=$chapters[$i]['id'];?>" numb="<?=$chapters[$i]['number'];?>" level="<?=$chapters[$i]['level'];?>">
-							<?=$chapters[$i]['title'];?>
-						</h2>
+						<h2 class="level-<?=$chapters[$i]['level'];?>" idchapter="<?=$chapters[$i]['id'];?>" numb="<?=$chapters[$i]['number'];?>" level="<?=$chapters[$i]['level'];?>"><?=$chapters[$i]['title'];?></h2>
 						<table class="table table-striped table-bordered">
 							<tbody>
 						<?php for($j=0,$num=1;$j<count($lectures);$j++):?>
@@ -140,10 +138,6 @@
 			$("#DelMTest").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/chapter/'+DChapter+'/delete-test/'+DTest;});
 			$("#DelChapter").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/delete-chapter/'+DChapter;});
 			$(".dmodal").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$(".input-file").val('');});
-			
-			$("h2[level = 0]").addClass('big-h2');
-			$("h2[level = 1]").addClass('medium-h2');
-			$("h2[level = 2]").addClass('small-h2');
 		});
 	</script>
 </body>
