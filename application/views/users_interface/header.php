@@ -8,8 +8,17 @@
 			<? if($loginstatus['status']):?>
 				<p class="authorized-user">
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
-					<?=anchor('customer/audience/orders','Личный кабинет', array('class'=>'auth-link'));?>
-					<?=anchor('logoff','Завершить сеанс', array('class'=>'auth-link'));?> 
+				<?php
+					if($loginstatus['status'] && $loginstatus['cus']):
+						$this->load->view('users_interface/rightbarcus');
+					endif;
+					if($loginstatus['status'] && $loginstatus['aud']):
+						$this->load->view('users_interface/rightbaraud');
+					endif;
+					if($loginstatus['status'] && $loginstatus['adm']):
+						$this->load->view('users_interface/rightbaradm');
+					endif;
+				?>
 				</p>
 			<? else: ?>
 				<div class="form-header">Вход в личный кабинет</div>
