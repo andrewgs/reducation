@@ -19,13 +19,28 @@
 						</div>
 						<div id="collapse<?=$i;?>" class="accordion-body collapse">
 							<div class="accordion-inner">
-								<ul>
-								<?php for($j=0;$j<count($courses);$j++):?>
+								<table class="table table-striped table-bordered">
+									<thead>
+										<tr>
+											<th>№ п\п</th>
+											<th>Код. Название</th>
+											<th>Стоимость</th>
+											<th>Количество часов</th>
+										</tr>
+									</thead>
+									<tbody>
+								<?php for($j=0,$num=1;$j<count($courses);$j++,$num++):?>
 									<?php if($courses[$j]['trend'] == $trends[$i]['id']):?>
-									<li><?=$courses[$j]['title'];?></li>
+										<tr>
+											<td><?=$num;?>.</td>
+											<td><?=$courses[$j]['code'].'. '.$courses[$j]['title'];?></td>
+											<td><?=$courses[$j]['price'];?> руб.</td>
+											<td><?=$courses[$j]['hours'];?></td>
+										</tr>
 									<?php endif;?>
 								<?php endfor;?>
-								</ul>
+									</tbody>
+							</table>
 							</div>
 						</div>
 					</div>
