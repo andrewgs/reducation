@@ -13,6 +13,16 @@
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
+				<div class="control-group">
+					<label for="level" class="control-label">Уровень вложенности</label>
+					<div class="controls">
+						<select id="LevelChapter" name="level">
+							<option value="0">Уровень первый</option>
+							<option value="1">Уровень вротой</option>
+							<option value="2">Уровень третий</option>
+						</select>
+					</div>
+				</div>
 			</fieldset>
 		</div>
 		<div class="modal-footer">
