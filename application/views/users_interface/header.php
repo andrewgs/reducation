@@ -10,13 +10,16 @@
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
 				<?php
 					if($loginstatus['status'] && $loginstatus['cus']):
-						$this->load->view('users_interface/rightbarcus');
+						echo anchor('customer/audience/orders','Мои заказы', array('class'=>'auth-link'));
+						echo anchor('logoff','Выйти из кабинета', array('class'=>'auth-link'));
 					endif;
 					if($loginstatus['status'] && $loginstatus['aud']):
-						$this->load->view('users_interface/rightbaraud');
+						echo anchor('audience/courses/current','Личный кабинет', array('class'=>'auth-link'));
+						echo anchor('logoff','Выйти из кабинета', array('class'=>'auth-link'));
 					endif;
 					if($loginstatus['status'] && $loginstatus['adm']):
-						$this->load->view('users_interface/rightbaradm');
+						echo anchor('admin-panel/actions/control','Панель управления', array('class'=>'auth-link'));
+						echo anchor('admin-panel/logoff','Завершить сеанс', array('class'=>'auth-link'));
 					endif;
 				?>
 				</p>

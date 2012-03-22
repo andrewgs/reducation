@@ -26,7 +26,7 @@
 					<div class="controls">
 						<select id="eLevelChapter" name="level">
 							<option value="0">Уровень первый</option>
-							<option value="1">Уровень вротой</option>
+							<option value="1">Уровень второй</option>
 							<option value="2">Уровень третий</option>
 						</select>
 					</div>

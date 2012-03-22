@@ -166,7 +166,12 @@ class Ordersmodel extends CI_Model {
 	function paid_order($id,$status){
 		
 		$this->db->set('paid',$status);
-		$this->db->set('paiddate',date("Y-m-d"));
+		if(!$status):
+			$date = '0000-00-00';
+		else:
+			$date = date("Y-m-d");
+		endif;
+		$this->db->set('paiddate',$date);
 		$this->db->where('id',$id);
 		$this->db->update('orders');
 		return $this->db->affected_rows();

@@ -29,7 +29,7 @@
 							<td><a href="" title="Дата оплаты" class="none"><?=$orders[$i]['paiddate'];?></a></td>
 						<?php else:?>
 							<td class="short"><input type="checkbox" value="1" ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
-							<td><a href="" title="Дата оплаты" class="none" id="paiddate">00-00-0000</a></td>
+							<td><a href="" title="Дата оплаты" class="none" id="paiddate">не оплачено</a></td>
 						<?php endif;?>
 						</tr>
 						<?php $num++;?>
@@ -49,11 +49,12 @@
 			var order = $(this).attr('ord');
 			if($(this).attr("checked") == 'checked'){
 				check = 1;
-				$.post('<?=$baseurl;?>admin-panel/messages/orders/paid-order',{'order': order,'access':check});
-				$("#paiddate").html('<?=date("d.m.Y");?>')
+				$("#paiddate").html('<?=date("d.m.Y");?>');
 			}else{
-				$(this).attr("checked","checked");
+				$(this).removeAttr("checked");
+				$("#paiddate").html('не оплачено');
 			}
+			$.post('<?=$baseurl;?>admin-panel/messages/orders/paid-order',{'order': order,'access':check});
 		});
 	</script>
 </body>
