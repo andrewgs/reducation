@@ -22,7 +22,9 @@
 					<?php $this->load->view('alert_messages/alert-success');?>
 				<?php for($i=0;$i<count($chapters);$i++):?>
 					<div id="d<?=$chapters[$i]['id'];?>">
-						<h2 idchapter="<?=$chapters[$i]['id'];?>" numb="<?=$chapters[$i]['number'];?>"><?=$chapters[$i]['title'];?></h2>
+						<h2 idchapter="<?=$chapters[$i]['id'];?>" numb="<?=$chapters[$i]['number'];?>" level="<?=$chapters[$i]['level'];?>">
+							<?=$chapters[$i]['title'];?>
+						</h2>
 						<table class="table table-striped table-bordered">
 							<tbody>
 						<?php for($j=0,$num=1;$j<count($lectures);$j++):?>
@@ -117,7 +119,14 @@
 			$("#echsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".echinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#lbsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".lbinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#crsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".crinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
-			$(".editChapter").click(function(){$("#msgalert").remove();var chapter = $(this).attr('idchapter');$(".idChapter").val(chapter);$("#eTitleChapter").val($("h2[idchapter = "+chapter+"]").html());$("#eNumberChapter").val($("h2[idchapter = "+chapter+"]").attr('numb'));});
+			$(".editChapter").click(function(){
+				$("#msgalert").remove();
+				var chapter = $(this).attr('idchapter');
+				$(".idChapter").val(chapter);
+				$("#eTitleChapter").val($("h2[idchapter = "+chapter+"]").html());
+				$("#eNumberChapter").val($("h2[idchapter = "+chapter+"]").attr('numb'));
+				$("#eLevelChapter").val($("h2[idchapter = "+chapter+"]").attr('level'));
+				});
 			$(".editMTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleMTest").val($(this).attr('ttitle'));$("#eСountMTest").val($(this).attr('tcount'));$("#eTimeMTest").val($(this).attr('ttime'));});
 			$(".editFTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleFTest").val($(this).attr('ttitle'));$("#eСountFTest").val($(this).attr('tcount'));$("#eTimeFTest").val($(this).attr('ttime'));});
 			$("#download").click(function(){$("#msgalert").remove(); window.open("<?=$baseurl.$document;?>")});
@@ -131,6 +140,10 @@
 			$("#DelMTest").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/chapter/'+DChapter+'/delete-test/'+DTest;});
 			$("#DelChapter").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/delete-chapter/'+DChapter;});
 			$(".dmodal").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$(".input-file").val('');});
+			
+			$("h2[level = 0]").addClass('big-h2');
+			$("h2[level = 1]").addClass('medium-h2');
+			$("h2[level = 2]").addClass('small-h2');
 		});
 	</script>
 </body>
