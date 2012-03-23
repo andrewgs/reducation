@@ -63,7 +63,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Панель администрирования',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Панель администрирования',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
@@ -76,7 +76,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Личный кабинет',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Личный кабинет',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
@@ -98,7 +98,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Список направлений обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Список направлений обучения',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'trends'		=> $this->trendsmodel->read_records(),
@@ -177,7 +177,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Список курсов',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Список курсов',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'trends'		=> $this->trendsmodel->read_records(),
@@ -286,7 +286,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - ',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | ',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'chapters'		=> $this->chaptermodel->read_records($course),
@@ -584,7 +584,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - ',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | ',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'lecture'		=> $this->lecturesmodel->read_record($lecture),
@@ -656,7 +656,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - ',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | ',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'trend'			=> $this->trendsmodel->read_field($trend,'code'),
@@ -800,7 +800,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Личные сообщения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Личные сообщения',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
@@ -813,7 +813,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Техническая поддержка',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Техническая поддержка',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
@@ -826,7 +826,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - ',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | ',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'orders'		=> array(),
@@ -870,7 +870,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Заказчики',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
@@ -910,7 +910,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Слушатели',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Слушатели',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),

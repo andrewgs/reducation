@@ -42,7 +42,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
@@ -96,7 +96,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
@@ -114,7 +114,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - Панель администрирования',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Панель администрирования',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus['status'],
 					'userinfo'		=> $this->user,
@@ -160,7 +160,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
@@ -183,7 +183,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
@@ -226,7 +226,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
@@ -263,7 +263,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
@@ -303,7 +303,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
@@ -405,7 +405,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
@@ -426,7 +426,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'РосЦентр Дополнительного Профессионального Обучения',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,

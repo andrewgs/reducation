@@ -34,7 +34,7 @@
 									<div class="caption">
 										<h5>Счет</h5>
 										<p>Счет на оплату №<?=$order['id'];?> от <?=$order['orderdate'];?> года</p>
-										<p><a class="btn btn-primary" href="#">Просмотр</a></p>
+										<p><a class="btn primary" href="#">Загрузить</a></p>
 									</div>
 								</div>
 							</li>
@@ -44,7 +44,7 @@
 									<div class="caption">
 										<h5>Договор на оказание образовательных услуг</h5>
 										<p>Договор №<?=$order['id'];?> об оказании образовательных услуг с применением дистанционных технологий.</p>
-										<p><a class="btn btn-primary" href="#">Просмотр</a></p>
+										<p><a class="btn primary" href="#">Загрузить</a></p>
 									</div>
 								</div>
 							</li>
@@ -54,7 +54,7 @@
 									<div class="caption">
 										<h5>Акт к договору на оказание услуг</h5>
 										<p>Утвержденный акт об указании услуг в приложение к договору.</p>
-										<p><a class="btn btn-primary" href="#">Просмотр</a></p>
+										<p><a class="btn primary" href="#">Загрузить</a></p>
 									</div>
 								</div>
 							</li>
