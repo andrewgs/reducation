@@ -186,7 +186,7 @@ class Customer_interface extends CI_Controller{
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
-		$pagevar['title'] .= 'Счет на оплату № '.$order['id'].' от '.$order['orderdate'].' года';
+		$pagevar['title'] .= 'Счет на оплату № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
 		
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
@@ -195,8 +195,65 @@ class Customer_interface extends CI_Controller{
 		$this->load->view("customer_interface/customer-order-invoice",$pagevar);
 	}
 	
+	public function orders_order_contract(){
+		
+		if(!$this->ordersmodel->owner_order_finish($this->uri->segment(6),$this->user['uid'])):
+			$this->session->set_userdata('msgr','Заказ отсутствует или удален.');
+			redirect('customer/audience/orders');
+		endif;
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(6)),
+					'course'		=> $this->unionmodel->read_corder_records($this->uri->segment(6)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'Договор № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		
+		$this->load->view("customer_interface/customer-order-contract",$pagevar);
+	}
 	
-	
+	public function orders_order_act(){
+		
+		if(!$this->ordersmodel->owner_order_finish($this->uri->segment(6),$this->user['uid'])):
+			$this->session->set_userdata('msgr','Заказ отсутствует или удален.');
+			redirect('customer/audience/orders');
+		endif;
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(6)),
+					'course'		=> $this->unionmodel->read_corder_records($this->uri->segment(6)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'АКТ об оказании услуг по договору № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		
+		$this->load->view("customer_interface/customer-order-act",$pagevar);
+	}
 	
 	public function orders_delete_order(){
 	
