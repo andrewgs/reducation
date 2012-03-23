@@ -45,7 +45,6 @@
 										<h5>Договор на оказание образовательных услуг</h5>
 										<p>Договор №<?=$order['id'];?> об оказании образовательных услуг с применением дистанционных технологий.</p>
 										<p><?=anchor($this->uri->uri_string().'/contract','Просмотр',array('class'=>'btn btn-primary'));?></p>
-										<p><a class="btn btn-primary" href="#">Просмотр</a></p>
 									</div>
 								</div>
 							</li>

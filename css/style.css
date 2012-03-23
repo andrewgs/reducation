@@ -14,13 +14,13 @@ p { font: 14px/21px 'PT Sans', "Times New Roman", Times, serif; margin-bottom: 1
 header { margin: 10px 0 0; }
 header.admin { margin: 10px 0 20px; }
 
-#logo { background: url('../img/sprites.png') 0 0 no-repeat; margin: 12px 0 0; display: block; color: #00699f; font-size: 30px; line-height: 36px; font-weight: bold; text-transform: uppercase; padding: 0 0 0 85px; position: relative; outline: 0 none; text-decoration: none; }
+#logo { font-family: 'PT Sans', "Times New Roman", Times, serif; background: url('../img/sprites.png') 0 0 no-repeat; margin: 12px 0 0; display: block; color: #00699f; font-size: 30px; line-height: 36px; font-weight: bold; text-transform: uppercase; padding: 0 0 0 85px; position: relative; outline: 0 none; text-decoration: none; }
 	#logo span { font-size: 17px; font-weight: normal; left: 220px; position: absolute; text-transform: none; top: 32px;  }
 
 .form-header { color: #999; font-size: 11px; letter-spacing: 0.25px; line-height: 18px; margin: 0 0 5px; text-align: right; text-transform: uppercase; }
 .right { text-align: right; }
 
-#top-contacts { color: #333; font-size: 21px; text-align: right; }
+#top-contacts { font-family: 'PT Sans', "Times New Roman", Times, serif; color: #333; font-size: 21px; text-align: right; }
 #top-contacts b { font-weight: normal; color: #999; }
 #top-contacts .desc { font-size: 14px; }
 
@@ -64,6 +64,9 @@ h1, h2 { font-size: 20px; font-weight: normal; letter-spacing: 0.5px; line-heigh
 }
 h1 { font-size: 18px; font-weight: bold; line-height: 27px; margin: 20px 0; text-transform: uppercase; }
 h2.bordered { border-bottom: 1px dashed #ccc; padding: 10px 0 8px; }
+h2.level-0 { font-size: 18px; } 
+h2.level-1 { padding-left: 20px; font-size: 16px; line-height: 23px; margin-bottom: 10px; text-transform: none; }
+h2.level-2 { padding-left: 40px; font-size: 14px; line-height: 21px; margin-bottom: 7px; text-transform: none; }
 h4 { font-size: 14px; font-weight: normal; line-height: 23px; margin: 18px 0 20px; text-transform: uppercase; }
 
 #courses-new { list-style: none; margin: 0; padding: 0; }
