@@ -328,43 +328,35 @@ class Users_interface extends CI_Controller{
 			$email = $this->session->userdata('personemail');
 			ob_start();
 			?>
-			
-			<strong>Здравствуйте  <?=$this->session->userdata('person');?></strong>
-			
-Поздравляем! Вы успешно завершили оформление заявки.
-
-Вам доступны следующие документы:
-
-<ul>
-	<li>Счёт</li>
-	<li>Договор на оказание образовательных услуг</li>
-</ul>
-
-После оплаты заказа мы оформим весь пакет документов, а абитуриенты будут зачислены на обучение. Обучение будет осуществляться через личный кабинет слушателя.
-
-Для входа в личный кабинет используйте соответствующий логин и пароль.
-
-Логин: <?=$login;?>
-Пароль: <?=$password;?>
-
-Пользуйтесь в разделом «Мои заказы» на правой панели, чтобы следить за состоянием Ваших заказов.
-
-Желаем Вам удачи! 
-
+			<p>Здравствуйте,  <?=$this->session->userdata('person');?></p>
+			<p>Поздравляем! Вы успешно завершили оформление заявки. Вам доступны следующие документы:</p>
+			<ul>
+				<li>Счёт</li>
+				<li>Договор на оказание образовательных услуг</li>
+			</ul>
+			<p>
+				После оплаты заказа мы оформим весь пакет документов, а абитуриенты будут зачислены на обучение. 
+				Обучение будет осуществляться через личный кабинет слушателя. Для входа в личный кабинет используйте 
+				созданный для вас логин и пароль.
+			</p>
+			<p><strong>Логин:</strong> <?=$login;?> <strong>Пароль:</strong> <?=$password;?></p>
+			<p>Пользуйтесь разделом «Мои заказы» на правой панели, чтобы следить за состоянием Ваших заказов.</p>
+			<p>Желаем Вам удачи!</p> 
 			<?
-			$mess['msg'] = ob_get_clean();
+			$mailtext = ob_get_clean();
 			
 			$this->email->clear(TRUE);
 			$config['smtp_host'] = 'localhost';
 			$config['charset'] = 'utf-8';
 			$config['wordwrap'] = TRUE;
+			$config['mailtype'] = 'html';
+			
 			$this->email->initialize($config);
 			$this->email->to($this->session->userdata('personemail'));
-			$this->email->from('admin@reducation.ru','Админстрация сайта REDUCATION.RU');
+			$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
 			$this->email->bcc('');
-			$this->email->subject('REDUCATION.RU Данные для доступа к личному кабинету.');
-			$textmail = strip_tags($mess['msg']);
-			$this->email->message($textmail);	
+			$this->email->subject('Данные для доступа к личному кабинету');
+			$this->email->message($mailtext);	
 			$this->email->send();
 			
 			$this->session->unset_userdata(array('regcustomer'=>'','step'=>'','organization'=>'','inn'=>'','kpp'=>'','accounttype'=>'','accountnumber'=>'','uraddress'=>'','bank'=>'','accountkornumber'=>'','bik'=>'','uraddress'=>'','postaddress'=>'','personemail'=>'','person'=>''));

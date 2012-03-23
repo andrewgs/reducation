@@ -314,34 +314,29 @@ class Customer_interface extends CI_Controller{
 				$this->audiencemodel->update_field($id,'cryptpassword',$this->encrypt->encode($password));
 				ob_start();
 				?>
-				
-				<strong>Здравствуйте  <?=$_POST['name'].' '.$_POST['lastname'];?></strong>
-				
-	Поздравляем! Вас успешно зарегистрировали в статусе абитуриента.
-	
-	Обучение будет осуществляться через личный кабинет.
-	
-	Для входа в личный кабинет используйте соответствующий логин и пароль.
-	
-	Логин: <?=$login;?>
-	Пароль: <?=$password;?>
-	
-	Желаем Вам удачи! 
-	
+				<p>Здравствуйте,  <?=$_POST['name'].' '.$_POST['lastname'];?></p>
+				<p>
+					Поздравляем! Вас успешно зарегистрировали в статусе абитуриента. 
+					Обучение будет осуществляться через личный кабинет.
+					Для входа в личный кабинет используйте присвоенные вам логин и пароль.
+				</p>
+				<p><strong>Логин:</strong> <?=$login;?> <strong>Пароль:</strong> <?=$password;?></p>
+				<p>Желаем Вам удачи!</p>
 				<?
-				$mess['msg'] = ob_get_clean();
+				$mailtext = ob_get_clean();
 				
 				$this->email->clear(TRUE);
 				$config['smtp_host'] = 'localhost';
 				$config['charset'] = 'utf-8';
 				$config['wordwrap'] = TRUE;
+				$config['mailtype'] = 'html';
+				
 				$this->email->initialize($config);
 				$this->email->to($_POST['personaemail']);
-				$this->email->from('admin@reducation.ru','Админстрация сайта REDUCATION.RU');
+				$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
 				$this->email->bcc('');
-				$this->email->subject('REDUCATION.RU Данные для доступа к личному кабинету.');
-				$textmail = strip_tags($mess['msg']);
-				$this->email->message($textmail);	
+				$this->email->subject('Данные для доступа к личному кабинету');
+				$this->email->message($mailtext);	
 				$this->email->send();
 				$this->session->set_userdata('msgs','Слушатель добавлен.');
 			endif;
