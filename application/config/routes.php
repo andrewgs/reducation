@@ -30,6 +30,12 @@ $route['customer/audience/orders']								= "customer_interface/orders_list";
 $route['customer/audience/orders/delete-order/:num']			= "customer_interface/orders_delete_order";
 $route['customer/audience/orders/order-information/id/:num']	= "customer_interface/orders_order_information";
 
+$route['customer/audience/orders/order-information/id/:num/invoice-for-payment']	= "customer_interface/orders_order_invoice";
+$route['customer/audience/orders/order-information/id/:num/contract']				= "customer_interface/orders_order_contract";
+$route['customer/audience/orders/order-information/id/:num/act-to-contract']		= "customer_interface/orders_order_act";
+
+
+
 /******************************************************** AUDIENCE INTRERFACE ***********************************************/
 
 $route['audience/view/profile']													= "audience_interface/audience_profile";
