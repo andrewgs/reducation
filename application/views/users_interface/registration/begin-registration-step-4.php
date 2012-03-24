@@ -37,7 +37,6 @@
 		<?php endif;?>
 		<?php $this->load->view('users_interface/modal/registration-cancel');?>
 		</div>
-		<hr>
 	<?php $this->load->view('users_interface/footer');?>	
 	</div>
 	<?php $this->load->view('users_interface/scripts');?>

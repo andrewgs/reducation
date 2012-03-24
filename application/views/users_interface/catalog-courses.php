@@ -6,9 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
-				<div class="hero-unit">
-					Каталог курсов
-				</div>
+				<h1>Каталог курсов</h1>
 				<div class="accordion" id="accordion2">
 			<?for($i=0;$i<count($trends);$i++):?>
 					<div class="accordion-group">

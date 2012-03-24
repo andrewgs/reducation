@@ -1,7 +1,7 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
 	<fieldset>
-		<div class="span4" style="margin-left:0px;">
-			<legend>ФИО</legend>
+		<div class="span9">
+			<legend>Личные данные</legend>
 			<div class="control-group">
 				<label for="lastname" class="control-label"><strong>Фамилия</strong></label>
 				<div class="controls">
@@ -40,8 +40,6 @@
 					<span class="help-inline"><?=$audience['personaphone'];?></span>
 				</div>
 			</div>
-		</div>
-		<div class="span4" style="margin-left: 60px;">
 			<legend>Данные о предыдущем образовании</legend>
 			<div class="control-group">
 				<label for="graduated" class="control-label"><strong>Наименование<br/>учебного заведения</strong></label>

@@ -9,8 +9,8 @@
 	<![endif]-->
 	<!-- Le styles -->
 	<link rel='stylesheet' href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic&subset=latin,cyrillic">
-	<link href="<?=$baseurl;?>css/bootstrap.css" rel="stylesheet">
 	<link href="<?=$baseurl;?>css/style.css" rel="stylesheet">
+	<link href="<?=$baseurl;?>css/bootstrap.css" rel="stylesheet">	
 	<!--link href="<?=$baseurl;?>css/bootstrap-responsive.css" rel="stylesheet"-->
 	<!-- Le fav and touch icons -->
 	<link rel="shortcut icon" href="<?=$baseurl;?>images/favicon.ico">
