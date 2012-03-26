@@ -47,8 +47,10 @@ class Users_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
+					'msgr'			=> $this->session->userdata('msgr'),
+					'msgauth'		=> $this->session->userdata('msgauth')
 			);
+		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -56,34 +58,34 @@ class Users_interface extends CI_Controller{
 			$login = trim($this->input->post('login'));
 			$pass = trim($this->input->post('password'));
 			if(!$login || !$pass):
-				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
-				redirect($this->uri->uri_string());
+				$this->session->set_userdata('msgauth','Ошибка. Не заполены необходимые поля.');
+				redirect($_SERVER['HTTP_REFERER']);
 			else:
 				$utype = substr(strtolower($login),0,3);
 				switch ($utype):
 					case 'cus':  
 								$user = $this->customersmodel->auth_user($login,$pass);
 								if(!$user):
-									$this->session->set_userdata('msgr','Ошибка. Не верные данные для авторизации. В доступе отказано.');
-									redirect($this->uri->uri_string());
+									$this->session->set_userdata('msgauth','Ошибка. Не верные данные для авторизации. В доступе отказано.');
+									redirect($_SERVER['HTTP_REFERER']);
 								endif;
                    				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'cus'));
 								$this->customersmodel->active_user($this->session->userdata('userid'));
-                   				redirect($this->uri->uri_string());
+                   				redirect($_SERVER['HTTP_REFERER']);
 								break;
 					case 'aud': 
 								$user = $this->audiencemodel->auth_user($login,$pass);
 								if(!$user):
-									$this->session->set_userdata('msgr','Ошибка. Не верные данные для авторизации. В доступе отказано.');
-									redirect($this->uri->uri_string());
+									$this->session->set_userdata('msgauth','Ошибка. Не верные данные для авторизации. В доступе отказано.');
+									redirect($_SERVER['HTTP_REFERER']);
 								endif;
                    				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'aud'));
 								$this->audiencemodel->active_user($this->session->userdata('userid'));
-                   				redirect($this->uri->uri_string());
+                   				redirect($_SERVER['HTTP_REFERER']);
 								break;
 					default : 
-								$this->session->set_userdata('msgr','Ошибка. Не верные данные для авторизации.');
-								redirect($this->uri->uri_string());break;
+								$this->session->set_userdata('msgauth','Ошибка. Не верные данные для авторизации.');
+								redirect($_SERVER['HTTP_REFERER']);break;
 				endswitch;
 				exit; 
 			endif;
@@ -101,8 +103,10 @@ class Users_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
+					'msgr'			=> $this->session->userdata('msgr'),
+					'msgauth'		=> $this->session->userdata('msgauth')
 			);
+		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -165,8 +169,10 @@ class Users_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
+					'msgr'			=> $this->session->userdata('msgr'),
+					'msgauth'		=> $this->session->userdata('msgauth')
 			);
+		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		$this->load->view("users_interface/registration/begin-registration",$pagevar);
@@ -188,8 +194,10 @@ class Users_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
+					'msgr'			=> $this->session->userdata('msgr'),
+					'msgauth'		=> $this->session->userdata('msgauth')
 			);
+		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 	
@@ -231,8 +239,10 @@ class Users_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
+					'msgr'			=> $this->session->userdata('msgr'),
+					'msgauth'		=> $this->session->userdata('msgauth')
 			);
+		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 	
@@ -268,8 +278,10 @@ class Users_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
+					'msgr'			=> $this->session->userdata('msgr'),
+					'msgauth'		=> $this->session->userdata('msgauth')
 			);
+		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 	
@@ -309,8 +321,10 @@ class Users_interface extends CI_Controller{
 					'userinfo'		=> $this->user,
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr'),
-					'finishreg'		=> $this->session->userdata('finishregcustomer')
+					'finishreg'		=> $this->session->userdata('finishregcustomer'),
+					'msgauth'		=> $this->session->userdata('msgauth')
 			);
+		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		if($this->input->post('submit')):
@@ -404,8 +418,10 @@ class Users_interface extends CI_Controller{
 					'trends'		=> $this->trendsmodel->read_view_records(),
 					'courses'		=> $this->coursesmodel->read_view_records(),
 					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
+					'msgr'			=> $this->session->userdata('msgr'),
+					'msgauth'		=> $this->session->userdata('msgauth')
 			);
+		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -423,8 +439,10 @@ class Users_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
+					'msgr'			=> $this->session->userdata('msgr'),
+					'msgauth'		=> $this->session->userdata('msgauth')
 			);
+		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		$this->load->view("users_interface/contacts",$pagevar);
