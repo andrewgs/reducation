@@ -84,10 +84,13 @@ p.caption .next { color: #e3e3e3; opacity: 0.7; font-size: 36px; display: inline
 .partners li.p4 a { background: url('../img/sprites.png') -371px -79px no-repeat; width: 112px; height: 65px; text-indent: -9999px; padding: 0; margin-top: 15px; }
 
 .review { margin: 20px 5px 18px; }
+.single-course { color: #066ba5; }
+.accordion-heading .accordion-toggle { color: #404040; font-size: 17px; font-weight: bold; letter-spacing: 0.5px; padding: 10px 15px; text-decoration: none; }
+.accordion-heading .accordion-toggle .small { color: #999; font-size: 13px; font-weight: normal; display: block; margin: 2px 0 0;}
 
 /* ==|== footer ====================================================== */
 
-footer { height: 50px; line-height: 50px; background: #eeeee2; color: #777; font-size: 14px; margin: 40px 0 0; }
+footer { height: 50px; line-height: 50px; background: #eeeee2; color: #777; font-size: 13px; margin: 40px 0 0; }
 footer .copy { padding-left: 20px; }
 
 #bt-contacts { color: #333; font-size: 16px; text-align: right; padding-right: 20px; }

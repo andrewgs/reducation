@@ -26,8 +26,7 @@
 			<? else: ?>
 				<div class="form-header">Вход в личный кабинет</div>
 				<?=form_open('main-page',array('class'=>'form-inline right')); ?>
-					<?php $this->load->view('alert_messages/alert-error');?>
-					<?php $this->load->view('alert_messages/alert-success');?>
+					<?php $this->load->view('alert_messages/alert-auth-error');?>
 					<input type="text" id="login" class="input span2 focused" name="login" placeholder="Имя пользователя">
 					<span class="help-inline" style="display:none; padding-left: 0px;">&nbsp;</span>
 					<input type="password" id="password" class="input-small focused" name="password" placeholder="Пароль">
@@ -37,7 +36,7 @@
 			<? endif;?>
 				<div id="top-contacts">
 					<span class="desc">Телефон для справок:</span>
-					<b>(863)</b> 295-52-10
+					<b>(863)</b> 238-53-53
 				</div>			
 			</div>
 		</div>
