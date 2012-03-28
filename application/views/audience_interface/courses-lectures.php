@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <?php $this->load->view('audience_interface/head');?>
 <body>
