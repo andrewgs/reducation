@@ -214,7 +214,7 @@ class Users_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
 			else:
-				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>2,'organization'=>htmlspecialchars($_POST['organization']),'inn'=>$_POST['inn'],'kpp'=>$_POST['kpp'],'accounttype'=>$_POST['accounttype'],'accountnumber'=>$_POST['accountnumber'],'bank'=>htmlspecialchars($_POST['bank']),'accountkornumber'=>$_POST['accountkornumber'],'bik'=>$_POST['bik']));
+				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>2,'organization'=>htmlspecialchars($_POST['organization']),'inn'=>$_POST['inn'],'kpp'=>$_POST['kpp'],'accounttype'=>$_POST['accounttype'],'accountnumber'=>$_POST['accountnumber'],'bank'=>htmlspecialchars($_POST['bank']),'accountkornumber'=>$_POST['accountkornumber'],'bik'=>$_POST['bik'],'manager'=>htmlspecialchars($_POST['manager']),'fiomanager'=>htmlspecialchars($_POST['fiomanager']),'statutory'=>htmlspecialchars($_POST['statutory'])));
 				$this->session->set_userdata('msgs','Данные сохранены.');
 			endif;
 			redirect('registration/customer/step/2');
@@ -292,7 +292,7 @@ class Users_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
 			else:
-				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>4,'personemail'=>$_POST['personemail'],'person'=>htmlspecialchars($_POST['person']),'manager'=>htmlspecialchars($_POST['manager']),'fiomanager'=>htmlspecialchars($_POST['fiomanager']),'statutory'=>htmlspecialchars($_POST['statutory'])));
+				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>4,'personemail'=>$_POST['personemail'],'person'=>htmlspecialchars($_POST['person'])));
 				$this->session->set_userdata('msgs','Данные сохранены.');
 			endif;
 			redirect('registration/customer/step/4');

@@ -24,6 +24,27 @@
 				<span class="help-inline" style="display:none;">&nbsp;</span>
 			</div>
 		</div>
+		<div class="control-group">
+			<label for="manager" class="control-label">Должность руководителя</label>
+			<div class="controls">
+				<input type="text" id="manager" class="input-xlarge inpval" name="manager" value="<?=$this->session->userdata('manager')?>">
+				<span class="help-inline" style="display:none;">&nbsp;</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="fiomanager" class="control-label">ФИО руководителя</label>
+			<div class="controls">
+				<input type="text" id="fiomanager" class="input-xlarge inpval" name="fiomanager" value="<?=$this->session->userdata('fiomanager')?>">
+				<span class="help-inline" style="display:none;">&nbsp;</span>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="statutory" class="control-label">Уставной документ</label>
+			<div class="controls">
+				<input type="text" id="statutory" class="input-xlarge inpval" name="statutory" value="<?=$this->session->userdata('statutory')?>">
+				<span class="help-inline" style="display:none;">&nbsp;</span>
+			</div>
+		</div>
 	</fieldset>
 	<fieldset>
 		<legend>
