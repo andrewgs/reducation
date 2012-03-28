@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <?php $this->load->view('audience_interface/head');?>
 <body>
@@ -54,15 +54,11 @@
 								<?php /*endif;*/?>
 								<?php if($chapters[$i]['test']['attempt'] > 0 ):?>
 								<div style="margin-top: 10px;">
-									<pre>
-<?php if($chapters[$i]['test']['attempt'] >= $chapters[$i]['test']['count']):?>Предложенный материал курса повышения квалификации в данной главе Вами изучен недостаточно.
-<?php endif;?>
-	
-	Попытка: <?=$chapters[$i]['test']['attempt'];?> из <?=$chapters[$i]['test']['count'];?>
-	Затрачено: <?=$chapters[$i]['test']['time'];?> мин.
-	Результат: <?=$chapters[$i]['test']['result'];?>% 
-	<?=($chapters[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' :'<font style="color:#ff0000">(незачет)</font>';?>
-									</pre>
+<pre><?php if($chapters[$i]['test']['attempt'] >= $chapters[$i]['test']['count']):?>Предложенный материал курса повышения квалификации в данной главе Вами изучен недостаточно.<?php endif;?>
+Попытка: <?=$chapters[$i]['test']['attempt'];?> из <?=$chapters[$i]['test']['count'];?> 
+Затрачено: <?=$chapters[$i]['test']['time'];?> мин. 
+Результат: <?=$chapters[$i]['test']['result'];?>% <?=($chapters[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' :'<font style="color:#ff0000">(незачет)</font>';?>
+</pre>
 								</div>
 								<?php endif;?>
 							<?php endif;?>

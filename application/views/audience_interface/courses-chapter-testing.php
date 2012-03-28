@@ -38,9 +38,9 @@
 						<?php for($j=0,$num=1;$j<count($answers);$j++):?>
 							<?php if($answers[$j]['testquestion'] == $questions[$i]['id']):?>
 								<tr>
-									<td class="short"><?=$num;?>.</td>
+									<td style="width: 10px;"><?=$num;?>.</td>
 									<td><?=$answers[$j]['title'];?></td>
-									<td>
+									<td style="width: 10px;">
 									<div class="controls">
 										<label class="radio">
 										<?php if($num == 1):?>
