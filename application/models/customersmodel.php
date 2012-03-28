@@ -21,6 +21,9 @@ class Customersmodel extends CI_Model {
 	var $accountkornumber= 0;
 	var $access			= 0;
 	var $cryptpassword	= '';
+	var $manager		= '';
+	var $fiomanager		= '';
+	var $statutory		= '';
 
 	function __construct(){
 		parent::__construct();
@@ -46,6 +49,9 @@ class Customersmodel extends CI_Model {
 		$this->accountkornumber	= $data['accountkornumber'];
 		$this->access			= 1;
 		$this->cryptpassword	= '';
+		$this->manager			= $data['manager'];
+		$this->fiomanager		= $data['fiomanager'];
+		$this->statutory		= $data['statutory'];
 		
 		$this->db->insert('customers',$this);
 		return $this->db->insert_id();
@@ -85,6 +91,9 @@ class Customersmodel extends CI_Model {
 		$this->db->set('accounttype',$data['accounttype']);
 		$this->db->set('accountnumber',$data['accountnumber']);
 		$this->db->set('accountkornumber',$data['accountkornumber']);
+		$this->db->set('manager',$data['manager']);
+		$this->db->set('fiomanager',$data['fiomanager']);
+		$this->db->set('statutory',$data['statutory']);
 		$this->db->where('id',$id);
 		
 		$this->db->update('customers');

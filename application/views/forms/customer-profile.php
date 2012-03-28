@@ -63,8 +63,8 @@
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
-		</div>
-		<div class="span4" style="margin-left: 60px;">
+		<!--</div>
+		<div class="span4" style="margin-left: 60px;">-->
 			<div class="control-group">
 				<label for="uraddress" class="control-label">Юридический<br/>адрес</label>
 				<div class="controls">
@@ -76,6 +76,27 @@
 				<label for="postaddress" class="control-label">Почтовый<br/>адрес</label>
 				<div class="controls">
 					<textarea rows="3" id="postaddress" class="input-xlarge inpval" name="postaddress"><?=$customer['postaddress'];?></textarea>
+					<span class="help-inline" style="display:none;">&nbsp;</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="manager" class="control-label">Должность</label>
+				<div class="controls">
+					<input type="text" id="manager" class="input-xlarge inpval" name="manager" value="<?=$customer['manager'];?>">
+					<span class="help-inline" style="display:none;">&nbsp;</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="fiomanager" class="control-label">ФИО</label>
+				<div class="controls">
+					<input type="text" id="fiomanager" class="input-xlarge inpval" name="fiomanager" value="<?=$customer['fiomanager'];?>">
+					<span class="help-inline" style="display:none;">&nbsp;</span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="statutory" class="control-label">Уставной документ</label>
+				<div class="controls">
+					<input type="text" id="statutory" class="input-xlarge inpval" name="statutory" value="<?=$customer['statutory'];?>">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>

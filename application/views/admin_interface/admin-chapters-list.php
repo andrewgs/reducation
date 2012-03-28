@@ -30,7 +30,7 @@
 								<tr>
 									<td class="short"><a href="#editLecture" title="Редактировать" class="editLecture" data-toggle="modal" idlecture="<?=$lectures[$j]['id'];?>" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-pencil"></i></a></td>
 									<td class="short"><?=$num;?></td>
-									<td><?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/lecture/'.$lectures[$j]['id'],'Лекция: <span idlecture="st'.$lectures[$j]['id'].'" numb="'.$lectures[$j]['number'].'"> '.$lectures[$j]['title'].'</span>');?><a href="#"></a></td>
+									<td><?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/lecture/'.$lectures[$j]['id'],'<span idlecture="st'.$lectures[$j]['id'].'" numb="'.$lectures[$j]['number'].'"> '.$lectures[$j]['title'].'</span>');?><a href="#"></a></td>
 									<td class="short"><a class="close" data-toggle="modal" href="#deleteLecture" idlecture="<?=$lectures[$j]['id'];?>">&times;</a></td>
 								</tr>
 								<?php $num++;?>

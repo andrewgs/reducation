@@ -79,6 +79,9 @@ class Customer_interface extends CI_Controller{
 			$this->form_validation->set_rules('postaddress',' ','required|trim');
 			$this->form_validation->set_rules('personemail',' ','required|valid_email|trim');
 			$this->form_validation->set_rules('person',' ','required|trim');
+			$this->form_validation->set_rules('manager',' ','required|trim');
+			$this->form_validation->set_rules('fiomanager',' ','required|trim');
+			$this->form_validation->set_rules('statutory',' ','required|trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
 			else:
@@ -294,6 +297,7 @@ class Customer_interface extends CI_Controller{
 			$this->form_validation->set_rules('lastname',' ','required|trim');
 			$this->form_validation->set_rules('name',' ','required|trim');
 			$this->form_validation->set_rules('middlename',' ','required|trim');
+			$this->form_validation->set_rules('fiodat',' ','required|trim');
 			$this->form_validation->set_rules('address',' ','required|trim');
 			$this->form_validation->set_rules('personaemail',' ','required|valid_email|trim');
 			$this->form_validation->set_rules('personaphone',' ','required|trim');
@@ -307,7 +311,7 @@ class Customer_interface extends CI_Controller{
 				$this->session->set_userdata('msgr','Ошибка. Повторите ввод.');
 			else:
 				$id = $this->audiencemodel->insert_record($this->user['uid'],$_POST);
-				$login = 'aud000'.$id;
+				$login = 'slu_'.$id;
 				$password = $this->randomPassword(8);
 				$this->audiencemodel->update_field($id,'login',$login);
 				$this->audiencemodel->update_field($id,'password',md5($password));

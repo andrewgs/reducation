@@ -239,15 +239,6 @@ class Audience_interface extends CI_Controller{
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
-		
-		$ccount = $this->audiencetestmodel->read_field($test,'attempt');
-		$tcount = $this->testsmodel->read_field($pagevar['test']['test'],'count');
-		
-		if($ccount >= $tcount):
-			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту. У вас закончились попытки.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
-		endif;
-		
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
 		if($this->input->post('submit')):

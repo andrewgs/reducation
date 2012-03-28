@@ -25,7 +25,7 @@
 					<div class="accordion-group">
 						<div class="accordion-heading">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<?=$i;?>">
-								Глава №<?=($i+1).':&nbsp;'.$chapters[$i]['title'];?>
+								<?=($i+1).':&nbsp;'.$chapters[$i]['title'];?>
 							</a>
 						</div>
 					<?php if(!$i):?>	
@@ -39,7 +39,7 @@
 								<?php for($j=0,$num=1;$j<count($chapters[$i]['lectures']);$j++):?>
 										<tr>
 											<td class="short"><?=$num;?></td>
-											<td><?=anchor('audience/courses/current/course/'.$this->uri->segment(5).'/lecture/'.$chapters[$i]['lectures'][$j]['id'],'Лекция: '.$chapters[$i]['lectures'][$j]['title']);?><a href="#"></a></td>
+											<td><?=anchor('audience/courses/current/course/'.$this->uri->segment(5).'/lecture/'.$chapters[$i]['lectures'][$j]['id'],$chapters[$i]['lectures'][$j]['title']);?><a href="#"></a></td>
 										</tr>
 										<?php $num++;?>
 								<?php endfor;?>
@@ -49,16 +49,19 @@
 								<?php $chapters[$i]['test']['attempt'] = 0; ?>
 							<?php endif;?>
 							<?php if($chapters[$i]['test']):?>
-								<?php if($chapters[$i]['test']['attempt'] < $chapters[$i]['test']['count']):?>
+								<?php /*if($chapters[$i]['test']['attempt'] < $chapters[$i]['test']['count']):*/?>
 								<?=anchor($this->uri->uri_string().'/testing/id/'.$chapters[$i]['test']['id'],'Промежуточное тестирование',array('class'=>'btn'));?>
-								<?php endif;?>
+								<?php /*endif;*/?>
 								<?php if($chapters[$i]['test']['attempt'] > 0 ):?>
 								<div style="margin-top: 10px;">
 									<pre>
-	Попытка: <?=$chapters[$i]['test']['attempt'];?> из <?=$chapters[$i]['test']['count'];?>
+<?php if($chapters[$i]['test']['attempt'] >= $chapters[$i]['test']['count']):?>Предложенный материал курса повышения квалификации в данной главе Вами изучен недостаточно.
+<?php endif;?>
 	
+	Попытка: <?=$chapters[$i]['test']['attempt'];?> из <?=$chapters[$i]['test']['count'];?>
 	Затрачено: <?=$chapters[$i]['test']['time'];?> мин.
-	Результат: <?=$chapters[$i]['test']['result'];?>% <?=($chapters[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
+	Результат: <?=$chapters[$i]['test']['result'];?>% 
+	<?=($chapters[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' :'<font style="color:#ff0000">(незачет)</font>';?>
 									</pre>
 								</div>
 								<?php endif;?>
@@ -88,6 +91,7 @@
 					<?php if($test['attempt'] > 0 ):?>
 						<div style="margin-top: 10px;">
 								<pre>
+<?php if($test['attempt'] >= $test['count']):?>Уважаемый слушатель! Предложенный   материал   курса  повышения  квалификации  Вами  изучен недостаточно. Пожалуйста,  дополнительно изучите курс программы  и повторите попытку итогового тестирования.<?php endif;?>														
 Попытка: <?=$test['attempt'];?> из <?=$test['count'];?>
 
 Затрачено: <?=$test['time'];?> мин.

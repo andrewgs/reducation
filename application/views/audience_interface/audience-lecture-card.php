@@ -20,14 +20,14 @@
 					</ul>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
-					<h3>Лекция: <?=$lecture['title'];?></h3>
+					<h3><?=$lecture['title'];?></h3>
 <pre><strong>Скачайте и прочтите лекцию.</strong>
 
 Лекция является самостоятельным модулем, включающим текст лекции, словарь терминов, справочник, активный список литературы и блок вопросов для самопроверки. Формат лекции - защищенный структурированный pdf-файл.
 
 </pre>
 					<div>
-						<p>Лекция: <?=$fileextension;?>, <?=$filesize;?></p>
+						<p><?=$fileextension;?>, <?=$filesize;?></p>
 						<a class="btn btn-info" data-toggle="modal" href="#getDocument" id="getDoc" lec="<?=$lecture['id'];?>"><i class="icon-download-alt icon-white"></i> Скачать лекцию</a>
 					</div>
 					<?php $this->load->view('users_interface/modal/user-get-document');?>

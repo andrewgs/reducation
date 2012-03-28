@@ -6,7 +6,7 @@
 		<div class="control-group">
 			<label for="organization" class="control-label">Наименование</label>
 			<div class="controls">
-				<input type="text" id="title" class="input-xlarge inpval" name="organization" value="<?=$this->session->userdata('organization')?>">
+				<input type="text" id="organization" class="input-xlarge inpval" name="organization" value="<?=$this->session->userdata('organization')?>">
 				<span class="help-inline" style="display:none;">&nbsp;</span>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 		<div class="control-group">
 			<label for="kpp" class="control-label">КПП</label>
 			<div class="controls">
-				<input type="text" id="kpp" class="input-xlarg inpval digital" name="kpp" value="<?=$this->session->userdata('kpp')?>">
+				<input type="text" id="kpp" class="input-xlarge inpval digital" name="kpp" value="<?=$this->session->userdata('kpp')?>">
 				<span class="help-inline" style="display:none;">&nbsp;</span>
 			</div>
 		</div>

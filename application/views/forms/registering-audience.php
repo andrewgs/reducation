@@ -23,6 +23,13 @@
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
+			<div class="control-group">
+				<label for="fiodat" class="control-label">ФИО в дательном падеже</label>
+				<div class="controls">
+					<input type="text" id="fiodat" class="input-xlarge inpval" name="fiodat" value="">
+					<span class="help-inline" style="display:none;">&nbsp;</span>
+				</div>
+			</div>
 			<legend>Адрес</legend>
 			<div class="control-group">
 				<label for="address" class="control-label">Область, город, улица, дом, корпус, квартира, индекс</label>

@@ -8,6 +8,7 @@ class Audiencemodel extends CI_Model{
     var $lastname   	= '';
     var $name    		= '';
     var $middlename   	= '';
+    var $fiodat   		= '';
     var $address    	= '';
     var $graduated    	= '';
     var $year    		= '';
@@ -34,6 +35,7 @@ class Audiencemodel extends CI_Model{
 		$this->lastname 		= $data['lastname'];
 		$this->name 			= $data['name'];
 		$this->middlename		= $data['middlename'];
+		$this->fiodat			= $data['fiodat'];
 		$this->address 			= $data['address'];
 		$this->personaemail		= $data['personaemail'];
 		$this->personaphone		= $data['personaphone'];
