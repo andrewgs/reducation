@@ -3,7 +3,7 @@
 class Customer_interface extends CI_Controller{
 	
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'');
-	var $loginstatus = array('cus'=>FALSE,'aud'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
+	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
 	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
 	
 	function __construct(){
@@ -27,7 +27,7 @@ class Customer_interface extends CI_Controller{
 		if(isset($cookieuid) and !empty($cookieuid)):
 			$this->user['uid'] = $this->session->userdata('userid');
 			if($this->user['uid']):
-				if($this->session->userdata('utype') != 'cus'):
+				if($this->session->userdata('utype') != 'zak'):
 					redirect('');
 				endif;
 				$userinfo = $this->customersmodel->read_record($this->user['uid']);
@@ -314,7 +314,7 @@ class Customer_interface extends CI_Controller{
 				$this->audiencemodel->update_field($id,'cryptpassword',$this->encrypt->encode($password));
 				ob_start();
 				?>
-				<p>Здравствуйте,  <?=$_POST['name'].' '.$_POST['lastname'];?></p>
+				<p>Здравствуйте,  <?=$_POST['lastname'].' '.$_POST['name'].' '.$_POST['middlename'];?></p>
 				<p>
 					Поздравляем! Вас успешно зарегистрировали в статусе абитуриента. 
 					Обучение будет осуществляться через личный кабинет.
@@ -385,6 +385,7 @@ class Customer_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'trends'		=> $this->trendsmodel->read_view_records(),
+					'courses'		=> $this->coursesmodel->read_view_records(),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -448,6 +449,10 @@ class Customer_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не указан курс обучения.');
 			else:
+				if(!$this->coursesmodel->read_field($_POST['course'],'view')):
+					$this->session->set_userdata('msgr','Ошибка. Указанного курса не существует.');
+					redirect($this->uri->uri_string());
+				endif;
 				if(!$this->courseordermodel->exist_course_order($_POST['course'],$this->session->userdata('order'),$this->user['uid'])):
 					$corder = $this->courseordermodel->insert_record($this->session->userdata('order'),$_POST['course'],$this->user['uid']);
 					$this->session->set_userdata('msgs','Курс обучения добавлен в заказ.');

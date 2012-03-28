@@ -13,18 +13,20 @@
 				<h1>Каталог курсов</h1>
 				<div class="accordion" id="accordion2">
 			<?for($i=0;$i<count($trends);$i++):?>
+				<?php 
+					$numCourses = 0;
+					for($j=0;$j<count($courses);$j++):
+						 if($courses[$j]['trend'] == $trends[$i]['id']):
+						 	$numCourses++;
+						 endif;
+					endfor;
+				?>
+				<?php if($numCourses):?>
 					<div class="accordion-group">
 						<div class="accordion-heading">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?=$i;?>">
-								<? 
-								$numCourses = 0;
-								for ( $j=0,$num=1;$j<count($courses);$j++,$num++ ) {
-									 if ( $courses[$j]['trend'] == $trends[$i]['id'] ) {
-									 	$numCourses++;
-									 }
-								} 
-								?>
-								<?=$trends[$i]['title'];?> <span class="small">(<?= $numCourses; ?> курсов)</span>
+							
+								<?=$trends[$i]['title'];?> <span class="small">(курсов: <?=$numCourses;?>)</span>
 							</a>
 						</div>
 						<div id="collapse<?=$i;?>" class="accordion-body collapse">
@@ -45,7 +47,7 @@
 									 if($courses[$j]['trend'] == $trends[$i]['id']): ?>
 										<tr>
 											<!--td><?=$num;?>.</td-->
-											<td><?= $courses[$j]['code'].'. <span class="single-course">'.$courses[$j]['title']; ?></span></td>
+											<td><?= $courses[$j]['code'].'. <span class="single-course">'.$courses[$j]['title'].'</span>';?></td>
 											<td><nobr><?= $courses[$j]['price']; ?> руб.</nobr></td>
 											<td><nobr><?= $courses[$j]['hours']; ?> ч.</nobr></td>
 										</tr>
@@ -56,6 +58,7 @@
 							</div>
 						</div>
 					</div>
+				<?php endif;?>
 			<?php endfor;?>
 				</div>
 				<div class="btn-toolbar">
@@ -64,10 +67,10 @@
 					</div>
 				</div>
 			</div>
-		<?php if($loginstatus['status'] && $loginstatus['cus']):?>
+		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['aud']):?>
+		<?php if($loginstatus['status'] && $loginstatus['slu']):?>
 			<?php $this->load->view('users_interface/rightbaraud');?>
 		<?php endif;?>
 		<?php if($loginstatus['status'] && $loginstatus['adm']):?>

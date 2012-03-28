@@ -4,12 +4,20 @@
 		<div class="control-group">
 			<div class="controls" style="margin-left: 40px;">
 			<?php for($i=0;$i<count($trends);$i++):?>
-				<label class="radio">
-					<input type="radio" class="redioTrends" name="optRadio" id="optRadios<?=$i;?>" value="<?=$trends[$i]['id'];?>">
-					Код: <strong><?=$trends[$i]['code'];?></strong>. <?=$trends[$i]['title'];?>;
-				</label>
-				<p class="help-block" style="margin-left:18px;">(Курсов: <?=$trends[$i]['courses'];?>)</p>
-				<div style="margin-top:10px;"></div>
+			<?php $numCourses = 0;
+				for($j=0;$j<count($courses);$j++):
+					 if($courses[$j]['trend'] == $trends[$i]['id']):
+					 	$numCourses++;
+					 endif;
+				endfor; ?>
+				<?php if($numCourses):?>
+					<label class="radio">
+						<input type="radio" class="redioTrends" name="optRadio" id="optRadios<?=$i;?>" value="<?=$trends[$i]['id'];?>">
+						Код: <strong><?=$trends[$i]['code'];?></strong>. <?=$trends[$i]['title'];?>;
+					</label>
+					<p class="help-block" style="margin-left:18px;"><span class="small">(курсов: <?=$numCourses;?>)</span></p>
+					<div style="margin-top:10px;"></div>
+				<?php endif;?>
 			<?php endfor;?>
 			<?php if(!count($trends)):?>
 				<span class="label label-warning">По какой-то не виданной причине отсутствуют направления обучения.</span>

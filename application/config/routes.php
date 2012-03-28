@@ -94,6 +94,8 @@ $route['admin-panel/messages/orders/paid-order']= "admin_interface/orders_paid";
 
 /*===========================================================  users  =====================================================*/
 $route['admin-panel/users/customer']						= "admin_interface/users_customer";
+$route['admin-panel/users/customer/load-courses']			= "admin_interface/users_customer_load_courses";
+
 $route['admin-panel/users/customer/set-customer-access']	= "admin_interface/customer_access";
 $route['admin-panel/users/customer/delete-customer/:num']	= "admin_interface/delete_customer";
 $route['admin-panel/users/audience']						= "admin_interface/users_audience";

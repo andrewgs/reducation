@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Ordersmodel extends CI_Model {
+class Ordersmodel extends CI_Model{
 
     var $id   		= 0;
     var $trend 		= 0;

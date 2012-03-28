@@ -3,7 +3,7 @@
 class Users_interface extends CI_Controller{
 	
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'');
-	var $loginstatus = array('cus'=>FALSE,'aud'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
+	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
 	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
 	
 	function __construct(){
@@ -63,28 +63,28 @@ class Users_interface extends CI_Controller{
 			else:
 				$utype = substr(strtolower($login),0,3);
 				switch ($utype):
-					case 'cus':  
+					case 'zak':  
 								$user = $this->customersmodel->auth_user($login,$pass);
 								if(!$user):
-									$this->session->set_userdata('msgauth','Ошибка. Не верные данные для авторизации. В доступе отказано.');
+									$this->session->set_userdata('msgauth','Не верные данные для авторизации.<br/>В доступе отказано.');
 									redirect($_SERVER['HTTP_REFERER']);
 								endif;
-                   				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'cus'));
+                   				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'zak'));
 								$this->customersmodel->active_user($this->session->userdata('userid'));
                    				redirect($_SERVER['HTTP_REFERER']);
 								break;
-					case 'aud': 
+					case 'slu': 
 								$user = $this->audiencemodel->auth_user($login,$pass);
 								if(!$user):
-									$this->session->set_userdata('msgauth','Ошибка. Не верные данные для авторизации. В доступе отказано.');
+									$this->session->set_userdata('msgauth','Не верные данные для авторизации.<br/>В доступе отказано.');
 									redirect($_SERVER['HTTP_REFERER']);
 								endif;
-                   				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'aud'));
+                   				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'slu'));
 								$this->audiencemodel->active_user($this->session->userdata('userid'));
                    				redirect($_SERVER['HTTP_REFERER']);
 								break;
 					default : 
-								$this->session->set_userdata('msgauth','Ошибка. Не верные данные для авторизации.');
+								$this->session->set_userdata('msgauth','Не верные данные для авторизации.');
 								redirect($_SERVER['HTTP_REFERER']);break;
 				endswitch;
 				exit; 
@@ -142,9 +142,9 @@ class Users_interface extends CI_Controller{
 		if($this->loginstatus['status']):
 			if($this->loginstatus['adm']):
 				redirect('admin-panel/actions/control');
-			elseif($this->loginstatus['cus']):
+			elseif($this->loginstatus['zak']):
 				redirect('');
-			elseif($this->loginstatus['aud']):
+			elseif($this->loginstatus['slu']):
 				redirect('');
 			endif;
 		endif;
@@ -331,7 +331,7 @@ class Users_interface extends CI_Controller{
 			$_POST['submit'] = NULL;
 			$customer = $this->session->all_userdata();
 			$id = $this->customersmodel->insert_record($customer);
-			$login = 'cus000'.$id;
+			$login = 'zak_'.$id;
 			$password = $this->randomPassword(8);
 			$this->session->set_userdata('cuslogin',$login);
 			$this->session->set_userdata('cuspassword',$password);
@@ -390,7 +390,7 @@ class Users_interface extends CI_Controller{
 			if(!$user):
 				redirect('');
 			endif;
-			$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'cus'));
+			$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'zak'));
 			$this->customersmodel->active_user($this->session->userdata('userid'));
 			$this->session->unset_userdata('cuslogin');
 			$this->session->unset_userdata('cuspassword');
@@ -453,8 +453,8 @@ class Users_interface extends CI_Controller{
 		$model = '';
 		switch ($utype):
 			case 'adm': $model = 'adminmodel'; break;
-			case 'cus': $model = 'customersmodel'; break;
-			case 'aud': $model = 'audiencemodel'; break;
+			case 'zak': $model = 'customersmodel'; break;
+			case 'slu': $model = 'audiencemodel'; break;
 		endswitch;
 		return $model;
 	}

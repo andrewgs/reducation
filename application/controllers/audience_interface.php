@@ -3,7 +3,7 @@
 class Audience_interface extends CI_Controller{
 	
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'');
-	var $loginstatus = array('cus'=>FALSE,'aud'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
+	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
 	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
 	
 	function __construct(){
@@ -28,7 +28,7 @@ class Audience_interface extends CI_Controller{
 		if(isset($cookieuid) and !empty($cookieuid)):
 			$this->user['uid'] = $this->session->userdata('userid');
 			if($this->user['uid']):
-				if($this->session->userdata('utype') != 'aud'):
+				if($this->session->userdata('utype') != 'slu'):
 					redirect('');
 				endif;
 				$userinfo = $this->audiencemodel->read_record($this->user['uid']);

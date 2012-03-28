@@ -13,10 +13,10 @@
 				</div>
 				<?php $this->load->view('users_interface/registration/customer-form-3');?>
 			</div>
-		<?php if($loginstatus['status'] && $loginstatus['cus']):?>
+		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['aud']):?>
+		<?php if($loginstatus['status'] && $loginstatus['slu']):?>
 			<?php $this->load->view('users_interface/rightbaraud');?>
 		<?php endif;?>
 		<?php if($loginstatus['status'] && $loginstatus['adm']):?>

@@ -24,12 +24,18 @@
 							<td class="short"><a title="Порядковый номер" class="none"><?=$num;?></a></td>
 							<td><a href="" title="Номер заказа" class="none">Заказ №<?=$orders[$i]['id'];?></a></td>
 							<td><a href="" title="Дата заказа" class="none"><?=$orders[$i]['orderdate'];?></a></td>
-						<?php if($orders[$i]['paid']):?>
-							<td class="short"><input type="checkbox" value="1" checked="checked" ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
-							<td><a href="" title="Дата оплаты" class="none"><?=$orders[$i]['paiddate'];?></a></td>
+							<td><a href="" title="Заказчик" class="none"><?=$orders[$i]['organization'];?></a></td>
+						<?php if($orders[$i]['online']):?>
+							<td><a href="" title="В сети" class="none">В сети</a></td>
 						<?php else:?>
-							<td class="short"><input type="checkbox" value="1" ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
-							<td><a href="" title="Дата оплаты" class="none" id="paiddate">00-00-0000</a></td>
+							<td><a href="" title="В сети" class="none">Не в сети</a></td>
+						<?php endif;?>
+						<?php if($orders[$i]['paid']):?>
+							<td class="short"><input type="checkbox" value="1" checked="checked" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
+							<td><a href="" title="Дата оплаты" class="none paiddate" data-ord="<?=$orders[$i]['id'];?>"><?=$orders[$i]['paiddate'];?></a></td>
+						<?php else:?>
+							<td class="short"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
+							<td><a href="" title="Дата оплаты" class="none paiddate" data-ord="<?=$orders[$i]['id'];?>">Не оплачен</a></td>
 						<?php endif;?>
 						</tr>
 						<?php $num++;?>
@@ -46,14 +52,15 @@
 		$(".none").click(function(event){event.preventDefault();});
 		$(".chAccess").click(function(){
 			var check = 0;
-			var order = $(this).attr('ord');
+			var order = $(this).attr('data-ord');
 			if($(this).attr("checked") == 'checked'){
 				check = 1;
-				$.post('<?=$baseurl;?>admin-panel/messages/orders/paid-order',{'order': order,'access':check});
-				$("#paiddate").html('<?=date("d.m.Y");?>')
+				$(".paiddate[data-ord = "+order+"]").html('<?=date("d.m.Y");?>');
 			}else{
-				$(this).attr("checked","checked");
+				check = 0;
+				$(".paiddate[data-ord = "+order+"]").html('Не оплачен');
 			}
+			$.post('<?=$baseurl;?>admin-panel/messages/orders/paid-order',{'order': order,'access':check});
 		});
 	</script>
 </body>

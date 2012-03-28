@@ -85,7 +85,7 @@
 				$("#idTrend").val(DTrend);
 				$("#eTitleTrend").val(title);
 				$("#eCodeTrend").val(code);
-				if(view == 1){$("#eViewTrend").attr('checked','checked');}else{$("#eViewTrend").removeAttr('checked');}
+				/*if(view == 1){$("#eViewTrend").attr('checked','checked');}else{$("#eViewTrend").removeAttr('checked');}*/
 			});
 			$("#DelTrend").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trends/delete-trend/'+DTrend;});
 			$("#addTrend").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$("#ViewTrend").removeAttr('checked');});

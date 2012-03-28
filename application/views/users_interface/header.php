@@ -9,11 +9,11 @@
 				<p class="authorized-user">
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
 				<?php
-					if($loginstatus['status'] && $loginstatus['cus']):
+					if($loginstatus['status'] && $loginstatus['zak']):
 						echo anchor('customer/audience/orders','Мои заказы', array('class'=>'auth-link'));
 						echo anchor('logoff','Выйти из кабинета', array('class'=>'auth-link'));
 					endif;
-					if($loginstatus['status'] && $loginstatus['aud']):
+					if($loginstatus['status'] && $loginstatus['slu']):
 						echo anchor('audience/courses/current','Личный кабинет', array('class'=>'auth-link'));
 						echo anchor('logoff','Выйти из кабинета', array('class'=>'auth-link'));
 					endif;

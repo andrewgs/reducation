@@ -22,10 +22,10 @@
 					<div id="YMapsID" style="width: 600px; height: 400px;"></div>
 				</div>
 			</div>
-			<? if($loginstatus['status'] && $loginstatus['cus']): ?>
+			<? if($loginstatus['status'] && $loginstatus['zak']): ?>
 				<?php $this->load->view('users_interface/rightbarcus'); ?>
 			<? endif; ?>
-			<? if($loginstatus['status'] && $loginstatus['aud']): ?>
+			<? if($loginstatus['status'] && $loginstatus['slu']): ?>
 				<?php $this->load->view('users_interface/rightbaraud'); ?>
 			<? endif; ?>
 			<? if($loginstatus['status'] && $loginstatus['adm']): ?>

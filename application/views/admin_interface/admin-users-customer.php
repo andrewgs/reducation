@@ -18,18 +18,20 @@
 							<td class="short"><a title="Порядковый номер" class="none"><?=$num;?></a></td>
 							<td><a href="" title="Название" class="none"><?=$customers[$i]['organization'];?></a></td>
 							<td><a href="" title="Представитель" class="none"><?=$customers[$i]['person'].' ('.$customers[$i]['personemail'].')';?></a></td>
+							<td><a href="#CoursesList" class="crsList" data-toggle="modal" data-cus="<?=$customers[$i]['id'];?>" title="Список курсов"><i class="icon-th-list"></i></a></td>
 						<?php if($customers[$i]['access']):?>
-							<td class="short"><input type="checkbox" value="1" checked="checked" cus="<?=$customers[$i]['id'];?>" id="ch<?=$customers[$i]['id'];?>" class="chAccess"></td>
+							<td class="short"><input type="checkbox" value="1" checked="checked" data-cus="<?=$customers[$i]['id'];?>" id="ch<?=$customers[$i]['id'];?>" class="chAccess"></td>
 						<?php else:?>
-							<td class="short"><input type="checkbox" value="1" cus="<?=$customers[$i]['id'];?>" id="ch<?=$customers[$i]['id'];?>" class="chAccess"></td>
+							<td class="short"><input type="checkbox" value="1" data-cus="<?=$customers[$i]['id'];?>" id="ch<?=$customers[$i]['id'];?>" class="chAccess"></td>
 						<?php endif;?>
-							<td class="short"><a class="close" data-toggle="modal" href="#deleteCustomer" cus="<?=$customers[$i]['id'];?>">&times;</a></td>
+							<td class="short"><a class="close" data-toggle="modal" href="#deleteCustomer" data-cus="<?=$customers[$i]['id'];?>">&times;</a></td>
 						</tr>
 						<?php $num++;?>
 					<?php endfor;?>
 					</tbody>
 				</table>
 				<?php $this->load->view('admin_interface/modal/admin-delete-customer');?>
+				<?php $this->load->view('admin_interface/modal/admin-courses-list');?>
 			</div>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
 		</div>
@@ -39,14 +41,19 @@
 		$(document).ready(function(){
 			var Customer = 0;
 			$(".none").click(function(event){event.preventDefault();});
-			$(".close").click(function(){Customer = $(this).attr('cus');});
+			$(".close").click(function(){Customer = $(this).attr('data-cus');});
 			$(".chAccess").click(function(){
 				var check = 0;
-				Customer = $(this).attr('cus');
+				Customer = $(this).attr('data-cus');
 				if($(this).attr("checked") == 'checked'){check = 1;};
 				$.post('<?=$baseurl.$this->uri->uri_string();?>/set-customer-access',{'customer': Customer,'access':check});
 			});
 			$("#DelCustomer").click(function(){location.href='<?=$baseurl.$this->uri->uri_string();?>/delete-customer/'+Customer;});
+			
+			$(".crsList").click(function(){
+				Customer = $(this).attr('data-cus');
+				$("#sourses-body").load('<?=$baseurl.$this->uri->uri_string();?>/load-courses',{'customer': Customer});
+			});
 		});
 	</script>
 </body>

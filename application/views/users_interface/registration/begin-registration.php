@@ -20,10 +20,10 @@
 				<p>Желаем Вам удачи!</p> 
 				<p><?=anchor('registration/customer/step/1','<i class="icon-arrow-right icon-white"></i> Начать оформление',array('class'=>'btn btn-info'));?></p>
 			</div>
-		<?php if($loginstatus['status'] && $loginstatus['cus']):?>
+		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['aud']):?>
+		<?php if($loginstatus['status'] && $loginstatus['slu']):?>
 			<?php $this->load->view('users_interface/rightbaraud');?>
 		<?php endif;?>
 		<?php if($loginstatus['status'] && $loginstatus['adm']):?>

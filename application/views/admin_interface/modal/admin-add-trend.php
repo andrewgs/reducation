@@ -24,8 +24,9 @@
 					<label for="ViewTrend" class="control-label">Видимость: </label>
 					<div class="controls">
 						<label class="checkbox">
-							<input type="checkbox" value="1" id="ViewTrend" name="view">
-							Показывать направление пользователям
+							<input type="checkbox" value="1" id="ViewTrend" class="disabled" name="view" checked="chacked" disabled="disabled">
+							Паправление отображается в зависимости от курсов
+							<!--Показывать направление пользователям-->
 						</label>
 					</div>
 				</div>

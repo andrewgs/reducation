@@ -7,7 +7,7 @@
 				<?php if(count($courses)):?>
 					<label for="course" class="control-label">Курс</label>
 					<div class="controls">
-						<select id="course" style="width: 770px;" name="course">
+						<select id="course" style="width: 600px;" name="course">
 						<?php for($i=0;$i<count($courses);$i++):?>
 							<option name="opcourse" id="opcourse<?=$i;?>" cusid="<?=$courses[$i]['code'];?>" costitle="<?=$courses[$i]['title'];?>" cosprice="<?=$courses[$i]['price'];?>" value="<?=$courses[$i]['id'];?>">Код: <?=$courses[$i]['code'].'. '.$courses[$i]['title'].'. Цена: '.$courses[$i]['price'];?></option>
 						<?php endfor;?>

@@ -137,11 +137,11 @@ class Admin_interface extends CI_Controller{
 					$_POST['view'] = 0;
 				endif;
 				$this->trendsmodel->update_record($_POST);
-				if(!$_POST['view']):
+				/*if(!$_POST['view']):
 					$this->coursesmodel->deactive_status_trend($_POST['idt']);
 				else:
 					$this->coursesmodel->active_status_trend($_POST['idt']);
-				endif;
+				endif;*/
 				$this->session->set_userdata('msgs','Информация по направлению успешно сохранена.');
 			endif;
 			redirect($this->uri->uri_string());
@@ -836,13 +836,13 @@ class Admin_interface extends CI_Controller{
 		switch ($this->uri->segment(4)):
 		
 			case 'active' 	:	$pagevar['title'] .= 'Активные заявки';
-								$pagevar['orders'] = $this->ordersmodel->read_active_orders();
+								$pagevar['orders'] = $this->unionmodel->read_customer_orders(0);
 								break;
 			case 'deactive' :	$pagevar['title'] .= 'Закрытые заявки';
-								$pagevar['orders'] = $this->ordersmodel->read_deactive_orders();
+								$pagevar['orders'] = $this->unionmodel->read_customer_orders(1);
 								break;
 			default :	$pagevar['title'] .= 'Все заявки';
-						$pagevar['orders'] = $this->ordersmodel->read_records();
+						$pagevar['orders'] = $this->unionmodel->read_customer_all_orders();
 						break;
 		endswitch;
 		
@@ -877,6 +877,18 @@ class Admin_interface extends CI_Controller{
 					'customers'		=> $this->customersmodel->read_records()
 			);
 		$this->load->view("admin_interface/admin-users-customer",$pagevar);
+	}
+	
+	public function users_customer_load_courses(){
+		
+		$customer = $this->input->post('customer');
+		if(!$customer) show_404();
+		$pagevar = array(
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'orders'		=> $this->ordersmodel->read_customer_record($customer),
+			);
+		$this->load->view("admin_interface/admin-customer-load-courses",$pagevar);	
 	}
 	
 	public function customer_access(){
@@ -972,7 +984,7 @@ class Admin_interface extends CI_Controller{
 		endif;
 	}
 
-	function operation_date($field){
+	public function operation_date($field){
 			
 		$list = preg_split("/-/",$field);
 		$nmonth = $this->months[$list[1]];
@@ -981,7 +993,7 @@ class Admin_interface extends CI_Controller{
 		return preg_replace($pattern, $replacement,$field);
 	}
 
-	function operation_dot_date($field){
+	public function operation_dot_date($field){
 			
 		$list = preg_split("/-/",$field);
 		$pattern = "/(\d+)(-)(\w+)(-)(\d+)/i";

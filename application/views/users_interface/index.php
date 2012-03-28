@@ -86,10 +86,10 @@
 				if(!$loginstatus['status']):
 					$this->load->view('users_interface/rightbarauth');
 				endif;
-				if($loginstatus['status'] && $loginstatus['cus']):
+				if($loginstatus['status'] && $loginstatus['zak']):
 					$this->load->view('users_interface/rightbarcus');
 				endif;
-				if($loginstatus['status'] && $loginstatus['aud']):
+				if($loginstatus['status'] && $loginstatus['slu']):
 					$this->load->view('users_interface/rightbaraud');
 				endif;
 				if($loginstatus['status'] && $loginstatus['adm']):
