@@ -98,10 +98,9 @@ footer .copy { padding-left: 20px; }
 #bt-contacts b { font-weight: normal; color: #999; }
 #bt-contacts .desc { font-size: 14px; }
 
-
 .btn { font-family: Arial, Helvetica, sans-serif; } 
 .alert h4 { margin: 0 0 2px; }
-.nav-list > li > a { padding: 2px 15px 5px; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; }
+.nav-list > li > a { padding: 3px 15px 4px !important; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; }
 .nav-list .active > a, .nav-list .active > a:hover { background: #115985; background: -moz-linear-gradient(top, #1b7eb1 0%, #105681 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1b7eb1), color-stop(100%,#105681)); background: -webkit-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: -o-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: -ms-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: linear-gradient(top, #1b7eb1 0%,#105681 100%); }
 
 /* Clear Floated Elements
