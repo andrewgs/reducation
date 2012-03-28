@@ -48,10 +48,8 @@
 							<?php if(!isset($chapters[$i]['test']['attempt'])):?>
 								<?php $chapters[$i]['test']['attempt'] = 0; ?>
 							<?php endif;?>
-							<?php if($chapters[$i]['test']):?>
-								<?php /*if($chapters[$i]['test']['attempt'] < $chapters[$i]['test']['count']):*/?>
+							<?php if(isset($chapters[$i]['test']['id'])):?>
 								<?=anchor($this->uri->uri_string().'/testing/id/'.$chapters[$i]['test']['id'],'Промежуточное тестирование',array('class'=>'btn'));?>
-								<?php /*endif;*/?>
 								<?php if($chapters[$i]['test']['attempt'] > 0 ):?>
 								<div style="margin-top: 10px;">
 <pre><?php if($chapters[$i]['test']['attempt'] >= $chapters[$i]['test']['count']):?>Предложенный материал курса повышения квалификации в данной главе Вами изучен недостаточно.<?php endif;?>
