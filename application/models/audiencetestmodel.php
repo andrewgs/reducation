@@ -107,6 +107,13 @@ class Audiencetestmodel extends CI_Model{
 		return $this->db->affected_rows();
 	}
 	
+	function delete_customer_records($customer){
+	
+		$this->db->where('customer',$customer);
+		$this->db->delete('audiencetest');
+		return $this->db->affected_rows();
+	}
+	
 	function delete_order_records($order){
 	
 		$this->db->where('order',$order);

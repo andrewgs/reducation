@@ -116,7 +116,14 @@ class Ordersmodel extends CI_Model{
 		$this->db->delete('orders');
 		return $this->db->affected_rows();
 	}
-
+	
+	function delete_customer_records($customer){
+	
+		$this->db->where('customer',$customer);
+		$this->db->delete('orders');
+		return $this->db->affected_rows();
+	}
+	
 	function add_price($order,$price){
 		
 		$this->db->set('price','price+'.$price,FALSE);

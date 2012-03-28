@@ -80,6 +80,13 @@ class Courseordermodel extends CI_Model{
 		return $this->db->affected_rows();
 	}
 
+	function delete_customer_records($customer){
+	
+		$this->db->where('customer',$customer);
+		$this->db->delete('courseorder');
+		return $this->db->affected_rows();
+	}
+	
 	function owner_corder($id,$customer){
 		
 		$this->db->where('id',$id);

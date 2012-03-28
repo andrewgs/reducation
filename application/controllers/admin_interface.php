@@ -907,6 +907,10 @@ class Admin_interface extends CI_Controller{
 			$result = $this->customersmodel->delete_record($customer);
 			if($result):
 				$this->audiencemodel->delete_records($customer);
+				$this->audienceordermodel->delete_customer_records($customer);
+				$this->audiencetestmodel->delete_customer_records($customer);
+				$this->courseordermodel->delete_customer_records($customer);
+				$this->ordersmodel->delete_customer_records($customer);
 				$this->session->set_userdata('msgs','Заказчик удален успешно.');
 			else:
 				$this->session->set_userdata('msgr','Заказчик не удален.');
