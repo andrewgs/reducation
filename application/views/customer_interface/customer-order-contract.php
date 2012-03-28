@@ -37,11 +37,11 @@
 				<?php for($i=0;$i<5;$i++):?>
 					<tr>
 						<td><?=$i+1;?></td>
-						<td>работа <?=$i;?></td>
-						<td>количество <?=$i;?></td>
-						<td>единица <?=$i;?></td>
-						<td>Цена <?=$i;?></td>
-						<td>Сумма <?=$i;?></td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
 					</tr>
 				<?php endfor;?>
 				</tbody>
