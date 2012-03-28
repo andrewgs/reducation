@@ -8,7 +8,7 @@
 			<div class="span9">
 				<ul class="breadcrumb">
 					<li class="active">
-						<?=anchor($this->uri->uri_string(),'Регистрация слушателя');?>
+						<?=anchor($this->uri->uri_string(),'Регистрация слушателей');?>
 					</li>
 				</ul>
 				<div>

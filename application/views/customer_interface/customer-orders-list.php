@@ -19,7 +19,7 @@
 					<tbody>
 					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
 						<tr>
-							<td class="short"><a title="Порядковый номер" class="none"><?=$num;?></a></td>
+							<td class="short"><?=$num;?></td>
 							<td>
 							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'],'<strong> №'.$orders[$i]['id'].' от ('.$orders[$i]['orderdate'].')</strong>')?>
 							</td>

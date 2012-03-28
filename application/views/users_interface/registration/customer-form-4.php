@@ -1,7 +1,11 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
 	<p>
-		Здравстуйте <?=$this->session->userdata('person');?>. Все необходимые данные заполнены. 
-		Нажмите кнопку "Завершить" для завершения процедуры регистрации.
+		Здравстуйте, <?=$this->session->userdata('organization');?>.
+	</p>
+	<p> 
+		Все необходимые данные заполнены. 
+		Нажмите кнопку "Завершить" для завершения процедуры регистрации. 
+		Если Вам необходимо внести какие-либо изменения, тогда нажмите кнопку "Назад". 
 	</p>
 	<div class="modal-footer">
 		<button class="btn" id="cancel" data-toggle="modal" href="#cancelRegistration">Отменить</button>
