@@ -23,17 +23,19 @@
 				</div>
 			</div>
 			<div class="control-group">
-				<label for="manager" class="control-label">Должность руководителя</label>
+				<label for="manager" class="control-label">Должность</label>
 				<div class="controls">
 					<input type="text" id="manager" class="input-xlarge inpval" name="manager" value="<?=$customer['manager'];?>">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
+					<p class="help-block"><nobr>Дожность руководителя в родительном падеже</nobr></p>
 				</div>
 			</div>
 			<div class="control-group">
-				<label for="fiomanager" class="control-label">ФИО руководителя</label>
+				<label for="fiomanager" class="control-label">Ф.И.О. руководителя</label>
 				<div class="controls">
 					<input type="text" id="fiomanager" class="input-xlarge inpval" name="fiomanager" value="<?=$customer['fiomanager'];?>">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
+					<p class="help-block"><nobr>Заполняется в родительном падеже</nobr></p>
 				</div>
 			</div>
 			<div class="control-group">
@@ -41,6 +43,7 @@
 				<div class="controls">
 					<input type="text" id="statutory" class="input-xlarge inpval" name="statutory" value="<?=$customer['statutory'];?>">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
+					<p class="help-block"><nobr>Название документа в родительном падеже</nobr></p>
 				</div>
 			</div>
 			<div class="control-group">

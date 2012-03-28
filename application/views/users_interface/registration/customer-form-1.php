@@ -11,6 +11,30 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<label for="fiomanager" class="control-label">Ф.И.О. руководителя</label>
+			<div class="controls">
+				<input type="text" id="fiomanager" class="input-xlarge inpval" name="fiomanager" value="<?=$this->session->userdata('fiomanager')?>">
+				<span class="help-inline" style="display:none;">&nbsp;</span>
+				<p class="help-block">Заполняется в родительном падеже</p>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="manager" class="control-label">Должность</label>
+			<div class="controls">
+				<input type="text" id="manager" class="input-xlarge inpval" name="manager" value="<?=$this->session->userdata('manager')?>">
+				<span class="help-inline" style="display:none;">&nbsp;</span>
+				<p class="help-block">Дожность руководителя в родительном падеже</p>
+			</div>
+		</div>		
+		<div class="control-group">
+			<label for="statutory" class="control-label">Уставной документ</label>
+			<div class="controls">
+				<input type="text" id="statutory" class="input-xlarge inpval" name="statutory" value="<?=$this->session->userdata('statutory')?>">
+				<span class="help-inline" style="display:none;">&nbsp;</span>
+				<p class="help-block">Название документа в родительном падеже</p>
+			</div>
+		</div>
+		<div class="control-group">
 			<label for="inn" class="control-label">ИНН</label>
 			<div class="controls">
 				<input type="text" id="inn" class="input-xlarge inpval digital" name="inn" value="<?=$this->session->userdata('inn')?>">
@@ -23,28 +47,7 @@
 				<input type="text" id="kpp" class="input-xlarge inpval digital" name="kpp" value="<?=$this->session->userdata('kpp')?>">
 				<span class="help-inline" style="display:none;">&nbsp;</span>
 			</div>
-		</div>
-		<div class="control-group">
-			<label for="manager" class="control-label">Должность руководителя</label>
-			<div class="controls">
-				<input type="text" id="manager" class="input-xlarge inpval" name="manager" value="<?=$this->session->userdata('manager')?>">
-				<span class="help-inline" style="display:none;">&nbsp;</span>
-			</div>
-		</div>
-		<div class="control-group">
-			<label for="fiomanager" class="control-label">ФИО руководителя</label>
-			<div class="controls">
-				<input type="text" id="fiomanager" class="input-xlarge inpval" name="fiomanager" value="<?=$this->session->userdata('fiomanager')?>">
-				<span class="help-inline" style="display:none;">&nbsp;</span>
-			</div>
-		</div>
-		<div class="control-group">
-			<label for="statutory" class="control-label">Уставной документ</label>
-			<div class="controls">
-				<input type="text" id="statutory" class="input-xlarge inpval" name="statutory" value="<?=$this->session->userdata('statutory')?>">
-				<span class="help-inline" style="display:none;">&nbsp;</span>
-			</div>
-		</div>
+		</div>		
 	</fieldset>
 	<fieldset>
 		<legend>
