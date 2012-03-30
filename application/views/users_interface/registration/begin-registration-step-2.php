@@ -35,6 +35,19 @@
 				if(e.which!=8 && e.which!=46 && e.which!=0 && (e.which<48 || e.which>57)){return false;}
 			});
 			$("#YesCancel").click(function(){location.href="<?=$baseurl;?>registration/customer/cancel-registration"});
+			
+			$('#check-address').click(function(){
+				var oldValue, newValue;
+				if ( $(this).is(':checked') ) {
+					oldValue = $('#postaddress').val();
+					newValue = $('#uraddress').val();
+					$('#postaddress').data('address', oldValue); 
+					$('#postaddress').val(newValue);
+				} else {
+					oldValue = $('#postaddress').data('address');
+					$('#postaddress').val(oldValue);	
+				}
+			});
 		});
 	</script>
 </body>

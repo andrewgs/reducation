@@ -342,18 +342,18 @@ class Users_interface extends CI_Controller{
 			$email = $this->session->userdata('personemail');
 			ob_start();
 			?>
-			<p>Здравствуйте,  <?=$this->session->userdata('organization');?></p>
+			<p><strong>Здравствуйте,  <?=$this->session->userdata('organization');?></strong></p>
 			<p>Поздравляем! Вы успешно завершили оформление заявки. Вам доступны следующие документы:</p>
-			<ul>
+			<ol>
 				<li>Счёт</li>
 				<li>Договор на оказание образовательных услуг</li>
-			</ul>
+			</ol>
 			<p>
 				После оплаты заказа мы оформим весь пакет документов, а слушатели будут зачислены на обучение. 
 				Обучение будет осуществляться через личный кабинет слушателя. Для входа в личный кабинет используйте 
 				созданный для вас логин и пароль.
 			</p>
-			<p><strong>Логин:</strong> <?=$login;?> <strong>Пароль:</strong> <?=$password;?></p>
+			<p><strong>Логин: <span style="font-size: 18px;"><?=$login;?></span> Пароль: <span style="font-size: 18px;"><?=$password;?></span></strong></p>
 			<p>Пользуйтесь разделом «Мои заказы» на правой панели, чтобы следить за состоянием Ваших заказов.</p>
 			<p>Желаем Вам удачи!</p> 
 			<?
