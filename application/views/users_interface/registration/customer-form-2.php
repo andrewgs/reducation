@@ -8,6 +8,11 @@
 			<div class="controls">
 				<textarea rows="3" id="uraddress" class="input-xlarge inpval" name="uraddress"><?=$this->session->userdata('uraddress');?></textarea>
 				<span class="help-inline" style="display:none;">&nbsp;</span>
+				<p class="help-block">
+					<label class="checkbox">
+	          			<input id="check-address" type="checkbox"> Совпадает с почтовым адресом
+	        		</label>					
+				</p>
 			</div>
 		</div>
 	</fieldset>

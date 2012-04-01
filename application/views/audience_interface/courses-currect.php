@@ -51,7 +51,7 @@
 								<div style="margin-top: 10px;">
 <pre>
 <h4>Результат теста</h4>
-Попытка: <?=$courses[$i]['test']['attempt'];?> из <?=$courses[$i]['test']['count'];?>
+Попытка: <?=$courses[$i]['test']['attempt'];?> из <?=$courses[$i]['test']['count'];?> 
 Затрачено: <?=$courses[$i]['test']['time'];?> мин.
 Результат: <?=$courses[$i]['test']['result'];?>% <?=($courses[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
 </pre>
