@@ -21,6 +21,7 @@
 		</div>
 		<?php $this->load->view('users_interface/modal/registration-cancel');?>
 	</div>
+	<? $this->load->view('users_interface/footer');?>
 	<?php $this->load->view('customer_interface/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){

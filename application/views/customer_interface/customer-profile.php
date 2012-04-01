@@ -20,9 +20,15 @@
 		<?php $this->load->view('users_interface/rightbarcus');?>
 		</div>
 	</div>
+	<? $this->load->view('users_interface/footer');?>
 	<?php $this->load->view('customer_interface/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			
+			<?php if($readonly):?>
+				$(".inpval").attr('disabled','disabled').attr('readonly','readonly');
+			<?php endif;?>
+			
 			$("#save").click(function(event){var err = false; var email = $("#personemail").val(); $(".control-group").removeClass('error');$(".help-inline").hide();$(".inpval").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();};if(!err && !isValidEmailAddress(email)){$("#cgemail").addClass('error');$("#email").html("Не верный адрес E-Mail").show();event.preventDefault();}
 			});
 			$(".digital").keypress(function(e){
