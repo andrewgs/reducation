@@ -18,28 +18,38 @@
 					</li>
 				</ul>
 				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>№ заказа</th>
+							<th>Дата</th>
+							<th>Заказчик</th>
+							<!--th>Статус</th-->
+							<th>Дата оплаты</th>
+							<th>Оплата</th>
+						</tr>
+					</thead>
 					<tbody>
 					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
 						<tr>
-							<td class="short"><a title="Порядковый номер" class="none"><?=$num;?></a></td>
-							<td><a href="" title="Номер заказа" class="none">Заказ №<?=$orders[$i]['id'];?></a></td>
-							<td><a href="" title="Дата заказа" class="none"><?=$orders[$i]['orderdate'];?></a></td>
-							<td><a href="" title="Заказчик" class="none"><?=$orders[$i]['organization'];?></a></td>
+							<!--td class="short"><?=$num;?></td-->
+							<td>Заказ №<?=$orders[$i]['id'];?></td>
+							<td><?=$orders[$i]['orderdate'];?></td>
+							<td><?=$orders[$i]['organization'];?></td>
 						<?php if($orders[$i]['online']):?>
-							<td><a href="" title="В сети" class="none">В сети</a></td>
+							<!--td>В сети</td-->
 						<?php else:?>
-							<td><a href="" title="В сети" class="none">Не в сети</a></td>
+							<!--td>Не в сети</td-->
 						<?php endif;?>
 						<?php if($orders[$i]['paid']):?>
-							<td class="short"><input type="checkbox" value="1" checked="checked" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
-							<td><a href="" title="Дата оплаты" class="none paiddate" data-ord="<?=$orders[$i]['id'];?>"><?=$orders[$i]['paiddate'];?></a></td>
+							<td><?=$orders[$i]['paiddate'];?></td>
+							<td class="short centerized"><input type="checkbox" value="1" checked="checked" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php else:?>
-							<td class="short"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
-							<td><a href="" title="Дата оплаты" class="none paiddate" data-ord="<?=$orders[$i]['id'];?>">Не оплачен</a></td>
-						<?php endif;?>
+							<td>Не оплачен</td>
+							<td class="short centerized"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
+						<?php endif; ?>
 						</tr>
-						<?php $num++;?>
-					<?php endfor;?>
+						<?php $num++; ?>
+					<?php endfor; ?>
 					</tbody>
 				</table>
 			</div>
