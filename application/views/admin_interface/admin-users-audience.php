@@ -15,9 +15,9 @@
 					<tbody>
 					<?php for($i=0,$num=1;$i<count($audience);$i++):?>
 						<tr>
-							<td class="short"><a title="Порядковый номер" class="none"><?=$num;?></a></td>
-							<td><a href="" title="ФИО" class="none"><?=$audience[$i]['lastname'].' '.$audience[$i]['name'].' '.$audience[$i]['middlename'];?></a></td>
-							<td><a href="" title="Заказчик" class="none"><?=$audience[$i]['organization'].' ('.$audience[$i]['person'].')';?></a></td>
+							<td class="short"><?=$num;?></td>
+							<td><?=$audience[$i]['lastname'].' '.$audience[$i]['name'].' '.$audience[$i]['middlename'];?></td>
+							<td><?=$audience[$i]['organization'].' ('.$audience[$i]['person'].')';?></td>
 						<?php if($audience[$i]['access']):?>
 							<td class="short"><input type="checkbox" value="1" checked="checked" cus="<?=$audience[$i]['id'];?>" id="ch<?=$audience[$i]['id'];?>" class="chAccess"></td>
 						<?php else:?>

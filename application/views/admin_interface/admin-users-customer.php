@@ -12,12 +12,15 @@
 					</li>
 				</ul>
 				<table class="table table-striped table-bordered">
+					<thead>
+						<th></th>
+					</thead>
 					<tbody>
 					<?php for($i=0,$num=1;$i<count($customers);$i++):?>
 						<tr>
-							<td class="short"><a title="Порядковый номер" class="none"><?=$num;?></a></td>
-							<td><a href="" title="Название" class="none"><?=$customers[$i]['organization'];?></a></td>
-							<td><a href="" title="Представитель" class="none"><?=$customers[$i]['person'].' ('.$customers[$i]['personemail'].')';?></a></td>
+							<td class="short"><?=$num;?></td>
+							<td><?=$customers[$i]['organization'];?></td>
+							<td><?=$customers[$i]['person'].' ('.$customers[$i]['personemail'].')';?></td>
 							<td><a href="#CoursesList" class="crsList" data-toggle="modal" data-cus="<?=$customers[$i]['id'];?>" title="Список курсов"><i class="icon-th-list"></i></a></td>
 						<?php if($customers[$i]['access']):?>
 							<td class="short"><input type="checkbox" value="1" checked="checked" data-cus="<?=$customers[$i]['id'];?>" id="ch<?=$customers[$i]['id'];?>" class="chAccess"></td>

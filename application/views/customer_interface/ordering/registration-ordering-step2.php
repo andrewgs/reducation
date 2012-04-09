@@ -60,6 +60,7 @@
 		<?php $this->load->view('customer_interface/modal/ordering-add-audience');?>
 		<?php $this->load->view('customer_interface/modal/ordering-delete-audience');?>
 	</div>
+	<? $this->load->view('users_interface/footer');?>
 	<?php $this->load->view('customer_interface/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){

@@ -33,23 +33,24 @@
 							<div class="accordion-inner">
 								<table class="table table-striped">
 									<thead>
-										<!--
+										
 										<tr>
-											<th>№</th>
-											<th>Код. Название</th>
-											<th>Стоимость</th>
-											<th>Кол.часов</th>
+											<!--th>№</th-->
+											<th>Код</th>
+											<th>Название</th>
+											<th><nobr>Кол-во часов</nobr></th>
 										</tr>
-										-->
+										
 									</thead>
 									<tbody>
 								<? for($j=0,$num=1;$j<count($courses);$j++,$num++):
 									 if($courses[$j]['trend'] == $trends[$i]['id']): ?>
 										<tr>
 											<!--td><?=$num;?>.</td-->
-											<td><?= $courses[$j]['code'].'. <span class="single-course">'.$courses[$j]['title'].'</span>';?></td>
-											<td><nobr><?= $courses[$j]['price']; ?> руб.</nobr></td>
-											<td><nobr><?= $courses[$j]['hours']; ?> ч.</nobr></td>
+											<td><?= $courses[$j]['code']; ?></td>
+											<td><span class="single-course"><?= $courses[$j]['title'] ?></span></td>
+											<!--td><nobr><?= $courses[$j]['price']; ?> руб.</nobr></td-->
+											<td class="centerized"><nobr><?= $courses[$j]['hours']; ?> ч.</nobr></td>
 										</tr>
 									<? endif; ?>
 								<? endfor; ?>

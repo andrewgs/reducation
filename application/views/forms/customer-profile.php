@@ -120,6 +120,12 @@
 		</div>
 	</fieldset>
 	<div class="modal-footer">
-		<button class="btn btn-success" type="submit" id="save" name="submit" value="save"><i class="icon-ok icon-white"></i> Сохранить</button>
+		<?php if(!$readonly):?>
+			<button class="btn btn-success" type="submit" id="save" name="submit" value="save"><i class="icon-ok icon-white"></i> Сохранить</button>	
+		<?else:?>
+			<div class="alert alert-info">
+				Вы не можете изменять персональные данные после оформления заказа.<br/>Если вы обнаружили ошибку, то позвоните по контактному телефону и объясните свою проблему.
+			</div>
+		<?php endif;?>
 	</div>
 <?= form_close(); ?>
