@@ -59,12 +59,16 @@ class Customer_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'customer'		=> $this->customersmodel->read_record($this->user['uid']),
+					'readonly'		=> FALSE,
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
+		if(count($this->ordersmodel->read_customer_record($this->user['uid']))):
+			$pagevar['readonly'] = TRUE;
+		endif;
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
 			$this->form_validation->set_rules('organization',' ','required|trim');
