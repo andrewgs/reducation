@@ -7,14 +7,14 @@
 		<div class="row">
 			<div class="span9">
 				<ul class="breadcrumb">
-					<li tnum="all">
-						<?=anchor('admin-panel/messages/orders/all','Все заказы');?> <span class="divider">/</span>
-					</li>
 					<li tnum="active">
 						<?=anchor('admin-panel/messages/orders/active','Активные заказы');?> <span class="divider">/</span>
 					</li>
 					<li tnum="deactive">
-						<?=anchor('admin-panel/messages/orders/deactive','Закрытые заказы');?>
+						<?=anchor('admin-panel/messages/orders/deactive','Закрытые заказы');?> <span class="divider">/</span>
+					</li>
+					<li tnum="all">
+						<?=anchor('admin-panel/messages/orders/all','Все заказы');?>
 					</li>
 				</ul>
 				<table class="table table-striped table-bordered">
