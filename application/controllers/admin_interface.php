@@ -66,8 +66,37 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Панель администрирования',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		if($this->input->post('catkurs')):
+			$_POST['catkurs'] = NULL;
+			if($_FILES['document']['error'] == 1):
+				$this->session->set_userdata('msgr','Ошибка при загрузке документа. Размер принятого файла превысил максимально допустимый размер.');
+				redirect($this->uri->uri_string());
+			endif;
+			if($_FILES['document']['error'] == 4):
+				$this->session->set_userdata('msgr','Ошибка при загрузке документа. Не указан файл.');
+				redirect($this->uri->uri_string());
+			endif;
+			$_FILES['document']['name'] = preg_replace('/.+(.)(\.)+/','courses_list'."\$2", $_FILES['document']['name']);
+			$config['upload_path'] 		= getcwd();
+			$config['allowed_types'] 	= 'xls';
+			$config['remove_spaces'] 	= TRUE;
+			$config['overwrite'] 		= TRUE;
+			$this->load->library('upload',$config);
+			if(!$this->upload->do_upload('document')):
+				$this->session->set_userdata('msgr','Ошибка при загрузке документа.');
+				redirect($this->uri->uri_string());
+			endif;
+			$this->session->set_userdata('msgs','Список каталогов курсов загружен успешно.');
+			redirect($this->uri->uri_string());
+		endif;
+			
 		$this->load->view("admin_interface/admin-panel",$pagevar);
 	}
 	
