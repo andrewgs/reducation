@@ -131,7 +131,25 @@ class Unionmodel extends CI_Model{
 		if(count($data)) return $data;
 		return NULL;
 	}
-
+	
+	function read_customer_deacticve_orders(){
+		
+		$query = "SELECT orders.*,customers.organization,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 60 ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function read_customer_acticve_orders(){
+		
+		$query = "SELECT orders.*,customers.organization,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result < 60 ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
 	function read_customer_all_orders(){
 		
 		$query = "SELECT orders.*,customers.organization,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id ORDER BY orders.orderdate DESC,orders.id DESC";

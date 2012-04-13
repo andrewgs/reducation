@@ -855,7 +855,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | ',
+					'title'			=> 'АНО ДПО | ',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'orders'		=> array(),
@@ -865,9 +865,15 @@ class Admin_interface extends CI_Controller{
 		switch ($this->uri->segment(4)):
 		
 			case 'active' 	:	$pagevar['title'] .= 'Активные заявки';
-								$pagevar['orders'] = $this->unionmodel->read_customer_orders(0);
+								$pagevar['orders'] = $this->unionmodel->read_customer_acticve_orders();
 								break;
 			case 'deactive' :	$pagevar['title'] .= 'Закрытые заявки';
+								$pagevar['orders'] = $this->unionmodel->read_customer_deacticve_orders();
+								break;
+			case 'unpaid' :		$pagevar['title'] .= 'Не оплачанные заказы';
+								$pagevar['orders'] = $this->unionmodel->read_customer_orders(0);
+								break;
+			case 'sponsored' :	$pagevar['title'] .= 'Оплачанные заказы';
 								$pagevar['orders'] = $this->unionmodel->read_customer_orders(1);
 								break;
 			default :	$pagevar['title'] .= 'Все заявки';

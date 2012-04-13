@@ -8,10 +8,16 @@
 			<div class="span9">
 				<ul class="breadcrumb">
 					<li tnum="active">
-						<?=anchor('admin-panel/messages/orders/active','Не оплачанные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/active','Активные заказы');?> <span class="divider">/</span>
 					</li>
 					<li tnum="deactive">
-						<?=anchor('admin-panel/messages/orders/deactive','Оплачанные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/deactive','Закрытые заказы');?> <span class="divider">/</span>
+					</li>
+					<li tnum="unpaid">
+						<?=anchor('admin-panel/messages/orders/unpaid','Неоплачанные заказы');?> <span class="divider">/</span>
+					</li>
+					<li tnum="sponsored">
+						<?=anchor('admin-panel/messages/orders/sponsored','Оплачанные заказы');?> <span class="divider">/</span>
 					</li>
 					<li tnum="all">
 						<?=anchor('admin-panel/messages/orders/all','Все заказы');?>
