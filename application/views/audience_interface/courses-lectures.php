@@ -54,7 +54,11 @@
 								<div style="margin-top: 10px;">
 <pre><?php if($chapters[$i]['test']['attempt'] >= $chapters[$i]['test']['count']):?>Предложенный материал курса повышения квалификации в данной главе Вами изучен недостаточно.<?php endif;?>
 
+<?php if($chapters[$i]['test']['attempt'] < $chapters[$i]['test']['count']): ?>								
 Попытка: <?=$chapters[$i]['test']['attempt'];?> из <?=$chapters[$i]['test']['count'];?> 
+<?php else:?>
+Попытка: <?=$chapters[$i]['test']['attempt'];?> 
+<?php endif;?>
 Затрачено: <?=$chapters[$i]['test']['time'];?> мин. 
 Результат: <?=$chapters[$i]['test']['result'];?>% <?=($chapters[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' :'<font style="color:#ff0000">(незачет)</font>';?>
 </pre>
@@ -86,8 +90,12 @@
 					<?php if($test['attempt'] > 0 ):?>
 						<div style="margin-top: 10px;">
 								<pre>
-<?php if($test['attempt'] >= $test['count']):?>Уважаемый слушатель! Предложенный   материал   курса  повышения  квалификации  Вами  изучен недостаточно. Пожалуйста,  дополнительно изучите курс программы  и повторите попытку итогового тестирования.<?php endif;?>														
+<?php if($test['attempt'] >= $test['count']):?>Уважаемый слушатель! Предложенный   материал   курса  повышения  квалификации  Вами  изучен недостаточно. Пожалуйста,  дополнительно изучите курс программы  и повторите попытку итогового тестирования.<?php endif;?>						
+<?php if($test['attempt'] < $test['count']): ?>								
 Попытка: <?=$test['attempt'];?> из <?=$test['count'];?>
+<?php else:?>
+Попытка: <?=$test['attempt'];?>
+<?php endif;?>
 
 Затрачено: <?=$test['time'];?> мин.
 Результат: <?=$test['result'];?>% <?=($test['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
