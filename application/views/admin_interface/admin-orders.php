@@ -8,10 +8,10 @@
 			<div class="span9">
 				<ul class="breadcrumb">
 					<li tnum="active">
-						<?=anchor('admin-panel/messages/orders/active','Активные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/active','Не оплачанные заказы');?> <span class="divider">/</span>
 					</li>
 					<li tnum="deactive">
-						<?=anchor('admin-panel/messages/orders/deactive','Закрытые заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/deactive','Оплачанные заказы');?> <span class="divider">/</span>
 					</li>
 					<li tnum="all">
 						<?=anchor('admin-panel/messages/orders/all','Все заказы');?>
@@ -32,7 +32,13 @@
 					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
 						<tr>
 							<!--td class="short"><?=$num;?></td-->
-							<td>Заказ №<?=$orders[$i]['id'];?></td>
+							<td>
+								Заказ №<?=$orders[$i]['id'];?><br/>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/statement','Ведомость',array('target'=>'_blank'));?><br/>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/completion','Приказ об окончании',array('target'=>'_blank'));?><br/>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/admission','Приказ о зачислении',array('target'=>'_blank'));?><br/>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry','Реестр слушателей',array('target'=>'_blank'));?><br/>
+							</td>
 							<td><?=$orders[$i]['orderdate'];?></td>
 							<td><?=$orders[$i]['organization'];?></td>
 						<?php if($orders[$i]['online']):?>

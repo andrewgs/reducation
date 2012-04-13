@@ -892,6 +892,58 @@ class Admin_interface extends CI_Controller{
 		$this->ordersmodel->paid_order($order,$access);
 	}
 	
+	/******************************************************** documents ********************************************************/
+	
+	public function statement(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Ведомость итог.тестирования',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("admin_interface/documents/statement",$pagevar);
+	}
+	
+	public function completion(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Приказ об окончании',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("admin_interface/documents/completion",$pagevar);
+	}
+	
+	public function admission(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Приказ о зачислении',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		
+		$this->load->view("admin_interface/documents/admission",$pagevar);
+	}
+	
+	public function registry(){
+	
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Реестр слушателей',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		
+		$this->load->view("admin_interface/documents/registry",$pagevar);
+	}
+	
 	/******************************************************** users ***********************************************************/
 	
 	public function users_customer(){

@@ -102,3 +102,9 @@ $route['admin-panel/users/customer/delete-customer/:num']	= "admin_interface/del
 $route['admin-panel/users/audience']						= "admin_interface/users_audience";
 $route['admin-panel/users/audience/set-audience-access']	= "admin_interface/audience_access";
 $route['admin-panel/users/audience/delete-audience/:num']	= "admin_interface/delete_audience";
+
+/*=========================================================== documents  ====================================================*/
+$route['admin-panel/messages/orders/id/:num/statement']		= "admin_interface/statement";
+$route['admin-panel/messages/orders/id/:num/completion']	= "admin_interface/completion";
+$route['admin-panel/messages/orders/id/:num/admission']		= "admin_interface/admission";
+$route['admin-panel/messages/orders/id/:num/registry']		= "admin_interface/registry";
