@@ -25,6 +25,9 @@
 				</p>
 			<? else: ?>
 				<div class="form-header">Вход в личный кабинет</div>
+				<div id="top-restore" style="display:none;text-align: right;">
+					<?=anchor('password-restore','Забыли пароль?');?>
+				</div>
 				<?=form_open('main-page',array('class'=>'form-inline right')); ?>
 					<?php $this->load->view('alert_messages/alert-auth-error');?>
 					<input type="text" id="login" class="input span2 focused" name="login" placeholder="Имя пользователя">

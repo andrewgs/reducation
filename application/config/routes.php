@@ -8,6 +8,7 @@ $route[''] 								= "users_interface/index";
 $route['main-page'] 					= "users_interface/index";
 $route['admin'] 						= "users_interface/admin_login";
 $route['logoff'] 						= "users_interface/logoff";
+$route['password-restore'] 				= "users_interface/password_restore";
 $route['registration/customer'] 		= "users_interface/registration_customer";
 $route['registration/customer/step/1'] 	= "users_interface/registration_customer_step_1";
 $route['registration/customer/step/2'] 	= "users_interface/registration_customer_step_2";

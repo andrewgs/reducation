@@ -107,18 +107,17 @@
 			$("#lsend").click(function(event) {
 				var err = false;
 				$(".help-inline").hide();
+				$("#top-restore").hide();
 				$(".focused").each(function(i, element) {
 					if($(this).val() == '') {
 						$(this).siblings(".help-inline").html('<i class="icon-exclamation-sign" title="Поле не может быть пустым"></i>').show();
+						$("#top-restore").show();
 						err = true;
 					}
 				});
 				if(err) {
 					event.preventDefault()
 				};
-			});
-			$("#authCancel").click(function() {
-				$(".help-inline").html('').hide();
 			});
 		});
 	</script>

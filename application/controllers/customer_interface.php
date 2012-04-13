@@ -314,6 +314,11 @@ class Customer_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Повторите ввод.');
 			else:
+				$user = $this->audiencemodel->read_email_records($_POST['personemail']);
+				if($user):
+					$this->session->set_userdata('msgr','Ошибка. E-mail: '.$_POST['personemail'].' уже существует! Повторите ввод.');
+					redirect($this->uri->uri_string());
+				endif;
 				$id = $this->audiencemodel->insert_record($this->user['uid'],$_POST);
 				$login = 'slu_'.$id;
 				$password = $this->randomPassword(8);

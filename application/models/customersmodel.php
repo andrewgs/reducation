@@ -77,6 +77,17 @@ class Customersmodel extends CI_Model {
 		return NULL;
 	}
 	
+	function read_email_records($email){
+		
+		$this->db->select('id,login,cryptpassword,organization,person,signupdate');
+		$this->db->where('personemail',$email);
+		$this->db->where('access',1);
+		$query = $this->db->get('customers');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
 	function update_record($id,$data){
 		
 		$this->db->set('organization',htmlspecialchars($data['organization']));

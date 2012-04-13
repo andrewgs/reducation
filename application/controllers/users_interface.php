@@ -159,6 +159,93 @@ class Users_interface extends CI_Controller{
         redirect('');
 	}
 	
+	public function password_restore(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr'),
+					'msgauth'		=> $this->session->userdata('msgauth')
+			);
+		$this->session->unset_userdata('msgauth');
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		if($this->input->post('submit')):
+			$_POST['submit'] == NULL;
+			$this->form_validation->set_rules('email',' ','required|valid_email|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка не верно заполнены необходимые поля.');
+			else:
+				switch ($_POST['usertype']):
+					case 'zak':  
+								$user = $this->customersmodel->read_email_records($_POST['email']);
+								if(!$user):
+									$this->session->set_userdata('msgr','Указанный E-mail не найден.');
+									redirect($this->uri->uri_string());
+								endif;
+								if(count($user)>1):
+									$this->session->set_userdata('msgr','Ошибка. Обратитесь к администрации сайта');
+									redirect($this->uri->uri_string());
+								endif;
+								$name = $user[0]['organization'];
+								break;
+					case 'slu': 
+								$user = $this->audiencemodel->read_email_records($_POST['email']);
+								if(!$user):
+									$this->session->set_userdata('msgr','Указанный E-mail не найден.');
+									redirect($this->uri->uri_string());
+								endif;
+								if(count($user)>1):
+									$this->session->set_userdata('msgr','Ошибка. Обратитесь к администрации сайта');
+									redirect($this->uri->uri_string());
+								endif;
+								$name = $user[0]['lastname'].' '.$user[0]['name'].' '.$user[0]['middlename'];
+								break;
+					default : 
+								$this->session->set_userdata('msgauth','Ошибка. Обратитесь к администрации сайта');
+								redirect($this->uri->uri_string());break;
+				endswitch;
+				if(count($user)):
+					$email = $_POST['email'];
+					$login = $user[0]['login'];
+					$password = $this->encrypt->decode($user[0]['cryptpassword']);
+					ob_start();
+					?>
+					<p><strong>Здравствуйте,  <?=$name;?></strong></p>
+					<p>Вами был произведен запрос на восстановления данных для аторизации:</p>
+					<p><strong>Логин: <span style="font-size: 18px;"><?=$login;?></span> Пароль: <span style="font-size: 18px;"><?=$password;?></span></strong></p>
+					<p>Желаем Вам удачи!</p> 
+					<?
+					$mailtext = ob_get_clean();
+					
+					$this->email->clear(TRUE);
+					$config['smtp_host'] = 'localhost';
+					$config['charset'] = 'utf-8';
+					$config['wordwrap'] = TRUE;
+					$config['mailtype'] = 'html';
+					
+					$this->email->initialize($config);
+					$this->email->to($email);
+					$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
+					$this->email->bcc('');
+					$this->email->subject('Данные для доступа к личному кабинету');
+					$this->email->message($mailtext);	
+					$this->email->send();
+				endif;
+				$this->session->set_userdata('msgs','На адрес '.$email.' высланы логин и пароль.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
+		$this->load->view("users_interface/password_restore",$pagevar);
+	}
+	
 	public function registration_customer(){
 		
 		$pagevar = array(
@@ -292,6 +379,11 @@ class Users_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
 			else:
+				$user = $this->customersmodel->read_email_records($_POST['personemail']);
+				if($user):
+					$this->session->set_userdata('msgr','Ошибка. E-mail: '.$_POST['personemail'].' уже существует!');
+					redirect($this->uri->uri_string());
+				endif;
 				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>4,'personemail'=>$_POST['personemail'],'person'=>htmlspecialchars($_POST['person'])));
 				$this->session->set_userdata('msgs','Данные сохранены.');
 			endif;
