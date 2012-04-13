@@ -876,6 +876,9 @@ class Admin_interface extends CI_Controller{
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'customers'		=> $this->customersmodel->read_records()
 			);
+		for($i=0;$i<count($pagevar['customers']);$i++):
+			$pagevar['customers'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['customers'][$i]['cryptpassword']);
+		endfor;
 		$this->load->view("admin_interface/admin-users-customer",$pagevar);
 	}
 	
@@ -932,6 +935,9 @@ class Admin_interface extends CI_Controller{
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'audience'		=> $this->unionmodel->read_audience()
 			);
+		for($i=0;$i<count($pagevar['audience']);$i++):
+			$pagevar['audience'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['audience'][$i]['cryptpassword']);
+		endfor;
 		$this->load->view("admin_interface/admin-users-audience",$pagevar);
 	}
 	

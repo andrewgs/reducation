@@ -16,7 +16,10 @@
 					<?php for($i=0,$num=1;$i<count($audience);$i++):?>
 						<tr>
 							<td class="short"><?=$num;?></td>
-							<td><?=$audience[$i]['lastname'].' '.$audience[$i]['name'].' '.$audience[$i]['middlename'];?></td>
+							<td>
+								<?=$audience[$i]['lastname'].' '.$audience[$i]['name'].' '.$audience[$i]['middlename'];?><br/>
+								<strong>Логин:</strong> <?=$audience[$i]['login'].' <strong>Пароль:</strong> '.$audience[$i]['cryptpassword'];?>
+							</td>
 							<td><?=$audience[$i]['organization'].' ('.$audience[$i]['person'].')';?></td>
 						<?php if($audience[$i]['access']):?>
 							<td class="short"><input type="checkbox" value="1" checked="checked" cus="<?=$audience[$i]['id'];?>" id="ch<?=$audience[$i]['id'];?>" class="chAccess"></td>

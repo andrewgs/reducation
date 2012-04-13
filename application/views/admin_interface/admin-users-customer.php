@@ -20,7 +20,10 @@
 						<tr>
 							<td class="short"><?=$num;?></td>
 							<td><?=$customers[$i]['organization'];?></td>
-							<td><?=$customers[$i]['person'].' ('.$customers[$i]['personemail'].')';?></td>
+							<td>
+								<?=$customers[$i]['person'].' ('.$customers[$i]['personemail'].')';?><br/>
+								<strong>Логин:</strong> <?=$customers[$i]['login'].' <strong>Пароль:</strong> '.$customers[$i]['cryptpassword'];?>
+							</td>
 							<td><a href="#CoursesList" class="crsList" data-toggle="modal" data-cus="<?=$customers[$i]['id'];?>" title="Список курсов"><i class="icon-th-list"></i></a></td>
 						<?php if($customers[$i]['access']):?>
 							<td class="short"><input type="checkbox" value="1" checked="checked" data-cus="<?=$customers[$i]['id'];?>" id="ch<?=$customers[$i]['id'];?>" class="chAccess"></td>
