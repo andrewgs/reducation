@@ -14,9 +14,6 @@
 				<?php $this->load->view('alert_messages/alert-error');?>
 				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">
-					<thead>
-						<th></th>
-					</thead>
 					<tbody>
 						<tr>
 							<td class="short">1</td>
