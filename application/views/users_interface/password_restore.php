@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
-				<h1>Восстановление данных для автризации</h1>
+				<h1>Восстановление данных для авторизации</h1>
 				<?php $this->load->view('alert_messages/alert-error');?>
 				<?php $this->load->view('alert_messages/alert-success');?>
 				<?=form_open($this->uri->uri_string(),array('class'=>'form-inline')); ?>
