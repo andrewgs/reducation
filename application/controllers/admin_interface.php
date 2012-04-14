@@ -917,7 +917,11 @@ class Admin_interface extends CI_Controller{
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		for($i=0;$i<count($pagevar['audcourses']);$i++):
-			$pagevar['audcourses'][$i]['dateover'] = $this->operation_date($pagevar['audcourses'][$i]['dateover']);
+			if($pagevar['audcourses'][$i]['status']):
+				$pagevar['audcourses'][$i]['dateover'] = $this->operation_date($pagevar['audcourses'][$i]['dateover']);
+			else:
+				$pagevar['audcourses'][$i]['dateover'] = 'не пройден';
+			endif;
 		endfor;
 		$this->load->view("admin_interface/admin-orders-testing",$pagevar);
 	}
@@ -956,9 +960,6 @@ class Admin_interface extends CI_Controller{
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['tid']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['tid']);
 		$pagevar['test']['attemptdate'] = $this->operation_date($pagevar['test']['attemptdate']);
-		
-//		print_r($pagevar['report']);exit;
-		
 		$this->load->view("admin_interface/test-report",$pagevar);
 	}
 	/******************************************************** documents ********************************************************/

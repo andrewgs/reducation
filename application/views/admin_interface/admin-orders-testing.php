@@ -34,7 +34,7 @@
 							<th>Слушатель</th>
 							<th>Результат</th>
 							<th>Дата сдачи</th>
-							<th>&nbsp;</th>
+							<th width="80px;"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -45,7 +45,11 @@
 							<td><?=$audcourses[$i]['lastname'].' '.$audcourses[$i]['name'].' '.$audcourses[$i]['middlename'];?></td>
 							<td><?=$audcourses[$i]['result'];?>%</td>
 							<td><?=$audcourses[$i]['dateover'];?></td>
-							<td><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(5).'/audience/'.$audcourses[$i]['audid'].'/courses/'.$audcourses[$i]['id'].'/test-report/'.$audcourses[$i]['tresid'],'Просмотр',array('class'=>'btn btn-success','target'=>'_blank'));?></td>
+							<td>
+							<?php if($audcourses[$i]['status']):?>
+								<?=anchor('admin-panel/messages/orders/'.$this->uri->segment(5).'/audience/'.$audcourses[$i]['audid'].'/courses/'.$audcourses[$i]['id'].'/test-report/'.$audcourses[$i]['tresid'],'Просмотр',array('class'=>'btn btn-success','target'=>'_blank'));?>
+							<?php endif;?>
+							</td>
 						</tr>
 						<?php $num++; ?>
 					<?php endfor; ?>

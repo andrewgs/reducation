@@ -161,7 +161,7 @@ class Unionmodel extends CI_Model{
 	
 	function read_testing_order($order){
 		
-		$query = "SELECT audienceorder.*,courses.code AS ccode,courses.title AS ctitle,audience.id AS audid,audience.lastname,audience.name,audience.middlename FROM audienceorder INNER JOIN audience ON audienceorder.audience = audience.id INNER JOIN courseorder ON audienceorder.course = courseorder.id, courses WHERE audienceorder.order = $order AND courseorder.course = courses.id AND audienceorder.status = 1 ORDER BY audienceorder.id DESC";
+		$query = "SELECT audienceorder.*,courses.code AS ccode,courses.title AS ctitle,audience.id AS audid,audience.lastname,audience.name,audience.middlename FROM audienceorder INNER JOIN audience ON audienceorder.audience = audience.id INNER JOIN courseorder ON audienceorder.course = courseorder.id, courses WHERE audienceorder.order = $order AND courseorder.course = courses.id ORDER BY audienceorder.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
