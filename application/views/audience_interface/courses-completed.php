@@ -46,8 +46,10 @@
 	Попытка: <?=$courses[$i]['test']['attempt'];?> из <?=$courses[$i]['test']['count'];?>
 	
 	Затрачено: <?=$courses[$i]['test']['time'];?> мин.
-	Результат: <?=$courses[$i]['test']['result'];?>% <?=($courses[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
-									</pre>
+	Результат: <?=$courses[$i]['test']['result'];?>%
+	<?=($courses[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
+	
+	<?=anchor('audience/courses/'.$courses[$i]['aud'].'/test-report/id/'.$courses[$i]['test']['tresid'],'Просмотреть результат',array('class'=>'btn btn-success','target'=>'_blank'));?></pre>
 								</div>
 						<?php endif;?>
 					<?php endif;?>

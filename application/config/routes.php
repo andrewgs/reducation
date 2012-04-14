@@ -50,6 +50,7 @@ $route['audience/courses/current/course/:num/lectures/get-libraries']			= "audie
 $route['audience/courses/current/course/:num/lectures/get-curriculum']			= "audience_interface/audience_get_curriculum";
 $route['audience/courses/current/course/:num/lectures/testing/id/:num']			= "audience_interface/audience_testing";
 $route['audience/courses/current/course/:num/lectures/final-testing/id/:num'] 	= "audience_interface/audience_testing";
+$route['audience/courses/:num/test-report/id/:num'] 							= "audience_interface/audience_test_report";
 
 /*==========================================================  ordering  ===================================================*/
 
@@ -110,3 +111,7 @@ $route['admin-panel/messages/orders/id/:num/statement']		= "admin_interface/stat
 $route['admin-panel/messages/orders/id/:num/completion']	= "admin_interface/completion";
 $route['admin-panel/messages/orders/id/:num/admission']		= "admin_interface/admission";
 $route['admin-panel/messages/orders/id/:num/registry']		= "admin_interface/registry";
+
+/*=========================================================== documents  ====================================================*/
+$route['admin-panel/messages/orders/id/:num/testing']												= "admin_interface/orders_testing";
+$route['admin-panel/messages/orders/:num/audience/:num/courses/:num/test-report/:num']		= "admin_interface/test_report";

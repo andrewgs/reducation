@@ -24,6 +24,7 @@ class Admin_interface extends CI_Controller{
 		$this->load->model('courseordermodel');
 		$this->load->model('audienceordermodel');
 		$this->load->model('audiencetestmodel');
+		$this->load->model('testresultsmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -870,7 +871,7 @@ class Admin_interface extends CI_Controller{
 			case 'deactive' :	$pagevar['title'] .= 'Закрытые заявки';
 								$pagevar['orders'] = $this->unionmodel->read_customer_deacticve_orders();
 								break;
-			case 'unpaid' :		$pagevar['title'] .= 'Не оплачанные заказы';
+			case 'unpaid' :		$pagevar['title'] .= 'Неоплачанные заказы';
 								$pagevar['orders'] = $this->unionmodel->read_customer_orders(0);
 								break;
 			case 'sponsored' :	$pagevar['title'] .= 'Оплачанные заказы';
@@ -898,6 +899,68 @@ class Admin_interface extends CI_Controller{
 		$this->ordersmodel->paid_order($order,$access);
 	}
 	
+	/********************************************************* testing ********************************************************/
+	
+	public function orders_testing(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Итоговые тесты',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'audcourses'	=> $this->unionmodel->read_testing_order($this->uri->segment(5)),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		for($i=0;$i<count($pagevar['audcourses']);$i++):
+			$pagevar['audcourses'][$i]['dateover'] = $this->operation_date($pagevar['audcourses'][$i]['dateover']);
+		endfor;
+		$this->load->view("admin_interface/admin-orders-testing",$pagevar);
+	}
+	
+	public function test_report(){
+	
+		$reptest = $this->uri->segment(10);
+		$course = $this->uri->segment(8);
+		$audience = $this->uri->segment(6);
+		$order = $this->uri->segment(4);
+		if(!$this->audienceordermodel->read_status($course)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/orders/id/'.$order.'/testing');
+		endif;
+		
+		if(!$this->testresultsmodel->owner_report($course,$reptest)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/orders/id/'.$order.'/testing');
+		endif;
+		
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Отчет о итоговом тестировании',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'report'		=> $this->testresultsmodel->read_record($reptest),
+					'test'			=> array(),
+					'questions'		=> array(),
+					'answers'		=> array()
+			);
+		
+		$pagevar['report']['dataresult'] = unserialize($pagevar['report']['dataresult']);
+		$pagevar['test'] = $this->unionmodel->read_audience_testing($pagevar['report']['test'],$audience,$pagevar['report']['course']);
+		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['tid']);
+		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['tid']);
+		$pagevar['test']['attemptdate'] = $this->operation_date($pagevar['test']['attemptdate']);
+		
+//		print_r($pagevar['report']);exit;
+		
+		$this->load->view("admin_interface/test-report",$pagevar);
+	}
 	/******************************************************** documents ********************************************************/
 	
 	public function statement(){

@@ -11,6 +11,7 @@ class Audienceordermodel extends CI_Model{
     var $result   	= 0;
     var $dateover  	= '';
     var $start  	= 0;
+    var $tresid  	= 0;
 
     function __construct(){
         parent::__construct();
@@ -53,6 +54,15 @@ class Audienceordermodel extends CI_Model{
 		$query = $this->db->get('audienceorder',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0][$field];
+		return FALSE;
+	}
+	
+	function read_status($id){
+			
+		$this->db->where('status',1);
+		$query = $this->db->get('audienceorder',1);
+		$data = $query->result_array();
+		if(count($data)) return TRUE;
 		return FALSE;
 	}
 	

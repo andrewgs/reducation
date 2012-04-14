@@ -4,7 +4,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div style="width:650px; margin:50px 0 0 300px;">
+			<div style="width:650px; margin:50px 0 0 150px;">
 				<?php $this->load->view('forms/autorization');?>
 			</div>
 		</div>
