@@ -36,6 +36,7 @@
 	<?php $this->load->view('users_interface/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){
+			$("#lsend").click(function(event){var err = false;$(".help-inline").hide();$("#top-restore").hide();$(".focused").each(function(i, element){if($(this).val() == ''){$(this).siblings(".help-inline").html('<i class="icon-exclamation-sign" title="Поле не может быть пустым"></i>').show();$("#top-restore").show();err = true;}});if(err){event.preventDefault();};});
 			$("#send").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".inpval").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$(".digital").keypress(function(e){
 				if(e.which!=8 && e.which!=46 && e.which!=0 && (e.which<48 || e.which>57)){return false;}

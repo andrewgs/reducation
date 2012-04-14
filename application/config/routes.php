@@ -8,6 +8,7 @@ $route[''] 								= "users_interface/index";
 $route['main-page'] 					= "users_interface/index";
 $route['admin'] 						= "users_interface/admin_login";
 $route['logoff'] 						= "users_interface/logoff";
+$route['password-restore'] 				= "users_interface/password_restore";
 $route['registration/customer'] 		= "users_interface/registration_customer";
 $route['registration/customer/step/1'] 	= "users_interface/registration_customer_step_1";
 $route['registration/customer/step/2'] 	= "users_interface/registration_customer_step_2";
@@ -49,6 +50,7 @@ $route['audience/courses/current/course/:num/lectures/get-libraries']			= "audie
 $route['audience/courses/current/course/:num/lectures/get-curriculum']			= "audience_interface/audience_get_curriculum";
 $route['audience/courses/current/course/:num/lectures/testing/id/:num']			= "audience_interface/audience_testing";
 $route['audience/courses/current/course/:num/lectures/final-testing/id/:num'] 	= "audience_interface/audience_testing";
+$route['audience/courses/:num/test-report/id/:num'] 							= "audience_interface/audience_test_report";
 
 /*==========================================================  ordering  ===================================================*/
 
@@ -90,6 +92,8 @@ $route['admin-panel/messages/support']			= "admin_interface/support_messages";
 $route['admin-panel/messages/orders/all']		= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/active']	= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/deactive']	= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/sponsored']	= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/unpaid']	= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/paid-order']= "admin_interface/orders_paid";
 
 /*===========================================================  users  =====================================================*/
@@ -101,3 +105,13 @@ $route['admin-panel/users/customer/delete-customer/:num']	= "admin_interface/del
 $route['admin-panel/users/audience']						= "admin_interface/users_audience";
 $route['admin-panel/users/audience/set-audience-access']	= "admin_interface/audience_access";
 $route['admin-panel/users/audience/delete-audience/:num']	= "admin_interface/delete_audience";
+
+/*=========================================================== documents  ====================================================*/
+$route['admin-panel/messages/orders/id/:num/statement']		= "admin_interface/statement";
+$route['admin-panel/messages/orders/id/:num/completion']	= "admin_interface/completion";
+$route['admin-panel/messages/orders/id/:num/admission']		= "admin_interface/admission";
+$route['admin-panel/messages/orders/id/:num/registry']		= "admin_interface/registry";
+
+/*=========================================================== documents  ====================================================*/
+$route['admin-panel/messages/orders/id/:num/testing']												= "admin_interface/orders_testing";
+$route['admin-panel/messages/orders/:num/audience/:num/courses/:num/test-report/:num']		= "admin_interface/test_report";

@@ -23,6 +23,7 @@ class Audience_interface extends CI_Controller{
 		$this->load->model('courseordermodel');
 		$this->load->model('audienceordermodel');
 		$this->load->model('audiencetestmodel');
+		$this->load->model('testresultsmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -114,14 +115,54 @@ class Audience_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
+		
 		for($i=0;$i<count($pagevar['courses']);$i++):
 			$pagevar['courses'][$i]['chapter'] = $this->chaptermodel->count_records($pagevar['courses'][$i]['id']);
 			$pagevar['courses'][$i]['tests'] = $this->testsmodel->count_course_record($pagevar['courses'][$i]['id']);
 			$pagevar['courses'][$i]['lectures'] = $this->lecturesmodel->count_course_record($pagevar['courses'][$i]['id']);
 			$pagevar['courses'][$i]['test'] = $this->audiencetestmodel->read_exam_test_info($pagevar['courses'][$i]['order'],$pagevar['courses'][$i]['aud'],$this->user['uid']);
 			$pagevar['courses'][$i]['test']['count'] = $this->testsmodel->read_field($pagevar['courses'][$i]['test']['test'],'count');
+			$pagevar['courses'][$i]['test']['tresid'] = $this->audienceordermodel->read_field($pagevar['courses'][$i]['aud'],'tresid');
 		endfor;
 		$this->load->view("audience_interface/courses-completed",$pagevar);
+	}
+	
+	public function audience_test_report(){
+		
+		$reptest = $this->uri->segment(6);
+		$course = $this->uri->segment(3);
+		if(!$this->audienceordermodel->read_status($course)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('audience/courses/completed');
+		endif;
+		
+		if(!$this->testresultsmodel->exist_report($this->user['uid'],$course,$reptest)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('audience/courses/completed');
+		endif;
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Отчет о итоговом тестировании',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'report'		=> $this->testresultsmodel->read_record($reptest),
+					'test'			=> array(),
+					'questions'		=> array(),
+					'answers'		=> array(),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		$pagevar['report']['dataresult'] = unserialize($pagevar['report']['dataresult']);
+		$pagevar['test'] = $this->unionmodel->read_audience_testing($pagevar['report']['test'],$this->user['uid'],$pagevar['report']['course']);
+		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['tid']);
+		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['tid']);
+		$pagevar['test']['attemptdate'] = $this->operation_date($pagevar['test']['attemptdate']);
+		$this->load->view("audience_interface/test-report",$pagevar);
 	}
 	
 	public function audience_start_training(){
@@ -243,6 +284,8 @@ class Audience_interface extends CI_Controller{
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
 		if($this->input->post('submit')):
 			unset($_POST['submit']);
+			$ttime = $_POST['time'];
+			unset($_POST['time']);
 			$corranswers = $this->testanswersmodel->read_correct_answers($pagevar['test']['test']);
 			$ccanswer = 0; $i = 0;
 			foreach ($_POST AS $id=>$corr):
@@ -255,11 +298,16 @@ class Audience_interface extends CI_Controller{
 				endfor;
 			endforeach;
 			$ccanswer = round($ccanswer/count($corranswers)*100);
-			$this->audiencetestmodel->update_result($test,$ccanswer,round($_POST['time']/60));
+			$this->audiencetestmodel->update_result($test,$ccanswer,round($ttime/60));
 			if($ccanswer > 60):
 				$this->session->set_userdata('msgs','Тест завершен!<br/>Поздравляем Вы успешно прошли тест и ответили верно на '.$ccanswer.'% вопросов.');
 				if($this->uri->segment(7) == 'final-testing'):
-					$this->audienceordermodel->update_field($course,'status',1);
+					$this->audienceordermodel->over_course($course,1,$ccanswer);
+					$order = $this->audienceordermodel->read_field($course,'order');
+					$customer = $this->audienceordermodel->read_field($course,'order');
+					$dataresult = serialize($_POST);
+					$id = $this->testresultsmodel->insert_record($course,$this->user['uid'],$order,$customer,$test,$dataresult,$ccanswer);
+					$this->audienceordermodel->update_field($course,'tresid',$id);
 					redirect('audience/courses/completed');
 				endif;
 			else:

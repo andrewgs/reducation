@@ -131,10 +131,37 @@ class Unionmodel extends CI_Model{
 		if(count($data)) return $data;
 		return NULL;
 	}
-
+	
+	function read_customer_deacticve_orders(){
+		
+		$query = "SELECT orders.*,customers.organization,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 60 ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function read_customer_acticve_orders(){
+		
+		$query = "SELECT orders.*,customers.organization,customers.online,audiencetest.id AS audid FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result < 60 ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
 	function read_customer_all_orders(){
 		
 		$query = "SELECT orders.*,customers.organization,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function read_testing_order($order){
+		
+		$query = "SELECT audienceorder.*,courses.code AS ccode,courses.title AS ctitle,audience.id AS audid,audience.lastname,audience.name,audience.middlename FROM audienceorder INNER JOIN audience ON audienceorder.audience = audience.id INNER JOIN courseorder ON audienceorder.course = courseorder.id, courses WHERE audienceorder.order = $order AND courseorder.course = courses.id ORDER BY audienceorder.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;

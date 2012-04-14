@@ -23,42 +23,33 @@
 						<?=anchor('admin-panel/messages/orders/all','Все заказы');?>
 					</li>
 				</ul>
+				<h4>Заказ №<?=$this->uri->segment(5);?></h4>
+				<?php $this->load->view('alert_messages/alert-error');?>
+				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>№ заказа</th>
-							<th>Дата</th>
-							<th>Заказчик</th>
-							<!--th>Статус</th-->
-							<th>Дата оплаты</th>
-							<th>Оплата</th>
+							<th>№ п/п</th>
+							<th>Код. Навзвание курса</th>
+							<th>Слушатель</th>
+							<th>Результат</th>
+							<th>Дата сдачи</th>
+							<th width="80px;"></th>
 						</tr>
 					</thead>
 					<tbody>
-					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
+					<?php for($i=0,$num=1;$i<count($audcourses);$i++):?>
 						<tr>
-							<!--td class="short"><?=$num;?></td-->
+							<td><?=$num;?></td>
+							<td><?=$audcourses[$i]['ccode'].'. '.$audcourses[$i]['ctitle'];?></td>
+							<td><?=$audcourses[$i]['lastname'].' '.$audcourses[$i]['name'].' '.$audcourses[$i]['middlename'];?></td>
+							<td><?=$audcourses[$i]['result'];?>%</td>
+							<td><?=$audcourses[$i]['dateover'];?></td>
 							<td>
-								Заказ №<?=$orders[$i]['id'];?> (<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','Итоговые тесты');?>)<br/>
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/statement','Ведомость',array('target'=>'_blank'));?><br/>
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/completion','Приказ об окончании',array('target'=>'_blank'));?><br/>
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/admission','Приказ о зачислении',array('target'=>'_blank'));?><br/>
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry','Реестр слушателей',array('target'=>'_blank'));?><br/>
+							<?php if($audcourses[$i]['status']):?>
+								<?=anchor('admin-panel/messages/orders/'.$this->uri->segment(5).'/audience/'.$audcourses[$i]['audid'].'/courses/'.$audcourses[$i]['id'].'/test-report/'.$audcourses[$i]['tresid'],'Просмотр',array('class'=>'btn btn-success','target'=>'_blank'));?>
+							<?php endif;?>
 							</td>
-							<td><?=$orders[$i]['orderdate'];?></td>
-							<td><?=$orders[$i]['organization'];?></td>
-						<?php if($orders[$i]['online']):?>
-							<!--td>В сети</td-->
-						<?php else:?>
-							<!--td>Не в сети</td-->
-						<?php endif;?>
-						<?php if($orders[$i]['paid']):?>
-							<td><?=$orders[$i]['paiddate'];?></td>
-							<td class="short centerized"><input type="checkbox" value="1" checked="checked" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
-						<?php else:?>
-							<td>Не оплачен</td>
-							<td class="short centerized"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
-						<?php endif; ?>
 						</tr>
 						<?php $num++; ?>
 					<?php endfor; ?>

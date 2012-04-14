@@ -24,6 +24,7 @@ class Admin_interface extends CI_Controller{
 		$this->load->model('courseordermodel');
 		$this->load->model('audienceordermodel');
 		$this->load->model('audiencetestmodel');
+		$this->load->model('testresultsmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -66,8 +67,37 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Панель администрирования',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		if($this->input->post('catkurs')):
+			$_POST['catkurs'] = NULL;
+			if($_FILES['document']['error'] == 1):
+				$this->session->set_userdata('msgr','Ошибка при загрузке документа. Размер принятого файла превысил максимально допустимый размер.');
+				redirect($this->uri->uri_string());
+			endif;
+			if($_FILES['document']['error'] == 4):
+				$this->session->set_userdata('msgr','Ошибка при загрузке документа. Не указан файл.');
+				redirect($this->uri->uri_string());
+			endif;
+			$_FILES['document']['name'] = preg_replace('/.+(.)(\.)+/','courses_list'."\$2", $_FILES['document']['name']);
+			$config['upload_path'] 		= getcwd();
+			$config['allowed_types'] 	= 'xls';
+			$config['remove_spaces'] 	= TRUE;
+			$config['overwrite'] 		= TRUE;
+			$this->load->library('upload',$config);
+			if(!$this->upload->do_upload('document')):
+				$this->session->set_userdata('msgr','Ошибка при загрузке документа.');
+				redirect($this->uri->uri_string());
+			endif;
+			$this->session->set_userdata('msgs','Список каталогов курсов загружен успешно.');
+			redirect($this->uri->uri_string());
+		endif;
+			
 		$this->load->view("admin_interface/admin-panel",$pagevar);
 	}
 	
@@ -826,7 +856,7 @@ class Admin_interface extends CI_Controller{
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | ',
+					'title'			=> 'АНО ДПО | ',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'orders'		=> array(),
@@ -836,9 +866,15 @@ class Admin_interface extends CI_Controller{
 		switch ($this->uri->segment(4)):
 		
 			case 'active' 	:	$pagevar['title'] .= 'Активные заявки';
-								$pagevar['orders'] = $this->unionmodel->read_customer_orders(0);
+								$pagevar['orders'] = $this->unionmodel->read_customer_acticve_orders();
 								break;
 			case 'deactive' :	$pagevar['title'] .= 'Закрытые заявки';
+								$pagevar['orders'] = $this->unionmodel->read_customer_deacticve_orders();
+								break;
+			case 'unpaid' :		$pagevar['title'] .= 'Неоплачанные заказы';
+								$pagevar['orders'] = $this->unionmodel->read_customer_orders(0);
+								break;
+			case 'sponsored' :	$pagevar['title'] .= 'Оплачанные заказы';
 								$pagevar['orders'] = $this->unionmodel->read_customer_orders(1);
 								break;
 			default :	$pagevar['title'] .= 'Все заявки';
@@ -863,6 +899,121 @@ class Admin_interface extends CI_Controller{
 		$this->ordersmodel->paid_order($order,$access);
 	}
 	
+	/********************************************************* testing ********************************************************/
+	
+	public function orders_testing(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Итоговые тесты',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'audcourses'	=> $this->unionmodel->read_testing_order($this->uri->segment(5)),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		for($i=0;$i<count($pagevar['audcourses']);$i++):
+			if($pagevar['audcourses'][$i]['status']):
+				$pagevar['audcourses'][$i]['dateover'] = $this->operation_date($pagevar['audcourses'][$i]['dateover']);
+			else:
+				$pagevar['audcourses'][$i]['dateover'] = 'не пройден';
+			endif;
+		endfor;
+		$this->load->view("admin_interface/admin-orders-testing",$pagevar);
+	}
+	
+	public function test_report(){
+	
+		$reptest = $this->uri->segment(10);
+		$course = $this->uri->segment(8);
+		$audience = $this->uri->segment(6);
+		$order = $this->uri->segment(4);
+		if(!$this->audienceordermodel->read_status($course)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/orders/id/'.$order.'/testing');
+		endif;
+		
+		if(!$this->testresultsmodel->owner_report($course,$reptest)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/orders/id/'.$order.'/testing');
+		endif;
+		
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Отчет о итоговом тестировании',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'report'		=> $this->testresultsmodel->read_record($reptest),
+					'test'			=> array(),
+					'questions'		=> array(),
+					'answers'		=> array()
+			);
+		
+		$pagevar['report']['dataresult'] = unserialize($pagevar['report']['dataresult']);
+		$pagevar['test'] = $this->unionmodel->read_audience_testing($pagevar['report']['test'],$audience,$pagevar['report']['course']);
+		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['tid']);
+		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['tid']);
+		$pagevar['test']['attemptdate'] = $this->operation_date($pagevar['test']['attemptdate']);
+		$this->load->view("admin_interface/test-report",$pagevar);
+	}
+	/******************************************************** documents ********************************************************/
+	
+	public function statement(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Ведомость итог.тестирования',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("admin_interface/documents/statement",$pagevar);
+	}
+	
+	public function completion(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Приказ об окончании',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		$this->load->view("admin_interface/documents/completion",$pagevar);
+	}
+	
+	public function admission(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Приказ о зачислении',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		
+		$this->load->view("admin_interface/documents/admission",$pagevar);
+	}
+	
+	public function registry(){
+	
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Реестр слушателей',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user
+			);
+		
+		$this->load->view("admin_interface/documents/registry",$pagevar);
+	}
+	
 	/******************************************************** users ***********************************************************/
 	
 	public function users_customer(){
@@ -876,6 +1027,9 @@ class Admin_interface extends CI_Controller{
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'customers'		=> $this->customersmodel->read_records()
 			);
+		for($i=0;$i<count($pagevar['customers']);$i++):
+			$pagevar['customers'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['customers'][$i]['cryptpassword']);
+		endfor;
 		$this->load->view("admin_interface/admin-users-customer",$pagevar);
 	}
 	
@@ -932,6 +1086,9 @@ class Admin_interface extends CI_Controller{
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'audience'		=> $this->unionmodel->read_audience()
 			);
+		for($i=0;$i<count($pagevar['audience']);$i++):
+			$pagevar['audience'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['audience'][$i]['cryptpassword']);
+		endfor;
 		$this->load->view("admin_interface/admin-users-audience",$pagevar);
 	}
 	
