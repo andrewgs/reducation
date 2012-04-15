@@ -34,7 +34,7 @@
 									<hr />
 									<div class="caption">
 										<h5>Счет</h5>
-										<p>Счет на оплату №<?=$order['id'];?> от <?=$order['orderdate'];?> года</p>
+										<p>Счет на оплату №<?=$order['id'];?> от <?=$order['orderdate'];?></p>
 										<p><?=anchor($this->uri->uri_string().'/invoice-for-payment','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
 									</div>
 								</div>
@@ -92,11 +92,11 @@
 						</table>
 						<hr/>
 					<?php if($order['paid']):?>	
-						<div class="span4"><span class="label label-success">Заказ оплачен <?=$order['paiddate'];?></span></div>
+						<div class="span3"><span class="label label-success">Заказ оплачен <?=$order['paiddate'];?></span></div>
 					<?php else:?>
-						<div class="span4"><span class="label label-warning">Заказ еще не оплачен</span></div>
+						<div class="span3"><span class="label label-warning">Заказ еще не оплачен</span></div>
 					<?php endif;?>
-						<div class="span3" style="margin-left:200px;">
+						<div class="span3">
 							<p>Количество заказанных курсов: <strong><?=$ccount;?></strong></p>
 							<p>Сумма: <strong><?=$tsumm;?>,00 руб.</strong></p>
 						</div>
@@ -118,19 +118,19 @@
 								<tr>
 									<td><?=$course[$i]['audience'][$j]['lastname'].' '.$course[$i]['audience'][$j]['name'].' '.$course[$i]['audience'][$j]['middlename'].' ('.$course[$i]['audience'][$j]['specialty'].')';?></td>
 								<?php if($course[$i]['audience'][$j]['status']):?>
-									<td class="short"><span class="label label-success">Завершено</span></td>
+									<td class="short"><span class="label label-success"><nobr>Завершено</nobr></span></td>
 								<?php else:?>
-									<td class="short"><span class="label label-important">Не завершено</span></td>
+									<td class="short"><span class="label label-important"><nobr>Не завершено</nobr></span></td>
 								<?php endif;?>
 								<?php if($course[$i]['audience'][$j]['status']):?>
 									<td class="short"><?=$course[$i]['audience'][$j]['result'];?></td>
 								<?php else:?>
-									<td class="short"><span class="label label-important">Не определено</span></td>
+									<td class="short"><span class="label label-important"><nobr>Не определено</nobr></span></td>
 								<?php endif;?>
 								<?php if($course[$i]['audience'][$j]['status']):?>
 									<td class="short"><?=$course[$i]['audience'][$j]['dateover'];?></td>
 								<?php else:?>
-									<td class="short"><span class="label label-important">Не определено</span></td>
+									<td class="short"><span class="label label-important"><nobr>Не определено</nobr></span></td>
 								<?php endif;?>
 								</tr>
 							<?php endfor;?>

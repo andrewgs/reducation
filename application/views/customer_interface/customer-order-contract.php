@@ -2,7 +2,7 @@
 <html lang="en">
 <?php $this->load->view('customer_interface/head');?>
 <body>
-	<div class="container">
+	<div class="container" style="position: relative;">
 		<div class="row">
 			<div class="span9">
 <pre>
@@ -128,9 +128,12 @@
       БИК 046015762, к/30101810100000000762
 
 
-	_________________/<u>   (О.В.Климова) </u>               ________________/______________
+	_________________/<u>   М.А.Евкин </u>               ________________/______________
 </pre>
 			</div>
+		</div>
+		<div id="#pechat" style="position: absolute; bottom: -5px; left: 250px;">
+			<img src="<?=base_url()?>img/pechat.png"/>
 		</div>
 	</div>
 </body>

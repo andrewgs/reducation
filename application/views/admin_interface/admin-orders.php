@@ -14,10 +14,10 @@
 						<?=anchor('admin-panel/messages/orders/deactive','Закрытые заказы');?> <span class="divider">/</span>
 					</li>
 					<li tnum="unpaid">
-						<?=anchor('admin-panel/messages/orders/unpaid','Неоплачанные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/unpaid','Неоплаченные заказы');?> <span class="divider">/</span>
 					</li>
 					<li tnum="sponsored">
-						<?=anchor('admin-panel/messages/orders/sponsored','Оплачанные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/sponsored','Оплаченные заказы');?> <span class="divider">/</span>
 					</li>
 					<li tnum="all">
 						<?=anchor('admin-panel/messages/orders/all','Все заказы');?>
@@ -27,7 +27,7 @@
 					<thead>
 						<tr>
 							<th>№ заказа</th>
-							<th>Дата</th>
+							<th>Дата создания</th>
 							<th>Заказчик</th>
 							<!--th>Статус</th-->
 							<th>Дата оплаты</th>

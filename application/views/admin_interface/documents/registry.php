@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span16">
-<pre>					<strong>АНО ДПО «Южно-окружной центр повышения квалификации»</strong>
+<pre style="position: relative;">					<strong>АНО ДПО «Южно-окружной центр повышения квалификации»</strong>
 	
 				 	 Сведения о слушателях и выданных удостоверениях
 			  	за период с_________________2012 г. по_________________ 2012 г.
@@ -58,7 +58,9 @@
 </table>
 
 Заместитель директора 											Климова О.В.
-
+	<div id="#pechat" style="position: absolute; bottom: -15px; left: 150px;">
+		<img src="<?=base_url()?>img/pechat.png"/>
+	</div>
 </pre>
 			</div>
 		</div>

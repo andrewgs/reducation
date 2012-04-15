@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
-<pre>				<strong>Автономная некоммерческая организация
+<pre style="position: relative;">				<strong>Автономная некоммерческая организация
 			   дополнительного профессионального образования
 		«Южно-окружной центр повышения квалификации и переподготовки кадров
 			для строительного и жилищно-коммунального комплекса»</strong>
@@ -47,7 +47,9 @@
 </table>
 
 Директор 								М.А.Евкин
-
+	<div id="#pechat" style="position: absolute; bottom: -15px; left: 50px;">
+		<img src="<?=base_url()?>img/pechat.png"/>
+	</div>
 </pre>
 			</div>
 		</div>

@@ -85,6 +85,10 @@
 				if($("#validTest").attr("checked") != 'checked'){event.preventDefault();
 				}else{$("#time").val(TotalTime);}
 			});
+			
+			$('input.optRadios').click(function(){
+				$(this).parents('div').eq(1).find('h4').css({'background': '#fff2b7', 'padding' : '4px 6px'});
+			});
 		});
 	</script>
 </body>
