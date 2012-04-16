@@ -186,7 +186,8 @@ class Customer_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'order'			=> $this->ordersmodel->read_record($this->uri->segment(6)),
-					'course'		=> $this->unionmodel->read_corder_records($this->uri->segment(6)),
+					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(6)),
+					'customer'		=> array(),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -198,7 +199,7 @@ class Customer_interface extends CI_Controller{
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
-		
+		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
 		$this->load->view("customer_interface/customer-order-invoice",$pagevar);
 	}
 	
@@ -215,8 +216,9 @@ class Customer_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
+					'customer'		=> array(),
 					'order'			=> $this->ordersmodel->read_record($this->uri->segment(6)),
-					'course'		=> $this->unionmodel->read_corder_records($this->uri->segment(6)),
+					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(6)),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -228,6 +230,7 @@ class Customer_interface extends CI_Controller{
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
 		
 		$this->load->view("customer_interface/customer-order-contract",$pagevar);
 	}
@@ -245,8 +248,9 @@ class Customer_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
+					'customer'		=> array(),
 					'order'			=> $this->ordersmodel->read_record($this->uri->segment(6)),
-					'course'		=> $this->unionmodel->read_corder_records($this->uri->segment(6)),
+					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(6)),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -258,6 +262,7 @@ class Customer_interface extends CI_Controller{
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
 		
 		$this->load->view("customer_interface/customer-order-act",$pagevar);
 	}

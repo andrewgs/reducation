@@ -30,13 +30,14 @@
 						</tr>
 					</tbody>
 				</table>
-				<pre><strong>Счет на оплату № ______  от ____________ 2012 г</strong>
+				<pre><strong>Счет на оплату № _<u><?=$order['id'];?></u>_  от _<u><?=$order['orderdate'];?></u>_</strong>
 _________________________________________________________________________________________________
 
 Поставщик: 	<strong>АНО ДПО «Южно-окружной центр повышения квалификации», ИНН 6162990031,
 	        КПП 616201001,344001, г.Ростов-на-Дону, ул.Республиканская, 86</strong>
 
-Плательщик: 	</pre>
+Плательщик: 	<strong><?=$customer['organization'];?></strong>
+</pre>
 			<table class="table table-striped table-bordered table-condensed">
 				<thead>
 					<tr>
@@ -49,41 +50,47 @@ ________________________________________________________________________________
 					</tr>
 				</thead>
 				<tbody>
-				<?php for($i=0;$i<5;$i++):?>
+				<?php for($i=0;$i<count($course);$i++):?>
 					<tr>
 						<td><?=$i+1;?></td>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-						<td>&nbsp;</td>
+						<td>"Обучение по курсу <?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
+						<td><?=$course[$i]['cnt'];?></td>
+						<td>чел.</td>
+						<td><?=$course[$i]['price'];?></td>
+						<td><?=($course[$i]['cnt']*$course[$i]['price']);?></td>
 					</tr>
 				<?php endfor;?>
 				</tbody>
 			</table>
 				<pre>
-									 <strong>Итого: 	
+									 <strong>Итого:     <u> <?=$order['price'];?> руб.	</u>
 				    НДС: не облагается (ст. 149 п.2 пп14 НК РФ) 	
-								Всего к оплате: 	</strong>
+								Всего к оплате:     <u> <?=$order['price'];?> руб. </u></strong>
 
 
-Всего наименований                      , на сумму 
+Всего наименований  <strong><u> <?=count($course);?> </u></strong>,   на сумму <strong><u> <?=$order['price'];?> руб. </u></strong>
 
 _________________________________________________________________________________________________
 
 
-<strong>Директор</strong>	        ____________________________________________ М.А.Евкин 
+<strong>Заместитель директора</strong>	        ____________________________________________ Климова О.В. 
 
-<strong>Главный бухгалтер</strong>	____________________________________________
-
-
+<strong>Главный бухгалтер</strong>		   _________________________________________ Петрищева Л.В.
 
 
-<strong>В платежном поручении в графе «назначение платежа» обязательно должно быть указано <i>«Оплата за Повышение квалификации по Договору №_______ по счету № ________ НДС не облагается»</i></strong>
+
+
+<strong>В платежном поручении в графе «назначение платежа» обязательно должно быть указано <i>«Оплата за Повышение квалификации по Договору №_<u><?=$order['id'];?></u>_ по счету № _<u><?=$order['id'];?></u>_ НДС не облагается»</i></strong>
+	<div id="#klimova" style="position: absolute; bottom: 180px; left: 220px;">
+		<img src="<?=base_url()?>img/klimova.png"/>
+	</div>
+	<div id="#buhgl" style="position: absolute; bottom: 125px; left: 220px;">
+		<img src="<?=base_url()?>img/buhgl.png"/>
+	</div>
 				</pre>
 			</div>
 		</div>
-		<div id="#pechat" style="position: absolute; bottom: 70px; left: 150px;">
+		<div id="#pechat" style="position: absolute; bottom: 115px; left: 150px;">
 			<img src="<?=base_url()?>img/pechat.png"/>
 		</div>
 	</div>

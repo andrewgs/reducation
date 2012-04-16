@@ -57,6 +57,16 @@ class Audienceordermodel extends CI_Model{
 		return FALSE;
 	}
 	
+	function active_orders($audience){
+		
+		$this->db->where('audience',$audience);
+		$this->db->where('status',0);
+		$query = $this->db->get('audienceorder');
+		$data = $query->result_array();
+		if(count($data)) return TRUE;
+		return FALSE;
+	}
+	
 	function read_status($id){
 			
 		$this->db->where('status',1);

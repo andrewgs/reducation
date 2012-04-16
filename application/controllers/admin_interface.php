@@ -145,9 +145,10 @@ class Admin_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Направление не создано. Не заполены необходимые поля.');
 			else:
-				if(!isset($_POST['view'])):
+				/*if(!isset($_POST['view'])):
 					$_POST['view'] = 0;
-				endif;
+				endif;*/
+				$_POST['view'] = 1;
 				$id = $this->trendsmodel->insert_record($_POST);
 				if($id):
 					$this->session->set_userdata('msgs','Направление создано успешно.');
@@ -163,9 +164,10 @@ class Admin_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
 			else:
-				if(!isset($_POST['view'])):
+				/*if(!isset($_POST['view'])):
 					$_POST['view'] = 0;
-				endif;
+				endif;*/
+				$_POST['view'] = 1;
 				$this->trendsmodel->update_record($_POST);
 				/*if(!$_POST['view']):
 					$this->coursesmodel->deactive_status_trend($_POST['idt']);
@@ -971,8 +973,16 @@ class Admin_interface extends CI_Controller{
 					'author'		=> '',
 					'title'			=> 'АНО ДПО | Ведомость итог.тестирования',
 					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user
+					'userinfo'		=> $this->user,
+					'courses'		=> $this->unionmodel->read_course_audience_records($this->uri->segment(5))
 			);
+		for($i=0;$i<count($pagevar['courses']);$i++):
+			if($pagevar['courses'][$i]['status']):
+				$pagevar['courses'][$i]['dateover'] = $this->operation_date($pagevar['courses'][$i]['dateover']);
+			else:
+				$pagevar['courses'][$i]['dateover'] = 'обучение не пройдено';
+			endif;
+		endfor;
 		$this->load->view("admin_interface/documents/statement",$pagevar);
 	}
 	
@@ -983,8 +993,16 @@ class Admin_interface extends CI_Controller{
 					'author'		=> '',
 					'title'			=> 'АНО ДПО | Приказ об окончании',
 					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user
+					'userinfo'		=> $this->user,
+					'courses'		=> $this->unionmodel->read_course_audience_records($this->uri->segment(5))
 			);
+		for($i=0;$i<count($pagevar['courses']);$i++):
+			if($pagevar['courses'][$i]['status']):
+				$pagevar['courses'][$i]['dateover'] = $this->operation_date($pagevar['courses'][$i]['dateover']);
+			else:
+				$pagevar['courses'][$i]['dateover'] = 'обучение не пройдено';
+			endif;
+		endfor;
 		$this->load->view("admin_interface/documents/completion",$pagevar);
 	}
 	
@@ -995,9 +1013,16 @@ class Admin_interface extends CI_Controller{
 					'author'		=> '',
 					'title'			=> 'АНО ДПО | Приказ о зачислении',
 					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user
+					'userinfo'		=> $this->user,
+					'courses'		=> $this->unionmodel->read_course_audience_records($this->uri->segment(5))
 			);
-		
+		for($i=0;$i<count($pagevar['courses']);$i++):
+			if($pagevar['courses'][$i]['status']):
+				$pagevar['courses'][$i]['dateover'] = $this->operation_date($pagevar['courses'][$i]['dateover']);
+			else:
+				$pagevar['courses'][$i]['dateover'] = 'обучение не пройдено';
+			endif;
+		endfor;
 		$this->load->view("admin_interface/documents/admission",$pagevar);
 	}
 	
@@ -1008,8 +1033,24 @@ class Admin_interface extends CI_Controller{
 					'author'		=> '',
 					'title'			=> 'АНО ДПО | Реестр слушателей',
 					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user
+					'userinfo'		=> $this->user,
+					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
+		for($i=0;$i<count($pagevar['info']);$i++):
+			if($pagevar['info'][$i]['status']):
+				$pagevar['info'][$i]['dateover'] = $this->operation_dot_date($pagevar['info'][$i]['dateover']);
+			else:
+				$pagevar['info'][$i]['dateover'] = '---';
+			endif;
+			$pagevar['info'][$i]['orderdate'] = $this->operation_dot_date($pagevar['info'][$i]['orderdate']);
+			if($pagevar['info'][$i]['paid']):
+				$pagevar['info'][$i]['paiddate'] = $this->operation_dot_date($pagevar['info'][$i]['paiddate']);
+			else:
+				$pagevar['info'][$i]['paiddate'] = '---';
+			endif;
+		endfor;
+		
+//		print_r($pagevar['info']);exit;
 		
 		$this->load->view("admin_interface/documents/registry",$pagevar);
 	}

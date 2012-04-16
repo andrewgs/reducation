@@ -35,20 +35,20 @@
 			<td>Дата выдачи</td>
 			<td>Роспись в получении</td>
 		</tr>
-	<?php for($i=0;$i<8;$i++):?>	
+	<?php for($i=0;$i<count($info);$i++):?>	
 		<tr>
 			<td><?=$i+1;?></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td><?=$info[$i]['organization'];?><br/><?=$info[$i]['inn'].'/'.$info[$i]['kpp'];?><br/><?=$info[$i]['uraddress'];?></td>
+			<td><?=$info[$i]['lastname'].' '.$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
+			<td><?=$info[$i]['specialty'];?></td>
+			<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
+			<td><?=$info[$i]['chours'];?></td>
+			<td><?=$i+1;?></td>
+			<td><nobr><?=$info[$i]['сprice'];?> руб.</nobr></td>
+			<td><?=$info[$i]['paiddate'];?></td>
+			<td><?=$info[$i]['order'];?></td>
+			<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>
+			<td><?=$info[$i]['paiddate'];?></td>
 			<td></td>
 			<td></td>
 			<td></td>

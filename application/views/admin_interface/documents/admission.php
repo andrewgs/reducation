@@ -35,11 +35,11 @@
 			<td>Фамилия, имя, отчество</td>
 			<td>Наименование программы</td>
 		</tr>
-	<?php for($i=0;$i<8;$i++):?>	
+	<?php for($i=0;$i<count($courses);$i++):?>	
 		<tr>
 			<td><?=$i+1;?></td>
-			<td></td>
-			<td></td>
+			<td><?=$courses[$i]['lastname'].' '.$courses[$i]['name'].' '.$courses[$i]['middlename'];?></td>
+			<td><?=$courses[$i]['ccode'].' '.$courses[$i]['ctitle'];?></td>
 		</tr>
 	<?php endfor;?>
 	</tbody>

@@ -15,10 +15,10 @@
 				<div class="row review">
 					<p>Наши курсы разработаны в соответствии с рекомендациями: </p>
 					<ul class="partners">
-						<li class="p1"><a title="Национальное объединение строителей" href="#">Национальное объединение строителей</a></li>
-						<li class="p2"><a title="Национальное объединение проектировщиков" href="#">Национальное объединение проектировщиков</a></li>
-						<li class="p3"><a title="Национальное объединение изыскателей" href="#">Национальное объединение изыскателей</a></li>
-						<li class="p4"><a title="Национальное объединение энергоаудиторов" href="#">Национальное объединение энергоаудиторов</a></li>
+						<li class="p1"><a title="Национальное объединение строителей" href="" class="none">Национальное объединение строителей</a></li>
+						<li class="p2"><a title="Национальное объединение проектировщиков" href="" class="none">Национальное объединение проектировщиков</a></li>
+						<li class="p3"><a title="Национальное объединение изыскателей" href="" class="none">Национальное объединение изыскателей</a></li>
+						<li class="p4"><a title="Национальное объединение энергоаудиторов" href="" class="none">Национальное объединение энергоаудиторов</a></li>
 					</ul>
 				</div>
 				<p>
@@ -36,9 +36,10 @@
 			<div class="span3">
 				<h4>Последние добавленые курсы</h4>
 				<ul id="courses-new">
-					<li><a href="#">БС-12. Безопасность строительства и качество выполнения геодезических, подготовительных и земляных работ</a></li>
-					<li><a href="#">БС-14. Безопасность строительства и качество возведения бетонных и железобетонных строительных </a></li>
-					<li><a class="details" href="#">Полный список курсов &raquo;</a></li>
+				<?php for($i=0;$i<count($newcourses);$i++):?>
+					<li><?=anchor('',$newcourses[$i]['code'].'. '.$newcourses[$i]['title'],array('class'=>'none'));?></li>
+				<?php endfor;?>
+					<li><?=anchor('catalog/courses','Полный список курсов &raquo;',array('class'=>'details'))?></li>
 				</ul>
 			</div>
 		</div>
@@ -78,29 +79,10 @@
 			</div>
 		</div>
 	</div>
-	<!--
-	<div class="container">
-		<div class="row">
-			<div class="span12">
-				<? 
-				if(!$loginstatus['status']):
-					$this->load->view('users_interface/rightbarauth');
-				endif;
-				if($loginstatus['status'] && $loginstatus['zak']):
-					$this->load->view('users_interface/rightbarcus');
-				endif;
-				if($loginstatus['status'] && $loginstatus['slu']):
-					$this->load->view('users_interface/rightbaraud');
-				endif;
-				if($loginstatus['status'] && $loginstatus['adm']):
-					$this->load->view('users_interface/rightbaradm');
-				endif;
-				?>
-			</div>
-		</div>
-	</div>
-	-->
 	<? $this->load->view('users_interface/footer');?>
 	<? $this->load->view('users_interface/scripts');?>
+	<script type="text/javascript">
+		$(document).ready(function(){$(".none").click(function(event){event.preventDefault();});});
+	</script>
 </body>
 </html>

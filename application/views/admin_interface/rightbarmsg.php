@@ -3,7 +3,7 @@
 		<ul class="nav nav-list">
 			<li class="nav-header">Последние добавленные курсы</li>
 		<?php for($i=0;$i<count($newcourses);$i++):?>
-			<li><?=anchor('admin-panel/references/trend/'.$newcourses[$i]['trend'].'/course/'.$newcourses[$i]['id'],$newcourses[$i]['code']);?></li>			
+			<li><?=anchor('admin-panel/references/trend/'.$newcourses[$i]['trend'].'/course/'.$newcourses[$i]['id'],$newcourses[$i]['code']);?></li>
 		<?php endfor;?>
 			<li class="nav-header">Справочники</li>
 			<li num="trends"><?=anchor('admin-panel/references/trends','Направления');?></li>
@@ -19,7 +19,6 @@
 			<li num="orders"><?=anchor('admin-panel/messages/orders/unpaid','Заказы');?></li>
 			<li num="control"><?=anchor('admin-panel/actions/control','Панель управления');?></li>
 			<li num="cabinet"><?=anchor('admin-panel/actions/cabinet','Личный кабинет');?></li>
-			<li><?=anchor('admin-panel/logoff','Завершить сеанс');?></li>
 		</ul>
 	</div>
 </div>

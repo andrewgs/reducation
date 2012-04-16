@@ -14,6 +14,7 @@ class Users_interface extends CI_Controller{
 		$this->load->model('trendsmodel');
 		$this->load->model('coursesmodel');
 		$this->load->model('audiencemodel');
+		$this->load->model('audienceordermodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -46,6 +47,7 @@ class Users_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr'),
 					'msgauth'		=> $this->session->userdata('msgauth')
