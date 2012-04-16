@@ -9,13 +9,13 @@
 				<div class="accordion-inner">
 					<div style="margin-top: 10px;">
 					<pre><h4>Результат теста</h4>
+	Слушатель: <u> <?=$audience;?> </u>					
 	Попыток: <?=$test['attempt'];?>
 	
 	Дата: <?=$test['attemptdate'];?>
 	
 	Затрачено: <?=$test['time'];?> мин.
-	Результат: <?=$test['result'];?>%
-	<?=($test['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
+	Результат: <?=$test['result'];?>% <?=($test['result'] > 60)?'<font style="color:#0000ff">(зачет)</font>':'<font style="color:#ff0000">(незачет)</font>';?>
 					</pre>
 					</div>
 				</div>

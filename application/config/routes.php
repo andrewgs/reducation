@@ -114,4 +114,5 @@ $route['admin-panel/messages/orders/id/:num/registry']		= "admin_interface/regis
 
 /*=========================================================== documents  ====================================================*/
 $route['admin-panel/messages/orders/id/:num/testing']												= "admin_interface/orders_testing";
-$route['admin-panel/messages/orders/:num/audience/:num/courses/:num/test-report/:num']		= "admin_interface/test_report";
+$route['admin-panel/messages/orders/:num/audience/:num/courses/:num/test-report/:num/full']			= "admin_interface/test_report_full";
+$route['admin-panel/messages/orders/:num/audience/:num/courses/:num/test-report/:num/short']		= "admin_interface/test_report_short";

@@ -1,5 +1,6 @@
 <div class="span3">
 	<div class="well sidebar-nav">
+		<h5 style="margin: 0 0 10px 15px;"><u><?=$userinfo['fullname'];?></u></h5>
 		<ul class="nav nav-list">
 			<li class="nav-header">Личный кабинет</li>
 			<li num="current"><?=anchor('audience/courses/current','Мои текущие курсы');?></li>

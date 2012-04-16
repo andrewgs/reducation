@@ -59,6 +59,7 @@ class Customersmodel extends CI_Model {
 	
 	function read_record($id){
 		
+		$this->db->select("customers.*,person AS fullname",FALSE);
 		$this->db->where('id',$id);
 		$query = $this->db->get('customers',1);
 		$data = $query->result_array();

@@ -64,6 +64,16 @@ class Audiencemodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_full_name($id){
+		
+		$this->db->select("concat(lastname,' ',name,' ',middlename) AS fullname",FALSE);
+		$this->db->where('id',$id);
+		$query = $this->db->get('audience',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0]['fullname'];
+		return NULL;
+	}
+	
 	function read_email_records($email){
 		
 		$this->db->select('id,login,cryptpassword,lastname,name,middlename,signupdate');

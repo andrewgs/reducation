@@ -2,7 +2,7 @@
 
 class Audience_interface extends CI_Controller{
 	
-	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'');
+	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
 	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
 	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
 	
@@ -37,6 +37,7 @@ class Audience_interface extends CI_Controller{
 					$this->user['ulogin'] 			= $userinfo['login'];
 					$this->user['uemail'] 			= '';
 					$this->user['utype'] 			= $this->session->userdata('utype');
+					$this->user['fullname'] 		= $this->audiencemodel->read_full_name($this->user['uid']);
 					$this->loginstatus['status'] 	= TRUE;
 					$this->loginstatus[$this->user['utype']] = TRUE;
 				endif;

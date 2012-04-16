@@ -34,7 +34,7 @@
 							<th>Слушатель</th>
 							<th>Результат</th>
 							<th>Дата сдачи</th>
-							<th width="80px;"></th>
+							<th width="150px;">Просмотр</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,7 +47,8 @@
 							<td><?=$audcourses[$i]['dateover'];?></td>
 							<td>
 							<?php if($audcourses[$i]['status']):?>
-								<?=anchor('admin-panel/messages/orders/'.$this->uri->segment(5).'/audience/'.$audcourses[$i]['audid'].'/courses/'.$audcourses[$i]['id'].'/test-report/'.$audcourses[$i]['tresid'],'Просмотр',array('class'=>'btn btn-success','target'=>'_blank'));?>
+								<?=anchor('admin-panel/messages/orders/'.$this->uri->segment(5).'/audience/'.$audcourses[$i]['audid'].'/courses/'.$audcourses[$i]['id'].'/test-report/'.$audcourses[$i]['tresid'].'/full','Полный',array('class'=>'btn btn-success','target'=>'_blank'));?>
+								<?=anchor('admin-panel/messages/orders/'.$this->uri->segment(5).'/audience/'.$audcourses[$i]['audid'].'/courses/'.$audcourses[$i]['id'].'/test-report/'.$audcourses[$i]['tresid'].'/short','Краткий',array('class'=>'btn btn-success','target'=>'_blank'));?>
 							<?php endif;?>
 							</td>
 						</tr>

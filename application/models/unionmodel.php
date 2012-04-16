@@ -60,6 +60,15 @@ class Unionmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_fullinfo_report($course,$order,$audience){
+		
+		$query = "SELECT audienceorder.*,audience.lastname,audience.name,audience.middlename,audience.specialty,audience.personaemail,customers.organization,courses.code AS ccode,courses.title AS ctitle,tests.title AS ttitle FROM audienceorder INNER JOIN audience ON audienceorder.audience = audience.id INNER JOIN courseorder ON audienceorder.course=courseorder.id INNER JOIN customers ON audienceorder.customer = customers.id,courses,tests WHERE audienceorder.order = $order AND audienceorder.id = $course AND audienceorder.audience = $audience AND courseorder.course = courses.id AND audienceorder.status = 1 AND courses.id = tests.course ORDER BY audienceorder.id";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data)) return $data[0];
+		return NULL;
+	}
+	
 	function audience_course($course){
 		
 		$query = "SELECT audienceorder.*,audience.lastname,audience.name,audience.middlename,audience.specialty FROM audienceorder INNER JOIN audience ON audienceorder.audience=audience.id WHERE audienceorder.course = $course ORDER BY audienceorder.id";

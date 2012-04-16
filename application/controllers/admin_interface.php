@@ -928,7 +928,7 @@ class Admin_interface extends CI_Controller{
 		$this->load->view("admin_interface/admin-orders-testing",$pagevar);
 	}
 	
-	public function test_report(){
+	public function test_report_full(){
 	
 		$reptest = $this->uri->segment(10);
 		$course = $this->uri->segment(8);
@@ -952,6 +952,7 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'report'		=> $this->testresultsmodel->read_record($reptest),
+					'audience'		=> $this->audiencemodel->read_full_name($audience),
 					'test'			=> array(),
 					'questions'		=> array(),
 					'answers'		=> array()
@@ -964,6 +965,39 @@ class Admin_interface extends CI_Controller{
 		$pagevar['test']['attemptdate'] = $this->operation_date($pagevar['test']['attemptdate']);
 		$this->load->view("admin_interface/test-report",$pagevar);
 	}
+	
+	public function test_report_short(){
+	
+		$reptest = $this->uri->segment(10);
+		$course = $this->uri->segment(8);
+		$audience = $this->uri->segment(6);
+		$order = $this->uri->segment(4);
+		if(!$this->audienceordermodel->read_status($course)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/orders/id/'.$order.'/testing');
+		endif;
+		
+		if(!$this->testresultsmodel->owner_report($course,$reptest)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/orders/id/'.$order.'/testing');
+		endif;
+		
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Отчет о итоговом тестировании',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'info'			=> $this->unionmodel->read_fullinfo_report($course,$order,$audience),
+					'test'			=> array(),
+					'questions'		=> array(),
+					'answers'		=> array()
+			);
+		$pagevar['info']['dateover'] = $this->operation_date($pagevar['info']['dateover']);
+		$this->load->view("admin_interface/test-report-short",$pagevar);
+	}
+	
 	/******************************************************** documents ********************************************************/
 	
 	public function statement(){

@@ -65,10 +65,7 @@
 
 						___________________________/Панков В.Н./
 							(подпись)
-	<div id="#pechat" style="position: absolute; bottom: 5px; left: 50px;">
-		<img src="<?=base_url()?>img/pechat.png"/>
-	</div>
-	<div id="#klimova" style="position: absolute; bottom: 130px; left: 250px;">
+	<div id="#klimova" style="position: absolute; bottom: 110px; left: 250px;">
 		<img src="<?=base_url()?>img/klimova.png"/>
 	</div>
 </pre>

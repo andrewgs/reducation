@@ -46,9 +46,6 @@
 </table>
 
 Директор 								М.А.Евкин
-	<div id="#pechat" style="position: absolute; bottom: -15px; left: 50px;">
-		<img src="<?=base_url()?>img/pechat.png"/>
-	</div>
 </pre>
 			</div>
 		</div>
