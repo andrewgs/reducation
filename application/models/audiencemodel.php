@@ -9,6 +9,7 @@ class Audiencemodel extends CI_Model{
     var $name    		= '';
     var $middlename   	= '';
     var $fiodat   		= '';
+    var $position  		= '';
     var $address    	= '';
     var $graduated    	= '';
     var $year    		= '';
@@ -190,5 +191,4 @@ class Audiencemodel extends CI_Model{
 		$this->db->update('audience');
 		return $this->db->affected_rows();
 	}
-	
 }

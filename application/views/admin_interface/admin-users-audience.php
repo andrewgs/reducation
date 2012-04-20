@@ -17,7 +17,8 @@
 						<tr>
 							<td class="short"><?=$num;?></td>
 							<td>
-								<?=$audience[$i]['lastname'].' '.$audience[$i]['name'].' '.$audience[$i]['middlename'];?><br/>
+								<?php $fio = $audience[$i]['lastname'].' '.$audience[$i]['name'].' '.$audience[$i]['middlename'];?>
+								<?=anchor('admin-panel/users/audience/info/id/'.$audience[$i]['id'],$fio);?><br/>
 								<strong>Логин:</strong> <?=$audience[$i]['login'].' <strong>Пароль:</strong> '.$audience[$i]['cryptpassword'];?>
 							</td>
 							<td><?=$audience[$i]['organization'].' ('.$audience[$i]['person'].')';?></td>

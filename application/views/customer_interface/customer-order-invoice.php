@@ -63,9 +63,9 @@ ________________________________________________________________________________
 				</tbody>
 			</table>
 				<pre>
-									 <strong>Итого:     <u> <?=$order['price'];?> руб.	</u>
-				    НДС: не облагается (ст. 149 п.2 пп14 НК РФ) 	
-								Всего к оплате:     <u> <?=$order['price'];?> руб. </u></strong>
+									 <strong><nobr>Итого:     <u> <?=$order['price'];?> руб.	</u></nobr>
+				    <nobr>НДС: не облагается (ст. 149 п.2 пп14 НК РФ) 	</nobr>
+								<nobr>Всего к оплате:     <u> <?=$order['price'];?> руб. </u></nobr></strong>
 
 
 Всего наименований  <strong><u> <?=count($course);?> </u></strong>,   на сумму <strong><u> <?=$order['price'];?> руб. </u></strong>
@@ -80,17 +80,17 @@ ________________________________________________________________________________
 
 
 
-<strong>В платежном поручении в графе «назначение платежа» обязательно должно быть указано <i>«Оплата за Повышение квалификации по Договору №_<u><?=$order['id'];?></u>_ по счету № _<u><?=$order['id'];?></u>_ НДС не облагается»</i></strong>
-	<div id="#klimova" style="position: absolute; bottom: 180px; left: 220px;">
+<strong>В платежном поручении в графе «назначение платежа» обязательно должно быть указано <i>«Оплата за Повышение квалификации по Договору №<?=$order['id'];?> от <?=$order['orderdate'];?> по счету № <?=$order['id'];?> от <?=$order['orderdate'];?> НДС не облагается»</i></strong>
+	<div id="#klimova" style="position: absolute; bottom: 200px; left: 220px;">
 		<img src="<?=base_url()?>img/klimova.png"/>
 	</div>
-	<div id="#buhgl" style="position: absolute; bottom: 125px; left: 220px;">
+	<div id="#buhgl" style="position: absolute; bottom: 140px; left: 220px;">
 		<img src="<?=base_url()?>img/buhgl.png"/>
 	</div>
 				</pre>
 			</div>
 		</div>
-		<div id="#pechat" style="position: absolute; bottom: 115px; left: 150px;">
+		<div id="#pechat" style="position: absolute; bottom: 120px; left: 150px;">
 			<img src="<?=base_url()?>img/pechat.png"/>
 		</div>
 	</div>

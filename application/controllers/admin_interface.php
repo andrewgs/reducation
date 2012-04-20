@@ -1108,6 +1108,37 @@ class Admin_interface extends CI_Controller{
 		$this->load->view("admin_interface/admin-users-customer",$pagevar);
 	}
 	
+	public function users_customer_info(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики - Информация',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'customer'		=> $this->customersmodel->read_record($this->uri->segment(6))
+			);
+		$this->load->view("admin_interface/admin-users-customer-info",$pagevar);
+	}
+	
+	public function users_audience_info(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики - Информация',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'customer'		=> '',
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'audience'		=> $this->audiencemodel->read_record($this->uri->segment(6))
+			);
+		$pagevar['customer'] = $this->customersmodel->read_field($pagevar['audience']['customer'],'organization');
+		$pagevar['audience']['signupdate'] = $this->operation_date($pagevar['audience']['signupdate']);
+		$this->load->view("admin_interface/admin-users-audience-info",$pagevar);
+	}
+	
 	public function users_customer_load_courses(){
 		
 		$customer = $this->input->post('customer');

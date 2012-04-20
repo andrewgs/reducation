@@ -20,6 +20,18 @@
 					<span class="help-inline"><?=$audience['middlename'];?></span>
 				</div>
 			</div>
+			<div class="control-group">
+				<label for="fiodat" class="control-label">Ф.И.О. в дательном падеже</label>
+				<div class="controls">
+					<span class="help-inline"><?=$audience['fiodat'];?></span>
+				</div>
+			</div>
+			<div class="control-group">
+				<label for="position" class="control-label">Должность</label>
+				<div class="controls">
+					<span class="help-inline"><?=$audience['position'];?></span>
+				</div>
+			</div>
 			<legend>Адрес</legend>
 			<div class="control-group">
 				<label for="address" class="control-label"><strong>Область, город, улица, дом, корпус, квартира, индекс</strong></label>

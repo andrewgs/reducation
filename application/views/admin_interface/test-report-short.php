@@ -11,7 +11,7 @@
 <b>Дата тестирования: </b><?=$info['dateover'];?>
 
 <b>Ф.И.О.: </b><u><?=$info['lastname'].' '.$info['name'].' '.$info['middlename'];?></u>
-<b>Занимаемая должность: </b><?=$info['specialty'];?>
+<b>Занимаемая должность: </b><?=$info['position'];?>
 
 <b>Место работы (наименование организации): </b><?=$info['organization'];?>
 

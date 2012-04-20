@@ -35,7 +35,8 @@ class Customer_interface extends CI_Controller{
 					$this->user['ulogin'] 			= $userinfo['login'];
 					$this->user['uemail'] 			= '';
 					$this->user['utype'] 			= $this->session->userdata('utype');
-					$this->user['fullname']			= $userinfo['fullname'];
+//					$this->user['fullname']			= $userinfo['fullname'];
+					$this->user['fullname']			= $userinfo['organization'];
 					$this->loginstatus['status'] 	= TRUE;
 					$this->loginstatus[$this->user['utype']] = TRUE;
 				endif;
@@ -308,6 +309,7 @@ class Customer_interface extends CI_Controller{
 			$this->form_validation->set_rules('name',' ','required|trim');
 			$this->form_validation->set_rules('middlename',' ','required|trim');
 			$this->form_validation->set_rules('fiodat',' ','required|trim');
+			$this->form_validation->set_rules('position',' ','required|trim');
 			$this->form_validation->set_rules('address',' ','required|trim');
 			$this->form_validation->set_rules('personaemail',' ','required|valid_email|trim');
 			$this->form_validation->set_rules('personaphone',' ','required|trim');
@@ -322,8 +324,8 @@ class Customer_interface extends CI_Controller{
 			else:
 				$user = $this->audiencemodel->read_email_records($_POST['personaemail']);
 				if($user):
-					$this->session->set_userdata('msgr','Ошибка. E-mail: '.$_POST['personaemail'].' уже существует! Повторите ввод.');
-					redirect($this->uri->uri_string());
+					$this->session->set_userdata('msgr','Внимание. E-mail: '.$_POST['personaemail'].' уже существует!');
+//					redirect($this->uri->uri_string());
 				endif;
 				$id = $this->audiencemodel->insert_record($this->user['uid'],$_POST);
 				$login = 'slu_'.$id;

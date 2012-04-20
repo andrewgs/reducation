@@ -5130,7 +5130,7 @@
 				<treenode node="Order;JS:JS Var Name;7;51;12;51;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\views\customer_interface\customer-order-invoice.php" crc="187685929">
+		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\views\customer_interface\customer-order-invoice.php" crc="1634583017">
 			<phptree>
 				<treenode node="course;Php:Var Name;28;52;35;52;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5164,11 +5164,11 @@
 				<treenode node="document;JS:JS Var Name;4;148;12;148;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</jstree>
-		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\views\customer_interface\customer-order-contract.php" crc="-1537576952">
+		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\views\customer_interface\customer-order-contract.php" crc="-1362235457">
 			<phptree>
 				<treenode node="course;Php:Var Name;28;38;35;38;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="customer;Php:Var Name;514;17;523;17;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="customer;Php:Var Name;553;17;562;17;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 				<treenode node="i;Php:Var Name;14;38;16;38;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5177,7 +5177,7 @@
 				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\views\customer_interface\customer-order-act.php" crc="520154725">
+		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\views\customer_interface\customer-order-act.php" crc="368529379">
 			<phptree>
 				<treenode node="course;Php:Var Name;28;25;35;25;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5185,7 +5185,7 @@
 				</treenode>
 				<treenode node="i;Php:Var Name;14;25;16;25;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
-				<treenode node="order;Php:Var Name;31;10;37;10;34;;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="order;Php:Var Name;49;28;55;28;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 				<treenode node="this;Php:Var Name;6;2;11;2;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -5464,7 +5464,7 @@
 				<treenode node="this;Php:Var Name;13;0;18;0;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</phptree>
-		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\views\admin_interface\documents\statement.php" crc="-198856127">
+		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\views\admin_interface\documents\statement.php" crc="1994249668">
 			<phptree>
 				<treenode node="courses;Php:Var Name;25;44;33;44;34;;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
@@ -6778,7 +6778,7 @@
 				</treenode>
 			</phptree>
 		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\core\index.html" crc="-1574479902">
-		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\controllers\users_interface.php" crc="1699138548">
+		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\controllers\users_interface.php" crc="1133119037">
 			<phptree>
 				<treenode node="Users_interface;Php:Class Name;0;2;1;568;34;;;vCI_Controller;;c;;r;;d43,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;1;8;2;38;34;;;v;;r;;d23,8;;b0,0;;m">
@@ -6824,7 +6824,7 @@
 				</treenode>
 			</phptree>
 		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\controllers\index.html" crc="-1574479902">
-		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\controllers\customer_interface.php" crc="-1910401217">
+		</csfile><csfile name="C:\denwer\home\reducation.ru\www\application\controllers\customer_interface.php" crc="-2084684598">
 			<phptree>
 				<treenode node="Customer_interface;Php:Class Name;0;2;1;650;34;;;vCI_Controller;;c;;r;;d46,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;1;8;2;50;34;;;v;;r;;d23,8;;b0,0;;m">
@@ -7082,4 +7082,6 @@
 			</phptree>
 		</csfile><csfile name="C:\denwer\home\reducation.ru\www\index.html" crc="-626347057">
 		</csfile><csfile name="C:\denwer\home\reducation.ru\www\.htaccess" crc="139727451">
-		</csfile></codestructure></project>
+		</csfile></codestructure><dbgurls>
+	</dbgurls>
+</project>

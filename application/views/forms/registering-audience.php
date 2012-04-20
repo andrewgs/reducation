@@ -31,6 +31,13 @@
 					<p class="help-block">Например: Петрову Ивану Сергеевичу</p>
 				</div>
 			</div>
+			<div class="control-group">
+				<label for="position" class="control-label">Должность</label>
+				<div class="controls">
+					<input type="text" id="position" class="input-xlarge inpval" name="position" value="">
+					<span class="help-inline" style="display:none;">&nbsp;</span>
+				</div>
+			</div>
 			<legend>Адрес</legend>
 			<div class="control-group">
 				<label for="address" class="control-label">Область, город, улица, дом, корпус, квартира, индекс</label>

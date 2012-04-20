@@ -65,9 +65,6 @@
 
 						___________________________/Панков В.Н./
 							(подпись)
-	<div id="#klimova" style="position: absolute; bottom: 110px; left: 250px;">
-		<img src="<?=base_url()?>img/klimova.png"/>
-	</div>
 </pre>
 			</div>
 		</div>

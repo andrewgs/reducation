@@ -383,8 +383,8 @@ class Users_interface extends CI_Controller{
 			else:
 				$user = $this->customersmodel->read_email_records($_POST['personemail']);
 				if($user):
-					$this->session->set_userdata('msgr','Ошибка. E-mail: '.$_POST['personemail'].' уже существует!');
-					redirect($this->uri->uri_string());
+					$this->session->set_userdata('msgr','Внимание. E-mail: '.$_POST['personemail'].' уже существует!');
+//					redirect($this->uri->uri_string());
 				endif;
 				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>4,'personemail'=>$_POST['personemail'],'person'=>htmlspecialchars($_POST['person'])));
 				$this->session->set_userdata('msgs','Данные сохранены.');
