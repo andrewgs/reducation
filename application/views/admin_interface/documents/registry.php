@@ -2,97 +2,107 @@
 <html lang="en">
 <?php $this->load->view('customer_interface/head');?>
 <body>
-	<div class="container">
+	<style type="text/css">
+		body { padding: 20px 0 0; }
+		@media print {
+			body, p { font-family: Tahoma, sans-serif; font-size: 16px; line-height: 24px; margin-bottom: 14px; }
+		}
+	</style>
+	<div class="container-fluid" style="position: relative;">
 		<div class="row">
-			<div class="span16">
-					<pre style="position: relative;">					
-										<strong>АНО ДПО «Южно-окружной центр повышения квалификации»</strong>
-						
-									 	 Сведения о слушателях и выданных удостоверениях
-								  	за период с_________________2012 г. по_________________ 2012 г.
-				
-				
-<table class="table table-striped table-bordered table-condensed">
-	<tbody>
-		<tr>
-			<td colspan="9"></td>
-			<td colspan="3" style="text-align:center;">Договор</td>
-			<td colspan="3" style="text-align:center;">Удостоверения</td>
-		</tr>
-		<tr>
-			<td>№</td>
-			<td><nobr>Наименование организации,</nobr><br/><nobr>ННН, КПП, юрид. адрес</nobr></td>
-			<td><nobr>Фамилия, Имя, Отчество</nobr></td>
-			<td>Должность</td>
-			<td>Наименование программы</td>
-			<td><nobr>Объем учебного</nobr><br/><nobr>плана, час</nobr></td>
-			<td>П/П ПКО</td>
-			<td>ОПЛАТА Сумма</td>
-			<td>Дата</td>
-			<td>&nbsp;№&nbsp;</td>
-			<td>Сумма</td>
-			<td>Дата</td>
-			<td>&nbsp;№&nbsp;</td>
-			<td><nobr>Дата выдачи</nobr></td>
-			<td><nobr>Роспись в получении</nobr></td>
-		</tr>
-	<?php for($i=0;$i<count($info);$i++):?>	
-		<tr>
-			<td><?=$i+1;?></td>
-			<td><?=$info[$i]['organization'];?><br/><?=$info[$i]['inn'].'/'.$info[$i]['kpp'];?><br/><?=$info[$i]['uraddress'];?></td>
-			<td><?=$info[$i]['lastname'].' '.$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
-			<td><?=$info[$i]['specialty'];?></td>
-			<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
-			<td><?=$info[$i]['chours'];?></td>
-			<td><?=$i+1;?></td>
-			<td><nobr><?=$info[$i]['сprice'];?> руб.</nobr></td>
-			<td><?=$info[$i]['paiddate'];?></td>
-			<td><?=$info[$i]['order'];?></td>
-			<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>
-			<td><?=$info[$i]['paiddate'];?></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	<?php endfor;?>
-	</tbody>
-</table>
-
-												Директор 	________________________/__<u>Евкин М.А.</u>__
-												
-												
-<table class="table table-striped table-bordered table-condensed">
-	<tbody>
-		<tr>
-			<td>№</td>
-			<td><nobr>Фамилия</nobr></td>
-			<td><nobr>Имя, Отчество</nobr></td>
-			<td>Дата с</td>
-			<td>Месяц с</td>
-			<td>Год с</td>
-			<td>Дата по</td>
-			<td>Месяц по</td>
-			<td>Год по</td>
-			<td>По программе</td>
-		</tr>
-	<?php for($i=0;$i<count($info);$i++):?>	
-		<tr>
-			<td><?=$i+1;?></td>
-			<td><?=$info[$i]['lastname'];?></td>
-			<td><?=$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
-		</tr>
-	<?php endfor;?>
-	</tbody>
-</table>												
-												
-</pre>
+			<div class="span12">
+				<p class="center">
+					<strong>
+						Автономная некоммерческая организация дополнительного профессионального образования 
+						«<nobr>Южно-окружной центр</nobr> повышения квалификации и переподготовки кадров для строительного 
+						и <nobr>жилищно-коммунального</nobr> комплекса»
+					</strong>
+				</p>
+				<p class="center">
+					    Сведения о слушателях и выданных удостоверениях <br />
+						за период c «__» ___________ 201_ г. «__» ___________ 201_ г.
+				</p>
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td colspan="9"></td>
+							<td colspan="3" style="text-align:center;">Договор</td>
+							<td colspan="3" style="text-align:center;">Удостоверения</td>
+						</tr>
+						<tr>
+							<td>№</td>
+							<td><nobr>Наименование организации,</nobr><br/><nobr>ННН, КПП, юрид. адрес</nobr></td>
+							<td><nobr>Фамилия, Имя, Отчество</nobr></td>
+							<td>Должность</td>
+							<td>Наименование программы</td>
+							<td><nobr>Объем учебного</nobr><br/><nobr>плана, час</nobr></td>
+							<td>П/П ПКО</td>
+							<td>ОПЛАТА Сумма</td>
+							<td>Дата</td>
+							<td>&nbsp;№&nbsp;</td>
+							<td>Сумма</td>
+							<td>Дата</td>
+							<td>&nbsp;№&nbsp;</td>
+							<td><nobr>Дата выдачи</nobr></td>
+							<td><nobr>Роспись в получении</nobr></td>
+						</tr>
+					<?php for($i=0;$i<count($info);$i++):?>	
+						<tr>
+							<td><?=$i+1;?></td>
+							<td><?=$info[$i]['organization'];?><br/><?=$info[$i]['inn'].'/'.$info[$i]['kpp'];?><br/><?=$info[$i]['uraddress'];?></td>
+							<td><?=$info[$i]['lastname'].' '.$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
+							<td><?=$info[$i]['specialty'];?></td>
+							<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
+							<td><?=$info[$i]['chours'];?></td>
+							<td><?=$i+1;?></td>
+							<td><nobr><?=$info[$i]['сprice'];?> руб.</nobr></td>
+							<td><?=$info[$i]['paiddate'];?></td>
+							<td><?=$info[$i]['order'];?></td>
+							<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>
+							<td><?=$info[$i]['paiddate'];?></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					<?php endfor;?>
+					</tbody>
+				</table>
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td>№</td>
+							<td><nobr>Фамилия, Имя, Отчество</nobr></td>
+							<td><nobr>Дата с</nobr></td>
+							<td><nobr>Месяц с</nobr></td>
+							<td><nobr>Год с</nobr></td>
+							<td><nobr>Дата по</nobr></td>
+							<td><nobr>Месяц по</nobr></td>
+							<td><nobr>Год по</nobr></td>
+							<td><nobr>По программе</nobr></td>
+						</tr>
+					<?php for($i=0;$i<count($info);$i++):?>	
+						<tr>
+							<td><?=$i+1;?></td>
+							<td><nobr><?=$info[$i]['fiodat'];?></nobr></td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
+						</tr>
+					<?php endfor;?>
+					</tbody>
+				</table>												
+				<table class="table">
+					<tbody>
+						<tr>
+							<td>Директор</td>
+							<td>М.А.Евкин</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

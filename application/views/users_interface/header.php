@@ -10,7 +10,7 @@
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
 				<?php
 					if($loginstatus['status'] && $loginstatus['zak']):
-						echo anchor('customer/audience/orders','Мои заказы', array('class'=>'auth-link'));
+						echo anchor('customer/audience/orders','Личный кабинет', array('class'=>'auth-link'));
 						echo anchor('logoff','Выйти из кабинета', array('class'=>'auth-link'));
 					endif;
 					if($loginstatus['status'] && $loginstatus['slu']):
