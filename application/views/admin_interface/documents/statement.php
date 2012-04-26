@@ -5,26 +5,31 @@
 	<style type="text/css">
 		body { padding: 20px 0 0; }
 		@media print {
-			body, p { font-family: Tahoma, sans-serif; font-size: 16px; line-height: 24px; margin-bottom: 14px; }
+			body, p { font-family: "Times New Roman", serif; font-size: 21px; line-height: 27px; margin-bottom: 18px; }
+			.title_ { font-size: 28px; line-height: 34px; margin: 0 0 18px; }
+			.title__ { font-size: 24px; line-height: 30px; margin: 8px 0 40px; }
+			table td, table th { font-size: 20px; line-height: 26px; }
 		}
 	</style>
 	<div class="container-fluid" style="position: relative;">
 		<div class="row">
 			<div class="span12">
-				<p class="center">
-					<strong>Автономная некоммерческая организация дополнительного профессионального образования
-					«Южно-окружной центр повышения квалификации и переподготовки кадров
-			       	для строительного и жилищно-коммунального комплекса»</strong>
-		       	</p>
-				<p class="center">
-					<strong>Ведомость итогового тестирования слушателей  по программам повышения квалификации</strong>
+				<p class="center title_">
+					<strong>
+						Автономная некоммерческая организация <br />дополнительного профессионального образования<br /> 
+						«Южно-окружной центр повышения квалификации и <br /> переподготовки кадров для строительного <br /> 
+						и жилищно-коммунального комплекса»
+					</strong>
+				</p>
+				<p class="center title__">
+					<strong>Ведомость итогового тестирования слушателей по <br />программам повышения квалификации</strong>
 				</p>
 				<div class="clearfix" style="margin-top: 20px;">
 		  	  		<p class="pull-left">
-						Срок обучения:  с  «____»  ________2012 г <br />
+						Срок обучения:  с  «__»  ________2012 г <br />
 		  	  		</p>
 		  	  		<p class="pull-right">
-		  	  			по   «___» _________  2012 г.
+		  	  			по   «__» _________  2012 г.
 		  	  		</p>
 				</div>
 				<p>
@@ -57,7 +62,7 @@
 					<tbody>
 						<tr>
 							<td>№ п/п</td>
-							<td>Фамилия, имя, отчество</td>
+							<td><nobr>Фамилия, Имя, Отчество</nobr></td>
 							<td>Наименование программы</td>
 							<td>Дата итогового тестирования</td>
 							<td>%</td>
@@ -73,7 +78,7 @@
 					<?php endfor;?>
 					</tbody>
 				</table>
-				<table class="table" style="margin-top: 40px;">
+				<table class="table no-border" style="margin-top: 40px;">
 					<tbody>
 						<tr>
 							<td>Председатель комиссии</td>

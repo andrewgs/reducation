@@ -26,7 +26,7 @@ class Unionmodel extends CI_Model{
 	
 	function read_corder_group_records($order){
 		
-		$query = "SELECT courseorder.*,courses.title,courses.price,courses.code, count(courseorder.id) AS cnt FROM courseorder INNER JOIN courses ON courseorder.course=courses.id WHERE courseorder.order = $order GROUP BY courseorder.course ORDER BY courseorder.id";
+		$query = "SELECT courseorder.*,courses.title,courses.price,courses.code, count(audienceorder.id) AS cnt FROM courseorder INNER JOIN courses ON courseorder.course=courses.id INNER JOIN audienceorder ON courseorder.id = audienceorder.course WHERE courseorder.order = $order GROUP BY courseorder.course ORDER BY courseorder.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
@@ -44,7 +44,7 @@ class Unionmodel extends CI_Model{
 	
 	function read_course_audience_records($order){
 		
-		$query = "SELECT audienceorder.*,audience.lastname,audience.name,audience.middlename,audience.specialty,courses.code AS ccode,courses.title AS ctitle,courses.hours AS chours FROM audienceorder INNER JOIN audience ON audienceorder.audience=audience.id INNER JOIN courseorder ON audienceorder.course=courseorder.id, courses WHERE audienceorder.order = $order AND courseorder.course = courses.id ORDER BY audienceorder.id";
+		$query = "SELECT audienceorder.*,audience.lastname,audience.name,audience.middlename,audience.fiodat, audience.specialty,courses.code AS ccode,courses.title AS ctitle,courses.hours AS chours FROM audienceorder INNER JOIN audience ON audienceorder.audience=audience.id INNER JOIN courseorder ON audienceorder.course=courseorder.id, courses WHERE audienceorder.order = $order AND courseorder.course = courses.id ORDER BY audienceorder.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
@@ -53,7 +53,7 @@ class Unionmodel extends CI_Model{
 
 	function read_fullinfo_audience($order){
 		
-		$query = "SELECT audienceorder.*,audience.lastname,audience.name,audience.middlename,audience.fiodat, audience.specialty,customers.organization,customers.inn,customers.kpp,customers.uraddress,orders.id AS ordid,orders.orderdate,orders.price AS ordprice,orders.paid,orders.paiddate,courses.code AS ccode,courses.title AS ctitle,courses.hours AS chours,courses.price AS сprice FROM audienceorder INNER JOIN audience ON audienceorder.audience=audience.id INNER JOIN courseorder ON audienceorder.course=courseorder.id INNER JOIN customers ON audienceorder.customer = customers.id INNER JOIN orders ON audienceorder.order = orders.id, courses WHERE audienceorder.order = $order AND courseorder.course = courses.id ORDER BY audienceorder.id";
+		$query = "SELECT audienceorder.*,audience.lastname,audience.name,audience.middlename,audience.fiodat,audience.specialty,customers.organization,customers.inn,customers.kpp,customers.uraddress,orders.id AS ordid,orders.orderdate,orders.price AS ordprice,orders.paid,orders.paiddate,courses.code AS ccode,courses.title AS ctitle,courses.hours AS chours,courses.price AS сprice FROM audienceorder INNER JOIN audience ON audienceorder.audience=audience.id INNER JOIN courseorder ON audienceorder.course=courseorder.id INNER JOIN customers ON audienceorder.customer = customers.id INNER JOIN orders ON audienceorder.order = orders.id, courses WHERE audienceorder.order = $order AND courseorder.course = courses.id ORDER BY audienceorder.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;

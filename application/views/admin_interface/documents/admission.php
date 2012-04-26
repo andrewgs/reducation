@@ -5,20 +5,22 @@
 	<style type="text/css">
 		body { padding: 20px 0 0; }
 		@media print {
-			body, p { font-family: Tahoma, sans-serif; font-size: 16px; line-height: 24px; margin-bottom: 14px; }
+			body, p { font-family: "Times New Roman", serif; font-size: 21px; line-height: 27px; margin-bottom: 18px; }
+			.title_ { font-size: 28px; line-height: 34px; margin: 0 0 18px; }
+			table td, table th { font-size: 20px; }
 		}
 	</style>
 	<div class="container-fluid" style="position: relative;">
 		<div class="row">
 			<div class="span12">
-				<p class="center">
+				<p class="center title_">
 					<strong>
-						Автономная некоммерческая организация дополнительного профессионального образования 
-						«Южно-окружной центр повышения квалификации и переподготовки кадров для строительного 
+						Автономная некоммерческая организация <br />дополнительного профессионального образования<br /> 
+						«Южно-окружной центр повышения квалификации и <br /> переподготовки кадров для строительного <br /> 
 						и жилищно-коммунального комплекса»
 					</strong>
 				</p>
-				<p class="center title">
+				<p class="center title title_">
 					    ПРИКАЗ
 				</p>
 				<div class="clearfix" style="margin-top: 20px;">
@@ -33,7 +35,7 @@
              		г.Ростов-на-Дону
              	</p>
              	<p class="center" style="margin-top: 20px;">
-                	<strong>О зачислении слушателей на обучение в АНО ДПО «Южно-окружной центр повышения квалификации»</strong>
+                	<strong>О зачислении слушателей на обучение в АНО ДПО «Южно-окружной центр <br />повышения квалификации»</strong>
                 </p>
 				<p style="margin-top: 20px;">
 					В соответствии с планом учебных курсов АНО ДПО «Южно-окружной центр повышения квалификации».
@@ -51,7 +53,7 @@
 					<tbody>
 						<tr>
 							<td>№ п/п</td>
-							<td>Фамилия, имя, отчество</td>
+							<td><nobr>Фамилия, Имя, Отчество</nobr></td>
 							<td>Наименование программы</td>
 						</tr>
 					<?php for($i=0;$i<count($courses);$i++):?>	
@@ -63,7 +65,7 @@
 					<?php endfor;?>
 					</tbody>
 				</table>
-				<table class="table">
+				<table class="table no-border">
 					<tbody>
 						<tr>
 							<td>Директор</td>
