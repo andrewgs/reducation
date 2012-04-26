@@ -26,7 +26,7 @@ class Unionmodel extends CI_Model{
 	
 	function read_corder_group_records($order){
 		
-		$query = "SELECT courseorder.*,courses.title,courses.price,courses.code, count(courseorder.id) AS cnt FROM courseorder INNER JOIN courses ON courseorder.course=courses.id WHERE courseorder.order = $order GROUP BY courseorder.course ORDER BY courseorder.id";
+		$query = "SELECT courseorder.*,courses.title,courses.price,courses.code, count(audienceorder.id) AS cnt FROM courseorder INNER JOIN courses ON courseorder.course=courses.id INNER JOIN audienceorder ON courseorder.id = audienceorder.course WHERE courseorder.order = $order GROUP BY courseorder.course ORDER BY courseorder.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
