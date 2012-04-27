@@ -68,6 +68,14 @@ class Ordersmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function update_field($id,$field,$data){
+			
+		$this->db->set($field,$data);
+		$this->db->where('id',$id);
+		$this->db->update('orders');
+		return $this->db->affected_rows();
+	}
+	
 	function read_active_orders(){
 		
 		$this->db->order_by('orderdate','DESC');

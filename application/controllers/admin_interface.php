@@ -862,11 +862,14 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'orders'		=> array(),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
 		
 		switch ($this->uri->segment(4)):
-		
 			case 'active' 	:	$pagevar['title'] .= 'Активные заявки';
 								$pagevar['orders'] = $this->unionmodel->read_customer_acticve_orders();
 								break;
@@ -883,6 +886,21 @@ class Admin_interface extends CI_Controller{
 						$pagevar['orders'] = $this->unionmodel->read_customer_all_orders();
 						break;
 		endswitch;
+		
+		if($this->input->post('dsubmit')):
+			$_POST['dsubmit'] = NULL;
+			$this->form_validation->set_rules('order',' ','required|trim');
+			$this->form_validation->set_rules('discount',' ','trim');
+			$this->form_validation->set_rules('paiddoc',' ','trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				$this->ordersmodel->update_field($_POST['order'],'discount',$_POST['discount']);
+				$this->ordersmodel->update_field($_POST['order'],'docnumber',$_POST['paiddoc']);
+				$this->session->set_userdata('msgs','Информация по заказу успешно сохранена.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
 		
 		for($i=0;$i<count($pagevar['orders']);$i++):
 			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);

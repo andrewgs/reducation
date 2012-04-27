@@ -23,6 +23,8 @@
 						<?=anchor('admin-panel/messages/orders/all','Все заказы');?>
 					</li>
 				</ul>
+				<?php $this->load->view('alert_messages/alert-error');?>
+				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
@@ -32,6 +34,7 @@
 							<!--th>Статус</th-->
 							<th>Дата оплаты</th>
 							<th>Оплата</th>
+							<th>Дополнительно</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -59,30 +62,30 @@
 							<td>Не оплачен</td>
 							<td class="short centerized"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php endif; ?>
+							<td>
+								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-toggle="modal" href="#discount" idcourse=""><i class="icon-pencil icon-white"></i> Скидка</a>
+							</td>
 						</tr>
 						<?php $num++; ?>
 					<?php endfor; ?>
 					</tbody>
 				</table>
 			</div>
+			<?php $this->load->view('admin_interface/modal/user-set-discount');?>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
 		</div>
 	</div>
 	<?php $this->load->view('admin_interface/scripts');?>
 	<script type="text/javascript">
-		$("li[tnum='<?=$this->uri->segment(4);?>']").addClass('active');
-		$(".none").click(function(event){event.preventDefault();});
-		$(".chAccess").click(function(){
-			var check = 0;
-			var order = $(this).attr('data-ord');
-			if($(this).attr("checked") == 'checked'){
-				check = 1;
-				$(".paiddate[data-ord = "+order+"]").html('<?=date("d.m.Y");?>');
-			}else{
-				check = 0;
-				$(".paiddate[data-ord = "+order+"]").html('Не оплачен');
-			}
-			$.post('<?=$baseurl;?>admin-panel/messages/orders/paid-order',{'order': order,'access':check});
+		$(document).ready(function(){
+			$("li[tnum='<?=$this->uri->segment(4);?>']").addClass('active');
+			$(".none").click(function(event){event.preventDefault();});
+			$(".chAccess").click(function(){var check = 0;var order = $(this).attr('data-ord');if($(this).attr("checked") == 'checked'){check = 1;$(".paiddate[data-ord = "+order+"]").html('<?=date("d.m.Y");?>');}else{check = 0;$(".paiddate[data-ord = "+order+"]").html('Не оплачен');}$.post('<?=$baseurl;?>admin-panel/messages/orders/paid-order',{'order': order,'access':check});});
+			$(".discbtn").click(function(){
+				$("#idOrder").val($(this).attr('data-order'));
+				$("#DiscountValue").val($(this).attr('data-discountval'));
+				$("#DocumentValue").val($(this).attr('data-docnumber'));
+			});
 		});
 	</script>
 </body>

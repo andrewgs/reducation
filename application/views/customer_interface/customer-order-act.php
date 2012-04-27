@@ -33,6 +33,7 @@
 			      стороны, в дальнейшем при совместном упоминании именуемые Стороны, составили настоящий 
 			      Акт об оказании услуг о нижеследующем:
 			    </p>
+				<?php $summ = 0;?>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -49,17 +50,18 @@
 							<td><?=$i+1;?></td>
 							<td>Повышение квалификации по Договору №<?=$order['id'];?><br/>"<?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
 							<td><?=$course[$i]['cnt'];?></td>
-							<td><?=$course[$i]['price'];?></td>
-	 						<td><?=$course[$i]['price'];?></td>
+							<td><?=$course[$i]['price']-$course[$i]['discount'];?></td>
+	 						<td><?=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']));?></td>
+							<?php $summ+=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']))?>
 						</tr>
 					<?php endfor;?>
 					</tbody>
 				</table>
 				<p class="align-right">
 					<strong>
-                        Итого: <?=$order['price'];?> руб. <br />
+                        Итого: <?=$summ;?> руб. <br />
 			    		НДС: не облагается (ст. 149 п.2 пп14 НК РФ) <br /> 	
-						Всего к оплате: <?=$order['price'];?> руб.
+						Всего к оплате: <?=$summ;?> руб.
 					</strong>
 				</p>
 				<p>

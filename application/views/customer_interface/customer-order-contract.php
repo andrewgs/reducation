@@ -18,7 +18,7 @@
        				на портале <br /> Автономной некоммерческой организации дополнительного
 	   				профессионального образования «Южно-окружного центра повышения квалификации
       				и переподготовки кадров для строительства и жилищно-коммунального комплекса» 
-	  			  	(<a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a>) </strong>
+	  			  	(<a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a>)
            		</p>
            		<div class="clearfix">
 		  	  		<p class="pull-left">
@@ -53,6 +53,7 @@
 				<p>
 					<strong>2. Стоимость услуг и порядок расчетов</strong>
 				</p>
+				<?php $summ = 0;?>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -71,17 +72,18 @@
 							<td>"Обучение по курсу <?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
 							<td><?=$course[$i]['cnt'];?></td>
 							<td>чел.</td>
-							<td><?=$course[$i]['price'];?></td>
-							<td><?=($course[$i]['cnt']*$course[$i]['price']);?></td>
+							<td><?=$course[$i]['price']-$course[$i]['discount'];?></td>
+							<td><?=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']));?></td>
+							<?php $summ+=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']))?>
 						</tr>
 					<?php endfor;?>
 					</tbody>
 				</table>
 				<p class="align-right">
 					<strong>
-						Итого: <u> <?=$order['price'];?> руб.</u> <br />
+						Итого: <u> <?=$summ;?> руб.</u> <br />
 				    	НДС: не облагается (ст. 149 п.2 пп14 НК РФ) <br />	
-						Всего к оплате:     <u> <?=$order['price'];?> руб. </u>
+						Всего к оплате:     <u> <?=$summ;?> руб. </u>
 					</strong>
 				</p>
 				<p>

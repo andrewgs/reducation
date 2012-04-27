@@ -62,11 +62,11 @@
 							<td><?=$info[$i]['chours'];?></td>
 							<!--<td><?=$i+1;?></td>-->
 							<td><input type="text" value="" class="inv"></td>
-							<td><nobr><?=$info[$i]['сprice'];?> руб.</nobr></td>
+							<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
 							<td><?=$info[$i]['paiddate'];?></td>
 							<td><?=$info[$i]['order'];?></td>
 							<!--<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>-->
-							<td><nobr><?=$info[$i]['сprice'];?> руб.</nobr></td>
+							<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
 							<td><?=$info[$i]['paiddate'];?></td>
 							<td><input type="text" value="" class="inv"></td>
 							<td><input type="text" value="" class="inv"></td>

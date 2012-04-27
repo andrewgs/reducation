@@ -47,6 +47,7 @@
 		        <p>
 					Плательщик: <strong><?=$customer['organization'];?></strong>
 				</p>
+				<?php $summ = 0;?>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -65,19 +66,20 @@
 							<td>"Обучение по курсу <?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
 							<td><?=$course[$i]['cnt'];?></td>
 							<td>чел.</td>
-							<td><?=$course[$i]['price'];?></td>
-							<td><?=($course[$i]['cnt']*$course[$i]['price']);?></td>
+							<td><?=$course[$i]['price']-$course[$i]['discount'];?></td>
+							<td><?=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']));?></td>
+							<?php $summ+=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']))?>
 						</tr>
 					<?php endfor;?>
 					</tbody>
 				</table>
 				<p>
-					Всего наименований  <strong><?=count($course);?> </strong>,   на сумму <strong> <?=$order['price'];?> руб. </strong>
+					Всего наименований  <strong><?=count($course);?> </strong>,   на сумму <strong> <?=$summ;?> руб. </strong>
 				</p>
 				<p class="align-right">
-					<strong><nobr>Итого:     <u> <?=$order['price'];?> руб.	</u></nobr> <br />
+					<strong><nobr>Итого:     <u> <?=$summ;?> руб.	</u></nobr> <br />
 				    <nobr>НДС: не облагается (ст. 149 п.2 пп14 НК РФ)</nobr> <br />
-					<nobr>Всего к оплате:     <u> <?=$order['price'];?> руб. </u></nobr></strong>
+					<nobr>Всего к оплате:     <u> <?=$summ;?> руб. </u></nobr></strong>
 				</p>
 				<p>
 					<table class="table no-border">
