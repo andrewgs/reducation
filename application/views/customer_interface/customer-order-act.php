@@ -101,7 +101,7 @@
 					</tbody>
 				</table>
 				<p>
-					<table class="table">
+					<table class="table no-border">
 						<tbody>
 							<tr>
 								<td>Заместитель директора</td>
@@ -111,9 +111,6 @@
 					</table>
 				</p>
 			</div>
-		</div>
-		<div id="#klimova" style="position: absolute; bottom: 5px; left: 350px;">
-			<img src="<?=base_url()?>img/klimova.png"/>
 		</div>
 	</div>
 </body>

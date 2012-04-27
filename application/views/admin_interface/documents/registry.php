@@ -4,14 +4,20 @@
 <body>
 	<style type="text/css">
 		body { padding: 20px 0 0; }
+		@media all {
+  			.page-break  { display:none; }
+		}
 		@media print {
-			body, p { font-family: Tahoma, sans-serif; font-size: 16px; line-height: 24px; margin-bottom: 14px; }
+			body, p { font-family: "Times New Roman", serif; font-size: 21px; line-height: 27px; margin-bottom: 18px; }
+			.title_ { font-size: 24px; line-height: 28px; margin: 0 0 18px; }
+			table td, table th { font-size: 14px; }
+			.page-break  { display:block; page-break-before:always; }
 		}
 	</style>
 	<div class="container-fluid" style="position: relative;">
 		<div class="row">
 			<div class="span12">
-				<p class="center">
+				<p class="center title_">
 					<strong>
 						Автономная некоммерческая организация дополнительного профессионального образования 
 						«<nobr>Южно-окружной центр</nobr> повышения квалификации и переподготовки кадров для строительного 
@@ -20,7 +26,7 @@
 				</p>
 				<p class="center">
 					    Сведения о слушателях и выданных удостоверениях <br />
-						за период c «__» ___________ 201_ г. «__» ___________ 201_ г.
+						за период c «__» ___________ 201_ г. по «__» ___________ 201_ г.
 				</p>
 				<table class="table table-bordered">
 					<tbody>
@@ -32,10 +38,10 @@
 						<tr>
 							<td>№</td>
 							<td><nobr>Наименование организации,</nobr><br/><nobr>ННН, КПП, юрид. адрес</nobr></td>
-							<td><nobr>Фамилия, Имя, Отчество</nobr></td>
+							<td>Фамилия, Имя, Отчество</td>
 							<td>Должность</td>
 							<td>Наименование программы</td>
-							<td><nobr>Объем учебного</nobr><br/><nobr>плана, час</nobr></td>
+							<td>Объем учебного плана, час</td>
 							<td>П/П ПКО</td>
 							<td>ОПЛАТА Сумма</td>
 							<td>Дата</td>
@@ -54,19 +60,30 @@
 							<td><?=$info[$i]['specialty'];?></td>
 							<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
 							<td><?=$info[$i]['chours'];?></td>
-							<td><?=$i+1;?></td>
+							<!--<td><?=$i+1;?></td>-->
+							<td><input type="text" value="" class="inv"></td>
 							<td><nobr><?=$info[$i]['сprice'];?> руб.</nobr></td>
 							<td><?=$info[$i]['paiddate'];?></td>
 							<td><?=$info[$i]['order'];?></td>
-							<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>
+							<!--<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>-->
+							<td><nobr><?=$info[$i]['сprice'];?> руб.</nobr></td>
 							<td><?=$info[$i]['paiddate'];?></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><input type="text" value="" class="inv"></td>
+							<td><input type="text" value="" class="inv"></td>
+							<td><input type="text" value="" class="inv"></td>
 						</tr>
 					<?php endfor;?>
 					</tbody>
 				</table>
+				<table class="table no-border">
+					<tbody>
+						<tr>
+							<td>Директор</td>
+							<td>М.А.Евкин</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="page-break"></div>
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
@@ -95,14 +112,6 @@
 					<?php endfor;?>
 					</tbody>
 				</table>												
-				<table class="table">
-					<tbody>
-						<tr>
-							<td>Директор</td>
-							<td>М.А.Евкин</td>
-						</tr>
-					</tbody>
-				</table>
 			</div>
 		</div>
 	</div>

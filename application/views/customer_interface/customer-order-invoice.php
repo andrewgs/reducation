@@ -80,7 +80,7 @@
 					<nobr>Всего к оплате:     <u> <?=$order['price'];?> руб. </u></nobr></strong>
 				</p>
 				<p>
-					<table class="table">
+					<table class="table no-border">
 						<tbody>
 							<tr>
 								<td>Заместитель директора</td>
@@ -96,12 +96,12 @@
 				<p style="margin: 80px 0 0;">
 					<strong>В платежном поручении в графе «назначение платежа» обязательно должно быть указано <i>«Оплата за Повышение квалификации по Договору №<?=$order['id'];?> от <?=$order['orderdate'];?> по счету № <?=$order['id'];?> от <?=$order['orderdate'];?> НДС не облагается»</i></strong>
 				</p>
-				<div id="#klimova" style="position: absolute; bottom: 154px; left: 220px;">
-					<img src="<?=base_url()?>img/klimova.png"/>
-				</div>
 				<div id="#buhgl" style="position: absolute; bottom: 100px; left: 220px;">
 					<img src="<?=base_url()?>img/buhgl.png"/>
 				</div>
+				<div id="#klimova" style="position: absolute; bottom: 144px; left: 220px;">
+					<img src="<?=base_url()?>img/klimova.png"/>
+				</div>				
 			</div>
 		</div>
 		<div id="#pechat" style="position: absolute; bottom: 70px; left: 270px;">

@@ -5,20 +5,22 @@
 	<style type="text/css">
 		body { padding: 20px 0 0; }
 		@media print {
-			body, p { font-family: Tahoma, sans-serif; font-size: 16px; line-height: 24px; margin-bottom: 14px; }
+			body, p { font-family: "Times New Roman", serif; font-size: 21px; line-height: 27px; margin-bottom: 18px; }
+			.title_ { font-size: 28px; line-height: 34px; margin: 0 0 18px; }
+			table td, table th { font-size: 20px; }
 		}
 	</style>
 	<div class="container-fluid" style="position: relative;">
 		<div class="row">
 			<div class="span12">
-				<p class="center">
+				<p class="center title_">
 					<strong>
-						Автономная некоммерческая организация дополнительного профессионального образования
-						«Южно-окружной центр повышения квалификации и переподготовки кадров
-						для строительного и жилищно-коммунального комплекса»
+						Автономная некоммерческая организация <br />дополнительного профессионального образования<br /> 
+						«Южно-окружной центр повышения квалификации и <br /> переподготовки кадров для строительного <br /> 
+						и жилищно-коммунального комплекса»
 					</strong>
 				</p>
-				<p class="center title">
+				<p class="center title title_">
 					    ПРИКАЗ
 				</p>
 				<div class="clearfix" style="margin-top: 20px;">
@@ -51,21 +53,21 @@
 					<tbody>
 						<tr>
 							<td>№ п/п</td>
-							<td>Фамилия, имя, отчество</td>
+							<td><nobr>Фамилия, Имя, Отчество</nobr></td>
 							<td>Наименование программы</td>
 							<td>Рег. №</td>
 						</tr>
 					<?php for($i=0;$i<count($courses);$i++):?>	
 						<tr>
 							<td><?=$i+1;?></td>
-							<td><?=$courses[$i]['lastname'].' '.$courses[$i]['name'].' '.$courses[$i]['middlename'];?></td>
+							<td><?=$courses[$i]['fiodat'];?></td>
 							<td><?=$courses[$i]['ccode'].' '.$courses[$i]['ctitle'];?></td>
 							<td></td>
 						</tr>
 					<?php endfor;?>
 					</tbody>
 				</table>
-				<table class="table">
+				<table class="table no-border">
 					<tbody>
 						<tr>
 							<td>Директор</td>
