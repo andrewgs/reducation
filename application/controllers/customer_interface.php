@@ -353,7 +353,8 @@ class Customer_interface extends CI_Controller{
 				$config['mailtype'] = 'html';
 				
 				$this->email->initialize($config);
-				$this->email->to($_POST['personaemail']);
+				$list = array($_POST['personaemail'],'admin@roscentrdpo.ru');
+				$this->email->to($list);
 				$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
 				$this->email->bcc('');
 				$this->email->subject('Данные для доступа к личному кабинету');

@@ -460,7 +460,8 @@ class Users_interface extends CI_Controller{
 			$config['mailtype'] = 'html';
 			
 			$this->email->initialize($config);
-			$this->email->to($this->session->userdata('personemail'));
+			$list = array($this->session->userdata('personemail'),'admin@roscentrdpo.ru');
+			$this->email->to($list);
 			$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
 			$this->email->bcc('');
 			$this->email->subject('Данные для доступа к личному кабинету');
