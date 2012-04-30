@@ -15,7 +15,7 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label for="paiddoc" class="control-label">Номер документа: </label>
+					<label for="paiddoc" class="control-label">Номер платежного поручения: </label>
 					<div class="controls">
 						<input type="text" id="DocumentValue" class="input-xlarge dhinput" name="paiddoc">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
