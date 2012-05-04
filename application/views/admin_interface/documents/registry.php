@@ -57,11 +57,15 @@
 							<td><?=$i+1;?></td>
 							<td><?=$info[$i]['organization'];?><br/><?=$info[$i]['inn'].'/'.$info[$i]['kpp'];?><br/><?=$info[$i]['uraddress'];?></td>
 							<td><?=$info[$i]['lastname'].' '.$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
-							<td><?=$info[$i]['specialty'];?></td>
+							<td><?=$info[$i]['position'];?></td>
 							<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
 							<td><?=$info[$i]['chours'];?></td>
 							<!--<td><?=$i+1;?></td>-->
-							<td><input type="text" value="" class="inv"></td>
+							<?php if(!empty($info[$i]['docnumber'])):?>
+								<td><?=$info[$i]['docnumber'];?></td>
+							<?php else:?>
+								<td><input type="text" value="<?=$info[$i]['docnumber'];?>" class="inv"></td>	
+							<?endif;?>
 							<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
 							<td><?=$info[$i]['paiddate'];?></td>
 							<td><?=$info[$i]['order'];?></td>
@@ -101,12 +105,12 @@
 						<tr>
 							<td><?=$i+1;?></td>
 							<td><nobr><?=$info[$i]['fiodat'];?></nobr></td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
+							<td><input type="text" value="" class="inv"></td>
+							<td><input type="text" value="" class="inv"></td>
+							<td><input type="text" value="" class="inv"></td>
+							<td><input type="text" value="" class="inv"></td>
+							<td><input type="text" value="" class="inv"></td>
+							<td><input type="text" value="" class="inv"></td>
 							<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
 						</tr>
 					<?php endfor;?>

@@ -1101,9 +1101,6 @@ class Admin_interface extends CI_Controller{
 				$pagevar['info'][$i]['paiddate'] = '---';
 			endif;
 		endfor;
-		
-//		print_r($pagevar['info']);exit;
-		
 		$this->load->view("admin_interface/documents/registry",$pagevar);
 	}
 	
