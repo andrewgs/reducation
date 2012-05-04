@@ -63,7 +63,7 @@
 							<td class="short centerized"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php endif; ?>
 							<td>
-								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-toggle="modal" href="#discount" idcourse=""><i class="icon-pencil icon-white"></i> Скидка</a>
+								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-toggle="modal" href="#discount" idcourse=""><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a>
 							</td>
 						</tr>
 						<?php $num++; ?>
