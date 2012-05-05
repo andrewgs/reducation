@@ -10,7 +10,7 @@
 			<div class="span3">
 				<div id="bt-contacts">
 					<span class="desc">Тел.:</span>
-					<b>(863)</b> 238-53-53
+					<b>(863)</b> 236-53-53
 				</div>
 			</div>			
 		</div>

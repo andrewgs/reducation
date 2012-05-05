@@ -11,15 +11,15 @@
 				<?php
 					if($loginstatus['status'] && $loginstatus['zak']):
 						echo anchor('customer/audience/orders','Личный кабинет', array('class'=>'auth-link'));
-						echo anchor('logoff','Выйти из кабинета', array('class'=>'auth-link'));
+						echo anchor('logoff','Выход', array('class'=>'auth-link'));
 					endif;
 					if($loginstatus['status'] && $loginstatus['slu']):
 						echo anchor('audience/courses/current','Личный кабинет', array('class'=>'auth-link'));
-						echo anchor('logoff','Выйти из кабинета', array('class'=>'auth-link'));
+						echo anchor('logoff','Выход', array('class'=>'auth-link'));
 					endif;
 					if($loginstatus['status'] && $loginstatus['adm']):
 						echo anchor('admin-panel/actions/control','Панель управления', array('class'=>'auth-link'));
-						echo anchor('admin-panel/logoff','Завершить сеанс', array('class'=>'auth-link'));
+						echo anchor('admin-panel/logoff','Выход', array('class'=>'auth-link'));
 					endif;
 				?>
 				</p>
@@ -39,7 +39,7 @@
 			<? endif;?>
 				<div id="top-contacts">
 					<span class="desc">Телефон для справок:</span>
-					<b>(863)</b> 238-53-53
+					<b>(863)</b> 236-53-53
 				</div>			
 			</div>
 		</div>

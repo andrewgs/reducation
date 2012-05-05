@@ -1131,9 +1131,41 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики - Информация',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
+					'readonly'		=> FALSE,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'customer'		=> $this->customersmodel->read_record($this->uri->segment(6))
+					'customer'		=> $this->customersmodel->read_record($this->uri->segment(6)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		if($this->input->post('submit')):
+			$_POST['submit'] = NULL;
+			$this->form_validation->set_rules('organization',' ','required|trim');
+			$this->form_validation->set_rules('inn',' ','required|trim');
+			$this->form_validation->set_rules('kpp',' ','required|trim');
+			$this->form_validation->set_rules('accounttype',' ','required|trim');
+			$this->form_validation->set_rules('accountnumber',' ','required|trim');
+			$this->form_validation->set_rules('bank',' ','required|trim');
+			$this->form_validation->set_rules('accountkornumber',' ','required|trim');
+			$this->form_validation->set_rules('bik',' ','required|trim');
+			$this->form_validation->set_rules('uraddress',' ','required|trim');
+			$this->form_validation->set_rules('postaddress',' ','required|trim');
+			$this->form_validation->set_rules('personemail',' ','required|valid_email|trim');
+			$this->form_validation->set_rules('person',' ','required|trim');
+			$this->form_validation->set_rules('manager',' ','required|trim');
+			$this->form_validation->set_rules('fiomanager',' ','required|trim');
+			$this->form_validation->set_rules('statutory',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
+			else:
+				$this->customersmodel->update_record($this->uri->segment(6),$_POST);
+				$this->session->set_userdata('msgs','Данные сохранены.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
 		$this->load->view("admin_interface/admin-users-customer-info",$pagevar);
 	}
 	

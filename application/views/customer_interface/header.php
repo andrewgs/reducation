@@ -8,7 +8,7 @@
 			<? if($loginstatus['status']):?>
 				<p class="authorized-user">
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
-					<?=anchor('logoff','Завершить сеанс', array('class'=>'auth-link'));?> 
+					<?=anchor('logoff','Выход', array('class'=>'auth-link'));?> 
 				</p>
 			<? endif;?>
 				<div id="top-contacts">
