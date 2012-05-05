@@ -90,7 +90,11 @@
 						</tr>
 						<tr>
 							<td>Юридический адрес:<br/>344001, г.Ростов-на-Дону, ул.Республиканская, 86</td>
-							<td>Юридический адрес:<br/><?=$customer['postaddress'].', '.$customer['uraddress'];?></td>
+							<td>Юридический адрес:<br/><?=$customer['uraddress'];?></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>Почтовый адрес:<br/><?=$customer['postaddress'];?></td>
 						</tr>
 						<tr>
 							<td>e-mail: <?=mailto('roscentrdpo@roscentrdpo.ru');?></td>
