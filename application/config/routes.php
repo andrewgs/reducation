@@ -23,6 +23,7 @@ $route['information'] 					= "users_interface/information";
 
 /******************************************************** CUSTOMER INTRERFACE ***********************************************/
 
+$route['customer/information/start-page']						= "customer_interface/start_page";
 $route['customer/edit/profile']									= "customer_interface/customer_profile";
 $route['customer/registration/audience']						= "customer_interface/registration_audience";
 $route['customer/registration/ordering']						= "customer_interface/registration_ordering";
@@ -87,8 +88,6 @@ $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/
 $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/delete-answer/:num']	= "admin_interface/references_delete_answer";
 
 /*==========================================================  messages  ===================================================*/
-$route['admin-panel/messages/private']			= "admin_interface/private_messages";
-$route['admin-panel/messages/support']			= "admin_interface/support_messages";
 $route['admin-panel/messages/orders/all']		= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/active']	= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/deactive']	= "admin_interface/orders_messages";

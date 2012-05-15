@@ -5,6 +5,7 @@
 			<li class="nav-header">Личный кабинет</li>
 			<li num="list"><?=anchor('customer/audience/list','Список слушателей');?></li>
 			<li class="nav-header">Настройка</li>
+			<li num="start-page"><?=anchor('customer/information/start-page','Начальная страница');?></li>
 			<li num="audience"><?=anchor('customer/registration/audience','Регистрация слушателей');?></li>
 			<li num="ordering"><?=anchor('customer/registration/ordering','Оформление заказа');?></li>
 			<li num="orders"><?=anchor('customer/audience/orders','Мои заказы');?></li>

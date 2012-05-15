@@ -10,14 +10,21 @@
 				<div class="control-group">
 					<label for="discount" class="control-label">Сумма скидки: </label>
 					<div class="controls">
-						<input type="text" id="DiscountValue" class="input-xlarge dhinput" name="discount">
+						<input type="text" id="DiscountValue" class="input-xlarge dhinput digital" name="discount">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
 				<div class="control-group">
 					<label for="paiddoc" class="control-label">Номер платежного поручения: </label>
 					<div class="controls">
-						<input type="text" id="DocumentValue" class="input-xlarge dhinput" name="paiddoc">
+						<input type="text" id="DocumentValue" class="input-xlarge digital" name="paiddoc">
+						<span class="help-inline" style="display:none;">&nbsp;</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label for="paiddate" class="control-label">Дата оплаты: </label>
+					<div class="controls">
+						<input type="text" id="PaidDate" class="input-xlarge dhinput" name="paiddate">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>

@@ -871,10 +871,10 @@ class Admin_interface extends CI_Controller{
 		
 		switch ($this->uri->segment(4)):
 			case 'active' 	:	$pagevar['title'] .= 'Активные заявки';
-								$pagevar['orders'] = $this->unionmodel->read_customer_acticve_orders();
+								$pagevar['orders'] = $this->unionmodel->read_customer_active_orders();
 								break;
 			case 'deactive' :	$pagevar['title'] .= 'Закрытые заявки';
-								$pagevar['orders'] = $this->unionmodel->read_customer_deacticve_orders();
+								$pagevar['orders'] = $this->unionmodel->read_customer_deactive_orders();
 								break;
 			case 'unpaid' :		$pagevar['title'] .= 'Неоплачанные заказы';
 								$pagevar['orders'] = $this->unionmodel->read_customer_orders(0);
@@ -892,11 +892,15 @@ class Admin_interface extends CI_Controller{
 			$this->form_validation->set_rules('order',' ','required|trim');
 			$this->form_validation->set_rules('discount',' ','trim');
 			$this->form_validation->set_rules('paiddoc',' ','trim');
+			$this->form_validation->set_rules('paiddate',' ','trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
 			else:
 				$this->ordersmodel->update_field($_POST['order'],'discount',$_POST['discount']);
 				$this->ordersmodel->update_field($_POST['order'],'docnumber',$_POST['paiddoc']);
+				if(isset($_POST['paiddate'])):
+					$this->ordersmodel->update_field($_POST['order'],'userpaiddate',$_POST['paiddate']);
+				endif;
 				$this->session->set_userdata('msgs','Информация по заказу успешно сохранена.');
 			endif;
 			redirect($this->uri->uri_string());
@@ -905,6 +909,9 @@ class Admin_interface extends CI_Controller{
 		for($i=0;$i<count($pagevar['orders']);$i++):
 			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
 			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+				$pagevar['orders'][$i]['closedate'] = $this->operation_dot_date($pagevar['orders'][$i]['closedate']);
+			endif;
 		endfor;
 		
 		$this->load->view("admin_interface/admin-orders",$pagevar);
@@ -1020,13 +1027,18 @@ class Admin_interface extends CI_Controller{
 	
 	public function statement(){
 		
+		$order = $this->uri->segment(5);
+		
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
 					'title'			=> 'АНО ДПО | Ведомость итог.тестирования',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'courses'		=> $this->unionmodel->read_course_audience_records($this->uri->segment(5))
+					'datebegin'		=> $this->ordersmodel->read_field($order,'userpaiddate'),
+					'dateend'		=> '',
+					'hours'			=> '',
+					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
 		for($i=0;$i<count($pagevar['courses']);$i++):
 			if($pagevar['courses'][$i]['status']):

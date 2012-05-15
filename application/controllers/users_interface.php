@@ -27,14 +27,13 @@ class Users_interface extends CI_Controller{
 					$this->user['uemail'] 			= '';
 					$this->user['utype'] 			= $this->session->userdata('utype');
 					switch ($this->user['utype']):
-					case 'zak': $this->user['fullname'] = $userinfo['organization'];
-								break;
-					case 'slu': $this->user['fullname'] = $userinfo['fullname'];
-								break;
-					case 'adm': $this->user['fullname'] = 'Администратор';
-								break;
+						case 'zak': $this->user['fullname'] = $userinfo['organization'];
+									break;
+						case 'slu': $this->user['fullname'] = $this->audiencemodel->read_full_name($this->user['uid']);
+									break;
+						case 'adm': $this->user['fullname'] = 'Администратор';
+									break;
 					endswitch;
-					$this->user['fullname']			= $userinfo['organization'];
 					$this->loginstatus['status'] 	= TRUE;
 					$this->loginstatus[$this->user['utype']] = TRUE;
 				endif;
@@ -498,7 +497,7 @@ class Users_interface extends CI_Controller{
 			$this->customersmodel->active_user($this->session->userdata('userid'));
 			$this->session->unset_userdata('cuslogin');
 			$this->session->unset_userdata('cuspassword');
-			redirect('customer/registration/audience');
+			redirect('customer/information/start-page');
 		else:
 			redirect('registration/customer');
 		endif;	

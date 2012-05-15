@@ -284,6 +284,7 @@ class Audience_interface extends CI_Controller{
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
 		if($this->input->post('submit')):
+		
 			unset($_POST['submit']);
 			$ttime = $_POST['time'];
 			unset($_POST['time']);
@@ -309,6 +310,12 @@ class Audience_interface extends CI_Controller{
 					$dataresult = serialize($_POST);
 					$id = $this->testresultsmodel->insert_record($course,$this->user['uid'],$order,$customer,$test,$dataresult,$ccanswer);
 					$this->audienceordermodel->update_field($course,'tresid',$id);
+					
+					$cntcurclose = $this->unionmodel->count_deactive_order($order);
+					$cnttotal = $this->audienceordermodel->count_audience_by_order($order);
+					if($cntcurclose == $cnttotal):
+						$this->ordersmodel->update_field($order,'closedate',date("Y-m-d"));
+					endif;
 					redirect('audience/courses/completed');
 				endif;
 			else:

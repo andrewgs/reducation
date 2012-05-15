@@ -8,9 +8,6 @@
 			<li class="nav-header">Справочники</li>
 			<li num="trends"><?=anchor('admin-panel/references/trends','Направления');?></li>
 			<li num="courses"><?=anchor('admin-panel/references/courses','Курсы');?></li>
-			<li class="nav-header">Сообщения</li>
-			<li num="private"><?=anchor('admin-panel/messages/private','Личные сообщения');?></li>
-			<li num="support"><?=anchor('admin-panel/messages/support','Техническая поддержка');?></li>
 			<li class="nav-header">Пользователи</li>
 			<li num="customer"><?=anchor('admin-panel/users/customer','Заказчики');?></li>
 			<li num="audience"><?=anchor('admin-panel/users/audience','Слушатели');?></li>

@@ -16,6 +16,16 @@
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
 				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>№ п\п</th>
+							<th>№ заказа</th>
+							<th>Статус активности</th>
+							<th>Статус оплаты</th>
+							<th>Статус офрмления</th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
 					<tbody>
 					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
 						<tr>
@@ -23,6 +33,11 @@
 							<td>
 							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'],'<strong> №'.$orders[$i]['id'].' от ('.$orders[$i]['orderdate'].')</strong>')?>
 							</td>
+						<?php if($orders[$i]['closedate']!='0000-00-00'):?>
+							<td class="short"><span class="label label-success">Закрыт</span></td>
+						<?php else:?>
+							<td class="short"><span class="label label-important">Открыт</span></td>
+						<?php endif;?>
 						<?php if($orders[$i]['paid']):?>
 							<td class="short"><span class="label label-success">Оплачен</span></td>
 						<?php else:?>

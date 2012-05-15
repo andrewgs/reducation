@@ -116,7 +116,7 @@
 							<tbody>
 							<?php for($j=0;$j<count($course[$i]['audience']);$j++):?>
 								<tr>
-									<td><?=$course[$i]['audience'][$j]['lastname'].' '.$course[$i]['audience'][$j]['name'].' '.$course[$i]['audience'][$j]['middlename'].' ('.$course[$i]['audience'][$j]['specialty'].')';?></td>
+									<td><?=$course[$i]['audience'][$j]['lastname'].' '.$course[$i]['audience'][$j]['name'].' '.$course[$i]['audience'][$j]['middlename'].' ('.$course[$i]['audience'][$j]['position'].')';?></td>
 								<?php if($course[$i]['audience'][$j]['status']):?>
 									<td class="short"><span class="label label-success"><nobr>Завершено</nobr></span></td>
 								<?php else:?>

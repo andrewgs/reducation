@@ -7,12 +7,11 @@ class Ordersmodel extends CI_Model{
     var $customer 	= '';
     var $orderdate  = '';
     var $price  	= 0;
-    var $invoice   	= '';
-    var $contract  	= '';
-    var $act   		= '';
     var $finish		= 0;
     var $paid		= 0;
-    var $paiddate	= 0;
+    var $paiddate	= '';
+    var $userpaiddate= '';
+    var $closedate	= '';
 
     function __construct(){
         parent::__construct();
@@ -24,12 +23,10 @@ class Ordersmodel extends CI_Model{
 		$this->customer	= $customer;
 		$this->orderdate= date("Y-m-d");
 		$this->price 	= 0;
-		$this->invoice 	= '';
-		$this->contract = '';
-		$this->act 		= '';
 		$this->finish	= 0;
 		$this->paid		= 0;
 		$this->paiddate	= '';
+		$this->closedate= '';
 		
 		$this->db->insert('orders',$this);
 		return $this->db->insert_id();
@@ -183,10 +180,13 @@ class Ordersmodel extends CI_Model{
 		$this->db->set('paid',$status);
 		if(!$status):
 			$date = '0000-00-00';
+			$userdate = 'Не оплачен';
 		else:
 			$date = date("Y-m-d");
+			$userdate = date("d m Y");
 		endif;
 		$this->db->set('paiddate',$date);
+		$this->db->set('userpaiddate',$userdate);
 		$this->db->where('id',$id);
 		$this->db->update('orders');
 		return $this->db->affected_rows();

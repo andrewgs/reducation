@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span7">
-				<a href="<?= base_url(); ?>" id="logo">Образовательный портал <br />АНО ДПО <span>Система Дистанционного Образования</span></a>
+				<a href="<?=base_url();?>" id="logo">Образовательный портал <br />АНО ДПО <span>Система Дистанционного Образования</span></a>
 			</div>
 			<div class="span5">
 			<? if($loginstatus['status']):?>
@@ -10,7 +10,7 @@
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
 				<?php
 					if($loginstatus['status'] && $loginstatus['zak']):
-						echo anchor('customer/audience/orders','Личный кабинет', array('class'=>'auth-link'));
+						echo anchor('customer/information/start-page','Личный кабинет', array('class'=>'auth-link'));
 						echo anchor('logoff','Выход', array('class'=>'auth-link'));
 					endif;
 					if($loginstatus['status'] && $loginstatus['slu']):

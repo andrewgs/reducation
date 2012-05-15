@@ -20,7 +20,7 @@
 					<?php for($i=0,$num=1;$i<count($audience);$i++):?>
 						<tr>
 							<td class="short"><?=$num;?></td>
-							<td><?=$audience[$i]['lastname'].' '.$audience[$i]['name'].' '.$audience[$i]['middlename'].' ('.$audience[$i]['specialty'].')';?></td>
+							<td><?=$audience[$i]['lastname'].' '.$audience[$i]['name'].' '.$audience[$i]['middlename'].' ('.$audience[$i]['position'].')';?></td>
 							<td class="short"><?=$audience[$i]['personaphone'];?></td>
 						<?php if($audience[$i]['access']):?>
 							<td class="short"><span class="label label-success">Активный</span></td>

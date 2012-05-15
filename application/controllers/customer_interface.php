@@ -51,6 +51,23 @@ class Customer_interface extends CI_Controller{
 		endif;
 	}
 	
+	public function start_page(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Начальная страница',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		$this->load->view("customer_interface/customer-start-page",$pagevar);
+	}
+	
 	public function customer_profile(){
 		
 		$pagevar = array(
@@ -361,7 +378,7 @@ class Customer_interface extends CI_Controller{
 				$this->email->subject('Данные для доступа к личному кабинету');
 				$this->email->message($mailtext);	
 				$this->email->send();
-				$this->session->set_userdata('msgs','Слушатель добавлен.');
+				$this->session->set_userdata('msgs','Слушатель зарегистрирован.<br/>Вы можете зарегистрировать еще слушателя или приступить к оформлению заказа.<br/>Для этого необходимо перейти по ссылке '.anchor("customer/registration/ordering",'"Оформление заказа"'));
 			endif;
 			redirect($this->uri->uri_string());
 		endif;

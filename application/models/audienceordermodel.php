@@ -124,6 +124,15 @@ class Audienceordermodel extends CI_Model{
 		return NULL;
 	}
 	
+	function count_audience_by_order($order){
+		
+		$query = "SELECT COUNT(id) AS cnt FROM audienceorder WHERE audienceorder.order = $order";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data[0]['cnt'];
+		return NULL;
+	}
+	
 	function over_course($id,$status,$result){
 		
 		$this->db->set('status',$status);

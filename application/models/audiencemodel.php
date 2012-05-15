@@ -37,6 +37,7 @@ class Audiencemodel extends CI_Model{
 		$this->name 			= $data['name'];
 		$this->middlename		= $data['middlename'];
 		$this->fiodat			= $data['fiodat'];
+		$this->position			= $data['position'];
 		$this->address 			= $data['address'];
 		$this->personaemail		= $data['personaemail'];
 		$this->personaphone		= $data['personaphone'];

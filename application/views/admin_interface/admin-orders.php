@@ -29,7 +29,7 @@
 					<thead>
 						<tr>
 							<th>№ заказа</th>
-							<th>Дата создания</th>
+							<th>Заказ создан<br/>Заказ закрыт</th>
 							<th>Заказчик</th>
 							<!--th>Статус</th-->
 							<th>Дата оплаты</th>
@@ -42,13 +42,18 @@
 						<tr>
 							<!--td class="short"><?=$num;?></td-->
 							<td>
-								Заказ №<?=$orders[$i]['id'];?> (<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','Итоговые тесты');?>)<br/>
+								Заказ №<?=$orders[$i]['id'];?><br/><?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','Итоговые тесты');?><br/>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/statement','Ведомость',array('target'=>'_blank'));?><br/>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/completion','Приказ об окончании',array('target'=>'_blank'));?><br/>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/admission','Приказ о зачислении',array('target'=>'_blank'));?><br/>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry','Реестр слушателей',array('target'=>'_blank'));?><br/>
 							</td>
-							<td><?=$orders[$i]['orderdate'];?></td>
+							<td>
+								<?=$orders[$i]['orderdate'];?>
+							<?php if($orders[$i]['closedate'] != '0000-00-00'):?>
+								<br/><?=$orders[$i]['closedate'];?>
+							<?php endif;?>
+							</td>
 							<td><?=$orders[$i]['organization'];?></td>
 						<?php if($orders[$i]['online']):?>
 							<!--td>В сети</td-->
@@ -56,14 +61,14 @@
 							<!--td>Не в сети</td-->
 						<?php endif;?>
 						<?php if($orders[$i]['paid']):?>
-							<td><?=$orders[$i]['paiddate'];?></td>
+							<td class="PaidDate" data-order="<?=$orders[$i]['id'];?>"><?=$orders[$i]['paiddate'];?></td>
 							<td class="short centerized"><input type="checkbox" value="1" checked="checked" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php else:?>
-							<td>Не оплачен</td>
+							<td class="PaidDate" data-order="<?=$orders[$i]['id'];?>">Не оплачен</td>
 							<td class="short centerized"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php endif; ?>
 							<td>
-								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-toggle="modal" href="#discount" idcourse=""><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a>
+								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount" idcourse=""><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a>
 							</td>
 						</tr>
 						<?php $num++; ?>
@@ -80,11 +85,48 @@
 		$(document).ready(function(){
 			$("li[tnum='<?=$this->uri->segment(4);?>']").addClass('active');
 			$(".none").click(function(event){event.preventDefault();});
-			$(".chAccess").click(function(){var check = 0;var order = $(this).attr('data-ord');if($(this).attr("checked") == 'checked'){check = 1;$(".paiddate[data-ord = "+order+"]").html('<?=date("d.m.Y");?>');}else{check = 0;$(".paiddate[data-ord = "+order+"]").html('Не оплачен');}$.post('<?=$baseurl;?>admin-panel/messages/orders/paid-order',{'order': order,'access':check});});
+			$(".chAccess").click(function(){
+				var check = 0;
+				var order = $(this).attr('data-ord');
+				if($(this).attr("checked") == 'checked'){
+					check = 1;
+					$(".discbtn[data-order="+order+"]").attr("data-paiddate",'<?=date("d m Y");?>');
+					$(".PaidDate[data-order="+order+"]").html('<?=date("d.m.Y");?>');
+				}else{
+					check = 0;
+					$(".discbtn[data-order="+order+"]").attr("data-paiddate",'Не оплачен');
+					$(".PaidDate[data-order="+order+"]").html('Не оплачен');
+				}
+				$.post('<?=$baseurl;?>admin-panel/messages/orders/paid-order',{'order': order,'access':check});
+			});
 			$(".discbtn").click(function(){
-				$("#idOrder").val($(this).attr('data-order'));
+				var order = $(this).attr('data-order');
+				$("#idOrder").val(order);
 				$("#DiscountValue").val($(this).attr('data-discountval'));
 				$("#DocumentValue").val($(this).attr('data-docnumber'));
+				if($(".chAccess[data-ord="+order+"]").attr("checked")=="checked"){
+					$("#PaidDate").removeAttr("disabled").removeClass("disabled");
+				}else{
+					$("#PaidDate").attr("disabled","disabled").addClass("disabled");
+				}
+				$("#PaidDate").val($(this).attr('data-paiddate'));
+			});
+			$("#dsend").click(function(event){
+				var err = false;
+				$(".control-group").removeClass('error');
+				$(".help-inline").hide();
+				$(".dhinput").each(function(i,element){
+					if($(this).val()==''){
+						$(this).parents(".control-group").addClass('error');
+						$(this).siblings(".help-inline").html("Поле не может быть пустым").show();
+						err = true;
+					}
+				});
+				if(err){event.preventDefault();}
+			});
+			$("#discount").on("hidden",function(){$("#msgdsalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();});
+			$(".digital").keypress(function(e){
+				if(e.which!=8 && e.which!=46 && e.which!=0 && (e.which<48 || e.which>57)){return false;}
 			});
 		});
 	</script>
