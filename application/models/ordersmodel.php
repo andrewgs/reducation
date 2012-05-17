@@ -39,6 +39,15 @@ class Ordersmodel extends CI_Model{
 		$this->db->update('orders');
 	}
 	
+	function count_orders($customer){
+		
+		$this->db->select('*');
+		$this->db->where('customer',$customer);
+		$query = $this->db->get('orders');
+		$data = $query->result_array();
+		return count($data);
+	}
+	
 	function deactive_status($id){
 		
 		$this->db->set('view',0);

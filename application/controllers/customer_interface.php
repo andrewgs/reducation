@@ -60,6 +60,8 @@ class Customer_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
+					'audience'		=> $this->audiencemodel->count_audience($this->user['uid']),
+					'orders'		=> $this->ordersmodel->count_orders($this->user['uid']),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);

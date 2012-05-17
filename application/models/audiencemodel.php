@@ -66,6 +66,15 @@ class Audiencemodel extends CI_Model{
 		return NULL;
 	}
 	
+	function count_audience($customer){
+		
+		$this->db->select('*');
+		$this->db->where('customer',$customer);
+		$query = $this->db->get('audience');
+		$data = $query->result_array();
+		return count($data);
+	}
+	
 	function read_full_name($id){
 		
 		$this->db->select("concat(lastname,' ',name,' ',middlename) AS fullname",FALSE);
