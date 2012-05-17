@@ -26,14 +26,14 @@
 				</p>
 				<div class="clearfix" style="margin-top: 20px;">
 		  	  		<p class="pull-left">
-						Срок обучения:  с  «__»  ________2012 г <br />
+						Срок обучения:  с  « <u>&nbsp;<?=$datebegin['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$datebegin['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$datebegin['2']?> г. <br />
 		  	  		</p>
 		  	  		<p class="pull-right">
-		  	  			по   «__» _________  2012 г.
+		  	  			по   « <u>&nbsp;<?=$dateend['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$dateend['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$dateend['2']?> г.
 		  	  		</p>
 				</div>
 				<p>
-					Объем ____ час
+					Объем <u>&nbsp;&nbsp;&nbsp;<?=$hours;?>&nbsp;&nbsp;&nbsp;</u> час
 				</p>
 				<p>
 					Комиссия:

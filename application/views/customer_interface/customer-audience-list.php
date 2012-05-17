@@ -37,6 +37,7 @@
 					<?php endfor;?>
 					</tbody>
 				</table>
+				<?=anchor('customer/registration/audience','<i class="icon-plus icon-white"></i> Добавить слушателя',array('class'=>'btn btn-info'));?>
 			</div>
 		<?php $this->load->view('users_interface/rightbarcus');?>
 		</div>

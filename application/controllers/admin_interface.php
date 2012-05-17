@@ -1028,7 +1028,6 @@ class Admin_interface extends CI_Controller{
 	public function statement(){
 		
 		$order = $this->uri->segment(5);
-		
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
@@ -1036,10 +1035,16 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'datebegin'		=> $this->ordersmodel->read_field($order,'userpaiddate'),
-					'dateend'		=> '',
-					'hours'			=> '',
+					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
+					'hours'			=> 0,
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
+		$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		if($pagevar['dateend'] != "0000-00-00"):
+			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
+		else:
+			$pagevar['dateend'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
 		for($i=0;$i<count($pagevar['courses']);$i++):
 			if($pagevar['courses'][$i]['status']):
 				$pagevar['courses'][$i]['dateover'] = $this->operation_date($pagevar['courses'][$i]['dateover']);
@@ -1047,19 +1052,31 @@ class Admin_interface extends CI_Controller{
 				$pagevar['courses'][$i]['dateover'] = 'обучение не пройдено';
 			endif;
 		endfor;
+		if(isset($pagevar['courses'][0]['chours'])):
+			$pagevar['hours'] = $pagevar['courses'][0]['chours'];
+		endif;
 		$this->load->view("admin_interface/documents/statement",$pagevar);
 	}
 	
 	public function completion(){
-		
+		$order = $this->uri->segment(5);
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
 					'title'			=> 'АНО ДПО | Приказ об окончании',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'courses'		=> $this->unionmodel->read_course_audience_records($this->uri->segment(5))
+					'datebegin'		=> $this->ordersmodel->read_field($order,'userpaiddate'),
+					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
+					'hours'			=> 0,
+					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
+		$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		if($pagevar['dateend'] != "0000-00-00"):
+			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
+		else:
+			$pagevar['dateend'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
 		for($i=0;$i<count($pagevar['courses']);$i++):
 			if($pagevar['courses'][$i]['status']):
 				$pagevar['courses'][$i]['dateover'] = $this->operation_date($pagevar['courses'][$i]['dateover']);
@@ -1067,19 +1084,24 @@ class Admin_interface extends CI_Controller{
 				$pagevar['courses'][$i]['dateover'] = 'обучение не пройдено';
 			endif;
 		endfor;
+		if(isset($pagevar['courses'][0]['chours'])):
+			$pagevar['hours'] = $pagevar['courses'][0]['chours'];
+		endif;
 		$this->load->view("admin_interface/documents/completion",$pagevar);
 	}
 	
 	public function admission(){
-		
+		$order = $this->uri->segment(5);
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
 					'title'			=> 'АНО ДПО | Приказ о зачислении',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'courses'		=> $this->unionmodel->read_course_audience_records($this->uri->segment(5))
+					'datebegin'		=> $this->ordersmodel->read_field($order,'userpaiddate'),
+					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
+		$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
 		for($i=0;$i<count($pagevar['courses']);$i++):
 			if($pagevar['courses'][$i]['status']):
 				$pagevar['courses'][$i]['dateover'] = $this->operation_date($pagevar['courses'][$i]['dateover']);
@@ -1092,14 +1114,27 @@ class Admin_interface extends CI_Controller{
 	
 	public function registry(){
 	
+		$order = $this->uri->segment(5);
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
 					'title'			=> 'АНО ДПО | Реестр слушателей',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
+					'datebegin'		=> $this->ordersmodel->read_field($order,'userpaiddate'),
+					'regdateend'	=> '',
+					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
+					'hours'			=> 0,
 					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
+		$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		if($pagevar['dateend'] != "0000-00-00"):
+			$pagevar['regdateend'] = $this->operation_dot_date($pagevar['dateend']);
+			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
+		else:
+			$pagevar['regdateend'] = 'Не завершено';
+			$pagevar['dateend'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
 		for($i=0;$i<count($pagevar['info']);$i++):
 			if($pagevar['info'][$i]['status']):
 				$pagevar['info'][$i]['dateover'] = $this->operation_dot_date($pagevar['info'][$i]['dateover']);
@@ -1113,6 +1148,9 @@ class Admin_interface extends CI_Controller{
 				$pagevar['info'][$i]['paiddate'] = '---';
 			endif;
 		endfor;
+		if(isset($pagevar['courses'][0]['chours'])):
+			$pagevar['hours'] = $pagevar['courses'][0]['chours'];
+		endif;
 		$this->load->view("admin_interface/documents/registry",$pagevar);
 	}
 	
@@ -1318,7 +1356,25 @@ class Admin_interface extends CI_Controller{
 		$replacement = "\$5 $nmonth \$1 г."; 
 		return preg_replace($pattern, $replacement,$field);
 	}
-
+	
+	public function split_date($field){
+			
+		$list = preg_split("/-/",$field);
+		$nmonth = $this->months[$list[1]];
+		$pattern = "/(\d+)(-)(\w+)(-)(\d+)/i";
+		$replacement = "\$5 $nmonth \$1"; 
+		return preg_replace($pattern, $replacement,$field);
+	}
+	
+	public function split_dot_date($field){
+			
+		$list = preg_split("/\./",$field);
+		$nmonth = $this->months[$list[1]];
+		$pattern = "/(\d+)(\.)(\w+)(\.)(\d+)/i";
+		$replacement = "\$1 $nmonth \$5"; 
+		return preg_replace($pattern, $replacement,$field);
+	}
+	
 	public function operation_dot_date($field){
 			
 		$list = preg_split("/-/",$field);

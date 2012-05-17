@@ -192,7 +192,7 @@ class Ordersmodel extends CI_Model{
 			$userdate = 'Не оплачен';
 		else:
 			$date = date("Y-m-d");
-			$userdate = date("d m Y");
+			$userdate = date("d.m.Y");
 		endif;
 		$this->db->set('paiddate',$date);
 		$this->db->set('userpaiddate',$userdate);

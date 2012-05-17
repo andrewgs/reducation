@@ -25,7 +25,7 @@
 				</p>
 				<div class="clearfix" style="margin-top: 20px;">
 		  	  		<p class="pull-left">
-						«____» _________________ 201__ г.
+						« <u>&nbsp;<?=$datebegin['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$datebegin['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$datebegin['2']?> г.
 		  	  		</p>
 		  	  		<p class="pull-right">
 		  	  			№_________________
@@ -40,8 +40,8 @@
 				<p style="margin-top: 20px;">
 					В связи с завершением обучения в АНО ДПО «Южно-окружной центр повышения квалификации» группы слушателей, 
 					скомплектованной в АНО ДПО «Южно-окружной центр повышения квалификации»по программам повышения квалификации 
-					по очно-заочной форме обучения с использованием дистанционных технологий объемом ___ часов в 
-					период с «___»  ___________ по  «____» ____________ 201___ г.
+					по очно-заочной форме обучения с использованием дистанционных технологий объемом <u>&nbsp;&nbsp;&nbsp;<?=$hours;?>&nbsp;&nbsp;&nbsp;</u> часов в 
+					период с « <u>&nbsp;<?=$datebegin['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$datebegin['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$datebegin['2']?> г. по  « <u>&nbsp;<?=$dateend['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$dateend['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$dateend['2']?> г.
 				</p>
 				<p class="center" style="margin: 20px 0;">
 					ПРИКАЗЫВАЮ:

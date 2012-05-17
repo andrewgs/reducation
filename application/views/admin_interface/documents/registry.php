@@ -26,7 +26,7 @@
 				</p>
 				<p class="center">
 					    Сведения о слушателях и выданных удостоверениях <br />
-						за период c «__» ___________ 201_ г. по «__» ___________ 201_ г.
+						за период c « <u>&nbsp;<?=$datebegin['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$datebegin['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$datebegin['2']?> г. по « <u>&nbsp;<?=$dateend['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$dateend['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$dateend['2']?> г.
 				</p>
 				<table class="table table-bordered">
 					<tbody>
@@ -67,13 +67,13 @@
 								<td><input type="text" value="<?=$info[$i]['docnumber'];?>" class="inv"></td>	
 							<?endif;?>
 							<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
-							<td><?=$info[$i]['paiddate'];?></td>
+							<td><?=$info[$i]['userpaiddate'];?></td>
 							<td><?=$info[$i]['order'];?></td>
 							<!--<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>-->
 							<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
 							<td><?=$info[$i]['paiddate'];?></td>
 							<td><input type="text" value="" class="inv"></td>
-							<td><input type="text" value="" class="inv"></td>
+							<td><?=$regdateend;?></td>
 							<td><input type="text" value="" class="inv"></td>
 						</tr>
 					<?php endfor;?>

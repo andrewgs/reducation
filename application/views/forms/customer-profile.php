@@ -1,5 +1,10 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
 	<fieldset>
+	<?php if($readonly):?>
+		<div class="alert alert-info">
+			Вы не можете изменять персональные данные после оформления заказа.<br/>Если вы обнаружили ошибку, то позвоните по контактному телефону и объясните свою проблему.
+		</div>
+	<?php endif;?>
 		<div class="span4" style="margin-left:0px;">
 			<div class="control-group">
 				<label for="organization" class="control-label">Наименование</label>
@@ -119,13 +124,8 @@
 			</div>
 		</div>
 	</fieldset>
+	<?php if(!$readonly):?>
 	<div class="modal-footer">
-		<?php if(!$readonly):?>
-			<button class="btn btn-success" type="submit" id="save" name="submit" value="save"><i class="icon-ok icon-white"></i> Сохранить</button>	
-		<?else:?>
-			<div class="alert alert-info">
-				Вы не можете изменять персональные данные после оформления заказа.<br/>Если вы обнаружили ошибку, то позвоните по контактному телефону и объясните свою проблему.
-			</div>
-		<?php endif;?>
-	</div>
+		<button class="btn btn-success" type="submit" id="save" name="submit" value="save"><i class="icon-ok icon-white"></i> Сохранить</button>	</div>
+	<?php endif;?>
 <?= form_close(); ?>
