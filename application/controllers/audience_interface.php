@@ -314,6 +314,15 @@ class Audience_interface extends CI_Controller{
 					$cntcurclose = $this->unionmodel->count_deactive_order($order);
 					$cnttotal = $this->audienceordermodel->count_audience_by_order($order);
 					if($cntcurclose == $cnttotal):
+						$allcourses = $this->audienceordermodel->read_record_by_order($order);
+						$max_idnumber = $this->audienceordermodel->max_idnumber();
+						for($i=0;$i<count($allcourses);$i++):
+							$max_idnumber++;
+							$max_idnumber = str_pad($max_idnumber,6,"0",STR_PAD_LEFT);
+							$this->audienceordermodel->update_field($allcourses[$i]['id'],'idnumber',$max_idnumber);
+						endfor;
+						$next_numbers = $this->ordersmodel->next_numbers();
+						$this->ordersmodel->update_field($order,'numbercompletion',$next_numbers['completion'].'-О');
 						$this->ordersmodel->update_field($order,'closedate',date("Y-m-d"));
 						
 						ob_start();

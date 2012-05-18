@@ -210,6 +210,5 @@ class Ordersmodel extends CI_Model{
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
 		return NULL;
-		
 	}
 }

@@ -12,6 +12,7 @@ class Audienceordermodel extends CI_Model{
     var $dateover  	= '';
     var $start  	= 0;
     var $tresid  	= 0;
+    var $idnumber  	= 0;
 
     function __construct(){
         parent::__construct();
@@ -130,6 +131,24 @@ class Audienceordermodel extends CI_Model{
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data[0]['cnt'];
+		return NULL;
+	}
+	
+	function read_record_by_order($order){
+		
+		$query = "SELECT id FROM audienceorder WHERE audienceorder.order = $order";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function max_idnumber(){
+		
+		$query = "SELECT MAX(idnumber*1) AS idnumber FROM audienceorder";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0]['idnumber'];
 		return NULL;
 	}
 	

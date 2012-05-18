@@ -1108,7 +1108,11 @@ class Admin_interface extends CI_Controller{
 					'hours'			=> 0,
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
-		$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		if($pagevar['datebegin']!='Не оплачен'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
 		if($pagevar['dateend'] != "0000-00-00"):
 			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
 		else:
@@ -1128,6 +1132,7 @@ class Admin_interface extends CI_Controller{
 	}
 	
 	public function completion(){
+	
 		$order = $this->uri->segment(5);
 		$pagevar = array(
 					'description'	=> '',
@@ -1141,7 +1146,11 @@ class Admin_interface extends CI_Controller{
 					'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
-		$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		if($pagevar['datebegin']!='Не оплачен'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
 		if($pagevar['dateend'] != "0000-00-00"):
 			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
 		else:
@@ -1173,7 +1182,11 @@ class Admin_interface extends CI_Controller{
 					'nplacement'	=> $this->ordersmodel->read_field($order,'numberplacement'),
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
-		$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		if($pagevar['datebegin']!='Не оплачен'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
 		for($i=0;$i<count($pagevar['courses']);$i++):
 			if($pagevar['courses'][$i]['status']):
 				$pagevar['courses'][$i]['dateover'] = $this->operation_date($pagevar['courses'][$i]['dateover']);
@@ -1199,7 +1212,11 @@ class Admin_interface extends CI_Controller{
 					'hours'			=> 0,
 					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
-		$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		if($pagevar['datebegin']!='Не оплачен'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
 		if($pagevar['dateend'] != "0000-00-00"):
 			$pagevar['regdateend'] = $this->operation_dot_date($pagevar['dateend']);
 			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));

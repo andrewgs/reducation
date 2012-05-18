@@ -62,7 +62,7 @@
 							<td><?=$i+1;?></td>
 							<td><?=$courses[$i]['fiodat'];?></td>
 							<td><?=$courses[$i]['ccode'].' '.$courses[$i]['ctitle'];?></td>
-							<td><input type="text" value="" class="inv"></td>
+							<td><?=$courses[$i]['idnumber'];?></td>
 						</tr>
 					<?php endfor;?>
 					</tbody>

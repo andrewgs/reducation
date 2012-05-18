@@ -38,8 +38,7 @@
 						<tr>
 							<td>№</td>
 							<td><nobr>Наименование организации,</nobr><br/><nobr>ННН, КПП, юрид. адрес</nobr></td>
-							<td>Фамилия</td>
-							<td>Имя, Отчество</td>
+							<td>Фамилия, Имя, Отчество</td>
 							<td>Должность</td>
 							<td>Наименование программы</td>
 							<td>Объем учебного плана, час</td>
@@ -57,8 +56,7 @@
 						<tr>
 							<td><?=$i+1;?></td>
 							<td><?=$info[$i]['organization'];?><br/><?=$info[$i]['inn'].'/'.$info[$i]['kpp'];?><br/><?=$info[$i]['uraddress'];?></td>
-							<td><?=$info[$i]['lastname'];?></td>
-							<td><?=$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
+							<td><?=$info[$i]['lastname'].' '.$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
 							<td><?=$info[$i]['position'];?></td>
 							<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
 							<td><?=$info[$i]['chours'];?></td>
@@ -74,9 +72,9 @@
 							<!--<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>-->
 							<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
 							<td><?=$info[$i]['paiddate'];?></td>
-							<td><input type="text" value="" class="inv"></td>
+							<td><?=$info[$i]['idnumber'];?></td>
 							<td><?=$regdateend;?></td>
-							<td><input type="text" value="" class="inv"></td>
+							<td>&nbsp;</td>
 						</tr>
 					<?php endfor;?>
 					</tbody>
@@ -94,7 +92,8 @@
 					<tbody>
 						<tr>
 							<td>№</td>
-							<td><nobr>Фамилия, Имя, Отчество</nobr></td>
+							<td>Фамилия</td>
+							<td><nobr>Имя, Отчество</nobr></td>
 							<td><nobr>Дата с</nobr></td>
 							<td><nobr>Месяц с</nobr></td>
 							<td><nobr>Год с</nobr></td>
@@ -106,7 +105,9 @@
 					<?php for($i=0;$i<count($info);$i++):?>	
 						<tr>
 							<td><?=$i+1;?></td>
-							<td><nobr><?=$info[$i]['fiodat'];?></nobr></td>
+							<?php $fio = preg_split("/[ ]+/",$info[$i]['fiodat']);?>
+							<td><?php if(isset($fio[0])): echo $fio[0]; endif;?></td>
+							<td><?php if(isset($fio[1])&&isset($fio[2])): echo $fio[1].' '.$fio[2]; endif;?></td>
 							<td><input type="text" value="" class="inv"></td>
 							<td><input type="text" value="" class="inv"></td>
 							<td><input type="text" value="" class="inv"></td>
