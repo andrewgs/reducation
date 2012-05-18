@@ -1108,7 +1108,7 @@ class Admin_interface extends CI_Controller{
 					'hours'			=> 0,
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
-		if($pagevar['datebegin']!='Не оплачен'):
+		if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
@@ -1146,7 +1146,7 @@ class Admin_interface extends CI_Controller{
 					'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
-		if($pagevar['datebegin']!='Не оплачен'):
+		if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
@@ -1182,7 +1182,7 @@ class Admin_interface extends CI_Controller{
 					'nplacement'	=> $this->ordersmodel->read_field($order,'numberplacement'),
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
-		if($pagevar['datebegin']!='Не оплачен'):
+		if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
@@ -1212,7 +1212,7 @@ class Admin_interface extends CI_Controller{
 					'hours'			=> 0,
 					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
-		if($pagevar['datebegin']!='Не оплачен'):
+		if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
