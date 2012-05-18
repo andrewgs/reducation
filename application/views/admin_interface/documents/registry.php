@@ -38,7 +38,8 @@
 						<tr>
 							<td>№</td>
 							<td><nobr>Наименование организации,</nobr><br/><nobr>ННН, КПП, юрид. адрес</nobr></td>
-							<td>Фамилия, Имя, Отчество</td>
+							<td>Фамилия</td>
+							<td>Имя, Отчество</td>
 							<td>Должность</td>
 							<td>Наименование программы</td>
 							<td>Объем учебного плана, час</td>
@@ -56,7 +57,8 @@
 						<tr>
 							<td><?=$i+1;?></td>
 							<td><?=$info[$i]['organization'];?><br/><?=$info[$i]['inn'].'/'.$info[$i]['kpp'];?><br/><?=$info[$i]['uraddress'];?></td>
-							<td><?=$info[$i]['lastname'].' '.$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
+							<td><?=$info[$i]['lastname'];?></td>
+							<td><?=$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
 							<td><?=$info[$i]['position'];?></td>
 							<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
 							<td><?=$info[$i]['chours'];?></td>

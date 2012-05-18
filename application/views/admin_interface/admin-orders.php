@@ -42,11 +42,11 @@
 						<tr>
 							<!--td class="short"><?=$num;?></td-->
 							<td>
-								Заказ №<?=$orders[$i]['id'];?><br/><?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','Итоговые тесты');?><br/>
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/statement','Ведомость',array('target'=>'_blank'));?><br/>
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/completion','Приказ об окончании',array('target'=>'_blank'));?><br/>
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/admission','Приказ о зачислении',array('target'=>'_blank'));?><br/>
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry','Реестр слушателей',array('target'=>'_blank'));?><br/>
+								Заказ №<?=$orders[$i]['id'];?>&nbsp;<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?><br/><br/>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/statement','<img src="'.$baseurl.'img/icon/blog-blue.png" />',array('target'=>'_blank','title'=>'Ведомость'));?>&nbsp;
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/completion','<img src="'.$baseurl.'img/icon/document.png" />',array('target'=>'_blank','title'=>'Приказ об окончании'));?>&nbsp;
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/admission','<img src="'.$baseurl.'img/icon/document-bookmark.png" />',array('target'=>'_blank','title'=>'Приказ о зачислении'));?>&nbsp;
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry','<img src="'.$baseurl.'img/icon/document-horizontal-text.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?>
 							</td>
 							<td>
 								<?=$orders[$i]['orderdate'];?>
@@ -61,14 +61,15 @@
 							<!--td>Не в сети</td-->
 						<?php endif;?>
 						<?php if($orders[$i]['paid']):?>
-							<td class="PaidDate" data-order="<?=$orders[$i]['id'];?>"><?=$orders[$i]['paiddate'];?></td>
+							<td class="PaidDate" data-order="<?=$orders[$i]['id'];?>"><?=$orders[$i]['userpaiddate'];?></td>
 							<td class="short centerized"><input type="checkbox" value="1" checked="checked" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php else:?>
 							<td class="PaidDate" data-order="<?=$orders[$i]['id'];?>">Не оплачен</td>
 							<td class="short centerized"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php endif; ?>
 							<td>
-								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount" idcourse=""><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a>
+								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a><br/><br/>
+								<a class="btn btn-success SendMail" data-order="<?=$orders[$i]['id'];?>"><nobr><i class="icon-envelope icon-white"></i> Уведомить&nbsp;</nobr></a>
 							</td>
 						</tr>
 						<?php $num++; ?>
@@ -90,7 +91,7 @@
 				var order = $(this).attr('data-ord');
 				if($(this).attr("checked") == 'checked'){
 					check = 1;
-					$(".discbtn[data-order="+order+"]").attr("data-paiddate",'<?=date("d m Y");?>');
+					$(".discbtn[data-order="+order+"]").attr("data-paiddate",'<?=date("d.m.Y");?>');
 					$(".PaidDate[data-order="+order+"]").html('<?=date("d.m.Y");?>');
 				}else{
 					check = 0;
@@ -110,6 +111,12 @@
 					$("#PaidDate").attr("disabled","disabled").addClass("disabled");
 				}
 				$("#PaidDate").val($(this).attr('data-paiddate'));
+			});
+			$(".SendMail").click(function(){
+				if(!confirm("Отправить уведомление?")) return false;
+				var order = $(this).attr('data-order');
+				var obj = $(this);
+				$.post("<?=$baseurl;?>admin-panel/messages/orders/send-mail",{'order':order},function(data){$(obj).after(data.retvalue);},"json");
 			});
 			$("#dsend").click(function(event){
 				var err = false;

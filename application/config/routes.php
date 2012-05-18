@@ -94,6 +94,7 @@ $route['admin-panel/messages/orders/deactive']	= "admin_interface/orders_message
 $route['admin-panel/messages/orders/sponsored']	= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/unpaid']	= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/paid-order']= "admin_interface/orders_paid";
+$route['admin-panel/messages/orders/send-mail'] = "admin_interface/orders_send_mail";
 
 /*===========================================================  users  =====================================================*/
 $route['admin-panel/users/customer']						= "admin_interface/users_customer";

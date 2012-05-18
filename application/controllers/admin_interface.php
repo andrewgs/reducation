@@ -926,6 +926,43 @@ class Admin_interface extends CI_Controller{
 		$this->ordersmodel->paid_order($order,$access);
 	}
 	
+	public function orders_send_mail(){
+		
+		$statusval = array('retvalue'=>'<font color="#00ff00"><br/>Отправлено</font>','retemail'=>'');
+		$order = $this->input->post('order');
+		if(!$order) show_404();
+		$info = $this->unionmodel->read_customer_info_order($order);
+		ob_start();
+		?>
+		<p>Здравствуйте, <?=$info['organization'];?></p>
+		<p>
+			Вами был произведен платеж по заказу №<?=$order;?><br/>
+			Финансовые средства поступили на наш расчетный счет.<br/>
+			Дата поступления <?=$info['userpaiddate'];?><br/>
+			В связи с этим Вашим слушателям предоставлена возможность проходить обучение</p>
+			
+		<p>Желаем Вам удачи!</p>
+		<?php
+		$mailtext = ob_get_clean();
+		
+		$this->email->clear(TRUE);
+		$config['smtp_host'] = 'localhost';
+		$config['charset'] = 'utf-8';
+		$config['wordwrap'] = TRUE;
+		$config['mailtype'] = 'html';
+		
+		$this->email->initialize($config);
+		$this->email->to($info['personemail']);
+		$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
+		$this->email->bcc('');
+		$this->email->subject('Уведомление о оплате за обучение');
+		$this->email->message($mailtext);	
+		$this->email->send();
+		
+		$statusval['retemail'] = $info['personemail'];
+		echo json_encode($statusval);
+	}
+	
 	/********************************************************* testing ********************************************************/
 	
 	public function orders_testing(){

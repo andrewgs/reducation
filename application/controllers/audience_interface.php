@@ -315,6 +315,29 @@ class Audience_interface extends CI_Controller{
 					$cnttotal = $this->audienceordermodel->count_audience_by_order($order);
 					if($cntcurclose == $cnttotal):
 						$this->ordersmodel->update_field($order,'closedate',date("Y-m-d"));
+						
+						ob_start();
+						?>
+						<p>
+							Заказ №<?=$order;?> закрылся.<br/>
+							Дата закрытия: <?=date("d.m.Y");?></p>
+						<?php
+						$mailtext = ob_get_clean();
+						
+						$this->email->clear(TRUE);
+						$config['smtp_host'] = 'localhost';
+						$config['charset'] = 'utf-8';
+						$config['wordwrap'] = TRUE;
+						$config['mailtype'] = 'html';
+						
+						$this->email->initialize($config);
+						$this->email->to('info@roscentrpdo.ru');
+						$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
+						$this->email->bcc('');
+						$this->email->subject("Заказ №".$order." закрылся.");
+						$this->email->message($mailtext);	
+						$this->email->send();
+						
 					endif;
 					redirect('audience/courses/completed');
 				endif;

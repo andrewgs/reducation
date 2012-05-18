@@ -161,7 +161,7 @@ class Unionmodel extends CI_Model{
 
 	function read_customer_orders($status){
 		
-		$query = "SELECT orders.*,customers.organization,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.paid = $status ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.paid = $status ORDER BY orders.orderdate DESC,orders.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
@@ -170,7 +170,7 @@ class Unionmodel extends CI_Model{
 	
 	function read_customer_deactive_orders(){
 		
-		$query = "SELECT orders.*,customers.organization,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 60 AND orders.closedate != '0000-00-00' GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 60 AND orders.closedate != '0000-00-00' GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
@@ -188,7 +188,7 @@ class Unionmodel extends CI_Model{
 	
 	function read_customer_active_orders(){
 		
-		$query = "SELECT orders.*,customers.organization,customers.online,audiencetest.id AS audid FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND (audiencetest.result < 60 || orders.closedate = '0000-00-00') GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online,audiencetest.id AS audid FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND (audiencetest.result < 60 || orders.closedate = '0000-00-00') GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
@@ -197,10 +197,19 @@ class Unionmodel extends CI_Model{
 	
 	function read_customer_all_orders(){
 		
-		$query = "SELECT orders.*,customers.organization,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function read_customer_info_order($order){
+		
+		$query = "SELECT organization,personemail,userpaiddate FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.id = $order";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0];
 		return NULL;
 	}
 	

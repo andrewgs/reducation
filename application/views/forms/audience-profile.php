@@ -78,19 +78,19 @@
 			<div class="control-group">
 				<label for="documentnumber" class="control-label"><strong>Номер выданного<br/>документа</strong></label>
 				<div class="controls">
-					<span class="help-inline"><?=$audience['graduated'];?></span>
+					<span class="help-inline"><?=$audience['documentnumber'];?></span>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="specialty" class="control-label"><strong>Специальность</strong></label>
 				<div class="controls">
-					<span class="help-inline"><?=$audience['documentnumber'];?></span>
+					<span class="help-inline"><?=$audience['specialty'];?></span>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="qualification" class="control-label"><strong>Квалификация</strong></label>
 				<div class="controls">
-					<span class="help-inline"><?=$audience['specialty'];?></span>
+					<span class="help-inline"><?=$audience['qualification'];?></span>
 				</div>
 			</div>
 			<hr/>

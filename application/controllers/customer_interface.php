@@ -345,7 +345,6 @@ class Customer_interface extends CI_Controller{
 				$user = $this->audiencemodel->read_email_records($_POST['personaemail']);
 				if($user):
 					$this->session->set_userdata('msgr','Внимание. E-mail: '.$_POST['personaemail'].' уже существует!');
-//					redirect($this->uri->uri_string());
 				endif;
 				$id = $this->audiencemodel->insert_record($this->user['uid'],$_POST);
 				$login = 'slu_'.$id;
