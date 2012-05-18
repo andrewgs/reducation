@@ -88,13 +88,18 @@ $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/
 $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/delete-answer/:num']	= "admin_interface/references_delete_answer";
 
 /*==========================================================  messages  ===================================================*/
-$route['admin-panel/messages/orders/all']		= "admin_interface/orders_messages";
-$route['admin-panel/messages/orders/active']	= "admin_interface/orders_messages";
-$route['admin-panel/messages/orders/deactive']	= "admin_interface/orders_messages";
-$route['admin-panel/messages/orders/sponsored']	= "admin_interface/orders_messages";
-$route['admin-panel/messages/orders/unpaid']	= "admin_interface/orders_messages";
-$route['admin-panel/messages/orders/paid-order']= "admin_interface/orders_paid";
-$route['admin-panel/messages/orders/send-mail'] = "admin_interface/orders_send_mail";
+$route['admin-panel/messages/orders/all']					= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/all/:num']					= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/active']				= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/active/:num']		= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/deactive']				= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/deactive/:num']	= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/sponsored']				= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/sponsored/:num']	= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/unpaid']				= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/unpaid/:num']		= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/paid-order']			= "admin_interface/orders_paid";
+$route['admin-panel/messages/orders/send-mail'] 			= "admin_interface/orders_send_mail";
 
 /*===========================================================  users  =====================================================*/
 $route['admin-panel/users/customer']						= "admin_interface/users_customer";

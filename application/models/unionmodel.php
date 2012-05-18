@@ -159,21 +159,39 @@ class Unionmodel extends CI_Model{
 		return NULL;
 	}
 
-	function read_customer_orders($status){
+	function read_customer_orders($status,$count,$from){
 		
-		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.paid = $status ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.paid = $status ORDER BY orders.orderdate DESC,orders.id DESC LIMIT $from,$count";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
 		return NULL;
 	}
 	
-	function read_customer_deactive_orders(){
+	function count_customer_orders($status){
+		
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.paid = $status ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return count($data);
+		return NULL;
+	}
+	
+	function read_customer_deactive_orders($count,$from){
+		
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 60 AND orders.closedate != '0000-00-00' GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC LIMIT $from,$count";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function count_customer_deactive_orders(){
 		
 		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 60 AND orders.closedate != '0000-00-00' GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
-		if(count($data)) return $data;
+		if(count($data)) return count($data);
 		return NULL;
 	}
 	
@@ -186,21 +204,39 @@ class Unionmodel extends CI_Model{
 		return NULL;
 	}
 	
-	function read_customer_active_orders(){
+	function read_customer_active_orders($count,$from){
 		
-		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online,audiencetest.id AS audid FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND (audiencetest.result < 60 || orders.closedate = '0000-00-00') GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online,audiencetest.id AS audid FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND (audiencetest.result < 60 || orders.closedate = '0000-00-00') GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC LIMIT $from,$count";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
 		return NULL;
 	}
 	
-	function read_customer_all_orders(){
+	function count_customer_active_orders(){
+		
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online,audiencetest.id AS audid FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND (audiencetest.result < 60 || orders.closedate = '0000-00-00') GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return count($data);
+		return NULL;
+	}
+	
+	function read_customer_all_orders($count,$from){
+		
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC LIMIT $from,$count";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function count_customer_all_orders(){
 		
 		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
-		if(count($data)) return $data;
+		if(count($data)) return count($data);
 		return NULL;
 	}
 	
