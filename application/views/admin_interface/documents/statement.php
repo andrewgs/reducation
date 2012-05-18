@@ -72,7 +72,7 @@
 							<td><?=$i+1;?></td>
 							<td><?=$courses[$i]['lastname'].' '.$courses[$i]['name'].' '.$courses[$i]['middlename'];?></td>
 							<td><?=$courses[$i]['ccode'].' '.$courses[$i]['ctitle'];?></td>
-							<td><?=$courses[$i]['dateover'];?></td>
+							<td><nobr><?=$courses[$i]['dateover'];?></nobr></td>
 							<td><?=$courses[$i]['result'];?></td>
 						</tr>
 					<?php endfor;?>

@@ -28,7 +28,7 @@
 						« <u>&nbsp;<?=$datebegin['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$datebegin['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$datebegin['2']?> г.
 		  	  		</p>
 		  	  		<p class="pull-right">
-		  	  			№_________________
+		  	  			№ <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$nplacement;?>&nbsp;&nbsp;&nbsp;&nbsp;</u>
 		  	  		</p>
 				</div>
 				<p class="center">

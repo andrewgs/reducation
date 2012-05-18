@@ -29,6 +29,21 @@
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
+				<div class="control-group">
+					<label for="numberplacement" class="control-label">Номер приказа на зачисление: </label>
+					<div class="controls">
+						<input type="text" id="NumberPlacement" class="input-xlarge" name="numberplacement">
+						<p class="help-block">Если Вы только что произвели оплату<br/>обновите страницу для изменения номера приказа</p>
+						<span class="help-inline" style="display:none;">&nbsp;</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label for="numbercompletion" class="control-label">Номер приказа на закрытие: </label>
+					<div class="controls">
+						<input type="text" id="NumberCompletion" class="input-xlarge" name="numbercompletion">
+						<span class="help-inline" style="display:none;">&nbsp;</span>
+					</div>
+				</div>
 			</fieldset>
 		</div>
 		<div class="modal-footer">

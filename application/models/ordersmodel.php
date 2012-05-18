@@ -2,16 +2,18 @@
 
 class Ordersmodel extends CI_Model{
 
-    var $id   		= 0;
-    var $trend 		= 0;
-    var $customer 	= '';
-    var $orderdate  = '';
-    var $price  	= 0;
-    var $finish		= 0;
-    var $paid		= 0;
-    var $paiddate	= '';
-    var $userpaiddate= '';
-    var $closedate	= '';
+    var $id   				= 0;
+    var $trend 				= 0;
+    var $customer 			= '';
+    var $orderdate  		= '';
+    var $price  			= 0;
+    var $finish				= 0;
+    var $paid				= 0;
+    var $paiddate			= '';
+    var $userpaiddate		= '';
+    var $closedate			= '';
+    var $numberplacement	= '';
+    var $numbercompletion	= '';
 
     function __construct(){
         parent::__construct();
@@ -199,5 +201,15 @@ class Ordersmodel extends CI_Model{
 		$this->db->where('id',$id);
 		$this->db->update('orders');
 		return $this->db->affected_rows();
+	}
+
+	function next_numbers(){
+		
+		$query = "SELECT MAX(numbercompletion*1)+1 AS completion, MAX(numberplacement*1)+1 AS placement FROM orders";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0];
+		return NULL;
+		
 	}
 }

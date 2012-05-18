@@ -68,7 +68,7 @@
 							<td class="short centerized"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php endif; ?>
 							<td>
-								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a><br/><br/>
+								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a><br/><br/>
 								<a class="btn btn-success SendMail" data-order="<?=$orders[$i]['id'];?>"><nobr><i class="icon-envelope icon-white"></i> Уведомить&nbsp;</nobr></a>
 							</td>
 						</tr>
@@ -108,6 +108,8 @@
 				$("#idOrder").val(order);
 				$("#DiscountValue").val($(this).attr('data-discountval'));
 				$("#DocumentValue").val($(this).attr('data-docnumber'));
+				$("#NumberPlacement").val($(this).attr('data-placement'));
+				$("#NumberCompletion").val($(this).attr('data-completion'));
 				if($(".chAccess[data-ord="+order+"]").attr("checked")=="checked"){
 					$("#PaidDate").removeAttr("disabled").removeClass("disabled");
 				}else{
