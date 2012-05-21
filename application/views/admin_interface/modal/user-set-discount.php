@@ -24,7 +24,7 @@
 				<div class="control-group">
 					<label for="paiddate" class="control-label">Дата оплаты: </label>
 					<div class="controls">
-						<input type="text" id="PaidDate" class="input-xlarge dhinput" name="paiddate">
+						<input type="text" id="PaidDate" class="input-xlarge" name="paiddate">
 						<p class="help-block">Например: 01.01.2012</p>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>

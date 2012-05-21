@@ -943,6 +943,96 @@ class Admin_interface extends CI_Controller{
 		$this->load->view("admin_interface/admin-orders",$pagevar);
 	}
 	
+	public function orders_search(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Поиск заказа',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'orders'		=> array(),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		if($this->uri->total_segments() == 5):
+			$sessiondata = array('srhorder'=>'','nborder'=>'','customer'=>'','nbpaiddoc'=>'','nbadmission'=>'','nbcompletion'=>'','paidorder'=>'','activeorder'=>'');
+			$this->session->unset_userdata($sessiondata);
+			redirect('admin-panel/messages/search/orders');
+		endif;
+		
+		$srcorder = $this->session->userdata('srhorder');
+		if($srcorder):
+			$sessdata = $this->session->all_userdata();
+			$pagevar['orders'] = $this->unionmodel->read_customer_search_orders($sessdata['nborder'],$sessdata['customer'],$sessdata['nbpaiddoc'],$sessdata['nbadmission'],$sessdata['nbcompletion'],$sessdata['paidorder'],$sessdata['activeorder']);
+			if(!count($pagevar['orders'])):
+				$this->session->set_userdata('msgr','Заказов не найдено.');
+				$this->session->set_userdata('srhorder',FALSE);
+				redirect('admin-panel/messages/search/orders');
+			endif;
+			for($i=0;$i<count($pagevar['orders']);$i++):
+				$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
+				$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+				if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+					$pagevar['orders'][$i]['closedate'] = $this->operation_dot_date($pagevar['orders'][$i]['closedate']);
+				endif;
+			endfor;
+		endif;
+		
+		if($this->input->post('dsubmit')):
+			$_POST['dsubmit'] = NULL;
+			$this->form_validation->set_rules('order',' ','required|trim');
+			$this->form_validation->set_rules('discount',' ','trim');
+			$this->form_validation->set_rules('paiddoc',' ','trim');
+			$this->form_validation->set_rules('paiddate',' ','trim');
+			$this->form_validation->set_rules('numberplacement',' ','trim');
+			$this->form_validation->set_rules('numbercompletion',' ','trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				$this->ordersmodel->update_field($_POST['order'],'discount',$_POST['discount']);
+				$this->ordersmodel->update_field($_POST['order'],'docnumber',$_POST['paiddoc']);
+				$this->ordersmodel->update_field($_POST['order'],'numberplacement',$_POST['numberplacement']);
+				$this->ordersmodel->update_field($_POST['order'],'numbercompletion',$_POST['numbercompletion']);
+				if(isset($_POST['paiddate'])):
+					$this->ordersmodel->update_field($_POST['order'],'userpaiddate',$_POST['paiddate']);
+				endif;
+				$this->session->set_userdata('msgs','Информация по заказу успешно сохранена.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
+		if($this->input->post('submit')):
+			$_POST['submit'] = NULL;
+			$this->form_validation->set_rules('nborder',' ','trim');
+			$this->form_validation->set_rules('customer',' ','trim');
+			$this->form_validation->set_rules('nbpaiddoc',' ','trim');
+			$this->form_validation->set_rules('nbadmission',' ','trim');
+			$this->form_validation->set_rules('nbcompletion',' ','trim');
+			$this->form_validation->set_rules('paidorder',' ','trim');
+			$this->form_validation->set_rules('activeorder',' ','trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при поиске.');
+			else:
+				if(!isset($_POST['paidorder'])):
+					$_POST['paidorder'] = 0;
+				endif;
+				if(!isset($_POST['activeorder'])):
+					$_POST['activeorder'] = 0;
+				endif;
+				$sessiondata = array('srhorder'=>TRUE,'nborder'=>$_POST['nborder'],'customer'=>$_POST['customer'],'nbpaiddoc'=>$_POST['nbpaiddoc'],'nbadmission'=>$_POST['nbadmission'],'nbcompletion'=>$_POST['nbcompletion'],'paidorder'=>$_POST['paidorder'],'activeorder'=>$_POST['activeorder']);
+				$this->session->set_userdata($sessiondata);
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
+		$this->load->view("admin_interface/admin-orders-search",$pagevar);
+	}
+	
 	public function orders_paid(){
 	
 		$order = $this->input->post('order');

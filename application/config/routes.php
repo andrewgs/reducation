@@ -88,6 +88,9 @@ $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/
 $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/delete-answer/:num']	= "admin_interface/references_delete_answer";
 
 /*==========================================================  messages  ===================================================*/
+$route['admin-panel/messages/search/orders']					= "admin_interface/orders_search";
+$route['admin-panel/messages/search/orders/new-search']			= "admin_interface/orders_search";
+
 $route['admin-panel/messages/orders/all']					= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/all/:num']					= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/active']				= "admin_interface/orders_messages";

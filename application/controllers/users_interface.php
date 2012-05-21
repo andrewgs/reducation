@@ -55,7 +55,7 @@ class Users_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr'),
 					'msgauth'		=> $this->session->userdata('msgauth')

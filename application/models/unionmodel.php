@@ -257,4 +257,25 @@ class Unionmodel extends CI_Model{
 		if(count($data)) return $data;
 		return NULL;
 	}
+
+	
+	function read_customer_search_orders($nborder,$customer,$nbpaiddoc,$nbplacement,$nbcompletion,$paidorder,$activeorder){
+		
+		
+		$ord = (!empty($nborder)) ? "orders.id = $nborder" : "TRUE";
+		$org = (!empty($customer)) ? "customers.organization LIKE '%$customer%'" : "TRUE";
+		$nplac = (!empty($nbplacement)) ? "orders.numberplacement LIKE '%$nbplacement%'" : "TRUE";
+		$ncomp = (!empty($nbcompletion)) ? "orders.numbercompletion LIKE '%$nbcompletion%'" : "TRUE";
+		$npd = (!empty($nbpaiddoc)) ? "orders.docnumber = $nbpaiddoc" : "TRUE";
+		$porder = ($paidorder) ? "orders.paid = 1" : "orders.paid = 0";
+		$aorder = ($activeorder) ? "orders.closedate = '0000-00-00'" : "orders.closedate != '0000-00-00'";
+		
+		$query = "SELECT orders.*,customers.organization,customers.personemail,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE $ord AND $org AND $npd AND $nplac AND $ncomp AND $porder AND $aorder GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
+//		print_r($query);exit;
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
 }

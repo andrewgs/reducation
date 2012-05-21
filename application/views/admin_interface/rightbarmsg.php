@@ -13,6 +13,7 @@
 			<li num="audience"><?=anchor('admin-panel/users/audience','Слушатели');?></li>
 			<li class="nav-header">Действия</li>
 			<li><?=anchor('','Главная');?></li>
+			<li num="search"><?=anchor('admin-panel/messages/search/orders/new-search','Поиск заказа');?></li>
 			<li num="orders"><?=anchor('admin-panel/messages/orders/unpaid','Заказы');?></li>
 			<li num="control"><?=anchor('admin-panel/actions/control','Панель управления');?></li>
 			<li num="cabinet"><?=anchor('admin-panel/actions/cabinet','Личный кабинет');?></li>
