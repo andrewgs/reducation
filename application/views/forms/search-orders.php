@@ -36,19 +36,6 @@
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
-			<div class="control-group">
-				<label for="paidorder" class="control-label">Статус заказа: </label>
-				<div class="controls">
-					<label class="checkbox">
-						<input type="checkbox" value="1" id="paidorder" name="paidorder">
-						Оплачен
-					</label>
-					<label class="checkbox">
-						<input type="checkbox" value="1" id="activeorder" name="activeorder">
-						Активный
-					</label>
-				</div>
-			</div>
 		</div>
 	</fieldset>
 	<div class="modal-footer">

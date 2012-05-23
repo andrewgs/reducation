@@ -960,7 +960,7 @@ class Admin_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		
 		if($this->uri->total_segments() == 5):
-			$sessiondata = array('srhorder'=>'','nborder'=>'','customer'=>'','nbpaiddoc'=>'','nbadmission'=>'','nbcompletion'=>'','paidorder'=>'','activeorder'=>'');
+			$sessiondata = array('srhorder'=>'','nborder'=>'','customer'=>'','nbpaiddoc'=>'','nbadmission'=>'','nbcompletion'=>'');
 			$this->session->unset_userdata($sessiondata);
 			redirect('admin-panel/messages/search/orders');
 		endif;
@@ -968,7 +968,7 @@ class Admin_interface extends CI_Controller{
 		$srcorder = $this->session->userdata('srhorder');
 		if($srcorder):
 			$sessdata = $this->session->all_userdata();
-			$pagevar['orders'] = $this->unionmodel->read_customer_search_orders($sessdata['nborder'],$sessdata['customer'],$sessdata['nbpaiddoc'],$sessdata['nbadmission'],$sessdata['nbcompletion'],$sessdata['paidorder'],$sessdata['activeorder']);
+			$pagevar['orders'] = $this->unionmodel->read_customer_search_orders($sessdata['nborder'],$sessdata['customer'],$sessdata['nbpaiddoc'],$sessdata['nbadmission'],$sessdata['nbcompletion']);
 			if(!count($pagevar['orders'])):
 				$this->session->set_userdata('msgr','Заказов не найдено.');
 				$this->session->set_userdata('srhorder',FALSE);
@@ -1013,18 +1013,10 @@ class Admin_interface extends CI_Controller{
 			$this->form_validation->set_rules('nbpaiddoc',' ','trim');
 			$this->form_validation->set_rules('nbadmission',' ','trim');
 			$this->form_validation->set_rules('nbcompletion',' ','trim');
-			$this->form_validation->set_rules('paidorder',' ','trim');
-			$this->form_validation->set_rules('activeorder',' ','trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при поиске.');
 			else:
-				if(!isset($_POST['paidorder'])):
-					$_POST['paidorder'] = 0;
-				endif;
-				if(!isset($_POST['activeorder'])):
-					$_POST['activeorder'] = 0;
-				endif;
-				$sessiondata = array('srhorder'=>TRUE,'nborder'=>$_POST['nborder'],'customer'=>$_POST['customer'],'nbpaiddoc'=>$_POST['nbpaiddoc'],'nbadmission'=>$_POST['nbadmission'],'nbcompletion'=>$_POST['nbcompletion'],'paidorder'=>$_POST['paidorder'],'activeorder'=>$_POST['activeorder']);
+				$sessiondata = array('srhorder'=>TRUE,'nborder'=>$_POST['nborder'],'customer'=>$_POST['customer'],'nbpaiddoc'=>$_POST['nbpaiddoc'],'nbadmission'=>$_POST['nbadmission'],'nbcompletion'=>$_POST['nbcompletion']);
 				$this->session->set_userdata($sessiondata);
 			endif;
 			redirect($this->uri->uri_string());
