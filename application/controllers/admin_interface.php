@@ -1185,13 +1185,18 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО | Ведомость итог.тестирования',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'datebegin'		=> $this->ordersmodel->read_field($order,'userpaiddate'),
+					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
 					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
 					'hours'			=> 0,
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
-		if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
+		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;*/
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
 		endif;
@@ -1222,14 +1227,19 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО | Приказ об окончании',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'datebegin'		=> $this->ordersmodel->read_field($order,'userpaiddate'),
+					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
 					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
 					'hours'			=> 0,
 					'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
-		if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
+		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;*/
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
 		endif;
@@ -1260,12 +1270,17 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО | Приказ о зачислении',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'datebegin'		=> $this->ordersmodel->read_field($order,'userpaiddate'),
+					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
 					'nplacement'	=> $this->ordersmodel->read_field($order,'numberplacement'),
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
 			);
-		if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
+		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;*/
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
 		endif;
@@ -1288,14 +1303,19 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО | Реестр слушателей',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
-					'datebegin'		=> $this->ordersmodel->read_field($order,'userpaiddate'),
+					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
 					'regdateend'	=> '',
 					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
 					'hours'			=> 0,
 					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
-		if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
+		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;*/
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
 		endif;

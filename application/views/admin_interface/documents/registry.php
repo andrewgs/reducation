@@ -71,7 +71,7 @@
 							<td><?=$info[$i]['order'];?></td>
 							<!--<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>-->
 							<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
-							<td><?=$info[$i]['paiddate'];?></td>
+							<td><?=$info[$i]['orderdate'];?></td>
 							<td><?=$info[$i]['idnumber'];?></td>
 							<td><?=$regdateend;?></td>
 							<td>&nbsp;</td>
