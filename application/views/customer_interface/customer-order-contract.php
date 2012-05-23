@@ -221,8 +221,10 @@
 					<table class="table no-border">
 						<tbody>
 							<tr>
-								<td>Заместитель директора</td>
-								<td>Климова О.В.</td>
+								<td width="25%">Заместитель директора</td>
+								<td width="25%">Климова О.В.</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 							</tr>
 						</tbody>
 					</table>
