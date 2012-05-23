@@ -25,7 +25,7 @@
 				</p>
 				<div class="clearfix" style="margin-top: 20px;">
 		  	  		<p class="pull-left">
-						« <u>&nbsp;<?=$datebegin['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$datebegin['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$datebegin['2']?> г.
+						« <u>&nbsp;<?=$dateend['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$dateend['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$dateend['2']?> г.
 		  	  		</p>
 		  	  		<p class="pull-right">
 		  	  			№ <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$ncompletion;?>&nbsp;&nbsp;&nbsp;&nbsp;</u>

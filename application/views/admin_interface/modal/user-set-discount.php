@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label for="numbercompletion" class="control-label">Номер приказа на закрытие: </label>
+					<label for="numbercompletion" class="control-label">Номер приказа о окончании: </label>
 					<div class="controls">
 						<input type="text" id="NumberCompletion" class="input-xlarge" name="numbercompletion">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
