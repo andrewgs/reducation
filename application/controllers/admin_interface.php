@@ -1314,6 +1314,11 @@ class Admin_interface extends CI_Controller{
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
 		endif;*/
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
 		if($pagevar['dateend'] != "0000-00-00"):
 			$pagevar['regdateend'] = $this->operation_dot_date($pagevar['dateend']);
 			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
