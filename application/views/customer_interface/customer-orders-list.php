@@ -11,6 +11,11 @@
 						<?=anchor($this->uri->uri_string(),'Мои заказы');?>
 					</li>
 				</ul>
+				<div class="alert alert-info" id="msgialert">
+					<a class="close" id="msgiclose">×</a>
+					<h4 class="alert-heading">Информация</h4>
+					Ниже находятся список Ваших заказов.<br/>Для подробного просмотра информации и доступа к документам нажмите на номер заказа.
+				</div>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>

@@ -27,8 +27,8 @@ class Ordersmodel extends CI_Model{
 		$this->price 	= 0;
 		$this->finish	= 0;
 		$this->paid		= 0;
-		$this->paiddate	= '';
-		$this->closedate= '';
+		$this->paiddate	= '0000-00-00';
+		$this->closedate= '0000-00-00';
 		
 		$this->db->insert('orders',$this);
 		return $this->db->insert_id();

@@ -6,6 +6,7 @@ class Customersmodel extends CI_Model {
 	var $login			= '';
 	var $password		= '';
 	var $organization	= '';
+	var $phones			= '';
 	var $inn			= '';
 	var $kpp			= '';
 	var $uraddress		= '';
@@ -34,6 +35,7 @@ class Customersmodel extends CI_Model {
 		$this->login 			= '';
 		$this->password			= '';
 		$this->organization 	= $data['organization'];
+		$this->phones 			= $data['phones'];
 		$this->inn 				= $data['inn'];
 		$this->kpp				= $data['kpp'];
 		$this->uraddress		= $data['uraddress'];
@@ -91,7 +93,8 @@ class Customersmodel extends CI_Model {
 	
 	function update_record($id,$data){
 		
-		$this->db->set('organization',htmlspecialchars($data['organization']));
+		$this->db->set('organization',$data['organization']);
+		$this->db->set('phones',$data['phones']);
 		$this->db->set('inn',$data['inn']);
 		$this->db->set('kpp',$data['kpp']);
 		$this->db->set('uraddress',strip_tags($data['uraddress']));
