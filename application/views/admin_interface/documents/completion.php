@@ -52,10 +52,10 @@
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<td>№ п/п</td>
+							<td><nobr>№ п/п</nobr></td>
 							<td><nobr>Фамилия, Имя, Отчество</nobr></td>
-							<td>Наименование программы</td>
-							<td>Рег. №</td>
+							<td><nobr>Наименование программы<nobr></td>
+							<td><nobr>Рег. №</nobr></td>
 						</tr>
 					<?php for($i=0;$i<count($courses);$i++):?>	
 						<tr>
