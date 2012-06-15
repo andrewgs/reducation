@@ -35,8 +35,14 @@
 						    Сведения о слушателях и выданных удостоверениях <br />
 							за период c « <u>&nbsp;<?=$datebegin['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$datebegin['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$datebegin['2']?> г. по « <u>&nbsp;<?=$dateend['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$dateend['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$dateend['2']?> г.
 					</p>
+					<span style="margin-left:900px;">
 					<table class="table table-bordered">
 						<tbody>
+							<tr>
+								<td colspan="9">&nbsp;</td>
+								<td colspan="3" style="text-align:center;">&nbsp;</td>
+								<td colspan="3" style="text-align:center;"><b>Группа № <u>&nbsp;<?=$this->uri->segment(5);?>&nbsp;</u></b></td>
+							</tr>
 							<tr>
 								<td colspan="9"></td>
 								<td colspan="3" style="text-align:center;">Договор</td>

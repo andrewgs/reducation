@@ -14,6 +14,9 @@
 		<div class="row">
 			<div class="span12">
 				<p class="center title_">
+					<img src="<?=$baseurl;?>img/logo.jpg" alt="" width="400" height="129"/>
+				</p>
+				<p class="center title_">
 					<strong>
 						Автономная некоммерческая организация <br />дополнительного профессионального образования<br /> 
 						«Южно-окружной центр повышения квалификации и <br /> переподготовки кадров для строительного <br /> 
@@ -31,9 +34,6 @@
 		  	  			№ <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$nplacement;?>&nbsp;&nbsp;&nbsp;&nbsp;</u>
 		  	  		</p>
 				</div>
-				<p class="center">
-             		г.Ростов-на-Дону
-             	</p>
              	<p class="center" style="margin-top: 20px;">
                 	<strong>О зачислении слушателей на обучение в АНО ДПО «Южно-окружной центр <br />повышения квалификации»</strong>
                 </p>

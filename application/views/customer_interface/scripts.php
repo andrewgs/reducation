@@ -5,4 +5,5 @@
 	$("li[num='<?=$this->uri->segment(3);?>']").addClass('active');
 	$("#msgeclose").click(function(){$("#msgdealert").fadeOut(1000,function(){$(this).remove();});});
 	$("#msgsclose").click(function(){$("#msgdsalert").fadeOut(1000,function(){$(this).remove();});});
+	$("#msgiclose").click(function(){$("#msgialert").fadeOut(1000,function(){$(this).remove();});});
 </script>

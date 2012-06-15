@@ -17,6 +17,13 @@
 				<span class="help-inline" style="display:none;">&nbsp;</span>
 			</div>
 		</div>
+		<div class="control-group">
+			<label for="phones" class="control-label">Номер конт.телефона</label>
+			<div class="controls">
+				<input type="text" id="person" class="input-xlarge inpval" name="phones" value="<?=$this->session->userdata('phones')?>">
+				<span class="help-inline" style="display:none;">&nbsp;</span>
+			</div>
+		</div>
 	</fieldset>
 	<div class="modal-footer">
 		<button class="btn" id="cancel" data-toggle="modal" href="#cancelRegistration">Отменить</button>

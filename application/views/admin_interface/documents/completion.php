@@ -14,6 +14,9 @@
 		<div class="row">
 			<div class="span12">
 				<p class="center title_">
+					<img src="<?=$baseurl;?>img/logo.jpg" alt="" width="400" height="129"/>
+				</p>
+				<p class="center title_">
 					<strong>
 						Автономная некоммерческая организация <br />дополнительного профессионального образования<br /> 
 						«Южно-окружной центр повышения квалификации и <br /> переподготовки кадров для строительного <br /> 
@@ -31,10 +34,7 @@
 		  	  			№ <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$ncompletion;?>&nbsp;&nbsp;&nbsp;&nbsp;</u>
 		  	  		</p>
 				</div>
-				<p class="center">
-             		г.Ростов-на-Дону
-             	</p>
-             	<p class="center" style="margin-top: 20px;">
+				<p class="center" style="margin-top: 20px;">
                 	<strong>Об окончании обучения слушателей и выдаче удостоверений</strong>
                 </p>
 				<p style="margin-top: 20px;">
@@ -52,10 +52,10 @@
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<td>№ п/п</td>
+							<td><nobr>№ п/п</nobr></td>
 							<td><nobr>Фамилия, Имя, Отчество</nobr></td>
-							<td>Наименование программы</td>
-							<td>Рег. №</td>
+							<td><nobr>Наименование программы<nobr></td>
+							<td><nobr>Рег. №</nobr></td>
 						</tr>
 					<?php for($i=0;$i<count($courses);$i++):?>	
 						<tr>

@@ -1,6 +1,6 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
 	<fieldset>
-		<legend>Выберите один из предложеных направлений обучания (Шаг 1)</legend>
+		<legend>Выберите один из предложенных направлений обучения (Шаг 1)</legend>
 		<div class="control-group">
 			<div class="controls" style="margin-left: 40px;">
 			<?php for($i=0;$i<count($trends);$i++):?>

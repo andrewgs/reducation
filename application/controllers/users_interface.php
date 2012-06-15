@@ -386,6 +386,7 @@ class Users_interface extends CI_Controller{
 			$_POST['submit'] = NULL;
 			$this->form_validation->set_rules('personemail',' ','required|valid_email|trim');
 			$this->form_validation->set_rules('person',' ','required|trim');
+			$this->form_validation->set_rules('phones',' ','required|trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
 			else:
@@ -394,7 +395,7 @@ class Users_interface extends CI_Controller{
 					$this->session->set_userdata('msgr','Внимание. E-mail: '.$_POST['personemail'].' уже существует!');
 //					redirect($this->uri->uri_string());
 				endif;
-				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>4,'personemail'=>$_POST['personemail'],'person'=>htmlspecialchars($_POST['person'])));
+				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>4,'personemail'=>$_POST['personemail'],'person'=>htmlspecialchars($_POST['person']),'phones'=>htmlspecialchars($_POST['phones'])));
 				$this->session->set_userdata('msgs','Данные сохранены.');
 			endif;
 			redirect('registration/customer/step/4');
@@ -476,7 +477,7 @@ class Users_interface extends CI_Controller{
 			$this->email->message($mailtext);	
 			$this->email->send();
 			
-			$this->session->unset_userdata(array('regcustomer'=>'','step'=>'','organization'=>'','inn'=>'','kpp'=>'','accounttype'=>'','accountnumber'=>'','uraddress'=>'','bank'=>'','accountkornumber'=>'','bik'=>'','uraddress'=>'','postaddress'=>'','personemail'=>'','person'=>'','manager'=>'','fiomanager'=>'','statutory'=>''));
+			$this->session->unset_userdata(array('regcustomer'=>'','step'=>'','organization'=>'','phones'=>'','inn'=>'','kpp'=>'','accounttype'=>'','accountnumber'=>'','uraddress'=>'','bank'=>'','accountkornumber'=>'','bik'=>'','uraddress'=>'','postaddress'=>'','personemail'=>'','person'=>'','manager'=>'','fiomanager'=>'','statutory'=>''));
 			$this->session->set_userdata('finishregcustomer',TRUE);
 			redirect('registration/customer/finish');
 		endif;
@@ -505,7 +506,7 @@ class Users_interface extends CI_Controller{
 	
 	public function registration_cancel(){
 	
-		$this->session->unset_userdata(array('finishregcustomer'=>'','regcustomer'=>'','step'=>'','organization'=>'','inn'=>'','kpp'=>'','accounttype'=>'','accountnumber'=>'','uraddress'=>'','bank'=>'','accountkornumber'=>'','bik'=>'','uraddress'=>'','postaddress'=>'','personemail'=>'','person'=>'','manager'=>'','fiomanager'=>'','statutory'=>''));
+		$this->session->unset_userdata(array('finishregcustomer'=>'','regcustomer'=>'','step'=>'','organization'=>'','phones'=>'','inn'=>'','kpp'=>'','accounttype'=>'','accountnumber'=>'','uraddress'=>'','bank'=>'','accountkornumber'=>'','bik'=>'','uraddress'=>'','postaddress'=>'','personemail'=>'','person'=>'','manager'=>'','fiomanager'=>'','statutory'=>''));
 		redirect('registration/customer');
 	}
 	

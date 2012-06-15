@@ -1046,6 +1046,7 @@ class Admin_interface extends CI_Controller{
 		$order = $this->input->post('order');
 		if(!$order) show_404();
 		$info = $this->unionmodel->read_customer_info_order($order);
+		$info['orderdate'] = $this->operation_dot_date($info['orderdate']);
 		ob_start();
 		?>
 		<p>Здравствуйте, <?=$info['organization'];?></p>
@@ -1056,9 +1057,9 @@ class Admin_interface extends CI_Controller{
 		<p>
 			Форма оплаты: Безналичная <br />
 			Способ оплаты: Оплата квитанцией <br />
-			Назначение платежа: Оплата заказа №<?=$order;?> <br/>
-			Сумма платежа: ______ руб. <br />
-			Документ платежа:  Платежное поручение от № _____ от  __________
+			Назначение платежа: Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> <br/>
+			Сумма платежа: <u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u> руб. <br />
+			Документ платежа:  Платежное поручение №<u>&nbsp;&nbsp;&nbsp;<?=$info['docnumber'];?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['userpaiddate'];?>&nbsp;&nbsp;&nbsp;</u>
 		</p>
 		<p>
 			Ваш платеж распределен следующим образом
@@ -1071,8 +1072,8 @@ class Admin_interface extends CI_Controller{
 				</tr>
 			</thead>
 			<tbody>
-				<td>Оплата заказа №<?=$order;?> от <?=$info['userpaiddate'];?>, план оплаты: "Весь период обучения"</td>
-				<td>_________,00</td>
+				<td>Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>, план оплаты: "Весь период обучения"</td>
+				<td><u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u>,00</td>
 			</tbody>
 		</table>
 		<p>
@@ -1337,6 +1338,11 @@ class Admin_interface extends CI_Controller{
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
 		endif;*/
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
 		if($pagevar['dateend'] != "0000-00-00"):
 			$pagevar['regdateend'] = $this->operation_dot_date($pagevar['dateend']);
 			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
