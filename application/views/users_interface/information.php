@@ -30,6 +30,18 @@
 					<a class="license" href="<?=base_url();?>img/license.jpg" target="_blank">
 						<img src="<?=base_url();?>img/license.jpg" alt="лиценизия на право осуществления образовательной деятельности" />
 					</a>
+					<a class="license" href="<?=base_url();?>img/license_1.jpg" target="_blank">
+						<img src="<?=base_url();?>img/license_1.jpg" alt="лиценизия на право осуществления образовательной деятельности" />
+					</a>
+					<a class="license" href="<?=base_url();?>img/license_2.jpg" target="_blank">
+						<img src="<?=base_url();?>img/license_2.jpg" alt="лиценизия на право осуществления образовательной деятельности" />
+					</a>
+					<a class="license" href="<?=base_url();?>img/license_3.jpg" target="_blank">
+						<img src="<?=base_url();?>img/license_3.jpg" alt="лиценизия на право осуществления образовательной деятельности" />
+					</a>
+					<a class="license" href="<?=base_url();?>img/license_4.jpg" target="_blank">
+						<img src="<?=base_url();?>img/license_4.jpg" alt="лиценизия на право осуществления образовательной деятельности" />
+					</a>
 				</p>
 			</div>
 		<?php if($loginstatus['status'] && $loginstatus['zak']):?>

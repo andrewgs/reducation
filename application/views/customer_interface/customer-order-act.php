@@ -18,7 +18,7 @@
 						г. Ростов-на-Дону
 		  	  		</p>
 		  	  		<p class="pull-right">
-		  	  			«____» _________________ <?=date("Y");?> года
+		  	  			<u><?=$order['orderdate'];?></u>
 		  	  		</p>
 	  	  		</div>
 				<p class="intend">

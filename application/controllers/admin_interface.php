@@ -1369,6 +1369,27 @@ class Admin_interface extends CI_Controller{
 		$this->load->view("admin_interface/documents/registry",$pagevar);
 	}
 	
+	public function reference(){
+	
+		$order = $this->uri->segment(5);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Справка',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
+					'customer'		=> $this->unionmodel->read_customer_info_order($order),
+					'courses'		=> $this->unionmodel->read_course_audience_records($order)
+			);
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		$this->load->view("admin_interface/documents/reference",$pagevar);
+	}
+	
 	/******************************************************** users ***********************************************************/
 	
 	public function users_customer(){
