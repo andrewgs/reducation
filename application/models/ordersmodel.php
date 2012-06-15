@@ -9,9 +9,9 @@ class Ordersmodel extends CI_Model{
     var $price  			= 0;
     var $finish				= 0;
     var $paid				= 0;
-    var $paiddate			= '';
-    var $userpaiddate		= '';
-    var $closedate			= '';
+    var $paiddate			= '0000-00-00';
+    var $userpaiddate		= '0000-00-00';
+    var $closedate			= '0000-00-00';
     var $numberplacement	= '';
     var $numbercompletion	= '';
 

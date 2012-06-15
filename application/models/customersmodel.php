@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Customersmodel extends CI_Model{
+class Customersmodel extends CI_Model {
 
 	var $id				= 0;
 	var $login			= '';
@@ -95,6 +95,7 @@ class Customersmodel extends CI_Model{
 		
 		$this->db->set('organization',$data['organization']);
 		$this->db->set('phones',$data['phones']);
+		$this->db->set('organization',htmlspecialchars($data['organization']));
 		$this->db->set('inn',$data['inn']);
 		$this->db->set('kpp',$data['kpp']);
 		$this->db->set('uraddress',strip_tags($data['uraddress']));
@@ -199,5 +200,4 @@ class Customersmodel extends CI_Model{
 		if(count($data)) return $data;
 		return NULL;
 	}
-	
 }

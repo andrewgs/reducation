@@ -92,7 +92,6 @@
 	</div>
 	<?php $this->load->view('admin_interface/scripts');?>
 	<script src="<?=$baseurl;?>js/autosuggest-2.1.3.js"></script>
-	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("li[tnum='<?=$this->uri->segment(4);?>']").addClass('active');
@@ -145,6 +144,7 @@
 				});
 				if(err){event.preventDefault();}
 			});
+<<<<<<< HEAD
 			$("#discount").on("hidden",function(){$("#msgdsalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();});		
 		<?php else:?>
 			function suggest(inputString){
@@ -174,6 +174,9 @@
 			$("#customer").keyup(function(){suggest(this.value)});
 			$("#customer").focusout(function(){setTimeout("$('#suggestions').fadeOut();", 600);});
 			
+=======
+			$("#discount").on("hidden",function(){$("#msgdsalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();});
+>>>>>>> 260e3f728b84f86bd0e653d05a47cd4b3f0587fd
 		<?php endif;?>
 			$("#save").click(function(event){
 				var err = false;

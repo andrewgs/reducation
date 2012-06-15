@@ -1042,7 +1042,7 @@ class Admin_interface extends CI_Controller{
 		endif;
 		echo json_encode($statusval);
 	}
-	
+
 	public function orders_paid(){
 	
 		$order = $this->input->post('order');

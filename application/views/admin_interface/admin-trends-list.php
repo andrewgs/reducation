@@ -87,7 +87,7 @@
 				$("#eCodeTrend").val(code);
 				/*if(view == 1){$("#eViewTrend").attr('checked','checked');}else{$("#eViewTrend").removeAttr('checked');}*/
 			});
-			$("#DelTrend").click(function(){location.href='<?=$baseurl;?>admin-panel/actions/food-category/delete-category/'+DTrend;});
+			$("#DelTrend").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trends/delete-trend/'+DTrend;});
 			$("#addTrend").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$("#ViewTrend").removeAttr('checked');});
 			$("#editTrend").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();});
 			$(".close").alert();
