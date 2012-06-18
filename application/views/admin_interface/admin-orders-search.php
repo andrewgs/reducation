@@ -42,15 +42,20 @@
 						</tr>
 					</thead>
 					<tbody>
+					<?php $delorders = FALSE;?>
 					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
 						<tr>
 							<!--td class="short"><?=$num;?></td-->
 							<td style="min-width:90px;">
-								<nobr>Заказ №<?=$orders[$i]['id'];?>&nbsp;<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?></nobr><br/><br/>
+								<nobr>Заказ №<?=$orders[$i]['id'];?>&nbsp;<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?></nobr><br/>
 								<nobr><?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/statement','<img src="'.$baseurl.'img/icon/blog-blue.png" />',array('target'=>'_blank','title'=>'Ведомость'));?>&nbsp;
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/completion','<img src="'.$baseurl.'img/icon/document.png" />',array('target'=>'_blank','title'=>'Приказ об окончании'));?>&nbsp;
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/admission','<img src="'.$baseurl.'img/icon/document-bookmark.png" />',array('target'=>'_blank','title'=>'Приказ о зачислении'));?>&nbsp;
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry','<img src="'.$baseurl.'img/icon/document-horizontal-text.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?></nobr>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/reference','<img src="'.$baseurl.'img/icon/address-book.png" />',array('target'=>'_blank','title'=>'Справка'));?></nobr><br/>
+								<nobr>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-1','<img src="'.$baseurl.'img/icon/document-horizontal-text.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?>&nbsp;
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-2','<img src="'.$baseurl.'img/icon/application-list.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?>
+								</nobr>
 							</td>
 							<td>
 								<?=$orders[$i]['orderdate'];?>
@@ -74,6 +79,10 @@
 							<td style="max-width:80px;">
 								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a>
 								<a class="btn btn-info SendMail" data-order="<?=$orders[$i]['id'];?>"><nobr><i class="icon-envelope icon-white"></i>&nbsp;Уведомить&nbsp;</nobr></a>
+						<?php if(!$orders[$i]['finish']):?>
+							<?php $delorders = TRUE;?>
+							<a class="btn btn-danger deleteOrder" data-toggle="modal" href="#deleteOrder" title="Заказ не оформлен" data-order="<?=$orders[$i]['id'];?>"><nobr><i class="icon-trash icon-white"></i>&nbsp;&nbsp;&nbsp;Удалить&nbsp;&nbsp;&nbsp;</nobr></a>
+						<?php endif;?>
 							</td>
 						</tr>
 						<?php $num++; ?>
@@ -131,6 +140,13 @@
 				var obj = $(this);
 				$.post("<?=$baseurl;?>admin-panel/messages/orders/send-mail",{'order':order},function(data){$(obj).after(data.retvalue);},"json");
 			});
+			
+		<?php if($delorders):?>
+			var Order = 0;
+			$(".deleteOrder").click(function(){Order = $(this).attr('data-order');});
+			$("#DelOrder").click(function(){location.href='<?=$baseurl;?>admin-panel/messages/orders/delete-order/'+Order;});
+		<?php endif;?>
+			
 			$("#dsend").click(function(event){
 				var err = false;
 				$(".control-group").removeClass('error');

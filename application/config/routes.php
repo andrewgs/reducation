@@ -121,11 +121,12 @@ $route['admin-panel/users/audience/set-audience-access']	= "admin_interface/audi
 $route['admin-panel/users/audience/delete-audience/:num']	= "admin_interface/delete_audience";
 
 /*=========================================================== documents  ====================================================*/
-$route['admin-panel/messages/orders/id/:num/statement']		= "admin_interface/statement";
-$route['admin-panel/messages/orders/id/:num/completion']	= "admin_interface/completion";
-$route['admin-panel/messages/orders/id/:num/admission']		= "admin_interface/admission";
-$route['admin-panel/messages/orders/id/:num/registry']		= "admin_interface/registry";
-$route['admin-panel/messages/orders/id/:num/reference']		= "admin_interface/reference";
+$route['admin-panel/messages/orders/id/:num/statement']			= "admin_interface/statement";
+$route['admin-panel/messages/orders/id/:num/completion']		= "admin_interface/completion";
+$route['admin-panel/messages/orders/id/:num/admission']			= "admin_interface/admission";
+$route['admin-panel/messages/orders/id/:num/registry/list-1']	= "admin_interface/registry";
+$route['admin-panel/messages/orders/id/:num/registry/list-2']	= "admin_interface/registry";
+$route['admin-panel/messages/orders/id/:num/reference']			= "admin_interface/reference";
 
 /*=========================================================== documents  ====================================================*/
 $route['admin-panel/messages/orders/id/:num/testing']												= "admin_interface/orders_testing";

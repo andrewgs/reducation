@@ -1398,7 +1398,10 @@ class Admin_interface extends CI_Controller{
 		if(isset($pagevar['courses'][0]['chours'])):
 			$pagevar['hours'] = $pagevar['courses'][0]['chours'];
 		endif;
-		$this->load->view("admin_interface/documents/registry",$pagevar);
+		switch ($this->uri->segment(7)):
+			case 'list-1': $this->load->view("admin_interface/documents/registry-list-1",$pagevar); break;
+			case 'list-2': $this->load->view("admin_interface/documents/registry-list-2",$pagevar); break;
+		endswitch;
 	}
 	
 	public function reference(){
