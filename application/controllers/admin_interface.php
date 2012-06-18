@@ -1119,6 +1119,20 @@ class Admin_interface extends CI_Controller{
 		echo json_encode($statusval);
 	}
 	
+	public function order_delete(){
+		
+		$order = $this->uri->segment(5);
+		if(!$this->ordersmodel->valid_finish($order)):
+			$this->session->set_userdata('msgs','Заказ удален.');
+			$this->audienceordermodel->delete_order_records($order);
+			$this->courseordermodel->delete_order($order);
+			$this->ordersmodel->delete_record($order);
+			$maxrecid = $this->ordersmodel->last_id();
+			$this->ordersmodel->set_autoincrement($maxrecid+1);
+		endif;
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+	
 	/********************************************************* testing ********************************************************/
 	
 	public function orders_testing(){

@@ -211,4 +211,30 @@ class Ordersmodel extends CI_Model{
 		if(isset($data[0])) return $data[0];
 		return NULL;
 	}
+	
+	function last_id(){
+		
+		$query = "SELECT id FROM orders ORDER BY ID DESC";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0]['id'];
+		return NULL;
+	}
+	
+	function set_autoincrement($value){
+		
+		$query = "ALTER TABLE `orders` AUTO_INCREMENT = $value";
+		$query = $this->db->query($query);
+	}
+	
+	function valid_finish($order){
+		
+		$this->db->where('id',$order);
+		$this->db->where('finish',1);
+		$query = $this->db->get('orders',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return TRUE;
+		return FALSE;
+	}
+	
 }

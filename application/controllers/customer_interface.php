@@ -636,6 +636,8 @@ class Customer_interface extends CI_Controller{
 		$this->audienceordermodel->delete_order_records($this->session->userdata('order'));
 		$this->courseordermodel->delete_order($this->session->userdata('order'));
 		$this->ordersmodel->delete_record($this->session->userdata('order'));
+		$maxrecid = $this->ordersmodel->last_id();
+		$this->ordersmodel->set_autoincrement($maxrecid+1);
 		$this->session->unset_userdata(array('regordering'=>'','step'=>'','ordering'=>'','order'=>''));
 		redirect('customer/registration/ordering');
 	}

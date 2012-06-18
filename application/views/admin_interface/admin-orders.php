@@ -38,6 +38,7 @@
 						</tr>
 					</thead>
 					<tbody>
+					<?php $delorders = FALSE;?>
 					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
 						<tr>
 							<!--td class="short"><?=$num;?></td-->
@@ -71,6 +72,10 @@
 							<td style="max-width:80px;">
 								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a>
 								<a class="btn btn-info SendMail" data-order="<?=$orders[$i]['id'];?>"><nobr><i class="icon-envelope icon-white"></i>&nbsp;Уведомить&nbsp;</nobr></a>
+						<?php if(!$orders[$i]['finish']):?>
+							<?php $delorders = TRUE;?>
+							<a class="btn btn-danger deleteOrder" data-toggle="modal" href="#deleteOrder" title="Заказ не оформлен" data-order="<?=$orders[$i]['id'];?>"><nobr><i class="icon-trash icon-white"></i>&nbsp;&nbsp;&nbsp;Удалить&nbsp;&nbsp;&nbsp;</nobr></a>
+						<?php endif;?>
 							</td>
 						</tr>
 						<?php $num++; ?>
@@ -83,6 +88,7 @@
 			</div>
 			<?php $this->load->view('admin_interface/modal/user-set-discount');?>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
+			<?php $this->load->view('customer_interface/modal/customer-delete-order');?>
 		</div>
 	</div>
 	<?php $this->load->view('admin_interface/scripts');?>
@@ -124,6 +130,13 @@
 				var obj = $(this);
 				$.post("<?=$baseurl;?>admin-panel/messages/orders/send-mail",{'order':order},function(data){$(obj).after(data.retvalue);},"json");
 			});
+			
+		<?php if($delorders):?>
+			var Order = 0;
+			$(".deleteOrder").click(function(){Order = $(this).attr('data-order');});
+			$("#DelOrder").click(function(){location.href='<?=$baseurl;?>admin-panel/messages/orders/delete-order/'+Order;});
+		<?php endif;?>
+			
 			$("#dsend").click(function(event){
 				var err = false;
 				$(".control-group").removeClass('error');
