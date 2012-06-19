@@ -876,6 +876,14 @@ class Admin_interface extends CI_Controller{
 			$field = $this->uri->segment(5);
 			$sortby = $this->uri->segment(6);
 			$from = intval($this->uri->segment(7));
+			$fvalue = array('','id','paiddate','closedate','organization','userpaiddate');
+			if(!array_search($field,$fvalue)):
+				show_404();
+			endif;
+			$svalue = array('','desc','asc');
+			if(!array_search($sortby,$svalue,true)):
+				show_404();
+			endif;
 		endif;
 		if(empty($sortby) || empty($field)):
 			$sortby = 'desc';
@@ -911,14 +919,14 @@ class Admin_interface extends CI_Controller{
 			$config['uri_segment'] 	= 5;
 		endif;
 		$config['total_rows'] 		= $pagevar['count']; 
-        $config['per_page'] 		= 1;
+        $config['per_page'] 		= 5;
         $config['num_links'] 		= 4;
 		$config['first_link']		= 'В начало';
 		$config['last_link'] 		= 'В конец';
 		$config['next_link'] 		= 'Далее &raquo;';
 		$config['prev_link'] 		= '&laquo; Назад';
-		$config['cur_tag_open']		= '<b>';
-		$config['cur_tag_close'] 	= '</b>';
+		$config['cur_tag_open']		= '<span class="actpage">';
+		$config['cur_tag_close'] 	= '</span>';
 		
 		$this->pagination->initialize($config);
 		$pagevar['pages'] = $this->pagination->create_links();

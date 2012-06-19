@@ -7,8 +7,10 @@
 		<div class="row">
 			<div class="span9">
 				<?php $sortby = '';?>
+				<?php $from = $this->uri->segment(5);?>
 				<?php if($this->uri->total_segments() >= 6):?>
 					<?php $sortby = $this->uri->segment(6);?>
+					<?php $from = $this->uri->segment(7);?>
 				<?php endif;?>
 				<ul class="breadcrumb">
 					<li tnum="active">
@@ -39,12 +41,12 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/id/'.$sortby.'/'.$this->uri->segment(7),'№ заказа');?><span id="id"></span></th>
-							<th><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/paiddate/'.$sortby.'/'.$this->uri->segment(7),'Заказ создан');?><span id="paiddate"></span></nobr><br/><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/closedate/'.$sortby.'/'.$this->uri->segment(7),'Заказ закрыт');?><span id="closedate"></span></nobr></th>
-							<th><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/organization/'.$sortby.'/'.$this->uri->segment(7),'Заказчик');?><span id="organization"></span></th>
+							<th><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/id/'.$sortby.'/'.$from,'№ заказа');?><span id="id"></span></th>
+							<th><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/paiddate/'.$sortby.'/'.$from,'Заказ создан');?><span id="paiddate"></span></nobr><br/><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/closedate/'.$sortby.'/'.$from,'Заказ закрыт');?><span id="closedate"></span></nobr></th>
+							<th><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/organization/'.$sortby.'/'.$from,'Заказчик');?><span id="organization"></span></th>
 							<!--th>Статус</th-->
-							<th><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/userpaiddate/'.$sortby.'/'.$this->uri->segment(7),'Дата оплаты');?><span id="userpaiddate"></span></nobr></th>
-							<th><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/paid/'.$sortby.'/'.$this->uri->segment(7),'Оплата');?><span id="paid"></span></th>
+							<th><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/userpaiddate/'.$sortby.'/'.$from,'Дата оплаты');?><span id="userpaiddate"></span></nobr></th>
+							<th>Оплата</th>
 							<th>Дополнительно</th>
 						</tr>
 					</thead>
