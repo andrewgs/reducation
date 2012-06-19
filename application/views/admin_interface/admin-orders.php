@@ -6,6 +6,10 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
+				<?php $sortby = '';?>
+				<?php if($this->uri->total_segments() >= 6):?>
+					<?php $sortby = $this->uri->segment(6);?>
+				<?php endif;?>
 				<ul class="breadcrumb">
 					<li tnum="active">
 						<?=anchor('admin-panel/messages/orders/active','Активные заказы');?> <span class="divider">/</span>
@@ -25,15 +29,22 @@
 				</ul>
 				<?php $this->load->view('alert_messages/alert-error');?>
 				<?php $this->load->view('alert_messages/alert-success');?>
+				<?php if($sortby == 'asc'):?>
+					<?php $sortby = 'desc';?>
+				<?php elseif(empty($sortby)):?>
+					<?php $sortby = 'asc';?>
+				<?php elseif($sortby == 'desc'):?>
+					<?php $sortby = 'asc';?>
+				<?php endif;?>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>№ заказа</th>
-							<th><nobr>Заказ создан</nobr><br/><nobr>Заказ закрыт</nobr></th>
-							<th>Заказчик</th>
+							<th><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/id/'.$sortby.'/'.$this->uri->segment(7),'№ заказа');?><span id="id"></span></th>
+							<th><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/paiddate/'.$sortby.'/'.$this->uri->segment(7),'Заказ создан');?><span id="paiddate"></span></nobr><br/><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/closedate/'.$sortby.'/'.$this->uri->segment(7),'Заказ закрыт');?><span id="closedate"></span></nobr></th>
+							<th><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/organization/'.$sortby.'/'.$this->uri->segment(7),'Заказчик');?><span id="organization"></span></th>
 							<!--th>Статус</th-->
-							<th><nobr>Дата оплаты</nobr></th>
-							<th>Оплата</th>
+							<th><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/userpaiddate/'.$sortby.'/'.$this->uri->segment(7),'Дата оплаты');?><span id="userpaiddate"></span></nobr></th>
+							<th><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/paid/'.$sortby.'/'.$this->uri->segment(7),'Оплата');?><span id="paid"></span></th>
 							<th>Дополнительно</th>
 						</tr>
 					</thead>
@@ -97,6 +108,11 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("li[tnum='<?=$this->uri->segment(4);?>']").addClass('active');
+		<?php if($this->uri->segment(6) == 'asc'):?>
+			$("#<?=$this->uri->segment(5);?>").addClass("sortasc");
+		<?php else:?>
+			$("#<?=$this->uri->segment(5);?>").addClass("sortdesc");
+		<?php endif;?>
 			$(".none").click(function(event){event.preventDefault();});
 			$(".chAccess").click(function(){
 				var check = 0;

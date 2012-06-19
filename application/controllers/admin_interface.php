@@ -872,40 +872,54 @@ class Admin_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		
 		$from = intval($this->uri->segment(5));
-
+		if($this->uri->total_segments() >= 6):
+			$field = $this->uri->segment(5);
+			$sortby = $this->uri->segment(6);
+			$from = intval($this->uri->segment(7));
+		endif;
+		if(empty($sortby) || empty($field)):
+			$sortby = 'desc';
+			$field = 'id';
+		endif;
 		switch ($this->uri->segment(4)):
 			case 'active' 	:	$pagevar['title'] .= 'Активные заказы';
-								$pagevar['orders'] = $this->unionmodel->read_customer_active_orders(5,$from);
+								$pagevar['orders'] = $this->unionmodel->read_customer_active_orders($field,$sortby,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_active_orders();
 								break;
 			case 'deactive' :	$pagevar['title'] .= 'Закрытые заказы';
-								$pagevar['orders'] = $this->unionmodel->read_customer_deactive_orders(5,$from);
+								$pagevar['orders'] = $this->unionmodel->read_customer_deactive_orders($field,$sortby,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_deactive_orders();
 								break;
 			case 'unpaid' :		$pagevar['title'] .= 'Неоплачанные заказы';
-								$pagevar['orders'] = $this->unionmodel->read_customer_orders(0,5,$from);
+								$pagevar['orders'] = $this->unionmodel->read_customer_orders($field,$sortby,0,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_orders(0);
 								break;
 			case 'sponsored' :	$pagevar['title'] .= 'Оплачанные заказы';
-								$pagevar['orders'] = $this->unionmodel->read_customer_orders(1,5,$from);
+								$pagevar['orders'] = $this->unionmodel->read_customer_orders($field,$sortby,1,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_orders(1);
 								break;
 			default :	$pagevar['title'] .= 'Все заказы';
-						$pagevar['orders'] = $this->unionmodel->read_customer_all_orders(5,$from);
+						$pagevar['orders'] = $this->unionmodel->read_customer_all_orders($field,$sortby,5,$from);
 						$pagevar['count'] = $this->unionmodel->count_customer_all_orders();
 						break;
 		endswitch;
-		$config['base_url'] 		= $pagevar['baseurl'].'admin-panel/messages/orders/'.$this->uri->segment(4);
-        $config['total_rows'] 		= $pagevar['count']; 
-        $config['per_page'] 		= 5;
+		if($this->uri->total_segments() >= 6):
+			$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/messages/orders/'.$this->uri->segment(4).'/'.$field.'/'.$sortby;
+			$config['uri_segment']	= 7;
+		else:
+			$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/messages/orders/'.$this->uri->segment(4);
+			$config['uri_segment'] 	= 5;
+		endif;
+		$config['total_rows'] 		= $pagevar['count']; 
+        $config['per_page'] 		= 1;
         $config['num_links'] 		= 4;
-        $config['uri_segment'] 		= 5;
 		$config['first_link']		= 'В начало';
 		$config['last_link'] 		= 'В конец';
 		$config['next_link'] 		= 'Далее &raquo;';
 		$config['prev_link'] 		= '&laquo; Назад';
 		$config['cur_tag_open']		= '<b>';
 		$config['cur_tag_close'] 	= '</b>';
+		
 		$this->pagination->initialize($config);
 		$pagevar['pages'] = $this->pagination->create_links();
 		
