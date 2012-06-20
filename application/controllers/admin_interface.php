@@ -25,6 +25,7 @@ class Admin_interface extends CI_Controller{
 		$this->load->model('audienceordermodel');
 		$this->load->model('audiencetestmodel');
 		$this->load->model('testresultsmodel');
+		$this->load->model('calendarmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
