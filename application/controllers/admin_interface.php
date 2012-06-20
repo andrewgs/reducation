@@ -69,11 +69,16 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'seldate'		=> $this->calendarmodel->read_records(),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
+		
+		for($i=0;$i<count($pagevar['seldate']);$i++):
+			$pagevar['seldate'][$i]['date'] = $this->operation_date($pagevar['seldate'][$i]['date']);
+		endfor;
 		
 		if($this->input->post('catkurs')):
 			$_POST['catkurs'] = NULL;
@@ -98,7 +103,28 @@ class Admin_interface extends CI_Controller{
 			$this->session->set_userdata('msgs','Список каталогов курсов загружен успешно.');
 			redirect($this->uri->uri_string());
 		endif;
-			
+		
+		if($this->input->post('adddate')):
+			$_POST['adddate'] = NULL;
+			$this->form_validation->set_rules('date',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Дата не добавлена. Не заполены необходимые поля.');
+			else:
+				$pattern = "/(\d+)\.(\w+)\.(\d+)/i";
+				$replacement = "\$3-\$2-\$1";
+				$_POST['date'] = preg_replace($pattern,$replacement,$_POST['date']);
+				if($this->calendarmodel->exist_date($_POST['date'])):
+					$this->session->set_userdata('msgr','Дата уже существует.');
+					redirect($this->uri->uri_string());
+				endif;
+				$id = $this->calendarmodel->insert_record($_POST['date']);
+				if($id):
+					$this->session->set_userdata('msgs','Дата добавлена успешно.');
+				endif;
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
 		$this->load->view("admin_interface/admin-panel",$pagevar);
 	}
 	
@@ -120,6 +146,22 @@ class Admin_interface extends CI_Controller{
 		$this->adminmodel->deactive_user($this->session->userdata('userid'));
 		$this->session->sess_destroy();
         redirect('');
+	}
+
+	public function datele_date(){
+		
+		$id = $this->uri->segment(5);
+		if($id):
+			$result = $this->calendarmodel->delete_record($id);
+			if($result):
+				$this->session->set_userdata('msgs','Дата удалена успешно.');
+			else:
+				$this->session->set_userdata('msgr','Дата не удалена.');
+			endif;
+			redirect('admin-panel/actions/control');
+		else:
+			show_404();
+		endif;
 	}
 
 	/******************************************************** references ****************************************************/
@@ -1674,6 +1716,15 @@ class Admin_interface extends CI_Controller{
 		$list = preg_split("/-/",$field);
 		$pattern = "/(\d+)(-)(\w+)(-)(\d+)/i";
 		$replacement = "\$5.$3.\$1"; 
+		return preg_replace($pattern, $replacement,$field);
+	}
+
+	function operation_date_slash($field){
+		
+		$list = preg_split("/-/",$field);
+		$nmonth = $this->months[$list[1]];
+		$pattern = "/(\d+)(-)(\w+)(-)(\d+)/i";
+		$replacement = "\$5/\$3/\$1"; 
 		return preg_replace($pattern, $replacement,$field);
 	}
 }

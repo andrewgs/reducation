@@ -121,6 +121,6 @@
 		</div>
 	</fieldset>
 	<div class="modal-footer">
-		<button class="btn btn-success" type="submit" id="save" name="submit" value="save"><i class="icon-ok icon-white"></i> Сохранить</button>
+		<button class="btn btn-success" type="submit" id="save" name="submit" value="save"><i class="icon-ok icon-white"></i> Добавить</button>
 	</div>
 <?= form_close(); ?>

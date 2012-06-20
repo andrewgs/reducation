@@ -213,6 +213,7 @@ class Audience_interface extends CI_Controller{
 					'chapters'		=> array(),
 					'test'			=> array(),
 					'finaltest'		=> 0,
+					'testvalid'		=> FALSE,
 					'docvalue'		=> 'Список литературы',
 					'document'		=> $this->unionmodel->read_course_libraries($this->user['uid'],$course,0),
 					'curriculum'	=> $this->unionmodel->read_course_curriculum($this->user['uid'],$course,0),
@@ -224,6 +225,10 @@ class Audience_interface extends CI_Controller{
 		
 		$pagevar['chapters'] = $this->chaptermodel->read_records($pagevar['course']['id']);
 		
+		$testday = $this->ordersmodel->read_field($pagevar['course']['ordid'],'testdate');
+		if(strtotime(date('Y-m-d')) >= strtotime($testday)):
+			$pagevar['testvalid'] = TRUE;
+		endif;
 		for($i=0;$i<count($pagevar['chapters']);$i++):
 			$pagevar['chapters'][$i]['lectures'] = $this->lecturesmodel->read_views_records($pagevar['course']['id'],$pagevar['chapters'][$i]['id']);
 			$pagevar['chapters'][$i]['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],$pagevar['chapters'][$i]['id'],$this->user['uid']);
@@ -246,6 +251,7 @@ class Audience_interface extends CI_Controller{
 			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
 			redirect('audience/courses/current');
 		endif;
+		
 		$test = $this->uri->segment(9);
 		if(!$this->audiencetestmodel->owner_testing($test,$course,$this->user['uid'])):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
@@ -281,10 +287,16 @@ class Audience_interface extends CI_Controller{
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
+		$testday = $this->ordersmodel->read_field($pagevar['course']['ordid'],'testdate');
+		if(strtotime(date('Y-m-d')) < strtotime($testday)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+		
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
-		if($this->input->post('submit')):
 		
+		if($this->input->post('submit')):
 			unset($_POST['submit']);
 			$ttime = $_POST['time'];
 			unset($_POST['time']);

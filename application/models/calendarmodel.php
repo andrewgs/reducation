@@ -2,8 +2,8 @@
 
 class Calendarmodel extends CI_Model{
 
-    var $id   		= 0;
-    var $date 		= '';
+    var $id   = 0;
+    var $date = '';
 
     function __construct(){
         parent::__construct();
@@ -11,7 +11,7 @@ class Calendarmodel extends CI_Model{
 	
 	function insert_record($date){
 			
-		$this->date 	= $date;
+		$this->date = $date;
 		
 		$this->db->insert('calendar',$this);
 		return $this->db->insert_id();
@@ -20,13 +20,24 @@ class Calendarmodel extends CI_Model{
 	function update_record($id,$date){
 			
 		$this->db->set('date',$date);
-		$this->db->where('id',$id]);
+		$this->db->where('id',$id);
 		$this->db->update('calendar');
 		return $this->db->affected_rows();
 	}
 	
 	function read_records(){
 		
+		$this->db->order_by('date');
+		$query = $this->db->get('calendar');
+		$data = $query->result_array();
+		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
+	function read_date(){
+		
+		$this->db->select('date');
+		$this->db->order_by('date');
 		$query = $this->db->get('calendar');
 		$data = $query->result_array();
 		if(count($data)>0) return $data;

@@ -83,9 +83,11 @@
 						<?php endif;?>
 						</div>
 					<?php /*if($test['attempt'] < $test['count']):*/?>
+					<?php if($testvalid):?>
 						<div class="btn-group">
 							<?=anchor($this->uri->uri_string().'/final-testing/id/'.$test['id'],'Итоговое тестирование',array('class'=>'btn'));?>
 						</div>
+					<?php endif;?>
 					<?php /*endif;*/?>
 					<?php if($test['attempt'] > 0 ):?>
 						<div style="margin-top: 10px;">

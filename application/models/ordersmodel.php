@@ -5,7 +5,8 @@ class Ordersmodel extends CI_Model{
     var $id   				= 0;
     var $trend 				= 0;
     var $customer 			= '';
-    var $orderdate  		= '';
+    var $orderdate  		= '0000-00-00';
+    var $testdate  			= '0000-00-00';
     var $price  			= 0;
     var $finish				= 0;
     var $paid				= 0;
@@ -24,6 +25,7 @@ class Ordersmodel extends CI_Model{
 		$this->trend	= $trend;
 		$this->customer	= $customer;
 		$this->orderdate= date("Y-m-d");
+		$this->testdate	= '0000-00-00';
 		$this->price 	= 0;
 		$this->finish	= 0;
 		$this->paid		= 0;
@@ -156,8 +158,9 @@ class Ordersmodel extends CI_Model{
 		return $this->db->affected_rows();
 	}
 
-	function close_order($id){
+	function close_order($id,$date){
 		
+		$this->db->set('testdate',$date);
 		$this->db->set('finish',1);
 		$this->db->where('id',$id);
 		$this->db->update('orders');
