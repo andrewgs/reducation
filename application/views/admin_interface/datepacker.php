@@ -4,8 +4,3 @@
 <script type="text/javascript" src="<?=$baseurl;?>js/datepicker/jquery.ui.datepicker-ru.js"></script>
 <script type="text/javascript" src="<?=$baseurl;?>js/datepicker/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="<?=$baseurl;?>js/datepicker/jquery.ui.widget.js"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#dateval").datepicker($.datepicker.regional['ru']);
-	});
-</script>

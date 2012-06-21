@@ -85,6 +85,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var dateID = 0;
+			$("#dateval").datepicker($.datepicker.regional['ru']);
 			$("#calshow").click(function(){$("#caltablist").fadeToggle('slow');});
 			$(".close").click(function(){dateID = $(this).attr('data-iddate');});
 			$("#DelDate").click(function(){location.href='<?=$baseurl;?>admin-panel/actions/control/delete-date/'+dateID;});

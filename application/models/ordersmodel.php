@@ -158,9 +158,8 @@ class Ordersmodel extends CI_Model{
 		return $this->db->affected_rows();
 	}
 
-	function close_order($id,$date){
+	function close_order($id){
 		
-		$this->db->set('testdate',$date);
 		$this->db->set('finish',1);
 		$this->db->where('id',$id);
 		$this->db->update('orders');

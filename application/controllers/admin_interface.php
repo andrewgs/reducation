@@ -1118,8 +1118,30 @@ class Admin_interface extends CI_Controller{
 		if($access):
 			$next_numbers = $this->ordersmodel->next_numbers();
 			$this->ordersmodel->update_field($order,'numberplacement',$next_numbers['placement'].'-З');
+			/******************************************************/
+			$tmpdate = $this->calendarmodel->read_date();
+			for($i=0;$i<count($tmpdate);$i++):
+				$seldate[$i] = $tmpdate[$i]['date'];
+			endfor;
+			array_unshift($seldate,'1111-11-11');
+			unset($tmpdate);
+			$courses = $this->unionmodel->read_course_audience_records($order);
+			$days = round($courses[0]['chours']/8);
+			$kday = $i = 0; $overdate = '';
+			while($kday < $days):
+				$curdate = date("Y-m-d",mktime(0,0,0,date('m'),date('d')+$i,date('Y')));
+				$holiday = date("w",mktime(0,0,0,date('m'),date('d')+$i,date('Y')));
+				if(!array_search($curdate,$seldate) && ($holiday != 0)):
+					$overdate = $curdate;
+					$kday++;
+				endif;
+				$i++;
+			endwhile;
+			$this->ordersmodel->update_field($order,'closedate',$overdate);
+			/******************************************************/
 		else:
 			$this->ordersmodel->update_field($order,'numberplacement','');
+			$this->ordersmodel->update_field($order,'closedate','0000-00-00');
 		endif;
 	}
 	

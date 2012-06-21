@@ -575,27 +575,7 @@ class Customer_interface extends CI_Controller{
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
 			$this->session->set_userdata('msgs','Заказ оформлен.');
-			/******************************************************/
-			$tmpdate = $this->calendarmodel->read_date();
-			for($i=0;$i<count($tmpdate);$i++):
-				$seldate[$i] = $tmpdate[$i]['date'];
-			endfor;
-			array_unshift($seldate,'1111-11-11');
-			unset($tmpdate);
-			$courses = $this->unionmodel->read_course_audience_records($this->session->userdata('order'));
-			$days = round($courses[0]['chours']/8);
-			$kday = $i = 0; $overdate = '';
-			while($kday < $days):
-				$curdate = date("Y-m-d",mktime(0,0,0,date('m'),date('d')+$i,date('Y')));
-				$holiday = date("w",mktime(0,0,0,date('m'),date('d')+$i,date('Y')));
-				if(!array_search($curdate,$seldate) && ($holiday != 0)):
-					$overdate = $curdate;
-					$kday++;
-				endif;
-				$i++;
-			endwhile;
-			/******************************************************/
-			$this->ordersmodel->close_order($this->session->userdata('order'),$overdate);
+			$this->ordersmodel->close_order($this->session->userdata('order'));
 			$this->session->unset_userdata(array('regordering'=>'','step'=>'','ordering'=>'','order'=>''));
 			redirect('customer/audience/orders');
 		endif;
