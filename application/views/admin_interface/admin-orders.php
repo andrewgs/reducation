@@ -107,10 +107,8 @@
 		</div>
 	</div>
 	<?php $this->load->view('admin_interface/scripts');?>
-	<?=$this->load->view('admin_interface/datepacker');?>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#PaidDate").datepicker($.datepicker.regional['ru']);
 			$("li[tnum='<?=$this->uri->segment(4);?>']").addClass('active');
 		<?php if($this->uri->segment(6) == 'asc'):?>
 			$("#<?=$this->uri->segment(5);?>").addClass("sortasc");

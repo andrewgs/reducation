@@ -990,7 +990,18 @@ class Admin_interface extends CI_Controller{
 				$this->ordersmodel->update_field($_POST['order'],'numberplacement',$_POST['numberplacement']);
 				$this->ordersmodel->update_field($_POST['order'],'numbercompletion',$_POST['numbercompletion']);
 				if(isset($_POST['paiddate'])):
-					$this->ordersmodel->update_field($_POST['order'],'userpaiddate',$_POST['paiddate']);
+					if(($_POST['paiddate'] != "Не оплачен") &&  $_POST['paiddate']!= '0000-00-00' && !empty($_POST['paiddate'])):
+						$arrdate = preg_split('/[\s, \-\\;\|\/]+/',$_POST['paiddate'],-1,PREG_SPLIT_NO_EMPTY);
+						for($i=0;$i<count($arrdate);$i++):
+							$oDate = new DateTime($arrdate[$i]);
+							$sDate[$i] = $oDate->format("Y-m-d");
+							unset($oDate);
+						endfor;
+						$_POST['paiddate'] = implode(' , ',$sDate);
+						$this->ordersmodel->update_field($_POST['order'],'userpaiddate',$_POST['paiddate']);
+					else:
+						$this->ordersmodel->update_field($_POST['order'],'userpaiddate','');
+					endif;
 				endif;
 				$this->session->set_userdata('msgs','Информация по заказу успешно сохранена.');
 			endif;
@@ -1002,6 +1013,16 @@ class Admin_interface extends CI_Controller{
 			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
 			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
 				$pagevar['orders'][$i]['closedate'] = $this->operation_dot_date($pagevar['orders'][$i]['closedate']);
+			endif;
+			$date = $pagevar['orders'][$i]['userpaiddate'];
+			if(($date != "Не оплачен") &&  $date!= '0000-00-00' && !empty($date)):
+				$arrdate = preg_split('/[\s, ]+/',$pagevar['orders'][$i]['userpaiddate'],-1,PREG_SPLIT_NO_EMPTY);
+				for($j=0;$j<count($arrdate);$j++):
+					$oDate = new DateTime($arrdate[$j]);
+					$sDate[$j] = $oDate->format("d.m.Y");
+					unset($oDate);
+				endfor;
+				$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
 			endif;
 		endfor;
 		
