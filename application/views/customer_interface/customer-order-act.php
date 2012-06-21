@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="span12">
 				<p class="center title">
-           			<strong>Акт об оказании услуг</strong>
+           			<strong>Акт об оказании услуг № <?=$order['id'];?></strong>
            		</p>
            		<div class="clearfix">
 		  	  		<p class="pull-left">

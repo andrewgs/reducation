@@ -1428,6 +1428,7 @@ class Admin_interface extends CI_Controller{
 					'regdateend'	=> '',
 					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
 					'hours'			=> 0,
+					'ncompletion'	=> eregi_replace("([^0-9])", "",$this->ordersmodel->read_field($order,'numbercompletion')),
 					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
 		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):

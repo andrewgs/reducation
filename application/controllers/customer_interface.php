@@ -580,7 +580,7 @@ class Customer_interface extends CI_Controller{
 			for($i=0;$i<count($tmpdate);$i++):
 				$seldate[$i] = $tmpdate[$i]['date'];
 			endfor;
-			array_unshift($seldate,'0000-00-00');
+			array_unshift($seldate,'1111-11-11');
 			unset($tmpdate);
 			$courses = $this->unionmodel->read_course_audience_records($this->session->userdata('order'));
 			$days = round($courses[0]['chours']/8);

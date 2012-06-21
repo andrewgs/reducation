@@ -42,7 +42,7 @@
 							<tr>
 								<td colspan="9">&nbsp;</td>
 								<td colspan="3" style="text-align:center;">&nbsp;</td>
-								<td colspan="3" style="text-align:center;"><b>Группа № <u>&nbsp;<?=$this->uri->segment(5);?>&nbsp;</u></b></td>
+								<td colspan="3" style="text-align:center;"><b>Группа № <u>&nbsp;&nbsp;<?=$ncompletion;?>&nbsp;&nbsp;</u></b></td>
 							</tr>
 							<tr>
 								<td colspan="9"></td>

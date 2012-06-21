@@ -122,6 +122,13 @@
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
+			<div class="control-group">
+				<label for="phones" class="control-label">Номер конт.телефона</label>
+				<div class="controls">
+					<input type="text" id="phones" class="input-xlarge inpval" name="phones" value="<?=$customer['phones'];?>">
+					<span class="help-inline" style="display:none;">&nbsp;</span>
+				</div>
+			</div>
 		</div>
 	</fieldset>
 	<?php if(!$readonly):?>
