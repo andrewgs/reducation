@@ -1023,9 +1023,9 @@ class Admin_interface extends CI_Controller{
 					unset($oDate);
 				endfor;
 				$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
+				unset($sDate);
 			endif;
 		endfor;
-		
 		$this->load->view("admin_interface/admin-orders",$pagevar);
 	}
 	
