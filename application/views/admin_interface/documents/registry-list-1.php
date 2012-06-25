@@ -81,7 +81,13 @@
 									<td><input type="text" value="<?=$info[$i]['docnumber'];?>" class="inv"></td>	
 								<?endif;?>
 								<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
+								<?php if($info[$i]['userpaiddate'] != '0000-00-00'):?>
+									<td><?=$info[$i]['userpaiddate'];?></td>
+								<?php else:?>
+									<td><nobr>Не оплачено</nobr></td>
+								<?endif;?>
 								<td><?=$info[$i]['userpaiddate'];?></td>
+								
 								<td><?=$info[$i]['order'];?></td>
 								<!--<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>-->
 								<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>

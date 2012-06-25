@@ -3,11 +3,8 @@
 <?php $this->load->view('audience_interface/head');?>
 <style type="text/css">
 	h4 { margin: 0 0 10px; }
-	.setClassAnswer{
-		background: #fff2b7;
-		padding: 4px 6px;
-		cursor: pointer;
-	}
+	.setClassAnswer{background: #fff2b7;padding: 4px 6px;}
+	.setAnswer{cursor: pointer;}
 </style>
 <body>
 	<?php $this->load->view('audience_interface/header');?>
