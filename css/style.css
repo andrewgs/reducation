@@ -14,7 +14,7 @@ p { font: 14px/21px 'PT Sans', "Times New Roman", Times, serif; margin-bottom: 1
 header { margin: 10px 0 0; }
 header.admin { margin: 10px 0 20px; }
 
-#logo { font-family: 'PT Sans', "Times New Roman", Times, serif; background: url("../img/logo_small.jpg") no-repeat scroll 0 5px transparent; display: block; color: #00699f; font-size: 30px; line-height: 36px; font-weight: bold; text-transform: uppercase; padding: 0 0 0 115px; position: relative; outline: 0 none; text-decoration: none; margin: 15px 0 0; }
+#logo { font-family: 'PT Sans', "Times New Roman", Times, serif; background: url("../img/logo_small.png") no-repeat scroll 0 5px transparent; display: block; color: #00699f; font-size: 30px; line-height: 36px; font-weight: bold; text-transform: uppercase; padding: 0 0 0 115px; position: relative; outline: 0 none; text-decoration: none; margin: 15px 0 0; }
 #logo span { font-size: 17px; font-weight: normal; left: 247px; position: absolute; text-transform: none; top: 34px;  }
 
 .form-header { color: #999; font-size: 11px; letter-spacing: 0.25px; line-height: 18px; margin: 0 0 5px; text-align: right; text-transform: uppercase; }
