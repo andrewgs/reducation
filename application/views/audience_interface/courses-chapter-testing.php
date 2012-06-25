@@ -3,6 +3,11 @@
 <?php $this->load->view('audience_interface/head');?>
 <style type="text/css">
 	h4 { margin: 0 0 10px; }
+	.setClassAnswer{
+		background: #fff2b7;
+		padding: 4px 6px;
+		cursor: pointer;
+	}
 </style>
 <body>
 	<?php $this->load->view('audience_interface/header');?>
@@ -37,17 +42,13 @@
 							<tbody>
 						<?php for($j=0,$num=1;$j<count($answers);$j++):?>
 							<?php if($answers[$j]['testquestion'] == $questions[$i]['id']):?>
-								<tr>
+								<tr idj="<?=$j;?>" class="setAnswer">
 									<td style="width: 10px;"><?=$num;?>.</td>
 									<td><?=$answers[$j]['title'];?></td>
 									<td style="width: 10px;">
 									<div class="controls">
 										<label class="radio">
-										<?php if($num == 1):?>
-											<input type="radio" name="<?=$questions[$i]['id'];?>" class="optRadios" value="<?=$answers[$j]['id'];?>" checked="checked">
-										<?php else:?>
-											<input type="radio" name="<?=$questions[$i]['id'];?>" class="optRadios" value="<?=$answers[$j]['id'];?>">
-										<?php endif;?>
+											<input type="radio" name="<?=$questions[$i]['id'];?>" class="optRadios" id="opans<?=$j;?>" value="<?=$answers[$j]['id'];?>">
 										</label>
 									</div>
 									</td>
@@ -82,12 +83,26 @@
 				if($(this).attr("checked") == 'checked'){$("#send").removeClass('disabled');}else{$("#send").addClass('disabled');};
 			});
 			$("#send").click(function(event){
-				if($("#validTest").attr("checked") != 'checked'){event.preventDefault();
-				}else{$("#time").val(TotalTime);}
+				if($("#validTest").attr("checked") != "checked"){
+					event.preventDefault();
+				}
+				else{
+					if($(".setClassAnswer").size() == <?=count($questions)?>){
+						$("#time").val(TotalTime);
+					}else{
+						alert("Вы не ответили на все вопросы!");
+						event.preventDefault();
+					}
+				}
 			});
-			
-			$('input.optRadios').click(function(){
-				$(this).parents('div').eq(1).find('h4').css({'background': '#fff2b7', 'padding' : '4px 6px'});
+			$(".setAnswer").click(function(){
+				var idJ = $(this).attr("idj");
+				$(this).siblings(".setClassAnswer").removeClass("setClassAnswer");
+				$(this).addClass("setClassAnswer");
+				$("#opans"+idJ).attr("checked","checked");
+			});
+			$("input.optRadios").click(function(){
+				$(this).parents("tr").addClass("setClassAnswer");
 			});
 		});
 	</script>

@@ -7213,7 +7213,7 @@
 					</treenode>
 				</treenode>
 			</phptree>
-		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\admin_interface.php" crc="1082951698">
+		</csfile><csfile name="S:\home\reducation.ru\www\application\controllers\admin_interface.php" crc="-696976376">
 			<phptree>
 				<treenode node="Admin_interface;Php:Class Name;0;2;1;1773;34;;;vCI_Controller;;c;;r;;d43,2;;b0,0;;m">
 					<treenode node="__construct;Php:Function Name;1;8;2;55;34;;;v;;r;;d23,8;;b0,0;;m">
@@ -7403,4 +7403,6 @@
 			</phptree>
 		</csfile><csfile name="S:\home\reducation.ru\www\index.html" crc="-1815220322">
 		</csfile><csfile name="S:\home\reducation.ru\www\.htaccess" crc="139727451">
-		</csfile></codestructure></project>
+		</csfile></codestructure><dbgurls>
+	</dbgurls>
+</project>
