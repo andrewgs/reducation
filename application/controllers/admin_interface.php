@@ -1443,6 +1443,11 @@ class Admin_interface extends CI_Controller{
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
 		endif;
+		if($pagevar['dateend'] != '0000-00-00'):
+			if($pagevar['dateend'] > date("Y-m-d")):
+				$pagevar['dateend'] = '0000-00-00';
+			endif;
+		endif;
 		if($pagevar['dateend'] != "0000-00-00"):
 			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
 		else:
@@ -1485,6 +1490,11 @@ class Admin_interface extends CI_Controller{
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		if($pagevar['dateend'] != '0000-00-00'):
+			if($pagevar['dateend'] > date("Y-m-d")):
+				$pagevar['dateend'] = '0000-00-00';
+			endif;
 		endif;
 		if($pagevar['dateend'] != "0000-00-00"):
 			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
@@ -1566,6 +1576,11 @@ class Admin_interface extends CI_Controller{
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
 		else:
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		if($pagevar['dateend'] != '0000-00-00'):
+			if($pagevar['dateend'] > date("Y-m-d")):
+				$pagevar['dateend'] = '0000-00-00';
+			endif;
 		endif;
 		if($pagevar['dateend'] != "0000-00-00"):
 			$pagevar['regdateend'] = $this->operation_dot_date($pagevar['dateend']);
