@@ -1036,8 +1036,8 @@ class Admin_interface extends CI_Controller{
 			$config['uri_segment'] 	= 5;
 		endif;
 		$config['total_rows'] 		= $pagevar['count']; 
-        $config['per_page'] 		= 5;
-        $config['num_links'] 		= 4;
+		$config['per_page'] 		= 5;
+		$config['num_links'] 		= 4;
 		$config['first_link']		= 'В начало';
 		$config['last_link'] 		= 'В конец';
 		$config['next_link'] 		= 'Далее &raquo;';
@@ -1085,6 +1085,11 @@ class Admin_interface extends CI_Controller{
 		for($i=0;$i<count($pagevar['orders']);$i++):
 			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
 			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+				if($pagevar['orders'][$i]['closedate'] > date("Y-m-d")):
+					$pagevar['orders'][$i]['closedate'] = '0000-00-00';
+				endif;
+			endif;
 			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
 				$pagevar['orders'][$i]['closedate'] = $this->operation_dot_date($pagevar['orders'][$i]['closedate']);
 			endif;
