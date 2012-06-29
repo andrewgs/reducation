@@ -2,32 +2,32 @@
 
 class Audiencemodel extends CI_Model{
 
-    var $id   			= 0;
-    var $login 			= '';
-    var $password    	= '';
-    var $lastname   	= '';
-    var $name    		= '';
-    var $middlename   	= '';
-    var $fiodat   		= '';
-    var $position  		= '';
-    var $address    	= '';
-    var $graduated    	= '';
-    var $year    		= '';
-    var $documentnumber	= '';
-    var $specialty    	= '';
-    var $signupdate    	= '';
-    var $customer    	= '';
-    var $online    		= 0;
+	var $id   			= 0;
+	var $login 			= '';
+	var $password    	= '';
+	var $lastname   	= '';
+	var $name    		= '';
+	var $middlename   	= '';
+	var $fiodat   		= '';
+	var $position  		= '';
+	var $address    	= '';
+	var $graduated    	= '';
+	var $year    		= '';
+	var $documentnumber	= '';
+	var $specialty    	= '';
+	var $signupdate    	= '';
+	var $customer    	= '';
+	var $online    		= 0;
 	var $access			= 0;
 	var $cryptpassword	= '';
 	var $personaemail	= '';
 	var $personaphone	= '';
 	var $qualification	= '';
 	var $typedocument	= 1;
-
-    function __construct(){
-        parent::__construct();
-    }
+	
+	function __construct(){
+		parent::__construct();
+	}
 	
 	function insert_record($customer,$data){
 			

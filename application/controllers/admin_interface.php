@@ -60,6 +60,80 @@ class Admin_interface extends CI_Controller{
 		$this->load->view("admin_interface/index");
 	}
 	
+	public function send_user_email(){
+	
+		$id = $this->uri->segment(5);
+		$type = $this->uri->segment(4);
+		if($id && $type):
+			switch($type):
+				case 'customer' : 	$info = $this->customersmodel->read_record($id);
+									if($info):
+										$email = $info['personemail'];
+										ob_start();
+										?>
+										<p><strong>Здравствуйте, <?=$info['organization']?></strong></p>
+										<p>Поздравляем! Вы успешно завершили оформление заявки. Вам доступны следующие документы:</p>
+										<ol>
+											<li>Счёт</li>
+											<li>Договор на оказание образовательных услуг</li>
+										</ol>
+										<p>
+											После оплаты заказа мы оформим весь пакет документов, а слушатели будут зачислены на обучение. 
+											Обучение будет осуществляться через личный кабинет слушателя. Для входа в личный кабинет используйте 
+											созданный для вас логин и пароль.
+										</p>
+										<p><strong>Логин: <span style="font-size: 18px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 18px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
+										<p>Пользуйтесь разделом «Мои заказы» на правой панели, чтобы следить за состоянием Ваших заказов.</p>
+										<p>Желаем Вам удачи!</p> 
+										<?
+										$mailtext = ob_get_clean();
+									endif;
+									break;
+				case 'audience' : 	$info = $this->audiencemodel->read_record($id);
+									if($info):
+										$email = $info['personaemail'];
+										ob_start();
+										?>
+										<p>Здравствуйте,  <?=$info['lastname'].' '.$info['name'].' '.$info['middlename'];?></p>
+										<p>
+											Поздравляем! Вас успешно зарегистрировали в статусе слушателя. 
+											Обучение будет осуществляться через личный кабинет.
+											Для входа в личный кабинет используйте присвоенные вам логин и пароль.
+										</p>
+										<p><strong>Логин: <span style="font-size: 18px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 18px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
+										<p>Желаем Вам удачи!</p>
+										<?
+										$mailtext = ob_get_clean();
+									endif;
+									break;
+				default 		: 	show404(); 
+									break;
+			endswitch;
+			if($info && isset($mailtext)):
+				
+				$this->email->clear(TRUE);
+				$config['smtp_host'] = 'localhost';
+				$config['charset'] = 'utf-8';
+				$config['wordwrap'] = TRUE;
+				$config['mailtype'] = 'html';
+				
+				$this->email->initialize($config);
+				$list = array($this->session->userdata('personemail'),'admin@roscentrdpo.ru');
+				$this->email->to($list);
+				$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
+				$this->email->bcc('');
+				$this->email->subject('Данные для доступа к личному кабинету');
+				$this->email->message($mailtext);
+				if($this->email->send()):
+					$this->session->set_userdata('msgs','Успешно. Уведомление отправлено.');
+				else:
+					$this->session->set_userdata('msgr','Ошибка. Уведомление не отправлено.');
+				endif;
+			endif;
+		endif;
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+	
 	public function admin_panel(){
 		
 		$pagevar = array(
@@ -1471,9 +1545,13 @@ class Admin_interface extends CI_Controller{
 					'regdateend'	=> '',
 					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
 					'hours'			=> 0,
-					'ncompletion'	=> eregi_replace("([^0-9])", "",$this->ordersmodel->read_field($order,'numbercompletion')),
+					'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
 					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
+		
+		if($pagevar['ncompletion']):
+			$pagevar['ncompletion'] = eregi_replace("([^0-9])","",$pagevar['ncompletion']);
+		endif;
 		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
 		else:
@@ -1503,6 +1581,7 @@ class Admin_interface extends CI_Controller{
 			else:
 				$pagevar['info'][$i]['paiddate'] = '---';
 			endif;
+				$pagevar['info'][$i]['userpaiddate'] = $this->operation_dot_date($pagevar['info'][$i]['userpaiddate']);
 		endfor;
 		if(isset($pagevar['courses'][0]['chours'])):
 			$pagevar['hours'] = $pagevar['courses'][0]['chours'];
@@ -1545,8 +1624,12 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'customers'		=> $this->customersmodel->read_records()
+					'customers'		=> $this->customersmodel->read_records(),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
 		for($i=0;$i<count($pagevar['customers']);$i++):
 			$pagevar['customers'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['customers'][$i]['cryptpassword']);
 		endfor;
@@ -1667,8 +1750,12 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'audience'		=> $this->unionmodel->read_audience()
+					'audience'		=> $this->unionmodel->read_audience(),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
 		for($i=0;$i<count($pagevar['audience']);$i++):
 			$pagevar['audience'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['audience'][$i]['cryptpassword']);
 		endfor;

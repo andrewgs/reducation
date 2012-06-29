@@ -11,6 +11,8 @@
 						<?=anchor('admin-panel/users/audience','Слушатели');?>
 					</li>
 				</ul>
+				<?php $this->load->view('alert_messages/alert-error');?>
+				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">
 					<tbody>
 					<?php for($i=0,$num=1;$i<count($audience);$i++):?>
@@ -21,7 +23,8 @@
 								<?=anchor('admin-panel/users/audience/info/id/'.$audience[$i]['id'],$fio);?><br/>
 								<strong>Логин:</strong> <?=$audience[$i]['login'].' <strong>Пароль:</strong> '.$audience[$i]['cryptpassword'];?>
 							</td>
-							<td><?=$audience[$i]['organization'].' ('.$audience[$i]['person'].')';?></td>
+							<td><?=$audience[$i]['organization'].'<br/>('.$audience[$i]['person'].')';?></td>
+							<td><?=anchor('admin-panel/actions/send-user-email/audience/'.$audience[$i]['id'],'<i class="icon-envelope"></i>',array('class'=>'btn','title'=>'Выслать повторно регистрационные данные'));?></td>
 						<?php if($audience[$i]['access']):?>
 							<td class="short"><input type="checkbox" value="1" checked="checked" cus="<?=$audience[$i]['id'];?>" id="ch<?=$audience[$i]['id'];?>" class="chAccess"></td>
 						<?php else:?>

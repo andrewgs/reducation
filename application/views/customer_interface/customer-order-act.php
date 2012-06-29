@@ -18,7 +18,7 @@
 						г. Ростов-на-Дону
 		  	  		</p>
 		  	  		<p class="pull-right">
-		  	  			<u><?=$order['orderdate'];?></u>
+		  	  			<u><?=$order['closedate'];?></u>
 		  	  		</p>
 	  	  		</div>
 				<p class="intend">

@@ -11,6 +11,8 @@
 						<?=anchor('admin-panel/users/customer','Заказчики');?>
 					</li>
 				</ul>
+				<?php $this->load->view('alert_messages/alert-error');?>
+				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<th></th>
@@ -24,6 +26,7 @@
 								<?=$customers[$i]['person'].' ('.$customers[$i]['personemail'].')';?><br/>
 								<strong>Логин:</strong> <?=$customers[$i]['login'].' <strong>Пароль:</strong> '.$customers[$i]['cryptpassword'];?>
 							</td>
+							<td><?=anchor('admin-panel/actions/send-user-email/customer/'.$customers[$i]['id'],'<i class="icon-envelope"></i>',array('class'=>'btn','title'=>'Выслать повторно регистрационные данные'));?></td>
 							<td><a href="#CoursesList" class="crsList" data-toggle="modal" data-cus="<?=$customers[$i]['id'];?>" title="Список курсов"><i class="icon-th-list"></i></a></td>
 						<?php if($customers[$i]['access']):?>
 							<td class="short"><input type="checkbox" value="1" checked="checked" data-cus="<?=$customers[$i]['id'];?>" id="ch<?=$customers[$i]['id'];?>" class="chAccess"></td>

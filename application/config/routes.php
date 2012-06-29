@@ -67,6 +67,9 @@ $route['customer/registration/ordering/step/2/course/:num/delete-audience/:num']
 /***************************************************	ADMIN INTRERFACE	***********************************************/
 $route['admin-panel/logoff'] 				= "admin_interface/admin_logoff";
 
+$route['admin-panel/actions/send-user-email/customer/:num']	= "admin_interface/send_user_email";
+$route['admin-panel/actions/send-user-email/audience/:num']		= "admin_interface/send_user_email";
+
 $route['admin-panel/actions/control'] 					= "admin_interface/admin_panel";
 $route['admin-panel/actions/control/delete-date/:num'] 	= "admin_interface/datele_date";
 $route['admin-panel/actions/cabinet'] 					= "admin_interface/admin_cabinet";
