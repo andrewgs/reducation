@@ -71,7 +71,7 @@
 								<br/><?=$orders[$i]['closedate'];?>
 							<?php endif;?>
 							</td>
-							<td><?=$orders[$i]['organization'];?></td>
+							<td><?=anchor('admin-panel/users/customer/info/id/'.$orders[$i]['cid'],$orders[$i]['organization']);?></td>
 						<?php if($orders[$i]['online']):?>
 							<!--td>В сети</td-->
 						<?php else:?>

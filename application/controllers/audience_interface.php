@@ -225,7 +225,7 @@ class Audience_interface extends CI_Controller{
 		
 		$pagevar['chapters'] = $this->chaptermodel->read_records($pagevar['course']['id']);
 		
-		$testday = $this->ordersmodel->read_field($pagevar['course']['ordid'],'testdate');
+		$testday = $this->ordersmodel->read_field($pagevar['course']['ordid'],'closedate');
 		if(strtotime(date('Y-m-d')) >= strtotime($testday)):
 			$pagevar['testvalid'] = TRUE;
 		endif;
@@ -289,7 +289,7 @@ class Audience_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		
 		if($this->uri->segment(7) == 'final-testing'):
-			$testday = $this->ordersmodel->read_field($pagevar['course']['ordid'],'testdate');
+			$testday = $this->ordersmodel->read_field($pagevar['course']['ordid'],'closedate');
 			if(strtotime(date('Y-m-d')) < strtotime($testday)):
 				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
 				redirect('audience/courses/current/course/'.$course.'/lectures');

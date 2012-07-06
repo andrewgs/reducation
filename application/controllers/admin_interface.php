@@ -1087,7 +1087,7 @@ class Admin_interface extends CI_Controller{
 			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
 			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
 				if($pagevar['orders'][$i]['closedate'] > date("Y-m-d")):
-					$pagevar['orders'][$i]['closedate'] = '0000-00-00';
+					$pagevar['orders'][$i]['closedate'] = '<font style="color:#00FF00;">'.$pagevar['orders'][$i]['closedate'].'</fonr>';
 				endif;
 			endif;
 			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
@@ -1145,9 +1145,19 @@ class Admin_interface extends CI_Controller{
 				if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
 					$pagevar['orders'][$i]['closedate'] = $this->operation_dot_date($pagevar['orders'][$i]['closedate']);
 				endif;
+				$date = $pagevar['orders'][$i]['userpaiddate'];
+				if(($date != "Не оплачен") &&  $date!= '0000-00-00' && !empty($date)):
+					$arrdate = preg_split('/[\s, ]+/',$pagevar['orders'][$i]['userpaiddate'],-1,PREG_SPLIT_NO_EMPTY);
+					for($j=0;$j<count($arrdate);$j++):
+						$oDate = new DateTime($arrdate[$j]);
+						$sDate[$j] = $oDate->format("d.m.Y");
+						unset($oDate);
+					endfor;
+					$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
+					unset($sDate);
+				endif;
 			endfor;
 		endif;
-		
 		if($this->input->post('dsubmit')):
 			$_POST['dsubmit'] = NULL;
 			$this->form_validation->set_rules('order',' ','required|trim');
@@ -1252,6 +1262,7 @@ class Admin_interface extends CI_Controller{
 		if(!$order) show_404();
 		$info = $this->unionmodel->read_customer_info_order($order);
 		$info['orderdate'] = $this->operation_dot_date($info['orderdate']);
+		$info['closedate'] = $this->operation_dot_date($info['closedate']);
 		ob_start();
 		?>
 		<p>Здравствуйте, <?=$info['organization'];?></p>
@@ -1281,6 +1292,9 @@ class Admin_interface extends CI_Controller{
 				<td><u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u>,00</td>
 			</tbody>
 		</table>
+		<p>
+			<em><strong>Прохождение итогового тестирования станет доступно только с <?=$info['closedate'];?></strong></em>
+		</p>
 		<p>
 			<strong>ВНИМАНИЕ!</strong> В случае возникновения каких-либо вопросов относительно 
 			данных платежа обращайтесь по тел.: 2-36-53-53
@@ -1637,6 +1651,7 @@ class Admin_interface extends CI_Controller{
 	
 	public function users_customer(){
 		
+		$from = intval($this->uri->segment(5));
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
@@ -1644,7 +1659,9 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'customers'		=> $this->customersmodel->read_records(),
+					'customers'		=> $this->customersmodel->read_records_pages(5,$from),
+					'count'			=> 0,
+					'pages'			=> '',
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -1653,6 +1670,21 @@ class Admin_interface extends CI_Controller{
 		for($i=0;$i<count($pagevar['customers']);$i++):
 			$pagevar['customers'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['customers'][$i]['cryptpassword']);
 		endfor;
+		$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/users/customer/from/';
+		$config['uri_segment']	= 5;
+		$config['total_rows'] 	= $pagevar['count']; 
+		$config['per_page'] 	= 5;
+		$config['num_links'] 	= 4;
+		$config['first_link']	= 'В начало';
+		$config['last_link'] 	= 'В конец';
+		$config['next_link'] 	= 'Далее &raquo;';
+		$config['prev_link'] 	= '&laquo; Назад';
+		$config['cur_tag_open']	= '<span class="actpage">';
+		$config['cur_tag_close']= '</span>';
+		
+		$this->pagination->initialize($config);
+		$pagevar['pages'] = $this->pagination->create_links();
+		
 		$this->load->view("admin_interface/admin-users-customer",$pagevar);
 	}
 	
@@ -1763,6 +1795,7 @@ class Admin_interface extends CI_Controller{
 	
 	public function users_audience(){
 		
+		$from = intval($this->uri->segment(5));
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
@@ -1770,7 +1803,9 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'audience'		=> $this->unionmodel->read_audience(),
+					'audience'		=> $this->unionmodel->read_audience_pages(5,$from),
+					'count'			=> 0,
+					'pages'			=> '',
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -1779,6 +1814,22 @@ class Admin_interface extends CI_Controller{
 		for($i=0;$i<count($pagevar['audience']);$i++):
 			$pagevar['audience'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['audience'][$i]['cryptpassword']);
 		endfor;
+		
+		$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/users/audience/from/';
+		$config['uri_segment']	= 5;
+		$config['total_rows'] 	= $pagevar['count']; 
+		$config['per_page'] 	= 5;
+		$config['num_links'] 	= 4;
+		$config['first_link']	= 'В начало';
+		$config['last_link'] 	= 'В конец';
+		$config['next_link'] 	= 'Далее &raquo;';
+		$config['prev_link'] 	= '&laquo; Назад';
+		$config['cur_tag_open']	= '<span class="actpage">';
+		$config['cur_tag_close']= '</span>';
+		
+		$this->pagination->initialize($config);
+		$pagevar['pages'] = $this->pagination->create_links();
+		
 		$this->load->view("admin_interface/admin-users-audience",$pagevar);
 	}
 	

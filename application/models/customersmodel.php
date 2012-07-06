@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Customersmodel extends CI_Model {
+class Customersmodel extends CI_Model{
 
 	var $id				= 0;
 	var $login			= '';
@@ -77,6 +77,18 @@ class Customersmodel extends CI_Model {
 		$query = $this->db->get('customers');
 		$data = $query->result_array();
 		if(count($data)>0) return $data;
+		return NULL;
+	}
+	
+	function read_records_pages($count,$from){
+		
+		$this->db->order_by('access','DESC');
+		$this->db->order_by('signupdate','DESC');
+		$this->db->order_by('id','DESC');
+		$this->db->limit($count,$from);
+		$query = $this->db->get('customers');
+		$data = $query->result_array();
+		if(count($data)) return $data;
 		return NULL;
 	}
 	

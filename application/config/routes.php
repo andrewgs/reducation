@@ -72,7 +72,6 @@ $route['admin-panel/actions/send-user-email/audience/:num']		= "admin_interface/
 
 $route['admin-panel/actions/control'] 					= "admin_interface/admin_panel";
 $route['admin-panel/actions/control/delete-date/:num'] 	= "admin_interface/datele_date";
-$route['admin-panel/actions/cabinet'] 					= "admin_interface/admin_cabinet";
 /*==========================================================  trends  ====================================================*/
 $route['admin-panel/references/trends']						= "admin_interface/references_trends";
 $route['admin-panel/references/trends/delete-trend/:num']	= "admin_interface/references_delete_trend";
@@ -112,13 +111,19 @@ $route['admin-panel/messages/orders/delete-order/:num']		= "admin_interface/orde
 
 /*===========================================================  users  =====================================================*/
 $route['admin-panel/users/customer']						= "admin_interface/users_customer";
+$route['admin-panel/users/customer/from']					= "admin_interface/users_customer";
+$route['admin-panel/users/customer/from/:num']				= "admin_interface/users_customer";
 $route['admin-panel/users/customer/info/id/:num']			= "admin_interface/users_customer_info";
 
 $route['admin-panel/users/customer/load-courses']			= "admin_interface/users_customer_load_courses";
 
 $route['admin-panel/users/customer/set-customer-access']	= "admin_interface/customer_access";
 $route['admin-panel/users/customer/delete-customer/:num']	= "admin_interface/delete_customer";
+
 $route['admin-panel/users/audience']						= "admin_interface/users_audience";
+$route['admin-panel/users/audience/from']					= "admin_interface/users_customer";
+$route['admin-panel/users/audience/from/:num']				= "admin_interface/users_customer";
+
 $route['admin-panel/users/audience/info/id/:num']			= "admin_interface/users_audience_info";
 $route['admin-panel/users/audience/set-audience-access']	= "admin_interface/audience_access";
 $route['admin-panel/users/audience/delete-audience/:num']	= "admin_interface/delete_audience";

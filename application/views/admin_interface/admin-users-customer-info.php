@@ -6,13 +6,31 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
+				<?php $orders = FALSE;?>
+				<?php $segments = preg_split('/[\/]+/',$_SERVER['HTTP_REFERER'],-1,PREG_SPLIT_NO_EMPTY);?>
+				<?php if(isset($segments[4])):?>
+					<?php if($segments[4] == 'orders'):?>
+						<?php $orders = TRUE;?>
+					<?php endif;?>
+				<?php endif;?>
+				<?php if(isset($segments[5])):?>
+					<?php if($segments[5] == 'orders'):?>
+						<?php $orders = TRUE;?>
+					<?php endif;?>
+				<?php endif;?>
 				<ul class="breadcrumb">
+				<?php if($orders):?>
+					<li>
+						<a href="javascript:history.go(-1);">&larr; Вернутся назад</a>
+					</li>
+				<?php else:?>
 					<li>
 						<?=anchor('admin-panel/users/customer','Заказчики');?><span class="divider">/</span>
 					</li>
 					<li class="active">
 						<?=anchor('admin-panel/users/customer/info/id/'.$this->uri->segment(6),'Карточка заказчика');?>
 					</li>
+			<?php endif;?>
 				</ul>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>

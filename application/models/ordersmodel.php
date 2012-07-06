@@ -6,7 +6,6 @@ class Ordersmodel extends CI_Model{
     var $trend 				= 0;
     var $customer 			= '';
     var $orderdate  		= '0000-00-00';
-    var $testdate  			= '0000-00-00';
     var $price  			= 0;
     var $finish				= 0;
     var $paid				= 0;
@@ -25,7 +24,6 @@ class Ordersmodel extends CI_Model{
 		$this->trend	= $trend;
 		$this->customer	= $customer;
 		$this->orderdate= date("Y-m-d");
-		$this->testdate	= '0000-00-00';
 		$this->price 	= 0;
 		$this->finish	= 0;
 		$this->paid		= 0;

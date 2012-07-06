@@ -27,7 +27,7 @@
 								<strong>Логин:</strong> <?=$customers[$i]['login'].' <strong>Пароль:</strong> '.$customers[$i]['cryptpassword'];?>
 							</td>
 							<td><?=anchor('admin-panel/actions/send-user-email/customer/'.$customers[$i]['id'],'<i class="icon-envelope"></i>',array('class'=>'btn','title'=>'Выслать повторно регистрационные данные'));?></td>
-							<td><a href="#CoursesList" class="crsList" data-toggle="modal" data-cus="<?=$customers[$i]['id'];?>" title="Список курсов"><i class="icon-th-list"></i></a></td>
+							<td><a href="#CoursesList" class="crsList" data-toggle="modal" data-cus="<?=$customers[$i]['id'];?>" title="Список заказов"><i class="icon-th-list"></i></a></td>
 						<?php if($customers[$i]['access']):?>
 							<td class="short"><input type="checkbox" value="1" checked="checked" data-cus="<?=$customers[$i]['id'];?>" id="ch<?=$customers[$i]['id'];?>" class="chAccess"></td>
 						<?php else:?>
@@ -39,6 +39,9 @@
 					<?php endfor;?>
 					</tbody>
 				</table>
+			<?php if($pages): ?>
+				<?=$pages;?>
+			<?php endif;?>
 				<?php $this->load->view('admin_interface/modal/admin-delete-customer');?>
 				<?php $this->load->view('admin_interface/modal/admin-courses-list');?>
 			</div>

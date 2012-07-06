@@ -36,6 +36,9 @@
 					<?php endfor;?>
 					</tbody>
 				</table>
+			<?php if($pages): ?>
+				<?=$pages;?>
+			<?php endif;?>
 				<?php $this->load->view('admin_interface/modal/admin-delete-audience');?>
 			</div>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
