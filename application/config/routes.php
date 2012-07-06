@@ -116,6 +116,8 @@ $route['admin-panel/users/customer/from/:num']				= "admin_interface/users_custo
 $route['admin-panel/users/customer/info/id/:num']			= "admin_interface/users_customer_info";
 
 $route['admin-panel/users/customer/load-courses']			= "admin_interface/users_customer_load_courses";
+$route['admin-panel/users/customer/from/load-courses']		= "admin_interface/users_customer_load_courses";
+$route['admin-panel/users/customer/from/:num/load-courses']	= "admin_interface/users_customer_load_courses";
 
 $route['admin-panel/users/customer/set-customer-access']	= "admin_interface/customer_access";
 $route['admin-panel/users/customer/delete-customer/:num']	= "admin_interface/delete_customer";

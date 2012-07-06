@@ -25,7 +25,7 @@
 					</li>
 				<?php else:?>
 					<li>
-						<?=anchor('admin-panel/users/customer','Заказчики');?><span class="divider">/</span>
+						<a href="javascript:history.go(-1);">Заказчики</a><span class="divider">/</span>
 					</li>
 					<li class="active">
 						<?=anchor('admin-panel/users/customer/info/id/'.$this->uri->segment(6),'Карточка заказчика');?>

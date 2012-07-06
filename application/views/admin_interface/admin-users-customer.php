@@ -14,11 +14,8 @@
 				<?php $this->load->view('alert_messages/alert-error');?>
 				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">
-					<thead>
-						<th></th>
-					</thead>
 					<tbody>
-					<?php for($i=0,$num=1;$i<count($customers);$i++):?>
+					<?php for($i=0,$num=$this->uri->segment(5)+1;$i<count($customers);$i++):?>
 						<tr>
 							<td class="short"><?=$num;?></td>
 							<td><?=anchor('admin-panel/users/customer/info/id/'.$customers[$i]['id'],$customers[$i]['organization']);?></td>

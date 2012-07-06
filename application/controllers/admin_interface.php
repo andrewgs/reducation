@@ -1659,8 +1659,8 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'customers'		=> $this->customersmodel->read_records_pages(5,$from),
-					'count'			=> 0,
+					'customers'		=> $this->customersmodel->read_records_pages(10,$from),
+					'count'			=> count($this->customersmodel->read_records()),
 					'pages'			=> '',
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
@@ -1673,7 +1673,7 @@ class Admin_interface extends CI_Controller{
 		$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/users/customer/from/';
 		$config['uri_segment']	= 5;
 		$config['total_rows'] 	= $pagevar['count']; 
-		$config['per_page'] 	= 5;
+		$config['per_page'] 	= 10;
 		$config['num_links'] 	= 4;
 		$config['first_link']	= 'В начало';
 		$config['last_link'] 	= 'В конец';
@@ -1803,8 +1803,8 @@ class Admin_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'audience'		=> $this->unionmodel->read_audience_pages(5,$from),
-					'count'			=> 0,
+					'audience'		=> $this->unionmodel->read_audience_pages(10,$from),
+					'count'			=> count($this->unionmodel->read_audience()),
 					'pages'			=> '',
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
@@ -1818,7 +1818,7 @@ class Admin_interface extends CI_Controller{
 		$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/users/audience/from/';
 		$config['uri_segment']	= 5;
 		$config['total_rows'] 	= $pagevar['count']; 
-		$config['per_page'] 	= 5;
+		$config['per_page'] 	= 10;
 		$config['num_links'] 	= 4;
 		$config['first_link']	= 'В начало';
 		$config['last_link'] 	= 'В конец';

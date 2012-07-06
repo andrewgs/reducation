@@ -15,7 +15,7 @@
 				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">
 					<tbody>
-					<?php for($i=0,$num=1;$i<count($audience);$i++):?>
+					<?php for($i=0,$num=$this->uri->segment(5)+1;$i<count($audience);$i++):?>
 						<tr>
 							<td class="short"><?=$num;?></td>
 							<td>
