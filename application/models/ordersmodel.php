@@ -2,20 +2,20 @@
 
 class Ordersmodel extends CI_Model{
 
-    var $id   				= 0;
-    var $trend 				= 0;
-    var $customer 			= '';
-    var $orderdate  		= '0000-00-00';
-    var $price  			= 0;
-    var $finish				= 0;
-    var $paid				= 0;
-    var $paiddate			= '0000-00-00';
-    var $userpaiddate		= '0000-00-00';
-    var $closedate			= '0000-00-00';
-    var $numberplacement	= '';
-    var $numbercompletion	= '';
-
-    function __construct(){
+	var $id   				= 0;
+	var $trend 				= 0;
+	var $customer 			= '';
+	var $orderdate  		= '0000-00-00';
+	var $price  			= 0;
+	var $finish				= 0;
+	var $paid				= 0;
+	var $paiddate			= '0000-00-00';
+	var $userpaiddate		= '0000-00-00';
+	var $closedate			= '0000-00-00';
+	var $numberplacement	= '';
+	var $numbercompletion	= '';
+	
+	function __construct(){
         parent::__construct();
     }
 	

@@ -11,7 +11,7 @@
 				</p>
 				<div id="top-contacts">
 					<span class="desc">Телефон для справок:</span>
-					<b>(863)</b> 236-53-53
+					<b>(863)</b> 246-43-54
 				</div>			
 			</div>
 		</div>

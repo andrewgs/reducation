@@ -226,7 +226,7 @@ class Audience_interface extends CI_Controller{
 		$pagevar['chapters'] = $this->chaptermodel->read_records($pagevar['course']['id']);
 		
 		$testday = $this->ordersmodel->read_field($pagevar['course']['ordid'],'closedate');
-		if(strtotime(date('Y-m-d')) >= strtotime($testday)):
+		if(strtotime(date("Y-m-d")) >= strtotime($testday)):
 			$pagevar['testvalid'] = TRUE;
 		endif;
 		for($i=0;$i<count($pagevar['chapters']);$i++):
@@ -235,6 +235,9 @@ class Audience_interface extends CI_Controller{
 			$pagevar['chapters'][$i]['test']['count'] = $this->testsmodel->read_field($pagevar['chapters'][$i]['test']['test'],'count');
 		endfor;
 		$pagevar['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],0,$this->user['uid']);
+		if(!count($pagevar['test'])):
+			$pagevar['testvalid'] = FALSE;
+		endif;
 		$pagevar['test']['count'] = $this->testsmodel->read_field($pagevar['test']['test'],'count');
 		$this->load->view("audience_interface/courses-lectures",$pagevar);
 	}

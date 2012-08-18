@@ -18,7 +18,10 @@
 					<?php for($i=0,$num=$this->uri->segment(5)+1;$i<count($customers);$i++):?>
 						<tr>
 							<td class="short"><?=$num;?></td>
-							<td><?=anchor('admin-panel/users/customer/info/id/'.$customers[$i]['id'],$customers[$i]['organization']);?></td>
+							<td>
+								<?=anchor('admin-panel/users/customer/info/id/'.$customers[$i]['id'],$customers[$i]['organization']);?><br/>
+								№ тел.: <?=$customers[$i]['phones'];?>
+							</td>
 							<td>
 								<?=$customers[$i]['person'].' ('.$customers[$i]['personemail'].')';?><br/>
 								<strong>Логин:</strong> <?=$customers[$i]['login'].' <strong>Пароль:</strong> '.$customers[$i]['cryptpassword'];?>

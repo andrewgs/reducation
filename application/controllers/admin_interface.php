@@ -118,8 +118,7 @@ class Admin_interface extends CI_Controller{
 				$config['mailtype'] = 'html';
 				
 				$this->email->initialize($config);
-				$list = array($this->session->userdata('personemail'),'admin@roscentrdpo.ru');
-				$this->email->to($list);
+				$this->email->to($email);
 				$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
 				$this->email->bcc('');
 				$this->email->subject('Данные для доступа к личному кабинету');
@@ -1259,7 +1258,6 @@ class Admin_interface extends CI_Controller{
 		
 		$statusval = array('retvalue'=>'<font color="#00ff00"><br/>Отправлено</font>','retemail'=>'');
 		$order = $this->input->post('order');
-		if(!$order) show_404();
 		$info = $this->unionmodel->read_customer_info_order($order);
 		$info['orderdate'] = $this->operation_dot_date($info['orderdate']);
 		$info['closedate'] = $this->operation_dot_date($info['closedate']);
@@ -1293,7 +1291,7 @@ class Admin_interface extends CI_Controller{
 			</tbody>
 		</table>
 		<p>
-			<em><strong>Прохождение итогового тестирования станет доступно только с <?=$info['closedate'];?></strong></em>
+			<em><strong>Прохождение итогового тестирования станет доступно с <?=$info['closedate'];?></strong></em>
 		</p>
 		<p>
 			<strong>ВНИМАНИЕ!</strong> В случае возникновения каких-либо вопросов относительно 

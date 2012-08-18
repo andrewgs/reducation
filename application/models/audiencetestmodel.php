@@ -2,21 +2,21 @@
 
 class Audiencetestmodel extends CI_Model{
 
-    var $id   			= 0;
-    var $order 			= 0;
-    var $course 		= 0;
-    var $audience   	= 0;
-    var $chapter   		= 0;
-    var $test	   		= 0;
-    var $attempt		= 0;
-    var $result			= 0;
-    var $time			= 0;
-    var $attemptdate	= '';
-    var $customer		= 0;
-
-    function __construct(){
-        parent::__construct();
-    }
+	var $id   			= 0;
+	var $order 			= 0;
+	var $course 		= 0;
+	var $audience   	= 0;
+	var $chapter   		= 0;
+	var $test	   		= 0;
+	var $attempt		= 0;
+	var $result			= 0;
+	var $time			= 0;
+	var $attemptdate	= '';
+	var $customer		= 0;
+	
+	function __construct(){
+		parent::__construct();
+	}
 	
 	function insert_record($course,$audience,$order,$customer,$chapter,$test){
 			

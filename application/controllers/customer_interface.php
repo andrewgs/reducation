@@ -160,8 +160,13 @@ class Customer_interface extends CI_Controller{
 	}
 	
 	public function orders_order_information(){
-		
-		if(!$this->ordersmodel->owner_order_finish($this->uri->segment(6),$this->user['uid'])):
+	
+		$order = $this->uri->segment(6);
+		if($this->ordersmodel->owner_order_nonfinish($order,$this->user['uid'])):
+			$optRadio = $this->ordersmodel->read_field($order,'trend');
+			$this->session->set_userdata(array('regordering'=>TRUE,'step'=>2,'ordering'=>$optRadio,'order'=>$order));
+			redirect('customer/registration/ordering/step/2');
+		elseif(!$this->ordersmodel->owner_order_finish($order,$this->user['uid'])):
 			$this->session->set_userdata('msgr','Заказ отсутствует или удален.');
 			redirect('customer/audience/orders');
 		endif;
@@ -172,8 +177,8 @@ class Customer_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
-					'order'			=> $this->ordersmodel->read_record($this->uri->segment(6)),
-					'course'		=> $this->unionmodel->read_corder_records($this->uri->segment(6)),
+					'order'			=> $this->ordersmodel->read_record($order),
+					'course'		=> $this->unionmodel->read_corder_records($order),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -417,7 +422,6 @@ class Customer_interface extends CI_Controller{
 	}
 	
 	public function registration_ordering_step1(){
-		
 		
 		if($this->session->userdata('step')):
 			if($this->session->userdata('step') != 1):

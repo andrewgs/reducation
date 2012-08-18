@@ -123,8 +123,8 @@ $route['admin-panel/users/customer/set-customer-access']	= "admin_interface/cust
 $route['admin-panel/users/customer/delete-customer/:num']	= "admin_interface/delete_customer";
 
 $route['admin-panel/users/audience']						= "admin_interface/users_audience";
-$route['admin-panel/users/audience/from']					= "admin_interface/users_customer";
-$route['admin-panel/users/audience/from/:num']				= "admin_interface/users_customer";
+$route['admin-panel/users/audience/from']					= "admin_interface/users_audience";
+$route['admin-panel/users/audience/from/:num']				= "admin_interface/users_audience";
 
 $route['admin-panel/users/audience/info/id/:num']			= "admin_interface/users_audience_info";
 $route['admin-panel/users/audience/set-audience-access']	= "admin_interface/audience_access";

@@ -29,8 +29,8 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>№ п/п</th>
-							<th>Код. Навзвание курса</th>
+							<th><nobr>№ п/п</nobr></th>
+							<th>Код. Название курса</th>
 							<th>Слушатель</th>
 							<th>Результат</th>
 							<th><nobr>Дата сдачи</nobr></th>

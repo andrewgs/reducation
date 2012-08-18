@@ -63,7 +63,10 @@
 								<br/><?=$orders[$i]['closedate'];?>
 							<?php endif;?>
 							</td>
-							<td><?=anchor('admin-panel/users/customer/info/id/'.$orders[$i]['cid'],$orders[$i]['organization']);?></td>
+							<td>
+								<?=anchor('admin-panel/users/customer/info/id/'.$orders[$i]['cid'],$orders[$i]['organization']);?><br/>
+								№ тел.: <?=$orders[$i]['phones'];?>
+							</td>
 						<?php if($orders[$i]['online']):?>
 							<!--td>В сети</td-->
 						<?php else:?>
