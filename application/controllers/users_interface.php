@@ -49,17 +49,17 @@ class Users_interface extends CI_Controller{
 	public function index(){
 		
 		$pagevar = array(
-					'description'	=> 'Учебный центр по повышению квалификации кадров в сфере строительства, проектирования, инженерных изысканий, коммунального хозяйства и энергетического менеджмента. Курсы, дистанционное обучение, переподготовка. После окончания обучения  выдается удостоверение о повышении квалификации.',
-					'author'		=> '',
-					'title'			=> 'Повышение квалификации и переподготовка кадров | Дистанционное обучение | Ростов, Краснодар, Ставрополь, Сочи, Пятигорск, Астрахань, Волгоград',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(3),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr'),
-					'msgauth'		=> $this->session->userdata('msgauth')
-			);
+			'title'			=> 'Повышение квалификации и переподготовка кадров | Дистанционное обучение | Ростов, Краснодар, Ставрополь, Сочи, Пятигорск, Астрахань, Волгоград',
+			'description'	=> 'Учебный центр по повышению квалификации кадров в сфере строительства, проектирования, инженерных изысканий, коммунального хозяйства и энергетического менеджмента. Курсы, дистанционное обучение, переподготовка. После окончания обучения  выдается удостоверение о повышении квалификации.',
+			'author'		=> '',					
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'newcourses'	=> $this->coursesmodel->read_new_courses(3),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
 		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
@@ -106,16 +106,16 @@ class Users_interface extends CI_Controller{
 	public function information(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr'),
-					'msgauth'		=> $this->session->userdata('msgauth')
-			);
+			'title'			=> 'Повышение квалификации Ростов, Астрахань, Волгоград | Курсы повышения квалификации инженеров, проектировщиков, строителей, энергетиков | Дистанционное обучение',					
+			'description'	=> 'Учебный центр по повышению квалификации кадров в сфере строительства, проектирования, инженерных изысканий, коммунального хозяйства и энергетического менеджмента. После окончания обучения выдается удостоверение о повышении квалификации.',
+			'author'		=> '',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
 		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
@@ -259,16 +259,16 @@ class Users_interface extends CI_Controller{
 	public function registration_customer(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr'),
-					'msgauth'		=> $this->session->userdata('msgauth')
-			);
+			'title'			=> 'Оформление заявки на повышение квалификации | Дистанционное обучение | Удаленное образование',
+			'description'	=> 'Для оформления заявки необходимо пройти систему регистрации. Учебный центр по повышению квалификации кадров в сфере строительства, проектирования, инженерных изысканий, коммунального хозяйства и энергетического менеджмента.',
+			'author'		=> '',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
 		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
@@ -284,16 +284,16 @@ class Users_interface extends CI_Controller{
 		endif;
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr'),
-					'msgauth'		=> $this->session->userdata('msgauth')
-			);
+				'title'			=> 'Шаг 1. Оформление заявки на дистанционное образование. ',
+				'description'	=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров. Оформление заявки на дистанционное образование. Шаг 1.',
+				'author'		=> '',
+				'baseurl' 		=> base_url(),
+				'loginstatus'	=> $this->loginstatus,
+				'userinfo'		=> $this->user,
+				'msgs'			=> $this->session->userdata('msgs'),
+				'msgr'			=> $this->session->userdata('msgr'),
+				'msgauth'		=> $this->session->userdata('msgauth')
+		);
 		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
@@ -513,9 +513,9 @@ class Users_interface extends CI_Controller{
 	public function catalog_courses(){
 		
 		$pagevar = array(
-					'description'	=> '',
+					'title'			=> 'Курсы повышения квалификации работников, инженеров, проектировщиков, строителей, энергетиков | Дистанционное повышение квалификации',
+					'description'	=> 'Каталог курсов по повышению квалификации инженеров, проектировщиков, строителей, энергетиков. Дистанционное обучение Ростов-на-Дону, Краснодар, Ставрополь, Сочи, Астрахань, Волгоград.',
 					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
@@ -536,16 +536,16 @@ class Users_interface extends CI_Controller{
 	public function contacts(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr'),
-					'msgauth'		=> $this->session->userdata('msgauth')
-			);
+			'title'			=> 'Контактная информация | Южно-окружной центр повышения квалификации и переподготовки кадров',
+			'description'	=> 'Контактная информация южного окружного регионального центра повышения квалификации инженеров, проектировщиков, строителей, энергетиков. Дистанционное обучение. Ростов-на-Дону, Краснодар, Ставрополь,Сочи, Пятигорск, Астрахань, Волгоград.',
+			'author'		=> '',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
 		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
