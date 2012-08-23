@@ -11,6 +11,16 @@
 						<?=anchor('admin-panel/users/customer','Заказчики');?>
 					</li>
 				</ul>
+				<div style="float:right; margin-top:-5px;">
+				<?=form_open($this->uri->uri_string()); ?>
+					<input type="hidden" id="srzakid" name="srzakid" value="">
+					<input type="text" id="srzak" class="input-xlarge" name="srzak" value="">
+					<div class="suggestionsBox" id="suggestions" style="display: none;"> <img src="<?=$baseurl;?>/img/arrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+						<div class="suggestionList" id="suggestionsList"> &nbsp; </div>
+					</div>
+					<button class="btn btn-success" type="submit" id="save" name="ssrzak" value="save" style="margin-top:-10px;"><i class="icon-search icon-white"></i> Найти</button>
+				<?= form_close(); ?>
+				</div>
 				<?php $this->load->view('alert_messages/alert-error');?>
 				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">
@@ -66,6 +76,35 @@
 				Customer = $(this).attr('data-cus');
 				$("#sourses-body").load('<?=$baseurl.$this->uri->uri_string();?>/load-courses',{'customer': Customer});
 			});
+			
+			function suggest(inputString){
+				if(inputString.length < 2){
+					$("#suggestions").fadeOut();
+				}else{
+					$("#customer").addClass('load');
+					$.post("<?=$baseurl;?>admin-panel/messages/search-customer",{squery: ""+inputString+""},
+						function(data){
+							if(data.status){
+								$("#suggestions").fadeIn();
+								$("#suggestionsList").html(data.retvalue);
+								$(".custorg").live('click',function(){fill($(this).html(),$(this).attr("data-cusid"));});
+							}else{
+								$('#suggestions').fadeOut();
+							};
+							$("#customer").removeClass('load');
+					},"json");
+				}
+			};
+			
+			function fill(cusname,cusid){
+				$("#srzak").val(cusname);
+				$("#srzakid").val(cusid);
+				setTimeout("$('#suggestions').fadeOut();", 600);
+			};
+			
+			$("#srzak").keyup(function(){suggest(this.value)});
+			$("#srzak").focusout(function(){setTimeout("$('#suggestions').fadeOut();", 600);});
+			
 		});
 	</script>
 </body>

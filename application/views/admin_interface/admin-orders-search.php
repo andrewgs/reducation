@@ -103,7 +103,6 @@
 		</div>
 	</div>
 	<?php $this->load->view('admin_interface/scripts');?>
-	<script src="<?=$baseurl;?>js/autosuggest-2.1.3.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("li[tnum='<?=$this->uri->segment(4);?>']").addClass('active');

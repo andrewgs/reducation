@@ -94,6 +94,7 @@ $route['admin-panel/references/trend/:num/course/:num/chapter/:num/testing/:num/
 $route['admin-panel/messages/search/orders']					= "admin_interface/orders_search";
 $route['admin-panel/messages/search/orders/new-search']			= "admin_interface/orders_search";
 $route['admin-panel/messages/search-customer']					= "admin_interface/search_customer";
+$route['admin-panel/messages/search-audience']					= "admin_interface/search_audience";
 
 $route['admin-panel/messages/orders/all']					= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/all/:num']				= "admin_interface/orders_messages";

@@ -1209,7 +1209,25 @@ class Admin_interface extends CI_Controller{
 			$statusval['retvalue'] = '<ul>';
 			for($i=0;$i<count($customers);$i++):
 				$customers[$i]['organization'] = htmlspecialchars_decode($customers[$i]['organization']);
-				$statusval['retvalue'] .= '<li class="custorg">'.$customers[$i]['organization'].'</li>';
+				$statusval['retvalue'] .= '<li class="custorg" data-cusid="'.$customers[$i]['id'].'">'.$customers[$i]['organization'].'</li>';
+			endfor;
+			$statusval['retvalue'] .= '</ul>';
+			$statusval['status'] = TRUE;
+		endif;
+		echo json_encode($statusval);
+	}
+	
+	public function search_audience(){
+		
+		$statusval = array('status'=>FALSE,'retvalue'=>'');
+		$search = $this->input->post('squery');
+		if(!$search) show_404();
+		$audience = $this->audiencemodel->search_audience(htmlspecialchars($search));
+		if($audience):
+			$statusval['retvalue'] = '<ul>';
+			for($i=0;$i<count($audience);$i++):
+				$audience[$i]['name'] = $audience[$i]['lastname'].' '.$audience[$i]['name'].' '.$audience[$i]['middlename'];
+				$statusval['retvalue'] .= '<li class="sluorg" data-sluid="'.$audience[$i]['id'].'">'.$audience[$i]['name'].'</li>';
 			endfor;
 			$statusval['retvalue'] .= '</ul>';
 			$statusval['status'] = TRUE;
@@ -1683,6 +1701,20 @@ class Admin_interface extends CI_Controller{
 		$this->pagination->initialize($config);
 		$pagevar['pages'] = $this->pagination->create_links();
 		
+		if($this->input->post('ssrzak')):
+			$_POST['ssrzak'] = NULL;
+			$this->form_validation->set_rules('srzakid',' ','required|trim');
+			$this->form_validation->set_rules('srzak',' ','required|trim');
+			if(!$this->form_validation->run()):
+				redirect($this->uri->uri_string());
+			else:
+				$pagevar['customers'] = $this->customersmodel->search_record($_POST['srzakid']);
+				for($i=0;$i<count($pagevar['customers']);$i++):
+					$pagevar['customers'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['customers'][$i]['cryptpassword']);
+				endfor;
+				$pagevar['pages'] = NULL;
+			endif;
+		endif;
 		$this->load->view("admin_interface/admin-users-customer",$pagevar);
 	}
 	
@@ -1827,6 +1859,21 @@ class Admin_interface extends CI_Controller{
 		
 		$this->pagination->initialize($config);
 		$pagevar['pages'] = $this->pagination->create_links();
+		
+		if($this->input->post('ssrslu')):
+			$_POST['ssrslu'] = NULL;
+			$this->form_validation->set_rules('srsluid',' ','required|trim');
+			$this->form_validation->set_rules('srslu',' ','required|trim');
+			if(!$this->form_validation->run()):
+				redirect($this->uri->uri_string());
+			else:
+				$pagevar['audience'] = $this->unionmodel->search_audience_record($_POST['srsluid']);
+				for($i=0;$i<count($pagevar['audience']);$i++):
+					$pagevar['audience'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['audience'][$i]['cryptpassword']);
+				endfor;
+				$pagevar['pages'] = NULL;
+			endif;
+		endif;
 		
 		$this->load->view("admin_interface/admin-users-audience",$pagevar);
 	}

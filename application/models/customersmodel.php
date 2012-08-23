@@ -92,6 +92,15 @@ class Customersmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function search_record($id){
+		
+		$this->db->where('id',$id);
+		$query = $this->db->get('customers');
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
 	function read_email_records($email){
 		
 		$this->db->select('id,login,cryptpassword,organization,person,signupdate');
@@ -206,7 +215,7 @@ class Customersmodel extends CI_Model{
 
 	function search_customers($customer){
 		
-		$query = "SELECT customers.organization FROM customers WHERE customers.organization LIKE '%$customer%'";
+		$query = "SELECT customers.id,customers.organization FROM customers WHERE customers.organization LIKE '%$customer%'";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;

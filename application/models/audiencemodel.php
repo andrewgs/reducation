@@ -201,4 +201,22 @@ class Audiencemodel extends CI_Model{
 		$this->db->update('audience');
 		return $this->db->affected_rows();
 	}
+	
+	function search_audience($audience){
+		
+		$query = "SELECT audience.id,audience.lastname,audience.name,audience.middlename FROM audience WHERE audience.lastname LIKE '%$audience%'";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function search_record($id){
+		
+		$this->db->where('id',$id);
+		$query = $this->db->get('audience');
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
 }

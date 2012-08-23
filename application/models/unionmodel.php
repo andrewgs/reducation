@@ -24,6 +24,15 @@ class Unionmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function search_audience_record($id){
+		
+		$query = "SELECT audience.*,customers.organization,customers.person FROM customers INNER JOIN audience ON customers.id=audience.customer WHERE audience.id = $id";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
 	function read_corder_records($order){
 		
 		$query = "SELECT courseorder.*,courses.title,courses.price,courses.code,orders.discount,orders.docnumber FROM courseorder INNER JOIN courses ON courseorder.course=courses.id INNER JOIN orders ON orders.id = courseorder.order WHERE courseorder.order = $order ORDER BY courseorder.id";
