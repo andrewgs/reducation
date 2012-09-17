@@ -41,7 +41,13 @@
 		</div>
 		<div class="row">
 			<div class="span9">
-				<h2>Каталог курсов</h2>
+				<h2 class="inline-left">Список курсов</h2> 
+				<div class="btn-toolbar inline-right">
+					<div class="btn-group">
+						<a href="<?= base_url(); ?>courses_list.xls" class="btn btn-info"><i class="icon-th-list icon-white"></i> Каталог курсов и прайс-лист</a>
+					</div>
+				</div>
+				<div class="clear"></div>
 				<div class="accordion" id="accordion2">
 			<?for($i=0;$i<count($trends);$i++):?>
 				<?php 
@@ -93,11 +99,13 @@
 				<?php endif;?>
 			<?php endfor;?>
 				</div>
+				<!--
 				<div class="btn-toolbar">
 					<div class="btn-group">
-						<a href="<?= base_url(); ?>courses_list.xls" class="btn btn-info"><i class="icon-th-list icon-white"></i> Cписок курсов</a>
+						<a href="<?= base_url(); ?>courses_list.xls" class="btn btn-info"><i class="icon-th-list icon-white"></i> Каталог курсов с ценами</a>
 					</div>
 				</div>
+				-->
 			</div>
 		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
