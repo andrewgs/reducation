@@ -14,19 +14,22 @@
 				<?php endif;?>
 				<ul class="breadcrumb">
 					<li tnum="active">
-						<?=anchor('admin-panel/messages/orders/active','Активные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/active','Активные');?> <span class="divider">/</span>
 					</li>
 					<li tnum="deactive">
-						<?=anchor('admin-panel/messages/orders/deactive','Закрытые заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/deactive','Закрытые');?> <span class="divider">/</span>
+					</li>
+					<li tnum="noclosed">
+						<?=anchor('admin-panel/messages/orders/noclosed','Не закрытые');?> <span class="divider">/</span>
 					</li>
 					<li tnum="unpaid">
-						<?=anchor('admin-panel/messages/orders/unpaid','Неоплаченные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/unpaid','Неоплаченные');?> <span class="divider">/</span>
 					</li>
 					<li tnum="sponsored">
-						<?=anchor('admin-panel/messages/orders/sponsored','Оплаченные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/sponsored','Оплаченные');?> <span class="divider">/</span>
 					</li>
 					<li tnum="all">
-						<?=anchor('admin-panel/messages/orders/all','Все заказы');?>
+						<?=anchor('admin-panel/messages/orders/all','Все');?>
 					</li>
 				</ul>
 				<?php $this->load->view('alert_messages/alert-error');?>
