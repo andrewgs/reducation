@@ -19,6 +19,8 @@ header.admin { margin: 10px 0 20px; }
 
 .form-header { color: #999; font-size: 11px; letter-spacing: 0.25px; line-height: 18px; margin: 0 0 5px; text-align: right; text-transform: uppercase; }
 .right { text-align: right; }
+.inline-right { display: inline-block; float: right; padding-top: 0.75em; }
+.inline-left { float: left; display: inline-block; }
 
 #top-contacts { font-family: 'PT Sans', "Times New Roman", Times, serif; color: #333; font-size: 21px; text-align: right; }
 #top-contacts b { font-weight: normal; color: #999; }
@@ -62,7 +64,10 @@ h1, h2 { font-size: 20px; font-weight: normal; letter-spacing: 0.5px; line-heigh
 	line-height: 28px;
 	margin: 18px 0 15px;
 }
-h1 { font-size: 18px; font-weight: bold; line-height: 27px; margin: 20px 0; text-transform: uppercase; }
+h1 { 
+	/* font-size: 18px; font-weight: bold; line-height: 27px; margin: 20px 0; text-transform: uppercase; */
+	font-size: 23px; line-height: 27px; margin: 20px 0; 
+}
 h2.bordered { border-bottom: 1px dashed #ccc; padding: 10px 0 8px; }
 h2.level-0 { font-size: 18px; } 
 h2.level-1 { padding-left: 20px; font-size: 16px; line-height: 23px; margin-bottom: 10px; text-transform: none; }
@@ -127,6 +132,9 @@ table.no-border td { border: 0 none; }
 .inv { width: 80px; border: 1px solid #e0e0e0; border-style: none none solid; }
 .SendMail { margin: 3px 0 0; }
 p.intend { text-indent: 27px; }
+
+.span10 ul { list-style: none; }
+.span10 ul li:before { content: "— "; }
 
 #result {
 	height:20px;
