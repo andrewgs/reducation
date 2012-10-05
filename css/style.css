@@ -217,3 +217,11 @@ p.intend { text-indent: 27px; }
 	color: #ff0000;
 	margin: 0 3px 0 7px;
 }
+
+.red{
+	color: #ff0000;
+}
+
+.green{
+	color: #00ff00;
+}

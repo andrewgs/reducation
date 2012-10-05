@@ -82,7 +82,7 @@
 					$("#suggestions").fadeOut();
 				}else{
 					$("#customer").addClass('load');
-					$.post("<?=$baseurl;?>admin-panel/messages/search-customer",{squery: ""+inputString+"},
+					$.post("<?=$baseurl;?>admin-panel/messages/search-customer",{squery: ""+inputString+""},
 						function(data){
 							if(data.status){
 								$("#suggestions").fadeIn();

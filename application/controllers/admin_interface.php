@@ -1014,6 +1014,10 @@ class Admin_interface extends CI_Controller{
 								$pagevar['orders'] = $this->unionmodel->read_customer_deactive_orders($field,$sortby,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_deactive_orders();
 								break;
+			case 'noclosed' :	$pagevar['title'] .= 'Не закрытые заказы';
+								$pagevar['orders'] = $this->unionmodel->read_customer_noclosed_orders($field,$sortby,5,$from);
+								$pagevar['count'] = $this->unionmodel->count_customer_noclosed_orders();
+								break;
 			case 'unpaid' :		$pagevar['title'] .= 'Неоплачанные заказы';
 								$pagevar['orders'] = $this->unionmodel->read_customer_orders($field,$sortby,0,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_orders(0);
@@ -1086,7 +1090,10 @@ class Admin_interface extends CI_Controller{
 			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
 			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
 				if($pagevar['orders'][$i]['closedate'] > date("Y-m-d")):
-					$pagevar['orders'][$i]['closedate'] = '<font style="color:#00FF00;">'.$pagevar['orders'][$i]['closedate'].'</fonr>';
+					$pagevar['orders'][$i]['closedate'] = '<span class="green">'.$pagevar['orders'][$i]['closedate'].'</span>';
+				elseif(empty($pagevar['orders'][$i]['numbercompletion']) && $pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+					$pagevar['orders'][$i]['closedate'] = '<span class="red">'.$pagevar['orders'][$i]['closedate'].'</span>';
+//					$this->ordersmodel->update_field($pagevar['orders'][$i]['id'],'closedate','0000-00-00');
 				endif;
 			endif;
 			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
@@ -1488,6 +1495,9 @@ class Admin_interface extends CI_Controller{
 				$pagevar['courses'][$i]['dateover'] = $this->operation_dot_date($pagevar['courses'][$i]['dateover']);
 			else:
 				$pagevar['courses'][$i]['dateover'] = 'обучение не пройдено';
+			endif;
+			if(!$pagevar['courses'][$i]['start']):
+				$pagevar['courses'][$i]['dateover'] = 'обучение не начато';
 			endif;
 		endfor;
 		if(isset($pagevar['courses'][0]['chours'])):
