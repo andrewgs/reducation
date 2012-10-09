@@ -98,16 +98,16 @@
 				<p style="margin: 80px 0 0;">
 					<strong>В платежном поручении в графе «назначение платежа» обязательно должно быть указано <i>«Оплата за Повышение квалификации по Договору №<?=$order['id'];?> от <?=$order['orderdate'];?> по счету № <?=$order['id'];?> от <?=$order['orderdate'];?> НДС не облагается»</i></strong>
 				</p>
-				<div id="#buhgl" style="position: absolute; bottom: 100px; left: 220px;">
+				<div id="#pechat" style="position: absolute; bottom: 70px; left: 270px;">
+					<img src="<?=base_url()?>img/pechat.png"/>
+				</div>
+				<div id="#buhgl" style="position: absolute; bottom: 75px; left: 220px;">
 					<img src="<?=base_url()?>img/buhgl.png"/>
 				</div>
 				<div id="#klimova" style="position: absolute; bottom: 144px; left: 220px;">
 					<img src="<?=base_url()?>img/klimova.png"/>
-				</div>				
+				</div>
 			</div>
-		</div>
-		<div id="#pechat" style="position: absolute; bottom: 70px; left: 270px;">
-			<img src="<?=base_url()?>img/pechat.png"/>
 		</div>
 	</div>
 </body>
