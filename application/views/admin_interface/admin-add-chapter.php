@@ -1,5 +1,5 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
-	<div id="addChapter" class="modal hide fade dmodal">
+	<div id="addChapter" class="modal hide dmodal">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
 			<h3>Добавление главы</h3>

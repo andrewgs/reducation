@@ -1,4 +1,4 @@
-<div id="deleteTrend" class="modal hide fade">
+<div id="deleteTrend" class="modal hide">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
 		<h3>Удаление направления обучения</h3>

@@ -1,4 +1,4 @@
-<div id="deleteQuestion" class="modal hide fade">
+<div id="deleteQuestion" class="modal hide">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
 		<h3>Удаление вопроса</h3>

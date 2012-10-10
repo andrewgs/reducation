@@ -12,7 +12,7 @@
 				<label for="customer" class="control-label">Заказчик</label>
 				<div class="controls">
 					<input type="text" id="customer" class="input-xlarge inpval" name="customer" value="" size="25" autocomplete="off">
-					<div class="suggestionsBox" id="suggestions" style="display: none;"> <img src="<?=$baseurl;?>/img/arrow.png" style="position: relative; top: -15px; left: 30px;" alt="upArrow" />
+					<div class="suggestionsBox" id="suggestions" style="display: none;"> <img src="<?=$baseurl;?>img/arrow.png" style="position: relative; top: -15px; left: 30px;" alt="upArrow" />
 						<div class="suggestionList" id="suggestionsList"> &nbsp; </div>
 					</div>
 					<p class="help-block">Поиск от 2-х символов</p>

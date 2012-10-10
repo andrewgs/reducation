@@ -82,7 +82,7 @@ class Admin_interface extends CI_Controller{
 											Обучение будет осуществляться через личный кабинет слушателя. Для входа в личный кабинет используйте 
 											созданный для вас логин и пароль.
 										</p>
-										<p><strong>Логин: <span style="font-size: 18px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 18px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
+										<p><strong>Логин: <span style="font-size: 24px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 24px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
 										<p>Пользуйтесь разделом «Мои заказы» на правой панели, чтобы следить за состоянием Ваших заказов.</p>
 										<p>Желаем Вам удачи!</p> 
 										<?
@@ -100,7 +100,7 @@ class Admin_interface extends CI_Controller{
 											Обучение будет осуществляться через личный кабинет.
 											Для входа в личный кабинет используйте присвоенные вам логин и пароль.
 										</p>
-										<p><strong>Логин: <span style="font-size: 18px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 18px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
+										<p><strong>Логин: <span style="font-size: 24px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 24px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
 										<p>Желаем Вам удачи!</p>
 										<?
 										$mailtext = ob_get_clean();

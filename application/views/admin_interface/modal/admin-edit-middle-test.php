@@ -1,7 +1,7 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
 	<input type="hidden" class="idChapter" value="" name="chapter" />
 	<input type="hidden" class="idTest" value="" name="idt" />
-	<div id="editMTest" class="modal hide fade dmodal">
+	<div id="editMTest" class="modal hide dmodal">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
 			<h3>Редактирование промежуточного тестирования</h3>

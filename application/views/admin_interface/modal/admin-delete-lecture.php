@@ -1,4 +1,4 @@
-<div id="deleteLecture" class="modal hide fade">
+<div id="deleteLecture" class="modal hide">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
 		<h3>Удаление лекции</h3>

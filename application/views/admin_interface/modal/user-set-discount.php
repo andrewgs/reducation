@@ -1,6 +1,6 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
 	<input type="hidden" id="idOrder" value="" name="order" />
-	<div id="discount" class="modal hide fade dmodal">
+	<div id="discount" class="modal hide dmodal">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
 			<h3>Управлением заказом</h3>
