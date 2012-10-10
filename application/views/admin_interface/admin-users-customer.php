@@ -14,7 +14,7 @@
 				<div style="float:right; margin-top:-5px;">
 				<?=form_open($this->uri->uri_string()); ?>
 					<input type="hidden" id="srzakid" name="srzakid" value="">
-					<input type="text" id="srzak" class="input-xlarge" name="srzak" value="">
+					<input type="text" id="srzak" class="input-xlarge" name="srzak" value="" autocomplete="off">
 					<div class="suggestionsBox" id="suggestions" style="display: none;"> <img src="<?=$baseurl;?>/img/arrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
 						<div class="suggestionList" id="suggestionsList"> &nbsp; </div>
 					</div>
