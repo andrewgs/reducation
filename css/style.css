@@ -136,6 +136,9 @@ p.intend { text-indent: 27px; }
 .span10 ul { list-style: none; }
 .span10 ul li:before { content: "— "; }
 
+#pechat { z-index: 1; }
+#klimova { z-index: 299; }
+
 #result {
 	height:20px;
 	font-size:16px;
