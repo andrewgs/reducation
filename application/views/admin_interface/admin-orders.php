@@ -14,19 +14,21 @@
 				<?php endif;?>
 				<ul class="breadcrumb">
 					<li tnum="active">
-						<?=anchor('admin-panel/messages/orders/active','Активные');?> <span class="divider">/</span>
-					</li>
-					<li tnum="deactive">
-						<?=anchor('admin-panel/messages/orders/deactive','Закрытые');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/active','В работе',array('title'=>'Обучение разрешено'));?> <span class="divider">/</span>
+					</li><li tnum="noactive">
+						<?=anchor('admin-panel/messages/orders/noactive','Не в работе',array('title'=>'Обучение не разрешено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="noclosed">
-						<?=anchor('admin-panel/messages/orders/noclosed','Не закрытые');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/noclosed','Не активные',array('title'=>'Обучение не начато'));?> <span class="divider">/</span>
+					</li>
+					<li tnum="deactive">
+						<?=anchor('admin-panel/messages/orders/deactive','Закрытые',array('title'=>'Обучение окончено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="unpaid">
-						<?=anchor('admin-panel/messages/orders/unpaid','Неоплаченные');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/unpaid','Неоплаченные',array('title'=>'Обучение не оплачено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="sponsored">
-						<?=anchor('admin-panel/messages/orders/sponsored','Оплаченные');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/sponsored','Оплаченные',array('title'=>'Обучение оплачено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="all">
 						<?=anchor('admin-panel/messages/orders/all','Все');?>
@@ -66,7 +68,12 @@
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/reference','<img src="'.$baseurl.'img/icon/address-book.png" />',array('target'=>'_blank','title'=>'Справка'));?></nobr><br/>
 								<nobr>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-1','<img src="'.$baseurl.'img/icon/document-horizontal-text.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?>&nbsp;
-								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-2','<img src="'.$baseurl.'img/icon/application-list.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?></nobr>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-2','<img src="'.$baseurl.'img/icon/application-list.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?></nobr><br/>
+								<nobr>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/invoice','<img src="'.$baseurl.'img/icon/document-attribute-i.png" />',array('target'=>'_blank','title'=>'Счет на оплату'));?>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/contract','<img src="'.$baseurl.'img/icon/document-attribute-c.png" />',array('target'=>'_blank','title'=>'Договор на оказание образовательных услуг'));?>
+								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/act','<img src="'.$baseurl.'img/icon/document-attribute-a.png" />',array('target'=>'_blank','title'=>'Акт к договору на оказание услуг'));?>
+								</nobr>
 							</td>
 							<td>
 								<?=$orders[$i]['orderdate'];?>

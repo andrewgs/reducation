@@ -290,7 +290,6 @@ class Customer_interface extends CI_Controller{
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
-//		print_r($pagevar['order']);exit;
 		if($pagevar['order']['closedate'] != "0000-00-00"):
 			$pagevar['order']['closedate'] = $this->operation_date($pagevar['order']['closedate']);
 		else:

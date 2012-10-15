@@ -8,19 +8,24 @@
 			<div class="span9">
 				<ul class="breadcrumb">
 					<li tnum="active">
-						<?=anchor('admin-panel/messages/orders/active','Активные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/active','В работе',array('title'=>'Обучение разрешено'));?> <span class="divider">/</span>
+					</li><li tnum="noactive">
+						<?=anchor('admin-panel/messages/orders/noactive','Не в работе',array('title'=>'Обучение не разрешено'));?> <span class="divider">/</span>
+					</li>
+					<li tnum="noclosed">
+						<?=anchor('admin-panel/messages/orders/noclosed','Не активные',array('title'=>'Обучение не начато'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="deactive">
-						<?=anchor('admin-panel/messages/orders/deactive','Закрытые заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/deactive','Закрытые',array('title'=>'Обучение окончено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="unpaid">
-						<?=anchor('admin-panel/messages/orders/unpaid','Неоплаченные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/unpaid','Неоплаченные',array('title'=>'Обучение не оплачено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="sponsored">
-						<?=anchor('admin-panel/messages/orders/sponsored','Оплаченные заказы');?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/orders/sponsored','Оплаченные',array('title'=>'Обучение оплачено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="all">
-						<?=anchor('admin-panel/messages/orders/all','Все заказы');?>
+						<?=anchor('admin-panel/messages/orders/all','Все');?>
 					</li>
 				</ul>
 				<?php $this->load->view('alert_messages/alert-error');?>

@@ -11,6 +11,7 @@ class Audiencetestmodel extends CI_Model{
 	var $attempt		= 0;
 	var $result			= 0;
 	var $time			= 0;
+	var $attemptnext	= '';
 	var $attemptdate	= '';
 	var $customer		= 0;
 	
@@ -68,6 +69,18 @@ class Audiencetestmodel extends CI_Model{
 	function update_field($id,$field,$data){
 			
 		$this->db->set($field,$data);
+		$this->db->where('id',$id);
+		$this->db->update('audiencetest');
+		return $this->db->affected_rows();
+	}
+	
+	function reset_attempt($id){
+			
+		$this->db->set('attempt',0);
+		$this->db->set('result',0);
+		$this->db->set('time',0);
+		$this->db->set('attemptnext','0000-00-00');
+		$this->db->set('attemptdate','0000-00-00');
 		$this->db->where('id',$id);
 		$this->db->update('audiencetest');
 		return $this->db->affected_rows();
@@ -174,6 +187,7 @@ class Audiencetestmodel extends CI_Model{
 		if(isset($data[0])) return TRUE;
 		return FALSE;
 	}
+	
 	function owner_nonfinal_testing($id,$course,$audience){
 		
 		$this->db->where('id',$id);

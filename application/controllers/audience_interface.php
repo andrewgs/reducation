@@ -239,6 +239,20 @@ class Audience_interface extends CI_Controller{
 			$pagevar['testvalid'] = FALSE;
 		endif;
 		$pagevar['test']['count'] = $this->testsmodel->read_field($pagevar['test']['test'],'count');
+
+		$date_test = $this->audiencetestmodel->read_field($pagevar['test']['id'],'attemptnext');
+		if($date_test != '0000-00-00'):
+			if($date_test == date("Y-m-d")):
+				$this->audiencetestmodel->reset_attempt($pagevar['test']['id']);
+				$pagevar['test']['attempt'] = 0;
+			else:
+				$pagevar['testvalid'] = FALSE;
+			endif;
+		endif;
+		if($pagevar['test']['attempt'] == $pagevar['test']['count']):
+			$this->audiencetestmodel->update_field($pagevar['test']['id'],'attemptnext',date("Y-m-d",mktime(0,0,0,date("m"),date("d")+1,date("Y"))));
+			$pagevar['testvalid'] = FALSE;
+		endif;
 		$this->load->view("audience_interface/courses-lectures",$pagevar);
 	}
 	
@@ -297,9 +311,16 @@ class Audience_interface extends CI_Controller{
 				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
 				redirect('audience/courses/current/course/'.$course.'/lectures');
 			endif;
+			$date_test = $this->audiencetestmodel->read_field($pagevar['test']['id'],'attemptnext');
+			if(($date_test != '0000-00-00') && ($date_test != date("Y-m-d"))):
+				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
+				redirect('audience/courses/current/course/'.$course.'/lectures');
+			endif;
 		endif;
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
+		shuffle($pagevar['questions']);
+		shuffle($pagevar['answers']);
 		
 		if($this->input->post('submit')):
 			unset($_POST['submit']);
@@ -318,7 +339,7 @@ class Audience_interface extends CI_Controller{
 			endforeach;
 			$ccanswer = round($ccanswer/count($corranswers)*100);
 			$this->audiencetestmodel->update_result($test,$ccanswer,round($ttime/60));
-			if($ccanswer > 60):
+			if($ccanswer > 70):
 				$this->session->set_userdata('msgs','Тест завершен!<br/>Поздравляем Вы успешно прошли тест и ответили верно на '.$ccanswer.'% вопросов.');
 				if($this->uri->segment(7) == 'final-testing'):
 					$this->audienceordermodel->over_course($course,1,$ccanswer);

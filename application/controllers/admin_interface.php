@@ -1006,15 +1006,19 @@ class Admin_interface extends CI_Controller{
 			$field = 'id';
 		endif;
 		switch ($this->uri->segment(4)):
-			case 'active' 	:	$pagevar['title'] .= 'Активные заказы';
+			case 'active' 	:	$pagevar['title'] .= 'В работе';
 								$pagevar['orders'] = $this->unionmodel->read_customer_active_orders($field,$sortby,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_active_orders();
+								break;
+			case 'noactive' :	$pagevar['title'] .= 'Не в работе';
+								$pagevar['orders'] = $this->unionmodel->read_customer_noactive_orders($field,$sortby,5,$from);
+								$pagevar['count'] = $this->unionmodel->count_customer_noactive_orders();
 								break;
 			case 'deactive' :	$pagevar['title'] .= 'Закрытые заказы';
 								$pagevar['orders'] = $this->unionmodel->read_customer_deactive_orders($field,$sortby,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_deactive_orders();
 								break;
-			case 'noclosed' :	$pagevar['title'] .= 'Не закрытые заказы';
+			case 'noclosed' :	$pagevar['title'] .= 'Не активные заказы';
 								$pagevar['orders'] = $this->unionmodel->read_customer_noclosed_orders($field,$sortby,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_noclosed_orders();
 								break;
@@ -1093,7 +1097,6 @@ class Admin_interface extends CI_Controller{
 					$pagevar['orders'][$i]['closedate'] = '<span class="green">'.$pagevar['orders'][$i]['closedate'].'</span>';
 				elseif(empty($pagevar['orders'][$i]['numbercompletion']) && $pagevar['orders'][$i]['closedate'] != '0000-00-00'):
 					$pagevar['orders'][$i]['closedate'] = '<span class="red">'.$pagevar['orders'][$i]['closedate'].'</span>';
-//					$this->ordersmodel->update_field($pagevar['orders'][$i]['id'],'closedate','0000-00-00');
 				endif;
 			endif;
 			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
@@ -1111,6 +1114,9 @@ class Admin_interface extends CI_Controller{
 				unset($sDate);
 			endif;
 		endfor;
+		
+//		print_r($pagevar['orders']);exit;
+		
 		$this->load->view("admin_interface/admin-orders",$pagevar);
 	}
 	
@@ -1671,6 +1677,95 @@ class Admin_interface extends CI_Controller{
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
 		endif;
 		$this->load->view("admin_interface/documents/reference",$pagevar);
+	}
+	
+	public function invoice(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
+					'customer'		=> array(),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'Счет на оплату № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		$this->load->view("customer_interface/customer-order-invoice",$pagevar);
+	}
+	
+	public function contract(){
+		
+		$this->uri->segment(6);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'customer'		=> array(),
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'Договор № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		
+		$this->load->view("customer_interface/customer-order-contract",$pagevar);
+	}
+	
+	public function act(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'customer'		=> array(),
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'АКТ об оказании услуг по договору № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		if($pagevar['order']['closedate'] != "0000-00-00"):
+			$pagevar['order']['closedate'] = $this->operation_date($pagevar['order']['closedate']);
+		else:
+			$pagevar['order']['closedate'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		
+		$this->load->view("customer_interface/customer-order-act",$pagevar);
 	}
 	
 	/******************************************************** users ***********************************************************/

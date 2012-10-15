@@ -2,12 +2,12 @@
 
 class Calendarmodel extends CI_Model{
 
-    var $id   = 0;
-    var $date = '';
-
-    function __construct(){
-        parent::__construct();
-    }
+	var $id   = 0;
+	var $date = '';
+	
+	function __construct(){
+		parent::__construct();
+	}
 	
 	function insert_record($date){
 			

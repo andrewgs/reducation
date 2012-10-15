@@ -233,7 +233,7 @@ class Unionmodel extends CI_Model{
 
 	function count_deactive_order($order){
 		
-		$query = "SELECT COUNT(audiencetest.id) AS cnt FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 60 AND orders.id = $order GROUP BY orders.id";
+		$query = "SELECT COUNT(audiencetest.id) AS cnt FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 70 AND orders.id = $order GROUP BY orders.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data[0]['cnt'];
@@ -242,7 +242,7 @@ class Unionmodel extends CI_Model{
 	
 	function read_customer_active_orders($field,$sort,$count,$from){
 		
-		$query = "SELECT orders.*,customers.id AS cid,customers.organization,customers.personemail,customers.phones,customers.online,audiencetest.id AS audid FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND (audiencetest.result < 60 || orders.closedate = '0000-00-00' || orders.numbercompletion = '') GROUP BY orders.id ORDER BY $field $sort LIMIT $from,$count";
+		$query = "SELECT orders.*,customers.id AS cid,customers.organization,customers.personemail,customers.phones,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id  WHERE orders.paid = 1 AND orders.closedate > '".date("Y-m-d")."' AND orders.numbercompletion = '' GROUP BY orders.id ORDER BY $field $sort LIMIT $from,$count";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
@@ -251,7 +251,25 @@ class Unionmodel extends CI_Model{
 	
 	function count_customer_active_orders(){
 		
-		$query = "SELECT orders.*,customers.id AS cid,customers.organization,customers.personemail,customers.phones,customers.online,audiencetest.id AS audid FROM orders INNER JOIN customers ON orders.customer = customers.id INNER JOIN audiencetest ON orders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND (audiencetest.result < 60 || orders.closedate = '0000-00-00' || orders.numbercompletion = '') GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
+		$query = "SELECT orders.*,customers.id AS cid,customers.organization,customers.personemail,customers.phones,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id  WHERE orders.paid = 1 AND orders.closedate > '".date("Y-m-d")."' AND orders.numbercompletion = '' GROUP BY orders.id";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return count($data);
+		return NULL;
+	}
+	
+	function read_customer_noactive_orders($field,$sort,$count,$from){
+		
+		$query = "SELECT orders.*,customers.id AS cid,customers.organization,customers.personemail,customers.phones,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id  WHERE orders.paid = 1 AND orders.closedate <= '".date("Y-m-d")."' AND orders.numbercompletion = '' GROUP BY orders.id ORDER BY $field $sort LIMIT $from,$count";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function count_customer_noactive_orders(){
+		
+		$query = "SELECT orders.*,customers.id AS cid,customers.organization,customers.personemail,customers.phones,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id  WHERE orders.paid = 1 AND orders.closedate <= '".date("Y-m-d")."' AND orders.numbercompletion = '' GROUP BY orders.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return count($data);
