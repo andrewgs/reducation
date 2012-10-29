@@ -1113,10 +1113,11 @@ class Admin_interface extends CI_Controller{
 				$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
 				unset($sDate);
 			endif;
+			$pagevar['orders'][$i]['audcnt'] = count($this->unionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
+			if(!$pagevar['orders'][$i]['audcnt']):
+				$pagevar['orders'][$i]['audcnt'] = 0;
+			endif;
 		endfor;
-		
-//		print_r($pagevar['orders']);exit;
-		
 		$this->load->view("admin_interface/admin-orders",$pagevar);
 	}
 	
@@ -1167,6 +1168,10 @@ class Admin_interface extends CI_Controller{
 					endfor;
 					$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
 					unset($sDate);
+				endif;
+				$pagevar['orders'][$i]['audcnt'] = count($this->unionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
+				if(!$pagevar['orders'][$i]['audcnt']):
+					$pagevar['orders'][$i]['audcnt'] = 0;
 				endif;
 			endfor;
 		endif;
