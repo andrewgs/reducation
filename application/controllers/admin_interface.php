@@ -218,7 +218,7 @@ class Admin_interface extends CI_Controller{
 		
 		$this->adminmodel->deactive_user($this->session->userdata('userid'));
 		$this->session->sess_destroy();
-        redirect('');
+		redirect('');
 	}
 
 	public function datele_date(){

@@ -166,7 +166,7 @@ class Users_interface extends CI_Controller{
 		$model = $this->definition_model($this->session->userdata('utype'));
 		$this->$model->deactive_user($this->session->userdata('userid'));
 		$this->session->sess_destroy();
-        redirect('');
+		redirect('');
 	}
 	
 	public function password_restore(){
