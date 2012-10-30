@@ -130,7 +130,7 @@ footer .copy { padding-left: 20px; }
 h5 { font-size: 12px !important; margin: 0 0 5px !important; }
 table.no-border td { border: 0 none; }
 .inv { width: 80px; border: 1px solid #e0e0e0; border-style: none none solid; }
-.SendMail { margin: 3px 0 0; }
+.SendMail { margin: 3px 0;}
 p.intend { text-indent: 27px; }
 
 .span10 ul { list-style: none; }

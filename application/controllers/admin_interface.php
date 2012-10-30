@@ -1114,6 +1114,12 @@ class Admin_interface extends CI_Controller{
 				unset($sDate);
 			endif;
 			$pagevar['orders'][$i]['audcnt'] = count($this->unionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
+			$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
+			if($pagevar['orders'][$i]['regnum']):
+				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+			else:
+				$pagevar['orders'][$i]['regnum'] = 'Не завершен';
+			endif;
 			if(!$pagevar['orders'][$i]['audcnt']):
 				$pagevar['orders'][$i]['audcnt'] = 0;
 			endif;
@@ -1172,6 +1178,12 @@ class Admin_interface extends CI_Controller{
 				$pagevar['orders'][$i]['audcnt'] = count($this->unionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
 				if(!$pagevar['orders'][$i]['audcnt']):
 					$pagevar['orders'][$i]['audcnt'] = 0;
+				endif;
+				$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
+				if($pagevar['orders'][$i]['regnum']):
+					$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+				else:
+					$pagevar['orders'][$i]['regnum'] = 'Не завершен';
 				endif;
 			endfor;
 		endif;
@@ -1614,9 +1626,8 @@ class Admin_interface extends CI_Controller{
 					'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
 					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
-		
 		if($pagevar['ncompletion']):
-			$pagevar['ncompletion'] = eregi_replace("([^0-9])","",$pagevar['ncompletion']);
+			$pagevar['ncompletion'] = preg_replace("([^0-9])","",$pagevar['ncompletion']);
 		endif;
 		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));

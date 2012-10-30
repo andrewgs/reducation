@@ -37,21 +37,20 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>№ заказа</th>
-							<th><nobr>Заказ создан</nobr><br/><nobr>Заказ закрыт</nobr></th>
-							<th>Заказчик</th>
+							<th class="centerized">№ заказа</th>
+							<th class="centerized"><nobr>Заказ создан</nobr><br/><nobr>Заказ закрыт</nobr></th>
+							<th class="centerized">Заказчик</th>
 							<!--th>Статус</th-->
-							<th><nobr>Дата оплаты</nobr></th>
-							<th>Оплата</th>
-							<th>Дополнительно</th>
+							<th class="centerized"><nobr>Дата оплаты</nobr><br/>Дата обучения</th>
+							<th class="centerized">Оплата</th>
+							<th>&nbsp;</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php $delorders = FALSE;?>
-					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
+					<?php for($i=0;$i<count($orders);$i++):?>
 						<tr>
-							<!--td class="short"><?=$num;?></td-->
-							<td style="min-width:90px;">
+							<td style="min-width:135px;">
 								<nobr>Заказ №<?=$orders[$i]['id'];?>&nbsp;<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?></nobr><br/>
 								<nobr><?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/statement','<img src="'.$baseurl.'img/icon/blog-blue.png" />',array('target'=>'_blank','title'=>'Ведомость'));?>&nbsp;
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/completion','<img src="'.$baseurl.'img/icon/document.png" />',array('target'=>'_blank','title'=>'Приказ об окончании'));?>&nbsp;
@@ -60,13 +59,14 @@
 								<nobr>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-1','<img src="'.$baseurl.'img/icon/document-horizontal-text.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?>&nbsp;
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-2','<img src="'.$baseurl.'img/icon/application-list.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?>
-								<span class="listeners-count">[<?=$orders[$i]['audcnt'];?>]</span><br/>
+								<span class="listeners-count">[<?=$orders[$i]['regnum'];?>]</span><br/>
 								</nobr>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/invoice','<img src="'.$baseurl.'img/icon/document-attribute-i.png" />',array('target'=>'_blank','title'=>'Счет на оплату'));?>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/contract','<img src="'.$baseurl.'img/icon/document-attribute-c.png" />',array('target'=>'_blank','title'=>'Договор на оказание образовательных услуг'));?>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/act','<img src="'.$baseurl.'img/icon/document-attribute-a.png" />',array('target'=>'_blank','title'=>'Акт к договору на оказание услуг'));?>
+								<span class="listeners-count">[<?=$orders[$i]['audcnt'];?>]</span>
 							</td>
-							<td>
+							<td class="centerized">
 								<?=$orders[$i]['orderdate'];?>
 							<?php if($orders[$i]['closedate'] != '0000-00-00'):?>
 								<br/><?=$orders[$i]['closedate'];?>
@@ -82,22 +82,24 @@
 							<!--td>Не в сети</td-->
 						<?php endif;?>
 						<?php if($orders[$i]['paid']):?>
-							<td class="PaidDate" data-order="<?=$orders[$i]['id'];?>"><?=$orders[$i]['userpaiddate'];?></td>
+							<td class="PaidDate centerized" data-order="<?=$orders[$i]['id'];?>">
+								<?=$orders[$i]['userpaiddate'];?><br/>
+								<span class="green"><?=$orders[$i]['paiddate'];?></span>
+							</td>
 							<td class="short centerized"><input type="checkbox" value="1" checked="checked" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php else:?>
 							<td class="PaidDate" data-order="<?=$orders[$i]['id'];?>">Не оплачен</td>
 							<td class="short centerized"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php endif; ?>
-							<td style="max-width:80px;">
-								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><nobr><i class="icon-pencil icon-white"></i> Параметры</nobr></a>
-								<a class="btn btn-info SendMail" data-order="<?=$orders[$i]['id'];?>"><nobr><i class="icon-envelope icon-white"></i>&nbsp;Уведомить&nbsp;</nobr></a>
+							<td style="max-width:35px;" class="centerized">
+								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><i class="icon-pencil icon-white"></i></a>
+								<a class="btn btn-info SendMail" data-order="<?=$orders[$i]['id'];?>"><i class="icon-envelope icon-white"></i></a>
 						<?php if(!$orders[$i]['finish']):?>
 							<?php $delorders = TRUE;?>
-							<a class="btn btn-danger deleteOrder" data-toggle="modal" href="#deleteOrder" title="Заказ не оформлен" data-order="<?=$orders[$i]['id'];?>"><nobr><i class="icon-trash icon-white"></i>&nbsp;&nbsp;&nbsp;Удалить&nbsp;&nbsp;&nbsp;</nobr></a>
+							<a class="btn btn-danger deleteOrder" data-toggle="modal" href="#deleteOrder" title="Заказ не оформлен" data-order="<?=$orders[$i]['id'];?>"><i class="icon-trash icon-white"></i></a>
 						<?php endif;?>
 							</td>
 						</tr>
-						<?php $num++; ?>
 					<?php endfor; ?>
 					</tbody>
 				</table>
