@@ -100,6 +100,8 @@ $route['admin-panel/messages/orders/all']					= "admin_interface/orders_messages
 $route['admin-panel/messages/orders/all/:num']				= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/active']				= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/active/:num']			= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/noactive']				= "admin_interface/orders_messages";
+$route['admin-panel/messages/orders/noactive/:num']			= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/deactive']				= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/deactive/:num']			= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/noclosed']				= "admin_interface/orders_messages";
@@ -140,6 +142,11 @@ $route['admin-panel/messages/orders/id/:num/admission']			= "admin_interface/adm
 $route['admin-panel/messages/orders/id/:num/registry/list-1']	= "admin_interface/registry";
 $route['admin-panel/messages/orders/id/:num/registry/list-2']	= "admin_interface/registry";
 $route['admin-panel/messages/orders/id/:num/reference']			= "admin_interface/reference";
+
+$route['admin-panel/messages/orders/id/:num/information']		= "admin_interface/information";
+$route['admin-panel/messages/orders/id/:num/invoice']			= "admin_interface/invoice";
+$route['admin-panel/messages/orders/id/:num/contract']			= "admin_interface/contract";
+$route['admin-panel/messages/orders/id/:num/act']				= "admin_interface/act";
 
 /*=========================================================== documents  ====================================================*/
 $route['admin-panel/messages/orders/id/:num/testing']												= "admin_interface/orders_testing";

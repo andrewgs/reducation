@@ -1,5 +1,5 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
-	<div id="addDate" class="modal hide fade">
+	<div id="addDate" class="modal hide">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
 			<h3>Добавление праздничной даты</h3>

@@ -1,6 +1,6 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
 	<input type="hidden" class="idQuestion" value="" name="idqes" />
-	<div id="editQuestion" class="modal hide fade dmodal">
+	<div id="editQuestion" class="modal hide dmodal">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
 			<h3>Редактирование вопроса</h3>

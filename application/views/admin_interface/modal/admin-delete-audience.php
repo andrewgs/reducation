@@ -1,4 +1,4 @@
-<div id="deleteAudience" class="modal hide fade">
+<div id="deleteAudience" class="modal hide">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
 		<h3>Удаление слушателя</h3>

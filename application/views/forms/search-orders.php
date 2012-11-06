@@ -4,7 +4,7 @@
 			<div class="control-group">
 				<label for="nborder" class="control-label">Номер заказа</label>
 				<div class="controls">
-					<input type="text" id="nborder" class="input-xlarge inpval digital" name="nborder" value="">
+					<input type="text" id="nborder" class="input-xlarge inpval digital" autocomplete="off" name="nborder" value="">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
@@ -12,7 +12,7 @@
 				<label for="customer" class="control-label">Заказчик</label>
 				<div class="controls">
 					<input type="text" id="customer" class="input-xlarge inpval" name="customer" value="" size="25" autocomplete="off">
-					<div class="suggestionsBox" id="suggestions" style="display: none;"> <img src="<?=$baseurl;?>/img/arrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
+					<div class="suggestionsBox" id="suggestions" style="display: none;"> <img src="<?=$baseurl;?>img/arrow.png" style="position: relative; top: -15px; left: 30px;" alt="upArrow" />
 						<div class="suggestionList" id="suggestionsList"> &nbsp; </div>
 					</div>
 					<p class="help-block">Поиск от 2-х символов</p>
@@ -22,21 +22,21 @@
 			<div class="control-group">
 				<label for="nbpaiddoc" class="control-label">Номер платежного поручения</label>
 				<div class="controls">
-					<input type="text" id="nbpaiddoc" class="input-xlarge inpval digital" name="nbpaiddoc" value="">
+					<input type="text" id="nbpaiddoc" class="input-xlarge inpval digital" name="nbpaiddoc" autocomplete="off" value="">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="nbadmission" class="control-label">Номер приказа о зачислени</label>
 				<div class="controls">
-					<input type="text" id="nbadmission" class="input-xlarge inpval digital" name="nbadmission" value="">
+					<input type="text" id="nbadmission" class="input-xlarge inpval digital" name="nbadmission" autocomplete="off" value="">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
 			<div class="control-group">
 				<label for="nbcompletion" class="control-label">Номер приказа о окончании</label>
 				<div class="controls">
-					<input type="text" id="nbcompletion" class="input-xlarge inpval digital" name="nbcompletion" value="">
+					<input type="text" id="nbcompletion" class="input-xlarge inpval digital" name="nbcompletion" autocomplete="off" value="">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>

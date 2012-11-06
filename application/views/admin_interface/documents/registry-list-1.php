@@ -17,7 +17,7 @@
 		    table { page-break-inside: auto; }
 		    tr    { page-break-inside: avoid; page-break-after: auto; }
 		    thead { display: table-header-group; }
-		    tfoot { display: table-footer-group; }			
+		    tfoot { display: table-footer-group; }
 		}
 	</style>
 	<div class="container-fluid" style="position: relative;">

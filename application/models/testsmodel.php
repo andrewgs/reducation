@@ -2,25 +2,26 @@
 
 class Testsmodel extends CI_Model{
 
-    var $id   		= 0;
-    var $number		= 0;
-    var $title 		= '';
-    var $note  		= '';
-    var $count 		= 5;
-    var $timetest 	= '';
-    var $chapter 	= 0;
-    var $course 	= 0;
-    var $view 		= 1;
-
-    function __construct(){
-        parent::__construct();
-    }
+	var $id   		= 0;
+	var $number		= 0;
+	var $title 		= '';
+	var $note  		= '';
+	var $count 		= 5;
+	var $timetest 	= '';
+	var $chapter 	= 0;
+	var $course 	= 0;
+	var $view 		= 1;
+	
+	function __construct(){
+		parent::__construct();
+	}
 	
 	function insert_record($data){
 			
 		$this->number 	= $data['number'];
 		$this->title 	= htmlspecialchars($data['title']);
 		$this->note		= '';
+		$this->date		= '';
 		$this->count	= $data['count'];
 		$this->timetest	= $data['time'];
 		$this->chapter	= $data['chapter'];

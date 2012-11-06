@@ -82,7 +82,7 @@ class Admin_interface extends CI_Controller{
 											Обучение будет осуществляться через личный кабинет слушателя. Для входа в личный кабинет используйте 
 											созданный для вас логин и пароль.
 										</p>
-										<p><strong>Логин: <span style="font-size: 18px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 18px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
+										<p><strong>Логин: <span style="font-size: 24px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 24px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
 										<p>Пользуйтесь разделом «Мои заказы» на правой панели, чтобы следить за состоянием Ваших заказов.</p>
 										<p>Желаем Вам удачи!</p> 
 										<?
@@ -100,7 +100,7 @@ class Admin_interface extends CI_Controller{
 											Обучение будет осуществляться через личный кабинет.
 											Для входа в личный кабинет используйте присвоенные вам логин и пароль.
 										</p>
-										<p><strong>Логин: <span style="font-size: 18px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 18px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
+										<p><strong>Логин: <span style="font-size: 24px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 24px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
 										<p>Желаем Вам удачи!</p>
 										<?
 										$mailtext = ob_get_clean();
@@ -218,7 +218,7 @@ class Admin_interface extends CI_Controller{
 		
 		$this->adminmodel->deactive_user($this->session->userdata('userid'));
 		$this->session->sess_destroy();
-        redirect('');
+		redirect('');
 	}
 
 	public function datele_date(){
@@ -1006,15 +1006,19 @@ class Admin_interface extends CI_Controller{
 			$field = 'id';
 		endif;
 		switch ($this->uri->segment(4)):
-			case 'active' 	:	$pagevar['title'] .= 'Активные заказы';
+			case 'active' 	:	$pagevar['title'] .= 'В работе';
 								$pagevar['orders'] = $this->unionmodel->read_customer_active_orders($field,$sortby,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_active_orders();
+								break;
+			case 'noactive' :	$pagevar['title'] .= 'Не в работе';
+								$pagevar['orders'] = $this->unionmodel->read_customer_noactive_orders($field,$sortby,5,$from);
+								$pagevar['count'] = $this->unionmodel->count_customer_noactive_orders();
 								break;
 			case 'deactive' :	$pagevar['title'] .= 'Закрытые заказы';
 								$pagevar['orders'] = $this->unionmodel->read_customer_deactive_orders($field,$sortby,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_deactive_orders();
 								break;
-			case 'noclosed' :	$pagevar['title'] .= 'Не закрытые заказы';
+			case 'noclosed' :	$pagevar['title'] .= 'Не активные заказы';
 								$pagevar['orders'] = $this->unionmodel->read_customer_noclosed_orders($field,$sortby,5,$from);
 								$pagevar['count'] = $this->unionmodel->count_customer_noclosed_orders();
 								break;
@@ -1093,7 +1097,6 @@ class Admin_interface extends CI_Controller{
 					$pagevar['orders'][$i]['closedate'] = '<span class="green">'.$pagevar['orders'][$i]['closedate'].'</span>';
 				elseif(empty($pagevar['orders'][$i]['numbercompletion']) && $pagevar['orders'][$i]['closedate'] != '0000-00-00'):
 					$pagevar['orders'][$i]['closedate'] = '<span class="red">'.$pagevar['orders'][$i]['closedate'].'</span>';
-//					$this->ordersmodel->update_field($pagevar['orders'][$i]['id'],'closedate','0000-00-00');
 				endif;
 			endif;
 			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
@@ -1109,6 +1112,16 @@ class Admin_interface extends CI_Controller{
 				endfor;
 				$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
 				unset($sDate);
+			endif;
+			$pagevar['orders'][$i]['audcnt'] = count($this->unionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
+			$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
+			if($pagevar['orders'][$i]['regnum']):
+				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+			else:
+				$pagevar['orders'][$i]['regnum'] = 'Не завершен';
+			endif;
+			if(!$pagevar['orders'][$i]['audcnt']):
+				$pagevar['orders'][$i]['audcnt'] = 0;
 			endif;
 		endfor;
 		$this->load->view("admin_interface/admin-orders",$pagevar);
@@ -1161,6 +1174,16 @@ class Admin_interface extends CI_Controller{
 					endfor;
 					$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
 					unset($sDate);
+				endif;
+				$pagevar['orders'][$i]['audcnt'] = count($this->unionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
+				if(!$pagevar['orders'][$i]['audcnt']):
+					$pagevar['orders'][$i]['audcnt'] = 0;
+				endif;
+				$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
+				if($pagevar['orders'][$i]['regnum']):
+					$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+				else:
+					$pagevar['orders'][$i]['regnum'] = 'Не завершен';
 				endif;
 			endfor;
 		endif;
@@ -1603,9 +1626,8 @@ class Admin_interface extends CI_Controller{
 					'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
 					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
-		
 		if($pagevar['ncompletion']):
-			$pagevar['ncompletion'] = eregi_replace("([^0-9])","",$pagevar['ncompletion']);
+			$pagevar['ncompletion'] = preg_replace("([^0-9])","",$pagevar['ncompletion']);
 		endif;
 		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
@@ -1671,6 +1693,95 @@ class Admin_interface extends CI_Controller{
 			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
 		endif;
 		$this->load->view("admin_interface/documents/reference",$pagevar);
+	}
+	
+	public function invoice(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
+					'customer'		=> array(),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'Счет на оплату № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		$this->load->view("customer_interface/customer-order-invoice",$pagevar);
+	}
+	
+	public function contract(){
+		
+		$this->uri->segment(6);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'customer'		=> array(),
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'Договор № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		
+		$this->load->view("customer_interface/customer-order-contract",$pagevar);
+	}
+	
+	public function act(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'customer'		=> array(),
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'АКТ об оказании услуг по договору № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		if($pagevar['order']['closedate'] != "0000-00-00"):
+			$pagevar['order']['closedate'] = $this->operation_date($pagevar['order']['closedate']);
+		else:
+			$pagevar['order']['closedate'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		
+		$this->load->view("customer_interface/customer-order-act",$pagevar);
 	}
 	
 	/******************************************************** users ***********************************************************/

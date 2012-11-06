@@ -1,7 +1,7 @@
 <?=form_open_multipart($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
 	<input type="hidden" class="idChapter" value="" name="idchp" />
 	<input type="hidden" class="idLecture" value="" name="idlec" />
-	<div id="editLecture" class="modal hide fade dmodal">
+	<div id="editLecture" class="modal hide dmodal">
 		<div class="modal-header">
 			<a class="close" data-dismiss="modal">×</a>
 			<h3>Редактирование лекции</h3>

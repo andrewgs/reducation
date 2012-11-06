@@ -1,4 +1,4 @@
-<div id="deleteChapter" class="modal hide fade">
+<div id="deleteChapter" class="modal hide">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
 		<h3>Удаление главы</h3>
