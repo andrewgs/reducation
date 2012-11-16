@@ -90,7 +90,7 @@
 							</tr>
 							<tr>
 								<td>Главный бухгалтер</td>
-								<td>Евкин М.А.</td>
+								<td>Селезнева А.В.</td>
 							</tr>
 						</tbody>
 					</table>
@@ -102,7 +102,7 @@
 					<img src="<?=base_url()?>img/pechat.png"/>
 				</div>
 				<div id="#buhgl" style="position: absolute; bottom: 75px; left: 220px;">
-					<img src="<?=base_url()?>img/evkin.png"/>
+					<img src="<?=base_url()?>img/buhgl.png"/>
 				</div>
 				<div id="#klimova" style="position: absolute; bottom: 144px; left: 220px;">
 					<img src="<?=base_url()?>img/klimova.png"/>
