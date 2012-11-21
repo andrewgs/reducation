@@ -388,7 +388,7 @@ class Customer_interface extends CI_Controller{
 				$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
 				$this->email->bcc('');
 				$this->email->subject('Данные для доступа к личному кабинету');
-				$this->email->message($mailtext);	
+				$this->email->message($mailtext);
 				$this->email->send();
 				$this->session->set_userdata('msgs','Слушатель зарегистрирован.<br/>Вы можете зарегистрировать еще слушателя или приступить к оформлению заказа.<br/>Для этого необходимо перейти по ссылке '.anchor("customer/registration/ordering",'"Оформление заказа"'));
 			endif;

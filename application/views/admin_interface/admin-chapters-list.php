@@ -43,10 +43,8 @@
 						<div class="btn-toolbar">
 							<div class="btn-group">
 								<a class="btn addLecture" data-toggle="modal" href="#addLecture" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-plus"></i> Добавить лекцию</a>
-								<a class="btn editChapter" data-toggle="modal" href="#editChapter" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-pencil"></i> Редактировать главу</a>
+								<a class="btn editChapter" data-toggle="modal" href="#editChapter" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-pencil"></i> Редак. главу</a>
 								<a class="btn deleteChapter" data-toggle="modal" href="#deleteChapter" idchapter="<?=$chapters[$i]['id'];?>"><i class="icon-trash"></i> Удалить главу</a>
-							</div>
-							<div class="btn-group">
 							<?php if(!$chapters[$i]['test']):?>
 								<a data-toggle="modal" href="#addMTest" idchapter="<?=$chapters[$i]['id'];?>" class="btn addMTest">Создать промежуточное тестирование</a>
 							<?php else:?>
@@ -75,6 +73,7 @@
 							<a class="btn" data-toggle="modal" href="#getCurriculum" title="Скачать"><i class="icon-download-alt"></i></a>
 						<?php endif;?>
 						</div>
+						<div class="clear"></div><br/>
 						<div class="btn-group">
 							<?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/chapter/0/testing/'.$finaltest['id'],'Итоговое тестирование',array('class'=>'btn'));?>
 							<a class="btn editFTest" idtest="<?=$finaltest['id'];?>" ttitle="<?=$finaltest['title'];?>" ttime="<?=$finaltest['timetest'];?>" tcount="<?=$finaltest['count'];?>" data-toggle="modal" href="#editFTest" title="Редактировать"><i class="icon-pencil"></i></a>

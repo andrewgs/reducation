@@ -21,7 +21,6 @@ class Testsmodel extends CI_Model{
 		$this->number 	= $data['number'];
 		$this->title 	= htmlspecialchars($data['title']);
 		$this->note		= '';
-		$this->date		= '';
 		$this->count	= $data['count'];
 		$this->timetest	= $data['time'];
 		$this->chapter	= $data['chapter'];

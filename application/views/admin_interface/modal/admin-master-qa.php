@@ -1,5 +1,5 @@
 <?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal'));?>
-<div id="addQA" class="modal hide >
+<div id="addQA" class="modal hide" >
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
 		<h3>Вопрос №<span id="nQ">1</span></h3>

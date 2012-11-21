@@ -88,7 +88,7 @@
 							</td>
 							<td class="short centerized"><input type="checkbox" value="1" checked="checked" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php else:?>
-							<td class="PaidDate" data-order="<?=$orders[$i]['id'];?>">Не оплачен</td>
+							<td class="PaidDate centerized" data-order="<?=$orders[$i]['id'];?>">Не оплачен</td>
 							<td class="short centerized"><input type="checkbox" value="1" data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" class="chAccess"></td>
 						<?php endif; ?>
 							<td style="max-width:35px;" class="centerized">

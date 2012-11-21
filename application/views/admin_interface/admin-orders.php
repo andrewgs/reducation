@@ -106,7 +106,7 @@
 								<span class="green"><?=$orders[$i]['paiddate'];?></span>
 							</td>
 						<?php else:?>
-							<td class="PaidDate" data-order="<?=$orders[$i]['id'];?>">Не оплачен</td>
+							<td class="PaidDate centerized" data-order="<?=$orders[$i]['id'];?>">Не оплачен</td>
 						<?php endif; ?>
 							<td style="max-width:35px;" class="centerized">
 								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><i class="icon-pencil icon-white"></i></a>

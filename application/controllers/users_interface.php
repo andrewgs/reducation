@@ -228,7 +228,7 @@ class Users_interface extends CI_Controller{
 					ob_start();
 					?>
 					<p><strong>Здравствуйте,  <?=$name;?></strong></p>
-					<p>Вами был произведен запрос на восстановления данных для аторизации:</p>
+					<p>Вами был произведен запрос на восстановления данных для авторизации:</p>
 					<p><strong>Логин: <span style="font-size: 18px;"><?=$login;?></span> Пароль: <span style="font-size: 18px;"><?=$password;?></span></strong></p>
 					<p>Желаем Вам удачи!</p> 
 					<?
