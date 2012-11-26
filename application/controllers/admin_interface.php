@@ -1049,8 +1049,20 @@ class Admin_interface extends CI_Controller{
 		$config['last_link'] 		= 'В конец';
 		$config['next_link'] 		= 'Далее &raquo;';
 		$config['prev_link'] 		= '&laquo; Назад';
-		$config['cur_tag_open']		= '<span class="actpage">';
-		$config['cur_tag_close'] 	= '</span>';
+		$config['cur_tag_open']		= '<li class="active"><a href="#">';
+		$config['cur_tag_close'] 	= '</a></li>';
+		$config['full_tag_open'] 	= '<div class="pagination"><ul>';
+		$config['full_tag_close'] 	= '</ul></div>';
+		$config['first_tag_open'] 	= '<li>';
+		$config['first_tag_close'] 	= '</li>';
+		$config['last_tag_open'] 	= '<li>';
+		$config['last_tag_close'] 	= '</li>';
+		$config['next_tag_open'] 	= '<li>';
+		$config['next_tag_close'] 	= '</li>';
+		$config['prev_tag_open'] 	= '<li>';
+		$config['prev_tag_close'] 	= '</li>';
+		$config['num_tag_open'] 	= '<li>';
+		$config['num_tag_close'] 	= '</li>';
 		
 		$this->pagination->initialize($config);
 		$pagevar['pages'] = $this->pagination->create_links();
@@ -1125,6 +1137,109 @@ class Admin_interface extends CI_Controller{
 			endif;
 		endfor;
 		$this->load->view("admin_interface/admin-orders",$pagevar);
+	}
+	
+	public function deleted_orders(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Удаленные заказы',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'orders'		=> array(),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'count'			=> 0,
+					'pages'			=> '',
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$from = intval($this->uri->segment(5));
+		if($this->uri->total_segments() >= 6):
+			$field = $this->uri->segment(5);
+			$sortby = $this->uri->segment(6);
+			$from = intval($this->uri->segment(7));
+			$fvalue = array('','id','paiddate','closedate','organization','userpaiddate');
+			if(!array_search($field,$fvalue)):
+				show_404();
+			endif;
+			$svalue = array('','desc','asc');
+			if(!array_search($sortby,$svalue,true)):
+				show_404();
+			endif;
+		endif;
+		if(empty($sortby) || empty($field)):
+			$sortby = 'desc';
+			$field = 'id';
+		endif;
+		$pagevar['orders'] 			= $this->unionmodel->read_deleted_orders($field,$sortby,5,$from);
+		$pagevar['count'] 			= $this->unionmodel->count_deleted_orders();
+		$config['base_url'] 		= $pagevar['baseurl'].'admin-panel/messages/deleted/orders/'.$field.'/'.$sortby;
+		$config['uri_segment']		= 7;
+		$config['total_rows'] 		= $pagevar['count']; 
+		$config['per_page'] 		= 5;
+		$config['num_links'] 		= 4;
+		$config['first_link']		= 'В начало';
+		$config['last_link'] 		= 'В конец';
+		$config['next_link'] 		= 'Далее &raquo;';
+		$config['prev_link'] 		= '&laquo; Назад';
+		$config['cur_tag_open']		= '<li class="active"><a href="#">';
+		$config['cur_tag_close'] 	= '</a></li>';
+		$config['full_tag_open'] 	= '<div class="pagination"><ul>';
+		$config['full_tag_close'] 	= '</ul></div>';
+		$config['first_tag_open'] 	= '<li>';
+		$config['first_tag_close'] 	= '</li>';
+		$config['last_tag_open'] 	= '<li>';
+		$config['last_tag_close'] 	= '</li>';
+		$config['next_tag_open'] 	= '<li>';
+		$config['next_tag_close'] 	= '</li>';
+		$config['prev_tag_open'] 	= '<li>';
+		$config['prev_tag_close'] 	= '</li>';
+		$config['num_tag_open'] 	= '<li>';
+		$config['num_tag_close'] 	= '</li>';
+		
+		$this->pagination->initialize($config);
+		$pagevar['pages'] = $this->pagination->create_links();
+		
+		for($i=0;$i<count($pagevar['orders']);$i++):
+			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
+			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+				if($pagevar['orders'][$i]['closedate'] > date("Y-m-d")):
+					$pagevar['orders'][$i]['closedate'] = '<span class="green">'.$pagevar['orders'][$i]['closedate'].'</span>';
+				elseif(empty($pagevar['orders'][$i]['numbercompletion']) && $pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+					$pagevar['orders'][$i]['closedate'] = '<span class="red">'.$pagevar['orders'][$i]['closedate'].'</span>';
+				endif;
+			endif;
+			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+				$pagevar['orders'][$i]['closedate'] = $this->operation_dot_date($pagevar['orders'][$i]['closedate']);
+			endif;
+			$date = $pagevar['orders'][$i]['userpaiddate'];
+			if(($date != "Не оплачен") &&  $date!= '0000-00-00' && !empty($date)):
+				$arrdate = preg_split('/[\s, ]+/',$pagevar['orders'][$i]['userpaiddate'],-1,PREG_SPLIT_NO_EMPTY);
+				for($j=0;$j<count($arrdate);$j++):
+					$oDate = new DateTime($arrdate[$j]);
+					$sDate[$j] = $oDate->format("d.m.Y");
+					unset($oDate);
+				endfor;
+				$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
+				unset($sDate);
+			endif;
+			$pagevar['orders'][$i]['audcnt'] = count($this->unionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
+			$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
+			if($pagevar['orders'][$i]['regnum']):
+				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+			else:
+				$pagevar['orders'][$i]['regnum'] = 'Не завершен';
+			endif;
+			if(!$pagevar['orders'][$i]['audcnt']):
+				$pagevar['orders'][$i]['audcnt'] = 0;
+			endif;
+		endfor;
+		$this->load->view("admin_interface/deleted-orders",$pagevar);
 	}
 	
 	public function orders_search(){
@@ -1342,9 +1457,12 @@ class Admin_interface extends CI_Controller{
 			<em><strong>Прохождение итогового тестирования станет доступно с <?=$info['closedate'];?></strong></em>
 		</p>
 		<p>
-			<strong>ВНИМАНИЕ!</strong> В случае возникновения каких-либо вопросов относительно 
-			данных платежа обращайтесь по тел.: 2-36-53-53
+			<strong>ВНИМАНИЕ!</strong> В случае возникновения каких-либо вопросов относительно данных платежа обращайтесь по тел.: 2-36-53-53
 		</p>
+		<br/><br/>
+		<p>Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86 </p>
+		<p>Контактные данные: (863) 273-66-61, (863) 246-43-54</p>
+		<p>С уважением<br/>Южно-окружной центр повышения квалификации и переподготовки кадров для строительного и жилищно-коммунального комплекса</p>
 		<?php
 		$mailtext = ob_get_clean();
 		
@@ -1369,14 +1487,24 @@ class Admin_interface extends CI_Controller{
 	public function order_delete(){
 		
 		$order = $this->uri->segment(5);
-		if(!$this->ordersmodel->valid_finish($order)):
+		$this->ordersmodel->update_field($order,'deleted',1);
+		$this->session->set_userdata('msgs','Заказ перемещен.');
+		/*if(!$this->ordersmodel->valid_finish($order)):
 			$this->session->set_userdata('msgs','Заказ удален.');
 			$this->audienceordermodel->delete_order_records($order);
 			$this->courseordermodel->delete_order($order);
 			$this->ordersmodel->delete_record($order);
 			$maxrecid = $this->ordersmodel->last_id();
 			$this->ordersmodel->set_autoincrement($maxrecid+1);
-		endif;
+		endif;*/
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+	
+	public function order_restore(){
+		
+		$order = $this->uri->segment(5);
+		$this->ordersmodel->update_field($order,'deleted',0);
+		$this->session->set_userdata('msgs','Заказ восстановлен.');
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 	
@@ -1812,12 +1940,24 @@ class Admin_interface extends CI_Controller{
 		$config['total_rows'] 	= $pagevar['count']; 
 		$config['per_page'] 	= 10;
 		$config['num_links'] 	= 4;
-		$config['first_link']	= 'В начало';
-		$config['last_link'] 	= 'В конец';
-		$config['next_link'] 	= 'Далее &raquo;';
-		$config['prev_link'] 	= '&laquo; Назад';
-		$config['cur_tag_open']	= '<span class="actpage">';
-		$config['cur_tag_close']= '</span>';
+		$config['first_link']		= 'В начало';
+		$config['last_link'] 		= 'В конец';
+		$config['next_link'] 		= 'Далее &raquo;';
+		$config['prev_link'] 		= '&laquo; Назад';
+		$config['cur_tag_open']		= '<li class="active"><a href="#">';
+		$config['cur_tag_close'] 	= '</a></li>';
+		$config['full_tag_open'] 	= '<div class="pagination"><ul>';
+		$config['full_tag_close'] 	= '</ul></div>';
+		$config['first_tag_open'] 	= '<li>';
+		$config['first_tag_close'] 	= '</li>';
+		$config['last_tag_open'] 	= '<li>';
+		$config['last_tag_close'] 	= '</li>';
+		$config['next_tag_open'] 	= '<li>';
+		$config['next_tag_close'] 	= '</li>';
+		$config['prev_tag_open'] 	= '<li>';
+		$config['prev_tag_close'] 	= '</li>';
+		$config['num_tag_open'] 	= '<li>';
+		$config['num_tag_close'] 	= '</li>';
 		
 		$this->pagination->initialize($config);
 		$pagevar['pages'] = $this->pagination->create_links();
@@ -1971,12 +2111,24 @@ class Admin_interface extends CI_Controller{
 		$config['total_rows'] 	= $pagevar['count']; 
 		$config['per_page'] 	= 10;
 		$config['num_links'] 	= 4;
-		$config['first_link']	= 'В начало';
-		$config['last_link'] 	= 'В конец';
-		$config['next_link'] 	= 'Далее &raquo;';
-		$config['prev_link'] 	= '&laquo; Назад';
-		$config['cur_tag_open']	= '<span class="actpage">';
-		$config['cur_tag_close']= '</span>';
+		$config['first_link']		= 'В начало';
+		$config['last_link'] 		= 'В конец';
+		$config['next_link'] 		= 'Далее &raquo;';
+		$config['prev_link'] 		= '&laquo; Назад';
+		$config['cur_tag_open']		= '<li class="active"><a href="#">';
+		$config['cur_tag_close'] 	= '</a></li>';
+		$config['full_tag_open'] 	= '<div class="pagination"><ul>';
+		$config['full_tag_close'] 	= '</ul></div>';
+		$config['first_tag_open'] 	= '<li>';
+		$config['first_tag_close'] 	= '</li>';
+		$config['last_tag_open'] 	= '<li>';
+		$config['last_tag_close'] 	= '</li>';
+		$config['next_tag_open'] 	= '<li>';
+		$config['next_tag_close'] 	= '</li>';
+		$config['prev_tag_open'] 	= '<li>';
+		$config['prev_tag_close'] 	= '</li>';
+		$config['num_tag_open'] 	= '<li>';
+		$config['num_tag_close'] 	= '</li>';
 		
 		$this->pagination->initialize($config);
 		$pagevar['pages'] = $this->pagination->create_links();

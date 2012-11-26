@@ -1,4 +1,4 @@
-<div id="getCurriculum" class="modal hide fade">
+<div id="getCurriculum" class="modal hide">
 	<div class="modal-header">
 		<a class="close" data-dismiss="modal">×</a>
 		<h3>Загрузка файла</h3>

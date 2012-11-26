@@ -111,10 +111,7 @@
 							<td style="max-width:35px;" class="centerized">
 								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><i class="icon-pencil icon-white"></i></a>
 								<a class="btn btn-info SendMail" data-order="<?=$orders[$i]['id'];?>"><i class="icon-envelope icon-white"></i></a>
-						<?php if(!$orders[$i]['finish']):?>
-							<?php $delorders = TRUE;?>
-							<a class="btn btn-danger deleteOrder" data-toggle="modal" href="#deleteOrder" title="Заказ не оформлен" data-order="<?=$orders[$i]['id'];?>"><i class="icon-trash icon-white"></i></a>
-						<?php endif;?>
+								<a class="btn btn-danger deleteOrder" data-toggle="modal" href="#deleteOrder" title="Удалить заказ" data-order="<?=$orders[$i]['id'];?>"><i class="icon-trash icon-white"></i></a>
 							<input type="checkbox" value="1" <?=($orders[$i]['paid'])?'checked="checked"':'';?> data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" title="Признак оплаты" class="chAccess">
 							</td>
 						</tr>
@@ -127,7 +124,7 @@
 			</div>
 			<?php $this->load->view('admin_interface/modal/user-set-discount');?>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
-			<?php $this->load->view('customer_interface/modal/customer-delete-order');?>
+			<?php $this->load->view('admin_interface/modal/admin-delete-order');?>
 		</div>
 	</div>
 	<?php $this->load->view('admin_interface/scripts');?>
@@ -175,11 +172,9 @@
 				$.post("<?=$baseurl;?>admin-panel/messages/orders/send-mail",{'order':order},function(data){$(obj).after(data.retvalue);},"json");
 			});
 			
-		<?php if($delorders):?>
 			var Order = 0;
 			$(".deleteOrder").click(function(){Order = $(this).attr('data-order');});
 			$("#DelOrder").click(function(){location.href='<?=$baseurl;?>admin-panel/messages/orders/delete-order/'+Order;});
-		<?php endif;?>
 			
 			$("#dsend").click(function(event){
 				var err = false;

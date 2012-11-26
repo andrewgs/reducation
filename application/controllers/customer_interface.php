@@ -372,7 +372,10 @@ class Customer_interface extends CI_Controller{
 					Для входа в личный кабинет используйте присвоенные вам логин и пароль.
 				</p>
 				<p><strong>Логин: <span style="font-size: 18px;"><?=$login;?></span> Пароль: <span style="font-size: 18px;"><?=$password;?></span></strong></p>
-				<p>Желаем Вам удачи!</p>
+				<br/><br/>
+				<p>Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86 </p>
+				<p>Контактные данные: (863) 273-66-61, (863) 246-43-54</p>
+				<p>С уважением<br/>Южно-окружной центр повышения квалификации и переподготовки кадров для строительного и жилищно-коммунального комплекса</p>
 				<?
 				$mailtext = ob_get_clean();
 				
@@ -643,11 +646,12 @@ class Customer_interface extends CI_Controller{
 	public function registration_ordering_cancel(){
 		
 		$this->session->set_userdata('msgs','Заказ отменен.');
-		$this->audienceordermodel->delete_order_records($this->session->userdata('order'));
-		$this->courseordermodel->delete_order($this->session->userdata('order'));
-		$this->ordersmodel->delete_record($this->session->userdata('order'));
-		$maxrecid = $this->ordersmodel->last_id();
-		$this->ordersmodel->set_autoincrement($maxrecid+1);
+		$this->ordersmodel->update_field($this->session->userdata('order'),'deleted',1);
+//		$this->audienceordermodel->delete_order_records($this->session->userdata('order'));
+//		$this->courseordermodel->delete_order($this->session->userdata('order'));
+//		$this->ordersmodel->delete_record($this->session->userdata('order'));
+//		$maxrecid = $this->ordersmodel->last_id();
+//		$this->ordersmodel->set_autoincrement($maxrecid+1);
 		$this->session->unset_userdata(array('regordering'=>'','step'=>'','ordering'=>'','order'=>''));
 		redirect('customer/registration/ordering');
 	}

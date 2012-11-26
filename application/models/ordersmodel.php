@@ -14,6 +14,7 @@ class Ordersmodel extends CI_Model{
 	var $closedate			= '0000-00-00';
 	var $numberplacement	= '';
 	var $numbercompletion	= '';
+	var $deleted			= 0;
 	
 	function __construct(){
         parent::__construct();

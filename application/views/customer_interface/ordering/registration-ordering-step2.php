@@ -55,7 +55,7 @@
 			</div>
 		<?php $this->load->view('users_interface/rightbarcus');?>
 		</div>
-		<?php $this->load->view('users_interface/modal/registration-cancel');?>
+		<?php $this->load->view('customer_interface/modal/ordering-cancel');?>
 		<?php $this->load->view('customer_interface/modal/ordering-delete-corder');?>
 		<?php $this->load->view('customer_interface/modal/ordering-add-audience');?>
 		<?php $this->load->view('customer_interface/modal/ordering-delete-audience');?>

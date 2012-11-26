@@ -65,16 +65,16 @@ $route['customer/registration/ordering/cancel-registration']		= "customer_interf
 $route['customer/registration/ordering/step/2/course/:num/delete-audience/:num']	= "customer_interface/registration_delete_audience";
 
 /***************************************************	ADMIN INTRERFACE	***********************************************/
-$route['admin-panel/logoff'] 				= "admin_interface/admin_logoff";
+$route['admin-panel/logoff'] 									= "admin_interface/admin_logoff";
 
-$route['admin-panel/actions/send-user-email/customer/:num']	= "admin_interface/send_user_email";
+$route['admin-panel/actions/send-user-email/customer/:num']		= "admin_interface/send_user_email";
 $route['admin-panel/actions/send-user-email/audience/:num']		= "admin_interface/send_user_email";
 
-$route['admin-panel/actions/control'] 					= "admin_interface/admin_panel";
-$route['admin-panel/actions/control/delete-date/:num'] 	= "admin_interface/datele_date";
+$route['admin-panel/actions/control'] 							= "admin_interface/admin_panel";
+$route['admin-panel/actions/control/delete-date/:num'] 			= "admin_interface/datele_date";
 /*==========================================================  trends  ====================================================*/
-$route['admin-panel/references/trends']						= "admin_interface/references_trends";
-$route['admin-panel/references/trends/delete-trend/:num']	= "admin_interface/references_delete_trend";
+$route['admin-panel/references/trends']							= "admin_interface/references_trends";
+$route['admin-panel/references/trends/delete-trend/:num']		= "admin_interface/references_delete_trend";
 /*==========================================================  course  ====================================================*/
 $route['admin-panel/references/courses']								= "admin_interface/references_courses";
 $route['admin-panel/references/courses/delete-course/:num/trend/:num']	= "admin_interface/references_delete_course";
@@ -113,7 +113,10 @@ $route['admin-panel/messages/orders/unpaid/:num']			= "admin_interface/orders_me
 $route['admin-panel/messages/orders/paid-order']			= "admin_interface/orders_paid";
 $route['admin-panel/messages/orders/send-mail'] 			= "admin_interface/orders_send_mail";
 $route['admin-panel/messages/orders/delete-order/:num']		= "admin_interface/order_delete";
+$route['admin-panel/messages/orders/restore-order/:num']	= "admin_interface/order_restore";
 
+$route['admin-panel/messages/deleted/orders']				= "admin_interface/deleted_orders";
+$route['admin-panel/messages/deleted/orders/:num']			= "admin_interface/deleted_orders";
 /*===========================================================  users  =====================================================*/
 $route['admin-panel/users/customer']						= "admin_interface/users_customer";
 $route['admin-panel/users/customer/from']					= "admin_interface/users_customer";
@@ -155,3 +158,5 @@ $route['admin-panel/messages/orders/:num/audience/:num/courses/:num/test-report/
 
 $route['admin-panel/messages/orders/:any/:any/:any'] 		= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/:any/:num/:any/:any']	= "admin_interface/orders_messages";
+
+$route['admin-panel/messages/deleted/orders/:any/:any']		= "admin_interface/deleted_orders";

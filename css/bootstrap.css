@@ -2665,7 +2665,7 @@ button.btn.small, input[type="submit"].btn.small {
 }
 .pagination a {
   float: left;
-  padding: 0 14px;
+  padding: 0 10px;
   line-height: 34px;
   text-decoration: none;
   border: 1px solid #ddd;
