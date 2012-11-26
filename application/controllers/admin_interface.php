@@ -1177,8 +1177,15 @@ class Admin_interface extends CI_Controller{
 		endif;
 		$pagevar['orders'] 			= $this->unionmodel->read_deleted_orders($field,$sortby,5,$from);
 		$pagevar['count'] 			= $this->unionmodel->count_deleted_orders();
-		$config['base_url'] 		= $pagevar['baseurl'].'admin-panel/messages/deleted/orders/'.$field.'/'.$sortby;
-		$config['uri_segment']		= 7;
+		
+		if($this->uri->total_segments() >= 6):
+			$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/messages/deleted/orders/'.$field.'/'.$sortby;
+			$config['uri_segment']	= 7;
+		else:
+			$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/messages/deleted/orders/';
+			$config['uri_segment'] 	= 5;
+		endif;
+		
 		$config['total_rows'] 		= $pagevar['count']; 
 		$config['per_page'] 		= 5;
 		$config['num_links'] 		= 4;
