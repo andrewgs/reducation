@@ -111,6 +111,7 @@ class Ordersmodel extends CI_Model{
 		
 		$this->db->order_by('orderdate','DESC');
 		$this->db->order_by('id','DESC');
+		$this->db->where('deleted',0);
 		$this->db->where('customer',$customer);
 		$query = $this->db->get('orders');
 		$data = $query->result_array();

@@ -304,7 +304,9 @@ class Customer_interface extends CI_Controller{
 	
 		$order = $this->uri->segment(5);
 		if($order):
-			if(!$this->ordersmodel->owner_order_nonfinish($order,$this->user['uid'])):
+			$this->ordersmodel->update_field($order,'deleted',1);
+			$this->session->set_userdata('msgs','Заказ удален.');
+			/*if(!$this->ordersmodel->owner_order_nonfinish($order,$this->user['uid'])):
 				$this->session->set_userdata('msgr','Заказ не удален.');
 				redirect('customer/audience/orders');
 			endif;
@@ -312,7 +314,7 @@ class Customer_interface extends CI_Controller{
 			$this->courseordermodel->delete_order($order);
 			$this->ordersmodel->delete_record($order);
 			$this->session->set_userdata('msgs','Заказ удален.');
-			redirect('customer/audience/orders');
+			redirect('customer/audience/orders');*/
 		else:
 			$this->session->set_userdata('msgr','Заказ не удален.');
 			redirect('customer/audience/orders');
