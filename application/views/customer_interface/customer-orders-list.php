@@ -24,37 +24,37 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th>№ п\п</th>
-							<th>№ заказа</th>
-							<th>Статус активности</th>
-							<th>Статус оплаты</th>
-							<th>Статус оформления</th>
-							<th>&nbsp;</th>
+							<th class="centerized">№ п\п</th>
+							<th class="centerized">№ заказа</th>
+							<th class="centerized">Статус активности</th>
+							<th class="centerized">Статус оплаты</th>
+							<th class="centerized">Статус оформления</th>
+							<th class="short centerized">&nbsp;</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
 						<tr>
-							<td class="short"><?=$num;?></td>
-							<td>
+							<td class="short centerized"><?=$num;?></td>
+							<td class="centerized">
 							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'],'<strong> №'.$orders[$i]['id'].' от ('.$orders[$i]['orderdate'].')</strong>')?>
 							</td>
-						<?php if($orders[$i]['closedate']!='0000-00-00'):?>
-							<td class="short"><span class="label label-success">Закрыт</span></td>
+						<?php if($orders[$i]['numbercompletion']!=''):?>
+							<td class="short centerized"><span class="label label-success">Заказ закрыт</span></td>
 						<?php else:?>
-							<td class="short"><span class="label label-important">Открыт</span></td>
+							<td class="short centerized"><span class="label label-info">Заказ активен</span></td>
 						<?php endif;?>
 						<?php if($orders[$i]['paid']):?>
-							<td class="short"><span class="label label-success">Оплачен</span></td>
+							<td class="short centerized"><span class="label label-success">Заказ оплачен</span></td>
 						<?php else:?>
-							<td class="short"><span class="label label-important">Не оплачен</span></td>
+							<td class="short centerized"><span class="label label-important">Заказ не оплачен</span></td>
 						<?php endif;?>
 						<?php if($orders[$i]['finish']):?>
-							<td class="short"><span class="label label-success">Оформлен</span></td>
-							<td class="short">&nbsp;</td>
+							<td class="short centerized"><span class="label label-success">Заказ оформлен</span></td>
+							<td class="short centerized">&nbsp;</td>
 						<?php else:?>
-							<td class="short"><span class="label label-important">Не оформлен</span></td>
-							<td class="short"><a class="close deleteOrder" title="Удалить" data-toggle="modal" href="#deleteOrder" idorder="<?=$orders[$i]['id'];?>">&times;</a></td>
+							<td class="short centerized"><span class="label label-important">Не оформлен</span></td>
+							<td class="short centerized"><a class="close deleteOrder" title="Удалить" data-toggle="modal" href="#deleteOrder" idorder="<?=$orders[$i]['id'];?>">&times;</a></td>
 						<?php endif;?>
 						</tr>
 						<?php $num++;?>

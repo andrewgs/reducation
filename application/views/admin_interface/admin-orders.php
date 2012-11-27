@@ -48,12 +48,12 @@
 						<tr>
 							<th>&nbsp;</th>
 							<th class="centerized"><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/id/'.$sortby.'/'.$from,'№ заказа');?><span id="id"></span></th>
-							<th class="centerized"><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/paiddate/'.$sortby.'/'.$from,'Заказ создан');?><span id="paiddate"></span></nobr><br/><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/closedate/'.$sortby.'/'.$from,'Заказ закрыт');?><span id="closedate"></span></nobr></th>
+							<th class="centerized"><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/paiddate/'.$sortby.'/'.$from,'Создан');?><span id="paiddate"></span></nobr><br/><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/closedate/'.$sortby.'/'.$from,'Закрыт');?><span id="closedate"></span></nobr></th>
 							<th class="centerized"><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/organization/'.$sortby.'/'.$from,'Заказчик');?><span id="organization"></span></th>
 							<!--th>Статус</th-->
 							<th class="centerized">
-								<?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/userpaiddate/'.$sortby.'/'.$from,'Дата оплаты');?><span id="userpaiddate"></span>
-								<br/>Дата обучения
+								<?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/userpaiddate/'.$sortby.'/'.$from,'Оплачено');?><span id="userpaiddate"></span>
+								<br/><span class="green">Обучение</span>
 							</th>
 							<th>&nbsp;</th>
 						</tr>
@@ -77,7 +77,7 @@
 								<nobr>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-1','<img src="'.$baseurl.'img/icon/document-horizontal-text.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?>&nbsp;
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-2','<img src="'.$baseurl.'img/icon/application-list.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?></nobr>
-								<span class="listeners-count">[<?=$orders[$i]['regnum'];?>]</span>
+								<span class="listeners-count">[<?=$orders[$i]['regnum'];?>]</span><br/>
 								<nobr>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/invoice','<img src="'.$baseurl.'img/icon/document-attribute-i.png" />',array('target'=>'_blank','title'=>'Счет на оплату'));?>
 								<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/contract','<img src="'.$baseurl.'img/icon/document-attribute-c.png" />',array('target'=>'_blank','title'=>'Договор на оказание образовательных услуг'));?>
@@ -108,11 +108,12 @@
 						<?php else:?>
 							<td class="PaidDate centerized" data-order="<?=$orders[$i]['id'];?>">Не оплачен</td>
 						<?php endif; ?>
-							<td style="max-width:35px;" class="centerized">
-								<a class="btn btn-success discbtn" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><i class="icon-pencil icon-white"></i></a>
-								<a class="btn btn-info SendMail" data-order="<?=$orders[$i]['id'];?>"><i class="icon-envelope icon-white"></i></a>
+							<td style="max-width:65px;" class="centerized">
+								<a class="btn btn-success discbtn" title="Свойства заказа" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><i class="icon-pencil icon-white"></i></a>
 								<a class="btn btn-danger deleteOrder" data-toggle="modal" href="#deleteOrder" title="Удалить заказ" data-order="<?=$orders[$i]['id'];?>"><i class="icon-trash icon-white"></i></a>
-							<input type="checkbox" value="1" <?=($orders[$i]['paid'])?'checked="checked"':'';?> data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" title="Признак оплаты" class="chAccess">
+								<a class="btn btn-info SendMail" id="smpaid" title="Уведомить об оплате" data-order="<?=$orders[$i]['id'];?>"><i class="icon-envelope icon-white"></i></a>
+								<a class="btn btn-warning SendMail" id="smtext" title="Уведомить о тестировании" data-order="<?=$orders[$i]['id'];?>"><i class="icon-envelope icon-white"></i></a><br/><br/>
+								<nobr><input type="checkbox" value="1" <?=($orders[$i]['paid'])?'checked="checked"':'';?> data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" title="Признак оплаты" class="chAccess"> Оплачено</nobr>
 							</td>
 						</tr>
 					<?php endfor; ?>
@@ -169,7 +170,8 @@
 				if(!confirm("Отправить уведомление?")) return false;
 				var order = $(this).attr('data-order');
 				var obj = $(this);
-				$.post("<?=$baseurl;?>admin-panel/messages/orders/send-mail",{'order':order},function(data){$(obj).after(data.retvalue);},"json");
+				var smtype = $(this).attr('id');
+				$.post("<?=$baseurl;?>admin-panel/messages/orders/send-mail",{'order':order,'smtype':smtype},function(data){$("#smtext").after(data.retvalue);},"json");
 			});
 			
 			var Order = 0;

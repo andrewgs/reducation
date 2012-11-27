@@ -1426,50 +1426,71 @@ class Admin_interface extends CI_Controller{
 	
 	public function orders_send_mail(){
 		
-		$statusval = array('retvalue'=>'<font color="#00ff00"><br/>Отправлено</font>','retemail'=>'');
+		$statusval = array('retvalue'=>'<i class="icon-ok" title="Отправлено"></i>','retemail'=>'');
 		$order = $this->input->post('order');
+		$smtype = $this->input->post('smtype');
 		$info = $this->unionmodel->read_customer_info_order($order);
 		$info['orderdate'] = $this->operation_dot_date($info['orderdate']);
 		$info['closedate'] = $this->operation_dot_date($info['closedate']);
 		ob_start();
 		?>
-		<p>Здравствуйте, <?=$info['organization'];?></p>
-		<p>
-			Система дистанционного обучения АНО ДПО «Южно-окружного центра повышения квалификации» 
-			сообщает о зачислении Вашего платежа.
-		</p>
-		<p>
-			Форма оплаты: Безналичная <br />
-			Способ оплаты: Оплата квитанцией <br />
-			Назначение платежа: Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> <br/>
-			Сумма платежа: <u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u> руб. <br />
-			Документ платежа:  Платежное поручение №<u>&nbsp;&nbsp;&nbsp;<?=$info['docnumber'];?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['userpaiddate'];?>&nbsp;&nbsp;&nbsp;</u>
-		</p>
-		<p>
-			Ваш платеж распределен следующим образом
-		</p>
-		<table border="0">
-			<thead>
-				<tr>
-					<th>Назначение платежа</th>
-					<th>Сумма, руб.</th>
-				</tr>
-			</thead>
-			<tbody>
-				<td>Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>, план оплаты: "Весь период обучения"</td>
-				<td><u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u>,00</td>
-			</tbody>
-		</table>
-		<p>
-			<em><strong>Прохождение итогового тестирования станет доступно с <?=$info['closedate'];?></strong></em>
-		</p>
-		<p>
-			<strong>ВНИМАНИЕ!</strong> В случае возникновения каких-либо вопросов относительно данных платежа обращайтесь по тел.: 2-36-53-53
-		</p>
-		<br/><br/>
-		<p>Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86 </p>
-		<p>Контактные данные: (863) 273-66-61, (863) 246-43-54</p>
-		<p>С уважением<br/>Южно-окружной центр повышения квалификации и переподготовки кадров для строительного и жилищно-коммунального комплекса</p>
+			<p>Здравствуйте, <?=$info['organization'];?></p>
+		<?php
+		if($smtype == 'smtext'):
+			?>
+			<p>Администрация АНО ДПО «Южно-окружной центр повышения квалификации» извещает</p>
+			<p>
+				о невозможности оформления документов (удостоверений , актов выполненных работ) согласно договора 
+				№<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>
+				о повышении квалификации сотрудников Вашей организации по причине отсутствия результатов итогового тестирования обучающихся.
+			</p>
+			<p>Убедительно просим  срочно обеспечить проведение итогового тестирования (аттестацию) Ваших сотрудников.</p>
+			<?php
+		else:
+			?>
+			
+			<p>
+				Система дистанционного обучения АНО ДПО «Южно-окружного центра повышения квалификации» 
+				сообщает о зачислении Вашего платежа.
+			</p>
+			<p>
+				Форма оплаты: Безналичная <br />
+				Способ оплаты: Оплата квитанцией <br />
+				Назначение платежа: Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> <br/>
+				Сумма платежа: <u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u> руб. <br />
+				Документ платежа:  Платежное поручение №<u>&nbsp;&nbsp;&nbsp;<?=$info['docnumber'];?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['userpaiddate'];?>&nbsp;&nbsp;&nbsp;</u>
+			</p>
+			<p>
+				Ваш платеж распределен следующим образом
+			</p>
+			<table border="0">
+				<thead>
+					<tr>
+						<th>Назначение платежа</th>
+						<th>Сумма, руб.</th>
+					</tr>
+				</thead>
+				<tbody>
+					<td>Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>, план оплаты: "Весь период обучения"</td>
+					<td><u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u>,00</td>
+				</tbody>
+			</table>
+			<p>
+				<em><strong>Прохождение итогового тестирования станет доступно с <?=$info['closedate'];?></strong></em>
+			</p>
+			<p>
+				<strong>ВНИМАНИЕ!</strong> В случае возникновения каких-либо вопросов относительно данных платежа обращайтесь по тел.: 2-36-53-53
+			</p>
+		<?php
+		endif;
+		?>
+			<br/><br/>
+			<p>
+				Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86<br/>
+				Контактные данные: (863) 273-66-61, (863) 246-43-54<br/>
+				Эл.почта: info@roscentrdpo.ru<br/>
+				С уважением:<br/>Южно-окружной центр повышения квалификации и переподготовки кадров для строительного и жилищно-коммунального комплекса
+			</p>
 		<?php
 		$mailtext = ob_get_clean();
 		
