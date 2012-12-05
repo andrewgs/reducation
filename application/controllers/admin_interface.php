@@ -2069,10 +2069,39 @@ class Admin_interface extends CI_Controller{
 					'userinfo'		=> $this->user,
 					'customer'		=> '',
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'audience'		=> $this->audiencemodel->read_record($this->uri->segment(6))
+					'audience'		=> $this->audiencemodel->read_record($this->uri->segment(6)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
 			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
 		$pagevar['customer'] = $this->customersmodel->read_field($pagevar['audience']['customer'],'organization');
 		$pagevar['audience']['signupdate'] = $this->operation_date($pagevar['audience']['signupdate']);
+		
+		if($this->input->post('submit')):
+			unset($_POST['submit']);
+			$this->form_validation->set_rules('lastname',' ','required|trim');
+			$this->form_validation->set_rules('name',' ','required|trim');
+			$this->form_validation->set_rules('middlename',' ','required|trim');
+			$this->form_validation->set_rules('fiodat',' ','required|trim');
+			$this->form_validation->set_rules('position',' ','required|trim');
+			$this->form_validation->set_rules('address',' ','required|trim');
+			$this->form_validation->set_rules('personaemail',' ','required|trim');
+			$this->form_validation->set_rules('personaphone',' ','required|trim');
+			$this->form_validation->set_rules('graduated',' ','required|trim');
+			$this->form_validation->set_rules('year',' ','required|trim');
+			$this->form_validation->set_rules('documentnumber',' ','required|trim');
+			$this->form_validation->set_rules('specialty',' ','required|trim');
+			$this->form_validation->set_rules('qualification',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
+			else:
+				$this->audiencemodel->update_record($this->uri->segment(6),$this->input->post());
+				$this->session->set_userdata('msgs','Данные сохранены.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
 		$this->load->view("admin_interface/admin-users-audience-info",$pagevar);
 	}
 	

@@ -57,6 +57,27 @@ class Audiencemodel extends CI_Model{
 		return $this->db->insert_id();
 	}
 	
+	function update_record($id,$data){
+		
+		$this->db->set('lastname',$data['lastname']);
+		$this->db->set('name',$data['name']);
+		$this->db->set('middlename',$data['middlename']);
+		$this->db->set('fiodat',$data['fiodat']);
+		$this->db->set('position',$data['position']);
+		$this->db->set('address',$data['address']);
+		$this->db->set('personaemail',$data['personaemail']);
+		$this->db->set('personaphone',$data['personaphone']);
+		$this->db->set('graduated',$data['graduated']);
+		$this->db->set('year',$data['year']);
+		$this->db->set('documentnumber',$data['documentnumber']);
+		$this->db->set('specialty',$data['specialty']);
+		$this->db->set('qualification',$data['qualification']);
+		$this->db->where('id',$id);
+		
+		$this->db->update('audience');
+		return $this->db->affected_rows();
+	}
+	
 	function read_record($id){
 		
 		$this->db->where('id',$id);

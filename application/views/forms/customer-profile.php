@@ -133,6 +133,7 @@
 	</fieldset>
 	<?php if(!$readonly):?>
 	<div class="modal-footer">
-		<button class="btn btn-success" type="submit" id="save" name="submit" value="save"><i class="icon-ok icon-white"></i> Сохранить</button>	</div>
+		<button class="btn btn-success" type="submit" id="save" name="submit" value="save"><i class="icon-ok icon-white"></i> Сохранить</button>
+	</div>
 	<?php endif;?>
 <?= form_close(); ?>
