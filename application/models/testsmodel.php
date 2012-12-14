@@ -10,6 +10,7 @@ class Testsmodel extends CI_Model{
 	var $timetest 	= '';
 	var $chapter 	= 0;
 	var $course 	= 0;
+	var $active 	= 1;
 	var $view 		= 1;
 	
 	function __construct(){
@@ -68,13 +69,22 @@ class Testsmodel extends CI_Model{
 		return $this->db->affected_rows();
 	}
 	
-	function read_record_chapter($chapter){
+	function read_record_chapter($chapter,$active = 1){
 		
 		$this->db->where('chapter',$chapter);
+		$this->db->where('active',$active);
 		$query = $this->db->get('tests',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
 		return NULL;
+	}
+	
+	function update_field($id,$field,$value){
+			
+		$this->db->set($field,$value);
+		$this->db->where('id',$id);
+		$this->db->update('tests');
+		return $this->db->affected_rows();
 	}
 	
 	function read_record_course($course){

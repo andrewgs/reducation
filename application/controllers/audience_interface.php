@@ -178,7 +178,7 @@ class Audience_interface extends CI_Controller{
 				$this->session->set_userdata('msgr','Обучение уже начато.');
 				redirect('audience/courses/current');
 			endif;
-			$this->session->set_userdata('msgs','Обучение начато! Теперь Вам доступны лекции для ознакомления.<br/>Читайте лекции и сдавайте тесты. Удачи!');
+			$this->session->set_userdata('msgs','Обучение начато! Теперь Вам доступны лекции для ознакомления.<br/>Читайте лекции и сдавайте тесты.');
 			$this->audienceordermodel->update_field($training,'start',1);
 			$tests = $this->unionmodel->get_courses_test($training,$this->user['uid'],0);
 			for($i=0;$i<count($tests);$i++):

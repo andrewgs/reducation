@@ -152,7 +152,7 @@ class Unionmodel extends CI_Model{
 	
 	function get_courses_test($audorder,$audience,$status){
 		
-		$query = "SELECT tests.*, courseorder.id AS coid,audienceorder.id AS aoid,courseorder.order AS ordid,courseorder.customer AS ordcus FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN tests ON courses.id = tests.course INNER JOIN audienceorder ON courseorder.id = audienceorder.course WHERE audienceorder.id = $audorder AND audienceorder.audience = $audience AND audienceorder.status = $status AND tests.chapter > 0 AND audienceorder.start = 1";
+		$query = "SELECT tests.*, courseorder.id AS coid,audienceorder.id AS aoid,courseorder.order AS ordid,courseorder.customer AS ordcus FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN tests ON courses.id = tests.course INNER JOIN audienceorder ON courseorder.id = audienceorder.course WHERE audienceorder.id = $audorder AND audienceorder.audience = $audience AND audienceorder.status = $status AND tests.chapter > 0 AND tests.active = 1 AND audienceorder.start = 1";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)>0) return $data;
@@ -340,7 +340,6 @@ class Unionmodel extends CI_Model{
 		$npd = (!empty($nbpaiddoc)) ? "orders.docnumber = $nbpaiddoc" : "FALSE";
 		
 		$query = "SELECT orders.*,customers.id AS cid,customers.organization,customers.personemail,customers.phones,customers.online FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE $ord OR $org OR $npd OR $nplac OR $ncomp GROUP BY orders.id ORDER BY orders.orderdate DESC,orders.id DESC";
-//		print_r($query);exit;
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;

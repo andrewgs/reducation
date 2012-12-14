@@ -629,7 +629,17 @@ class Admin_interface extends CI_Controller{
 				$_POST['number'] = $this->chaptermodel->read_field($_POST['chapter'],'number');
 				$id = $this->testsmodel->insert_record($_POST);
 				if($id):
-					$this->session->set_userdata('msgs','Промежуточное тестирование добавлено успешно.');
+					$msgs = 'Промежуточное тестирование добавлено успешно.';
+					$aud_tests = $this->audiencetestmodel->open_tests($_POST['chapter']);
+					if($aud_tests):
+						$cnt = 0;
+						for($i=0;$i<count($aud_tests);$i++):
+							$this->audiencetestmodel->update_field($aud_tests[$i]['id'],'test',$id);
+							$cnt++;
+						endfor;
+						$msgs .= '<br/>Произошла замена тестов у слушателей. Количество замен:'.$cnt;
+					endif;
+					$this->session->set_userdata('msgs',$msgs);
 					$this->chaptermodel->active_test($_POST['chapter']);
 				endif;
 			endif;
@@ -792,7 +802,8 @@ class Admin_interface extends CI_Controller{
 		$test = $this->uri->segment(10);
 		if($chapter || $test):
 			// nут удаляются ответы и вопросы
-			$this->testsmodel->delete_record($test);
+			$this->testsmodel->update_field($test,'active',0);
+//			$this->testsmodel->delete_record($test);
 			$this->chaptermodel->deactive_test($chapter);
 			$this->session->set_userdata('msgs','Тест удалена успешно.');
 			redirect('admin-panel/references/trend/'.$trend.'/course/'.$course);
@@ -829,7 +840,7 @@ class Admin_interface extends CI_Controller{
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
-		$pagevar['title'] .= 'Содержание теста "'.$pagevar['test']['title'].'"'; 
+		$pagevar['title'] .= 'Содержание теста "'.$pagevar['test']['title'].'"';
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 
