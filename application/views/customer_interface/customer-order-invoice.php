@@ -53,6 +53,7 @@
 						<tr>
 							<th>№</th>
 							<th>Товары (работы, услуги)</th>
+							<th>Объем учебного плана, час</th>
 							<th>Количество</th>
 							<th>Ед.</th>
 							<th>Цена</th>
@@ -64,6 +65,7 @@
 						<tr>
 							<td><?=$i+1;?></td>
 							<td>"Обучение по курсу <?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
+							<td><?=$course[$i]['hours'];?></td>
 							<td><?=$course[$i]['cnt'];?></td>
 							<td>чел.</td>
 							<td><?=$course[$i]['price']-$course[$i]['discount'];?></td>

@@ -39,6 +39,7 @@
 						<tr>
 							<th>№ п/п</th>
 							<th>Наименование оказанных услуг </th>
+							<th>Объем учебного плана, час</th>
 							<th>Кол-во</th>
 							<th>Цена, руб. </th>
 							<th>Стоимость </th>
@@ -49,6 +50,7 @@
 						<tr>
 							<td><?=$i+1;?></td>
 							<td>Повышение квалификации по Договору №<?=$order['id'];?><br/>"<?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
+							<td><?=$course[$i]['hours'];?></td>
 							<td><?=$course[$i]['cnt'];?></td>
 							<td><?=$course[$i]['price']-$course[$i]['discount'];?></td>
 	 						<td><?=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']));?></td>

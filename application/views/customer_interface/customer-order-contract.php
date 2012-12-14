@@ -70,12 +70,12 @@
 					<?php for($i=0;$i<count($course);$i++):?>
 						<tr>
 							<td><?=$i+1;?></td>
-							<td>Обучение по курсу <?=$course[$i]['code'];?>. <?=$course[$i]['title'];?></center></td>
-							<td><center><?=$course[$i]['hours'];?></center></td>
-							<td><center><?=$course[$i]['cnt'];?></center></td>
-							<td><center>чел.<center></td>
-							<td><center><?=$course[$i]['price']-$course[$i]['discount'];?></center></td>
-							<td><center><?=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']));?></center></td>
+							<td>Обучение по курсу <?=$course[$i]['code'];?>. <?=$course[$i]['title'];?></td>
+							<td><?=$course[$i]['hours'];?></td>
+							<td><?=$course[$i]['cnt'];?></td>
+							<td>чел.</td>
+							<td><?=$course[$i]['price']-$course[$i]['discount'];?></td>
+							<td><?=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']));?></td>
 							<?php $summ+=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']))?>
 						</tr>
 					<?php endfor;?>

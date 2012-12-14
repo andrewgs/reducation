@@ -207,18 +207,18 @@ class Customer_interface extends CI_Controller{
 			redirect('customer/audience/orders');
 		endif;
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - ',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'order'			=> $this->ordersmodel->read_record($this->uri->segment(6)),
-					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(6)),
-					'customer'		=> array(),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+				'description'	=> '',
+				'author'		=> '',
+				'title'			=> 'РосЦентр ДПО - ',
+				'baseurl' 		=> base_url(),
+				'loginstatus'	=> $this->loginstatus,
+				'userinfo'		=> $this->user,
+				'order'			=> $this->ordersmodel->read_record($this->uri->segment(6)),
+				'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(6)),
+				'customer'		=> array(),
+				'msgs'			=> $this->session->userdata('msgs'),
+				'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -293,7 +293,7 @@ class Customer_interface extends CI_Controller{
 		if($pagevar['order']['closedate'] != "0000-00-00"):
 			$pagevar['order']['closedate'] = $this->operation_date($pagevar['order']['closedate']);
 		else:
-			$pagevar['order']['closedate'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+			$pagevar['order']['closedate'] = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.date("Y").' г.';
 		endif;
 		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
 		
