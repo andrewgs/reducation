@@ -50,7 +50,7 @@
 							<?php else:?>
 								<?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/chapter/'.$chapters[$i]['id'].'/testing/'.$chapters[$i]['test']['id'],'Промежуточное тестирование',array('class'=>'btn'));?>
 								<a class="btn editMTest" idchapter="<?=$chapters[$i]['id'];?>" idtest="<?=$chapters[$i]['test']['id'];?>" ttitle="<?=$chapters[$i]['test']['title'];?>" ttime="<?=$chapters[$i]['test']['timetest'];?>" tcount="<?=$chapters[$i]['test']['count'];?>" data-toggle="modal" href="#editMTest" title="Редактировать"><i class="icon-pencil"></i></a>
-								<a class="btn deleteTest" idtest="<?=$chapters[$i]['test']['id'];?>" idchapter="<?=$chapters[$i]['id'];?>" title="Удалить" data-toggle="modal" href="#deleteTest"><i class="icon-trash"></i></a>
+								<a class="btn deleteTest" idtest="<?=$chapters[$i]['test']['id'];?>" idchapter="<?=$chapters[$i]['id'];?>" title="Обновить" data-toggle="modal" href="#deleteTest"><i class="icon-trash"></i></a>
 							<?php endif;?>
 							</div>
 						</div>
@@ -77,6 +77,10 @@
 						<div class="btn-group">
 							<?=anchor('admin-panel/references/trend/'.$this->uri->segment(4).'/course/'.$this->uri->segment(6).'/chapter/0/testing/'.$finaltest['id'],'Итоговое тестирование',array('class'=>'btn'));?>
 							<a class="btn editFTest" idtest="<?=$finaltest['id'];?>" ttitle="<?=$finaltest['title'];?>" ttime="<?=$finaltest['timetest'];?>" tcount="<?=$finaltest['count'];?>" data-toggle="modal" href="#editFTest" title="Редактировать"><i class="icon-pencil"></i></a>
+							
+							
+							<a class="btn refreshFTest" idtest="<?=$finaltest['id'];?>" data-toggle="modal" href="#refreshTest" title="Обновить"><i class="icon-refresh"></i></a>
+						
 						</div>
 					</div>
 					<?php $this->load->view('admin_interface/modal/admin-add-chapter');?>
@@ -90,6 +94,7 @@
 					<?php $this->load->view('admin_interface/modal/admin-add-middle-test');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-middle-test');?>
 					<?php $this->load->view('admin_interface/modal/admin-delete-middle-test');?>
+					<?php $this->load->view('admin_interface/modal/admin-delete-finish-test');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-final-test');?>
 					<?php $this->load->view('users_interface/modal/user-get-document');?>
 					<?php $this->load->view('users_interface/modal/user-get-curriculum');?>
@@ -132,9 +137,12 @@
 			$("#addChapter").on("show",function(){$("#NumberChapter").val(CChapter);});
 			$(".addLecture").click(function(){$("#NumberLecture").val($(this).attr('clectures'));})
 			$(".deleteTest").click(function(){DChapter = $(this).attr('idchapter'); DTest = $(this).attr('idtest');});
+			$(".refreshFTest").click(function(){DChapter = 0; DTest = $(this).attr('idtest');});
+			
 			$(".close").click(function(){DLecture = $(this).attr('idlecture');});
 			$("#DelLecture").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/delete-lecture/'+DLecture;});
 			$("#DelMTest").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/chapter/'+DChapter+'/delete-test/'+DTest;});
+			$("#RefTest").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/chapter/'+DChapter+'/delete-test/'+DTest;});
 			$("#DelChapter").click(function(){location.href='<?=$baseurl;?>admin-panel/references/trend/<?=$this->uri->segment(4);?>/course/<?=$this->uri->segment(6);?>/delete-chapter/'+DChapter;});
 			$(".dmodal").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$(".input-file").val('');});
 		});

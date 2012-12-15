@@ -416,6 +416,7 @@ class Admin_interface extends CI_Controller{
 				endif;
 				$this->chaptermodel->delete_record($chapters[$i]['id']);
 			endfor;
+			$this->testsmodel->delete_final_test($course);
 			$libraries = getcwd().'/'.$this->coursesmodel->read_field($course,'libraries');
 			$this->filedelete($libraries);
 			$curriculum = getcwd().'/'.$this->coursesmodel->read_field($course,'curriculum');
@@ -454,7 +455,7 @@ class Admin_interface extends CI_Controller{
 					'trend'			=> $this->trendsmodel->read_field($trend,'code'),
 					'course'		=> $this->coursesmodel->read_field($course,'code'),
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'finaltest'		=> $this->testsmodel->read_record_course($course),
+					'finaltest'		=> $this->testsmodel->read_final_test($course),
 					'cntchapter'	=> $this->chaptermodel->count_records($course),
 					'document'		=> $this->coursesmodel->read_field($course,'libraries'),
 					'docvalue'		=> 'Список литературы',
@@ -470,11 +471,21 @@ class Admin_interface extends CI_Controller{
 			$pagevar['chapters'][$i]['test'] = $this->testsmodel->read_record_chapter($pagevar['chapters'][$i]['id']);
 			$pagevar['chapters'][$i]['clectures'] = $this->lecturesmodel->count_records($pagevar['chapters'][$i]['id']);
 		endfor;
-		$finaltest = $this->testsmodel->exit_course_final($course);
-		if(!$finaltest):
+		if(!$pagevar['finaltest']):
 			$insertdata = array('title'=>'Итоговое тестирование по курсу "'.$pagevar['course'].'"','count'=>5,'time'=>30,'number'=>0,'chapter'=>0,'course'=>$course);
 			$idtest = $this->testsmodel->insert_record($insertdata);
 			$pagevar['finaltest'] = $this->testsmodel->read_record($idtest);
+			$msgs = '<br/>Итоговое тестирование добавлено успешно.';
+			$aud_tests = $this->audiencetestmodel->open_tests(0);
+			if($aud_tests):
+				$cnt = 0;
+				for($i=0;$i<count($aud_tests);$i++):
+					$this->audiencetestmodel->update_field($aud_tests[$i]['id'],'test',$idtest);
+					$cnt++;
+				endfor;
+				$msgs .= '<br/>Произошла замена тестов у слушателей. Количество замен:'.$cnt;
+			endif;
+			$pagevar['msgs'] .= $msgs;
 		endif;
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
@@ -803,6 +814,9 @@ class Admin_interface extends CI_Controller{
 		if($chapter || $test):
 			// nут удаляются ответы и вопросы
 			$this->testsmodel->update_field($test,'active',0);
+			if(!$chapter):
+				$this->testsmodel->deactive_tests($course);
+			endif;
 //			$this->testsmodel->delete_record($test);
 			$this->chaptermodel->deactive_test($chapter);
 			$this->session->set_userdata('msgs','Тест удалена успешно.');

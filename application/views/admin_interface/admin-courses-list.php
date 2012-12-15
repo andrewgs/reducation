@@ -110,7 +110,7 @@
 				if(view == 1){$("#eViewCourse").attr('checked','checked');}else{$("#eViewCourse").removeAttr('checked');}
 			});
 			$(".close").click(function(){DCourse = $(this).attr('idcourse');});
-			$("#DelCourse").click(function(){location.href='<?=$baseurl;?>admin-panel/management/users/userid/'+DTrend;});
+			$("#DelCourse").click(function(){location.href='<?=$baseurl;?>admin-panel/references/courses/delete-course/'+DCourse;});
 			$("#addCourse").on("hidden",function(){$("#msgalert").remove();$(".control-group").removeClass('error');$(".help-inline").hide();$(".input-xlarge").val('');$("#ViewTrend").removeAttr('checked');});
 		});
 	</script>

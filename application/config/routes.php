@@ -77,7 +77,7 @@ $route['admin-panel/references/trends']							= "admin_interface/references_tren
 $route['admin-panel/references/trends/delete-trend/:num']		= "admin_interface/references_delete_trend";
 /*==========================================================  course  ====================================================*/
 $route['admin-panel/references/courses']								= "admin_interface/references_courses";
-$route['admin-panel/references/courses/delete-course/:num/trend/:num']	= "admin_interface/references_delete_course";
+$route['admin-panel/references/courses/delete-course/:num']				= "admin_interface/references_delete_course";
 
 /*==========================================================  chapters  ====================================================*/
 $route['admin-panel/references/trend/:num/course/:num']										= "admin_interface/references_chapters";

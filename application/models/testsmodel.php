@@ -87,9 +87,21 @@ class Testsmodel extends CI_Model{
 		return $this->db->affected_rows();
 	}
 	
-	function read_record_course($course){
+	function read_record_course($course,$active = 1){
 		
 		$this->db->where('course',$course);
+		$this->db->where('active',$active);
+		$query = $this->db->get('tests',1);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0];
+		return NULL;
+	}
+	
+	function read_final_test($course,$active = 1){
+		
+		$this->db->where('course',$course);
+		$this->db->where('chapter',0);
+		$this->db->where('active',$active);
 		$query = $this->db->get('tests',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];
@@ -119,6 +131,23 @@ class Testsmodel extends CI_Model{
 	
 		$this->db->where('id',$id);
 		$this->db->delete('tests');
+		return $this->db->affected_rows();
+	}
+	
+	function delete_final_test($course){
+		
+		$this->db->where('course',$course);
+		$this->db->where('chapter',0);
+		$this->db->delete('tests');
+		return $this->db->affected_rows();
+	}
+	
+	function deactive_tests($course){
+		
+		$this->db->set('active',0);
+		$this->db->where('course',$course);
+		$this->db->where('chapter',0);
+		$this->db->update('tests');
 		return $this->db->affected_rows();
 	}
 
