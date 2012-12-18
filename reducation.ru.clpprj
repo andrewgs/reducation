@@ -44,7 +44,7 @@
 			</treenode>
 			<treenode node="SYSDIR;PHP:PHP Word;S:\home\reducation.ru\www\index.php;f9;175;15;175;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
-			<treenode node="Admin_interface;PHP:Class Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f0;2;1;2323;;;;vpos;;vCI_Controller;;c;;r;;d43,2;;b0,0;;m">
+			<treenode node="Admin_interface;PHP:Class Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f0;2;1;2337;;;;vpos;;vCI_Controller;;c;;r;;d43,2;;b0,0;;m">
 				<treenode node="__construct;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f1;8;2;55;;;;vpos;;v;;r;;d23,8;;b0,0;;m">
 					<treenode node="cookieuid;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;29;12;29;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -53,10 +53,10 @@
 					<treenode node="userinfo;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;36;13;36;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="act;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1926;2;1957;;;;vpos;;v;;r;;d22,1926;;b1,0;;m">
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1928;10;1928;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="act;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1940;2;1971;;;;vpos;;v;;r;;d22,1940;;b1,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1942;10;1942;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f22;1933;27;1933;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f22;1947;27;1947;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="admin_cabinet;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;215;2;226;;;;vpos;;v;;r;;d32,215;;b1,0;;m">
@@ -89,46 +89,46 @@
 					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;154;25;154;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="admission;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1752;2;1783;;;;vpos;;v;;r;;d28,1752;;b1,0;;m">
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1775;8;1775;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="admission;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1766;2;1797;;;;vpos;;v;;r;;d28,1766;;b1,0;;m">
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1789;8;1789;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1754;8;1754;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1768;8;1768;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1755;10;1755;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1769;10;1769;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1754;16;1754;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="audience_access;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2227;2;2234;;;;vpos;;v;;r;;d34,2227;;b1,0;;m">
-					<treenode node="access;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2231;9;2231;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2229;11;2229;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2229;19;2229;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1768;16;1768;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="completion;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1704;2;1750;;;;vpos;;v;;r;;d29,1704;;b1,0;;m">
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1739;8;1739;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="audience_access;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2241;2;2248;;;;vpos;;v;;r;;d34,2241;;b1,0;;m">
+					<treenode node="access;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2245;9;2245;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1706;8;1706;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2243;11;2243;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1707;10;1707;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1706;16;1706;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2243;19;2243;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="contract;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1897;2;1924;;;;vpos;;v;;r;;d27,1897;;b1,0;;m">
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1900;10;1900;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="completion;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1718;2;1764;;;;vpos;;v;;r;;d29,1718;;b1,0;;m">
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1753;8;1753;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1899;7;1899;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1720;8;1720;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1721;10;1721;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1720;16;1720;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="customer_access;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2130;2;2137;;;;vpos;;v;;r;;d34,2130;;b1,0;;m">
-					<treenode node="access;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2134;9;2134;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="contract;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1911;2;1938;;;;vpos;;v;;r;;d27,1911;;b1,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1914;10;1914;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="customer;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2132;11;2132;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1913;7;1913;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2132;19;2132;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="customer_access;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2144;2;2151;;;;vpos;;v;;r;;d34,2144;;b1,0;;m">
+					<treenode node="access;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2148;9;2148;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="customer;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2146;11;2146;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2146;19;2146;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="datele_date;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;235;2;249;;;;vpos;;v;;r;;d30,235;;b1,0;;m">
@@ -139,290 +139,288 @@
 					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;237;13;237;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="delete_audience;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2236;2;2250;;;;vpos;;v;;r;;d34,2236;;b1,0;;m">
-					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2238;11;2238;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="delete_audience;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2250;2;2264;;;;vpos;;v;;r;;d34,2250;;b1,0;;m">
+					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2252;11;2252;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="result;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2240;10;2240;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="result;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2254;10;2254;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2238;19;2238;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="delete_customer;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2139;2;2158;;;;vpos;;v;;r;;d34,2139;;b1,0;;m">
-					<treenode node="customer;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2141;11;2141;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="result;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2143;10;2143;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2141;19;2141;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2252;19;2252;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="deleted_orders;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1164;2;1272;;;;vpos;;v;;r;;d33,1164;;b1,0;;m">
-					<treenode node="arrdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1251;12;1251;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="delete_customer;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2153;2;2172;;;;vpos;;v;;r;;d34,2153;;b1,0;;m">
+					<treenode node="customer;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2155;11;2155;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1204;10;1204;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="result;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2157;10;2157;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="date;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1249;8;1249;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1184;9;1184;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="from;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1182;7;1182;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="fvalue;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1187;10;1187;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1236;8;1236;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="j;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1252;10;1252;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="oDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;1253;11;1253;;;;vposDateTime;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1166;10;1166;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="sDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;1254;11;1254;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="sortby;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1185;10;1185;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="svalue;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1191;10;1191;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;1171;25;1171;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2155;19;2155;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="filedelete;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2270;2;2278;;;;vpos;;v;;r;;d34,2270;;b1,0;;mfile;;p">
-					<treenode node="file;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f28;2270;33;2270;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="deleted_orders;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1178;2;1286;;;;vpos;;v;;r;;d33,1178;;b1,0;;m">
+					<treenode node="arrdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1265;12;1265;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1218;10;1218;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="date;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1263;8;1263;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1198;9;1198;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="from;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1196;7;1196;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="fvalue;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1201;10;1201;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1250;8;1250;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="j;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1266;10;1266;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="oDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;1267;11;1267;;;;vposDateTime;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1180;10;1180;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;1268;11;1268;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sortby;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1199;10;1199;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="svalue;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1205;10;1205;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;1185;25;1185;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="fileupload;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2254;2;2268;;;;vpos;;v;;r;;d58,2254;;b1,0;;muserfile;;poverwrite;;pcatalog;;p">
-					<treenode node="catalog;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f49;2254;57;2254;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="filedelete;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2284;2;2292;;;;vpos;;v;;r;;d34,2284;;b1,0;;mfile;;p">
+					<treenode node="file;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f28;2284;33;2284;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2256;9;2256;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="fileupload;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2268;2;2282;;;;vpos;;v;;r;;d58,2268;;b1,0;;muserfile;;poverwrite;;pcatalog;;p">
+					<treenode node="catalog;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f49;2268;57;2268;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="overwrite;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f38;2254;48;2254;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2270;9;2270;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2261;7;2261;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="overwrite;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f38;2268;48;2268;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="userfile;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f28;2254;37;2254;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2275;7;2275;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="userfile;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f28;2268;37;2268;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="index;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;57;2;60;;;;vpos;;v;;r;;d24,57;;b1,0;;m">
 					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;59;7;59;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="invoice;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1870;2;1895;;;;vpos;;v;;r;;d26,1870;;b1,0;;m">
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1872;10;1872;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="invoice;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1884;2;1909;;;;vpos;;v;;r;;d26,1884;;b1,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1886;10;1886;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f22;1877;27;1877;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="operation_date;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2280;2;2287;;;;vpos;;v;;r;;d39,2280;;b1,0;;mfield;;p">
-					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f32;2280;38;2280;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2282;7;2282;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="nmonth;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2283;9;2283;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2284;10;2284;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2285;14;2285;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;2283;17;2283;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f22;1891;27;1891;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="operation_date_slash;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f1;2315;2;2322;;;;vpos;;v;;r;;d38,2315;;b0,0;;mfield;;p">
-					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f31;2315;37;2315;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="operation_date;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2294;2;2301;;;;vpos;;v;;r;;d39,2294;;b1,0;;mfield;;p">
+					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f32;2294;38;2294;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2317;7;2317;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2296;7;2296;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="nmonth;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2318;9;2318;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="nmonth;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2297;9;2297;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2319;10;2319;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2298;10;2298;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2320;14;2320;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2299;14;2299;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;2318;17;2318;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="operation_dot_date;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2307;2;2313;;;;vpos;;v;;r;;d43,2307;;b1,0;;mfield;;p">
-					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f36;2307;42;2307;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2309;7;2309;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2310;10;2310;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2311;14;2311;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;2297;17;2297;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="order_delete;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1531;2;1545;;;;vpos;;v;;r;;d31,1531;;b1,0;;m">
-					<treenode node="_SERVER;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1544;19;1544;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="operation_date_slash;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f1;2329;2;2336;;;;vpos;;v;;r;;d38,2329;;b0,0;;mfield;;p">
+					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f31;2329;37;2329;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1533;8;1533;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2331;7;2331;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1533;16;1533;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="nmonth;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2332;9;2332;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-				</treenode>
-				<treenode node="order_restore;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1547;2;1553;;;;vpos;;v;;r;;d32,1547;;b1,0;;m">
-					<treenode node="_SERVER;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1552;19;1552;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2333;10;2333;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1549;8;1549;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2334;14;2334;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1549;16;1549;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;2332;17;2332;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="orders_messages;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;994;2;1162;;;;vpos;;v;;r;;d34,994;;b1,0;;m">
-					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1093;9;1093;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="operation_dot_date;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2321;2;2327;;;;vpos;;v;;r;;d43,2321;;b1,0;;mfield;;p">
+					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f36;2321;42;2321;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="arrdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1109;14;1109;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2323;7;2323;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1061;10;1061;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2324;10;2324;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="date;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1139;8;1139;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1014;9;1014;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="from;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1012;7;1012;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="fvalue;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1017;10;1017;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f10;1110;12;1110;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="j;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1142;10;1142;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="oDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1111;13;1111;;;;vposDateTime;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;996;10;996;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="sDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1112;13;1112;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="sortby;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1015;10;1015;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="svalue;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1021;10;1021;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;1001;25;1001;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2325;14;2325;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="orders_paid;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1412;2;1447;;;;vpos;;v;;r;;d30,1412;;b1,0;;m">
-					<treenode node="access;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1416;9;1416;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="order_delete;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1545;2;1559;;;;vpos;;v;;r;;d31,1545;;b1,0;;m">
+					<treenode node="_SERVER;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1558;19;1558;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="courses;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1429;11;1429;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1547;8;1547;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="curdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1433;12;1433;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="days;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1430;8;1430;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="holiday;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1434;12;1434;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1424;9;1424;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="kday;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1431;8;1431;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="next_numbers;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1420;16;1420;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1414;8;1414;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="overdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f19;1431;28;1431;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="seldate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1425;12;1425;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1414;16;1414;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="tmpdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1423;11;1423;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1547;16;1547;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="orders_search;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1274;2;1374;;;;vpos;;v;;r;;d32,1274;;b1,0;;m">
-					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1335;9;1335;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="order_restore;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1561;2;1567;;;;vpos;;v;;r;;d32,1561;;b1,0;;m">
+					<treenode node="_SERVER;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1566;19;1566;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="arrdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;1313;13;1313;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1563;8;1563;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="date;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1311;9;1311;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1305;9;1305;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="j;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f9;1314;11;1314;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="oDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1315;12;1315;;;;vposDateTime;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1276;10;1276;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="sDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1316;12;1316;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="sessdata;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1298;12;1298;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="sessiondata;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1291;15;1291;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="srcorder;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1296;11;1296;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;1281;25;1281;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1563;16;1563;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="orders_send_mail;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1449;2;1529;;;;vpos;;v;;r;;d35,1449;;b1,0;;m">
-					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1514;9;1514;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="orders_messages;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1008;2;1176;;;;vpos;;v;;r;;d34,1008;;b1,0;;m">
+					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1107;9;1107;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="info;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1454;7;1454;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="arrdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1123;14;1123;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="mailtext;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1511;11;1511;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1075;10;1075;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1452;8;1452;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="date;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1153;8;1153;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="smtype;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1453;9;1453;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1028;9;1028;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="statusval;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1451;12;1451;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="from;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1026;7;1026;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1452;16;1452;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="fvalue;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1031;10;1031;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-				</treenode>
-				<treenode node="orders_testing;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1557;2;1580;;;;vpos;;v;;r;;d33,1557;;b1,0;;m">
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1572;8;1572;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f10;1124;12;1124;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1559;10;1559;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="j;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1156;10;1156;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;1564;25;1564;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="oDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1125;13;1125;;;;vposDateTime;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-				</treenode>
-				<treenode node="private_messages;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;968;2;979;;;;vpos;;v;;r;;d35,968;;b1,0;;m">
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;970;10;970;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1010;10;1010;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;975;25;975;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="sDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1126;13;1126;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-				</treenode>
-				<treenode node="reference;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1849;2;1868;;;;vpos;;v;;r;;d28,1849;;b1,0;;m">
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1851;8;1851;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="sortby;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1029;10;1029;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1852;10;1852;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="svalue;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1035;10;1035;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1851;16;1851;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;1015;25;1015;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="references_chapters;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;435;2;680;;;;vpos;;v;;r;;d38,435;;b1,0;;m">
-					<treenode node="_FILES;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;519;14;519;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="orders_paid;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1426;2;1461;;;;vpos;;v;;r;;d30,1426;;b1,0;;m">
+					<treenode node="access;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1430;9;1430;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;479;9;479;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="courses;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1443;11;1443;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="aud_tests;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;632;15;632;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="curdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1447;12;1447;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="cnt;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;634;10;634;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="days;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1444;8;1444;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;441;9;441;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="holiday;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1448;12;1448;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="document;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;553;12;553;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1438;9;1438;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="finaltest;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;472;12;472;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="kday;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1445;8;1445;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;468;8;468;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="next_numbers;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1434;16;1434;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="id;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;486;7;486;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1428;8;1428;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="overdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f19;1445;28;1445;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="seldate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1439;12;1439;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1428;16;1428;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="tmpdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1437;11;1437;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="orders_search;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1288;2;1388;;;;vpos;;v;;r;;d32,1288;;b1,0;;m">
+					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1349;9;1349;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="arrdate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;1327;13;1327;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="date;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;1325;9;1325;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1319;9;1319;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="j;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f9;1328;11;1328;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="oDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1329;12;1329;;;;vposDateTime;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1290;10;1290;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sDate;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1330;12;1330;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sessdata;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1312;12;1312;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="sessiondata;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;1305;15;1305;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="srcorder;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1310;11;1310;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;1295;25;1295;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="orders_send_mail;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1463;2;1543;;;;vpos;;v;;r;;d35,1463;;b1,0;;m">
+					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1528;9;1528;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="info;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1468;7;1468;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="mailtext;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1525;11;1525;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1466;8;1466;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="smtype;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1467;9;1467;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="statusval;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1465;12;1465;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1466;16;1466;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="orders_testing;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1571;2;1594;;;;vpos;;v;;r;;d33,1571;;b1,0;;m">
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1586;8;1586;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1573;10;1573;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;1578;25;1578;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="private_messages;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;982;2;993;;;;vpos;;v;;r;;d35,982;;b1,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;984;10;984;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;989;25;989;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="reference;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1863;2;1882;;;;vpos;;v;;r;;d28,1863;;b1,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1865;8;1865;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1866;10;1866;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1865;16;1865;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="references_chapters;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;436;2;691;;;;vpos;;v;;r;;d38,436;;b1,0;;m">
+					<treenode node="_FILES;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;530;14;530;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;490;9;490;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="aud_tests;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;478;13;478;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="cnt;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;480;8;480;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;442;9;442;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="document;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;564;12;564;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;469;8;469;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="id;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;497;7;497;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="idtest;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;475;10;475;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="insertdata;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;474;14;474;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="msgs;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;631;10;631;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="msgs;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;477;8;477;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="olddoc;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;554;10;554;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="olddoc;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;565;10;565;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="oldnumber;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;503;14;503;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="oldnumber;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;514;14;514;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;445;10;445;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;446;10;446;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;437;16;437;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;438;16;438;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;437;8;437;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;438;8;438;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="references_courses;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;334;2;395;;;;vpos;;v;;r;;d37,334;;b1,0;;m">
@@ -435,50 +433,50 @@
 					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;341;25;341;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="references_delete_answer;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;936;2;950;;;;vpos;;v;;r;;d43,936;;b1,0;;m">
-					<treenode node="answer;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;942;9;942;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="references_delete_answer;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;950;2;964;;;;vpos;;v;;r;;d43,950;;b1,0;;m">
+					<treenode node="answer;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;956;9;956;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;940;10;940;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;954;10;954;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;939;9;939;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;953;9;953;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;941;7;941;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;955;7;955;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;938;16;938;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;952;16;952;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;938;8;938;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="references_delete_chapter;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;704;2;737;;;;vpos;;v;;r;;d44,704;;b1,0;;m">
-					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;708;10;708;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;706;9;706;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="curriculum;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;715;15;715;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="error;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;709;8;709;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="filepath;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;713;13;713;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;712;9;712;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="lectures;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;711;12;711;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="result;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;717;11;717;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;723;8;723;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;706;17;706;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;707;8;707;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;952;8;952;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="references_delete_course;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;397;2;433;;;;vpos;;v;;r;;d43,397;;b1,0;;m">
+				<treenode node="references_delete_chapter;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;715;2;748;;;;vpos;;v;;r;;d44,715;;b1,0;;m">
+					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;719;10;719;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;717;9;717;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="curriculum;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;726;15;726;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="error;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;720;8;720;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="filepath;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;724;13;724;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;723;9;723;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="lectures;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;722;12;722;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="result;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;728;11;728;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;734;8;734;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;717;17;717;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;718;8;718;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="references_delete_course;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;397;2;434;;;;vpos;;v;;r;;d43,397;;b1,0;;m">
 					<treenode node="chapters;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;402;12;402;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;399;9;399;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="curriculum;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;420;14;420;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="curriculum;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;421;14;421;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="filepath;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;406;14;406;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -488,7 +486,7 @@
 					</treenode>
 					<treenode node="lectures;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;404;13;404;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="libraries;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;418;13;418;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="libraries;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;419;13;419;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="result;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;408;12;408;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -499,44 +497,44 @@
 					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;400;8;400;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="references_delete_lecture;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;682;2;702;;;;vpos;;v;;r;;d44,682;;b1,0;;m">
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;684;9;684;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="references_delete_lecture;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;693;2;713;;;;vpos;;v;;r;;d44,693;;b1,0;;m">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;695;9;695;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="filepath;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;688;12;688;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="filepath;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;699;12;699;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="lecture;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;686;10;686;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="lecture;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;697;10;697;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="result;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;692;10;692;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="result;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;703;10;703;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;684;17;684;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;695;17;695;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;685;8;685;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="references_delete_question;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;919;2;934;;;;vpos;;v;;r;;d45,919;;b1,0;;m">
-					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;923;10;923;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;922;9;922;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="question;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;925;11;925;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;924;7;924;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;921;16;921;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;921;8;921;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;696;8;696;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="references_delete_test;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;796;2;812;;;;vpos;;v;;r;;d41,796;;b1,0;;m">
-					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;800;10;800;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="references_delete_question;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;933;2;948;;;;vpos;;v;;r;;d45,933;;b1,0;;m">
+					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;937;10;937;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;799;9;799;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;936;9;936;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;801;7;801;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="question;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;939;11;939;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;798;16;798;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;938;7;938;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;798;8;798;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;935;16;935;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;935;8;935;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="references_delete_test;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;807;2;826;;;;vpos;;v;;r;;d41,807;;b1,0;;m">
+					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;811;10;811;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;810;9;810;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;812;7;812;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;809;16;809;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;809;8;809;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="references_delete_trend;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;312;2;332;;;;vpos;;v;;r;;d42,312;;b1,0;;m">
@@ -549,52 +547,52 @@
 					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;314;8;314;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="references_edit_test;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;814;2;917;;;;vpos;;v;;r;;d39,814;;b1,0;;m">
-					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;847;9;847;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="references_edit_test;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;828;2;931;;;;vpos;;v;;r;;d39,828;;b1,0;;m">
+					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;861;9;861;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;824;10;824;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;838;10;838;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;820;9;820;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;834;9;834;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="id;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;854;7;854;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="id;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;868;7;868;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="oldnumber;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;869;14;869;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="oldnumber;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;883;14;883;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;826;10;826;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;840;10;840;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;825;7;825;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="test;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;839;7;839;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;816;16;816;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;830;16;830;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;816;8;816;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="references_lecture_card;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;739;2;794;;;;vpos;;v;;r;;d42,739;;b1,0;;m">
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;745;9;745;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="file;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;774;7;774;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="fileexp;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;779;11;779;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="fileextension;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;782;18;782;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="lecture;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;749;10;749;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;753;10;753;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;741;16;741;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;741;8;741;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;830;8;830;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="references_master_test;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;952;2;964;;;;vpos;;v;;r;;d41,952;;b1,0;;m">
-					<treenode node="answers;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;954;10;954;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="references_lecture_card;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;750;2;805;;;;vpos;;v;;r;;d42,750;;b1,0;;m">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;756;9;756;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;958;9;958;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="file;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;785;7;785;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="idqes;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;956;8;956;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="fileexp;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;790;11;790;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f13;954;18;954;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="fileextension;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f4;793;18;793;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="lecture;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;760;10;760;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;764;10;764;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;752;16;752;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="trend;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;752;8;752;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="references_master_test;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;966;2;978;;;;vpos;;v;;r;;d41,966;;b1,0;;m">
+					<treenode node="answers;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;968;10;968;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;972;9;972;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="idqes;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;970;8;970;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f13;968;18;968;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="references_trends;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;253;2;310;;;;vpos;;v;;r;;d36,253;;b1,0;;m">
@@ -607,38 +605,38 @@
 					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;260;25;260;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="registry;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1785;2;1847;;;;vpos;;v;;r;;d27,1785;;b1,0;;m">
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1826;8;1826;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="registry;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1799;2;1861;;;;vpos;;v;;r;;d27,1799;;b1,0;;m">
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1840;8;1840;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1787;8;1787;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1801;8;1801;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1788;10;1788;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1802;10;1802;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1787;16;1787;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="search_audience;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1394;2;1410;;;;vpos;;v;;r;;d34,1394;;b1,0;;m">
-					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1399;11;1399;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1402;9;1402;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="search;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1397;9;1397;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="statusval;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1396;12;1396;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;1397;17;1397;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1801;16;1801;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="search_customer;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1376;2;1392;;;;vpos;;v;;r;;d34,1376;;b1,0;;m">
-					<treenode node="customers;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1381;12;1381;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="search_audience;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1408;2;1424;;;;vpos;;v;;r;;d34,1408;;b1,0;;m">
+					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1413;11;1413;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1384;9;1384;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1416;9;1416;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="search;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1379;9;1379;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="search;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1411;9;1411;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="statusval;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1378;12;1378;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="statusval;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1410;12;1410;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;1379;17;1379;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;1411;17;1411;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="search_customer;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1390;2;1406;;;;vpos;;v;;r;;d34,1390;;b1,0;;m">
+					<treenode node="customers;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1395;12;1395;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f7;1398;9;1398;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="search;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1393;9;1393;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="statusval;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1392;12;1392;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;1393;17;1393;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="send_user_email;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;62;2;145;;;;vpos;;v;;r;;d34,62;;b1,0;;m">
@@ -659,128 +657,128 @@
 					<treenode node="type;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;65;7;65;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="split_date;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2289;2;2296;;;;vpos;;v;;r;;d35,2289;;b1,0;;mfield;;p">
-					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f28;2289;34;2289;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="split_date;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2303;2;2310;;;;vpos;;v;;r;;d35,2303;;b1,0;;mfield;;p">
+					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f28;2303;34;2303;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2291;7;2291;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2305;7;2305;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="nmonth;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2292;9;2292;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="nmonth;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2306;9;2306;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2293;10;2293;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2307;10;2307;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2294;14;2294;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2308;14;2308;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;2292;17;2292;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="split_dot_date;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2298;2;2305;;;;vpos;;v;;r;;d39,2298;;b1,0;;mfield;;p">
-					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f32;2298;38;2298;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2300;7;2300;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="nmonth;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2301;9;2301;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2302;10;2302;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2303;14;2303;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;2301;17;2301;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;2306;17;2306;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="statement;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1654;2;1702;;;;vpos;;v;;r;;d28,1654;;b1,0;;m">
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1688;8;1688;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="split_dot_date;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2312;2;2319;;;;vpos;;v;;r;;d39,2312;;b1,0;;mfield;;p">
+					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f32;2312;38;2312;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1656;8;1656;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="list;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2314;7;2314;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1657;10;1657;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="nmonth;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2315;9;2315;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1656;16;1656;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pattern;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2316;10;2316;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-				</treenode>
-				<treenode node="support_messages;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;981;2;992;;;;vpos;;v;;r;;d35,981;;b1,0;;m">
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;983;10;983;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="replacement;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2317;14;2317;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;988;25;988;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f12;2315;17;2315;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="test_report_full;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1582;2;1618;;;;vpos;;v;;r;;d35,1582;;b1,0;;m">
-					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1586;11;1586;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="statement;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1668;2;1716;;;;vpos;;v;;r;;d28,1668;;b1,0;;m">
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1702;8;1702;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1585;9;1585;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1670;8;1670;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1587;8;1587;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1671;10;1671;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1599;10;1599;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="reptest;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1584;10;1584;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f13;1584;18;1584;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f11;1670;16;1670;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="test_report_short;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1620;2;1650;;;;vpos;;v;;r;;d36,1620;;b1,0;;m">
-					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1624;11;1624;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="support_messages;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;995;2;1006;;;;vpos;;v;;r;;d35,995;;b1,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;997;10;997;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1623;9;1623;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1625;8;1625;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1637;10;1637;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="reptest;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1622;10;1622;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f13;1622;18;1622;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;1002;25;1002;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="users_audience;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2160;2;2225;;;;vpos;;v;;r;;d33,2160;;b1,0;;m">
-					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2210;9;2210;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="test_report_full;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1596;2;1632;;;;vpos;;v;;r;;d35,1596;;b1,0;;m">
+					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1600;11;1600;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2182;9;2182;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1599;9;1599;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="from;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2162;7;2162;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1601;8;1601;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;2178;8;2178;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1613;10;1613;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2163;10;2163;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="reptest;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1598;10;1598;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f17;2162;22;2162;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="users_audience_info;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2072;2;2116;;;;vpos;;v;;r;;d38,2072;;b1,0;;m">
-					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f9;2092;15;2092;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2074;10;2074;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;2079;25;2079;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f13;1598;18;1598;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="users_customer;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1961;2;2024;;;;vpos;;v;;r;;d33,1961;;b1,0;;m">
-					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2010;9;2010;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="test_report_short;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1634;2;1664;;;;vpos;;v;;r;;d36,1634;;b1,0;;m">
+					<treenode node="audience;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1638;11;1638;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1982;9;1982;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1637;9;1637;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="from;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1963;7;1963;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="order;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1639;8;1639;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1979;8;1979;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1651;10;1651;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1964;10;1964;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="reptest;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1636;10;1636;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f17;1963;22;1963;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-				</treenode>
-				<treenode node="users_customer_info;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2026;2;2070;;;;vpos;;v;;r;;d38,2026;;b1,0;;m">
-					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2044;9;2044;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2028;10;2028;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
-					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;2033;25;2033;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f13;1636;18;1636;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="users_customer_load_courses;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2118;2;2128;;;;vpos;;v;;r;;d46,2118;;b1,0;;m">
-					<treenode node="customer;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2120;11;2120;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="users_audience;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2174;2;2239;;;;vpos;;v;;r;;d33,2174;;b1,0;;m">
+					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2224;9;2224;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2122;10;2122;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2196;9;2196;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2120;19;2120;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="from;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2176;7;2176;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;2192;8;2192;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2177;10;2177;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f17;2176;22;2176;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="users_audience_info;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2086;2;2130;;;;vpos;;v;;r;;d38,2086;;b1,0;;m">
+					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f9;2106;15;2106;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2088;10;2088;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;2093;25;2093;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="users_customer;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;1975;2;2038;;;;vpos;;v;;r;;d33,1975;;b1,0;;m">
+					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2024;9;2024;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="config;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1996;9;1996;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="from;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1977;7;1977;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f6;1993;8;1993;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;1978;10;1978;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f17;1977;22;1977;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="users_customer_info;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2040;2;2084;;;;vpos;;v;;r;;d38,2040;;b1,0;;m">
+					<treenode node="_POST;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f3;2058;9;2058;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2042;10;2042;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f20;2047;25;2047;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="users_customer_load_courses;PHP:Function Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f8;2132;2;2142;;;;vpos;;v;;r;;d46,2132;;b1,0;;m">
+					<treenode node="customer;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2134;11;2134;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="pagevar;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f2;2136;10;2136;;;;vposstring;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f14;2134;19;2134;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="loginstatus;PHP:Var Name;S:\home\reducation.ru\www\application\controllers\admin_interface.php;f5;5;17;5;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
@@ -1538,7 +1536,7 @@
 				<treenode node="open_tests;PHP:Function Name;S:\home\reducation.ru\www\application\models\audiencetestmodel.php;f1;214;2;221;;;;vpos;;v;;r;;d30,214;;b0,0;;mchapter;;p">
 					<treenode node="chapter;PHP:Var Name;S:\home\reducation.ru\www\application\models\audiencetestmodel.php;f21;214;29;214;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\audiencetestmodel.php;f2;218;7;218;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\audiencetestmodel.php;f2;218;7;218;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\audiencetestmodel.php;f2;216;8;216;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -10006,7 +10004,7 @@
 				<treenode node="time;PHP:Var Name;S:\home\reducation.ru\www\application\models\testresultsmodel.php;f8;10;13;10;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 				</treenode>
 			</treenode>
-			<treenode node="Testsmodel;PHP:Class Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f0;2;1;133;;;;vpos;;vCI_Model;;c;;r;;d33,2;;b0,0;;m">
+			<treenode node="Testsmodel;PHP:Class Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f0;2;1;162;;;;vpos;;vCI_Model;;c;;r;;d33,2;;b0,0;;m">
 				<treenode node="__construct;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;15;2;17;;;;vpos;;v;;r;;d23,15;;b0,0;;m">
 				</treenode>
 				<treenode node="active_status;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;34;2;39;;;;vpos;;v;;r;;d28,34;;b0,0;;mid;;p">
@@ -10015,14 +10013,14 @@
 					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;36;7;36;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="count_course_record;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;124;2;132;;;;vpos;;v;;r;;d38,124;;b0,0;;mcourse;;p">
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f30;124;37;124;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="count_course_record;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;153;2;161;;;;vpos;;v;;r;;d38,153;;b0,0;;mcourse;;p">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f30;153;37;153;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;130;7;130;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;159;7;159;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;129;8;129;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;158;8;158;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;126;7;126;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;155;7;155;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="deactive_status;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;41;2;46;;;;vpos;;v;;r;;d30,41;;b0,0;;mid;;p">
@@ -10031,20 +10029,32 @@
 					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;43;7;43;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="delete_record;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;117;2;122;;;;vpos;;v;;r;;d28,117;;b0,0;;mid;;p">
-					<treenode node="id;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f24;117;27;117;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="deactive_tests;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;144;2;151;;;;vpos;;v;;r;;d33,144;;b0,0;;mcourse;;p">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f25;144;32;144;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;119;7;119;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;146;7;146;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="exit_course_final;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;98;2;106;;;;vpos;;v;;r;;d36,98;;b0,0;;mcourse;;p">
-					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f28;98;35;98;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="delete_final_test;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;136;2;142;;;;vpos;;v;;r;;d36,136;;b0,0;;mcourse;;p">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f28;136;35;136;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;103;7;103;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;138;7;138;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;102;8;102;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+				</treenode>
+				<treenode node="delete_record;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;129;2;134;;;;vpos;;v;;r;;d28,129;;b0,0;;mid;;p">
+					<treenode node="id;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f24;129;27;129;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;100;7;100;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;131;7;131;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="exit_course_final;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;110;2;118;;;;vpos;;v;;r;;d36,110;;b0,0;;mcourse;;p">
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f28;110;35;110;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;115;7;115;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;114;8;114;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;112;7;112;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="insert_record;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;19;2;32;;;;vpos;;v;;r;;d30,19;;b0,0;;mdata;;p">
@@ -10053,16 +10063,28 @@
 					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;21;7;21;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="read_field;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;108;2;115;;;;vpos;;v;;r;;d32,108;;b0,0;;mid;;pfield;;p">
-					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;112;7;112;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
+				<treenode node="read_field;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;120;2;127;;;;vpos;;v;;r;;d32,120;;b0,0;;mid;;pfield;;p">
+					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;124;7;124;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f25;108;31;108;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="field;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f25;120;31;120;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="id;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f21;108;24;108;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="id;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f21;120;24;120;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;111;8;111;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;123;8;123;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;110;7;110;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;122;7;122;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+				</treenode>
+				<treenode node="read_final_test;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;99;2;108;;;;vpos;;v;;r;;d46,99;;b0,0;;mcourse;;pactive;;p">
+					<treenode node="active;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f34;99;41;99;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f26;99;33;99;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;105;7;105;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;104;8;104;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;101;7;101;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="read_record;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;48;2;55;;;;vpos;;v;;r;;d26,48;;b0,0;;mid;;p">
@@ -10072,7 +10094,7 @@
 					</treenode>
 					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;51;8;51;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;50;7;50;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;50;7;50;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
 				<treenode node="read_record_chapter;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;71;2;79;;;;vpos;;v;;r;;d51,71;;b0,0;;mchapter;;pactive;;p">
@@ -10084,15 +10106,17 @@
 					</treenode>
 					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;75;8;75;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;73;7;73;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;73;7;73;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 				</treenode>
-				<treenode node="read_record_course;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;89;2;96;;;;vpos;;v;;r;;d37,89;;b0,0;;mcourse;;p">
+				<treenode node="read_record_course;PHP:Function Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f1;89;2;97;;;;vpos;;v;;r;;d49,89;;b0,0;;mcourse;;pactive;;p">
+					<treenode node="active;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f37;89;44;89;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+					</treenode>
 					<treenode node="course;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f29;89;36;89;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;93;7;93;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;94;7;94;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;92;8;92;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="query;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;93;8;93;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;91;7;91;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -10102,7 +10126,7 @@
 					</treenode>
 					<treenode node="id;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f23;81;26;81;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;83;7;83;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f2;83;7;83;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="value;PHP:Var Name;S:\home\reducation.ru\www\application\models\testsmodel.php;f34;81;40;81;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -10554,7 +10578,7 @@
 				<treenode node="read_customer_search_orders;PHP:Function Name;S:\home\reducation.ru\www\application\models\unionmodel.php;f1;332;2;346;;;;vpos;;v;;r;;d95,332;;b0,0;;mnborder;;pcustomer;;pnbpaiddoc;;pnbplacement;;pnbcompletion;;p">
 					<treenode node="customer;PHP:Var Name;S:\home\reducation.ru\www\application\models\unionmodel.php;f47;332;56;332;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
-					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\unionmodel.php;f2;343;7;343;;;;vposCI_DB_result;;v;;r;;d-1,-1;;b0,0;;m">
+					<treenode node="data;PHP:Var Name;S:\home\reducation.ru\www\application\models\unionmodel.php;f2;343;7;343;;;;vposarray;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
 					<treenode node="nbcompletion;PHP:Var Name;S:\home\reducation.ru\www\application\models\unionmodel.php;f81;332;94;332;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 					</treenode>
@@ -12000,13 +12024,13 @@
 			</treenode>
 			<treenode node="hours;PHP:Var Name;S:\home\reducation.ru\www\application\views\admin_interface\documents\statement.php;f40;36;46;36;;S:\home\reducation.ru\www\application\views\admin_interface\documents\completion.php;f181;40;187;40;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
-			<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\views\users_interface\index.php;f14;38;16;38;;S:\home\reducation.ru\www\application\views\users_interface\catalog-courses.php;f9;51;11;51;;S:\home\reducation.ru\www\application\views\forms\ordering-trends-list.php;f13;5;15;5;;S:\home\reducation.ru\www\application\views\forms\ordering-order-finish.php;f11;6;13;6;;S:\home\reducation.ru\www\application\views\forms\ordering-courses-list.php;f16;10;18;10;;S:\home\reducation.ru\www\application\views\customer_interface\modal\ordering-add-audience.php;f14;9;16;9;;S:\home\reducation.ru\www\application\views\customer_interface\customer-audience-list.php;f15;19;17;19;;S:\home\reducation.ru\www\application\views\audience_interface\test-report.php;f14;21;16;21;;S:\home\reducation.ru\www\application\views\audience_interface\courses-currect.php;f15;18;17;18;;S:\home\reducation.ru\www\application\views\audience_interface\courses-completed.php;f15;18;17;18;;S:\home\reducation.ru\www\application\views\audience_interface\courses-chapter-testing.php;f14;34;16;34;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-master-qa.php;f13;15;15;15;;S:\home\reducation.ru\www\application\views\admin_interface\documents\statement.php;f15;70;17;70;;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-2.php;f16;34;18;34;;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-1.php;f16;68;18;68;;S:\home\reducation.ru\www\application\views\admin_interface\documents\reference.php;f14;39;16;39;;S:\home\reducation.ru\www\application\views\admin_interface\documents\completion.php;f15;57;17;57;;S:\home\reducation.ru\www\application\views\admin_interface\documents\admission.php;f15;56;17;56;;S:\home\reducation.ru\www\application\views\admin_interface\test-report.php;f14;21;16;21;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-audience.php;f15;27;17;27;;S:\home\reducation.ru\www\application\views\admin_interface\admin-trends-list.php;f16;24;18;24;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders-testing.php;f15;40;17;40;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders-search.php;f15;50;17;50;;S:\home\reducation.ru\www\application\views\admin_interface\admin-customer-load-courses.php;f12;5;14;5;;S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php;f14;19;16;19;;S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php;f14;30;16;30;;S:\home\reducation.ru\www\application\views\admin_interface\admin-panel.php;f20;43;22;43;;S:\home\reducation.ru\www\application\views\admin_interface\Codelobster0.php;f15;48;17;48;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step2.php;f13;18;15;18;;S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php;f15;23;17;23;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer.php;f15;27;17;27;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-information.php;f17;80;19;80;;S:\home\reducation.ru\www\application\views\customer_interface\customer-orders-list.php;f15;35;17;35;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-invoice.php;f15;63;17;63;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-act.php;f15;48;17;48;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-contract.php;f15;69;17;69;;S:\home\reducation.ru\www\application\views\admin_interface\deleted-orders.php;f15;48;17;48;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders.php;f15;67;17;67;;S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php;f14;22;16;22;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+			<treenode node="i;PHP:Var Name;S:\home\reducation.ru\www\application\views\users_interface\index.php;f14;38;16;38;;S:\home\reducation.ru\www\application\views\users_interface\catalog-courses.php;f9;51;11;51;;S:\home\reducation.ru\www\application\views\forms\ordering-trends-list.php;f13;5;15;5;;S:\home\reducation.ru\www\application\views\forms\ordering-order-finish.php;f11;6;13;6;;S:\home\reducation.ru\www\application\views\forms\ordering-courses-list.php;f16;10;18;10;;S:\home\reducation.ru\www\application\views\customer_interface\modal\ordering-add-audience.php;f14;9;16;9;;S:\home\reducation.ru\www\application\views\customer_interface\customer-audience-list.php;f15;19;17;19;;S:\home\reducation.ru\www\application\views\audience_interface\test-report.php;f14;21;16;21;;S:\home\reducation.ru\www\application\views\audience_interface\courses-currect.php;f15;18;17;18;;S:\home\reducation.ru\www\application\views\audience_interface\courses-completed.php;f15;18;17;18;;S:\home\reducation.ru\www\application\views\audience_interface\courses-chapter-testing.php;f14;34;16;34;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-master-qa.php;f13;15;15;15;;S:\home\reducation.ru\www\application\views\admin_interface\documents\statement.php;f15;70;17;70;;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-2.php;f16;34;18;34;;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-1.php;f16;68;18;68;;S:\home\reducation.ru\www\application\views\admin_interface\documents\reference.php;f14;39;16;39;;S:\home\reducation.ru\www\application\views\admin_interface\documents\completion.php;f15;57;17;57;;S:\home\reducation.ru\www\application\views\admin_interface\documents\admission.php;f15;56;17;56;;S:\home\reducation.ru\www\application\views\admin_interface\test-report.php;f14;21;16;21;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-audience.php;f15;27;17;27;;S:\home\reducation.ru\www\application\views\admin_interface\admin-trends-list.php;f16;24;18;24;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders-testing.php;f15;40;17;40;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders-search.php;f15;50;17;50;;S:\home\reducation.ru\www\application\views\admin_interface\admin-customer-load-courses.php;f12;5;14;5;;S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php;f14;30;16;30;;S:\home\reducation.ru\www\application\views\admin_interface\admin-panel.php;f20;43;22;43;;S:\home\reducation.ru\www\application\views\admin_interface\Codelobster0.php;f15;48;17;48;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step2.php;f13;18;15;18;;S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php;f15;23;17;23;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer.php;f15;27;17;27;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-information.php;f17;80;19;80;;S:\home\reducation.ru\www\application\views\customer_interface\customer-orders-list.php;f15;35;17;35;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-invoice.php;f15;63;17;63;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-act.php;f15;48;17;48;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-contract.php;f15;69;17;69;;S:\home\reducation.ru\www\application\views\admin_interface\deleted-orders.php;f15;48;17;48;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders.php;f15;67;17;67;;S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php;f14;19;16;19;;S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php;f14;22;16;22;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
 			<treenode node="IN;PHP:Var Name;S:\home\reducation.ru\www\system\core\CodeIgniter.php;f1;212;4;212;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
 			<treenode node="info;PHP:Var Name;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-2.php;f30;34;35;34;;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-1.php;f30;68;35;68;;S:\home\reducation.ru\www\application\views\admin_interface\test-report-short.php;f14;17;19;17;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
-			<treenode node="j;PHP:Var Name;S:\home\reducation.ru\www\application\views\users_interface\catalog-courses.php;f9;54;11;54;;S:\home\reducation.ru\www\application\views\forms\ordering-trends-list.php;f8;7;10;7;;S:\home\reducation.ru\www\application\views\audience_interface\test-report.php;f16;26;18;26;;S:\home\reducation.ru\www\application\views\audience_interface\courses-chapter-testing.php;f16;39;18;39;;S:\home\reducation.ru\www\application\views\admin_interface\test-report.php;f16;26;18;26;;S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php;f16;28;18;28;;S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php;f16;35;18;35;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step2.php;f15;23;17;23;;S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php;f18;38;20;38;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-information.php;f17;116;19;116;;S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php;f16;27;18;27;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+			<treenode node="j;PHP:Var Name;S:\home\reducation.ru\www\application\views\users_interface\catalog-courses.php;f9;54;11;54;;S:\home\reducation.ru\www\application\views\forms\ordering-trends-list.php;f8;7;10;7;;S:\home\reducation.ru\www\application\views\audience_interface\test-report.php;f16;26;18;26;;S:\home\reducation.ru\www\application\views\audience_interface\courses-chapter-testing.php;f16;39;18;39;;S:\home\reducation.ru\www\application\views\admin_interface\test-report.php;f16;26;18;26;;S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php;f16;35;18;35;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step2.php;f15;23;17;23;;S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php;f18;38;20;38;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-information.php;f17;116;19;116;;S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php;f16;28;18;28;;S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php;f16;27;18;27;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
 			<treenode node="lang;PHP:Var Name;S:\home\reducation.ru\www\system\language\english\upload_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\unit_test_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\profiler_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\number_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\migration_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\imglib_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\ftp_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\form_validation_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\email_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\db_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\date_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\system\language\english\calendar_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\upload_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\unit_test_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\profiler_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\number_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\imglib_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\ftp_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\form_validation_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\email_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\db_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\date_lang.php;f0;2;5;2;;S:\home\reducation.ru\www\application\language\russian\calendar_lang.php;f0;2;5;2;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
@@ -12094,7 +12118,7 @@
 			</treenode>
 			<treenode node="testvalid;PHP:Var Name;S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php;f14;84;24;84;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
-			<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-4.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-3.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-2.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-1.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-4.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-3.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-2.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-1.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\rightbarauth.php;f16;5;21;5;;S:\home\reducation.ru\www\application\views\users_interface\password_restore.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\information.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\index.php;f3;2;8;2;;S:\home\reducation.ru\www\application\views\users_interface\header.php;f11;31;16;31;;S:\home\reducation.ru\www\application\views\users_interface\contacts.php;f3;2;8;2;;S:\home\reducation.ru\www\application\views\users_interface\catalog-courses.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\admin-login.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\forms\search-orders.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\registering-audience.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\ordering-trends-list.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\ordering-order-finish.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\ordering-courses-list.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\autorization.php;f55;0;60;0;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step3.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step1.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\modal\ordering-add-audience.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\customer_interface\registration-audience.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\header.php;f11;23;16;23;;S:\home\reducation.ru\www\application\views\customer_interface\customer-start-page.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-profile.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-audience-list.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\test-report.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\header.php;f11;23;16;23;;S:\home\reducation.ru\www\application\views\audience_interface\courses-currect.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\courses-completed.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\courses-chapter-testing.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\audience-profile.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\audience-lecture-card.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\modal\user-set-discount.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-master-qa.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-trend.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-question.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-middle-test.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-lecture.php;f23;0;28;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-final-test.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-course.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-chapter.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-answer.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-trend.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-middle-test.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-libraries.php;f23;0;28;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-lecture.php;f23;0;28;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-date.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-curriculum.php;f23;0;28;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-course.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-chapter.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\documents\statement.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-2.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-1.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\reference.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\completion.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\admission.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\test-report.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\test-report-short.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-audience.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-trends-list.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-support-messages.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-private-messages.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders-testing.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders-search.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-lecture-card.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-edit-chapter.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-cabinet.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-applications-messages.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-add-chapter.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-answer.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-question.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\admin-panel.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\Codelobster0.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step2.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer-info.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\forms\audience-profile.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\customer-profile-readonly.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\customer-profile.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-audience-info.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\forms\Codelobster0.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-information.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-orders-list.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-invoice.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-act.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-contract.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\deleted-orders.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php;f6;2;11;2;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+			<treenode node="this;PHP:Var Name;S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-4.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-3.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-2.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\users_interface\registration\customer-form-1.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-4.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-3.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-2.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\registration\begin-registration-step-1.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\rightbarauth.php;f16;5;21;5;;S:\home\reducation.ru\www\application\views\users_interface\password_restore.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\information.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\index.php;f3;2;8;2;;S:\home\reducation.ru\www\application\views\users_interface\header.php;f11;31;16;31;;S:\home\reducation.ru\www\application\views\users_interface\contacts.php;f3;2;8;2;;S:\home\reducation.ru\www\application\views\users_interface\catalog-courses.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\users_interface\admin-login.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\forms\search-orders.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\registering-audience.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\ordering-trends-list.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\ordering-order-finish.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\ordering-courses-list.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\autorization.php;f55;0;60;0;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step3.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step1.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\modal\ordering-add-audience.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\customer_interface\registration-audience.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\header.php;f11;23;16;23;;S:\home\reducation.ru\www\application\views\customer_interface\customer-start-page.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-profile.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-audience-list.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\test-report.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\header.php;f11;23;16;23;;S:\home\reducation.ru\www\application\views\audience_interface\courses-currect.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\courses-completed.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\courses-chapter-testing.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\audience-profile.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\audience-lecture-card.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\modal\user-set-discount.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-master-qa.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-trend.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-question.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-middle-test.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-lecture.php;f23;0;28;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-final-test.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-course.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-chapter.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-edit-answer.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-trend.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-middle-test.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-libraries.php;f23;0;28;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-lecture.php;f23;0;28;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-date.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-curriculum.php;f23;0;28;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-course.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-chapter.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\documents\statement.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-2.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\registry-list-1.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\reference.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\completion.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\documents\admission.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\test-report.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\test-report-short.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-audience.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-trends-list.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-support-messages.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-private-messages.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders-testing.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders-search.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-lecture-card.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-edit-chapter.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\admin-cabinet.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-applications-messages.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-add-chapter.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-answer.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-add-question.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\admin-panel.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\Codelobster0.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step2.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer-info.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\forms\audience-profile.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\customer-profile-readonly.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\forms\customer-profile.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-audience-info.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\forms\Codelobster0.php;f13;0;18;0;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-information.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-orders-list.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-invoice.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-act.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-contract.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\deleted-orders.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php;f6;2;11;2;;S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php;f6;2;11;2;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
 			<treenode node="title;PHP:Var Name;S:\home\reducation.ru\www\application\views\users_interface\head.php;f11;2;17;2;;S:\home\reducation.ru\www\application\views\customer_interface\head.php;f11;2;17;2;;S:\home\reducation.ru\www\application\views\audience_interface\head.php;f11;2;17;2;;S:\home\reducation.ru\www\application\views\admin_interface\head.php;f11;2;17;2;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
@@ -14890,7 +14914,7 @@
 			</treenode>
 			<treenode node="dispatch;JS:JS Var Name;S:\home\reducation.ru\www\js\libs\jquery-1.7.1.min.js;f3442;2;3450;2;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
-			<treenode node="document;JS:JS Var Name;S:\home\reducation.ru\www\js\libs\jquery.stickr.js;f2;44;10;44;;S:\home\reducation.ru\www\js\bootstrap.js;f21;29;29;29;;S:\home\reducation.ru\www\js\bootstrap-transition.js;f21;29;29;29;;S:\home\reducation.ru\www\js\bootstrap-modal.js;f8;163;16;163;;S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php;f4;79;12;79;;S:\home\reducation.ru\www\application\views\admin_interface\admin-panel.php;f4;85;12;85;;S:\home\reducation.ru\www\application\views\admin_interface\Codelobster0.php;f4;103;12;103;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step2.php;f4;65;12;65;;S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php;f4;116;12;116;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer.php;f4;62;12;62;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer-info.php;f4;45;12;45;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-audience-info.php;f4;27;12;27;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-information.php;f4;148;12;148;;S:\home\reducation.ru\www\application\views\customer_interface\customer-orders-list.php;f4;71;12;71;;S:\home\reducation.ru\www\application\views\admin_interface\deleted-orders.php;f4;108;12;108;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders.php;f4;136;12;136;;S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php;f4;102;12;102;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
+			<treenode node="document;JS:JS Var Name;S:\home\reducation.ru\www\js\libs\jquery.stickr.js;f2;44;10;44;;S:\home\reducation.ru\www\js\bootstrap.js;f21;29;29;29;;S:\home\reducation.ru\www\js\bootstrap-transition.js;f21;29;29;29;;S:\home\reducation.ru\www\js\bootstrap-modal.js;f8;163;16;163;;S:\home\reducation.ru\www\application\views\admin_interface\admin-test-edit.php;f4;79;12;79;;S:\home\reducation.ru\www\application\views\admin_interface\admin-panel.php;f4;85;12;85;;S:\home\reducation.ru\www\application\views\admin_interface\Codelobster0.php;f4;103;12;103;;S:\home\reducation.ru\www\application\views\customer_interface\ordering\registration-ordering-step2.php;f4;65;12;65;;S:\home\reducation.ru\www\application\views\audience_interface\courses-lectures.php;f4;116;12;116;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer.php;f4;62;12;62;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-customer-info.php;f4;45;12;45;;S:\home\reducation.ru\www\application\views\admin_interface\admin-users-audience-info.php;f4;27;12;27;;S:\home\reducation.ru\www\application\views\customer_interface\customer-order-information.php;f4;148;12;148;;S:\home\reducation.ru\www\application\views\customer_interface\customer-orders-list.php;f4;71;12;71;;S:\home\reducation.ru\www\application\views\admin_interface\deleted-orders.php;f4;108;12;108;;S:\home\reducation.ru\www\application\views\admin_interface\admin-orders.php;f4;136;12;136;;S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php;f4;61;12;61;;S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php;f4;107;12;107;;;;vpos;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
 			<treenode node="dpuuid;JS:JS Var Name;S:\home\reducation.ru\www\js\datepicker\jquery.ui.datepicker.js;f4;18;10;18;;;;vposDate;;v;;r;;d-1,-1;;b0,0;;m">
 			</treenode>
@@ -15422,8 +15446,9 @@
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-trend.php" crc="-361235757"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-question.php" crc="-1809309074"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-order.php" crc="-1550619724"/>
-		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-middle-test.php" crc="1941162389"/>
+		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-middle-test.php" crc="1771417832"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-lecture.php" crc="-1998392369"/>
+		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-finish-test.php" crc="-1704539623"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-date.php" crc="2055599625"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-customer.php" crc="-481977426"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\modal\admin-delete-course.php" crc="778782278"/>
@@ -15471,8 +15496,8 @@
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-lecture-card.php" crc="1251568523"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-edit-chapter.php" crc="-414063537"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-customer-load-courses.php" crc="346004723"/>
-		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php" crc="706416768"/>
-		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php" crc="1276289604"/>
+		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-courses-list.php" crc="-1118946370"/>
+		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-chapters-list.php" crc="705460308"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-cabinet.php" crc="-1962665971"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-applications-messages.php" crc="-524470345"/>
 		<file name="S:\home\reducation.ru\www\application\views\admin_interface\admin-add-chapter.php" crc="-1177282665"/>
@@ -15480,7 +15505,7 @@
 		<file name="S:\home\reducation.ru\www\application\third_party\index.html" crc="-1574479902"/>
 		<file name="S:\home\reducation.ru\www\application\models\unionmodel.php" crc="-976186709"/>
 		<file name="S:\home\reducation.ru\www\application\models\trendsmodel.php" crc="705816430"/>
-		<file name="S:\home\reducation.ru\www\application\models\testsmodel.php" crc="-1834259289"/>
+		<file name="S:\home\reducation.ru\www\application\models\testsmodel.php" crc="169012390"/>
 		<file name="S:\home\reducation.ru\www\application\models\testresultsmodel.php" crc="1158771957"/>
 		<file name="S:\home\reducation.ru\www\application\models\testquestionsmodel.php" crc="-2044502855"/>
 		<file name="S:\home\reducation.ru\www\application\models\testanswersmodel.php" crc="-1686303015"/>
@@ -15523,10 +15548,10 @@
 		<file name="S:\home\reducation.ru\www\application\controllers\index.html" crc="-387993932"/>
 		<file name="S:\home\reducation.ru\www\application\controllers\customer_interface.php" crc="1725282412"/>
 		<file name="S:\home\reducation.ru\www\application\controllers\audience_interface.php" crc="519494855"/>
-		<file name="S:\home\reducation.ru\www\application\controllers\admin_interface.php" crc="63981961"/>
+		<file name="S:\home\reducation.ru\www\application\controllers\admin_interface.php" crc="1768635144"/>
 		<file name="S:\home\reducation.ru\www\application\config\user_agents.php" crc="-484381080"/>
 		<file name="S:\home\reducation.ru\www\application\config\smileys.php" crc="-749249654"/>
-		<file name="S:\home\reducation.ru\www\application\config\routes.php" crc="1976704060"/>
+		<file name="S:\home\reducation.ru\www\application\config\routes.php" crc="1497627238"/>
 		<file name="S:\home\reducation.ru\www\application\config\profiler.php" crc="806934376"/>
 		<file name="S:\home\reducation.ru\www\application\config\mimes.php" crc="675527328"/>
 		<file name="S:\home\reducation.ru\www\application\config\migration.php" crc="357593659"/>
