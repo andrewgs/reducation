@@ -6,18 +6,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="span9">
-				<h1>Оформление заявки на повышение квалификации</h1>
+				<h1>Оформление заявки на повышение квалификации для Юридического Лица</h1>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
 				<p>
-					Уважаемый заказчик! Для оформления заявок на повышение квалификации Вам необходимо пройти систему регистрации.
-					Все поля являются обязательными для заполнения. После заполнения полей нажмите кнопку "Далее". 
-					Чтобы вернуться и изменить данные, сделанные на предыдущем шаге, нажмите "Назад".
+					Уважаемый заказчик! Для оформления заявок на повышение квалификации Вам необходимо пройти систему регистрации.<br/>
+					Все поля являются обязательными для заполнения. После заполнения полей нажмите кнопку "Далее".
+					Чтобы вернуться и изменить данные, сделанные на предыдущем шаге, нажмите "Назад".<br/>
 					По завершении регистрации будет выслано письмо-уведомление на указанный Вами E-mail.
 				</p>
-				<p>Желаем Вам удачи!</p> 
+				<p>Желаем Вам удачи!</p>
 				<p><?=anchor('registration/customer/step/1','<i class="icon-arrow-right icon-white"></i> Начать оформление',array('class'=>'btn btn-info'));?></p>
 			</div>
 		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
@@ -28,6 +28,9 @@
 		<?php endif;?>
 		<?php if($loginstatus['status'] && $loginstatus['adm']):?>
 			<?php $this->load->view('users_interface/rightbaradm');?>
+		<?php endif;?>
+		<?php if($loginstatus['status'] && $loginstatus['fiz']):?>
+			<?php $this->load->view('users_interface/rightbarfiz');?>
 		<?php endif;?>
 		</div>
 		<hr>

@@ -3,7 +3,7 @@
 class Users_interface extends CI_Controller{
 	
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
-	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
+	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'fiz'=>FALSE,'status'=>FALSE);
 	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
 	
 	function __construct(){
@@ -15,6 +15,7 @@ class Users_interface extends CI_Controller{
 		$this->load->model('coursesmodel');
 		$this->load->model('audiencemodel');
 		$this->load->model('audienceordermodel');
+		$this->load->model('physicalmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -30,6 +31,8 @@ class Users_interface extends CI_Controller{
 						case 'zak': $this->user['fullname'] = $userinfo['organization'];
 									break;
 						case 'slu': $this->user['fullname'] = $this->audiencemodel->read_full_name($this->user['uid']);
+									break;
+						case 'fiz': $this->user['fullname'] = $userinfo['fio'];
 									break;
 						case 'adm': $this->user['fullname'] = 'Администратор';
 									break;
@@ -51,7 +54,7 @@ class Users_interface extends CI_Controller{
 		$pagevar = array(
 			'title'			=> 'Повышение квалификации и переподготовка кадров | Дистанционное обучение | Ростов, Краснодар, Ставрополь, Сочи, Пятигорск, Астрахань, Волгоград',
 			'description'	=> 'Учебный центр по повышению квалификации кадров в сфере строительства, проектирования, инженерных изысканий, коммунального хозяйства и энергетического менеджмента. Курсы, дистанционное обучение, переподготовка. После окончания обучения  выдается удостоверение о повышении квалификации.',
-			'author'		=> '',					
+			'author'		=> '',
 			'baseurl' 		=> base_url(),
 			'loginstatus'	=> $this->loginstatus,
 			'userinfo'		=> $this->user,
@@ -81,6 +84,16 @@ class Users_interface extends CI_Controller{
 								endif;
                    				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'zak'));
 								$this->customersmodel->active_user($this->session->userdata('userid'));
+                   				redirect($_SERVER['HTTP_REFERER']);
+								break;
+					case 'fiz':
+								$user = $this->physicalmodel->auth_user($login,$pass);
+								if(!$user):
+									$this->session->set_userdata('msgauth','Не верные данные для авторизации.<br/>В доступе отказано.');
+									redirect($_SERVER['HTTP_REFERER']);
+								endif;
+                   				$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'fiz'));
+								$this->physicalmodel->active_user($this->session->userdata('userid'));
                    				redirect($_SERVER['HTTP_REFERER']);
 								break;
 					case 'slu': 
@@ -163,8 +176,10 @@ class Users_interface extends CI_Controller{
 	
 	public function logoff(){
 		
-		$model = $this->definition_model($this->session->userdata('utype'));
-		$this->$model->deactive_user($this->session->userdata('userid'));
+		if($this->loginstatus['status']):
+			$model = $this->definition_model($this->session->userdata('utype'));
+			$this->$model->deactive_user($this->session->userdata('userid'));
+		endif;
 		$this->session->sess_destroy();
 		redirect('');
 	}
@@ -204,6 +219,18 @@ class Users_interface extends CI_Controller{
 									redirect($this->uri->uri_string());
 								endif;
 								$name = $user[0]['organization'];
+								break;
+					case 'fiz':
+								$user = $this->physicalmodel->read_email_records($_POST['email']);
+								if(!$user):
+									$this->session->set_userdata('msgr','Указанный E-mail не найден.');
+									redirect($this->uri->uri_string());
+								endif;
+								if(count($user)>1):
+									$this->session->set_userdata('msgr','Ошибка. Обратитесь к администрации сайта');
+									redirect($this->uri->uri_string());
+								endif;
+								$name = $user[0]['fio'];
 								break;
 					case 'slu': 
 								$user = $this->audiencemodel->read_email_records($_POST['email']);
@@ -261,6 +288,150 @@ class Users_interface extends CI_Controller{
 		$this->load->view("users_interface/password_restore",$pagevar);
 	}
 	
+	public function registration_physical_person(){
+		
+		$pagevar = array(
+			'title'			=> 'Оформление заявки на повышение квалификации | Дистанционное обучение | Удаленное образование',
+			'description'	=> 'Для оформления заявки необходимо пройти систему регистрации. Учебный центр по повышению квалификации кадров в сфере строительства, проектирования, инженерных изысканий, коммунального хозяйства и энергетического менеджмента.',
+			'author'		=> '',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
+		$this->session->unset_userdata('msgauth');
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		$this->load->view("users_interface/registration/physical-registration-begin",$pagevar);
+		
+	}
+
+	public function physical_registration(){
+		
+		if($this->session->userdata('logon')):
+			$this->session->set_userdata('msgr','Авторизованные пользователи не могут оформлять заявки на регистрацию');
+			redirect('registration/physical-person');
+		endif;
+		
+		$pagevar = array(
+				'title'			=> 'Оформление заявки на дистанционное образование для ФЛ.',
+				'description'	=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров. Оформление заявки на дистанционное образование. Шаг 1.',
+				'author'		=> '',
+				'baseurl' 		=> base_url(),
+				'loginstatus'	=> $this->loginstatus,
+				'userinfo'		=> $this->user,
+				'msgs'			=> $this->session->userdata('msgs'),
+				'msgr'			=> $this->session->userdata('msgr'),
+				'msgauth'		=> $this->session->userdata('msgauth')
+		);
+		$this->session->unset_userdata('msgauth');
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+	
+		if($this->input->post('submit')):
+			unset($_POST['submit']);
+			$this->form_validation->set_rules('fio',' ','required|trim');
+			$this->form_validation->set_rules('inn',' ','required|trim');
+			$this->form_validation->set_rules('phones',' ','required|trim');
+			$this->form_validation->set_rules('postaddress',' ','required|trim');
+			$this->form_validation->set_rules('email',' ','required|valid_email|trim');
+			$this->form_validation->set_rules('passport',' ','required|trim');
+			$this->form_validation->set_rules('issued',' ','required|trim');
+			$this->form_validation->set_rules('propiska',' ','required|trim');
+			$this->form_validation->set_rules('accounttype',' ','trim');
+			$this->form_validation->set_rules('accountnumber',' ','trim');
+			$this->form_validation->set_rules('bank',' ','trim');
+			$this->form_validation->set_rules('accountkornumber',' ','trim');
+			$this->form_validation->set_rules('bik',' ','trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка. Повторите ввод.');
+				redirect($this->uri->uri_string());
+			else:
+				$insert = $this->input->post();
+				if($this->physicalmodel->read_email_records($insert['email'])):
+					$this->session->set_userdata('msgr','Ошибка. Email уже существует. Повторите ввод.');
+				redirect($this->uri->uri_string());
+				endif;
+				$insert['login'] = 'fiz_0';
+				$password = $this->randomPassword(8);
+				$insert['cryptpassword'] = $this->encrypt->encode($password);
+				$insert['password'] = md5($password);
+				$id = $this->physicalmodel->insert_record($insert);
+				$login = 'fiz_'.$id;
+				$this->physicalmodel->update_field($id,'login',$login);
+				
+				$this->session->set_userdata('fizlogin',$login);
+				$this->session->set_userdata('fizpassword',$password);
+				
+				ob_start();
+				?>
+				<p><strong>Здравствуйте, <?=$insert['fio'];?></strong></p>
+				<p>
+					Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» поздравляет с успешным завершением оформления заявки.<br/>
+					Вам доступны следующие документы:
+				</p>
+				<ol>
+					<li>Счёт</li>
+					<li>Договор на оказание образовательных услуг</li>
+				</ol>
+				<p>
+					После оплаты заказа мы оформим весь пакет документов, а слушатели будут зачислены на обучение. 
+					Обучение будет осуществляться через личный кабинет слушателя. Для входа в личный кабинет используйте 
+					созданный для вас логин и пароль.
+				</p>
+				<p><strong>Логин: <span style="font-size: 18px;"><?=$login;?></span> Пароль: <span style="font-size: 18px;"><?=$password;?></span></strong></p>
+				<p>Пользуйтесь разделом «Мои заказы» на правой панели, чтобы следить за состоянием Ваших заказов.</p>
+				<br/><br/>
+				<p>
+					Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86<br/>
+					Контактные данные: Тел.:(863) 246-43-54 Эл.почта: info@roscentrdpo.ru<br/>
+					С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a>
+				</p>
+				<?
+				$mailtext = ob_get_clean();
+				
+				$this->email->clear(TRUE);
+				$config['smtp_host'] = 'localhost';
+				$config['charset'] = 'utf-8';
+				$config['wordwrap'] = TRUE;
+				$config['mailtype'] = 'html';
+				
+				$this->email->initialize($config);
+				$list = array($insert['email'],'admin@roscentrdpo.ru');
+				$this->email->to($list);
+				$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
+				$this->email->bcc('');
+				$this->email->subject('Данные для доступа к личному кабинету');
+				$this->email->message($mailtext);
+				$this->email->send();
+				$this->session->set_userdata('finishregphysical',TRUE);
+				redirect('registration/physical-registration/finish');
+			endif;
+		endif;
+		$this->load->view("users_interface/registration/physical-registration",$pagevar);
+	}
+	
+	public function physical_finish(){
+		
+		$finish = $this->session->userdata('finishregphysical');
+		if($finish):
+			$this->session->unset_userdata('finishregphysical');
+			$user = $this->physicalmodel->auth_user($this->session->userdata('fizlogin'),$this->session->userdata('fizpassword'));
+			if(!$user):
+				redirect('');
+			endif;
+			$this->session->set_userdata(array('logon'=>md5($user['login']),'userid'=>$user['id'],'utype'=>'fiz'));
+			$this->customersmodel->active_user($this->session->userdata('userid'));
+			$this->session->unset_userdata('fizlogin');
+			$this->session->unset_userdata('fizpassword');
+			redirect('physical/information/start-page');
+		else:
+			redirect('registration/physical-person');
+		endif;	
+	}
+	
 	public function registration_customer(){
 		
 		$pagevar = array(
@@ -287,7 +458,6 @@ class Users_interface extends CI_Controller{
 			$this->session->set_userdata('msgr','Авторизованные пользователи не могут оформлять заявки на регистрацию');
 			redirect('registration/customer');
 		endif;
-		
 		$pagevar = array(
 				'title'			=> 'Шаг 1. Оформление заявки на дистанционное образование. ',
 				'description'	=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров. Оформление заявки на дистанционное образование. Шаг 1.',
@@ -572,6 +742,7 @@ class Users_interface extends CI_Controller{
 			case 'adm': $model = 'adminmodel'; break;
 			case 'zak': $model = 'customersmodel'; break;
 			case 'slu': $model = 'audiencemodel'; break;
+			case 'fiz': $model = 'physicalmodel'; break;
 		endswitch;
 		return $model;
 	}

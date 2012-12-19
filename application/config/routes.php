@@ -17,6 +17,11 @@ $route['registration/customer/step/4'] 	= "users_interface/registration_customer
 $route['registration/customer/finish'] 	= "users_interface/registration_customer_step_4";
 $route['registration/customer/close-registration'] 	= "users_interface/registration_close";
 $route['registration/customer/cancel-registration'] = "users_interface/registration_cancel";
+
+$route['registration/physical-person'] 				= "users_interface/registration_physical_person";
+$route['registration/physical-registration']		= "users_interface/physical_registration";
+$route['registration/physical-registration/finish'] = "users_interface/physical_finish";
+
 $route['catalog/courses'] 				= "users_interface/catalog_courses";
 $route['contacts'] 						= "users_interface/contacts";
 $route['information'] 					= "users_interface/information";
@@ -36,7 +41,39 @@ $route['customer/audience/orders/order-information/id/:num/invoice-for-payment']
 $route['customer/audience/orders/order-information/id/:num/contract']				= "customer_interface/orders_order_contract";
 $route['customer/audience/orders/order-information/id/:num/act-to-contract']		= "customer_interface/orders_order_act";
 
+/******************************************************** PHYSICAL INTRERFACE ***********************************************/
 
+$route['physical/information/start-page']						= "physical_interface/start_page";
+$route['physical/edit/profile']									= "physical_interface/profile";
+$route['physical/registration/ordering']						= "physical_interface/registration_ordering";
+$route['physical/information/orders']							= "physical_interface/orders_list";
+$route['physical/information/orders/delete-order/:num']			= "physical_interface/orders_delete_order";
+$route['physical/information/orders/order-information/id/:num']	= "physical_interface/orders_order_information";
+
+$route['physical/registration/ordering/step/1']					= "physical_interface/registration_ordering_step1";
+$route['physical/registration/ordering/step/2']					= "physical_interface/registration_ordering_step2";
+$route['physical/registration/ordering/step/3']					= "physical_interface/registration_ordering_step3";
+
+$route['physical/registration/ordering/step/2/delete-course/:num']	= "physical_interface/registration_delete_course";
+$route['physical/registration/ordering/cancel-registration']		= "physical_interface/registration_ordering_cancel";
+
+$route['physical/registration/ordering/step/2/course/:num/delete-audience/:num']	= "customer_interface/registration_delete_audience";
+
+$route['physical/audience/orders/order-information/id/:num/invoice-for-payment']	= "physical_interface/orders_order_invoice";
+$route['physical/audience/orders/order-information/id/:num/contract']				= "physical_interface/orders_order_contract";
+$route['physical/audience/orders/order-information/id/:num/act-to-contract']		= "physical_interface/orders_order_act";
+
+$route['physical/courses/current']												= "physical_interface/courses_currect";
+$route['physical/courses/current/start-training/:num']							= "physical_interface/start_training";
+$route['physical/courses/completed']											= "physical_interface/courses_completed";
+$route['physical/courses/current/course/:num/lectures']							= "physical_interface/courses_lectures";
+$route['physical/courses/current/course/:num/lecture/:num']						= "physical_interface/courses_lecture";
+$route['physical/courses/current/course/:num/lecture/:num/get-document']		= "physical_interface/get_document";
+$route['physical/courses/current/course/:num/lectures/get-libraries']			= "physical_interface/get_libraries";
+$route['physical/courses/current/course/:num/lectures/get-curriculum']			= "physical_interface/get_curriculum";
+$route['physical/courses/current/course/:num/lectures/testing/id/:num']			= "physical_interface/testing";
+$route['physical/courses/current/course/:num/lectures/final-testing/id/:num'] 	= "physical_interface/testing";
+$route['physical/courses/:num/test-report/id/:num'] 							= "physical_interface/test_report";
 
 /******************************************************** AUDIENCE INTRERFACE ***********************************************/
 
@@ -69,6 +106,7 @@ $route['admin-panel/logoff'] 									= "admin_interface/admin_logoff";
 
 $route['admin-panel/actions/send-user-email/customer/:num']		= "admin_interface/send_user_email";
 $route['admin-panel/actions/send-user-email/audience/:num']		= "admin_interface/send_user_email";
+$route['admin-panel/actions/send-user-email/physical/:num']		= "admin_interface/send_user_email";
 
 $route['admin-panel/actions/control'] 							= "admin_interface/admin_panel";
 $route['admin-panel/actions/control/delete-date/:num'] 			= "admin_interface/datele_date";
@@ -117,6 +155,35 @@ $route['admin-panel/messages/orders/restore-order/:num']	= "admin_interface/orde
 
 $route['admin-panel/messages/deleted/orders']				= "admin_interface/deleted_orders";
 $route['admin-panel/messages/deleted/orders/:num']			= "admin_interface/deleted_orders";
+
+/*==================================================== physical messages  ===================================================*/
+$route['admin-panel/messages/physical-search/orders']				= "admin_interface/fiz_orders_search";
+$route['admin-panel/messages/physical-search/orders/new-search']	= "admin_interface/fiz_orders_search";
+$route['admin-panel/messages/physical-search-customer']				= "admin_interface/fiz_search_customer";
+$route['admin-panel/messages/physical-search-audience']				= "admin_interface/fiz_search_audience";
+
+$route['admin-panel/messages/physical-orders/all']					= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/all/:num']				= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/active']				= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/active/:num']			= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/noactive']				= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/noactive/:num']		= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/deactive']				= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/deactive/:num']		= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/noclosed']				= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/noclosed/:num']		= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/sponsored']			= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/sponsored/:num']		= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/unpaid']				= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/unpaid/:num']			= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/paid-order']			= "admin_interface/fiz_orders_paid";
+$route['admin-panel/messages/physical-orders/send-mail'] 			= "admin_interface/fiz_orders_send_mail";
+$route['admin-panel/messages/physical-orders/delete-order/:num']	= "admin_interface/fiz_order_delete";
+$route['admin-panel/messages/physical-orders/restore-order/:num']	= "admin_interface/fiz_order_restore";
+
+$route['admin-panel/messages/physical-deleted/orders']				= "admin_interface/fiz_deleted_orders";
+$route['admin-panel/messages/physical-deleted/orders/:num']			= "admin_interface/fiz_deleted_orders";
+
 /*===========================================================  users  =====================================================*/
 $route['admin-panel/users/customer']						= "admin_interface/users_customer";
 $route['admin-panel/users/customer/from']					= "admin_interface/users_customer";
@@ -137,6 +204,18 @@ $route['admin-panel/users/audience/from/:num']				= "admin_interface/users_audie
 $route['admin-panel/users/audience/info/id/:num']			= "admin_interface/users_audience_info";
 $route['admin-panel/users/audience/set-audience-access']	= "admin_interface/audience_access";
 $route['admin-panel/users/audience/delete-audience/:num']	= "admin_interface/delete_audience";
+
+$route['admin-panel/users/physical']						= "admin_interface/users_physical";
+$route['admin-panel/users/physical/from']					= "admin_interface/users_physical";
+$route['admin-panel/users/physical/from/:num']				= "admin_interface/users_physical";
+$route['admin-panel/users/physical/info/id/:num']			= "admin_interface/users_physical_info";
+
+$route['admin-panel/users/physical/load-courses']			= "admin_interface/users_physical_load_courses";
+$route['admin-panel/users/physical/from/load-courses']		= "admin_interface/users_physical_load_courses";
+$route['admin-panel/users/physical/from/:num/load-courses']	= "admin_interface/users_physical_load_courses";
+
+$route['admin-panel/users/physical/set-physical-access']	= "admin_interface/physical_access";
+$route['admin-panel/users/physical/delete-physical/:num']	= "admin_interface/delete_physical";
 
 /*=========================================================== documents  ====================================================*/
 $route['admin-panel/messages/orders/id/:num/statement']			= "admin_interface/statement";
@@ -160,3 +239,8 @@ $route['admin-panel/messages/orders/:any/:any/:any'] 		= "admin_interface/orders
 $route['admin-panel/messages/orders/:any/:num/:any/:any']	= "admin_interface/orders_messages";
 
 $route['admin-panel/messages/deleted/orders/:any/:any']		= "admin_interface/deleted_orders";
+
+$route['admin-panel/messages/physical-orders/:any/:any/:any'] 			= "admin_interface/fiz_orders_messages";
+$route['admin-panel/messages/physical-orders/:any/:num/:any/:any']		= "admin_interface/fiz_orders_messages";
+
+$route['admin-panel/messages/physical-deleted/orders/:any/:any']		= "admin_interface/fiz_deleted_orders";

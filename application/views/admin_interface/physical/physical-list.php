@@ -8,7 +8,7 @@
 			<div class="span9">
 				<ul class="breadcrumb">
 					<li class="active">
-						<?=anchor('admin-panel/users/customer','Заказчики (ЮЛ)');?>
+						<?=anchor('admin-panel/users/physical','Заказчики (ФЛ)');?>
 					</li>
 				</ul>
 				<div style="float:right; margin-top:-5px;">
@@ -30,14 +30,14 @@
 						<tr>
 							<td class="short"><?=$num;?></td>
 							<td>
-								<?=anchor('admin-panel/users/customer/info/id/'.$customers[$i]['id'],$customers[$i]['organization']);?><br/>
+								<?=anchor('admin-panel/users/physical/info/id/'.$customers[$i]['id'],$customers[$i]['fio']);?><br/>
 								№ тел.: <?=$customers[$i]['phones'];?>
 							</td>
 							<td>
-								<?=$customers[$i]['person'].' ('.$customers[$i]['personemail'].')';?><br/>
+								<?=$customers[$i]['email'];?><br/>
 								<strong>Логин:</strong> <?=$customers[$i]['login'].' <strong>Пароль:</strong> '.$customers[$i]['cryptpassword'];?>
 							</td>
-							<td><?=anchor('admin-panel/actions/send-user-email/customer/'.$customers[$i]['id'],'<i class="icon-envelope"></i>',array('class'=>'btn','title'=>'Выслать повторно регистрационные данные'));?></td>
+							<td><?=anchor('admin-panel/actions/send-user-email/physical/'.$customers[$i]['id'],'<i class="icon-envelope"></i>',array('class'=>'btn','title'=>'Выслать повторно регистрационные данные'));?></td>
 							<td><a href="#CoursesList" class="crsList" data-toggle="modal" data-cus="<?=$customers[$i]['id'];?>" title="Список заказов"><i class="icon-th-list"></i></a></td>
 						<?php if($customers[$i]['access']):?>
 							<td class="short"><input type="checkbox" value="1" checked="checked" data-cus="<?=$customers[$i]['id'];?>" id="ch<?=$customers[$i]['id'];?>" class="chAccess"></td>
@@ -69,9 +69,9 @@
 				var check = 0;
 				Customer = $(this).attr('data-cus');
 				if($(this).attr("checked") == 'checked'){check = 1;};
-				$.post('<?=$baseurl.$this->uri->uri_string();?>/set-customer-access',{'customer': Customer,'access':check});
+				$.post('<?=$baseurl.$this->uri->uri_string();?>/set-physical-access',{'customer': Customer,'access':check});
 			});
-			$("#DelCustomer").click(function(){location.href='<?=$baseurl.$this->uri->uri_string();?>/delete-customer/'+Customer;});
+			$("#DelCustomer").click(function(){location.href='<?=$baseurl.$this->uri->uri_string();?>/delete-physical/'+Customer;});
 			
 			$(".crsList").click(function(){
 				Customer = $(this).attr('data-cus');

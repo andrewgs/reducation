@@ -14,24 +14,24 @@
 				<?php endif;?>
 				<ul class="breadcrumb">
 					<li tnum="active">
-						<?=anchor('admin-panel/messages/orders/active','В работе',array('title'=>'Обучение разрешено'));?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/physical-orders/active','В работе',array('title'=>'Обучение разрешено'));?> <span class="divider">/</span>
 					</li><li tnum="noactive">
-						<?=anchor('admin-panel/messages/orders/noactive','Не в работе',array('title'=>'Обучение не разрешено'));?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/physical-orders/noactive','Не в работе',array('title'=>'Обучение не разрешено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="noclosed">
-						<?=anchor('admin-panel/messages/orders/noclosed','Не активные',array('title'=>'Обучение не начато'));?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/physical-orders/noclosed','Не активные',array('title'=>'Обучение не начато'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="deactive">
-						<?=anchor('admin-panel/messages/orders/deactive','Закрытые',array('title'=>'Обучение окончено'));?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/physical-orders/deactive','Закрытые',array('title'=>'Обучение окончено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="unpaid">
-						<?=anchor('admin-panel/messages/orders/unpaid','Неоплаченные',array('title'=>'Обучение не оплачено'));?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/physical-orders/unpaid','Неоплаченные',array('title'=>'Обучение не оплачено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="sponsored">
-						<?=anchor('admin-panel/messages/orders/sponsored','Оплаченные',array('title'=>'Обучение оплачено'));?> <span class="divider">/</span>
+						<?=anchor('admin-panel/messages/physical-orders/sponsored','Оплаченные',array('title'=>'Обучение оплачено'));?> <span class="divider">/</span>
 					</li>
 					<li tnum="all">
-						<?=anchor('admin-panel/messages/orders/all','Все');?>
+						<?=anchor('admin-panel/messages/physical-orders/all','Все');?>
 					</li>
 				</ul>
 				<?php $this->load->view('alert_messages/alert-error');?>
@@ -47,15 +47,14 @@
 					<thead>
 						<tr>
 							<th>&nbsp;</th>
-							<th class="centerized"><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/id/'.$sortby.'/'.$from,'№ заказа');?><span id="id"></span></th>
-							<th class="centerized"><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/paiddate/'.$sortby.'/'.$from,'Создан');?><span id="paiddate"></span></nobr><br/><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/closedate/'.$sortby.'/'.$from,'Закрыт');?><span id="closedate"></span></nobr></th>
-							<th class="centerized"><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/organization/'.$sortby.'/'.$from,'Заказчик');?><span id="organization"></span></th>
-							<!--th>Статус</th-->
+							<th class="centerized"><?=anchor('admin-panel/messages/physical-orders/'.$this->uri->segment(4).'/id/'.$sortby.'/'.$from,'№ заказа');?><span id="id"></span></th>
+							<th class="centerized"><nobr><?=anchor('admin-panel/messages/physical-orders/'.$this->uri->segment(4).'/paiddate/'.$sortby.'/'.$from,'Создан');?><span id="paiddate"></span></nobr><br/><nobr><?=anchor('admin-panel/messages/physical-orders/'.$this->uri->segment(4).'/closedate/'.$sortby.'/'.$from,'Закрыт');?><span id="closedate"></span></nobr></th>
+							<th class="centerized"><?=anchor('admin-panel/messages/physical-orders/'.$this->uri->segment(4).'/fio/'.$sortby.'/'.$from,'Заказчик');?><span id="fio"></span></th>
 							<th class="centerized">
-								<?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/userpaiddate/'.$sortby.'/'.$from,'Оплачено');?><span id="userpaiddate"></span>
+								<?=anchor('admin-panel/messages/physical-orders/'.$this->uri->segment(4).'/userpaiddate/'.$sortby.'/'.$from,'Оплачено');?><span id="userpaiddate"></span>
 								<br/><span class="green">Обучение</span>
 							</th>
-							<th class="centerized">&nbsp;</th>
+							<th>&nbsp;</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -69,20 +68,19 @@
 						<tr>
 							<td class="short"><?=$num-$i;?></td>
 							<td style="max-width:135px;">
-								<nobr>Заказ №<?=$orders[$i]['id'];?>&nbsp;<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?></nobr><br/><br/>
-								<nobr><?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/statement','<img src="'.$baseurl.'img/icon/blog-blue.png" />',array('target'=>'_blank','title'=>'Ведомость'));?>&nbsp;
-									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/completion','<img src="'.$baseurl.'img/icon/document.png" />',array('target'=>'_blank','title'=>'Приказ об окончании'));?>&nbsp;
-									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/admission','<img src="'.$baseurl.'img/icon/document-bookmark.png" />',array('target'=>'_blank','title'=>'Приказ о зачислении'));?>&nbsp;
-									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/reference','<img src="'.$baseurl.'img/icon/address-book.png" />',array('target'=>'_blank','title'=>'Справка'));?></nobr><br/>
+								<nobr>Заказ №<?=$orders[$i]['id'];?>&nbsp;<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?></nobr><br/><br/>
+								<nobr><?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/statement','<img src="'.$baseurl.'img/icon/blog-blue.png" />',array('target'=>'_blank','title'=>'Ведомость'));?>&nbsp;
+									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/completion','<img src="'.$baseurl.'img/icon/document.png" />',array('target'=>'_blank','title'=>'Приказ об окончании'));?>&nbsp;
+									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/admission','<img src="'.$baseurl.'img/icon/document-bookmark.png" />',array('target'=>'_blank','title'=>'Приказ о зачислении'));?>&nbsp;
+									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/reference','<img src="'.$baseurl.'img/icon/address-book.png" />',array('target'=>'_blank','title'=>'Справка'));?></nobr><br/>
 								<nobr>
-									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-1','<img src="'.$baseurl.'img/icon/document-horizontal-text.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?>&nbsp;
-									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/registry/list-2','<img src="'.$baseurl.'img/icon/application-list.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?></nobr>
+									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/registry/list-1','<img src="'.$baseurl.'img/icon/document-horizontal-text.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?>&nbsp;
+									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/registry/list-2','<img src="'.$baseurl.'img/icon/application-list.png" />',array('target'=>'_blank','title'=>'Реестр слушателей'));?></nobr>
 									<span class="listeners-count">[<?=$orders[$i]['regnum'];?>]</span><br/>
 								<nobr>
-									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/invoice','<img src="'.$baseurl.'img/icon/document-attribute-i.png" />',array('target'=>'_blank','title'=>'Счет на оплату'));?>
-									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/contract','<img src="'.$baseurl.'img/icon/document-attribute-c.png" />',array('target'=>'_blank','title'=>'Договор на оказание образовательных услуг'));?>
-									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/act','<img src="'.$baseurl.'img/icon/document-attribute-a.png" />',array('target'=>'_blank','title'=>'Акт к договору на оказание услуг'));?>
-									<span class="listeners-count">[<?=$orders[$i]['audcnt'];?>]</span>
+									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/invoice','<img src="'.$baseurl.'img/icon/document-attribute-i.png" />',array('target'=>'_blank','title'=>'Счет на оплату'));?>
+									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/contract','<img src="'.$baseurl.'img/icon/document-attribute-c.png" />',array('target'=>'_blank','title'=>'Договор на оказание образовательных услуг'));?>
+									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/act','<img src="'.$baseurl.'img/icon/document-attribute-a.png" />',array('target'=>'_blank','title'=>'Акт к договору на оказание услуг'));?>
 								</nobr>
 							</td>
 							<td class="centerized">
@@ -92,7 +90,7 @@
 							<?php endif;?>
 							</td>
 							<td style="max-width:180px;">
-								<?=anchor('admin-panel/users/customer/info/id/'.$orders[$i]['cid'],$orders[$i]['organization']);?><br/>
+								<?=anchor('admin-panel/users/physical/info/id/'.$orders[$i]['cid'],$orders[$i]['fio']);?><br/>
 								№ тел.: <?=$orders[$i]['phones'];?>
 							</td>
 						<?php if($orders[$i]['online']):?>
@@ -152,7 +150,7 @@
 					$(".discbtn[data-order="+order+"]").attr("data-paiddate",'Не оплачен');
 					$(".PaidDate[data-order="+order+"]").html('Не оплачен');
 				}
-				$.post('<?=$baseurl;?>admin-panel/messages/orders/paid-order',{'order': order,'access':check});
+				$.post('<?=$baseurl;?>admin-panel/messages/physical-orders/paid-order',{'order': order,'access':check});
 			});
 			$(".discbtn").click(function(){
 				var order = $(this).attr('data-order');
@@ -173,12 +171,12 @@
 				var order = $(this).attr('data-order');
 				var obj = $(this);
 				var smtype = $(this).attr('idp');
-				$.post("<?=$baseurl;?>admin-panel/messages/orders/send-mail",{'order':order,'smtype':smtype},function(data){$(".smtext[data-order = '"+order+"']").after(data.retvalue);},"json");
+				$.post("<?=$baseurl;?>admin-panel/messages/physical-orders/send-mail",{'order':order,'smtype':smtype},function(data){$(".smtext[data-order = '"+order+"']").after(data.retvalue);},"json");
 			});
 			
 			var Order = 0;
 			$(".deleteOrder").click(function(){Order = $(this).attr('data-order');});
-			$("#DelOrder").click(function(){location.href='<?=$baseurl;?>admin-panel/messages/orders/delete-order/'+Order;});
+			$("#DelOrder").click(function(){location.href='<?=$baseurl;?>admin-panel/messages/physical-orders/delete-order/'+Order;});
 			
 			$("#dsend").click(function(event){
 				var err = false;

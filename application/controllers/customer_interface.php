@@ -306,19 +306,10 @@ class Customer_interface extends CI_Controller{
 		if($order):
 			$this->ordersmodel->update_field($order,'deleted',1);
 			$this->session->set_userdata('msgs','Заказ удален.');
-			/*if(!$this->ordersmodel->owner_order_nonfinish($order,$this->user['uid'])):
-				$this->session->set_userdata('msgr','Заказ не удален.');
-				redirect('customer/audience/orders');
-			endif;
-			$this->audienceordermodel->delete_order_records($order);
-			$this->courseordermodel->delete_order($order);
-			$this->ordersmodel->delete_record($order);
-			$this->session->set_userdata('msgs','Заказ удален.');
-			redirect('customer/audience/orders');*/
 		else:
 			$this->session->set_userdata('msgr','Заказ не удален.');
-			redirect('customer/audience/orders');
 		endif;
+		redirect('customer/audience/orders');
 	}
 	
 	public function registration_audience(){
@@ -496,8 +487,8 @@ class Customer_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		
 		for($i=0;$i<count($pagevar['courses']);$i++):
-			if(mb_strlen($pagevar['courses'][$i]['title'],'UTF-8') > 90):									
-				$pagevar['courses'][$i]['title'] = mb_substr($pagevar['courses'][$i]['title'],0,90,'UTF-8');	
+			if(mb_strlen($pagevar['courses'][$i]['title'],'UTF-8') > 65):
+				$pagevar['courses'][$i]['title'] = mb_substr($pagevar['courses'][$i]['title'],0,65,'UTF-8');
 				$pagevar['courses'][$i]['title'] .= ' ... ';
 			endif;
 		endfor;
@@ -516,7 +507,7 @@ class Customer_interface extends CI_Controller{
 					$corder = $this->courseordermodel->insert_record($this->session->userdata('order'),$_POST['course'],$this->user['uid']);
 					$this->session->set_userdata('msgs','Курс обучения добавлен в заказ.');
 				else:
-					$this->session->set_userdata('msgr','Ошибка. Указанный курс уже прикреплены к данному заказу');
+					$this->session->set_userdata('msgr','Ошибка. Указанный курс уже прикреплен к данному заказу');
 				endif;
 			endif;
 			redirect($this->uri->uri_string());

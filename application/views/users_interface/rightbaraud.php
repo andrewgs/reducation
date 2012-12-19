@@ -1,4 +1,4 @@
-<div class="span3">
+<div class="span3" style="margin-top:20px;">
 	<div class="well sidebar-nav">
 		<h5 style="margin: 0 0 10px 15px;"><u><?=$userinfo['fullname'];?></u></h5>
 		<ul class="nav nav-list">

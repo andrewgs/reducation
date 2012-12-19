@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php $this->load->view('physical_interface/includes/head');?>
+<body>
+	<?php $this->load->view('physical_interface/includes/header');?>
+	<div class="container">
+		<div class="row">
+			<div class="span9">
+				<ul class="breadcrumb">
+					<li class="active">
+						<?=anchor($this->uri->uri_string(),'Мои заказы');?>
+					</li>
+				</ul>
+				<div class="alert alert-info" id="msgialert">
+					<a class="close" id="msgiclose">×</a>
+					<h4 class="alert-heading">Информация</h4>
+				<?php if(count($orders)):?>
+					Ниже находятся список Ваших заказов.<br/>Для подробного просмотра информации и доступа к документам нажмите на номер заказа.<br/>
+					<strong>Если есть не оформленные заказы, нажав на номер заказа, Вы можете закончить его оформление!</strong>
+				<?php else:?>
+					Заказы отсутствуют!<br/>
+					<?=anchor('physical/registration/ordering','<span class="label label-important">Оформить заказ &rarr;</span>')?>
+				<?php endif;?>
+				</div>
+				<div>
+					<?php $this->load->view('alert_messages/alert-error');?>
+					<?php $this->load->view('alert_messages/alert-success');?>
+				</div>
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th class="centerized">№ п\п</th>
+							<th class="centerized">№ заказа</th>
+							<th class="centerized">Статус активности</th>
+							<th class="centerized">Статус оплаты</th>
+							<th class="centerized">Статус оформления</th>
+							<th class="short centerized">&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php for($i=0,$num=1;$i<count($orders);$i++):?>
+						<tr>
+							<td class="short centerized"><?=$num;?></td>
+							<td class="centerized">
+							<?=anchor('physical/information/orders/order-information/id/'.$orders[$i]['id'],'<strong> №'.$orders[$i]['id'].' от ('.$orders[$i]['orderdate'].')</strong>')?>
+							</td>
+						<?php if($orders[$i]['numbercompletion']!=''):?>
+							<td class="short centerized"><span class="label label-success">Заказ закрыт</span></td>
+						<?php else:?>
+							<td class="short centerized"><span class="label label-info">Заказ активен</span></td>
+						<?php endif;?>
+						<?php if($orders[$i]['paid']):?>
+							<td class="short centerized"><span class="label label-success">Заказ оплачен</span></td>
+						<?php else:?>
+							<td class="short centerized"><span class="label label-important">Заказ не оплачен</span></td>
+						<?php endif;?>
+						<?php if($orders[$i]['finish']):?>
+							<td class="short centerized"><span class="label label-success">Заказ оформлен</span></td>
+							<td class="short centerized">&nbsp;</td>
+						<?php else:?>
+							<td class="short centerized"><span class="label label-important">Не оформлен</span></td>
+							<td class="short centerized"><a class="close deleteOrder" title="Удалить" data-toggle="modal" href="#deleteOrder" idorder="<?=$orders[$i]['id'];?>">&times;</a></td>
+						<?php endif;?>
+						</tr>
+						<?php $num++;?>
+					<?php endfor;?>
+					</tbody>
+				</table>
+				<?php $this->load->view('physical_interface/modal/delete-order');?>
+			</div>
+		<?php $this->load->view('users_interface/rightbarfiz');?>
+		</div>
+	</div>
+	<? $this->load->view('users_interface/footer');?>
+	<?php $this->load->view('physical_interface/includes/scripts');?>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var Order = -1;
+			$(".deleteOrder").click(function(){Order = $(this).attr('idorder');});
+			$("#DelOrder").click(function(){location.href='<?=$baseurl;?><?=$this->uri->uri_string();?>/delete-order/'+Order;});
+		});
+	</script>
+</body>
+</html>

@@ -26,6 +26,9 @@ class Admin_interface extends CI_Controller{
 		$this->load->model('audiencetestmodel');
 		$this->load->model('testresultsmodel');
 		$this->load->model('calendarmodel');
+		$this->load->model('physicalmodel');
+		$this->load->model('fizordersmodel');
+		$this->load->model('fizunionmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -118,7 +121,36 @@ class Admin_interface extends CI_Controller{
 										$mailtext = ob_get_clean();
 									endif;
 									break;
-				default 		: 	show404(); 
+				case 'physical' : 	$info = $this->physicalmodel->read_record($id);
+									if($info):
+										$email = $info['email'];
+										ob_start();
+										?>
+										<p><strong>Здравствуйте, <?=$info['fio']?></strong></p>
+										<p>Поздравляем! Вы успешно завершили оформление заявки. Вам доступны следующие документы:</p>
+										<ol>
+											<li>Счёт</li>
+											<li>Договор на оказание образовательных услуг</li>
+										</ol>
+										<p>
+											После оплаты заказа мы оформим весь пакет документов, а слушатели будут зачислены на обучение. 
+											Обучение будет осуществляться через личный кабинет слушателя. Для входа в личный кабинет используйте 
+											созданный для вас логин и пароль.
+										</p>
+										<p><strong>Логин: <span style="font-size: 24px;"><?=$info['login'];?></span> Пароль: <span style="font-size: 24px;"><?=$this->encrypt->decode($info['cryptpassword']);?></span></strong></p>
+										<p>Пользуйтесь разделом «Мои заказы» на правой панели, чтобы следить за состоянием Ваших заказов.</p>
+										<br/><br/>
+										<p>
+											Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86<br/>
+											Контактные данные: (863) 273-66-61, (863) 246-43-54<br/>
+											Эл.почта: info@roscentrdpo.ru<br/>
+											С уважением:<br/>Южно-окружной центр повышения квалификации и переподготовки кадров для строительного и жилищно-коммунального комплекса
+										</p>
+										<?
+										$mailtext = ob_get_clean();
+									endif;
+									break;
+				default 		: 	show404();
 									break;
 			endswitch;
 			if($info && isset($mailtext)):
@@ -2139,6 +2171,10 @@ class Admin_interface extends CI_Controller{
 					'userinfo'		=> $this->user,
 					'orders'		=> $this->ordersmodel->read_customer_record($customer),
 			);
+		for($i=0;$i<count($pagevar['orders']);$i++):
+			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
+			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+		endfor;
 		$this->load->view("admin_interface/admin-customer-load-courses",$pagevar);	
 	}
 	
@@ -2264,7 +2300,675 @@ class Admin_interface extends CI_Controller{
 		endif;
 	}
 	
-	/******************************************************** functions ******************************************************/	
+	/*************************************************** users physical*****************************************************/
+	
+	public function users_physical(){
+		
+		$from = intval($this->uri->segment(5));
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'customers'		=> $this->physicalmodel->read_records_pages(10,$from),
+					'count'			=> count($this->physicalmodel->read_records()),
+					'pages'			=> '',
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		for($i=0;$i<count($pagevar['customers']);$i++):
+			$pagevar['customers'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['customers'][$i]['cryptpassword']);
+		endfor;
+		$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/users/physical/from/';
+		$config['uri_segment']	= 5;
+		$config['total_rows'] 	= $pagevar['count']; 
+		$config['per_page'] 	= 10;
+		$config['num_links'] 	= 4;
+		$config['first_link']		= 'В начало';
+		$config['last_link'] 		= 'В конец';
+		$config['next_link'] 		= 'Далее &raquo;';
+		$config['prev_link'] 		= '&laquo; Назад';
+		$config['cur_tag_open']		= '<li class="active"><a href="#">';
+		$config['cur_tag_close'] 	= '</a></li>';
+		$config['full_tag_open'] 	= '<div class="pagination"><ul>';
+		$config['full_tag_close'] 	= '</ul></div>';
+		$config['first_tag_open'] 	= '<li>';
+		$config['first_tag_close'] 	= '</li>';
+		$config['last_tag_open'] 	= '<li>';
+		$config['last_tag_close'] 	= '</li>';
+		$config['next_tag_open'] 	= '<li>';
+		$config['next_tag_close'] 	= '</li>';
+		$config['prev_tag_open'] 	= '<li>';
+		$config['prev_tag_close'] 	= '</li>';
+		$config['num_tag_open'] 	= '<li>';
+		$config['num_tag_close'] 	= '</li>';
+		
+		$this->pagination->initialize($config);
+		$pagevar['pages'] = $this->pagination->create_links();
+		
+		if($this->input->post('ssrzak')):
+			$_POST['ssrzak'] = NULL;
+			$this->form_validation->set_rules('srzakid',' ','required|trim');
+			$this->form_validation->set_rules('srzak',' ','required|trim');
+			if(!$this->form_validation->run()):
+				redirect($this->uri->uri_string());
+			else:
+				$pagevar['customers'] = $this->physicalmodel->search_record($_POST['srzakid']);
+				for($i=0;$i<count($pagevar['customers']);$i++):
+					$pagevar['customers'][$i]['cryptpassword'] = $this->encrypt->decode($pagevar['customers'][$i]['cryptpassword']);
+				endfor;
+				$pagevar['pages'] = NULL;
+			endif;
+		endif;
+		$this->load->view("admin_interface/physical/physical-list",$pagevar);
+	}
+	
+	public function users_physical_info(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики - Информация',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'readonly'		=> FALSE,
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'physical'		=> $this->physicalmodel->read_record($this->uri->segment(6)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		if($this->input->post('submit')):
+			unset($_POST['submit']);
+			$this->form_validation->set_rules('fio',' ','required|trim');
+			$this->form_validation->set_rules('inn',' ','required|trim');
+			$this->form_validation->set_rules('phones',' ','required|trim');
+			$this->form_validation->set_rules('postaddress',' ','required|trim');
+			$this->form_validation->set_rules('email',' ','required|valid_email|trim');
+			$this->form_validation->set_rules('passport',' ','required|trim');
+			$this->form_validation->set_rules('issued',' ','required|trim');
+			$this->form_validation->set_rules('propiska',' ','required|trim');
+			$this->form_validation->set_rules('accounttype',' ','trim');
+			$this->form_validation->set_rules('accountnumber',' ','trim');
+			$this->form_validation->set_rules('bank',' ','trim');
+			$this->form_validation->set_rules('accountkornumber',' ','trim');
+			$this->form_validation->set_rules('bik',' ','trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
+				redirect($this->uri->uri_string());
+			else:
+				$this->physicalmodel->update_record($this->uri->segment(6),$this->input->post());
+				$this->session->set_userdata('msgs','Данные сохранены.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
+		$this->load->view("admin_interface/physical/info",$pagevar);
+	}
+	
+	public function users_physical_load_courses(){
+		
+		$customer = $this->input->post('customer');
+		if(!$customer) show_404();
+		$pagevar = array(
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'orders'		=> $this->fizordersmodel->read_physical_record($customer),
+			);
+		for($i=0;$i<count($pagevar['orders']);$i++):
+			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
+			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+		endfor;
+		$this->load->view("admin_interface/physical/load-courses",$pagevar);
+	}
+	
+	public function physical_access(){
+		
+		$customer = $this->input->post('customer');
+		if(!$customer) show_404();
+		$access = $this->input->post('access');
+		if(!$access) $access = 0;
+		$this->physicalmodel->set_access($customer,$access);
+	}
+	
+	public function delete_physical(){
+		
+		$customer = $this->uri->segment(5);
+		if($customer):
+			$result = $this->physicalmodel->delete_record($customer);
+			if($result):
+				$this->audiencemodel->delete_records($customer);
+				$this->audienceordermodel->delete_customer_records($customer);
+				$this->audiencetestmodel->delete_customer_records($customer);
+				$this->courseordermodel->delete_customer_records($customer);
+				$this->ordersmodel->delete_customer_records($customer);
+				$this->session->set_userdata('msgs','Заказчик удален успешно.');
+			else:
+				$this->session->set_userdata('msgr','Заказчик не удален.');
+			endif;
+			redirect('admin-panel/users/physical');
+		else:
+			show_404();
+		endif;
+	}
+
+	public function fiz_orders_messages(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | ',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'orders'		=> array(),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'count'			=> 0,
+					'pages'			=> '',
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$from = intval($this->uri->segment(5));
+		if($this->uri->total_segments() >= 6):
+			$field = $this->uri->segment(5);
+			$sortby = $this->uri->segment(6);
+			$from = intval($this->uri->segment(7));
+			$fvalue = array('','id','paiddate','closedate','fio','userpaiddate');
+			if(!array_search($field,$fvalue)):
+				show_404();
+			endif;
+			$svalue = array('','desc','asc');
+			if(!array_search($sortby,$svalue,true)):
+				show_404();
+			endif;
+		endif;
+		if(empty($sortby) || empty($field)):
+			$sortby = 'desc';
+			$field = 'id';
+		endif;
+		switch ($this->uri->segment(4)):
+			case 'active' 	:	$pagevar['title'] .= 'В работе';
+								$pagevar['orders'] = $this->fizunionmodel->read_physical_active_orders($field,$sortby,5,$from);
+								$pagevar['count'] = $this->fizunionmodel->count_physical_active_orders();
+								break;
+			case 'noactive' :	$pagevar['title'] .= 'Не в работе';
+								$pagevar['orders'] = $this->fizunionmodel->read_physical_noactive_orders($field,$sortby,5,$from);
+								$pagevar['count'] = $this->fizunionmodel->count_physical_noactive_orders();
+								break;
+			case 'deactive' :	$pagevar['title'] .= 'Закрытые заказы';
+								$pagevar['orders'] = $this->fizunionmodel->read_physical_deactive_orders($field,$sortby,5,$from);
+								$pagevar['count'] = $this->fizunionmodel->count_physical_deactive_orders();
+								break;
+			case 'noclosed' :	$pagevar['title'] .= 'Не активные заказы';
+								$pagevar['orders'] = $this->fizunionmodel->read_physical_noclosed_orders($field,$sortby,5,$from);
+								$pagevar['count'] = $this->fizunionmodel->count_physical_noclosed_orders();
+								break;
+			case 'unpaid' :		$pagevar['title'] .= 'Неоплачанные заказы';
+								$pagevar['orders'] = $this->fizunionmodel->read_physical_orders($field,$sortby,0,5,$from);
+								$pagevar['count'] = $this->fizunionmodel->count_physical_orders(0);
+								break;
+			case 'sponsored' :	$pagevar['title'] .= 'Оплачанные заказы';
+								$pagevar['orders'] = $this->fizunionmodel->read_physical_orders($field,$sortby,1,5,$from);
+								$pagevar['count'] = $this->fizunionmodel->count_physical_orders(1);
+								break;
+			default :			$pagevar['title'] .= 'Все заказы';
+								$pagevar['orders'] = $this->fizunionmodel->read_physical_all_orders($field,$sortby,5,$from);
+								$pagevar['count'] = $this->fizunionmodel->count_physical_all_orders();
+								break;
+		endswitch;
+		if($this->uri->total_segments() >= 6):
+			$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/messages/physical-orders/'.$this->uri->segment(4).'/'.$field.'/'.$sortby;
+			$config['uri_segment']	= 7;
+		else:
+			$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/messages/physical-orders/'.$this->uri->segment(4);
+			$config['uri_segment'] 	= 5;
+		endif;
+		$config['total_rows'] 		= $pagevar['count']; 
+		$config['per_page'] 		= 5;
+		$config['num_links'] 		= 4;
+		$config['first_link']		= 'В начало';
+		$config['last_link'] 		= 'В конец';
+		$config['next_link'] 		= 'Далее &raquo;';
+		$config['prev_link'] 		= '&laquo; Назад';
+		$config['cur_tag_open']		= '<li class="active"><a href="#">';
+		$config['cur_tag_close'] 	= '</a></li>';
+		$config['full_tag_open'] 	= '<div class="pagination"><ul>';
+		$config['full_tag_close'] 	= '</ul></div>';
+		$config['first_tag_open'] 	= '<li>';
+		$config['first_tag_close'] 	= '</li>';
+		$config['last_tag_open'] 	= '<li>';
+		$config['last_tag_close'] 	= '</li>';
+		$config['next_tag_open'] 	= '<li>';
+		$config['next_tag_close'] 	= '</li>';
+		$config['prev_tag_open'] 	= '<li>';
+		$config['prev_tag_close'] 	= '</li>';
+		$config['num_tag_open'] 	= '<li>';
+		$config['num_tag_close'] 	= '</li>';
+		
+		$this->pagination->initialize($config);
+		$pagevar['pages'] = $this->pagination->create_links();
+		
+		if($this->input->post('dsubmit')):
+			$_POST['dsubmit'] = NULL;
+			$this->form_validation->set_rules('order',' ','required|trim');
+			$this->form_validation->set_rules('discount',' ','trim');
+			$this->form_validation->set_rules('paiddoc',' ','trim');
+			$this->form_validation->set_rules('paiddate',' ','trim');
+			$this->form_validation->set_rules('numberplacement',' ','trim');
+			$this->form_validation->set_rules('numbercompletion',' ','trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				$this->fizordersmodel->update_field($_POST['order'],'discount',$_POST['discount']);
+				$this->fizordersmodel->update_field($_POST['order'],'docnumber',$_POST['paiddoc']);
+				$this->fizordersmodel->update_field($_POST['order'],'numberplacement',$_POST['numberplacement']);
+				$this->fizordersmodel->update_field($_POST['order'],'numbercompletion',$_POST['numbercompletion']);
+				if(isset($_POST['paiddate'])):
+					if(($_POST['paiddate'] != "Не оплачен") &&  $_POST['paiddate']!= '0000-00-00' && !empty($_POST['paiddate'])):
+						$arrdate = preg_split('/[\s, \-\\;\|\/]+/',$_POST['paiddate'],-1,PREG_SPLIT_NO_EMPTY);
+						for($i=0;$i<count($arrdate);$i++):
+							$oDate = new DateTime($arrdate[$i]);
+							$sDate[$i] = $oDate->format("Y-m-d");
+							unset($oDate);
+						endfor;
+						$_POST['paiddate'] = implode(' , ',$sDate);
+						$this->fizordersmodel->update_field($_POST['order'],'userpaiddate',$_POST['paiddate']);
+					else:
+						$this->fizordersmodel->update_field($_POST['order'],'userpaiddate','');
+					endif;
+				endif;
+				$this->session->set_userdata('msgs','Информация по заказу успешно сохранена.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
+		for($i=0;$i<count($pagevar['orders']);$i++):
+			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
+			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+				if($pagevar['orders'][$i]['closedate'] > date("Y-m-d")):
+					$pagevar['orders'][$i]['closedate'] = '<span class="green">'.$pagevar['orders'][$i]['closedate'].'</span>';
+				elseif(empty($pagevar['orders'][$i]['numbercompletion']) && $pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+					$pagevar['orders'][$i]['closedate'] = '<span class="red">'.$pagevar['orders'][$i]['closedate'].'</span>';
+				endif;
+			endif;
+			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+				$pagevar['orders'][$i]['closedate'] = $this->operation_dot_date($pagevar['orders'][$i]['closedate']);
+			endif;
+			$date = $pagevar['orders'][$i]['userpaiddate'];
+			if(($date != "Не оплачен") &&  $date!= '0000-00-00' && !empty($date)):
+				$arrdate = preg_split('/[\s, ]+/',$pagevar['orders'][$i]['userpaiddate'],-1,PREG_SPLIT_NO_EMPTY);
+				for($j=0;$j<count($arrdate);$j++):
+					$oDate = new DateTime($arrdate[$j]);
+					$sDate[$j] = $oDate->format("d.m.Y");
+					unset($oDate);
+				endfor;
+				$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
+				unset($sDate);
+			endif;
+			$pagevar['orders'][$i]['regnum'] = $this->fizordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
+			if($pagevar['orders'][$i]['regnum']):
+				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+			else:
+				$pagevar['orders'][$i]['regnum'] = 'Не завершен';
+			endif;
+		endfor;
+		$this->load->view("admin_interface/physical/orders",$pagevar);
+	}
+	
+	public function fiz_deleted_orders(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Удаленные заказы',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'orders'		=> array(),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'count'			=> 0,
+					'pages'			=> '',
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$from = intval($this->uri->segment(5));
+		if($this->uri->total_segments() >= 6):
+			$field = $this->uri->segment(5);
+			$sortby = $this->uri->segment(6);
+			$from = intval($this->uri->segment(7));
+			$fvalue = array('','id','paiddate','closedate','fio','userpaiddate');
+			if(!array_search($field,$fvalue)):
+				show_404();
+			endif;
+			$svalue = array('','desc','asc');
+			if(!array_search($sortby,$svalue,true)):
+				show_404();
+			endif;
+		endif;
+		if(empty($sortby) || empty($field)):
+			$sortby = 'desc';
+			$field = 'id';
+		endif;
+		$pagevar['orders'] 			= $this->fizunionmodel->read_deleted_orders($field,$sortby,5,$from);
+		$pagevar['count'] 			= $this->fizunionmodel->count_deleted_orders();
+		
+		if($this->uri->total_segments() >= 6):
+			$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/messages/deleted/physical-orders/'.$field.'/'.$sortby;
+			$config['uri_segment']	= 7;
+		else:
+			$config['base_url'] 	= $pagevar['baseurl'].'admin-panel/messages/deleted/physical-orders/';
+			$config['uri_segment'] 	= 5;
+		endif;
+		
+		$config['total_rows'] 		= $pagevar['count']; 
+		$config['per_page'] 		= 5;
+		$config['num_links'] 		= 4;
+		$config['first_link']		= 'В начало';
+		$config['last_link'] 		= 'В конец';
+		$config['next_link'] 		= 'Далее &raquo;';
+		$config['prev_link'] 		= '&laquo; Назад';
+		$config['cur_tag_open']		= '<li class="active"><a href="#">';
+		$config['cur_tag_close'] 	= '</a></li>';
+		$config['full_tag_open'] 	= '<div class="pagination"><ul>';
+		$config['full_tag_close'] 	= '</ul></div>';
+		$config['first_tag_open'] 	= '<li>';
+		$config['first_tag_close'] 	= '</li>';
+		$config['last_tag_open'] 	= '<li>';
+		$config['last_tag_close'] 	= '</li>';
+		$config['next_tag_open'] 	= '<li>';
+		$config['next_tag_close'] 	= '</li>';
+		$config['prev_tag_open'] 	= '<li>';
+		$config['prev_tag_close'] 	= '</li>';
+		$config['num_tag_open'] 	= '<li>';
+		$config['num_tag_close'] 	= '</li>';
+		
+		$this->pagination->initialize($config);
+		$pagevar['pages'] = $this->pagination->create_links();
+		
+		for($i=0;$i<count($pagevar['orders']);$i++):
+			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
+			$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+				if($pagevar['orders'][$i]['closedate'] > date("Y-m-d")):
+					$pagevar['orders'][$i]['closedate'] = '<span class="green">'.$pagevar['orders'][$i]['closedate'].'</span>';
+				elseif(empty($pagevar['orders'][$i]['numbercompletion']) && $pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+					$pagevar['orders'][$i]['closedate'] = '<span class="red">'.$pagevar['orders'][$i]['closedate'].'</span>';
+				endif;
+			endif;
+			if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+				$pagevar['orders'][$i]['closedate'] = $this->operation_dot_date($pagevar['orders'][$i]['closedate']);
+			endif;
+			$date = $pagevar['orders'][$i]['userpaiddate'];
+			if(($date != "Не оплачен") &&  $date!= '0000-00-00' && !empty($date)):
+				$arrdate = preg_split('/[\s, ]+/',$pagevar['orders'][$i]['userpaiddate'],-1,PREG_SPLIT_NO_EMPTY);
+				for($j=0;$j<count($arrdate);$j++):
+					$oDate = new DateTime($arrdate[$j]);
+					$sDate[$j] = $oDate->format("d.m.Y");
+					unset($oDate);
+				endfor;
+				$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
+				unset($sDate);
+			endif;
+			$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
+			if($pagevar['orders'][$i]['regnum']):
+				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+			else:
+				$pagevar['orders'][$i]['regnum'] = 'Не завершен';
+			endif;
+		endfor;
+		$this->load->view("admin_interface/physical/deleted-orders",$pagevar);
+	}
+	
+	public function fiz_orders_search(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Поиск заказа',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'orders'		=> array(),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		if($this->uri->total_segments() == 5):
+			$sessiondata = array('srhorder'=>'','nborder'=>'','customer'=>'','nbpaiddoc'=>'','nbadmission'=>'','nbcompletion'=>'');
+			$this->session->unset_userdata($sessiondata);
+			redirect('admin-panel/messages/search/orders');
+		endif;
+		
+		$srcorder = $this->session->userdata('srhorder');
+		if($srcorder):
+			$sessdata = $this->session->all_userdata();
+			$pagevar['orders'] = $this->fizunionmodel->read_customer_search_orders($sessdata['nborder'],$sessdata['customer'],$sessdata['nbpaiddoc'],$sessdata['nbadmission'],$sessdata['nbcompletion']);
+			if(!count($pagevar['orders'])):
+				$this->session->set_userdata('msgr','Заказов не найдено.');
+				$this->session->set_userdata('srhorder',FALSE);
+				redirect('admin-panel/messages/search/orders');
+			endif;
+			for($i=0;$i<count($pagevar['orders']);$i++):
+				$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
+				$pagevar['orders'][$i]['paiddate'] = $this->operation_dot_date($pagevar['orders'][$i]['paiddate']);
+				if($pagevar['orders'][$i]['closedate'] != '0000-00-00'):
+					$pagevar['orders'][$i]['closedate'] = $this->operation_dot_date($pagevar['orders'][$i]['closedate']);
+				endif;
+				$date = $pagevar['orders'][$i]['userpaiddate'];
+				if(($date != "Не оплачен") &&  $date!= '0000-00-00' && !empty($date)):
+					$arrdate = preg_split('/[\s, ]+/',$pagevar['orders'][$i]['userpaiddate'],-1,PREG_SPLIT_NO_EMPTY);
+					for($j=0;$j<count($arrdate);$j++):
+						$oDate = new DateTime($arrdate[$j]);
+						$sDate[$j] = $oDate->format("d.m.Y");
+						unset($oDate);
+					endfor;
+					$pagevar['orders'][$i]['userpaiddate'] = implode(' , ',$sDate);
+					unset($sDate);
+				endif;
+				$pagevar['orders'][$i]['audcnt'] = count($this->fizunionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
+				if(!$pagevar['orders'][$i]['audcnt']):
+					$pagevar['orders'][$i]['audcnt'] = 0;
+				endif;
+				$pagevar['orders'][$i]['regnum'] = $this->fizordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
+				if($pagevar['orders'][$i]['regnum']):
+					$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+				else:
+					$pagevar['orders'][$i]['regnum'] = 'Не завершен';
+				endif;
+			endfor;
+		endif;
+		if($this->input->post('dsubmit')):
+			$_POST['dsubmit'] = NULL;
+			$this->form_validation->set_rules('order',' ','required|trim');
+			$this->form_validation->set_rules('discount',' ','trim');
+			$this->form_validation->set_rules('paiddoc',' ','trim');
+			$this->form_validation->set_rules('paiddate',' ','trim');
+			$this->form_validation->set_rules('numberplacement',' ','trim');
+			$this->form_validation->set_rules('numbercompletion',' ','trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
+			else:
+				$this->fizordersmodel->update_field($_POST['order'],'discount',$_POST['discount']);
+				$this->fizordersmodel->update_field($_POST['order'],'docnumber',$_POST['paiddoc']);
+				$this->fizordersmodel->update_field($_POST['order'],'numberplacement',$_POST['numberplacement']);
+				$this->fizordersmodel->update_field($_POST['order'],'numbercompletion',$_POST['numbercompletion']);
+				if(isset($_POST['paiddate'])):
+					$this->fizordersmodel->update_field($_POST['order'],'userpaiddate',$_POST['paiddate']);
+				endif;
+				$this->session->set_userdata('msgs','Информация по заказу успешно сохранена.');
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
+		if($this->input->post('submit')):
+			$_POST['submit'] = NULL;
+			$this->form_validation->set_rules('nborder',' ','trim');
+			$this->form_validation->set_rules('customer',' ','trim');
+			$this->form_validation->set_rules('nbpaiddoc',' ','trim');
+			$this->form_validation->set_rules('nbadmission',' ','trim');
+			$this->form_validation->set_rules('nbcompletion',' ','trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка при поиске.');
+			else:
+				$sessiondata = array('srhorder'=>TRUE,'nborder'=>$_POST['nborder'],'customer'=>$_POST['customer'],'nbpaiddoc'=>$_POST['nbpaiddoc'],'nbadmission'=>$_POST['nbadmission'],'nbcompletion'=>$_POST['nbcompletion']);
+				$this->session->set_userdata($sessiondata);
+			endif;
+			redirect($this->uri->uri_string());
+		endif;
+		
+		$this->load->view("admin_interface/admin-orders-search",$pagevar);
+	}
+	
+	public function fiz_orders_paid(){
+	
+		$order = $this->input->post('order');
+		if(!$order) show_404();
+		$access = $this->input->post('access');
+		if(!$access) $access = 0;
+		$this->fizordersmodel->paid_order($order,$access);
+		if($access):
+			$next_numbers = $this->fizordersmodel->next_numbers();
+			$this->fizordersmodel->update_field($order,'numberplacement',$next_numbers['placement'].'-З');
+			/******************************************************/
+			$tmpdate = $this->calendarmodel->read_date();
+			for($i=0;$i<count($tmpdate);$i++):
+				$seldate[$i] = $tmpdate[$i]['date'];
+			endfor;
+			array_unshift($seldate,'1111-11-11');
+			unset($tmpdate);
+			$chours = $this->fizunionmodel->read_course_max_hours($order);
+			$days = round($chours/8);
+			print_r($chours);
+			$kday = $i = 0; $overdate = '';
+			while($kday < $days):
+				$curdate = date("Y-m-d",mktime(0,0,0,date('m'),date('d')+$i,date('Y')));
+				$holiday = date("w",mktime(0,0,0,date('m'),date('d')+$i,date('Y')));
+				if(!array_search($curdate,$seldate) && ($holiday != 0)):
+					$overdate = $curdate;
+					$kday++;
+				endif;
+				$i++;
+			endwhile;
+			$this->fizordersmodel->update_field($order,'closedate',$overdate);
+			/******************************************************/
+		else:
+			$this->fizordersmodel->update_field($order,'numberplacement','');
+			$this->fizordersmodel->update_field($order,'closedate','0000-00-00');
+		endif;
+	}
+	
+	public function fiz_orders_send_mail(){
+		
+		$statusval = array('retvalue'=>'&nbsp;<i class="icon-ok" title="Отправлено"></i>','retemail'=>'');
+		$order = $this->input->post('order');
+		$smtype = $this->input->post('smtype');
+		$info = $this->fizunionmodel->read_physical_info_order($order);
+		$info['orderdate'] = $this->operation_dot_date($info['orderdate']);
+		$info['closedate'] = $this->operation_dot_date($info['closedate']);
+		ob_start();
+		?>
+			<p>Здравствуйте, <?=$info['fio'];?></p>
+		<?php
+		if($smtype == 'smtext'):
+			?>
+			<p>Администрация АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/ ">http://roscentrdpo.ru/ </a> извещает 
+				о невозможности оформления документов (удостоверений, актов выполненных работ) согласно договора 
+				№<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>
+				о повышении Вашей квалификации по причине отсутствия результатов итогового тестирования.<br/>
+				Убедительно просим  срочно обеспечить проведение итогового тестирования (аттестацию).</p>
+			<?php
+		else:
+			?>
+			<p>
+				Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a> 
+				сообщает о зачислении Вашего платежа.
+			</p>
+			<p>
+				Форма оплаты: Безналичная <br />
+				Способ оплаты: Оплата квитанцией <br />
+				Назначение платежа: Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> <br/>
+				Сумма платежа: <u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u> руб. <br />
+				Документ платежа:  Платежное поручение №<u>&nbsp;&nbsp;&nbsp;<?=$info['docnumber'];?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['userpaiddate'];?>&nbsp;&nbsp;&nbsp;</u>
+			</p>
+			<p>
+				Ваш платеж распределен следующим образом
+			</p>
+			<table border="0">
+				<thead>
+					<tr>
+						<th>Назначение платежа</th>
+						<th>Сумма, руб.</th>
+					</tr>
+				</thead>
+				<tbody>
+					<td>Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>, план оплаты: "Весь период обучения"</td>
+					<td><u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u>,00</td>
+				</tbody>
+			</table>
+			<p>
+				<em><strong>Прохождение итогового тестирования станет доступно с <?=$info['closedate'];?></strong></em><br/>
+				<strong>ВНИМАНИЕ!</strong> В случае возникновения каких-либо вопросов относительно данных платежа обращайтесь по тел.: 2-36-53-53
+			</p>
+		<?php
+		endif;
+		?>
+			<br/><br/>
+			<p>
+				Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86<br/>
+				Контактные данные: Тел.:(863) 246-43-54 Эл.почта: info@roscentrdpo.ru<br/>
+				С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации»
+			</p>
+		<?php
+		$mailtext = ob_get_clean();
+		
+		$this->email->clear(TRUE);
+		$config['smtp_host'] = 'localhost';
+		$config['charset'] = 'utf-8';
+		$config['wordwrap'] = TRUE;
+		$config['mailtype'] = 'html';
+		
+		$this->email->initialize($config);
+		$this->email->to($info['email']);
+		$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
+		$this->email->bcc('');
+		$this->email->subject('Уведомление о оплате за обучение');
+		$this->email->message($mailtext);
+		$this->email->send();
+		
+		$statusval['retemail'] = $info['email'];
+		echo json_encode($statusval);
+	}
+	
+	public function fiz_order_delete(){
+		
+		$order = $this->uri->segment(5);
+		$this->fizordersmodel->update_field($order,'deleted',1);
+		$this->session->set_userdata('msgs','Заказ перемещен.');
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+	
+	public function fiz_order_restore(){
+		
+		$order = $this->uri->segment(5);
+		$this->fizordersmodel->update_field($order,'deleted',0);
+		$this->session->set_userdata('msgs','Заказ восстановлен.');
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+	
+	/******************************************************** functions ******************************************************/
 	
 	public function fileupload($userfile,$overwrite,$catalog){
 		

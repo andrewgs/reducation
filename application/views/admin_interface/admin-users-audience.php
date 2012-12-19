@@ -21,6 +21,7 @@
 					<button class="btn btn-success" type="submit" id="save" name="ssrslu" value="save" style="margin-top:-10px;"><i class="icon-search icon-white"></i> Найти</button>
 				<?= form_close(); ?>
 				</div>
+				<div class="clear"></div>
 				<?php $this->load->view('alert_messages/alert-error');?>
 				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">
