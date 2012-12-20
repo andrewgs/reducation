@@ -59,9 +59,9 @@ $route['physical/registration/ordering/cancel-registration']		= "physical_interf
 
 $route['physical/registration/ordering/step/2/course/:num/delete-audience/:num']	= "customer_interface/registration_delete_audience";
 
-$route['physical/audience/orders/order-information/id/:num/invoice-for-payment']	= "physical_interface/orders_order_invoice";
-$route['physical/audience/orders/order-information/id/:num/contract']				= "physical_interface/orders_order_contract";
-$route['physical/audience/orders/order-information/id/:num/act-to-contract']		= "physical_interface/orders_order_act";
+$route['physical/information/orders/order-information/id/:num/invoice-for-payment']	= "physical_interface/orders_order_invoice";
+$route['physical/information/orders/order-information/id/:num/contract']			= "physical_interface/orders_order_contract";
+$route['physical/information/orders/order-information/id/:num/act-to-contract']		= "physical_interface/orders_order_act";
 
 $route['physical/courses/current']												= "physical_interface/courses_currect";
 $route['physical/courses/current/start-training/:num']							= "physical_interface/start_training";
@@ -133,6 +133,7 @@ $route['admin-panel/messages/search/orders']					= "admin_interface/orders_searc
 $route['admin-panel/messages/search/orders/new-search']			= "admin_interface/orders_search";
 $route['admin-panel/messages/search-customer']					= "admin_interface/search_customer";
 $route['admin-panel/messages/search-audience']					= "admin_interface/search_audience";
+$route['admin-panel/messages/search-physical']					= "admin_interface/search_physical";
 
 $route['admin-panel/messages/orders/all']					= "admin_interface/orders_messages";
 $route['admin-panel/messages/orders/all/:num']				= "admin_interface/orders_messages";
@@ -230,6 +231,18 @@ $route['admin-panel/messages/orders/id/:num/invoice']			= "admin_interface/invoi
 $route['admin-panel/messages/orders/id/:num/contract']			= "admin_interface/contract";
 $route['admin-panel/messages/orders/id/:num/act']				= "admin_interface/act";
 
+$route['admin-panel/messages/physical-orders/id/:num/information']		= "admin_interface/fiz_information";
+$route['admin-panel/messages/physical-orders/id/:num/invoice']			= "admin_interface/fiz_invoice";
+$route['admin-panel/messages/physical-orders/id/:num/contract']			= "admin_interface/fiz_contract";
+$route['admin-panel/messages/physical-orders/id/:num/act']				= "admin_interface/fiz_act";
+
+$route['admin-panel/messages/physical-orders/id/:num/statement']		= "admin_interface/fiz_statement";
+$route['admin-panel/messages/physical-orders/id/:num/completion']		= "admin_interface/fiz_completion";
+$route['admin-panel/messages/physical-orders/id/:num/admission']		= "admin_interface/fiz_admission";
+$route['admin-panel/messages/physical-orders/id/:num/registry/list-1']	= "admin_interface/fiz_registry";
+$route['admin-panel/messages/physical-orders/id/:num/registry/list-2']	= "admin_interface/fiz_registry";
+$route['admin-panel/messages/physical-orders/id/:num/reference']		= "admin_interface/fiz_reference";
+
 /*=========================================================== documents  ====================================================*/
 $route['admin-panel/messages/orders/id/:num/testing']												= "admin_interface/orders_testing";
 $route['admin-panel/messages/orders/:num/audience/:num/courses/:num/test-report/:num/full']			= "admin_interface/test_report_full";
@@ -239,6 +252,10 @@ $route['admin-panel/messages/orders/:any/:any/:any'] 		= "admin_interface/orders
 $route['admin-panel/messages/orders/:any/:num/:any/:any']	= "admin_interface/orders_messages";
 
 $route['admin-panel/messages/deleted/orders/:any/:any']		= "admin_interface/deleted_orders";
+
+$route['admin-panel/messages/physical-orders/id/:num/testing']											= "admin_interface/fiz_orders_testing";
+$route['admin-panel/messages/physical-orders/:num/physical/:num/courses/:num/test-report/:num/full']	= "admin_interface/fiz_test_report_full";
+$route['admin-panel/messages/physical-orders/:num/physical/:num/courses/:num/test-report/:num/short']	= "admin_interface/fiz_test_report_short";
 
 $route['admin-panel/messages/physical-orders/:any/:any/:any'] 			= "admin_interface/fiz_orders_messages";
 $route['admin-panel/messages/physical-orders/:any/:num/:any/:any']		= "admin_interface/fiz_orders_messages";

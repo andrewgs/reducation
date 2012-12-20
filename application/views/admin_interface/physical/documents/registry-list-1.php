@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php $this->load->view('customer_interface/head');?>
+<?php $this->load->view('admin_interface/head');?>
 <body>
 	<style type="text/css">
 		body { padding: 20px 0 0; }
@@ -51,9 +51,7 @@
 							</tr>
 							<tr>
 								<td>№</td>
-								<td><nobr>Наименование организации,</nobr><br/><nobr>ИНН, КПП, юрид. адрес</nobr></td>
-								<td>Фамилия, Имя, Отчество</td>
-								<td>Должность</td>
+								<td><nobr>Фамилия, Имя, Отчество</nobr><br/><nobr>ИНН, почтовый. адрес</nobr></td>
 								<td>Наименование программы</td>
 								<td>Объем учебного плана, час</td>
 								<td>№ п/п</td>
@@ -69,12 +67,9 @@
 						<?php for($i=0;$i<count($info);$i++):?>	
 							<tr>
 								<td><?=$i+1;?></td>
-								<td><?=$info[$i]['organization'];?><br/><?=$info[$i]['inn'].'/'.$info[$i]['kpp'];?><br/><?=$info[$i]['uraddress'];?></td>
-								<td><?=$info[$i]['lastname'].' '.$info[$i]['name'].' '.$info[$i]['middlename'];?></td>
-								<td><?=$info[$i]['position'];?></td>
+								<td><?=$info[$i]['fio'];?><br/><?=$info[$i]['inn'];?><br/><?=$info[$i]['postaddress'];?></td>
 								<td><?=$info[$i]['ccode'].' '.$info[$i]['ctitle'];?></td>
 								<td><?=$info[$i]['chours'];?></td>
-								<!--<td><?=$i+1;?></td>-->
 								<?php if(!empty($info[$i]['docnumber'])):?>
 									<td><?=$info[$i]['docnumber'];?></td>
 								<?php else:?>

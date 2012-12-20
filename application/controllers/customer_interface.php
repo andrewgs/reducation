@@ -184,6 +184,7 @@ class Customer_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
+		
 		for($i=0;$i<count($pagevar['course']);$i++):
 			$pagevar['course'][$i]['caud'] = $this->audienceordermodel->count_course_record($pagevar['course'][$i]['id']);
 			$pagevar['course'][$i]['price'] = $pagevar['course'][$i]['price']-$pagevar['course'][$i]['discount'];

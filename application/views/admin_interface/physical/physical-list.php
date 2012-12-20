@@ -83,7 +83,7 @@
 					$("#suggestions").fadeOut();
 				}else{
 					$("#customer").addClass('load');
-					$.post("<?=$baseurl;?>admin-panel/messages/search-customer",{squery: ""+inputString+""},
+					$.post("<?=$baseurl;?>admin-panel/messages/search-physical",{squery: ""+inputString+""},
 						function(data){
 							if(data.status){
 								$("#suggestions").fadeIn();
@@ -102,10 +102,8 @@
 				$("#srzakid").val(cusid);
 				setTimeout("$('#suggestions').fadeOut();", 600);
 			};
-			
 			$("#srzak").keyup(function(){suggest(this.value)});
 			$("#srzak").focusout(function(){setTimeout("$('#suggestions').fadeOut();", 600);});
-			
 		});
 	</script>
 </body>

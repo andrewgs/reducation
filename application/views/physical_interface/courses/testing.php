@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php $this->load->view('audience_interface/head');?>
+<?php $this->load->view('physical_interface/includes/head');?>
 <style type="text/css">
 	h4 { margin: 0 0 10px; }
 	.setClassAnswer{background: #fff2b7;padding: 4px 6px;}
 	.setAnswer{cursor: pointer;}
 </style>
 <body>
-	<?php $this->load->view('audience_interface/header');?>
+	<?php $this->load->view('physical_interface/includes/header');?>
 	<div class="container">
 		<div class="row">
 			<div class="span9">
 				<div>
 					<ul class="breadcrumb">
 						<li>
-							<?=anchor('audience/courses/current','Мои текущие курсы');?> <span class="divider">/</span>
+							<?=anchor('physical/courses/current','Мои текущие курсы');?> <span class="divider">/</span>
 						</li>
 						<li>
-							<?=anchor('audience/courses/current/course/'.$this->uri->segment(5).'/lectures',$course['code'].'. '.$course['title']);?> <span class="divider">/</span>
+							<?=anchor('physical/courses/current/course/'.$this->uri->segment(5).'/lectures',$course['code'].'. '.$course['title']);?> <span class="divider">/</span>
 						</li>
 						<li class="active">
-							<?=anchor($this->uri->uri_string(),'Тест: '.$test['ttitle']);?>
+							Тест: <?=$test['ttitle'];?>
 						</li>
 					</ul>
 				</div>
@@ -43,9 +43,9 @@
 									<td style="width: 10px;"><?=$num;?>.</td>
 									<td style="width: 600px;"><?=$answers[$j]['title'];?></td>
 									<td style="width: 5px;">
-										<label class="radio">
-											<input type="radio" name="<?=$questions[$i]['id'];?>" class="optRadios" id="opans<?=$j;?>" value="<?=$answers[$j]['id'];?>">
-										</label>
+											<label class="radio">
+												<input type="radio" name="<?=$questions[$i]['id'];?>" class="optRadios" id="opans<?=$j;?>" value="<?=$answers[$j]['id'];?>">
+											</label>
 									</td>
 								</tr>
 								<?php $num++;?>
@@ -64,10 +64,10 @@
 				</fieldset>
 			<?= form_close(); ?>
 			</div>
-		<?php $this->load->view('users_interface/rightbaraud');?>
+		<?php $this->load->view('users_interface/rightbarfiz');?>
 		</div>
 	</div>
-	<?php $this->load->view('audience_interface/scripts');?>
+	<?php $this->load->view('physical_interface/includes/scripts');?>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var TotalTime = 0;

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php $this->load->view('audience_interface/head');?>
+<?php $this->load->view('physical_interface/includes/head');?>
 <body>
 	<div class="container">
 		<div class="row">
@@ -10,13 +10,12 @@
 					<div style="margin-top: 10px;">
 <pre><strong>Результат теста</strong>
 
-Слушатель: <u> <?=$audience;?> </u>
 Попыток: <?=$test['attempt'];?>
 
 Дата: <?=$test['attemptdate'];?>
 
 Затрачено: <?=$test['time'];?> мин.
-Результат: <?=$test['result'];?>% <?=($test['result'] > 60)?'<font style="color:#0000ff">(зачет)</font>':'<font style="color:#ff0000">(незачет)</font>';?>
+Результат: <?=$test['result'];?>% <?=($test['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
 </pre>
 					</div>
 				</div>
@@ -68,10 +67,10 @@
 			<td><span class="label label-success">Ваш ответ (верный)</span>	- Отображается если Вы ответили верно</td>
 		</tr>
 		<tr>
-			<td><span class="label label-warning">Правильный ответ</span> - Отображается правильный ответ если Вы ответили не верно</td>
+			<td><span class="label label-warning">Правильный ответ</span>		- Отображается правильный ответ если Вы ответили не верно</td>
 		</tr>
 		<tr>
-			<td><span class="label label-important">Ваш ответ (не верный)</span> - Отображается если Вы ответили не верно</td>
+			<td><span class="label label-important">Ваш ответ (не верный)</span>	- Отображается если Вы ответили не верно</td>
 		</tr>
 	</tbody>
 </table></pre>

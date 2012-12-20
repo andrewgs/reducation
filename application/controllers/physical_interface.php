@@ -20,7 +20,9 @@ class Physical_interface extends CI_Controller{
 		$this->load->model('fizunionmodel');
 		$this->load->model('fizordersmodel');
 		$this->load->model('fizcourseordermodel');
-		$this->load->model('fizcourcemodel');
+		$this->load->model('fizcoursemodel');
+		$this->load->model('fiztestmodel');
+		$this->load->model('fiztestresultsmodel');
 		$this->load->model('calendarmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
@@ -150,7 +152,7 @@ class Physical_interface extends CI_Controller{
 			redirect('physical/registration/ordering/step/2');
 		elseif(!$this->fizordersmodel->owner_order_finish($order,$this->user['uid'])):
 			$this->session->set_userdata('msgr','Заказ отсутствует или удален.');
-			redirect('physical/audience/orders');
+			redirect('physical/information/orders');
 		endif;
 		$pagevar = array(
 					'description'	=> '',
@@ -188,7 +190,7 @@ class Physical_interface extends CI_Controller{
 		
 		if(!$this->fizordersmodel->owner_order_finish($this->uri->segment(6),$this->user['uid'])):
 			$this->session->set_userdata('msgr','Заказ отсутствует или удален.');
-			redirect('customer/audience/orders');
+			redirect('physical/information/orders');
 		endif;
 		$pagevar = array(
 				'description'	=> '',
@@ -211,8 +213,8 @@ class Physical_interface extends CI_Controller{
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
-		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
-		$this->load->view("physical_interface/customer-order-invoice",$pagevar);
+		$pagevar['customer'] = $this->physicalmodel->read_record($pagevar['order']['physical']);
+		$this->load->view("physical_interface/documents/invoice",$pagevar);
 	}
 	
 	public function orders_order_contract(){
@@ -242,16 +244,16 @@ class Physical_interface extends CI_Controller{
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
-		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		$pagevar['customer'] = $this->physicalmodel->read_record($pagevar['order']['physical']);
 		
-		$this->load->view("physical_interface/customer-order-contract",$pagevar);
+		$this->load->view("physical_interface/documents/contract",$pagevar);
 	}
 	
 	public function orders_order_act(){
 		
 		if(!$this->fizordersmodel->owner_order_finish($this->uri->segment(6),$this->user['uid'])):
 			$this->session->set_userdata('msgr','Заказ отсутствует или удален.');
-			redirect('customer/audience/orders');
+			redirect('physical/information/orders');
 		endif;
 		$pagevar = array(
 					'description'	=> '',
@@ -279,9 +281,9 @@ class Physical_interface extends CI_Controller{
 		else:
 			$pagevar['order']['closedate'] = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.date("Y").' г.';
 		endif;
-		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		$pagevar['customer'] = $this->physicalmodel->read_record($pagevar['order']['physical']);
 		
-		$this->load->view("physical_interface/customer-order-act",$pagevar);
+		$this->load->view("physical_interface/documents/act",$pagevar);
 	}
 	
 	public function orders_delete_order(){
@@ -405,6 +407,7 @@ class Physical_interface extends CI_Controller{
 				endif;
 				if(!$this->fizcourseordermodel->exist_course_order($_POST['course'],$this->session->userdata('order'),$this->user['uid'])):
 					$corder = $this->fizcourseordermodel->insert_record($this->session->userdata('order'),$_POST['course'],$this->user['uid']);
+					$this->fizcoursemodel->insert_record($corder,$this->user['uid'],$this->session->userdata('order'));
 					$this->session->set_userdata('msgs','Курс обучения добавлен в заказ.');
 				else:
 					$this->session->set_userdata('msgr','Ошибка. Указанный курс уже прикреплен к данному заказу');
@@ -447,8 +450,9 @@ class Physical_interface extends CI_Controller{
 			$price = $this->fizunionmodel->order_total_summa($this->session->userdata('order'));
 			$this->fizordersmodel->update_field($this->session->userdata('order'),'price',$price);
 			$this->fizordersmodel->close_order($this->session->userdata('order'));
+			$order = $this->session->userdata('order');
 			$this->session->unset_userdata(array('regordering'=>'','step'=>'','ordering'=>'','order'=>''));
-			redirect('physical/information/orders');
+			redirect('physical/information/orders/order-information/id/'.$order);
 		endif;
 		
 		$this->load->view("physical_interface/ordering/registration-ordering-step3",$pagevar);
@@ -509,7 +513,7 @@ class Physical_interface extends CI_Controller{
 			$pagevar['courses'][$i]['chapter'] = $this->chaptermodel->count_records($pagevar['courses'][$i]['id']);
 			$pagevar['courses'][$i]['tests'] = $this->testsmodel->count_course_record($pagevar['courses'][$i]['id']);
 			$pagevar['courses'][$i]['lectures'] = $this->lecturesmodel->count_course_record($pagevar['courses'][$i]['id']);
-			$pagevar['courses'][$i]['test'] = $this->audiencetestmodel->read_exam_test_info($pagevar['courses'][$i]['order'],$pagevar['courses'][$i]['aud'],$this->user['uid']);
+			$pagevar['courses'][$i]['test'] = $this->fiztestmodel->read_exam_test_info($pagevar['courses'][$i]['order'],$pagevar['courses'][$i]['aud'],$this->user['uid']);
 			$pagevar['courses'][$i]['test']['count'] = $this->testsmodel->read_field($pagevar['courses'][$i]['test']['test'],'count');
 		endfor;
 		$this->load->view("physical_interface/courses/courses-currect",$pagevar);
@@ -535,9 +539,9 @@ class Physical_interface extends CI_Controller{
 			$pagevar['courses'][$i]['chapter'] = $this->chaptermodel->count_records($pagevar['courses'][$i]['id']);
 			$pagevar['courses'][$i]['tests'] = $this->testsmodel->count_course_record($pagevar['courses'][$i]['id']);
 			$pagevar['courses'][$i]['lectures'] = $this->lecturesmodel->count_course_record($pagevar['courses'][$i]['id']);
-			$pagevar['courses'][$i]['test'] = $this->audiencetestmodel->read_exam_test_info($pagevar['courses'][$i]['order'],$pagevar['courses'][$i]['aud'],$this->user['uid']);
+			$pagevar['courses'][$i]['test'] = $this->fiztestmodel->read_exam_test_info($pagevar['courses'][$i]['order'],$pagevar['courses'][$i]['aud'],$this->user['uid']);
 			$pagevar['courses'][$i]['test']['count'] = $this->testsmodel->read_field($pagevar['courses'][$i]['test']['test'],'count');
-			$pagevar['courses'][$i]['test']['tresid'] = $this->audienceordermodel->read_field($pagevar['courses'][$i]['aud'],'tresid');
+			$pagevar['courses'][$i]['test']['tresid'] = $this->fizcoursemodel->read_field($pagevar['courses'][$i]['aud'],'tresid');
 		endfor;
 		$this->load->view("physical_interface/courses/courses-completed",$pagevar);
 	}
@@ -546,14 +550,14 @@ class Physical_interface extends CI_Controller{
 		
 		$reptest = $this->uri->segment(6);
 		$course = $this->uri->segment(3);
-		if(!$this->audienceordermodel->read_status($course)):
+		if(!$this->fizcoursemodel->read_status($course)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
-			redirect('audience/courses/completed');
+			redirect('physical/courses/completed');
 		endif;
 		
-		if(!$this->testresultsmodel->exist_report($this->user['uid'],$course,$reptest)):
+		if(!$this->fiztestresultsmodel->exist_report($this->user['uid'],$course,$reptest)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
-			redirect('audience/courses/completed');
+			redirect('physical/courses/completed');
 		endif;
 		
 		$pagevar = array(
@@ -563,7 +567,7 @@ class Physical_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
-					'report'		=> $this->testresultsmodel->read_record($reptest),
+					'report'		=> $this->fiztestresultsmodel->read_record($reptest),
 					'test'			=> array(),
 					'questions'		=> array(),
 					'answers'		=> array(),
@@ -573,48 +577,48 @@ class Physical_interface extends CI_Controller{
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		$pagevar['report']['dataresult'] = unserialize($pagevar['report']['dataresult']);
-		$pagevar['test'] = $this->fizunionmodel->read_audience_testing($pagevar['report']['test'],$this->user['uid'],$pagevar['report']['course']);
+		$pagevar['test'] = $this->fizunionmodel->read_physical_testing($pagevar['report']['test'],$this->user['uid'],$pagevar['report']['course']);
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['tid']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['tid']);
 		$pagevar['test']['attemptdate'] = $this->operation_date($pagevar['test']['attemptdate']);
-		$this->load->view("audience_interface/test-report",$pagevar);
+		$this->load->view("physical_interface/courses/test-report",$pagevar);
 	}
 	
 	public function start_training(){
 		
 		$training = $this->uri->segment(5);
 		if($training):
-			if(!$this->audienceordermodel->owner_audience($training,$this->user['uid'],0)):
+			if(!$this->fizcoursemodel->owner_audience($training,$this->user['uid'],0)):
 				$this->session->set_userdata('msgr','Не возможно начать обучение.');
-				redirect('audience/courses/current');
+				redirect('physical/courses/current');
 			endif;
-			if($this->audienceordermodel->read_field($training,'start')):
+			if($this->fizcoursemodel->read_field($training,'start')):
 				$this->session->set_userdata('msgr','Обучение уже начато.');
-				redirect('audience/courses/current');
+				redirect('physical/courses/current');
 			endif;
 			$this->session->set_userdata('msgs','Обучение начато! Теперь Вам доступны лекции для ознакомления.<br/>Читайте лекции и сдавайте тесты.');
-			$this->audienceordermodel->update_field($training,'start',1);
+			$this->fizcoursemodel->update_field($training,'start',1);
 			$tests = $this->fizunionmodel->get_courses_test($training,$this->user['uid'],0);
 			for($i=0;$i<count($tests);$i++):
-				$this->audiencetestmodel->insert_record($tests[$i]['aoid'],$this->user['uid'],$tests[$i]['ordid'],$tests[$i]['ordcus'],$tests[$i]['chapter'],$tests[$i]['id']);
+				$this->fiztestmodel->insert_record($tests[$i]['fcid'],$this->user['uid'],$tests[$i]['foid'],$tests[$i]['chapter'],$tests[$i]['id']);
 			endfor;
 			$test = $this->fizunionmodel->get_courses_examination($training,$this->user['uid'],0);
-			$this->audiencetestmodel->insert_record($test['aoid'],$this->user['uid'],$test['ordid'],$test['ordcus'],$test['chapter'],$test['id']);
+			$this->fiztestmodel->insert_record($test['fcid'],$this->user['uid'],$test['foid'],0,$test['id']);
 		endif;
-		redirect('audience/courses/current');
+		redirect('physical/courses/current');
 	}
 	
 	public function courses_lectures(){
 		
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
+		if(!$this->fizcoursemodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
-			redirect('audience/courses/current');
+			redirect('physical/courses/current');
 		endif;
 		
-		if(!$this->audienceordermodel->read_field($course,'start')):
+		if(!$this->fizcoursemodel->read_field($course,'start')):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
-			redirect('audience/courses/current');
+			redirect('physical/courses/current');
 		endif;
 		$pagevar = array(
 					'description'	=> '',
@@ -623,7 +627,7 @@ class Physical_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
-					'course'		=> $this->fizunionmodel->read_audience_currect_course($this->user['uid'],$course,0),
+					'course'		=> $this->fizunionmodel->read_physical_currect_course($this->user['uid'],$course,0),
 					'chapters'		=> array(),
 					'test'			=> array(),
 					'finaltest'		=> 0,
@@ -639,67 +643,67 @@ class Physical_interface extends CI_Controller{
 		
 		$pagevar['chapters'] = $this->chaptermodel->read_records($pagevar['course']['id']);
 		
-		$testday = $this->ordersmodel->read_field($pagevar['course']['ordid'],'closedate');
+		$testday = $this->fizordersmodel->read_field($pagevar['course']['ordid'],'closedate');
 		if(strtotime(date("Y-m-d")) >= strtotime($testday)):
 			$pagevar['testvalid'] = TRUE;
 		endif;
 		for($i=0;$i<count($pagevar['chapters']);$i++):
 			$pagevar['chapters'][$i]['lectures'] = $this->lecturesmodel->read_views_records($pagevar['course']['id'],$pagevar['chapters'][$i]['id']);
-			$pagevar['chapters'][$i]['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],$pagevar['chapters'][$i]['id'],$this->user['uid']);
+			$pagevar['chapters'][$i]['test'] = $this->fiztestmodel->read_records($course,$pagevar['course']['ordid'],$pagevar['chapters'][$i]['id'],$this->user['uid']);
 			$pagevar['chapters'][$i]['test']['count'] = $this->testsmodel->read_field($pagevar['chapters'][$i]['test']['test'],'count');
 		endfor;
-		$pagevar['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],0,$this->user['uid']);
+		$pagevar['test'] = $this->fiztestmodel->read_records($course,$pagevar['course']['ordid'],0,$this->user['uid']);
 		if(!count($pagevar['test'])):
 			$pagevar['testvalid'] = FALSE;
 		endif;
 		$pagevar['test']['count'] = $this->testsmodel->read_field($pagevar['test']['test'],'count');
 
-		$date_test = $this->audiencetestmodel->read_field($pagevar['test']['id'],'attemptnext');
+		$date_test = $this->fiztestmodel->read_field($pagevar['test']['id'],'attemptnext');
 		if($date_test != '0000-00-00'):
 			if($date_test == date("Y-m-d")):
-				$this->audiencetestmodel->reset_attempt($pagevar['test']['id']);
+				$this->fiztestmodel->reset_attempt($pagevar['test']['id']);
 				$pagevar['test']['attempt'] = 0;
 			else:
 				$pagevar['testvalid'] = FALSE;
 			endif;
 		endif;
 		if($pagevar['test']['attempt'] == $pagevar['test']['count']):
-			$this->audiencetestmodel->update_field($pagevar['test']['id'],'attemptnext',date("Y-m-d",mktime(0,0,0,date("m"),date("d")+1,date("Y"))));
+			$this->fiztestmodel->update_field($pagevar['test']['id'],'attemptnext',date("Y-m-d",mktime(0,0,0,date("m"),date("d")+1,date("Y"))));
 			$pagevar['testvalid'] = FALSE;
 		endif;
-		$this->load->view("audience_interface/courses-lectures",$pagevar);
+		$this->load->view("physical_interface/courses/courses-lectures",$pagevar);
 	}
 	
 	public function testing(){
 		
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
+		if(!$this->fizcoursemodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к к лекциям курса.');
-			redirect('audience/courses/current');
+			redirect('physical/courses/current');
 		endif;
 		
-		if(!$this->audienceordermodel->read_field($course,'start')):
+		if(!$this->fizcoursemodel->read_field($course,'start')):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
-			redirect('audience/courses/current');
+			redirect('physical/courses/current');
 		endif;
 		
 		$test = $this->uri->segment(9);
-		if(!$this->audiencetestmodel->owner_testing($test,$course,$this->user['uid'])):
+		if(!$this->fiztestmodel->owner_testing($test,$course,$this->user['uid'])):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			redirect('physical/courses/current/course/'.$course.'/lectures');
 		endif;
 		
 		if($this->uri->segment(7) == 'final-testing'):
-			if(!$this->audiencetestmodel->owner_final_testing($test,$course,$this->user['uid'])):
+			if(!$this->fiztestmodel->owner_final_testing($test,$course,$this->user['uid'])):
 				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
-				redirect('audience/courses/current/course/'.$course.'/lectures');
+				redirect('physical/courses/current/course/'.$course.'/lectures');
 			endif;
 			
 		endif;
 		if($this->uri->segment(7) == 'testing'):
-			if(!$this->audiencetestmodel->owner_nonfinal_testing($test,$course,$this->user['uid'])):
+			if(!$this->fiztestmodel->owner_nonfinal_testing($test,$course,$this->user['uid'])):
 				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
-				redirect('audience/courses/current/course/'.$course.'/lectures');
+				redirect('physical/courses/current/course/'.$course.'/lectures');
 			endif;
 		endif;
 		$pagevar = array(
@@ -709,8 +713,8 @@ class Physical_interface extends CI_Controller{
 					'baseurl' 		=> base_url(),
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
-					'course'		=> $this->fizunionmodel->read_audience_currect_course($this->user['uid'],$course,0),
-					'test'			=> $this->fizunionmodel->read_audience_testing($test,$this->user['uid'],$course),
+					'course'		=> $this->fizunionmodel->read_physical_currect_course($this->user['uid'],$course,0),
+					'test'			=> $this->fizunionmodel->read_physical_testing($test,$this->user['uid'],$course),
 					'questions'		=> array(),
 					'answers'		=> array(),
 					'msgs'			=> $this->session->userdata('msgs'),
@@ -720,15 +724,15 @@ class Physical_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		
 		if($this->uri->segment(7) == 'final-testing'):
-			$testday = $this->ordersmodel->read_field($pagevar['course']['ordid'],'closedate');
+			$testday = $this->fizordersmodel->read_field($pagevar['course']['ordid'],'closedate');
 			if(strtotime(date('Y-m-d')) < strtotime($testday)):
 				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
-				redirect('audience/courses/current/course/'.$course.'/lectures');
+				redirect('physical/courses/current/course/'.$course.'/lectures');
 			endif;
-			$date_test = $this->audiencetestmodel->read_field($pagevar['test']['id'],'attemptnext');
+			$date_test = $this->fiztestmodel->read_field($pagevar['test']['id'],'attemptnext');
 			if(($date_test != '0000-00-00') && ($date_test != date("Y-m-d"))):
 				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
-				redirect('audience/courses/current/course/'.$course.'/lectures');
+				redirect('physical/courses/current/course/'.$course.'/lectures');
 			endif;
 		endif;
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
@@ -752,30 +756,30 @@ class Physical_interface extends CI_Controller{
 				endfor;
 			endforeach;
 			$ccanswer = round($ccanswer/count($corranswers)*100);
-			$this->audiencetestmodel->update_result($test,$ccanswer,round($ttime/60));
+			$this->fiztestmodel->update_result($test,$ccanswer,round($ttime/60));
 			if($ccanswer > 70):
 				$this->session->set_userdata('msgs','Тест завершен!<br/>Поздравляем Вы успешно прошли тест и ответили верно на '.$ccanswer.'% вопросов.');
 				if($this->uri->segment(7) == 'final-testing'):
-					$this->audienceordermodel->over_course($course,1,$ccanswer);
-					$order = $this->audienceordermodel->read_field($course,'order');
-					$customer = $this->audienceordermodel->read_field($course,'order');
+					$this->fizcoursemodel->over_course($course,1,$ccanswer);
+					$order = $this->fizcoursemodel->read_field($course,'order');
+					$customer = $this->fizcoursemodel->read_field($course,'order');
 					$dataresult = serialize($_POST);
-					$id = $this->testresultsmodel->insert_record($course,$this->user['uid'],$order,$customer,$test,$dataresult,$ccanswer);
-					$this->audienceordermodel->update_field($course,'tresid',$id);
+					$id = $this->fiztestresultsmodel->insert_record($course,$this->user['uid'],$order,$test,$dataresult,$ccanswer);
+					$this->fizcoursemodel->update_field($course,'tresid',$id);
 					
 					$cntcurclose = $this->fizunionmodel->count_deactive_order($order);
-					$cnttotal = $this->audienceordermodel->count_audience_by_order($order);
+					$cnttotal = $this->fizcoursemodel->count_physical_by_order($order);
 					if($cntcurclose == $cnttotal):
-						$allcourses = $this->audienceordermodel->read_record_by_order($order);
-						$max_idnumber = $this->audienceordermodel->max_idnumber();
+						$allcourses = $this->fizcoursemodel->read_record_by_order($order);
+						$max_idnumber = $this->fizcoursemodel->max_idnumber();
 						for($i=0;$i<count($allcourses);$i++):
 							$max_idnumber++;
 							$max_idnumber = str_pad($max_idnumber,6,"0",STR_PAD_LEFT);
-							$this->audienceordermodel->update_field($allcourses[$i]['id'],'idnumber',$max_idnumber);
+							$this->fizcoursemodel->update_field($allcourses[$i]['id'],'idnumber',$max_idnumber);
 						endfor;
-						$next_numbers = $this->ordersmodel->next_numbers();
-						$this->ordersmodel->update_field($order,'numbercompletion',$next_numbers['completion'].'-О');
-						$this->ordersmodel->update_field($order,'closedate',date("Y-m-d"));
+						$next_numbers = $this->fizordersmodel->next_numbers();
+						$this->fizordersmodel->update_field($order,'numbercompletion',$next_numbers['completion'].'-О');
+						$this->fizordersmodel->update_field($order,'closedate',date("Y-m-d"));
 						
 						ob_start();
 						?>
@@ -808,22 +812,22 @@ class Physical_interface extends CI_Controller{
 						$this->email->send();
 						
 					endif;
-					redirect('audience/courses/completed');
+					redirect('physical/courses/completed');
 				endif;
 			else:
 				$this->session->set_userdata('msgr','Тест не завершен!<br/>Вы не прошли тест и ответили верно только на '.$ccanswer.'% вопросов.');
 			endif;
-			redirect('audience/courses/current/course/'.$this->uri->segment(5).'/lectures');
+			redirect('physical/courses/current/course/'.$this->uri->segment(5).'/lectures');
 		endif;
-		$this->load->view("audience_interface/courses-chapter-testing",$pagevar);
+		$this->load->view("physical_interface/courses/testing",$pagevar);
 	}
 	
 	public function courses_lecture(){
 		
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
+		if(!$this->fizcoursemodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к лекциям курса.');
-			redirect('audience/courses/current');
+			redirect('physical/courses/current');
 		endif;
 		
 		$pagevar = array(
@@ -834,16 +838,16 @@ class Physical_interface extends CI_Controller{
 					'loginstatus'	=> $this->loginstatus,
 					'userinfo'		=> $this->user,
 					'lecture'		=> $this->lecturesmodel->read_record($this->uri->segment(7)),
-					'course'		=> $this->fizunionmodel->read_audience_currect_course($this->user['uid'],$course,0),
+					'course'		=> $this->fizunionmodel->read_physical_currect_course($this->user['uid'],$course,0),
 					'file_exist'	=> TRUE,
-					'filesize'		=> 'Размер не определен.',
+					'filesize'		=> 'Размер не определен',
 					'filename'		=> 'Имя не определено. Возможно файл отсутствует на диске или не доступен',
-					'fileextension'	=> 'Hасширение не определено.',
+					'fileextension'	=> 'Hасширение не определено',
 					'docvalue'		=> '',
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
-		$pagevar['title'] .= 'Содержание курса "'.$pagevar['course']['code'].'. '.$pagevar['course']['title'].'"'; 
+		$pagevar['title'] .= 'Содержание курса "'.$pagevar['course']['code'].'. '.$pagevar['course']['title'].'"';
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 
@@ -863,30 +867,30 @@ class Physical_interface extends CI_Controller{
 			$pagevar['msgr'] = 'Не возможно получить доступ к лекции. Возможно файл отсутствует на диске или не доступен.';
 		endif;
 		
-		if($pagevar['filesize'] > 1048576):
+		if(is_numeric($pagevar['filesize']) && $pagevar['filesize'] > 1048576):
 			$pagevar['filesize'] = round($pagevar['filesize']/1048576,2).' Мбайт';
-		elseif($pagevar['filesize'] > 1024):
+		elseif(is_numeric($pagevar['filesize']) && $pagevar['filesize'] > 1024):
 			$pagevar['filesize'] = round($pagevar['filesize']/1024,1).' кбайт';
-		elseif($pagevar['filesize'] < 1024):
+		elseif(is_numeric($pagevar['filesize']) && $pagevar['filesize'] < 1024):
 			$pagevar['filesize'] = $pagevar['filesize'].' байт';
 		endif;
 		
-		$this->load->view("audience_interface/audience-lecture-card",$pagevar);
+		$this->load->view("physical_interface/courses/lecture-card",$pagevar);
 	}
 	
 	public function get_document(){
 		
 		$lecture = $this->uri->segment(7);
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
+		if(!$this->fizcoursemodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к лекции курса.');
-			redirect('audience/courses/current');
+			redirect('physical/courses/current');
 		endif;
 		$this->load->helper('download');
 		$file = getcwd().'/'.$this->lecturesmodel->read_field($lecture,'document');
 		if(!file_exists($file)):
-			$this->session->set_userdata('msgr','Ошибка при загузке лекции. Отсутствует файл на сервере. Обратитесь к администрации сайта.');
-			redirect('audience/courses/current/course/'.$course.'/lecture/'.$lecture);
+			$this->session->set_userdata('msgr','Ошибка при загузке лекции.<br/>Отсутствует файл на сервере. Обратитесь к администрации сайта.');
+			redirect('physical/courses/current/course/'.$course.'/lecture/'.$lecture);
 		endif;
 		$data = file_get_contents($file);
 		$fileexp = explode('/',$this->lecturesmodel->read_field($lecture,'document'));
@@ -897,23 +901,23 @@ class Physical_interface extends CI_Controller{
 			force_download($filename,$data);
 		else:
 			$this->session->set_userdata('msgr','Ошибка при загузке лекции. Обратитесь к администрации сайта.');
-			redirect('audience/courses/current/course/'.$course.'/lecture/'.$lecture);
+			redirect('physical/courses/current/course/'.$course.'/lecture/'.$lecture);
 		endif;
 	}
 	
 	public function get_libraries(){
 		
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
+		if(!$this->fizcoursemodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к списку литературы курса.');
-			redirect('audience/courses/current');
+			redirect('physical/courses/current');
 		endif;
 		
 		$this->load->helper('download');
 		$file = getcwd().'/'.$this->fizunionmodel->read_course_libraries($this->user['uid'],$course,0);
 		if(!file_exists($file)):
-			$this->session->set_userdata('msgr','Ошибка при загузке списка литературы. Отсутствует файл на сервере. Обратитесь к администрации сайта.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			$this->session->set_userdata('msgr','Ошибка при загузке списка литературы.<br/>Отсутствует файл на сервере. Обратитесь к администрации сайта.');
+			redirect('physical/courses/current/course/'.$course.'/lectures');
 		endif;
 		$data = file_get_contents($file);
 		$fileexp = explode('/',$this->fizunionmodel->read_course_libraries($this->user['uid'],$course,0));
@@ -924,23 +928,23 @@ class Physical_interface extends CI_Controller{
 			force_download($filename,$data);
 		else:
 			$this->session->set_userdata('msgr','Ошибка при загузке списка литературы. Обратитесь к администрации сайта.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			redirect('physical/courses/current/course/'.$course.'/lectures');
 		endif;
 	}
 	
 	public function get_curriculum(){
 		
 		$course = $this->uri->segment(5);
-		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
+		if(!$this->fizcoursemodel->owner_audience($course,$this->user['uid'],0)):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к учебному плану курса.');
-			redirect('audience/courses/current');
+			redirect('physical/courses/current');
 		endif;
 		
 		$this->load->helper('download');
 		$file = getcwd().'/'.$this->fizunionmodel->read_course_curriculum($this->user['uid'],$course,0);
 		if(!file_exists($file)):
-			$this->session->set_userdata('msgr','Ошибка при загузке учебного плана. Отсутствует файл на сервере. Обратитесь к администрации сайта.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			$this->session->set_userdata('msgr','Ошибка при загузке учебного плана.<br/>Отсутствует файл на сервере. Обратитесь к администрации сайта.');
+			redirect('physical/courses/current/course/'.$course.'/lectures');
 		endif;
 		$data = file_get_contents($file);
 		$fileexp = explode('/',$this->fizunionmodel->read_course_curriculum($this->user['uid'],$course,0));
@@ -951,7 +955,7 @@ class Physical_interface extends CI_Controller{
 			force_download($filename,$data);
 		else:
 			$this->session->set_userdata('msgr','Ошибка при загузке учебного плана. Обратитесь к администрации сайта.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			redirect('physical/courses/current/course/'.$course.'/lectures');
 		endif;
 	}
 	

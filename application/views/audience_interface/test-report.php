@@ -8,15 +8,15 @@
 				<h3><small>Тест:</small> <?=$test['ttitle'];?></h3>
 				<div class="accordion-inner">
 					<div style="margin-top: 10px;">
-					<pre><h4>Результат теста</h4>
-	Попыток: <?=$test['attempt'];?>
-	
-	Дата: <?=$test['attemptdate'];?>
-	
-	Затрачено: <?=$test['time'];?> мин.
-	Результат: <?=$test['result'];?>%
-	<?=($test['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
-					</pre>
+<pre><strong>Результат теста</strong>
+
+Попыток: <?=$test['attempt'];?>
+
+Дата: <?=$test['attemptdate'];?>
+
+Затрачено: <?=$test['time'];?> мин.
+Результат: <?=$test['result'];?>% <?=($test['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
+</pre>
 					</div>
 				</div>
 				<?php for($i=0;$i<count($questions);$i++):?>
@@ -59,7 +59,8 @@
 					</div>
 				<?php endfor;?>
 				<hr/>
-				<pre><h4>Условные обозначения</h4>
+<pre><strong>Условные обозначения</strong>
+
 <table class="table table-condensed">
 	<tbody>
 		<tr>

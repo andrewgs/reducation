@@ -12,7 +12,7 @@
 			<li num="deleted"><?=anchor('admin-panel/messages/deleted/orders','Удаленные заказы');?></li>
 			<li class="nav-header">Физические лица</li>
 			<li num="physical"><?=anchor('admin-panel/users/physical','Заказчики');?></li>
-			<li num="physical-search"><?=anchor('admin-panel/messages/physical-search/orders/new-search','Поиск заказа');?></li>
+			<!--<li num="physical-search"><?=anchor('admin-panel/messages/physical-search/orders/new-search','Поиск заказа');?></li>-->
 			<li num="physical-orders"><?=anchor('admin-panel/messages/physical-orders/unpaid','Заказы');?></li>
 			<li num="physical-deleted"><?=anchor('admin-panel/messages/physical-deleted/orders','Удаленные заказы');?></li>
 			<li class="nav-header">Действия</li>

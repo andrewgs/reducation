@@ -161,7 +161,7 @@ class Unionmodel extends CI_Model{
 	
 	function get_courses_examination($audorder,$audience,$status){
 		
-		$query = "SELECT tests.*, courseorder.id AS coid,audienceorder.id AS aoid,courseorder.order AS ordid,courseorder.customer AS ordcus FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN tests ON courses.id = tests.course INNER JOIN audienceorder ON courseorder.id = audienceorder.course WHERE audienceorder.id = $audorder AND audienceorder.audience = $audience AND audienceorder.status = $status AND tests.chapter = 0 AND audienceorder.start = 1";
+		$query = "SELECT tests.*, courseorder.id AS coid,audienceorder.id AS aoid,courseorder.order AS ordid,courseorder.customer AS ordcus FROM courseorder INNER JOIN courses ON courses.id=courseorder.course INNER JOIN tests ON courses.id = tests.course INNER JOIN audienceorder ON courseorder.id = audienceorder.course WHERE audienceorder.id = $audorder AND audienceorder.audience = $audience AND audienceorder.status = $status AND tests.chapter = 0 AND tests.active = 1 AND audienceorder.start = 1";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data)) return $data[0];

@@ -109,10 +109,11 @@
 							<td style="max-width:80px;" class="centerized">
 								<nobr>
 									<a class="btn btn-success discbtn" title="Свойства заказа" data-order="<?=$orders[$i]['id'];?>" data-docnumber="<?=$orders[$i]['docnumber'];?>" data-placement="<?=$orders[$i]['numberplacement'];?>" data-completion="<?=$orders[$i]['numbercompletion'];?>" data-discountval="<?=$orders[$i]['discount'];?>" data-paiddate="<?=$orders[$i]['userpaiddate'];?>" data-toggle="modal" href="#discount"><i class="icon-pencil icon-white"></i></a>
-									<a class="btn btn-danger deleteOrder" data-toggle="modal" href="#deleteOrder" title="Удалить заказ" data-order="<?=$orders[$i]['id'];?>"><i class="icon-trash icon-white"></i></a>
-								</nobr><br/>
+									<a class="btn btn-danger deleteOrder" data-toggle="modal" href="#deleteOrder" title="Удалить заказ" data-order="<?=$orders[$i]['id'];?>"><i class="icon-trash icon-white"></i></a><br/>
 									<a class="btn btn-info SendMail" idp="smpaid" title="Уведомить об оплате" data-order="<?=$orders[$i]['id'];?>"><i class="icon-envelope icon-white"></i></a>
 									<a class="btn btn-warning SendMail smtext" idp="smtext" title="Уведомить о тестировании" data-order="<?=$orders[$i]['id'];?>"><i class="icon-envelope icon-white"></i></a><br/>
+								</nobr>
+								<div class="chkMail" data-order="<?=$orders[$i]['id'];?>"></div><br/>
 								<nobr><input type="checkbox" value="1" <?=($orders[$i]['paid'])?'checked="checked"':'';?> data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" title="Признак оплаты" class="chAccess"> Оплачено</nobr>
 							</td>
 						</tr>
@@ -171,7 +172,7 @@
 				var order = $(this).attr('data-order');
 				var obj = $(this);
 				var smtype = $(this).attr('idp');
-				$.post("<?=$baseurl;?>admin-panel/messages/physical-orders/send-mail",{'order':order,'smtype':smtype},function(data){$(".smtext[data-order = '"+order+"']").after(data.retvalue);},"json");
+				$.post("<?=$baseurl;?>admin-panel/messages/physical-orders/send-mail",{'order':order,'smtype':smtype},function(data){$(".chkMail[data-order = '"+order+"']").after(data.retvalue);},"json");
 			});
 			
 			var Order = 0;

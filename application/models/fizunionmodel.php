@@ -33,9 +33,9 @@ class Fizunionmodel extends CI_Model{
 		return NULL;
 	}
 	
-	function read_caudience_records($order){
+	function read_cphysical_records($order){
 		
-		$query = "SELECT fizcourse.*,audience.lastname,audience.name,audience.middlename,audience.specialty FROM fizcourse INNER JOIN audience ON fizcourse.audience=audience.id WHERE fizcourse.order = $order ORDER BY fizcourse.id";
+		$query = "SELECT fizcourse.*,physical.lastname,physical.name,physical.middlename,physical.specialty FROM fizcourse INNER JOIN physical ON fizcourse.physical=physical.id WHERE fizcourse.order = $order ORDER BY fizcourse.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
@@ -59,19 +59,28 @@ class Fizunionmodel extends CI_Model{
 		if(count($data)) return $data;
 		return NULL;
 	}
-
-	function read_fullinfo_report($course,$order,$audience){
+	
+	function read_fullinfo_physical($order){
 		
-		$query = "SELECT fizcourse.*,audience.lastname,audience.name,audience.middlename,audience.specialty,audience.personaemail,audience.position,physical.fio,courses.code AS ccode,courses.title AS ctitle,tests.title AS ttitle FROM fizcourse INNER JOIN audience ON fizcourse.audience = audience.id INNER JOIN fizcourseorder ON fizcourse.course=fizcourseorder.id INNER JOIN physical ON fizcourse.physical = physical.id,courses,tests WHERE fizcourse.order = $order AND fizcourse.id = $course AND fizcourse.audience = $audience AND fizcourseorder.course = courses.id AND fizcourse.status = 1 AND courses.id = tests.course ORDER BY fizcourse.id";
+		$query = "SELECT fizcourse.*,physical.fio,physical.inn,physical.postaddress,fizorders.id AS ordid,fizorders.orderdate,fizorders.userpaiddate,fizorders.price AS ordprice,fizorders.paid,fizorders.paiddate,fizorders.discount,fizorders.docnumber,courses.code AS ccode,courses.title AS ctitle,courses.hours AS chours,courses.price AS сprice FROM fizcourse INNER JOIN physical ON fizcourse.physical=physical.id INNER JOIN fizcourseorder ON fizcourse.course=fizcourseorder.id INNER JOIN fizorders ON fizcourse.order = fizorders.id, courses WHERE fizcourse.order = $order AND fizcourseorder.course = courses.id ORDER BY fizcourse.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
-		if(isset($data)) return $data[0];
+		if(count($data)) return $data;
+		return NULL;
+	}
+	
+	function read_fullinfo_report($course,$physical){
+		
+		$query = "SELECT fizcourse.*,physical.fio,physical.email,courses.code AS ccode,courses.title AS ctitle,tests.title AS ttitle FROM fizcourse INNER JOIN physical ON fizcourse.physical = physical.id INNER JOIN fizcourseorder ON fizcourse.course=fizcourseorder.id,courses,tests WHERE fizcourse.id = $course AND fizcourse.physical = $physical AND fizcourseorder.course = courses.id AND fizcourse.status = 1 AND courses.id = tests.course GROUP BY fizcourse.id ORDER BY fizcourse.id ";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0];
 		return NULL;
 	}
 	
 	function result_course($course){
 		
-		$query = "SELECT fizcourse.*,audience.lastname,audience.name,audience.middlename,audience.specialty,audience.position FROM fizcourse INNER JOIN audience ON fizcourse.audience=audience.id WHERE fizcourse.course = $course ORDER BY fizcourse.id";
+		$query = "SELECT fizcourse.*,physical.fio FROM fizcourse INNER JOIN physical ON fizcourse.physical=physical.id WHERE fizcourse.course = $course ORDER BY fizcourse.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data[0];
@@ -105,54 +114,54 @@ class Fizunionmodel extends CI_Model{
 		return NULL;
 	}
 	
-	function read_audience_currect_course($audience,$course,$status){
+	function read_physical_currect_course($physical,$course,$status){
 		
-		$query = "SELECT fizcourse.order AS ordid, courses.id,courses.title,courses.code,courses.trend,courses.hours,fizcourse.start,fizcourse.course FROM fizcourseorder INNER JOIN courses ON courses.id=fizcourseorder.course INNER JOIN fizcourse ON fizcourse.course = fizcourseorder.id INNER JOIN fizorders ON fizcourseorder.order=fizorders.id WHERE fizcourse.audience = $audience AND fizcourse.id = $course AND fizcourse.status = $status AND fizorders.paid = 1";
+		$query = "SELECT fizcourse.order AS ordid, courses.id,courses.title,courses.code,courses.trend,courses.hours,fizcourse.start,fizcourse.course FROM fizcourseorder INNER JOIN courses ON courses.id = fizcourseorder.course INNER JOIN fizcourse ON fizcourse.course = fizcourseorder.id INNER JOIN fizorders ON fizcourseorder.order=fizorders.id WHERE fizcourse.physical = $physical AND fizcourse.id = $course AND fizcourse.status = $status AND fizorders.paid = 1";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data)) return $data[0];
 		return NULL;
 	}
 	
-	function read_course_libraries($audience,$course,$status){
+	function read_course_libraries($physical,$course,$status){
 		
-		$query = "SELECT courses.libraries FROM fizcourseorder INNER JOIN courses ON courses.id=fizcourseorder.course INNER JOIN fizcourse ON fizcourse.course = fizcourseorder.id INNER JOIN fizorders ON fizcourseorder.order=fizorders.id WHERE fizcourse.audience = $audience AND fizcourse.id = $course AND fizcourse.status = $status AND fizorders.paid = 1";
+		$query = "SELECT courses.libraries FROM fizcourseorder INNER JOIN courses ON courses.id=fizcourseorder.course INNER JOIN fizcourse ON fizcourse.course = fizcourseorder.id INNER JOIN fizorders ON fizcourseorder.order=fizorders.id WHERE fizcourse.physical = $physical AND fizcourse.id = $course AND fizcourse.status = $status AND fizorders.paid = 1";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data)) return $data[0]['libraries'];
 		return NULL;
 	}
 	
-	function read_course_curriculum($audience,$course,$status){
+	function read_course_curriculum($physical,$course,$status){
 		
-		$query = "SELECT courses.curriculum FROM fizcourseorder INNER JOIN courses ON courses.id=fizcourseorder.course INNER JOIN fizcourse ON fizcourse.course = fizcourseorder.id INNER JOIN fizorders ON fizcourseorder.order=fizorders.id WHERE fizcourse.audience = $audience AND fizcourse.id = $course AND fizcourse.status = $status AND fizorders.paid = 1";
+		$query = "SELECT courses.curriculum FROM fizcourseorder INNER JOIN courses ON courses.id=fizcourseorder.course INNER JOIN fizcourse ON fizcourse.course = fizcourseorder.id INNER JOIN fizorders ON fizcourseorder.order=fizorders.id WHERE fizcourse.physical = $physical AND fizcourse.id = $course AND fizcourse.status = $status AND fizorders.paid = 1";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data)) return $data[0]['curriculum'];
 		return NULL;
 	}
 	
-	function get_courses_test($audorder,$audience,$status){
+	function get_courses_test($audorder,$physical,$status){
 		
-		$query = "SELECT tests.*, fizcourseorder.id AS coid,fizcourse.id AS aoid,fizcourseorder.order AS ordid,fizcourseorder.physical AS ordcus FROM fizcourseorder INNER JOIN courses ON courses.id=fizcourseorder.course INNER JOIN tests ON courses.id = tests.course INNER JOIN fizcourse ON fizcourseorder.id = fizcourse.course WHERE fizcourse.id = $audorder AND fizcourse.audience = $audience AND fizcourse.status = $status AND tests.chapter > 0 AND tests.active = 1 AND fizcourse.start = 1";
+		$query = "SELECT tests.*,fizcourseorder.id AS fcoid,fizcourse.id AS fcid,fizcourseorder.order AS foid FROM fizcourseorder INNER JOIN fizcourse ON fizcourseorder.id = fizcourse.course INNER JOIN courses ON courses.id = fizcourseorder.course INNER JOIN tests ON courses.id = tests.course WHERE fizcourse.id = $audorder AND fizcourse.physical = $physical AND fizcourse.status = $status AND tests.chapter > 0 AND tests.active =1 AND fizcourse.start = 1";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)>0) return $data;
 		return NULL;
 	}
 	
-	function get_courses_examination($audorder,$audience,$status){
+	function get_courses_examination($audorder,$physical,$status){
 		
-		$query = "SELECT tests.*, fizcourseorder.id AS coid,fizcourse.id AS aoid,fizcourseorder.order AS ordid,fizcourseorder.physical AS ordcus FROM fizcourseorder INNER JOIN courses ON courses.id=fizcourseorder.course INNER JOIN tests ON courses.id = tests.course INNER JOIN fizcourse ON fizcourseorder.id = fizcourse.course WHERE fizcourse.id = $audorder AND fizcourse.audience = $audience AND fizcourse.status = $status AND tests.chapter = 0 AND fizcourse.start = 1";
+		$query = "SELECT tests.*,fizcourseorder.id AS fcoid,fizcourse.id AS fcid,fizcourseorder.order AS foid FROM fizcourseorder INNER JOIN fizcourse ON fizcourseorder.id = fizcourse.course INNER JOIN courses ON courses.id = fizcourseorder.course INNER JOIN tests ON courses.id = tests.course WHERE fizcourse.id = $audorder AND fizcourse.physical = $physical AND fizcourse.status = $status AND tests.chapter = 0 AND tests.active =1 AND fizcourse.start = 1";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data)) return $data[0];
 		return NULL;
 	}
 
-	function read_audience_testing($id,$audience,$course){
+	function read_physical_testing($id,$physical,$course){
 		
-		$query = "SELECT tests.id AS tid,tests.title AS ttitle,tests.count AS tcount,tests.timetest AS ttime, audiencetest.* FROM audiencetest INNER JOIN tests ON audiencetest.test = tests.id WHERE audiencetest.audience = $audience AND audiencetest.id = $id AND audiencetest.course = $course";
+		$query = "SELECT tests.id AS tid,tests.title AS ttitle,tests.count AS tcount,tests.timetest AS ttime, fiztest.* FROM fiztest INNER JOIN tests ON fiztest.test = tests.id WHERE fiztest.physical = $physical AND fiztest.id = $id AND fiztest.course = $course";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data)) return $data[0];
@@ -179,7 +188,7 @@ class Fizunionmodel extends CI_Model{
 	
 	function read_physical_deactive_orders($field,$sort,$count,$from){
 		
-		$query = "SELECT fizorders.*,physical.id AS cid,physical.fio,physical.email,physical.phones,physical.online FROM fizorders INNER JOIN physical ON fizorders.physical = physical.id INNER JOIN audiencetest ON fizorders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 60 AND fizorders.closedate != '0000-00-00' AND fizorders.numbercompletion != '' AND fizorders.deleted = 0 GROUP BY fizorders.id ORDER BY $field $sort LIMIT $from,$count";
+		$query = "SELECT fizorders.*,physical.id AS cid,physical.fio,physical.email,physical.phones,physical.online FROM fizorders INNER JOIN physical ON fizorders.physical = physical.id INNER JOIN fiztest ON fizorders.id = fiztest.order WHERE fiztest.chapter = 0 AND fiztest.result >= 60 AND fizorders.closedate != '0000-00-00' AND fizorders.numbercompletion != '' AND fizorders.deleted = 0 GROUP BY fizorders.id ORDER BY $field $sort LIMIT $from,$count";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
@@ -188,7 +197,7 @@ class Fizunionmodel extends CI_Model{
 	
 	function count_physical_deactive_orders(){
 		
-		$query = "SELECT fizorders.*,physical.id AS cid,physical.fio,physical.email,physical.online FROM fizorders INNER JOIN physical ON fizorders.physical = physical.id INNER JOIN audiencetest ON fizorders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 60 AND fizorders.closedate != '0000-00-00' AND fizorders.numbercompletion != '' AND fizorders.deleted = 0 GROUP BY fizorders.id ORDER BY fizorders.orderdate DESC,fizorders.id DESC";
+		$query = "SELECT fizorders.*,physical.id AS cid,physical.fio,physical.email,physical.online FROM fizorders INNER JOIN physical ON fizorders.physical = physical.id INNER JOIN fiztest ON fizorders.id = fiztest.order WHERE fiztest.chapter = 0 AND fiztest.result >= 60 AND fizorders.closedate != '0000-00-00' AND fizorders.numbercompletion != '' AND fizorders.deleted = 0 GROUP BY fizorders.id ORDER BY fizorders.orderdate DESC,fizorders.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return count($data);
@@ -215,7 +224,7 @@ class Fizunionmodel extends CI_Model{
 
 	function count_deactive_order($order){
 		
-		$query = "SELECT COUNT(audiencetest.id) AS cnt FROM fizorders INNER JOIN physical ON fizorders.physical = physical.id INNER JOIN audiencetest ON fizorders.id = audiencetest.order WHERE audiencetest.chapter = 0 AND audiencetest.result >= 70 AND fizorders.id = $order GROUP BY fizorders.id";
+		$query = "SELECT COUNT(fiztest.id) AS cnt FROM fizorders INNER JOIN physical ON fizorders.physical = physical.id INNER JOIN fiztest ON fizorders.id = fiztest.order WHERE fiztest.chapter = 0 AND fiztest.result >= 70 AND fizorders.id = $order GROUP BY fizorders.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data[0]['cnt'];
@@ -305,7 +314,7 @@ class Fizunionmodel extends CI_Model{
 	
 	function read_testing_order($order){
 		
-		$query = "SELECT fizcourse.*,courses.code AS ccode,courses.title AS ctitle,audience.id AS audid,audience.lastname,audience.name,audience.middlename FROM fizcourse INNER JOIN audience ON fizcourse.audience = audience.id INNER JOIN fizcourseorder ON fizcourse.course = fizcourseorder.id, courses WHERE fizcourse.order = $order AND fizcourseorder.course = courses.id ORDER BY fizcourse.id DESC";
+		$query = "SELECT fizcourse.*,courses.code AS ccode,courses.title AS ctitle,physical.id AS audid,physical.fio FROM fizcourse INNER JOIN physical ON fizcourse.physical = physical.id INNER JOIN fizcourseorder ON fizcourse.course = fizcourseorder.id, courses WHERE fizcourse.order = $order AND fizcourseorder.course = courses.id ORDER BY fizcourse.id DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;

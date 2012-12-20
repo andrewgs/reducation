@@ -11,14 +11,14 @@
 						<?=anchor($this->uri->uri_string(),'Мои текущие курсы');?>
 					</li>
 				</ul>
+			<?php if(!count($courses)):?>
 				<div class="alert alert-info" id="msgialert">
 					<a class="close" id="msgiclose">×</a>
 					<h4 class="alert-heading">Информация</h4>
-				<?php if(!count($courses)):?>
 					Курсы отсутствуют!<br/>
 					<?=anchor('physical/registration/ordering','<span class="label label-important">Оформить заказ &rarr;</span>')?>
-				<?php endif;?>
 				</div>
+			<?php endif;?>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
@@ -31,34 +31,25 @@
 								Курс: <?=$courses[$i]['code'].'. '.$courses[$i]['title'];?>
 							</a>
 						</div>
-					<?php if(!$i):?>	
+					<?php if(!$i):?>
 						<div id="collapse<?=$i;?>" class="accordion-body collapse in">
 					<?php else:?>
 						<div id="collapse<?=$i;?>" class="accordion-body collapse">
 					<?php endif;?>
 							<div class="accordion-inner">
 <pre>
-Длительность курса: <?=$courses[$i]['hours'];?> час.
+Длительность курса: <?=$courses[$i]['hours'];?> час.                                                <?php if($courses[$i]['start']):?><?php if($courses[$i]['lectures']):?><?=anchor('physical/courses/current/course/'.$courses[$i]['aud'].'/lectures/','&nbsp;&nbsp;Читать лекции&nbsp;&nbsp;',array('class'=>'btn btn-info'));?><?php endif;?><?php else:?><?=anchor($this->uri->uri_string().'/start-training/'.$courses[$i]['aud'],'Начать обучение',array('class'=>'btn btn-success'));?><?php endif;?>
+
 Количество глав: <?=$courses[$i]['chapter'];?>
 
 Количество промежуточных тестов: <?=$courses[$i]['tests'];?>
 
 Количество лекций: <?=$courses[$i]['lectures'];?>
-
-
-<?php if($courses[$i]['start']):?>
-	<?php if($courses[$i]['lectures']):?>											<?=anchor('audience/courses/current/course/'.$courses[$i]['aud'].'/lectures/','Читать лекции',array('class'=>'btn btn-info'));?>
-	<?php endif;?>
-	<?php else:?>
-	
-												<?=anchor($this->uri->uri_string().'/start-training/'.$courses[$i]['aud'],'Начать обучение',array('class'=>'btn btn-success'));?>
-<?php endif;?>
 </pre>	
 					<?php if(isset($courses[$i]['test']['attempt'])):?>
 						<?php if($courses[$i]['test']['attempt'] > 0):?>
 								<div style="margin-top: 10px;">
-<pre>
-<h4>Результат теста</h4>
+<pre><strong>Результат теста</strong>
 Попытка: <?=$courses[$i]['test']['attempt'];?> из <?=$courses[$i]['test']['count'];?> 
 Затрачено: <?=$courses[$i]['test']['time'];?> мин.
 Результат: <?=$courses[$i]['test']['result'];?>% <?=($courses[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>

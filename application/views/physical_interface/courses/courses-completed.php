@@ -11,19 +11,19 @@
 						<?=anchor($this->uri->uri_string(),'Мои пройденные курсы');?>
 					</li>
 				</ul>
+			<?php if(!count($courses)):?>
 				<div class="alert alert-info" id="msgialert">
 					<a class="close" id="msgiclose">×</a>
 					<h4 class="alert-heading">Информация</h4>
-				<?php if(!count($courses)):?>
 					Курсы отсутствуют!<br/>
-				<?php endif;?>
 				</div>
+			<?php endif;?>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
 				 <div class="accordion" id="accordion">
-				 <?php for($i=0;$i<count($courses);$i++):?> 
+				 <?php for($i=0;$i<count($courses);$i++):?>
 					<div class="accordion-group">
 						<div class="accordion-heading">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<?=$i;?>">
@@ -48,15 +48,13 @@
 					<?php if(isset($courses[$i]['test']['attempt'])):?>
 						<?php if($courses[$i]['test']['attempt'] > 0):?>
 								<div style="margin-top: 10px;">
-									<pre>
-	<h4>Результат теста</h4>
-	Попытка: <?=$courses[$i]['test']['attempt'];?> из <?=$courses[$i]['test']['count'];?>
+<pre><strong>Результат теста</strong>                                                      <?=anchor('physical/courses/'.$courses[$i]['aud'].'/test-report/id/'.$courses[$i]['test']['tresid'],'Просмотреть результат',array('class'=>'btn btn-success','target'=>'_blank'));?>
+
+Попытка: <?=$courses[$i]['test']['attempt'];?> из <?=$courses[$i]['test']['count'];?>
 	
-	Затрачено: <?=$courses[$i]['test']['time'];?> мин.
-	Результат: <?=$courses[$i]['test']['result'];?>%
-	<?=($courses[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
-	
-	<?=anchor('audience/courses/'.$courses[$i]['aud'].'/test-report/id/'.$courses[$i]['test']['tresid'],'Просмотреть результат',array('class'=>'btn btn-success','target'=>'_blank'));?></pre>
+Затрачено: <?=$courses[$i]['test']['time'];?> мин.
+Результат: <?=$courses[$i]['test']['result'];?>% <?=($courses[$i]['test']['result'] > 60) ? '<font style="color:#0000ff">(зачет)</font>' : '<font style="color:#ff0000">(незачет)</font>';?>
+</pre>
 								</div>
 						<?php endif;?>
 					<?php endif;?>

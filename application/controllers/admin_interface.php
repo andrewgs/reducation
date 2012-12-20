@@ -29,6 +29,8 @@ class Admin_interface extends CI_Controller{
 		$this->load->model('physicalmodel');
 		$this->load->model('fizordersmodel');
 		$this->load->model('fizunionmodel');
+		$this->load->model('fizcoursemodel');
+		$this->load->model('fiztestresultsmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -1438,6 +1440,24 @@ class Admin_interface extends CI_Controller{
 		echo json_encode($statusval);
 	}
 	
+	public function search_physical(){
+		
+		$statusval = array('status'=>FALSE,'retvalue'=>'');
+		$search = $this->input->post('squery');
+		if(!$search) show_404();
+		$customers = $this->physicalmodel->search_physical(htmlspecialchars($search));
+		if($customers):
+			$statusval['retvalue'] = '<ul>';
+			for($i=0;$i<count($customers);$i++):
+				$customers[$i]['organization'] = $customers[$i]['fio'];
+				$statusval['retvalue'] .= '<li class="custorg" data-cusid="'.$customers[$i]['id'].'">'.$customers[$i]['organization'].'</li>';
+			endfor;
+			$statusval['retvalue'] .= '</ul>';
+			$statusval['status'] = TRUE;
+		endif;
+		echo json_encode($statusval);
+	}
+	
 	public function search_audience(){
 		
 		$statusval = array('status'=>FALSE,'retvalue'=>'');
@@ -1455,7 +1475,7 @@ class Admin_interface extends CI_Controller{
 		endif;
 		echo json_encode($statusval);
 	}
-
+	
 	public function orders_paid(){
 	
 		$order = $this->input->post('order');
@@ -1618,7 +1638,7 @@ class Admin_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		for($i=0;$i<count($pagevar['audcourses']);$i++):
 			if($pagevar['audcourses'][$i]['status']):
-				$pagevar['audcourses'][$i]['dateover'] = $this->operation_date($pagevar['audcourses'][$i]['dateover']);
+				$pagevar['audcourses'][$i]['dateover'] = $this->operation_dot_date($pagevar['audcourses'][$i]['dateover']);
 			else:
 				$pagevar['audcourses'][$i]['dateover'] = 'не пройден';
 			endif;
@@ -2967,7 +2987,384 @@ class Admin_interface extends CI_Controller{
 		$this->session->set_userdata('msgs','Заказ восстановлен.');
 		redirect($_SERVER['HTTP_REFERER']);
 	}
+
+	public function fiz_statement(){
+		
+		$order = $this->uri->segment(5);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Ведомость итог.тестирования',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'datebegin'		=> $this->fizordersmodel->read_field($order,'paiddate'),
+					'dateend'		=> $this->fizordersmodel->read_field($order,'closedate'),
+					'hours'			=> 0,
+					'courses'		=> $this->fizunionmodel->read_course_physical_records($order)
+			);
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		if($pagevar['dateend'] != '0000-00-00'):
+			if($pagevar['dateend'] > date("Y-m-d")):
+				$pagevar['dateend'] = '0000-00-00';
+			endif;
+		endif;
+		if($pagevar['dateend'] != "0000-00-00"):
+			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
+		else:
+			$pagevar['dateend'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		for($i=0;$i<count($pagevar['courses']);$i++):
+			if($pagevar['courses'][$i]['status']):
+				$pagevar['courses'][$i]['dateover'] = $this->operation_dot_date($pagevar['courses'][$i]['dateover']);
+			else:
+				$pagevar['courses'][$i]['dateover'] = 'обучение не пройдено';
+			endif;
+			if(!$pagevar['courses'][$i]['start']):
+				$pagevar['courses'][$i]['dateover'] = 'обучение не начато';
+			endif;
+		endfor;
+		if(isset($pagevar['courses'][0]['chours'])):
+			$pagevar['hours'] = $pagevar['courses'][0]['chours'];
+		endif;
+		$this->load->view("admin_interface/physical/documents/statement",$pagevar);
+	}
 	
+	public function fiz_completion(){
+	
+		$order = $this->uri->segment(5);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Приказ об окончании',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'datebegin'		=> $this->fizordersmodel->read_field($order,'paiddate'),
+					'dateend'		=> $this->fizordersmodel->read_field($order,'closedate'),
+					'hours'			=> 0,
+					'ncompletion'	=> $this->fizordersmodel->read_field($order,'numbercompletion'),
+					'courses'		=> $this->fizunionmodel->read_course_physical_records($order)
+			);
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		if($pagevar['dateend'] != '0000-00-00'):
+			if($pagevar['dateend'] > date("Y-m-d")):
+				$pagevar['dateend'] = '0000-00-00';
+			endif;
+		endif;
+		if($pagevar['dateend'] != "0000-00-00"):
+			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
+		else:
+			$pagevar['dateend'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		for($i=0;$i<count($pagevar['courses']);$i++):
+			if($pagevar['courses'][$i]['status']):
+				$pagevar['courses'][$i]['dateover'] = $this->operation_date($pagevar['courses'][$i]['dateover']);
+			else:
+				$pagevar['courses'][$i]['dateover'] = 'обучение не пройдено';
+			endif;
+		endfor;
+		if(isset($pagevar['courses'][0]['chours'])):
+			$pagevar['hours'] = $pagevar['courses'][0]['chours'];
+		endif;
+		$this->load->view("admin_interface/physical/documents/completion",$pagevar);
+	}
+	
+	public function fiz_admission(){
+	
+		$order = $this->uri->segment(5);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Приказ о зачислении',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'datebegin'		=> $this->fizordersmodel->read_field($order,'paiddate'),
+					'nplacement'	=> $this->fizordersmodel->read_field($order,'numberplacement'),
+					'courses'		=> $this->fizunionmodel->read_course_physical_records($order)
+			);
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		for($i=0;$i<count($pagevar['courses']);$i++):
+			if($pagevar['courses'][$i]['status']):
+				$pagevar['courses'][$i]['dateover'] = $this->operation_date($pagevar['courses'][$i]['dateover']);
+			else:
+				$pagevar['courses'][$i]['dateover'] = 'обучение не пройдено';
+			endif;
+		endfor;
+		$this->load->view("admin_interface/physical/documents/admission",$pagevar);
+	}
+	
+	public function fiz_registry(){
+	
+		$order = $this->uri->segment(5);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Реестр слушателей',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'datebegin'		=> $this->fizordersmodel->read_field($order,'paiddate'),
+					'regdateend'	=> '',
+					'dateend'		=> $this->fizordersmodel->read_field($order,'closedate'),
+					'hours'			=> 0,
+					'ncompletion'	=> $this->fizordersmodel->read_field($order,'numbercompletion'),
+					'info'			=> $this->fizunionmodel->read_fullinfo_physical($this->uri->segment(5))
+			);
+		if($pagevar['ncompletion']):
+			$pagevar['ncompletion'] = preg_replace("([^0-9])","",$pagevar['ncompletion']);
+		endif;
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		if($pagevar['dateend'] != '0000-00-00'):
+			if($pagevar['dateend'] > date("Y-m-d")):
+				$pagevar['dateend'] = '0000-00-00';
+			endif;
+		endif;
+		if($pagevar['dateend'] != "0000-00-00"):
+			$pagevar['regdateend'] = $this->operation_dot_date($pagevar['dateend']);
+			$pagevar['dateend'] = preg_split("/[ ]+/",$this->split_date($pagevar['dateend']));
+		else:
+			$pagevar['regdateend'] = 'Не завершено';
+			$pagevar['dateend'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		for($i=0;$i<count($pagevar['info']);$i++):
+			if($pagevar['info'][$i]['status']):
+				$pagevar['info'][$i]['dateover'] = $this->operation_dot_date($pagevar['info'][$i]['dateover']);
+			else:
+				$pagevar['info'][$i]['dateover'] = '---';
+			endif;
+			$pagevar['info'][$i]['orderdate'] = $this->operation_dot_date($pagevar['info'][$i]['orderdate']);
+			if($pagevar['info'][$i]['paid']):
+				$pagevar['info'][$i]['paiddate'] = $this->operation_dot_date($pagevar['info'][$i]['paiddate']);
+			else:
+				$pagevar['info'][$i]['paiddate'] = '---';
+			endif;
+				$pagevar['info'][$i]['userpaiddate'] = $this->operation_dot_date($pagevar['info'][$i]['userpaiddate']);
+		endfor;
+		if(isset($pagevar['courses'][0]['chours'])):
+			$pagevar['hours'] = $pagevar['courses'][0]['chours'];
+		endif;
+		switch ($this->uri->segment(7)):
+			case 'list-1': $this->load->view("admin_interface/physical/documents/registry-list-1",$pagevar); break;
+			case 'list-2': $this->load->view("admin_interface/physical/documents/registry-list-2",$pagevar); break;
+		endswitch;
+	}
+	
+	public function fiz_reference(){
+	
+		$order = $this->uri->segment(5);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Справка',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'datebegin'		=> $this->fizordersmodel->read_field($order,'paiddate'),
+					'customer'		=> $this->fizunionmodel->read_physical_info_order($order),
+					'courses'		=> $this->fizunionmodel->read_course_physical_records($order)
+			);
+		if($pagevar['datebegin']!='0000-00-00'):
+			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
+		else:
+			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		$this->load->view("admin_interface/physical/documents/reference",$pagevar);
+	}
+	
+	public function fiz_invoice(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'order'			=> $this->fizordersmodel->read_record($this->uri->segment(5)),
+					'course'		=> $this->fizunionmodel->read_corder_group_records($this->uri->segment(5)),
+					'customer'		=> array(),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'Счет на оплату № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		$pagevar['customer'] = $this->physicalmodel->read_record($pagevar['order']['physical']);
+		$this->load->view("physical_interface/documents/invoice",$pagevar);
+	}
+	
+	public function fiz_contract(){
+		
+		$this->uri->segment(6);
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'customer'		=> array(),
+					'order'			=> $this->fizordersmodel->read_record($this->uri->segment(5)),
+					'course'		=> $this->fizunionmodel->read_corder_group_records($this->uri->segment(5)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'Договор № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		$pagevar['customer'] = $this->physicalmodel->read_record($pagevar['order']['physical']);
+		
+		$this->load->view("physical_interface/documents/contract",$pagevar);
+	}
+	
+	public function fiz_act(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'РосЦентр ДПО - ',
+					'baseurl' 		=> base_url(),
+					'loginstatus'	=> $this->loginstatus,
+					'userinfo'		=> $this->user,
+					'customer'		=> array(),
+					'order'			=> $this->fizordersmodel->read_record($this->uri->segment(5)),
+					'course'		=> $this->fizunionmodel->read_corder_group_records($this->uri->segment(5)),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$pagevar['title'] .= 'АКТ об оказании услуг по договору № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
+		
+		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
+		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
+		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
+		if($pagevar['order']['closedate'] != "0000-00-00"):
+			$pagevar['order']['closedate'] = $this->operation_date($pagevar['order']['closedate']);
+		else:
+			$pagevar['order']['closedate'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+		endif;
+		$pagevar['customer'] = $this->physicalmodel->read_record($pagevar['order']['physical']);
+		
+		$this->load->view("physical_interface/documents/act",$pagevar);
+	}
+	
+	public function fiz_orders_testing(){
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Итоговые тесты',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'audcourses'	=> $this->fizunionmodel->read_testing_order($this->uri->segment(5)),
+					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+					'msgs'			=> $this->session->userdata('msgs'),
+					'msgr'			=> $this->session->userdata('msgr')
+			);
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		for($i=0;$i<count($pagevar['audcourses']);$i++):
+			if($pagevar['audcourses'][$i]['status']):
+				$pagevar['audcourses'][$i]['dateover'] = $this->operation_dot_date($pagevar['audcourses'][$i]['dateover']);
+			else:
+				$pagevar['audcourses'][$i]['dateover'] = 'не пройден';
+			endif;
+		endfor;
+		$this->load->view("admin_interface/physical/testing",$pagevar);
+	}
+	
+	public function fiz_test_report_full(){
+	
+		$reptest = $this->uri->segment(10);
+		$course = $this->uri->segment(8);
+		$audience = $this->uri->segment(6);
+		$order = $this->uri->segment(4);
+		if(!$this->fizcoursemodel->read_status($course)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/physical-orders/id/'.$order.'/testing');
+		endif;
+		
+		if(!$this->fiztestresultsmodel->owner_report($course,$reptest)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/physical-orders/id/'.$order.'/testing');
+		endif;
+		
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Отчет о итоговом тестировании',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'report'		=> $this->fiztestresultsmodel->read_record($reptest),
+					'audience'		=> $this->physicalmodel->read_field($audience,'fio'),
+					'test'			=> array(),
+					'questions'		=> array(),
+					'answers'		=> array()
+			);
+		
+		$pagevar['report']['dataresult'] = unserialize($pagevar['report']['dataresult']);
+		$pagevar['test'] = $this->fizunionmodel->read_physical_testing($pagevar['report']['test'],$audience,$pagevar['report']['course']);
+		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['tid']);
+		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['tid']);
+		$pagevar['test']['attemptdate'] = $this->operation_date($pagevar['test']['attemptdate']);
+		$this->load->view("admin_interface/physical/report",$pagevar);
+	}
+	
+	public function fiz_test_report_short(){
+	
+		$reptest = $this->uri->segment(10);
+		$course = $this->uri->segment(8);
+		$audience = $this->uri->segment(6);
+		$order = $this->uri->segment(4);
+		if(!$this->fizcoursemodel->read_status($course)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/physical-orders/id/'.$order.'/testing');
+		endif;
+		
+		if(!$this->fiztestresultsmodel->owner_report($course,$reptest)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к отчету.');
+			redirect('admin-panel/messages/physical-orders/id/'.$order.'/testing');
+		endif;
+		$pagevar = array(
+					'description'	=> '',
+					'author'		=> '',
+					'title'			=> 'АНО ДПО | Отчет о итоговом тестировании',
+					'baseurl' 		=> base_url(),
+					'userinfo'		=> $this->user,
+					'info'			=> $this->fizunionmodel->read_fullinfo_report($course,$audience),
+					'test'			=> array(),
+					'questions'		=> array(),
+					'answers'		=> array()
+			);
+		$pagevar['info']['dateover'] = $this->operation_date($pagevar['info']['dateover']);
+		$this->load->view("admin_interface/physical/report-short",$pagevar);
+	}
+
 	/******************************************************** functions ******************************************************/
 	
 	public function fileupload($userfile,$overwrite,$catalog){

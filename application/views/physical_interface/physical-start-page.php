@@ -23,7 +23,7 @@
 					квалификации. После оформления заказа вам необходимо его оплатить.
 				</p>
 				<p>
-					Сейчас у вас оформлено <strong><?=$orders;?> заказов</strong>. 
+					Сейчас у вас оформлено <strong><?=$orders;?> заказов</strong>.
 				</p>
 				<p>
 					<?=anchor('physical/registration/ordering','Оформить заказ &rarr;', array('class' => 'btn btn-small btn-info'));?>

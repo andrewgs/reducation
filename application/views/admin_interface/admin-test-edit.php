@@ -36,15 +36,15 @@
 						<?php for($j=0,$num=1;$j<count($answers);$j++):?>
 							<?php if($answers[$j]['testquestion'] == $questions[$i]['id']):?>
 								<tr>
-									<td class="short"><a href="#editAnswer" title="Редактировать" class="editAnswer" idanswer="<?=$answers[$j]['id'];?>" idquestion="<?=$questions[$i]['id'];?>" data-toggle="modal"><i class="icon-pencil"></i></a></td>
-									<td class="short"><?=$num;?></td>
-									<td><span idspan="st<?=$answers[$j]['id'];?>" numb="<?=$answers[$j]['number'];?>"><?=$answers[$j]['title'];?></span></td>
+									<td style="width:10px;"><a href="#editAnswer" title="Редактировать" class="editAnswer" idanswer="<?=$answers[$j]['id'];?>" idquestion="<?=$questions[$i]['id'];?>" data-toggle="modal"><i class="icon-pencil"></i></a></td>
+									<td style="width:10px;"><?=$num;?></td>
+									<td style="width:500px;"><span idspan="st<?=$answers[$j]['id'];?>" numb="<?=$answers[$j]['number'];?>"><?=$answers[$j]['title'];?></span></td>
 								<?php if($answers[$j]['correct']):?>
-									<td class="short"><i class="icon-ok-sign" title="Верный ответ" idi="i<?=$answers[$j]['id'];?>" correct="1"></i></td>
+									<td style="width:5px;"><i class="icon-ok-sign" title="Верный ответ" idi="i<?=$answers[$j]['id'];?>" correct="1"></i></td>
 								<?php else:?>
-									<td class="short"><i class="icon-remove-sign" title="Не верный ответ" idi="i<?=$answers[$j]['id'];?>" correct="0"></i></td>
+									<td style="width:5px;"><i class="icon-remove-sign" title="Не верный ответ" idi="i<?=$answers[$j]['id'];?>" correct="0"></i></td>
 								<?php endif;?>
-									<td class="short"><a class="close deleteAnswer" idanswer="<?=$answers[$j]['id'];?>" data-toggle="modal" href="#deleteAnswer">&times;</a></td>
+									<td style="width:5px;"><a class="close deleteAnswer" idanswer="<?=$answers[$j]['id'];?>" data-toggle="modal" href="#deleteAnswer">&times;</a></td>
 								</tr>
 								<?php $num++;?>
 							<?php else:?>
