@@ -12,10 +12,19 @@
 			<div class="control-group">
 				<label for="fio" class="control-label">Ф.И.О.</label>
 				<div class="controls">
-					<input type="text" id="title" class="span4 inpval" name="fio" value="<?=$physical['fio'];?>">
+					<input type="text" id="fio" class="span4 inpval" name="fio" value="<?=$physical['fio'];?>">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
+					<p class="help-block">Петров Иван Сергеевич</p>
 				</div>
 			</div>
+			<div class="control-group">
+					<label for="fiodat" class="control-label">Ф.И.О. в дательном падеже</label>
+					<div class="controls">
+						<input type="text" id="fiodat" class="span4 inpval" name="fiodat" value="<?=$physical['fiodat'];?>">
+						<span class="help-inline" style="display:none;">&nbsp;</span>
+						<p class="help-block">Петрову Ивану Сергеевичу</p>
+					</div>
+				</div>
 			<div class="control-group">
 				<label for="inn" class="control-label">ИНН</label>
 				<div class="controls">
@@ -35,6 +44,7 @@
 				<div class="controls">
 					<input type="text" class="span4 inpval" name="postaddress" value="<?=$physical['postaddress'];?>">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
+					<p class="help-block">344001, г.Ростов-на-Дону, ул.Республиканская, д.86</p>
 				</div>
 			</div>
 			<div class="control-group">
@@ -66,6 +76,7 @@
 				<div class="controls">
 					<input type="text" class="span4 inpval" name="propiska" value="<?=$physical['propiska'];?>">
 					<span class="help-inline" style="display:none;">&nbsp;</span>
+					<p class="help-block">344001, г.Ростов-на-Дону, ул.Республиканская, д.86</p>
 				</div>
 			</div>
 			<legend>

@@ -9,10 +9,8 @@
 	<?php $this->load->view('users_interface/header');?>
 	<div class="container">
 		<div class="row">
-			<div class="span12">
+			<div class="span<?=($loginstatus['status'])?'9':'12';?>">
 				<h1 class="bordered">Курсы повышения квалификации специалистов</h1>
-			</div>
-			<div class="span10">
 				<p>
 					В рамках программы подготовки специалистов для реального сектора экономики, Южно-окружной центр 
 					повышения квалификации и переподготовки кадров для строительного и жилищно-коммунального комплекса, 
@@ -38,9 +36,21 @@
 					квалификации инженеров и строителей  — для тех, кому необходимо углубить и расширить уже имеющиеся профессиональные знания и навыки.
 				</p>
 			</div>
+		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
+			<?php $this->load->view('users_interface/rightbarcus');?>
+		<?php endif;?>
+		<?php if($loginstatus['status'] && $loginstatus['slu']):?>
+			<?php $this->load->view('users_interface/rightbaraud');?>
+		<?php endif;?>
+		<?php if($loginstatus['status'] && $loginstatus['adm']):?>
+			<?php $this->load->view('users_interface/rightbaradm');?>
+		<?php endif;?>
+		<?php if($loginstatus['status'] && $loginstatus['fiz']):?>
+			<?php $this->load->view('users_interface/rightbarfiz');?>
+		<?php endif;?>
 		</div>
 		<div class="row">
-			<div class="span9">
+			<div class="span12">
 				<h2 class="inline-left">Список курсов</h2> 
 				<div class="btn-toolbar inline-right">
 					<div class="btn-group">
@@ -107,15 +117,7 @@
 				</div>
 				-->
 			</div>
-		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
-			<?php $this->load->view('users_interface/rightbarcus');?>
-		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['slu']):?>
-			<?php $this->load->view('users_interface/rightbaraud');?>
-		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['adm']):?>
-			<?php $this->load->view('users_interface/rightbaradm');?>
-		<?php endif;?>
+		
 		</div>
 		<hr>
 	<?php $this->load->view('users_interface/footer');?>	

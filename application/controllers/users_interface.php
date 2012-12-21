@@ -333,6 +333,7 @@ class Users_interface extends CI_Controller{
 		if($this->input->post('submit')):
 			unset($_POST['submit']);
 			$this->form_validation->set_rules('fio',' ','required|trim');
+			$this->form_validation->set_rules('fiodat',' ','required|trim');
 			$this->form_validation->set_rules('inn',' ','required|trim');
 			$this->form_validation->set_rules('phones',' ','required|trim');
 			$this->form_validation->set_rules('postaddress',' ','required|trim');
@@ -377,7 +378,7 @@ class Users_interface extends CI_Controller{
 					<li>Договор на оказание образовательных услуг</li>
 				</ol>
 				<p>
-					После оплаты заказа мы оформим весь пакет документов, а слушатели будут зачислены на обучение. 
+					После оплаты заказа мы оформим весь пакет документов, а Вы будете зачислены на обучение. 
 					Обучение будет осуществляться через личный кабинет слушателя. Для входа в личный кабинет используйте 
 					созданный для вас логин и пароль.
 				</p>

@@ -7,6 +7,7 @@ class Physicalmodel extends CI_Model{
 	var $password		= '';
 	var $cryptpassword	= '';
 	var $fio			= '';
+	var $fiodat			= '';
 	var $inn			= '';
 	var $phones			= '';
 	var $postaddress	= '';
@@ -33,6 +34,7 @@ class Physicalmodel extends CI_Model{
 		$this->password 		= $data['password'];
 		$this->cryptpassword 	= $data['cryptpassword'];
 		$this->fio 				= $data['fio'];
+		$this->fiodat 				= $data['fiodat'];
 		$this->phones 			= $data['phones'];
 		$this->inn 				= $data['inn'];
 		$this->postaddress		= $data['postaddress'];
@@ -107,6 +109,7 @@ class Physicalmodel extends CI_Model{
 	function update_record($id,$data){
 		
 		$this->db->set('fio',$data['fio']);
+		$this->db->set('fiodat',$data['fiodat']);
 		$this->db->set('phones',$data['phones']);
 		$this->db->set('inn',$data['inn']);
 		$this->db->set('postaddress',strip_tags($data['postaddress']));

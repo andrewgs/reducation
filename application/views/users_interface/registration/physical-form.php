@@ -17,6 +17,15 @@
 					<div class="controls">
 						<input type="text" class="span3 inpval" name="fio" value=""> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
+						<p class="help-block">Петров Иван Сергеевич</p>
+					</div>
+				</div>
+				<div class="control-group">
+					<label for="fiodat" class="control-label">Ф.И.О. в дательном падеже</label>
+					<div class="controls">
+						<input type="text" class="span3 inpval" name="fiodat" value=""> <span class="badge badge-info">!</span>
+						<span class="help-inline" style="display:none;">&nbsp;</span>
+						<p class="help-block">Петрову Ивану Сергеевичу</p>
 					</div>
 				</div>
 				<div class="control-group">
@@ -38,6 +47,7 @@
 					<div class="controls">
 						<input type="text" class="span3 inpval" name="postaddress" value=""> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
+						<p class="help-block">344001, г.Ростов-на-Дону,<br/>ул.Республиканская, д.86</p>
 					</div>
 				</div>
 				<div class="control-group">
@@ -73,6 +83,7 @@
 					<div class="controls">
 						<input type="text" class="span3 inpval" name="propiska" value=""> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
+						<p class="help-block">344001, г.Ростов-на-Дону,<br/>ул.Республиканская, д.86</p>
 					</div>
 				</div>
 			</fieldset>

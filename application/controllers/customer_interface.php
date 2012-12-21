@@ -585,8 +585,9 @@ class Customer_interface extends CI_Controller{
 			$_POST['submit'] = NULL;
 			$this->session->set_userdata('msgs','Заказ оформлен.');
 			$this->ordersmodel->close_order($this->session->userdata('order'));
+			$order = $this->session->userdata('order');
 			$this->session->unset_userdata(array('regordering'=>'','step'=>'','ordering'=>'','order'=>''));
-			redirect('customer/audience/orders');
+			redirect('customer/audience/orders/order-information/id/'.$order);
 		endif;
 		
 		$this->load->view("customer_interface/ordering/registration-ordering-step3",$pagevar);
