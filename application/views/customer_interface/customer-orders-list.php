@@ -14,21 +14,29 @@
 				<div class="alert alert-info" id="msgialert">
 					<a class="close" id="msgiclose">×</a>
 					<h4 class="alert-heading">Информация</h4>
+				<?php if(count($orders)):?>
 					Ниже находятся список Ваших заказов.<br/>Для подробного просмотра информации и доступа к документам нажмите на номер заказа.<br/>
 					<strong>Если есть не оформленные заказы, нажав на номер заказа, Вы можете закончить его оформление!</strong>
+				<?php else:?>
+					Заказы отсутствуют!<br/>
+					<?=anchor('customer/registration/ordering','<span class="label label-important">Оформить заказ &rarr;</span>')?>
+				<?php endif;?>
 				</div>
 				<div>
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
+			<?php if(count($orders)):?>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th class="centerized">№ п\п</th>
-							<th class="centerized">№ заказа</th>
-							<th class="centerized">Статус активности</th>
-							<th class="centerized">Статус оплаты</th>
-							<th class="centerized">Статус оформления</th>
+							<th class="centerized">Номер</th>
+							<th class="centerized">Дата</th>
+							<th class="centerized">Документы</th>
+							<th class="centerized">Активность</th>
+							<th class="centerized">Оплаты</th>
+							<th class="centerized">Оформление</th>
 							<th class="short centerized">&nbsp;</th>
 						</tr>
 					</thead>
@@ -37,7 +45,13 @@
 						<tr>
 							<td class="short centerized"><?=$num;?></td>
 							<td class="centerized">
-							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'],'<strong> №'.$orders[$i]['id'].' от ('.$orders[$i]['orderdate'].')</strong>')?>
+							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'],'<strong><nobr>Заказ №'.$orders[$i]['id'].'</nobr></strong>')?>
+							</td>
+							<td class="centerized"><?=$orders[$i]['orderdate'];?></td>
+							<td class="centerized">
+							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'].'/invoice-for-payment','<img src="'.$baseurl.'img/icon/document-attribute-i.png" />',array('title'=>'Счет на оплату','target'=>'_blank'));?>
+							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'].'/contract','<img src="'.$baseurl.'img/icon/document-attribute-c.png" />',array('title'=>'Договор на оказание образовательных услуг','target'=>'_blank'));?>
+							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'].'/act-to-contract','<img src="'.$baseurl.'img/icon/document-attribute-a.png" />',array('title'=>'Акт к договору на оказание услуг','target'=>'_blank'));?>
 							</td>
 						<?php if($orders[$i]['numbercompletion']!=''):?>
 							<td class="short centerized"><span class="label label-success">Заказ закрыт</span></td>
@@ -61,9 +75,10 @@
 					<?php endfor;?>
 					</tbody>
 				</table>
-				<?php $this->load->view('customer_interface/modal/customer-delete-order');?>
+			<?php endif;?>
 			</div>
 		<?php $this->load->view('users_interface/rightbarcus');?>
+		<?php $this->load->view('customer_interface/modal/customer-delete-order');?>
 		</div>
 	</div>
 	<? $this->load->view('users_interface/footer');?>

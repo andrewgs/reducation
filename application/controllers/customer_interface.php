@@ -155,7 +155,7 @@ class Customer_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		
 		for($i=0;$i<count($pagevar['orders']);$i++):
-			$pagevar['orders'][$i]['orderdate'] = $this->operation_date($pagevar['orders'][$i]['orderdate']);
+			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
 		endfor;
 		$this->load->view("customer_interface/customer-orders-list",$pagevar);
 	}
