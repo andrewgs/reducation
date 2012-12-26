@@ -17,11 +17,12 @@ class Ordersmodel extends CI_Model{
 	var $deleted			= 0;
 	
 	function __construct(){
-        parent::__construct();
-    }
+		parent::__construct();
+	}
 	
-	function insert_record($trend,$customer){
+	function insert_record($id,$trend,$customer){
 			
+		$this->id		= $id;
 		$this->trend	= $trend;
 		$this->customer	= $customer;
 		$this->orderdate= date("Y-m-d");
@@ -32,7 +33,7 @@ class Ordersmodel extends CI_Model{
 		$this->closedate= '0000-00-00';
 		
 		$this->db->insert('orders',$this);
-		return $this->db->insert_id();
+		return $id;
 	}
 	
 	function active_status($id){
@@ -223,6 +224,15 @@ class Ordersmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function next_id(){
+		
+		$query = "SELECT MAX(id*1)+1 AS id FROM orders";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0]['id'];
+		return NULL;
+	}
+	
 	function set_autoincrement($value){
 		
 		$query = "ALTER TABLE `orders` AUTO_INCREMENT = $value";
@@ -238,5 +248,4 @@ class Ordersmodel extends CI_Model{
 		if(isset($data[0])) return TRUE;
 		return FALSE;
 	}
-	
 }

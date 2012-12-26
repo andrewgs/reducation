@@ -20,14 +20,15 @@ class Fizordersmodel extends CI_Model{
 		parent::__construct();
 	}
 	
-	function insert_record($trend,$physical){
+	function insert_record($id,$trend,$physical){
 		
+		$this->id		= $id;
 		$this->trend	= $trend;
 		$this->physical	= $physical;
 		$this->orderdate= date("Y-m-d");
 		
 		$this->db->insert('fizorders',$this);
-		return $this->db->insert_id();
+		return $id;
 	}
 	
 	function count_orders($physical){
@@ -96,7 +97,7 @@ class Fizordersmodel extends CI_Model{
 		$this->db->where('physical',$physical);
 		$query = $this->db->get('fizorders');
 		$data = $query->result_array();
-		if(count($data)>0) return $data;
+		if($data) return $data;
 		return NULL;
 	}
 	
@@ -198,6 +199,15 @@ class Fizordersmodel extends CI_Model{
 	function last_id(){
 		
 		$query = "SELECT id FROM fizorders ORDER BY ID DESC";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data[0])) return $data[0]['id'];
+		return NULL;
+	}
+	
+	function next_id(){
+		
+		$query = "SELECT MAX(id*1)+1 AS id FROM fizorders";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0]['id'];

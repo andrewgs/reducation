@@ -26,6 +26,7 @@
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
+			<?php if(count($orders)):?>
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
@@ -66,9 +67,10 @@
 					<?php endfor;?>
 					</tbody>
 				</table>
-				<?php $this->load->view('physical_interface/modal/delete-order');?>
+			<?php endif;?>
 			</div>
 		<?php $this->load->view('users_interface/rightbarfiz');?>
+		<?php $this->load->view('physical_interface/modal/delete-order');?>
 		</div>
 	</div>
 	<? $this->load->view('users_interface/footer');?>

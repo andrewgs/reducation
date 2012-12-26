@@ -20,6 +20,7 @@ class Customer_interface extends CI_Controller{
 		$this->load->model('testanswersmodel');
 		$this->load->model('unionmodel');
 		$this->load->model('ordersmodel');
+		$this->load->model('fizordersmodel');
 		$this->load->model('courseordermodel');
 		$this->load->model('audienceordermodel');
 		$this->load->model('calendarmodel');
@@ -449,9 +450,17 @@ class Customer_interface extends CI_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не указано направление обучения.');
 			else:
-				$this->session->set_userdata('msgs','Направление обучения выбрано.');
-				$order = $this->ordersmodel->insert_record($_POST['optRadio'],$this->user['uid']);
-				$this->session->set_userdata(array('regordering'=>TRUE,'step'=>2,'ordering'=>$_POST['optRadio'],'order'=>$order));
+				$ur_id = $this->ordersmodel->next_id();
+				$fiz_id = $this->fizordersmodel->next_id();
+				$_POST['id'] = max($ur_id,$fiz_id);
+				if($_POST['id']):
+					$this->session->set_userdata('msgs','Направление обучения выбрано.');
+					$order = $this->ordersmodel->insert_record($_POST['id'],$_POST['optRadio'],$this->user['uid']);
+					$this->session->set_userdata(array('regordering'=>TRUE,'step'=>2,'ordering'=>$_POST['optRadio'],'order'=>$order));
+				else:
+					$this->session->set_userdata('msgr','Ошибка. Невозможно создать заказ.');
+					redirect($this->uri->uri_string());
+				endif;
 			endif;
 			redirect('customer/registration/ordering/step/2');
 		endif;
