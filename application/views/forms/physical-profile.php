@@ -80,7 +80,7 @@
 				</div>
 			</div>
 			<legend>
-				Паспортные данные
+				Реквизиты
 			</legend>
 			<div class="control-group">
 				<label for="accounttype" class="control-label">Тип счёта</label>

@@ -14,6 +14,7 @@ class Ordersmodel extends CI_Model{
 	var $closedate			= '0000-00-00';
 	var $numberplacement	= '';
 	var $numbercompletion	= '';
+	var $year				= 2013;
 	var $deleted			= 0;
 	
 	function __construct(){
@@ -208,7 +209,7 @@ class Ordersmodel extends CI_Model{
 
 	function next_numbers(){
 		
-		$query = "SELECT MAX(numbercompletion*1)+1 AS completion, MAX(numberplacement*1)+1 AS placement FROM orders";
+		$query = "SELECT MAX(numbercompletion*1)+1 AS completion, MAX(numberplacement*1)+1 AS placement FROM orders WHERE year = ".date("Y");
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];

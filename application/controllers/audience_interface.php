@@ -360,6 +360,12 @@ class Audience_interface extends CI_Controller{
 							$this->audienceordermodel->update_field($allcourses[$i]['id'],'idnumber',$max_idnumber);
 						endfor;
 						$next_numbers = $this->ordersmodel->next_numbers();
+						if(!$next_numbers['completion']):
+							$next_numbers['completion'] = 1;
+						endif;
+						if(!$next_numbers['placement']):
+							$next_numbers['placement'] = 1;
+						endif;
 						$this->ordersmodel->update_field($order,'numbercompletion',$next_numbers['completion'].'-О');
 						$this->ordersmodel->update_field($order,'closedate',date("Y-m-d"));
 						

@@ -139,7 +139,7 @@ class Physical_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		
 		for($i=0;$i<count($pagevar['orders']);$i++):
-			$pagevar['orders'][$i]['orderdate'] = $this->operation_date($pagevar['orders'][$i]['orderdate']);
+			$pagevar['orders'][$i]['orderdate'] = $this->operation_dot_date($pagevar['orders'][$i]['orderdate']);
 		endfor;
 		$this->load->view("physical_interface/orders-list",$pagevar);
 	}
@@ -791,6 +791,12 @@ class Physical_interface extends CI_Controller{
 							$this->fizcoursemodel->update_field($allcourses[$i]['id'],'idnumber',$max_idnumber);
 						endfor;
 						$next_numbers = $this->fizordersmodel->next_numbers();
+						if(!$next_numbers['completion']):
+							$next_numbers['completion'] = 1;
+						endif;
+						if(!$next_numbers['placement']):
+							$next_numbers['placement'] = 1;
+						endif;
 						$this->fizordersmodel->update_field($order,'numbercompletion',$next_numbers['completion'].'-О');
 						$this->fizordersmodel->update_field($order,'closedate',date("Y-m-d"));
 						

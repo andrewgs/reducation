@@ -1041,7 +1041,14 @@ class Admin_interface extends CI_Controller{
 	}
 	
 	public function orders_messages(){
-		
+		$next_numbers = $this->fizordersmodel->next_numbers();
+		if(!$next_numbers['completion']):
+			$next_numbers['completion'] = 1;
+		endif;
+		if(!$next_numbers['placement']):
+			$next_numbers['placement'] = 1;
+		endif;
+		print_r($next_numbers);exit;
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
@@ -1485,6 +1492,12 @@ class Admin_interface extends CI_Controller{
 		$this->ordersmodel->paid_order($order,$access);
 		if($access):
 			$next_numbers = $this->ordersmodel->next_numbers();
+			if(!$next_numbers['completion']):
+				$next_numbers['completion'] = 1;
+			endif;
+			if(!$next_numbers['placement']):
+				$next_numbers['placement'] = 1;
+			endif;
 			$this->ordersmodel->update_field($order,'numberplacement',$next_numbers['placement'].'-З');
 			/******************************************************/
 			$tmpdate = $this->calendarmodel->read_date();
@@ -2861,6 +2874,12 @@ class Admin_interface extends CI_Controller{
 		$this->fizordersmodel->paid_order($order,$access);
 		if($access):
 			$next_numbers = $this->fizordersmodel->next_numbers();
+			if(!$next_numbers['completion']):
+				$next_numbers['completion'] = 1;
+			endif;
+			if(!$next_numbers['placement']):
+				$next_numbers['placement'] = 1;
+			endif;
 			$this->fizordersmodel->update_field($order,'numberplacement',$next_numbers['placement'].'-З');
 			/******************************************************/
 			$tmpdate = $this->calendarmodel->read_date();
