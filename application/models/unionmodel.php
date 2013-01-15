@@ -333,7 +333,7 @@ class Unionmodel extends CI_Model{
 	function read_customer_search_orders($nborder,$customer,$nbpaiddoc,$nbplacement,$nbcompletion){
 		
 		$customer = htmlspecialchars($customer);
-		$ord = (!empty($nborder)) ? "orders.id = $nborder" : "FALSE";
+		$ord = (!empty($nborder)) ? "orders.number = $nborder" : "FALSE";
 		$org = (!empty($customer)) ? "customers.organization LIKE '%$customer%'" : "FALSE";
 		$nplac = (!empty($nbplacement)) ? "orders.numberplacement LIKE '%$nbplacement%'" : "FALSE";
 		$ncomp = (!empty($nbcompletion)) ? "orders.numbercompletion LIKE '%$nbcompletion%'" : "FALSE";

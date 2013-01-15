@@ -47,7 +47,7 @@
 					<thead>
 						<tr>
 							<th>&nbsp;</th>
-							<th class="centerized"><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/id/'.$sortby.'/'.$from,'№ заказа');?><span id="id"></span></th>
+							<th class="centerized"><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/number/'.$sortby.'/'.$from,'№ заказа');?><span id="number"></span></th>
 							<th class="centerized"><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/paiddate/'.$sortby.'/'.$from,'Создан');?><span id="paiddate"></span></nobr><br/><nobr><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/closedate/'.$sortby.'/'.$from,'Закрыт');?><span id="closedate"></span></nobr></th>
 							<th class="centerized"><?=anchor('admin-panel/messages/orders/'.$this->uri->segment(4).'/organization/'.$sortby.'/'.$from,'Заказчик');?><span id="organization"></span></th>
 							<!--th>Статус</th-->

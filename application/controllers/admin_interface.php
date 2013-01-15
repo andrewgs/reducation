@@ -1075,7 +1075,7 @@ class Admin_interface extends CI_Controller{
 			$field = $this->uri->segment(5);
 			$sortby = $this->uri->segment(6);
 			$from = intval($this->uri->segment(7));
-			$fvalue = array('','id','paiddate','closedate','organization','userpaiddate');
+			$fvalue = array('','number','paiddate','closedate','organization','userpaiddate');
 			if(!array_search($field,$fvalue)):
 				show_404();
 			endif;
