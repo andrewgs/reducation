@@ -211,11 +211,19 @@ class Fiztestmodel extends CI_Model{
 	
 	function open_tests($chapter){
 		
-		$query = "SELECT fiztest.id FROM fiztest WHERE fiztest.chapter = $chapter AND fiztest.order IN (SELECT orders.id FROM orders WHERE orders.paid = 1 AND orders.numbercompletion = '')";
+		$query = "SELECT fiztest.id FROM fiztest WHERE fiztest.chapter = $chapter AND fiztest.order IN (SELECT fizorders.id FROM fizorders WHERE fizorders.paid = 1 AND fizorders.numbercompletion = '')";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
-		return FALSE;
+		return NULL;
 	}
 	
+	function open_orders_final_tests($test){
+		
+		$query = "SELECT fiztest.id FROM fiztest WHERE fiztest.test = $test AND fiztest.order IN (SELECT fizorders.id FROM fizorders WHERE fizorders.paid = 1 AND fizorders.numbercompletion = '')";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return NULL;
+	}
 }

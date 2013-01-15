@@ -31,6 +31,7 @@ class Admin_interface extends CI_Controller{
 		$this->load->model('fizunionmodel');
 		$this->load->model('fizcoursemodel');
 		$this->load->model('fiztestresultsmodel');
+		$this->load->model('fiztestmodel');
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -510,7 +511,8 @@ class Admin_interface extends CI_Controller{
 			$idtest = $this->testsmodel->insert_record($insertdata);
 			$pagevar['finaltest'] = $this->testsmodel->read_record($idtest);
 			$msgs = '<br/>Итоговое тестирование добавлено успешно.';
-			$aud_tests = $this->audiencetestmodel->open_tests(0);
+			$update_test = $this->session->flashdata('closed_test');
+			$aud_tests = $this->audiencetestmodel->open_orders_final_tests($update_test);
 			if($aud_tests):
 				$cnt = 0;
 				for($i=0;$i<count($aud_tests);$i++):
@@ -518,6 +520,15 @@ class Admin_interface extends CI_Controller{
 					$cnt++;
 				endfor;
 				$msgs .= '<br/>Произошла замена тестов у слушателей. Количество замен:'.$cnt;
+			endif;
+			$fiz_tests = $this->fiztestmodel->open_orders_final_tests($update_test);
+			if($fiz_tests):
+				$cnt = 0;
+				for($i=0;$i<count($fiz_tests);$i++):
+					$this->fiztestmodel->update_field($fiz_tests[$i]['id'],'test',$idtest);
+					$cnt++;
+				endfor;
+				$msgs .= '<br/>Произошла замена тестов у физ.лиц. Количество замен:'.$cnt;
 			endif;
 			$pagevar['msgs'] .= $msgs;
 		endif;
@@ -850,10 +861,11 @@ class Admin_interface extends CI_Controller{
 			$this->testsmodel->update_field($test,'active',0);
 			if(!$chapter):
 				$this->testsmodel->deactive_tests($course);
+				$this->session->set_flashdata('closed_test',$test);
 			endif;
 //			$this->testsmodel->delete_record($test);
 			$this->chaptermodel->deactive_test($chapter);
-			$this->session->set_userdata('msgs','Тест удалена успешно.');
+			$this->session->set_userdata('msgs','Тест удален успешно.');
 			redirect('admin-panel/references/trend/'.$trend.'/course/'.$course);
 		else:
 			show_404();
@@ -1041,14 +1053,7 @@ class Admin_interface extends CI_Controller{
 	}
 	
 	public function orders_messages(){
-		$next_numbers = $this->fizordersmodel->next_numbers();
-		if(!$next_numbers['completion']):
-			$next_numbers['completion'] = 1;
-		endif;
-		if(!$next_numbers['placement']):
-			$next_numbers['placement'] = 1;
-		endif;
-		print_r($next_numbers);exit;
+
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',

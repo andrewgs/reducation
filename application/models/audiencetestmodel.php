@@ -214,12 +214,19 @@ class Audiencetestmodel extends CI_Model{
 	
 	function open_tests($chapter){
 		
-		$query = "SELECT audiencetest.id FROM audiencetest WHERE audiencetest.chapter = $chapter AND audiencetest.order IN (SELECT orders.id FROM orders WHERE orders.paid = 1 AND orders.numbercompletion = '')";
+		$query = "SELECT audiencetest.id,audiencetest.course FROM audiencetest WHERE audiencetest.chapter = $chapter AND audiencetest.order IN (SELECT orders.id FROM orders WHERE orders.paid = 1 AND orders.numbercompletion = '')";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;
 		return FALSE;
 	}
 	
-	
+	function open_orders_final_tests($test){
+		
+		$query = "SELECT audiencetest.id FROM audiencetest WHERE audiencetest.test = $test AND audiencetest.order IN (SELECT orders.id FROM orders WHERE orders.paid = 1 AND orders.numbercompletion = '')";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(count($data)) return $data;
+		return FALSE;
+	}
 }
