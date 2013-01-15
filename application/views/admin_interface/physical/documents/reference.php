@@ -27,7 +27,7 @@
 						« <u>&nbsp;<?=$datebegin['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$datebegin['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$datebegin['2']?> г. <br />
 		  	  		</p>
 		  	  		<p class="pull-right">
-		  	  			№ <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$this->uri->segment(5);?>&nbsp;&nbsp;&nbsp;&nbsp;</u>
+		  	  			№ <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=number_order($order['number'],$order['year']);?>&nbsp;&nbsp;&nbsp;&nbsp;</u>
 		  	  		</p>
 				</div>
 				<p class="center title_">

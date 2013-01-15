@@ -69,7 +69,7 @@
 						<tr>
 							<td class="short"><?=$num-$i;?></td>
 							<td style="max-width:135px;">
-								<nobr>Заказ №<?=$orders[$i]['id'];?>&nbsp;<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?></nobr><br/><br/>
+								<nobr>Заказ № <?=number_order($orders[$i]['number'],$orders[$i]['year']);?>&nbsp;<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?></nobr><br/><br/>
 								<nobr><?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/statement','<img src="'.$baseurl.'img/icon/blog-blue.png" />',array('target'=>'_blank','title'=>'Ведомость'));?>&nbsp;
 									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/completion','<img src="'.$baseurl.'img/icon/document.png" />',array('target'=>'_blank','title'=>'Приказ об окончании'));?>&nbsp;
 									<?=anchor('admin-panel/messages/orders/id/'.$orders[$i]['id'].'/admission','<img src="'.$baseurl.'img/icon/document-bookmark.png" />',array('target'=>'_blank','title'=>'Приказ о зачислении'));?>&nbsp;
@@ -116,6 +116,7 @@
 									<a class="btn btn-warning SendMail smtext" idp="smtext" title="Уведомить о тестировании" data-order="<?=$orders[$i]['id'];?>"><i class="icon-envelope icon-white"></i></a><br/>
 								</nobr>
 								<div class="chkMail" data-order="<?=$orders[$i]['id'];?>"></div>
+								<div class="clear"></div>
 								<nobr><input type="checkbox" value="1" <?=($orders[$i]['paid'])?'checked="checked"':'';?> data-ord="<?=$orders[$i]['id'];?>" id="ch<?=$orders[$i]['id'];?>" title="Признак оплаты" class="chAccess"> Оплачено</nobr>
 							</td>
 						</tr>

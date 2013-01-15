@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="span12">
 				<p class="center title">
-           			<strong>Акт об оказании услуг № <?=$order['id'];?></strong>
+           			<strong>Акт об оказании услуг № <?=number_order($order['number'],$order['year']);?></strong>
            		</p>
            		<div class="clearfix">
 		  	  		<p class="pull-left">
@@ -45,7 +45,7 @@
 					<?php for($i=0;$i<count($course);$i++):?>
 						<tr>
 							<td><?=$i+1;?></td>
-							<td>Повышение квалификации по Договору №<?=$order['id'];?><br/>"<?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
+							<td>Повышение квалификации по Договору №<?=number_order($order['number'],$order['year']);?><br/>"<?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
 							<td><?=$course[$i]['hours'];?></td>
 							<td><?=$course[$i]['cnt'];?></td>
 							<td><?=$course[$i]['price']-$course[$i]['discount'];?></td>

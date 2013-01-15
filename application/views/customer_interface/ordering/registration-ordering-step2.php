@@ -18,7 +18,7 @@
 				<?php $this->load->view('forms/ordering-courses-list');?>
 			<?php for($i=0;$i<count($courseorder);$i++):?>
 				<div id="d<?=$courseorder[$i]['id'];?>">
-					<h2 idcorder="<?=$courseorder[$i]['id'];?>"><?=$courseorder[$i]['title'];?></h2>
+					<h4 idcorder="<?=$courseorder[$i]['id'];?>"><?=$courseorder[$i]['title'];?></h4>
 					<table class="table table-striped table-bordered">
 						<tbody>
 					<?php for($j=0,$num=1;$j<count($courseaudience);$j++):?>

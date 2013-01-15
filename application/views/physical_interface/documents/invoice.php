@@ -34,7 +34,7 @@
 					</tbody>
 				</table>
 				<p>
-					<h3 class="inline">Счет на оплату </h3> <strong>№ <?=$order['id'];?> от <?=$order['orderdate'];?> </strong>
+					<h3 class="inline">Счет на оплату </h3> <strong>№ <?=number_order($order['number'],$order['year']);?> от <?=$order['orderdate'];?> </strong>
 				</p>
 				<p>
 					Поставщик: 	<strong>АНО ДПО «Южно-окружной центр повышения квалификации» </strong>
@@ -96,7 +96,7 @@
 					</table>
 				</p>
 				<p style="margin: 80px 0 0;">
-					<strong>В платежном поручении в графе «назначение платежа» обязательно должно быть указано <i>«Оплата за Повышение квалификации по Договору №<?=$order['id'];?> от <?=$order['orderdate'];?> по счету № <?=$order['id'];?> от <?=$order['orderdate'];?> НДС не облагается»</i></strong>
+					<strong>В платежном поручении в графе «назначение платежа» обязательно должно быть указано <i>«Оплата за Повышение квалификации по Договору №<?=number_order($order['number'],$order['year']);?> от <?=$order['orderdate'];?> по счету № <?=number_order($order['number'],$order['year']);?> от <?=$order['orderdate'];?> НДС не облагается»</i></strong>
 				</p>
 				<div id="#pechat" style="position: absolute; bottom: 70px; left: 270px;">
 					<img src="<?=base_url()?>img/pechat.png"/>

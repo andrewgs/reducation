@@ -314,7 +314,7 @@ class Unionmodel extends CI_Model{
 	
 	function read_customer_info_order($order){
 		
-		$query = "SELECT organization,personemail,userpaiddate,orderdate,price,docnumber,closedate FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.id = $order";
+		$query = "SELECT number,year,organization,personemail,userpaiddate,orderdate,price,docnumber,closedate FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.id = $order";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];

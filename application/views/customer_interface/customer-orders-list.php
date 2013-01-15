@@ -45,7 +45,7 @@
 						<tr>
 							<td class="short centerized"><?=$num;?></td>
 							<td class="centerized">
-							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'],'<strong><nobr>Заказ №'.$orders[$i]['id'].'</nobr></strong>')?>
+							<?=anchor('customer/audience/orders/order-information/id/'.$orders[$i]['id'],'<strong><nobr>Заказ №'.number_order($orders[$i]['number'],$orders[$i]['year']).'</nobr></strong>')?>
 							</td>
 							<td class="centerized"><?=$orders[$i]['orderdate'];?></td>
 							<td class="centerized">

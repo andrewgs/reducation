@@ -23,7 +23,7 @@
 						<?=anchor('admin-panel/messages/physical-orders/all','Все заказы');?>
 					</li>
 				</ul>
-				<h4>Заказ №<?=$this->uri->segment(5);?></h4>
+				<h4>Заказ № <?=number_order($order['number'],$order['year']);?></h4>
 				<?php $this->load->view('alert_messages/alert-error');?>
 				<?php $this->load->view('alert_messages/alert-success');?>
 				<table class="table table-striped table-bordered">

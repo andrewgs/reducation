@@ -11,7 +11,7 @@
 						<?=anchor('physical/information/orders','Мои заказы');?> <span class="divider">/</span>
 					</li>
 					<li class="active">
-						<?=anchor($this->uri->uri_string(),'Заказ №'.$order['id']);?>
+						<?=anchor($this->uri->uri_string(),'Заказ №'.number_order($order['number'],$order['year']));?>
 					</li>
 				</ul>
 				<div>
@@ -25,7 +25,7 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="documents">
-						<h2>Заказ № <?=$order['id'];?> от <?=$order['orderddate'];?></h2>
+						<h2>Заказ № <?=number_order($order['number'],$order['year']);?> от <?=$order['orderddate'];?></h2>
 						<div style="margin-top:15px;"></div>
 						<ul class="thumbnails">
 							<li class="span3">
@@ -34,7 +34,7 @@
 									<hr />
 									<div class="caption">
 										<h5>Счет</h5>
-										<p>Счет на оплату №<?=$order['id'];?><br/>от <?=$order['orderdate'];?></p>
+										<p>Счет на оплату №<?=number_order($order['number'],$order['year']);?><br/>от <?=$order['orderdate'];?></p>
 										<p><?=anchor($this->uri->uri_string().'/invoice-for-payment','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
 									</div>
 								</div>
@@ -45,7 +45,7 @@
 									<hr />
 									<div class="caption">
 										<h5>Договор на оказание образовательных услуг</h5>
-										<p>Договор №<?=$order['id'];?> об оказании образовательных услуг с применением дистанционных технологий.</p>
+										<p>Договор №<?=number_order($order['number'],$order['year']);?> об оказании образовательных услуг с применением дистанционных технологий.</p>
 										<p><?=anchor($this->uri->uri_string().'/contract','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
 									</div>
 								</div>

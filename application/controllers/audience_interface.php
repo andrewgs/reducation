@@ -319,6 +319,11 @@ class Audience_interface extends CI_Controller{
 		endif;
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
+		
+		if(!$pagevar['questions'] || $pagevar['answers']):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
 		shuffle($pagevar['questions']);
 		shuffle($pagevar['answers']);
 		

@@ -68,7 +68,7 @@
 						<tr>
 							<td class="short"><?=$num-$i;?></td>
 							<td style="max-width:135px;">
-								<nobr>Заказ №<?=$orders[$i]['id'];?>&nbsp;<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?></nobr><br/><br/>
+								<nobr>Заказ №<?=number_order($orders[$i]['number'],$orders[$i]['year']);?>&nbsp;<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/testing','<img src="'.$baseurl.'img/icon/document-task.png" />',array('title'=>'Итоговые тесты'));?></nobr><br/><br/>
 								<nobr><?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/statement','<img src="'.$baseurl.'img/icon/blog-blue.png" />',array('target'=>'_blank','title'=>'Ведомость'));?>&nbsp;
 									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/completion','<img src="'.$baseurl.'img/icon/document.png" />',array('target'=>'_blank','title'=>'Приказ об окончании'));?>&nbsp;
 									<?=anchor('admin-panel/messages/physical-orders/id/'.$orders[$i]['id'].'/admission','<img src="'.$baseurl.'img/icon/document-bookmark.png" />',array('target'=>'_blank','title'=>'Приказ о зачислении'));?>&nbsp;

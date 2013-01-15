@@ -305,7 +305,7 @@ class Fizunionmodel extends CI_Model{
 	
 	function read_physical_info_order($order){
 		
-		$query = "SELECT fio,email,userpaiddate,orderdate,price,docnumber,closedate FROM fizorders INNER JOIN physical ON fizorders.physical = physical.id WHERE fizorders.id = $order";
+		$query = "SELECT fio,email,number,year,userpaiddate,orderdate,price,docnumber,closedate FROM fizorders INNER JOIN physical ON fizorders.physical = physical.id WHERE fizorders.id = $order";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];

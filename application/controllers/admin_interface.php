@@ -1547,7 +1547,7 @@ class Admin_interface extends CI_Controller{
 			?>
 			<p>Администрация АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/ ">http://roscentrdpo.ru/ </a> извещает 
 				о невозможности оформления документов (удостоверений, актов выполненных работ) согласно договора 
-				№<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>
+				№<u>&nbsp;&nbsp;&nbsp;<?=number_order($info['number'],$info['year']);?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>
 				о повышении квалификации сотрудников Вашей организации по причине отсутствия результатов итогового тестирования обучающихся.<br/>
 				Убедительно просим  срочно обеспечить проведение итогового тестирования (аттестацию) Ваших сотрудников.</p>
 			<?php
@@ -1560,7 +1560,7 @@ class Admin_interface extends CI_Controller{
 			<p>
 				Форма оплаты: Безналичная <br />
 				Способ оплаты: Оплата квитанцией <br />
-				Назначение платежа: Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> <br/>
+				Назначение платежа: Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=number_order($info['number'],$info['year']);?>&nbsp;&nbsp;&nbsp;</u> <br/>
 				Сумма платежа: <u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u> руб. <br />
 				Документ платежа:  Платежное поручение №<u>&nbsp;&nbsp;&nbsp;<?=$info['docnumber'];?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['userpaiddate'];?>&nbsp;&nbsp;&nbsp;</u>
 			</p>
@@ -1575,7 +1575,7 @@ class Admin_interface extends CI_Controller{
 					</tr>
 				</thead>
 				<tbody>
-					<td>Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>, план оплаты: "Весь период обучения"</td>
+					<td>Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=number_order($info['number'],$info['year']);?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>, план оплаты: "Весь период обучения"</td>
 					<td><u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u>,00</td>
 				</tbody>
 			</table>
@@ -1940,6 +1940,7 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО | Справка',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
 					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
 					'customer'		=> $this->unionmodel->read_customer_info_order($order),
 					'courses'		=> $this->unionmodel->read_course_audience_records($order)
@@ -2930,7 +2931,7 @@ class Admin_interface extends CI_Controller{
 			?>
 			<p>Администрация АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/ ">http://roscentrdpo.ru/ </a> извещает 
 				о невозможности оформления документов (удостоверений, актов выполненных работ) согласно договора 
-				№<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>
+				№<u>&nbsp;&nbsp;&nbsp;<?=number_order($info['number'],$info['year']);?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>
 				о повышении Вашей квалификации по причине отсутствия результатов итогового тестирования.<br/>
 				Убедительно просим  срочно обеспечить проведение итогового тестирования (аттестацию).</p>
 			<?php
@@ -2943,7 +2944,7 @@ class Admin_interface extends CI_Controller{
 			<p>
 				Форма оплаты: Безналичная <br />
 				Способ оплаты: Оплата квитанцией <br />
-				Назначение платежа: Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> <br/>
+				Назначение платежа: Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=number_order($info['number'],$info['year']);?>&nbsp;&nbsp;&nbsp;</u> <br/>
 				Сумма платежа: <u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u> руб. <br />
 				Документ платежа:  Платежное поручение №<u>&nbsp;&nbsp;&nbsp;<?=$info['docnumber'];?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['userpaiddate'];?>&nbsp;&nbsp;&nbsp;</u>
 			</p>
@@ -2958,7 +2959,7 @@ class Admin_interface extends CI_Controller{
 					</tr>
 				</thead>
 				<tbody>
-					<td>Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=$order;?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>, план оплаты: "Весь период обучения"</td>
+					<td>Оплата заказа №<u>&nbsp;&nbsp;&nbsp;<?=number_order($info['number'],$info['year']);?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>, план оплаты: "Весь период обучения"</td>
 					<td><u>&nbsp;&nbsp;&nbsp;<?=$info['price'];?>&nbsp;&nbsp;&nbsp;</u>,00</td>
 				</tbody>
 			</table>
@@ -3196,6 +3197,7 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО | Справка',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
+					'order'			=> $this->fizordersmodel->read_record($this->uri->segment(5)),
 					'datebegin'		=> $this->fizordersmodel->read_field($order,'paiddate'),
 					'customer'		=> $this->fizunionmodel->read_physical_info_order($order),
 					'courses'		=> $this->fizunionmodel->read_course_physical_records($order)
@@ -3305,6 +3307,7 @@ class Admin_interface extends CI_Controller{
 					'title'			=> 'АНО ДПО | Итоговые тесты',
 					'baseurl' 		=> base_url(),
 					'userinfo'		=> $this->user,
+					'order'			=> $this->fizordersmodel->read_record($this->uri->segment(5)),
 					'audcourses'	=> $this->fizunionmodel->read_testing_order($this->uri->segment(5)),
 					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
 					'msgs'			=> $this->session->userdata('msgs'),

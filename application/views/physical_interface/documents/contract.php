@@ -11,7 +11,7 @@
 		<div class="row">
 			<div class="span12">
            		<p class="center title">
-           			<strong>Договор № <?=$order['id'];?></strong>
+           			<strong>Договор № <?=number_order($order['number'],$order['year']);?></strong>
            		</p>
            		<p class="center">
            			об оказании образовательных услуг с применением дистанционных технологий

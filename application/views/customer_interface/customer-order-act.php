@@ -3,15 +3,13 @@
 <?php $this->load->view('customer_interface/head');?>
 <body>
 	<style type="text/css">
-		@media print {
-			body, p { font-family: Tahoma, sans-serif; font-size: 16px; line-height: 24px; margin-bottom: 14px; }
-		}
+		@media print{body,p{font-family: Tahoma, sans-serif; font-size: 16px; line-height: 24px; margin-bottom: 14px;}}
 	</style>
 	<div class="container-fluid" style="position: relative; ">
 		<div class="row">
 			<div class="span12">
 				<p class="center title">
-           			<strong>Акт об оказании услуг № <?=$order['id'];?></strong>
+           			<strong>Акт об оказании услуг № <?=number_order($order['number'],$order['year']);?></strong>
            		</p>
            		<div class="clearfix">
 		  	  		<p class="pull-left">
@@ -49,7 +47,7 @@
 					<?php for($i=0;$i<count($course);$i++):?>
 						<tr>
 							<td><?=$i+1;?></td>
-							<td>Повышение квалификации по Договору №<?=$order['id'];?><br/>"<?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
+							<td>Повышение квалификации по Договору №<?=number_order($order['number'],$order['year']);?><br/>"<?=$course[$i]['code'];?>. <?=$course[$i]['title'];?>"</td>
 							<td><?=$course[$i]['hours'];?></td>
 							<td><?=$course[$i]['cnt'];?></td>
 							<td><?=$course[$i]['price']-$course[$i]['discount'];?></td>
@@ -61,8 +59,8 @@
 				</table>
 				<p class="align-right">
 					<strong>
-                        Итого: <?=$summ;?> руб. <br />
-			    		НДС: не облагается (ст. 149 п.2 пп14 НК РФ) <br /> 	
+						Итого: <?=$summ;?> руб. <br />
+						НДС: не облагается (ст. 149 п.2 пп14 НК РФ) <br />
 						Всего к оплате: <?=$summ;?> руб.
 					</strong>
 				</p>

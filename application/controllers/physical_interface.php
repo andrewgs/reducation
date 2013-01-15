@@ -357,8 +357,8 @@ class Physical_interface extends CI_Controller{
 				$this->session->set_userdata('msgr','Ошибка. Не указано направление обучения.');
 				redirect($this->uri->uri_string());
 			else:
-				$ur_id = $this->ordersmodel->next_id();
-				$fiz_id = $this->fizordersmodel->next_id();
+				$ur_id = $this->ordersmodel->next_order();
+				$fiz_id = $this->fizordersmodel->next_order();
 				$_POST['id'] = max($ur_id,$fiz_id);
 				if($_POST['id']):
 					$this->session->set_userdata('msgs','Направление обучения выбрано.');
@@ -750,6 +750,12 @@ class Physical_interface extends CI_Controller{
 		endif;
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
+		
+		if(!$pagevar['questions'] || $pagevar['answers']):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+		
 		shuffle($pagevar['questions']);
 		shuffle($pagevar['answers']);
 		

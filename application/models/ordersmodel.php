@@ -3,6 +3,7 @@
 class Ordersmodel extends CI_Model{
 
 	var $id   				= 0;
+	var $number				= 1;
 	var $trend 				= 0;
 	var $customer 			= '';
 	var $orderdate  		= '0000-00-00';
@@ -21,9 +22,9 @@ class Ordersmodel extends CI_Model{
 		parent::__construct();
 	}
 	
-	function insert_record($id,$trend,$customer){
+	function insert_record($number,$trend,$customer){
 			
-		$this->id		= $id;
+		$this->number	= $number;
 		$this->trend	= $trend;
 		$this->customer	= $customer;
 		$this->orderdate= date("Y-m-d");
@@ -34,7 +35,7 @@ class Ordersmodel extends CI_Model{
 		$this->closedate= '0000-00-00';
 		
 		$this->db->insert('orders',$this);
-		return $id;
+		return $this->db->insert_id();
 	}
 	
 	function active_status($id){
@@ -218,20 +219,20 @@ class Ordersmodel extends CI_Model{
 	
 	function last_id(){
 		
-		$query = "SELECT id FROM orders ORDER BY ID DESC";
+		$query = "SELECT number FROM orders ORDER BY year DESC number DESC";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
-		if(isset($data[0])) return $data[0]['id'];
+		if(isset($data[0])) return $data[0]['number'];
 		return NULL;
 	}
 	
-	function next_id(){
+	function next_order(){
 		
-		$query = "SELECT MAX(id*1)+1 AS id FROM orders";
+		$query = "SELECT MAX(number*1)+1 AS number FROM orders WHERE year = ".date("y");
 		$query = $this->db->query($query);
 		$data = $query->result_array();
-		if(isset($data[0])) return $data[0]['id'];
-		return NULL;
+		if($data[0]['number']) return $data[0]['number'];
+		return 1;
 	}
 	
 	function set_autoincrement($value){
