@@ -228,3 +228,6 @@ p.intend { text-indent: 27px; }
 .green{
 	color: #00ff00;
 }
+.btn-download{
+	height: 18px; padding-top: 4px;
+}

@@ -217,6 +217,7 @@ class Audience_interface extends CI_Controller{
 					'docvalue'		=> 'Список литературы',
 					'document'		=> $this->unionmodel->read_course_libraries($this->user['uid'],$course,0),
 					'curriculum'	=> $this->unionmodel->read_course_curriculum($this->user['uid'],$course,0),
+					'metodical'		=> $this->unionmodel->read_course_metodical($this->user['uid'],$course,0),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -320,8 +321,8 @@ class Audience_interface extends CI_Controller{
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
 		
-		if(!$pagevar['questions'] || $pagevar['answers']):
-			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
+		if(!$pagevar['questions'] || !$pagevar['answers']):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту1.');
 			redirect('audience/courses/current/course/'.$course.'/lectures');
 		endif;
 		shuffle($pagevar['questions']);
@@ -548,6 +549,33 @@ class Audience_interface extends CI_Controller{
 			force_download($filename,$data);
 		else:
 			$this->session->set_userdata('msgr','Ошибка при загузке учебного плана. Обратитесь к администрации сайта.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+	}
+	
+	public function audience_get_metodical(){
+		
+		$course = $this->uri->segment(5);
+		if(!$this->audienceordermodel->owner_audience($course,$this->user['uid'],0)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к учебному плану курса.');
+			redirect('audience/courses/current');
+		endif;
+		
+		$this->load->helper('download');
+		$file = getcwd().'/'.$this->unionmodel->read_course_metodical($this->user['uid'],$course,0);
+		if(!file_exists($file)):
+			$this->session->set_userdata('msgr','Ошибка при загузке методических рекомендаций. Отсутствует файл на сервере. Обратитесь к администрации сайта.');
+			redirect('audience/courses/current/course/'.$course.'/lectures');
+		endif;
+		$data = file_get_contents($file);
+		$fileexp = explode('/',$this->unionmodel->read_course_metodical($this->user['uid'],$course,0));
+		if($fileexp && isset($fileexp[2])):
+			$filename = $fileexp[2];
+		endif;
+		if($data && $filename):
+			force_download($filename,$data);
+		else:
+			$this->session->set_userdata('msgr','Ошибка при загузке методических рекомендаций. Обратитесь к администрации сайта.');
 			redirect('audience/courses/current/course/'.$course.'/lectures');
 		endif;
 	}

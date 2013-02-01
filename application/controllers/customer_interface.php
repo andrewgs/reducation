@@ -223,13 +223,11 @@ class Customer_interface extends CI_Controller{
 		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
-		$pagevar['title'] .= 'Счет на оплату № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
-		
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
 		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		$pagevar['title'] .= 'Счет на оплату № '.number_order($pagevar['order']['number'],$pagevar['order']['year']).' от '.$pagevar['order']['orderdate'].' года';
 		$this->load->view("customer_interface/customer-order-invoice",$pagevar);
 	}
 	
@@ -254,14 +252,11 @@ class Customer_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
-		$pagevar['title'] .= 'Договор № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
-		
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
 		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
-		
+		$pagevar['title'] .= 'Договор № '.number_order($pagevar['order']['number'],$pagevar['order']['year']).' от '.$pagevar['order']['orderdate'].' года';
 		$this->load->view("customer_interface/customer-order-contract",$pagevar);
 	}
 	
@@ -287,17 +282,16 @@ class Customer_interface extends CI_Controller{
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
-		$pagevar['title'] .= 'АКТ об оказании услуг по договору № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
-		
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
 		if($pagevar['order']['closedate'] != "0000-00-00"):
 			$pagevar['order']['closedate'] = $this->operation_date($pagevar['order']['closedate']);
 		else:
-			$pagevar['order']['closedate'] = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.date("Y").' г.';
+			$pagevar['order']['closedate'] = nbs(20).date("Y").' г.';
 		endif;
 		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		$pagevar['title'] .= 'АКТ об оказании услуг по договору № '.number_order($pagevar['order']['number'],$pagevar['order']['year']).' от '.$pagevar['order']['orderdate'].' года';
 		
 		$this->load->view("customer_interface/customer-order-act",$pagevar);
 	}

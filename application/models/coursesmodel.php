@@ -187,4 +187,13 @@ class Coursesmodel extends CI_Model{
 		$this->db->update('courses');
 		return $this->db->affected_rows();
 	}
+	
+	function update_metodical($id,$metodical){
+		
+		$this->db->set('metodical',$metodical);
+		$this->db->where('id',$id);
+		
+		$this->db->update('courses');
+		return $this->db->affected_rows();
+	}
 }

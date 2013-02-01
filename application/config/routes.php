@@ -86,6 +86,7 @@ $route['audience/courses/current/course/:num/lecture/:num']						= "audience_int
 $route['audience/courses/current/course/:num/lecture/:num/get-document']		= "audience_interface/audience_get_document";
 $route['audience/courses/current/course/:num/lectures/get-libraries']			= "audience_interface/audience_get_libraries";
 $route['audience/courses/current/course/:num/lectures/get-curriculum']			= "audience_interface/audience_get_curriculum";
+$route['audience/courses/current/course/:num/lectures/get-metodical']			= "audience_interface/audience_get_metodical";
 $route['audience/courses/current/course/:num/lectures/testing/id/:num']			= "audience_interface/audience_testing";
 $route['audience/courses/current/course/:num/lectures/final-testing/id/:num'] 	= "audience_interface/audience_testing";
 $route['audience/courses/:num/test-report/id/:num'] 							= "audience_interface/audience_test_report";
@@ -114,8 +115,8 @@ $route['admin-panel/actions/control/delete-date/:num'] 			= "admin_interface/dat
 $route['admin-panel/references/trends']							= "admin_interface/references_trends";
 $route['admin-panel/references/trends/delete-trend/:num']		= "admin_interface/references_delete_trend";
 /*==========================================================  course  ====================================================*/
-$route['admin-panel/references/courses']								= "admin_interface/references_courses";
-$route['admin-panel/references/courses/delete-course/:num']				= "admin_interface/references_delete_course";
+$route['admin-panel/references/courses']						= "admin_interface/references_courses";
+$route['admin-panel/references/courses/delete-course/:num']		= "admin_interface/references_delete_course";
 
 /*==========================================================  chapters  ====================================================*/
 $route['admin-panel/references/trend/:num/course/:num']										= "admin_interface/references_chapters";

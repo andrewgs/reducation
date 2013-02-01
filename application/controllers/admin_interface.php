@@ -495,6 +495,7 @@ class Admin_interface extends CI_Controller{
 					'document'		=> $this->coursesmodel->read_field($course,'libraries'),
 					'docvalue'		=> 'Список литературы',
 					'curriculum'	=> $this->coursesmodel->read_field($course,'curriculum'),
+					'metodical'		=> $this->coursesmodel->read_field($course,'metodical'),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -642,6 +643,31 @@ class Admin_interface extends CI_Controller{
 			$this->session->set_userdata('msgs','Учебный план добавлен успешно.');
 			redirect($this->uri->uri_string());
 		endif;
+		
+		if($this->input->post('mdsubmit')):
+			$_POST['mdsubmit'] = NULL;
+			if($_FILES['document']['error'] == 1):
+				$this->session->set_userdata('msgr','Ошибка при загрузке документа. Размер принятого файла превысил максимально допустимый размер.');
+				redirect($this->uri->uri_string());
+			endif;
+			if($_FILES['document']['error'] == 4):
+				$this->session->set_userdata('msgr','Ошибка при загрузке документа. Не указан файл.');
+				redirect($this->uri->uri_string());
+			endif;
+			$_FILES['document']['name'] = preg_replace('/.+(.)(\.)+/',date("Ymdhis")."\$2", $_FILES['document']['name']);
+			$document = 'documents/metodical/'.$_FILES['document']['name'];
+			$olddoc = $this->coursesmodel->read_field($course,'metodical');
+			if(!$this->fileupload('document',FALSE,'metodical')):
+				$this->session->set_userdata('msgr','Ошибка при загрузке документа.');
+				redirect($this->uri->uri_string());
+			else:
+				$this->filedelete($olddoc);
+			endif;
+			$this->coursesmodel->update_metodical($course,$document);
+			$this->session->set_userdata('msgs','Методические рекомендации добавлены успешно.');
+			redirect($this->uri->uri_string());
+		endif;
+		
 		if($this->input->post('elsubmit')):
 			$_POST['elsubmit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
@@ -1211,7 +1237,7 @@ class Admin_interface extends CI_Controller{
 			$pagevar['orders'][$i]['audcnt'] = count($this->unionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
 			$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
 			if($pagevar['orders'][$i]['regnum']):
-				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9\/])","",$pagevar['orders'][$i]['regnum']);
 			else:
 				$pagevar['orders'][$i]['regnum'] = 'Не завершен';
 			endif;
@@ -1321,7 +1347,7 @@ class Admin_interface extends CI_Controller{
 			$pagevar['orders'][$i]['audcnt'] = count($this->unionmodel->read_fullinfo_audience($pagevar['orders'][$i]['id']));
 			$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
 			if($pagevar['orders'][$i]['regnum']):
-				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9\/])","",$pagevar['orders'][$i]['regnum']);
 			else:
 				$pagevar['orders'][$i]['regnum'] = 'Не завершен';
 			endif;
@@ -1884,7 +1910,7 @@ class Admin_interface extends CI_Controller{
 					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
 			);
 		if($pagevar['ncompletion']):
-			$pagevar['ncompletion'] = preg_replace("([^0-9])","",$pagevar['ncompletion']);
+			$pagevar['ncompletion'] = preg_replace("([^0-9\/])","",$pagevar['ncompletion']);
 		endif;
 		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
@@ -1970,13 +1996,11 @@ class Admin_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
-		$pagevar['title'] .= 'Счет на оплату № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
-		
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
 		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
+		$pagevar['title'] .= 'Счет на оплату № '.number_order($pagevar['order']['number'],$pagevar['order']['year']).' от '.$pagevar['order']['orderdate'].' года';
 		$this->load->view("customer_interface/customer-order-invoice",$pagevar);
 	}
 	
@@ -1998,14 +2022,11 @@ class Admin_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
-		$pagevar['title'] .= 'Договор № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
-		
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
 		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
-		
+		$pagevar['title'] .= 'Договор № '.number_order($pagevar['order']['number'],$pagevar['order']['year']).' от '.$pagevar['order']['orderdate'].' года';
 		$this->load->view("customer_interface/customer-order-contract",$pagevar);
 	}
 	
@@ -2026,19 +2047,16 @@ class Admin_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
-		$pagevar['title'] .= 'АКТ об оказании услуг по договору № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
-		
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
 		if($pagevar['order']['closedate'] != "0000-00-00"):
 			$pagevar['order']['closedate'] = $this->operation_date($pagevar['order']['closedate']);
 		else:
-			$pagevar['order']['closedate'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
+			$pagevar['order']['closedate'] = nbs(20).date("Y").' г.';
 		endif;
 		$pagevar['customer'] = $this->customersmodel->read_record($pagevar['order']['customer']);
-		
+		$pagevar['title'] .= 'АКТ об оказании услуг по договору № '.number_order($pagevar['order']['number'],$pagevar['order']['year']).' от '.$pagevar['order']['orderdate'].' года';
 		$this->load->view("customer_interface/customer-order-act",$pagevar);
 	}
 	

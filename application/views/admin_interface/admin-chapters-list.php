@@ -59,18 +59,24 @@
 					<hr size="2"/>
 					<div class="btn-toolbar">
 						<div class="btn-group">
-							<a class="btn btn-success" data-toggle="modal" href="#addChapter"><i class="icon-plus icon-white"></i> Добавить главу</a>
+							<a class="btn btn-success" data-toggle="modal" href="#addChapter"><i class="icon-plus icon-white"></i> Новая глава</a>
 						</div>
 						<div class="btn-group">
-							<a class="btn btn-success" data-toggle="modal" href="#addDoc"><i class="icon-plus icon-white"></i> Добавить список литературы</a>
+							<a class="btn btn-success" data-toggle="modal" href="#addDoc"><i class="icon-plus icon-white"></i> Литература</a>
 						<?php if($document):?>
-							<a class="btn" data-toggle="modal" href="#getDocument" title="Скачать"><i class="icon-download-alt"></i></a>
+							<a class="btn btn-download" data-toggle="modal" href="#getDocument" title="Скачать"><i class="icon-download-alt">&nbsp;</i></a>
 						<?php endif;?>
 						</div>
 						<div class="btn-group">
-							<a class="btn btn-success" data-toggle="modal" href="#addCurriculum"><i class="icon-plus icon-white"></i> Добавить учебный план</a>
+							<a class="btn btn-success" data-toggle="modal" href="#addCurriculum"><i class="icon-plus icon-white"></i> Учебный план</a>
 						<?php if($curriculum):?>
-							<a class="btn" data-toggle="modal" href="#getCurriculum" title="Скачать"><i class="icon-download-alt"></i></a>
+							<a class="btn btn-download" data-toggle="modal" href="#getCurriculum" title="Скачать"><i class="icon-download-alt"></i></a>
+						<?php endif;?>
+						</div>
+						<div class="btn-group">
+							<a class="btn btn-success" data-toggle="modal" href="#addMetodical"><i class="icon-plus icon-white"></i> Метод.рекомендации</a>
+						<?php if($metodical):?>
+							<a class="btn btn-download" data-toggle="modal" href="#getMetodical" title="Скачать"><i class="icon-download-alt"></i></a>
 						<?php endif;?>
 						</div>
 						<div class="clear"></div><br/>
@@ -86,6 +92,7 @@
 					<?php $this->load->view('admin_interface/modal/admin-add-chapter');?>
 					<?php $this->load->view('admin_interface/modal/admin-add-libraries');?>
 					<?php $this->load->view('admin_interface/modal/admin-add-curriculum');?>
+					<?php $this->load->view('admin_interface/modal/admin-add-metodical');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-chapter');?>
 					<?php $this->load->view('admin_interface/modal/admin-add-lecture');?>
 					<?php $this->load->view('admin_interface/modal/admin-edit-lecture');?>
@@ -98,6 +105,7 @@
 					<?php $this->load->view('admin_interface/modal/admin-edit-final-test');?>
 					<?php $this->load->view('users_interface/modal/user-get-document');?>
 					<?php $this->load->view('users_interface/modal/user-get-curriculum');?>
+					<?php $this->load->view('users_interface/modal/user-get-metodical');?>
 				</div>
 			</div>
 			<?php $this->load->view('admin_interface/rightbarmsg');?>
@@ -121,6 +129,7 @@
 			$("#echsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".echinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#lbsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".lbinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$("#crsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".crinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
+			$("#mdsend").click(function(event){var err = false;$(".control-group").removeClass('error');$(".help-inline").hide();$(".mdinput").each(function(i,element){if($(this).val()==''){$(this).parents(".control-group").addClass('error');$(this).siblings(".help-inline").html("Поле не может быть пустым").show();err = true;}});if(err){event.preventDefault();}});
 			$(".editChapter").click(function(){
 				$("#msgalert").remove();
 				var chapter = $(this).attr('idchapter');
@@ -133,6 +142,7 @@
 			$(".editFTest").click(function(){$("#msgalert").remove();$(".idTest").val($(this).attr('idtest'));$(".idChapter").val($(this).attr('idchapter'));$("#eTitleFTest").val($(this).attr('ttitle'));$("#eСountFTest").val($(this).attr('tcount'));$("#eTimeFTest").val($(this).attr('ttime'));});
 			$("#download").click(function(){$("#msgalert").remove(); window.open("<?=$baseurl.$document;?>")});
 			$("#dwlCur").click(function(){$("#msgalert").remove(); window.open("<?=$baseurl.$curriculum;?>")});
+			$("#dwlMet").click(function(){$("#msgalert").remove(); window.open("<?=$baseurl.$metodical;?>")});
 			
 			$("#addChapter").on("show",function(){$("#NumberChapter").val(CChapter);});
 			$(".addLecture").click(function(){$("#NumberLecture").val($(this).attr('clectures'));})

@@ -82,6 +82,12 @@
 							<a class="btn" data-toggle="modal" href="#getDocument" title="Скачать"><i class="icon-download-alt"></i></a>
 						<?php endif;?>
 						</div>
+						<div class="btn-group">
+						<?php if($metodical):?>
+							<button class="btn btn-success">Метод.рекомендации</button>
+							<a class="btn" data-toggle="modal" href="#getMetodical" title="Скачать"><i class="icon-download-alt"></i></a>
+						<?php endif;?>
+						</div>
 					<?php if($testvalid):?>
 						<div class="btn-group">
 							<?=anchor($this->uri->uri_string().'/final-testing/id/'.$test['id'],'Итоговое тестирование',array('class'=>'btn'));?>
@@ -107,6 +113,7 @@
 					</div>
 					<?php $this->load->view('users_interface/modal/user-get-document');?>
 					<?php $this->load->view('users_interface/modal/user-get-curriculum');?>
+					<?php $this->load->view('users_interface/modal/user-get-metodical');?>
 				</div>
 			</div>
 		<?php $this->load->view('users_interface/rightbaraud');?>
@@ -121,6 +128,10 @@
 			});
 			$("#dwlCur").click(function(event){
 				window.open("<?=$baseurl.$this->uri->uri_string();?>/get-curriculum");
+				event.preventDefault();
+			});
+			$("#dwlMet").click(function(event){
+				window.open("<?=$baseurl.$this->uri->uri_string();?>/get-metodical");
 				event.preventDefault();
 			});
 		});
