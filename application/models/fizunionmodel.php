@@ -141,6 +141,15 @@ class Fizunionmodel extends CI_Model{
 		return NULL;
 	}
 	
+	function read_course_metodical($physical,$course,$status){
+		
+		$query = "SELECT courses.metodical FROM fizcourseorder INNER JOIN courses ON courses.id=fizcourseorder.course INNER JOIN fizcourse ON fizcourse.course = fizcourseorder.id INNER JOIN fizorders ON fizcourseorder.order=fizorders.id WHERE fizcourse.physical = $physical AND fizcourse.id = $course AND fizcourse.status = $status AND fizorders.paid = 1";
+		$query = $this->db->query($query);
+		$data = $query->result_array();
+		if(isset($data)) return $data[0]['metodical'];
+		return NULL;
+	}
+	
 	function get_courses_test($audorder,$physical,$status){
 		
 		$query = "SELECT tests.*,fizcourseorder.id AS fcoid,fizcourse.id AS fcid,fizcourseorder.order AS foid FROM fizcourseorder INNER JOIN fizcourse ON fizcourseorder.id = fizcourse.course INNER JOIN courses ON courses.id = fizcourseorder.course INNER JOIN tests ON courses.id = tests.course WHERE fizcourse.id = $audorder AND fizcourse.physical = $physical AND fizcourse.status = $status AND tests.chapter > 0 AND tests.active =1 AND fizcourse.start = 1";

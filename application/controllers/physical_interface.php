@@ -648,6 +648,7 @@ class Physical_interface extends CI_Controller{
 					'docvalue'		=> 'Список литературы',
 					'document'		=> $this->fizunionmodel->read_course_libraries($this->user['uid'],$course,0),
 					'curriculum'	=> $this->fizunionmodel->read_course_curriculum($this->user['uid'],$course,0),
+					'metodical'		=> $this->fizunionmodel->read_course_metodical($this->user['uid'],$course,0),
 					'msgs'			=> $this->session->userdata('msgs'),
 					'msgr'			=> $this->session->userdata('msgr')
 			);
@@ -980,6 +981,33 @@ class Physical_interface extends CI_Controller{
 			force_download($filename,$data);
 		else:
 			$this->session->set_userdata('msgr','Ошибка при загузке учебного плана. Обратитесь к администрации сайта.');
+			redirect('physical/courses/current/course/'.$course.'/lectures');
+		endif;
+	}
+	
+	public function get_metodical(){
+		
+		$course = $this->uri->segment(5);
+		if(!$this->fizcoursemodel->owner_audience($course,$this->user['uid'],0)):
+			$this->session->set_userdata('msgr','Не возможно получить доступ к учебному плану курса.');
+			redirect('physical/courses/current');
+		endif;
+		
+		$this->load->helper('download');
+		$file = getcwd().'/'.$this->fizunionmodel->read_course_metodical($this->user['uid'],$course,0);
+		if(!file_exists($file)):
+			$this->session->set_userdata('msgr','Ошибка при загузке методических рекомендаций.<br/>Отсутствует файл на сервере. Обратитесь к администрации сайта.');
+			redirect('physical/courses/current/course/'.$course.'/lectures');
+		endif;
+		$data = file_get_contents($file);
+		$fileexp = explode('/',$this->fizunionmodel->read_course_metodical($this->user['uid'],$course,0));
+		if($fileexp && isset($fileexp[2])):
+			$filename = $fileexp[2];
+		endif;
+		if($data && $filename):
+			force_download($filename,$data);
+		else:
+			$this->session->set_userdata('msgr','Ошибка при загузке методических рекомендаций. Обратитесь к администрации сайта.');
 			redirect('physical/courses/current/course/'.$course.'/lectures');
 		endif;
 	}

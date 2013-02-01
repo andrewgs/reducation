@@ -71,6 +71,7 @@ $route['physical/courses/current/course/:num/lecture/:num']						= "physical_int
 $route['physical/courses/current/course/:num/lecture/:num/get-document']		= "physical_interface/get_document";
 $route['physical/courses/current/course/:num/lectures/get-libraries']			= "physical_interface/get_libraries";
 $route['physical/courses/current/course/:num/lectures/get-curriculum']			= "physical_interface/get_curriculum";
+$route['physical/courses/current/course/:num/lectures/get-metodical']			= "physical_interface/get_metodical";
 $route['physical/courses/current/course/:num/lectures/testing/id/:num']			= "physical_interface/testing";
 $route['physical/courses/current/course/:num/lectures/final-testing/id/:num'] 	= "physical_interface/testing";
 $route['physical/courses/:num/test-report/id/:num'] 							= "physical_interface/test_report";
