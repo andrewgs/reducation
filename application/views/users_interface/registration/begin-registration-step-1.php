@@ -38,7 +38,7 @@
 		<?php if($this->session->userdata('regcustomer')):?>
 			$("#accounttype").val("<?=$this->session->userdata('accounttype');?>");
 		<?php endif;?>
-			
+			$(".input-popover").popover();
 			$("#YesCancel").click(function(){location.href="<?=$baseurl;?>registration/customer/cancel-registration"});
 		});
 	</script>
