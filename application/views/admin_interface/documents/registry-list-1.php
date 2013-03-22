@@ -86,7 +86,7 @@
 								<?php else:?>
 									<td><nobr>Не оплачено</nobr></td>
 								<?endif;?>
-								<td><?=$info[$i]['order'];?></td>
+								<td><?=number_order($order['number'],$order['year']);?></td>
 								<!--<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>-->
 								<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
 								<td><?=$info[$i]['orderdate'];?></td>

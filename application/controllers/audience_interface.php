@@ -372,7 +372,8 @@ class Audience_interface extends CI_Controller{
 						if(!$next_numbers['placement']):
 							$next_numbers['placement'] = 1;
 						endif;
-						$this->ordersmodel->update_field($order,'numbercompletion',$next_numbers['completion'].'-О');
+						$year = $this->ordersmodel->read_field($order,'year');
+						$this->ordersmodel->update_field($order,'numbercompletion',number_order($next_numbers['completion'],$year).'-О');
 						$this->ordersmodel->update_field($order,'closedate',date("Y-m-d"));
 						
 						ob_start();

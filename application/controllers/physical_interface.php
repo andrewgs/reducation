@@ -804,7 +804,8 @@ class Physical_interface extends CI_Controller{
 						if(!$next_numbers['placement']):
 							$next_numbers['placement'] = 1;
 						endif;
-						$this->fizordersmodel->update_field($order,'numbercompletion',$next_numbers['completion'].'-О');
+						$year = $this->fizordersmodel->read_field($order,'year');
+						$this->fizordersmodel->update_field($order,'numbercompletion',number_order($next_numbers['completion'],$year).'-О');
 						$this->fizordersmodel->update_field($order,'closedate',date("Y-m-d"));
 						
 						ob_start();

@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="span12">
 				<p class="center title">
-           			<strong>Акт об оказании услуг № <?=number_order($order['number'],$order['year']);?></strong>
+           			<strong>Акт об оказании услуг к договору № <?=number_order($order['number'],$order['year']);?></strong>
            		</p>
            		<div class="clearfix">
 		  	  		<p class="pull-left">

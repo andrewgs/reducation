@@ -285,7 +285,7 @@ class Admin_interface extends CI_Controller{
 	}
 
 	/******************************************************** references ****************************************************/
-	
+
 	public function references_trends(){
 		
 		$pagevar = array(
@@ -1904,6 +1904,7 @@ class Admin_interface extends CI_Controller{
 					'userinfo'		=> $this->user,
 					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
 					'regdateend'	=> '',
+					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
 					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
 					'hours'			=> 0,
 					'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
