@@ -1,7 +1,7 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Customer_interface extends CI_Controller{
-	
+
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
 	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
 	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
@@ -252,6 +252,7 @@ class Customer_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
+		$pagevar['order']['date'] = $pagevar['order']['orderdate'];
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
@@ -284,6 +285,7 @@ class Customer_interface extends CI_Controller{
 		if(!$pagevar['order']['numbercompletion']):
 			show_404();
 		endif;
+		$pagevar['order']['date'] = $pagevar['order']['orderdate'];
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);

@@ -2023,6 +2023,7 @@ class Admin_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
+		$pagevar['order']['date'] = $pagevar['order']['orderdate'];
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
@@ -2048,6 +2049,7 @@ class Admin_interface extends CI_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
+		$pagevar['order']['date'] = $pagevar['order']['orderdate'];
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
@@ -3276,7 +3278,7 @@ class Admin_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		
 		$pagevar['title'] .= 'Договор № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
-		
+		$pagevar['order']['date'] = $pagevar['order']['orderdate'];
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
@@ -3304,7 +3306,7 @@ class Admin_interface extends CI_Controller{
 		$this->session->unset_userdata('msgr');
 		
 		$pagevar['title'] .= 'АКТ об оказании услуг по договору № '.$pagevar['order']['id'].' от '.$pagevar['order']['orderdate'].' года';
-		
+		$pagevar['order']['date'] = $pagevar['order']['orderdate'];
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
 		$pagevar['order']['orderdate'] = $this->operation_date($pagevar['order']['orderdate']);
 		$pagevar['order']['paiddate'] = $this->operation_dot_date($pagevar['order']['paiddate']);
