@@ -236,23 +236,23 @@ class Audience_interface extends CI_Controller{
 			$pagevar['chapters'][$i]['test']['count'] = $this->testsmodel->read_field($pagevar['chapters'][$i]['test']['test'],'count');
 		endfor;
 		$pagevar['test'] = $this->audiencetestmodel->read_records($course,$pagevar['course']['ordid'],0,$this->user['uid']);
-		if(!count($pagevar['test'])):
+		if(!$pagevar['test']):
 			$pagevar['testvalid'] = FALSE;
-		endif;
-		$pagevar['test']['count'] = $this->testsmodel->read_field($pagevar['test']['test'],'count');
-
-		$date_test = $this->audiencetestmodel->read_field($pagevar['test']['id'],'attemptnext');
-		if($date_test != '0000-00-00'):
-			if($date_test == date("Y-m-d")):
-				$this->audiencetestmodel->reset_attempt($pagevar['test']['id']);
-				$pagevar['test']['attempt'] = 0;
-			else:
+		else:
+			$pagevar['test']['count'] = $this->testsmodel->read_field($pagevar['test']['test'],'count');
+			$date_test = $this->audiencetestmodel->read_field($pagevar['test']['id'],'attemptnext');
+			if($date_test != '0000-00-00'):
+				if($date_test == date("Y-m-d")):
+					$this->audiencetestmodel->reset_attempt($pagevar['test']['id']);
+					$pagevar['test']['attempt'] = 0;
+				else:
+					$pagevar['testvalid'] = FALSE;
+				endif;
+			endif;
+			if($pagevar['test']['attempt'] == $pagevar['test']['count']):
+				$this->audiencetestmodel->update_field($pagevar['test']['id'],'attemptnext',date("Y-m-d",mktime(0,0,0,date("m"),date("d")+1,date("Y"))));
 				$pagevar['testvalid'] = FALSE;
 			endif;
-		endif;
-		if($pagevar['test']['attempt'] == $pagevar['test']['count']):
-			$this->audiencetestmodel->update_field($pagevar['test']['id'],'attemptnext',date("Y-m-d",mktime(0,0,0,date("m"),date("d")+1,date("Y"))));
-			$pagevar['testvalid'] = FALSE;
 		endif;
 		$this->load->view("audience_interface/courses-lectures",$pagevar);
 	}

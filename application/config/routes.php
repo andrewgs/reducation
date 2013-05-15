@@ -3,6 +3,9 @@
 $route['default_controller'] = "users_interface";
 $route['404_override'] = '';
 
+/***************************************************	CRONTAB INTRERFACE	***********************************************/
+$route['email-notification'] = "crontab_interface/emailNotification";
+
 /***************************************************	USERS INTRERFACE	***********************************************/
 $route[''] 								= "users_interface/index";
 $route['main-page'] 					= "users_interface/index";

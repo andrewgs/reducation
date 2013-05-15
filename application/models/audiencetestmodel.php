@@ -62,7 +62,7 @@ class Audiencetestmodel extends CI_Model{
 		$this->db->where('audience',$audience);
 		$query = $this->db->get('audiencetest',1);
 		$data = $query->result_array();
-		if(isset($data[0])) return $data[0];
+		if($data) return $data[0];
 		return NULL;
 	}
 	

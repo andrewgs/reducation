@@ -1562,6 +1562,7 @@ class Admin_interface extends CI_Controller{
 		$statusval = array('retvalue'=>'<i class="icon-ok" title="Отправлено"></i>','retemail'=>'');
 		$order = $this->input->post('order');
 		$smtype = $this->input->post('smtype');
+		$this->load->helper('date');
 		$info = $this->unionmodel->read_customer_info_order($order);
 		$info['orderdate'] = $this->operation_dot_date($info['orderdate']);
 		$info['closedate'] = $this->operation_dot_date($info['closedate']);
@@ -1606,8 +1607,8 @@ class Admin_interface extends CI_Controller{
 				</tbody>
 			</table>
 			<p>
-				<em><strong>Прохождение итогового тестирования станет доступно с <?=$info['closedate'];?></strong></em><br/>
-				<strong>ВНИМАНИЕ!</strong> В случае возникновения каких-либо вопросов относительно данных платежа обращайтесь по тел.: 2-36-53-53
+				<em><strong>Ваш период сдачи итогового тестирования с <?=$info['closedate'];?> по <?=date("d.m.Y",future_days(10,$info['closedate']));?> </strong></em><br/>
+				<strong>ВНИМАНИЕ!</strong> случае возникновения вопросов обращайтесь по тел.: 246-43-54 или 8-951-522-82-94
 			</p>
 		<?php
 		endif;
@@ -1620,7 +1621,6 @@ class Admin_interface extends CI_Controller{
 			</p>
 		<?php
 		$mailtext = ob_get_clean();
-		
 		$this->email->clear(TRUE);
 		$config['smtp_host'] = 'localhost';
 		$config['charset'] = 'utf-8';
