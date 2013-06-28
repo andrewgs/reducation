@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin_interface extends CI_Controller{
+class Admin_interface extends MY_Controller{
 	
 	var $user = array('uid'=>0,'cid'=>0,'ufullname'=>'','ulogin'=>'','uemail'=>'');
 	var $loginstatus = array('admin'=>FALSE,'status'=>FALSE);
@@ -9,29 +9,10 @@ class Admin_interface extends CI_Controller{
 	function __construct(){
 		
 		parent::__construct();
-		$this->load->model('adminmodel');
-		$this->load->model('customersmodel');
-		$this->load->model('audiencemodel');
-		$this->load->model('trendsmodel');
-		$this->load->model('coursesmodel');
-		$this->load->model('chaptermodel');
-		$this->load->model('lecturesmodel');
-		$this->load->model('testsmodel');
-		$this->load->model('testquestionsmodel');
-		$this->load->model('testanswersmodel');
-		$this->load->model('unionmodel');
-		$this->load->model('ordersmodel');
-		$this->load->model('courseordermodel');
-		$this->load->model('audienceordermodel');
-		$this->load->model('audiencetestmodel');
-		$this->load->model('testresultsmodel');
-		$this->load->model('calendarmodel');
-		$this->load->model('physicalmodel');
-		$this->load->model('fizordersmodel');
-		$this->load->model('fizunionmodel');
-		$this->load->model('fizcoursemodel');
-		$this->load->model('fiztestresultsmodel');
-		$this->load->model('fiztestmodel');
+		$this->load->model(array('adminmodel','customersmodel','audiencemodel','audiencemodel','trendsmodel','coursesmodel','chaptermodel'));
+		$this->load->model(array('lecturesmodel','testsmodel','testquestionsmodel','testanswersmodel','unionmodel','ordersmodel','courseordermodel'));
+		$this->load->model(array('audienceordermodel','audiencetestmodel','testresultsmodel','calendarmodel','physicalmodel','fizordersmodel','fizunionmodel'));
+		$this->load->model(array('fizcoursemodel','fiztestresultsmodel','fiztestmodel'));
 		
 		$cookieuid = $this->session->userdata('logon');
 		if(isset($cookieuid) and !empty($cookieuid)):
@@ -51,7 +32,6 @@ class Admin_interface extends CI_Controller{
 					redirect('');
 				endif;
 			endif;
-			
 			if($this->session->userdata('logon') != md5($userinfo['login'])):
 				$this->loginstatus['status'] = FALSE;
 				redirect('');
@@ -157,24 +137,8 @@ class Admin_interface extends CI_Controller{
 									break;
 			endswitch;
 			if($info && isset($mailtext)):
-				
-				$this->email->clear(TRUE);
-				$config['smtp_host'] = 'localhost';
-				$config['charset'] = 'utf-8';
-				$config['wordwrap'] = TRUE;
-				$config['mailtype'] = 'html';
-				
-				$this->email->initialize($config);
-				$this->email->to($email);
-				$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
-				$this->email->bcc('');
-				$this->email->subject('Данные для доступа к личному кабинету');
-				$this->email->message($mailtext);
-				if($this->email->send()):
-					$this->session->set_userdata('msgs','Успешно. Уведомление отправлено.');
-				else:
-					$this->session->set_userdata('msgr','Ошибка. Уведомление не отправлено.');
-				endif;
+				$this->sendMail($email,'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
+				$this->session->set_userdata('msgs','Успешно. Уведомление отправлено.');
 			endif;
 		endif;
 		redirect($_SERVER['HTTP_REFERER']);
@@ -1568,20 +1532,24 @@ class Admin_interface extends CI_Controller{
 		$info['closedate'] = $this->operation_dot_date($info['closedate']);
 		ob_start();
 		?>
+			<html><body>
 			<p>Здравствуйте, <?=$info['organization'];?></p>
 		<?php
+		$mailSubject = 'Извещение о невозможности оформления документов';
 		if($smtype == 'smtext'):
 			?>
-			<p>Администрация АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/ ">http://roscentrdpo.ru/ </a> извещает 
+			
+			<p>Администрация АНО ДПО «Южно-окружной центр повышения квалификации» извещает 
 				о невозможности оформления документов (удостоверений, актов выполненных работ) согласно договора 
 				№<u>&nbsp;&nbsp;&nbsp;<?=number_order($info['number'],$info['year']);?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>
 				о повышении квалификации сотрудников Вашей организации по причине отсутствия результатов итогового тестирования обучающихся.<br/>
 				Убедительно просим  срочно обеспечить проведение итогового тестирования (аттестацию) Ваших сотрудников.</p>
 			<?php
 		else:
+			$mailSubject = 'Уведомление о оплате за обучение';
 			?>
 			<p>
-				Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a> 
+				Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» 
 				сообщает о зачислении Вашего платежа.
 			</p>
 			<p>
@@ -1613,28 +1581,20 @@ class Admin_interface extends CI_Controller{
 		<?php
 		endif;
 		?>
-			<br/><br/>
 			<p>
 				Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86<br/>
-				Контактные данные: Тел.:(863) 246-43-54 Эл.почта: info@roscentrdpo.ru<br/>
-				С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации»
+				Тел.:(863) 246-43-54 <br/>
+				Эл.почта: info@roscentrdpo.ru <br/><br/>
+				С уважением, <br/> 
+				Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации»
 			</p>
+			</body></html>
 		<?php
 		$mailtext = ob_get_clean();
-		$this->email->clear(TRUE);
-		$config['smtp_host'] = 'localhost';
-		$config['charset'] = 'utf-8';
-		$config['wordwrap'] = TRUE;
-		$config['mailtype'] = 'html';
-		
-		$this->email->initialize($config);
-		$this->email->to($info['personemail']);
-		$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
-		$this->email->bcc('');
-		$this->email->subject('Уведомление о оплате за обучение');
-		$this->email->message($mailtext);	
-		$this->email->send();
-		
+		$sendMailStatus = $this->sendMail($info['personemail'],'info@roscentrdpo.ru','АНО ДПО «Южно-окружной центр повышения квалификации»',$mailSubject,$mailtext);
+		if($sendMailStatus['status'] == FALSE):
+			print_r($sendMailStatus['request']);
+		endif;
 		$statusval['retemail'] = $info['personemail'];
 		echo json_encode($statusval);
 	}
@@ -2950,7 +2910,7 @@ class Admin_interface extends CI_Controller{
 		<?php
 		if($smtype == 'smtext'):
 			?>
-			<p>Администрация АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/ ">http://roscentrdpo.ru/ </a> извещает 
+			<p>Администрация АНО ДПО «Южно-окружной центр повышения квалификации» извещает 
 				о невозможности оформления документов (удостоверений, актов выполненных работ) согласно договора 
 				№<u>&nbsp;&nbsp;&nbsp;<?=number_order($info['number'],$info['year']);?>&nbsp;&nbsp;&nbsp;</u> от <u>&nbsp;&nbsp;&nbsp;<?=$info['orderdate'];?>&nbsp;&nbsp;&nbsp;</u>
 				о повышении Вашей квалификации по причине отсутствия результатов итогового тестирования.<br/>
@@ -2959,7 +2919,7 @@ class Admin_interface extends CI_Controller{
 		else:
 			?>
 			<p>
-				Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a> 
+				Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»  
 				сообщает о зачислении Вашего платежа.
 			</p>
 			<p>
@@ -2999,21 +2959,10 @@ class Admin_interface extends CI_Controller{
 			</p>
 		<?php
 		$mailtext = ob_get_clean();
-		
-		$this->email->clear(TRUE);
-		$config['smtp_host'] = 'localhost';
-		$config['charset'] = 'utf-8';
-		$config['wordwrap'] = TRUE;
-		$config['mailtype'] = 'html';
-		
-		$this->email->initialize($config);
-		$this->email->to($info['email']);
-		$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
-		$this->email->bcc('');
-		$this->email->subject('Уведомление о оплате за обучение');
-		$this->email->message($mailtext);
-		$this->email->send();
-		
+		$sendMailStatus = $this->sendMail($info['email'],'info@roscentrdpo.ru','АНО ДПО','Уведомление о оплате за обучение',$mailtext);
+		if($sendMailStatus['status'] == FALSE):
+			print_r($sendMailStatus['request']);
+		endif;
 		$statusval['retemail'] = $info['email'];
 		echo json_encode($statusval);
 	}

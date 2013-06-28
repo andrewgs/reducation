@@ -39,28 +39,45 @@ class MY_Controller extends CI_Controller{
 		return $this->pagination->create_links();
 	}
 	
-	public function sendMail($to,$from_mail,$from_name,$subject,$text,$attach = NULL){
+	public function sendMail($to,$from_mail,$from_name,$subject,$text,$attach = NULL) {
+
+		$this->load->library('phpmailer');
+		$mail = new PHPMailer();
+		$mail->IsSendmail();
+		$mail->SetFrom($from_mail,'Климова Ольга');
+		$mail->AddReplyTo($from_mail,'Климова Ольга');
+		$mail->AddAddress($to);
+		$mail->Subject = $subject;
+		$mail->MsgHTML($text);
+		$mail->AltBody = strip_tags($text); 
+		//$mail->AddAttachment('images/phpmailer-mini.gif');
+		if(!$mail->Send()):
+			$result = array('status' => 0,'request'=>$mail->ErrorInfo);
+		else:
+			$result = array('status' => 1,'request'=>'');
+		endif;
+		return $result;
 		
-		$this->load->library('email');
-		$this->email->clear(TRUE);
+		
+		/*$this->load->library('email');
+		$this->email->clear();
+		$config['protocol'] = 'mail';
 		$config['smtp_host'] = 'localhost';
 		$config['charset'] = 'utf-8';
 		$config['wordwrap'] = TRUE;
 		$config['mailtype'] = 'html';
 		$this->email->initialize($config);
 		$this->email->to($to);
-		$this->email->from($from_mail,$from_name);
-		$this->email->bcc('');
+		$this->email->reply_to($from_mail,'Климова Ольга');
+		$this->email->from($from_mail,'Климова Ольга');
 		$this->email->subject($subject);
 		for($i=0;$i<count($attach);$i++):
 			$this->email->attach($attach[$i]['path']);
 		endfor;
 		$this->email->message($text);
-		if($this->email->send()):
-			return TRUE;
-		else:
-			show_error($this->email->print_debugger());
-		endif;
+		$status = $this->email->send();
+		return $result = array('status'=>$status,'request'=>$this->email->print_debugger());*/
+	 	
 	}
 	
 }

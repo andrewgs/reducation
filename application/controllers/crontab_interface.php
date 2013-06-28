@@ -10,14 +10,14 @@ class Crontab_interface extends MY_Controller{
 	public function emailNotification(){
 		
 		$this->load->helper('date');
-		$query = "SELECT orders.id AS orderid,orders.number,orders.year,orders.closedate,orders.orderdate,customers.id AS customerid,customers.organization,customers.personemail FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.numbercompletion = '' AND '".date("Y-m-d",now())."' >= SUBDATE(orders.closedate,3)";
+		$query = "SELECT orders.id AS orderid,orders.number,orders.year,orders.closedate,orders.orderdate,customers.id AS customerid,customers.organization,customers.personemail FROM orders INNER JOIN customers ON orders.customer = customers.id WHERE orders.paid = 1 AND orders.userpaiddate != '0000-00-00' AND orders.numbercompletion = '' AND '".date("Y-m-d",now())."' >= SUBDATE(orders.closedate,2)";
 		$query = $this->db->query($query);
 		$customers = $query->result_array();
 		for($i=0;$i<count($customers);$i++):
 			ob_start();?>
 <p>Здравствуйте, <?=$customers[$i]['organization'];?></p>
 <p>
-	Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a> 
+	Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» 
 	напоминает: 
 	<h4>Ваш период сдачи итогового тестированя по заказу №<?=$customers[$i]['number'].'/'.$customers[$i]['year'];?> от <?=swap_dot_date($customers[$i]['orderdate']);?><br/>
 	 наступает с <?=swap_dot_date($customers[$i]['closedate']);?> по <?=date("d.m.Y",future_days(10,$customers[$i]['closedate']));?></h4>

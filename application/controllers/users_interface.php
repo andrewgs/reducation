@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Users_interface extends CI_Controller{
+class Users_interface extends MY_Controller{
 	
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
 	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'fiz'=>FALSE,'status'=>FALSE);
@@ -255,30 +255,17 @@ class Users_interface extends CI_Controller{
 					ob_start();
 					?>
 					<p><strong>Здравствуйте, <?=$name;?></strong></p>
-					<p>Вами был произведен запрос на восстановления данных для авторизации на Образовательном портале АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a></p>
+					<p>Вами был произведен запрос на восстановления данных для авторизации на Образовательном портале АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 					<p><strong>Логин: <span style="font-size: 18px;"><?=$login;?></span> Пароль: <span style="font-size: 18px;"><?=$password;?></span></strong></p>
 					<br/><br/>
 					<p>
 						Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86<br/>
 						Контактные данные: Тел.:(863) 246-43-54 Эл.почта: info@roscentrdpo.ru<br/>
-						С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a>
+						С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации»
 					</p>
 					<?
 					$mailtext = ob_get_clean();
-					
-					$this->email->clear(TRUE);
-					$config['smtp_host'] = 'localhost';
-					$config['charset'] = 'utf-8';
-					$config['wordwrap'] = TRUE;
-					$config['mailtype'] = 'html';
-					
-					$this->email->initialize($config);
-					$this->email->to($email);
-					$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
-					$this->email->bcc('');
-					$this->email->subject('Данные для доступа к личному кабинету');
-					$this->email->message($mailtext);	
-					$this->email->send();
+					$this->sendMail($email,'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 				endif;
 				$this->session->set_userdata('msgs','На адрес '.$email.' высланы логин и пароль.');
 			endif;
@@ -388,25 +375,11 @@ class Users_interface extends CI_Controller{
 				<p>
 					Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86<br/>
 					Контактные данные: Тел.:(863) 246-43-54 Эл.почта: info@roscentrdpo.ru<br/>
-					С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a>
+					С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации»
 				</p>
 				<?
 				$mailtext = ob_get_clean();
-				
-				$this->email->clear(TRUE);
-				$config['smtp_host'] = 'localhost';
-				$config['charset'] = 'utf-8';
-				$config['wordwrap'] = TRUE;
-				$config['mailtype'] = 'html';
-				
-				$this->email->initialize($config);
-				$list = array($insert['email'],'admin@roscentrdpo.ru');
-				$this->email->to($list);
-				$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
-				$this->email->bcc('');
-				$this->email->subject('Данные для доступа к личному кабинету');
-				$this->email->message($mailtext);
-				$this->email->send();
+				$this->sendMail($insert['email'],'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 				$this->session->set_userdata('finishregphysical',TRUE);
 				redirect('registration/physical-registration/finish');
 			endif;
@@ -641,25 +614,11 @@ class Users_interface extends CI_Controller{
 			<p>
 				Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86<br/>
 				Контактные данные: Тел.:(863) 246-43-54 Эл.почта: info@roscentrdpo.ru<br/>
-				С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a>
+				С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации»
 			</p>
 			<?
 			$mailtext = ob_get_clean();
-			
-			$this->email->clear(TRUE);
-			$config['smtp_host'] = 'localhost';
-			$config['charset'] = 'utf-8';
-			$config['wordwrap'] = TRUE;
-			$config['mailtype'] = 'html';
-			
-			$this->email->initialize($config);
-			$list = array($this->session->userdata('personemail'),'admin@roscentrdpo.ru');
-			$this->email->to($list);
-			$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
-			$this->email->bcc('');
-			$this->email->subject('Данные для доступа к личному кабинету');
-			$this->email->message($mailtext);	
-			$this->email->send();
+			$this->sendMail($this->session->userdata('personemail'),'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 			
 			$this->session->unset_userdata(array('regcustomer'=>'','step'=>'','organization'=>'','phones'=>'','inn'=>'','kpp'=>'','accounttype'=>'','accountnumber'=>'','uraddress'=>'','bank'=>'','accountkornumber'=>'','bik'=>'','uraddress'=>'','postaddress'=>'','personemail'=>'','person'=>'','manager'=>'','fiomanager'=>'','statutory'=>''));
 			$this->session->set_userdata('finishregcustomer',TRUE);

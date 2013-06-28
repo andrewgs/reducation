@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Customer_interface extends CI_Controller{
+class Customer_interface extends MY_Controller{
 
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
 	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
@@ -343,13 +343,9 @@ class Customer_interface extends CI_Controller{
 			$this->form_validation->set_rules('documentnumber',' ','required|trim');
 			$this->form_validation->set_rules('specialty',' ','required|trim');
 			$this->form_validation->set_rules('qualification',' ','required|trim');
-			if(!$this->form_validation->run()):
+			if($this->form_validation->run() == FALSE):
 				$this->session->set_userdata('msgr','Ошибка. Повторите ввод.');
 			else:
-				$user = $this->audiencemodel->read_email_records($_POST['personaemail']);
-				if($user):
-					$this->session->set_userdata('msgr','Внимание. E-mail: '.$_POST['personaemail'].' уже существует!');
-				endif;
 				$id = $this->audiencemodel->insert_record($this->user['uid'],$_POST);
 				$login = 'slu_'.$id;
 				$password = $this->randomPassword(8);
@@ -361,7 +357,7 @@ class Customer_interface extends CI_Controller{
 				<p>Здравствуйте,  <?=$_POST['lastname'].' '.$_POST['name'].' '.$_POST['middlename'];?></p>
 				<p>
 					Поздравляем! Вас успешно зарегистрировали в статусе слушателя на Образовательном портале 
-					АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a><br/>
+					АНО ДПО «Южно-окружной центр повышения квалификации»<br/>
 					Обучение будет осуществляться через личный кабинет.<br/>
 					Для входа в личный кабинет используйте присвоенные вам логин и пароль.
 				</p>
@@ -374,21 +370,7 @@ class Customer_interface extends CI_Controller{
 				</p>
 				<?
 				$mailtext = ob_get_clean();
-				
-				$this->email->clear(TRUE);
-				$config['smtp_host'] = 'localhost';
-				$config['charset'] = 'utf-8';
-				$config['wordwrap'] = TRUE;
-				$config['mailtype'] = 'html';
-				
-				$this->email->initialize($config);
-				$list = array($_POST['personaemail'],'admin@roscentrdpo.ru');
-				$this->email->to($list);
-				$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
-				$this->email->bcc('');
-				$this->email->subject('Данные для доступа к личному кабинету');
-				$this->email->message($mailtext);
-				$this->email->send();
+				$this->sendMail($_POST['personaemail'],'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 				$this->session->set_userdata('msgs','Слушатель зарегистрирован.<br/>Вы можете зарегистрировать еще слушателя или приступить к оформлению заказа.<br/>Для этого необходимо перейти по ссылке '.anchor("customer/registration/ordering",'"Оформление заказа"'));
 			endif;
 			redirect($this->uri->uri_string());

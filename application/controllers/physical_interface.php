@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Physical_interface extends CI_Controller{
+class Physical_interface extends MY_Controller{
 	
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
 	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'fiz'=>FALSE,'status'=>FALSE);
@@ -821,25 +821,11 @@ class Physical_interface extends CI_Controller{
 						<p>
 							Наш адрес: г.Ростов-на-Дону, ул.Республиканская, д.86<br/>
 							Контактные данные: Тел.:(863) 246-43-54 Эл.почта: info@roscentrdpo.ru<br/>
-							С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации» <a href="http://roscentrdpo.ru/">http://roscentrdpo.ru/</a>
+							С уважением, Администрация Образовательного портала АНО ДПО «Южно-окружной центр повышения квалификации»
 						</p>
 						<?php
 						$mailtext = ob_get_clean();
-						
-						$this->email->clear(TRUE);
-						$config['smtp_host'] = 'localhost';
-						$config['charset'] = 'utf-8';
-						$config['wordwrap'] = TRUE;
-						$config['mailtype'] = 'html';
-						
-						$this->email->initialize($config);
-						$this->email->to('info@roscentrpdo.ru');
-						$this->email->from('admin@roscentrdpo.ru','АНО ДПО');
-						$this->email->bcc('');
-						$this->email->subject("Заказ №".$order." закрылся.");
-						$this->email->message($mailtext);	
-						$this->email->send();
-						
+						$this->sendMail('info@roscentrpdo.ru','admin@roscentrdpo.ru','АНО ДПО',"Заказ №".$order." закрылся.",$mailtext);
 					endif;
 					redirect('physical/courses/completed');
 				endif;

@@ -108,12 +108,12 @@ class Audiencemodel extends CI_Model{
 	
 	function read_email_records($email){
 		
-		$this->db->select('id,login,cryptpassword,lastname,name,middlename,signupdate');
+		$this->db->select('id,login,personaemail,cryptpassword,lastname,name,middlename,signupdate');
 		$this->db->where('personaemail',$email);
-		$this->db->where('access',1);
+//		$this->db->where('access',1);
 		$query = $this->db->get('audience');
 		$data = $query->result_array();
-		if(count($data)>0) return $data;
+		if(!empty($data)) return $data;
 		return NULL;
 	}
 	
