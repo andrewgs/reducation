@@ -90,7 +90,7 @@
 							</tr>
 							<tr>
 								<td>Главный бухгалтер</td>
-								<td>Селезнева А.В.</td>
+								<td>Любчич С.Ю.</td>
 							</tr>
 						</tbody>
 					</table>
@@ -98,7 +98,7 @@
 				<p style="margin: 80px 0 0;">
 					<strong>В платежном поручении в графе «назначение платежа» обязательно должно быть указано <i>«Оплата за Повышение квалификации по Договору №<?=number_order($order['number'],$order['year']);?> от <?=$order['orderdate'];?> по счету № <?=number_order($order['number'],$order['year']);?> от <?=$order['orderdate'];?> НДС не облагается»</i></strong>
 				</p>
-			<?php if($this->input->get('stamp') == 0):?>
+			<?php if($this->input->get('stamp') === FALSE):?>
 				<div id="#pechat" style="position: absolute; bottom: 70px; left: 270px;">
 					<img src="<?=base_url()?>img/pechat.png"/>
 				</div>

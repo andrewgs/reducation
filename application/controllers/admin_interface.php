@@ -1043,7 +1043,7 @@ class Admin_interface extends MY_Controller{
 	}
 	
 	public function orders_messages(){
-
+	
 		$pagevar = array(
 					'description'	=> '',
 					'author'		=> '',
@@ -1376,7 +1376,7 @@ class Admin_interface extends MY_Controller{
 				endif;
 				$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
 				if($pagevar['orders'][$i]['regnum']):
-					$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+					$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9\/])","",$pagevar['orders'][$i]['regnum']);
 				else:
 					$pagevar['orders'][$i]['regnum'] = 'Не завершен';
 				endif;
@@ -1486,14 +1486,19 @@ class Admin_interface extends MY_Controller{
 		if(!$access) $access = 0;
 		$this->ordersmodel->paid_order($order,$access);
 		if($access):
-			$next_numbers = $this->ordersmodel->next_numbers();
+			$this->load->model('fizordersmodel');
+			$next_aud_numbers = $this->ordersmodel->next_numbers();
+			$next_fiz_numbers = $this->fizordersmodel->next_numbers();
+			$next_numbers['completion'] = max($next_aud_numbers['completion'],$next_fiz_numbers['completion']);
+			$next_numbers['placement'] = max($next_aud_numbers['placement'],$next_fiz_numbers['placement']);
 			if(!$next_numbers['completion']):
 				$next_numbers['completion'] = 1;
 			endif;
 			if(!$next_numbers['placement']):
 				$next_numbers['placement'] = 1;
 			endif;
-			$this->ordersmodel->update_field($order,'numberplacement',$next_numbers['placement'].'-З');
+			$this->load->helper('string');
+			$this->ordersmodel->update_field($order,'numberplacement',number_order($next_numbers['placement'],date("y")).'-З');
 			/******************************************************/
 			$tmpdate = $this->calendarmodel->read_date();
 			for($i=0;$i<count($tmpdate);$i++):
@@ -1604,14 +1609,6 @@ class Admin_interface extends MY_Controller{
 		$order = $this->uri->segment(5);
 		$this->ordersmodel->update_field($order,'deleted',1);
 		$this->session->set_userdata('msgs','Заказ перемещен.');
-		/*if(!$this->ordersmodel->valid_finish($order)):
-			$this->session->set_userdata('msgs','Заказ удален.');
-			$this->audienceordermodel->delete_order_records($order);
-			$this->courseordermodel->delete_order($order);
-			$this->ordersmodel->delete_record($order);
-			$maxrecid = $this->ordersmodel->last_id();
-			$this->ordersmodel->set_autoincrement($maxrecid+1);
-		endif;*/
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 	
@@ -2636,7 +2633,7 @@ class Admin_interface extends MY_Controller{
 			endif;
 			$pagevar['orders'][$i]['regnum'] = $this->fizordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
 			if($pagevar['orders'][$i]['regnum']):
-				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9\/])","",$pagevar['orders'][$i]['regnum']);
 			else:
 				$pagevar['orders'][$i]['regnum'] = 'Не завершен';
 			endif;
@@ -2742,7 +2739,7 @@ class Admin_interface extends MY_Controller{
 			endif;
 			$pagevar['orders'][$i]['regnum'] = $this->ordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
 			if($pagevar['orders'][$i]['regnum']):
-				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+				$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9\/])","",$pagevar['orders'][$i]['regnum']);
 			else:
 				$pagevar['orders'][$i]['regnum'] = 'Не завершен';
 			endif;
@@ -2804,7 +2801,7 @@ class Admin_interface extends MY_Controller{
 				endif;
 				$pagevar['orders'][$i]['regnum'] = $this->fizordersmodel->read_field($pagevar['orders'][$i]['id'],'numbercompletion');
 				if($pagevar['orders'][$i]['regnum']):
-					$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9])","",$pagevar['orders'][$i]['regnum']);
+					$pagevar['orders'][$i]['regnum'] = preg_replace("([^0-9\/])","",$pagevar['orders'][$i]['regnum']);
 				else:
 					$pagevar['orders'][$i]['regnum'] = 'Не завершен';
 				endif;
@@ -2860,14 +2857,17 @@ class Admin_interface extends MY_Controller{
 		if(!$access) $access = 0;
 		$this->fizordersmodel->paid_order($order,$access);
 		if($access):
-			$next_numbers = $this->fizordersmodel->next_numbers();
+			$next_aud_numbers = $this->ordersmodel->next_numbers();
+			$next_fiz_numbers = $this->fizordersmodel->next_numbers();
+			$next_numbers['completion'] = max($next_aud_numbers['completion'],$next_fiz_numbers['completion']);
+			$next_numbers['placement'] = max($next_aud_numbers['placement'],$next_fiz_numbers['placement']);
 			if(!$next_numbers['completion']):
 				$next_numbers['completion'] = 1;
 			endif;
 			if(!$next_numbers['placement']):
 				$next_numbers['placement'] = 1;
 			endif;
-			$this->fizordersmodel->update_field($order,'numberplacement',$next_numbers['placement'].'-З');
+			$this->fizordersmodel->update_field($order,'numberplacement',number_order($next_numbers['placement'],date("y")).'-З');
 			/******************************************************/
 			$tmpdate = $this->calendarmodel->read_date();
 			for($i=0;$i<count($tmpdate);$i++):
@@ -2877,7 +2877,6 @@ class Admin_interface extends MY_Controller{
 			unset($tmpdate);
 			$chours = $this->fizunionmodel->read_course_max_hours($order);
 			$days = round($chours/8);
-			print_r($chours);
 			$kday = $i = 0; $overdate = '';
 			while($kday < $days):
 				$curdate = date("Y-m-d",mktime(0,0,0,date('m'),date('d')+$i,date('Y')));
@@ -3103,20 +3102,20 @@ class Admin_interface extends MY_Controller{
 	
 		$order = $this->uri->segment(5);
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Реестр слушателей',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'datebegin'		=> $this->fizordersmodel->read_field($order,'paiddate'),
-					'regdateend'	=> '',
-					'dateend'		=> $this->fizordersmodel->read_field($order,'closedate'),
-					'hours'			=> 0,
-					'ncompletion'	=> $this->fizordersmodel->read_field($order,'numbercompletion'),
-					'info'			=> $this->fizunionmodel->read_fullinfo_physical($this->uri->segment(5))
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Реестр слушателей',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'datebegin'		=> $this->fizordersmodel->read_field($order,'paiddate'),
+			'regdateend'	=> '',
+			'dateend'		=> $this->fizordersmodel->read_field($order,'closedate'),
+			'hours'			=> 0,
+			'ncompletion'	=> $this->fizordersmodel->read_field($order,'numbercompletion'),
+			'info'			=> $this->fizunionmodel->read_fullinfo_physical($this->uri->segment(5))
+		);
 		if($pagevar['ncompletion']):
-			$pagevar['ncompletion'] = preg_replace("([^0-9])","",$pagevar['ncompletion']);
+			$pagevar['ncompletion'] = preg_replace("([^0-9\/])","",$pagevar['ncompletion']);
 		endif;
 		if($pagevar['datebegin']!='0000-00-00'):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));

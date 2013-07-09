@@ -36,16 +36,16 @@
 						    Сведения о слушателях и выданных удостоверениях <br />
 							за период c « <u>&nbsp;<?=$datebegin['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$datebegin['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$datebegin['2']?> г. по « <u>&nbsp;<?=$dateend['0']?>&nbsp;</u> »  <u>&nbsp;&nbsp;&nbsp;&nbsp;<?=$dateend['1']?>&nbsp;&nbsp;&nbsp;&nbsp;</u> <?=$dateend['2']?> г.
 					</p>
-					<span style="margin-left:900px;">
+					<span style="margin-left:900px;"></span>
 					<table class="table table-bordered">
 						<tbody>
 							<tr>
-								<td colspan="9">&nbsp;</td>
+								<td colspan="7">&nbsp;</td>
 								<td colspan="3" style="text-align:center;">&nbsp;</td>
 								<td colspan="3" style="text-align:center;"><b>Группа № <u>&nbsp;&nbsp;<?=$ncompletion;?>&nbsp;&nbsp;</u></b></td>
 							</tr>
 							<tr>
-								<td colspan="9"></td>
+								<td colspan="7"></td>
 								<td colspan="3" style="text-align:center;">Договор</td>
 								<td colspan="3" style="text-align:center;">Удостоверения</td>
 							</tr>
@@ -57,6 +57,7 @@
 								<td>№ п/п</td>
 								<td>ОПЛАТА Сумма</td>
 								<td>Дата</td>
+								
 								<td>&nbsp;№&nbsp;</td>
 								<td>Сумма</td>
 								<td>Дата</td>
@@ -81,8 +82,7 @@
 								<?php else:?>
 									<td><nobr>Не оплачено</nobr></td>
 								<?endif;?>
-								<td><?=$info[$i]['order'];?></td>
-								<!--<td><nobr><?=$info[$i]['ordprice'];?> руб.</nobr></td>-->
+								<td><?=number_order($info[$i]['number'],$info[$i]['year']);?></td>
 								<td><nobr><?=$info[$i]['сprice']-$info[$i]['discount'];?> руб.</nobr></td>
 								<td><?=$info[$i]['orderdate'];?></td>
 								<td><?=$info[$i]['idnumber'];?></td>

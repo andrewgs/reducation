@@ -62,7 +62,7 @@ class Fizunionmodel extends CI_Model{
 	
 	function read_fullinfo_physical($order){
 		
-		$query = "SELECT fizcourse.*,physical.fio,physical.inn,physical.postaddress,fizorders.id AS ordid,fizorders.orderdate,fizorders.userpaiddate,fizorders.price AS ordprice,fizorders.paid,fizorders.paiddate,fizorders.discount,fizorders.docnumber,courses.code AS ccode,courses.title AS ctitle,courses.hours AS chours,courses.price AS сprice FROM fizcourse INNER JOIN physical ON fizcourse.physical=physical.id INNER JOIN fizcourseorder ON fizcourse.course=fizcourseorder.id INNER JOIN fizorders ON fizcourse.order = fizorders.id, courses WHERE fizcourse.order = $order AND fizcourseorder.course = courses.id ORDER BY fizcourse.id";
+		$query = "SELECT fizcourse.*,physical.fio,physical.inn,physical.postaddress,fizorders.id AS ordid,fizorders.number,fizorders.year,fizorders.orderdate,fizorders.userpaiddate,fizorders.price AS ordprice,fizorders.paid,fizorders.paiddate,fizorders.discount,fizorders.docnumber,courses.code AS ccode,courses.title AS ctitle,courses.hours AS chours,courses.price AS сprice FROM fizcourse INNER JOIN physical ON fizcourse.physical=physical.id INNER JOIN fizcourseorder ON fizcourse.course=fizcourseorder.id INNER JOIN fizorders ON fizcourse.order = fizorders.id, courses WHERE fizcourse.order = $order AND fizcourseorder.course = courses.id ORDER BY fizcourse.id";
 		$query = $this->db->query($query);
 		$data = $query->result_array();
 		if(count($data)) return $data;

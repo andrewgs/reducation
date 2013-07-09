@@ -1,7 +1,7 @@
 <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Physical_interface extends MY_Controller{
-	
+
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
 	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'fiz'=>FALSE,'status'=>FALSE);
 	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
@@ -43,7 +43,6 @@ class Physical_interface extends MY_Controller{
 					$this->loginstatus[$this->user['utype']] = TRUE;
 				endif;
 			endif;
-			
 			if($this->session->userdata('logon') != md5($userinfo['login'])):
 				$this->loginstatus['status'] = FALSE;
 				$this->user = array();
@@ -327,10 +326,6 @@ class Physical_interface extends MY_Controller{
 	
 	public function registration_ordering_step1(){
 		
-		/*$ur_id = $this->ordersmodel->next_id();
-		$fiz_id = $this->fizordersmodel->next_id();
-		print_r(max($ur_id,$fiz_id));
-		exit;*/
 		if($this->session->userdata('step')):
 			if($this->session->userdata('step') != 1):
 				redirect('physical/registration/ordering/step/'.$this->session->userdata('step'));
@@ -708,13 +703,11 @@ class Physical_interface extends MY_Controller{
 			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
 			redirect('physical/courses/current/course/'.$course.'/lectures');
 		endif;
-		
 		if($this->uri->segment(7) == 'final-testing'):
 			if(!$this->fiztestmodel->owner_final_testing($test,$course,$this->user['uid'])):
 				$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
 				redirect('physical/courses/current/course/'.$course.'/lectures');
 			endif;
-			
 		endif;
 		if($this->uri->segment(7) == 'testing'):
 			if(!$this->fiztestmodel->owner_nonfinal_testing($test,$course,$this->user['uid'])):
@@ -738,7 +731,6 @@ class Physical_interface extends MY_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
 		if($this->uri->segment(7) == 'final-testing'):
 			$testday = $this->fizordersmodel->read_field($pagevar['course']['ordid'],'closedate');
 			if(strtotime(date('Y-m-d')) < strtotime($testday)):
@@ -754,9 +746,9 @@ class Physical_interface extends MY_Controller{
 		$pagevar['questions'] = $this->testquestionsmodel->read_records($pagevar['test']['test']);
 		$pagevar['answers'] = $this->testanswersmodel->read_records($pagevar['test']['test']);
 		
-		if(!$pagevar['questions'] || $pagevar['answers']):
+		if(!$pagevar['questions'] || !$pagevar['answers']):
 			$this->session->set_userdata('msgr','Не возможно получить доступ к тесту.');
-			redirect('audience/courses/current/course/'.$course.'/lectures');
+			redirect('physical/courses/current/course/'.$course.'/lectures');
 		endif;
 		
 		shuffle($pagevar['questions']);
@@ -792,14 +784,21 @@ class Physical_interface extends MY_Controller{
 					$cntcurclose = $this->fizunionmodel->count_deactive_order($order);
 					$cnttotal = $this->fizcoursemodel->count_physical_by_order($order);
 					if($cntcurclose == $cnttotal):
+						$this->load->model('audienceordermodel');
 						$allcourses = $this->fizcoursemodel->read_record_by_order($order);
-						$max_idnumber = $this->fizcoursemodel->max_idnumber();
+						$max_aud_idnumber = $this->audienceordermodel->max_idnumber();
+						$max_fiz_isnumber = $this->fizcoursemodel->max_idnumber();
+						$max_idnumber = max($max_aud_idnumber,$max_fiz_isnumber);
 						for($i=0;$i<count($allcourses);$i++):
 							$max_idnumber++;
 							$max_idnumber = str_pad($max_idnumber,6,"0",STR_PAD_LEFT);
 							$this->fizcoursemodel->update_field($allcourses[$i]['id'],'idnumber',$max_idnumber);
 						endfor;
-						$next_numbers = $this->fizordersmodel->next_numbers();
+						$this->load->model('ordersmodel');
+						$next_aud_numbers = $this->ordersmodel->next_numbers();
+						$next_fiz_numbers = $this->fizordersmodel->next_numbers();
+						$next_numbers['completion'] = max($next_aud_numbers['completion'],$next_fiz_numbers['completion']);
+						$next_numbers['placement'] = max($next_aud_numbers['placement'],$next_fiz_numbers['placement']);
 						if(!$next_numbers['completion']):
 							$next_numbers['completion'] = 1;
 						endif;
