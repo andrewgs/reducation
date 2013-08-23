@@ -9,7 +9,7 @@
 	<?php $this->load->view('users_interface/header');?>
 	<div class="container">
 		<div class="row">
-			<div class="span<?=($loginstatus['status'])?'9':'12';?>">
+			<div class="span<?=($this->loginstatus['status'])?'9':'12';?>">
 				<h1 class="bordered">Курсы повышения квалификации специалистов</h1>
 				<p>
 					В рамках программы подготовки специалистов для реального сектора экономики, Южно-окружной центр 
@@ -36,16 +36,16 @@
 					квалификации инженеров и строителей  — для тех, кому необходимо углубить и расширить уже имеющиеся профессиональные знания и навыки.
 				</p>
 			</div>
-		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['zak']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['slu']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['slu']):?>
 			<?php $this->load->view('users_interface/rightbaraud');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['adm']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['adm']):?>
 			<?php $this->load->view('users_interface/rightbaradm');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['fiz']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['fiz']):?>
 			<?php $this->load->view('users_interface/rightbarfiz');?>
 		<?php endif;?>
 		</div>
@@ -82,7 +82,6 @@
 									<thead>
 										
 										<tr>
-											<!--th>№</th-->
 											<th>Код</th>
 											<th>Название</th>
 											<th><nobr>Кол-во часов</nobr></th>
@@ -93,16 +92,14 @@
 								<? for($j=0,$num=1;$j<count($courses);$j++,$num++):
 									 if($courses[$j]['trend'] == $trends[$i]['id']): ?>
 										<tr>
-											<!--td><?=$num;?>.</td-->
 											<td><?= $courses[$j]['code']; ?></td>
 											<td><span class="single-course"><?= $courses[$j]['title'] ?></span></td>
-											<!--td><nobr><?= $courses[$j]['price']; ?> руб.</nobr></td-->
 											<td class="centerized"><nobr><?= $courses[$j]['hours']; ?> ч.</nobr></td>
 										</tr>
 									<? endif; ?>
 								<? endfor; ?>
 									</tbody>
-							</table>
+								</table>
 							</div>
 						</div>
 					</div>

@@ -20,16 +20,16 @@
 				<p>Желаем Вам удачи!</p>
 				<p><?=anchor('registration/customer/step/1','<i class="icon-arrow-right icon-white"></i> Начать оформление',array('class'=>'btn btn-info'));?></p>
 			</div>
-		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['zak']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['slu']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['slu']):?>
 			<?php $this->load->view('users_interface/rightbaraud');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['adm']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['adm']):?>
 			<?php $this->load->view('users_interface/rightbaradm');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['fiz']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['fiz']):?>
 			<?php $this->load->view('users_interface/rightbarfiz');?>
 		<?php endif;?>
 		</div>

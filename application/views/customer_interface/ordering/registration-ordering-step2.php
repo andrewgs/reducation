@@ -15,7 +15,7 @@
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
-				<?php $this->load->view('forms/ordering-courses-list');?>
+			<legend>Выберите предложенные курсы и назначьте по ним слушателей (Шаг 2)</legend>
 			<?php for($i=0;$i<count($courseorder);$i++):?>
 				<div id="d<?=$courseorder[$i]['id'];?>">
 					<h4 idcorder="<?=$courseorder[$i]['id'];?>"><?=$courseorder[$i]['title'];?></h4>
@@ -43,6 +43,7 @@
 					</div>
 				</div>
 			<?php endfor;?>
+				<?php $this->load->view('forms/ordering-courses-list');?>
 				<div class="modal-footer">
 					<span>Цена заказа: <strong><u><?=$price;?> рублей.</u></strong></span>
 					<button class="btn" id="cancel" data-toggle="modal" href="#cancelRegistration">Отменить</button>

@@ -5,10 +5,10 @@
 				<a href="<?=$baseurl;?>" id="logo">Образовательный портал <br />АНО ДПО <span>Система Дистанционного Образования</span></a>
 			</div>
 			<div class="span5">
-			<? if($loginstatus['status']):?>
+			<? if($this->loginstatus['status']):?>
 				<p class="authorized-user">
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
-					<?=anchor('logoff','Выход', array('class'=>'auth-link'));?> 
+					<?=anchor('logoff','Выход', array('class'=>'auth-link link-off'));?> 
 				</p>
 			<? endif;?>
 				<div id="top-contacts">

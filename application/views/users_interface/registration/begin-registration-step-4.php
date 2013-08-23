@@ -26,13 +26,13 @@
 				
 			<?php endif;?>
 			</div>
-		<?php if($loginstatus['status'] && $loginstatus['zak']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['zak']):?>
 			<?php $this->load->view('users_interface/rightbarcus');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['slu']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['slu']):?>
 			<?php $this->load->view('users_interface/rightbaraud');?>
 		<?php endif;?>
-		<?php if($loginstatus['status'] && $loginstatus['adm']):?>
+		<?php if($this->loginstatus['status'] && $this->loginstatus['adm']):?>
 			<?php $this->load->view('users_interface/rightbaradm');?>
 		<?php endif;?>
 		<?php $this->load->view('users_interface/modal/registration-cancel');?>

@@ -24,7 +24,7 @@ header.admin { margin: 10px 0 20px; }
 
 #top-contacts { font-family: 'PT Sans', "Times New Roman", Times, serif; color: #333; font-size: 21px; text-align: right; }
 #top-contacts b { font-weight: normal; color: #999; }
-#top-contacts .desc { font-size: 14px; }
+#top-contacts .desc { font-size: 14px; color: #999; }
 
 .authorized-user { padding: 14px 0 5px; text-align: right; }
 .authorized-user i { font-weight: bold; font-size: 16px; }
@@ -36,6 +36,13 @@ header.admin { margin: 10px 0 20px; }
 nav { background: #115985; background: -moz-linear-gradient(top, #1b7eb1 0%, #105681 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1b7eb1), color-stop(100%,#105681)); background: -webkit-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: -o-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: -ms-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: linear-gradient(top, #1b7eb1 0%,#105681 100%); height: 50px; margin: 15px 0 0; -webkit-box-shadow: 0 2px 5px #777; -moz-box-shadow: 0 2px 5px #777; box-shadow: 0 2px 5px #777; 
 	-webkit-border-radius: 3px 3px 0 0; -moz-border-radius: 3px 3px 0 0; border-radius: 3px 3px 0 0;
 }
+.promo-12 { color: #fff; overflow: hidden; line-height: 50px; background: #115985; background: -moz-linear-gradient(top, #1b7eb1 0%, #105681 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1b7eb1), color-stop(100%,#105681)); background: -webkit-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: -o-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: -ms-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: linear-gradient(top, #1b7eb1 0%,#105681 100%); height: 50px; margin: 15px 0 0; -webkit-box-shadow: 0 2px 5px #777; -moz-box-shadow: 0 2px 5px #777; box-shadow: 0 2px 5px #777; -webkit-border-radius: 0 0 3px 3px; -moz-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; margin: -8px 0 0 20px; 
+		position:relative;
+}
+.promo-12 .wrapp_ { width: 740px; display: block; overflow: hidden; position: absolute; left: 245px; top: 0; height: 50px; }
+.promo-12 span.scrollingtext { position:absolute; white-space: nowrap; }
+.promo-12 span.title_ { text-transform: uppercase; margin-left: 20px; margin-right: 8px; color: #ffdf4a; }
+
 nav ul { list-style: none; margin: 0; padding: 0; }
 nav li { float: left; }
 nav li a { font-family: 'PT Sans', "Times New Roman", Times, serif; float: left; color: #fff; display: block; font-size: 15px; line-height: 50px; padding: 0 18px; text-decoration: none; text-transform: capitalize; }

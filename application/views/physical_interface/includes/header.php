@@ -5,25 +5,25 @@
 				<a href="<?=base_url();?>" id="logo">Образовательный портал <br />АНО ДПО <span>Система Дистанционного Образования</span></a>
 			</div>
 			<div class="span5">
-			<? if($loginstatus['status']):?>
+			<? if($this->loginstatus['status']):?>
 				<p class="authorized-user">
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
 				<?php
-					if($loginstatus['status'] && $loginstatus['zak']):
+					if($this->loginstatus['status'] && $this->loginstatus['zak']):
 						echo anchor('customer/information/start-page','Личный кабинет', array('class'=>'auth-link'));
-						echo anchor('logoff','Выход', array('class'=>'auth-link'));
+						echo anchor('logoff','Выход', array('class'=>'auth-link link-off'));
 					endif;
-					if($loginstatus['status'] && $loginstatus['slu']):
+					if($this->loginstatus['status'] && $this->loginstatus['slu']):
 						echo anchor('audience/courses/current','Личный кабинет', array('class'=>'auth-link'));
-						echo anchor('logoff','Выход', array('class'=>'auth-link'));
+						echo anchor('logoff','Выход', array('class'=>'auth-link link-off'));
 					endif;
-					if($loginstatus['status'] && $loginstatus['adm']):
+					if($this->loginstatus['status'] && $this->loginstatus['adm']):
 						echo anchor('admin-panel/actions/control','Панель управления', array('class'=>'auth-link'));
-						echo anchor('admin-panel/logoff','Выход', array('class'=>'auth-link'));
+						echo anchor('admin-panel/logoff','Выход', array('class'=>'auth-link link-off'));
 					endif;
-					if($loginstatus['status'] && $loginstatus['fiz']):
+					if($this->loginstatus['status'] && $this->loginstatus['fiz']):
 						echo anchor('physical/information/start-page','Личный кабинет', array('class'=>'auth-link'));
-						echo anchor('logoff','Выход', array('class'=>'auth-link'));
+						echo anchor('logoff','Выход', array('class'=>'auth-link link-off'));
 					endif;
 				?>
 				</p>

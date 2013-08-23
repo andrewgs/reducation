@@ -3,8 +3,6 @@
 class Admin_interface extends MY_Controller{
 	
 	var $user = array('uid'=>0,'cid'=>0,'ufullname'=>'','ulogin'=>'','uemail'=>'');
-	var $loginstatus = array('admin'=>FALSE,'status'=>FALSE);
-	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
 	
 	function __construct(){
 		
@@ -14,8 +12,7 @@ class Admin_interface extends MY_Controller{
 		$this->load->model(array('audienceordermodel','audiencetestmodel','testresultsmodel','calendarmodel','physicalmodel','fizordersmodel','fizunionmodel'));
 		$this->load->model(array('fizcoursemodel','fiztestresultsmodel','fiztestmodel'));
 		
-		$cookieuid = $this->session->userdata('logon');
-		if(isset($cookieuid) and !empty($cookieuid)):
+		if($this->session->userdata('logon') !== FALSE):
 			$this->user['uid'] = $this->session->userdata('userid');
 			if($this->user['uid']):
 				if($this->session->userdata('utype') != 'adm'):

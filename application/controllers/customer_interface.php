@@ -3,8 +3,6 @@
 class Customer_interface extends MY_Controller{
 
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
-	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'status'=>FALSE);
-	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
 	
 	function __construct(){
 		
@@ -25,8 +23,7 @@ class Customer_interface extends MY_Controller{
 		$this->load->model('audienceordermodel');
 		$this->load->model('calendarmodel');
 		
-		$cookieuid = $this->session->userdata('logon');
-		if(isset($cookieuid) and !empty($cookieuid)):
+		if($this->session->userdata('logon') !== FALSE):
 			$this->user['uid'] = $this->session->userdata('userid');
 			if($this->user['uid']):
 				if($this->session->userdata('utype') != 'zak'):
@@ -37,7 +34,6 @@ class Customer_interface extends MY_Controller{
 					$this->user['ulogin'] 			= $userinfo['login'];
 					$this->user['uemail'] 			= '';
 					$this->user['utype'] 			= $this->session->userdata('utype');
-//					$this->user['fullname']			= $userinfo['fullname'];
 					$this->user['fullname']			= $userinfo['organization'];
 					$this->loginstatus['status'] 	= TRUE;
 					$this->loginstatus[$this->user['utype']] = TRUE;
@@ -315,15 +311,15 @@ class Customer_interface extends MY_Controller{
 	public function registration_audience(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Регистрация слушателей',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Регистрация слушателей',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -475,32 +471,22 @@ class Customer_interface extends MY_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
-		for($i=0;$i<count($pagevar['courses']);$i++):
-			if(mb_strlen($pagevar['courses'][$i]['title'],'UTF-8') > 65):
-				$pagevar['courses'][$i]['title'] = mb_substr($pagevar['courses'][$i]['title'],0,65,'UTF-8');
-				$pagevar['courses'][$i]['title'] .= ' ... ';
-			endif;
-		endfor;
-		
 		if($this->input->post('submit')):
 			$_POST['submit'] = NULL;
-			$this->form_validation->set_rules('course',' ','required|trim');
+			$this->form_validation->set_rules('course[]',' ','required|trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не указан курс обучения.');
 			else:
-				if(!$this->coursesmodel->read_field($_POST['course'],'view')):
-					$this->session->set_userdata('msgr','Ошибка. Указанного курса не существует.');
-					redirect($this->uri->uri_string());
-				endif;
-				if(!$this->courseordermodel->exist_course_order($_POST['course'],$this->session->userdata('order'),$this->user['uid'])):
-					$corder = $this->courseordermodel->insert_record($this->session->userdata('order'),$_POST['course'],$this->user['uid']);
-					$this->session->set_userdata('msgs','Курс обучения добавлен в заказ.');
-				else:
-					$this->session->set_userdata('msgr','Ошибка. Указанный курс уже прикреплен к данному заказу');
-				endif;
+				for($i=0;$i<count($_POST['course']);$i++):
+					if($this->coursesmodel->read_field($_POST['course'][$i],'view')):
+						if(!$this->courseordermodel->exist_course_order($_POST['course'][$i],$this->session->userdata('order'),$this->user['uid'])):
+							$corder = $this->courseordermodel->insert_record($this->session->userdata('order'),$_POST['course'][$i],$this->user['uid']);
+							$this->session->set_userdata('msgs','Курсы обучения добавлены в заказ.');
+						endif;
+					endif;
+				endfor;
 			endif;
-			redirect($this->uri->uri_string());
+			redirect(uri_string());
 		endif;
 		if($this->input->post('ssubmit')):
 			$_POST['ssubmit'] = NULL;

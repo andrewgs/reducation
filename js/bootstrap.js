@@ -27,6 +27,7 @@
      * ======================================================= */
 
     $.support.transition = (function () {
+		 if (jQuery.browser.opera && parseInt(jQuery.browser.version) >= 12) return 'otransitionend';
       var thisBody = document.body || document.documentElement
         , thisStyle = thisBody.style
         , support = thisStyle.transition !== undefined || thisStyle.WebkitTransition !== undefined || thisStyle.MozTransition !== undefined || thisStyle.MsTransition !== undefined || thisStyle.OTransition !== undefined

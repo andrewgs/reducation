@@ -3,8 +3,6 @@
 class Users_interface extends MY_Controller{
 	
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
-	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'fiz'=>FALSE,'status'=>FALSE);
-	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
 	
 	function __construct(){
 		
@@ -17,8 +15,7 @@ class Users_interface extends MY_Controller{
 		$this->load->model('audienceordermodel');
 		$this->load->model('physicalmodel');
 		
-		$cookieuid = $this->session->userdata('logon');
-		if(isset($cookieuid) and !empty($cookieuid)):
+		if($this->session->userdata('logon') !== FALSE):
 			$this->user['uid'] = $this->session->userdata('userid');
 			if($this->user['uid']):
 				$model = $this->definition_model($this->session->userdata('utype'));
@@ -180,8 +177,10 @@ class Users_interface extends MY_Controller{
 			$model = $this->definition_model($this->session->userdata('utype'));
 			$this->$model->deactive_user($this->session->userdata('userid'));
 		endif;
+		$this->loginstatus = array();
+		$this->session->unset_userdata(array('logon'=>'','userid'=>'','utype'=>''));
 		$this->session->sess_destroy();
-		redirect('');
+		redirect('/');
 	}
 	
 	public function password_restore(){

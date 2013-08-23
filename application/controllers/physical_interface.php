@@ -3,8 +3,6 @@
 class Physical_interface extends MY_Controller{
 
 	var $user = array('uid'=>0,'ulogin'=>'','uemail'=>'','utype'=>'','fullname'=>'');
-	var $loginstatus = array('zak'=>FALSE,'slu'=>FALSE,'adm'=>FALSE,'fiz'=>FALSE,'status'=>FALSE);
-	var $months = array("01"=>"января","02"=>"февраля","03"=>"марта","04"=>"апреля","05"=>"мая","06"=>"июня","07"=>"июля","08"=>"августа","09"=>"сентября","10"=>"октября","11"=>"ноября","12"=>"декабря");
 	
 	function __construct(){
 		
@@ -26,8 +24,7 @@ class Physical_interface extends MY_Controller{
 		$this->load->model('fiztestresultsmodel');
 		$this->load->model('calendarmodel');
 		
-		$cookieuid = $this->session->userdata('logon');
-		if(isset($cookieuid) and !empty($cookieuid)):
+		if($this->session->userdata('logon') !== FALSE):
 			$this->user['uid'] = $this->session->userdata('userid');
 			if($this->user['uid']):
 				if($this->session->userdata('utype') != 'fiz'):

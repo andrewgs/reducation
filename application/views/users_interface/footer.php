@@ -2,7 +2,7 @@
 	<footer>
 		<div class="row">
 			<div class="span5">
-				<div class="copy">&copy; Южно-окружной центр повышения квалификации 2012</div>
+				<div class="copy">&copy; Южно-окружной центр повышения квалификации, 2013</div>
 			</div>
 			<div class="span4">
 				г.Ростов-на-Дону, ул.Республиканская, 86

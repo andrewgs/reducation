@@ -5,29 +5,29 @@
 				<a href="<?=base_url();?>" id="logo">Образовательный портал <br />АНО ДПО <span>Система Дистанционного Образования</span></a>
 			</div>
 			<div class="span5">
-			<? if($loginstatus['status']):?>
+			<?php if($this->loginstatus['status'] === TRUE):?>
 				<p class="authorized-user">
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
 				<?php
-					if($loginstatus['status'] && $loginstatus['zak']):
+					if($this->loginstatus['status'] && $this->loginstatus['zak']):
 						echo anchor('customer/information/start-page','Личный кабинет', array('class'=>'auth-link'));
-						echo anchor('logoff','Выход', array('class'=>'auth-link'));
+						echo anchor('logoff','Выход', array('class'=>'auth-link link-off'));
 					endif;
-					if($loginstatus['status'] && $loginstatus['slu']):
+					if($this->loginstatus['status'] && $this->loginstatus['slu']):
 						echo anchor('audience/courses/current','Личный кабинет', array('class'=>'auth-link'));
-						echo anchor('logoff','Выход', array('class'=>'auth-link'));
+						echo anchor('logoff','Выход', array('class'=>'auth-link link-off'));
 					endif;
-					if($loginstatus['status'] && $loginstatus['adm']):
+					if($this->loginstatus['status'] && $this->loginstatus['adm']):
 						echo anchor('admin-panel/actions/control','Панель управления', array('class'=>'auth-link'));
-						echo anchor('admin-panel/logoff','Выход', array('class'=>'auth-link'));
+						echo anchor('admin-panel/logoff','Выход', array('class'=>'auth-link link-off'));
 					endif;
-					if($loginstatus['status'] && $loginstatus['fiz']):
+					if($this->loginstatus['status'] && $this->loginstatus['fiz']):
 						echo anchor('physical/information/start-page','Личный кабинет', array('class'=>'auth-link'));
-						echo anchor('logoff','Выход', array('class'=>'auth-link'));
+						echo anchor('logoff','Выход', array('class'=>'auth-link link-off'));
 					endif;
 				?>
 				</p>
-			<? else: ?>
+			<?php else:?>
 				<div class="form-header">Вход в личный кабинет</div>
 				<div id="top-restore" style="display:none;text-align: right;">
 					<?=anchor('password-restore','Забыли пароль?');?>
@@ -39,12 +39,12 @@
 					<input type="password" id="password" class="input-small focused" name="password" placeholder="Пароль">
 					<span class="help-inline" style="display:none; padding-left: 0px;">&nbsp;</span>
 					<button class="btn" type="submit" id="lsend" name="lsubmit" value="lsend">Войти</button>
-				<?= form_close(); ?>	
+				<?= form_close(); ?>
 			<? endif;?>
 				<div id="top-contacts">
-					<span class="desc">Телефон для справок:</span>
-					<b>(863)</b> 246-43-54
-				</div>			
+					8 800 707-00-97 <br/>
+					<span class="desc">Звонок из всех регионов России бесплатно</span> 
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -56,7 +56,7 @@
 				<?php else: ?>
 					<li nav="registration"><?=anchor('registration/customer','Оформление заявки ЮЛ');?> <span class="lsep"> </span><span class="rsep"> </span></li>
 				<?php endif; ?>
-					<li nav="registration"><?=anchor('registration/physical-person','Оформление заявки ФЗ');?> <span class="lsep"> </span><span class="rsep"> </span></li>
+					<li nav="registration"><?=anchor('registration/physical-person','Оформление заявки ФЛ');?> <span class="lsep"> </span><span class="rsep"> </span></li>
 					<li><?=anchor('catalog/courses','Каталог курсов');?> <span class="lsep"> </span><span class="rsep"> </span></li>
 					<li><?=anchor('information','Информация');?> <span class="lsep"> </span><span class="rsep"> </span></li>
 					<li><?=anchor('contacts','Контакты');?></li>

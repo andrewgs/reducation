@@ -7,7 +7,7 @@
 			<div class="span5">
 				<p class="authorized-user">
 					Вы вошли как <i><?= $userinfo['ulogin']; ?></i>
-					<?=anchor('admin-panel/logoff','Завершить сеанс', array('class'=>'auth-link'));?> 
+					<?=anchor('admin-panel/logoff','Завершить сеанс', array('class'=>'auth-link link-off'));?> 
 				</p>
 				<div id="top-contacts">
 					<span class="desc">Телефон для справок:</span>
