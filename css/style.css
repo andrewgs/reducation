@@ -39,7 +39,7 @@ nav { background: #115985; background: -moz-linear-gradient(top, #1b7eb1 0%, #10
 .promo-12 { color: #fff; overflow: hidden; line-height: 50px; background: #115985; background: -moz-linear-gradient(top, #1b7eb1 0%, #105681 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1b7eb1), color-stop(100%,#105681)); background: -webkit-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: -o-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: -ms-linear-gradient(top, #1b7eb1 0%,#105681 100%); background: linear-gradient(top, #1b7eb1 0%,#105681 100%); height: 50px; margin: 15px 0 0; -webkit-box-shadow: 0 2px 5px #777; -moz-box-shadow: 0 2px 5px #777; box-shadow: 0 2px 5px #777; -webkit-border-radius: 0 0 3px 3px; -moz-border-radius: 0 0 3px 3px; border-radius: 0 0 3px 3px; margin: -8px 0 0 20px; 
 		position:relative;
 }
-.promo-12 .wrapp_ { width: 740px; display: block; overflow: hidden; position: absolute; left: 245px; top: 0; height: 50px; }
+.promo-12 .wrapp_ { width: 875px; display: block; overflow: hidden; position: absolute; left: 110px; top: 0; height: 50px; }
 .promo-12 span.scrollingtext { position:absolute; white-space: nowrap; }
 .promo-12 span.title_ { text-transform: uppercase; margin-left: 20px; margin-right: 8px; color: #ffdf4a; }
 
@@ -91,11 +91,13 @@ p.caption .next { color: #e3e3e3; opacity: 0.7; font-size: 36px; display: inline
 
 .partners { list-style: none; margin: 0; padding: 0; }
 .partners li { float: left; }
-.partners li a { display: block; line-height: 21px; padding: 30px 0 0 10px; text-transform: capitalize; width: 100px; margin: 0 40px 0 0; }
+.partners li a { display: block; line-height: 21px; padding: 30px 0 0 10px; text-transform: capitalize; width: 100px; margin: 0 12px 0 0; }
 .partners li.p1 a { background: url('../img/sprites.png') 0 -79px no-repeat; width: 112px; height: 80px; text-indent: -9999px; padding: 0; }
 .partners li.p2 a { background: url('../img/sprites.png') -131px -79px no-repeat; width: 112px; height: 70px; text-indent: -9999px; padding: 0; margin-top: 10px; }
 .partners li.p3 a { background: url('../img/sprites.png') -254px -79px no-repeat; width: 112px; height: 94px; text-indent: -9999px; padding: 0; }
 .partners li.p4 a { background: url('../img/sprites.png') -371px -79px no-repeat; width: 112px; height: 65px; text-indent: -9999px; padding: 0; margin-top: 15px; }
+.partners li.p5 a { background: url('../img/sprites.png') -480px -82px no-repeat; width: 85px; height: 71px; text-indent: -9999px; padding: 0; margin-top: 15px; }
+.partners li.p6 a { background: url('../img/sprites.png') -562px -83px no-repeat; width: 82px; height: 72px; text-indent: -9999px; padding: 0; margin-top: 15px; }
 
 .review { margin: 20px 5px 18px; }
 .single-course { color: #066ba5; }
@@ -238,3 +240,10 @@ p.intend { text-indent: 27px; }
 .btn-download{
 	height: 18px; padding-top: 4px;
 }
+.sign { text-align: right; float: right; }
+.photo { float: left; }
+.sign-wrapper { margin: 3em 0 0; }
+.otzv { list-style: none; margin: 0; padding: 0; }
+.otzv li { margin: 0 1em 1em 0; float: left; }
+.otzv li img { border-radius: 100px; width: 100px; height: 100px; padding: 4px; background: #fff; border: 1px solid #e0e0e0; }
+
