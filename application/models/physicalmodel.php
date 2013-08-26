@@ -12,9 +12,6 @@ class Physicalmodel extends CI_Model{
 	var $phones			= '';
 	var $postaddress	= '';
 	var $email			= '';
-	var $passport		= '';
-	var $issued			= '';
-	var $propiska		= '';
 	var $accounttype	= '';
 	var $accountnumber	= 0;
 	var $bank			= '';
@@ -34,7 +31,7 @@ class Physicalmodel extends CI_Model{
 		$this->password 		= $data['password'];
 		$this->cryptpassword 	= $data['cryptpassword'];
 		$this->fio 				= $data['fio'];
-		$this->fiodat 				= $data['fiodat'];
+		$this->fiodat 			= $data['fiodat'];
 		$this->phones 			= $data['phones'];
 		$this->inn 				= $data['inn'];
 		$this->postaddress		= $data['postaddress'];
@@ -45,9 +42,6 @@ class Physicalmodel extends CI_Model{
 		$this->signupdate 		= date("Y-m-d");
 		$this->accountnumber	= $data['accountnumber'];
 		$this->accountkornumber	= $data['accountkornumber'];
-		$this->passport			= $data['passport'];
-		$this->issued			= $data['issued'];
-		$this->propiska			= $data['propiska'];
 		
 		$this->db->insert('physical',$this);
 		return $this->db->insert_id();
@@ -119,9 +113,6 @@ class Physicalmodel extends CI_Model{
 		$this->db->set('accounttype',$data['accounttype']);
 		$this->db->set('accountnumber',$data['accountnumber']);
 		$this->db->set('accountkornumber',$data['accountkornumber']);
-		$this->db->set('passport',$data['passport']);
-		$this->db->set('issued',$data['issued']);
-		$this->db->set('propiska',$data['propiska']);
 		$this->db->where('id',$id);
 		
 		$this->db->update('physical');
