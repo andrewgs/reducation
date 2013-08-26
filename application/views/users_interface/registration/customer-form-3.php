@@ -15,7 +15,7 @@
 				<div class="control-group" id="cgemail">
 					<label for="personemail" class="control-label">E-mail</label>
 					<div class="controls">
-						<input type="text" id="personemail" class="span4 input-popover inpval" data-content="Ваш адрес электронной почты (email).<br/><strong>Например:</strong> info@roscentrdpo.ru" data-trigger="focus" data-placement="bottom" data-toggle="popover" data-original-title="Обязательное поле" name="personemail" value="<?=$this->session->userdata('personemail')?>"> <span class="badge badge-info">!</span>
+						<input type="text" id="personemail" class="span4 input-popover inpval" data-content="Ваш адрес электронной почты (email).<br/><strong>Например:</strong> info@roscentrdpo.ru" data-trigger="focus" data-placement="<?=POPUP_POSITION;?>" data-toggle="popover" data-original-title="Обязательное поле" name="personemail" value="<?=$this->session->userdata('personemail')?>"> <span class="badge badge-info">!</span>
 						<span class="help-inline" id="email" style="display:none;">&nbsp;</span>
 						<p class="help-block">info@roscentrdpo.ru</p>
 					</div>
@@ -23,7 +23,7 @@
 				<div class="control-group">
 					<label for="person" class="control-label">Контактное лицо</label>
 					<div class="controls">
-						<input type="text" id="person" class="span4 input-popover inpval" data-content="Ваше Имя, Фамилия и Отчество.<br/><strong>Например:</strong> Иванов Иван Иванович" data-trigger="focus" data-placement="bottom" data-toggle="popover" data-original-title="Обязательное поле" name="person" value="<?=$this->session->userdata('person')?>"> <span class="badge badge-info">!</span>
+						<input type="text" id="person" class="span4 input-popover inpval" data-content="Ваше Имя, Фамилия и Отчество.<br/><strong>Например:</strong> Иванов Иван Иванович" data-trigger="focus" data-placement="<?=POPUP_POSITION;?>" data-toggle="popover" data-original-title="Обязательное поле" name="person" value="<?=$this->session->userdata('person')?>"> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 						<p class="help-block">Иванов Иван Иванович</p>
 					</div>
@@ -31,7 +31,7 @@
 				<div class="control-group">
 					<label for="phones" class="control-label">Номер конт.телефона</label>
 					<div class="controls">
-						<input type="text" id="person" class="span4 input-popover inpval" data-content="Ваш контактный номер телефона.<br/><strong>Например:</strong> (863)273-66-61" data-trigger="focus" data-placement="bottom" data-toggle="popover" data-original-title="Обязательное поле" name="phones" value="<?=$this->session->userdata('phones')?>"> <span class="badge badge-info">!</span>
+						<input type="text" id="person" class="span4 input-popover inpval" data-content="Ваш контактный номер телефона.<br/><strong>Например:</strong> (863)273-66-61" data-trigger="focus" data-placement="<?=POPUP_POSITION;?>" data-toggle="popover" data-original-title="Обязательное поле" name="phones" value="<?=$this->session->userdata('phones')?>"> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 						<p class="help-block">(863)273-66-61</p>
 					</div>

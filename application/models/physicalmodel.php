@@ -12,11 +12,6 @@ class Physicalmodel extends CI_Model{
 	var $phones			= '';
 	var $postaddress	= '';
 	var $email			= '';
-	var $accounttype	= '';
-	var $accountnumber	= 0;
-	var $bank			= '';
-	var $accountkornumber= 0;
-	var $bik			= '';
 	var $signupdate		= '';
 	var $online			= '';
 	var $access			= 1;
@@ -35,13 +30,8 @@ class Physicalmodel extends CI_Model{
 		$this->phones 			= $data['phones'];
 		$this->inn 				= $data['inn'];
 		$this->postaddress		= $data['postaddress'];
-		$this->bik				= $data['bik'];
-		$this->bank				= $data['bank'];
 		$this->email			= $data['email'];
-		$this->accounttype		= 5;
-		$this->signupdate 		= date("Y-m-d");
-		$this->accountnumber	= $data['accountnumber'];
-		$this->accountkornumber	= $data['accountkornumber'];
+		$this->signupdate		= date("Y-m-d");
 		
 		$this->db->insert('physical',$this);
 		return $this->db->insert_id();
@@ -107,12 +97,7 @@ class Physicalmodel extends CI_Model{
 		$this->db->set('phones',$data['phones']);
 		$this->db->set('inn',$data['inn']);
 		$this->db->set('postaddress',strip_tags($data['postaddress']));
-		$this->db->set('bik',$data['bik']);
-		$this->db->set('bank',strip_tags($data['bank']));
 		$this->db->set('email',$data['email']);
-		$this->db->set('accounttype',5);
-		$this->db->set('accountnumber',$data['accountnumber']);
-		$this->db->set('accountkornumber',$data['accountkornumber']);
 		$this->db->where('id',$id);
 		
 		$this->db->update('physical');

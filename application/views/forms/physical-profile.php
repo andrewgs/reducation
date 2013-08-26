@@ -54,49 +54,6 @@
 					<span class="help-inline" style="display:none;">&nbsp;</span>
 				</div>
 			</div>
-			<legend>
-				Реквизиты
-			</legend>
-			<div class="control-group">
-				<label for="accounttype" class="control-label">Тип счёта</label>
-				<div class="controls">
-					<select id="accounttype" disabled="disabled" autocomplete="off" name="accounttype" class="span4">
-						<option value="1">Временный</option>
-						<option value="2">Текущий</option>
-						<option value="3">Карточный</option>
-						<option value="4">Именной</option>
-						<option selected="selected" value="5">Счет на физ.лицо</option>
-					</select>
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="accountnumber" class="control-label">Номер счёта</label>
-				<div class="controls">
-					<input type="text" id="accountnumber" class="span4 digital" name="accountnumber" maxlength="20" value="<?=$physical['accountnumber'];?>">
-					<span class="help-inline" style="display:none;">&nbsp;</span>
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="bank" class="control-label">Наименование<br/>банка</label>
-				<div class="controls">
-					<textarea rows="3" id="textarea" class="span4" name="bank"><?=$physical['bank'];?></textarea>
-					<span class="help-inline" style="display:none;">&nbsp;</span>
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="accountkornumber" class="control-label">Номер кор. счёта</label>
-				<div class="controls">
-					<input type="text" id="accountkornumber" class="span4 digital" name="accountkornumber" maxlength="20" value="<?=$physical['accountkornumber'];?>">
-					<span class="help-inline" style="display:none;">&nbsp;</span>
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="bik" class="control-label">БИК</label>
-				<div class="controls">
-					<input type="text" id="bik" class="span4 digital" name="bik" maxlength="10" value="<?=$physical['bik'];?>">
-					<span class="help-inline" style="display:none;">&nbsp;</span>
-				</div>
-			</div>
 		</div>
 	</fieldset>
 	<?php if(!$readonly):?>

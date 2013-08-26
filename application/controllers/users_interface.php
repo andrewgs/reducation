@@ -364,10 +364,6 @@ class Users_interface extends MY_Controller{
 			$this->form_validation->set_rules('phones',' ','required|trim');
 			$this->form_validation->set_rules('postaddress',' ','required|trim');
 			$this->form_validation->set_rules('email',' ','required|valid_email|trim');
-			$this->form_validation->set_rules('accountnumber',' ','trim');
-			$this->form_validation->set_rules('bank',' ','trim');
-			$this->form_validation->set_rules('accountkornumber',' ','trim');
-			$this->form_validation->set_rules('bik',' ','trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Повторите ввод.');
 				redirect($this->uri->uri_string());

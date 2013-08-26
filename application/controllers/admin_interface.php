@@ -351,6 +351,7 @@ class Admin_interface extends MY_Controller{
 			$this->form_validation->set_rules('price',' ','required|trim');
 			$this->form_validation->set_rules('hours',' ','required|trim');
 			$this->form_validation->set_rules('trend',' ','required|trim');
+			$this->form_validation->set_rules('note',' ','trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
 			else:
@@ -363,7 +364,7 @@ class Admin_interface extends MY_Controller{
 					$this->session->set_userdata('msgs','Курс создан успешно.');
 				endif;
 			endif;
-			redirect($this->uri->uri_string());
+			redirect(uri_string());
 		endif;
 		if($this->input->post('esubmit')):
 			$_POST['esubmit'] = NULL;
@@ -372,6 +373,7 @@ class Admin_interface extends MY_Controller{
 			$this->form_validation->set_rules('price',' ','required|trim');
 			$this->form_validation->set_rules('hours',' ','required|trim');
 			$this->form_validation->set_rules('icrs',' ','required|trim');
+			$this->form_validation->set_rules('note',' ','trim');
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка при сохранении. Не заполены необходимые поля.');
 			else:
@@ -379,14 +381,9 @@ class Admin_interface extends MY_Controller{
 					$_POST['view'] = 0;
 				endif;
 				$this->coursesmodel->update_record($_POST);
-				/*if(!$_POST['view']):
-					$this->coursesmodel->deactive_status_trend($_POST['idt']);
-				else:
-					$this->coursesmodel->active_status_trend($_POST['idt']);
-				endif;*/
 				$this->session->set_userdata('msgs','Информация по курсу успешно сохранена.');
 			endif;
-			redirect($this->uri->uri_string());
+			redirect(uri_string());
 		endif;
 		$this->load->view("admin_interface/admin-courses-list",$pagevar);
 	}

@@ -29,7 +29,7 @@
 						<?php for($j=0;$j<count($courses);$j++):?>
 							<?php if($courses[$j]['trend'] == $trends[$i]['id']):?>
 								<tr>
-									<td><a href="#editCourse" class="editCourse" data-toggle="modal" title="Редактировать" idcourse="<?=$courses[$j]['id'];?>"><i class="icon-pencil"></i></a></td>
+									<td><a href="#editCourse" class="editCourse" data-course-note="<?=$courses[$j]['note'];?>" data-toggle="modal" title="Редактировать" idcourse="<?=$courses[$j]['id'];?>"><i class="icon-pencil"></i></a></td>
 									<td><?=anchor('admin-panel/references/trend/'.$trends[$i]['id'].'/course/'.$courses[$j]['id'],'<span idspan="cs'.$courses[$j]['id'].'">'.$courses[$j]['code'].'</span>. <span idspan="ts'.$courses[$j]['id'].'">'.$courses[$j]['title'].'</span>');?></td>
 									<td><nobr><span idspan="sp<?=$courses[$j]['id'];?>"><?=$courses[$j]['price'];?></span> руб.</nobr></td>
 									<td><nobr><span idspan="sh<?=$courses[$j]['id'];?>"><?=$courses[$j]['hours'];?></span> час.</nobr></td>
@@ -102,11 +102,13 @@
 				var price = $("span[idspan = sp"+DCourse+"]").html();
 				var hours = $("span[idspan = sh"+DCourse+"]").html();
 				var view = $("i[idcourse = "+DCourse+"]").attr('view');
+				var note = $(this).attr('data-course-note').trim();
 				$("#idCourse").val(DCourse);
 				$("#eTitleCourse").val(title);
 				$("#eCodeCourse").val(code);
 				$("#ePriceCourse").val(price);
 				$("#eHoursCourse").val(hours);
+				$("#eNoteCourse").val(note);
 				if(view == 1){$("#eViewCourse").attr('checked','checked');}else{$("#eViewCourse").removeAttr('checked');}
 			});
 			$(".close").click(function(){DCourse = $(this).attr('idcourse');});
