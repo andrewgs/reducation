@@ -15,7 +15,7 @@
 				<div class="control-group">
 					<label for="uraddress" class="control-label">Область, город, улица, дом, корпус, квартира, индекс</label>
 					<div class="controls">
-						<textarea rows="3" id="uraddress" class="span4 input-popover inpval" data-content="Введите полный юридический адрес Вашей организации.<br/><strong>Например:</strong> 344001, Ростовская область, г.Ростов-на-Дону, ул.Республиканская, д.86" data-trigger="focus" data-placement="bottom" data-toggle="popover" data-original-title="Обязательное поле" name="uraddress"><?=$this->session->userdata('uraddress');?></textarea> <span class="badge badge-info">!</span>
+						<textarea rows="3" id="uraddress" class="span4 input-popover inpval" data-content="Введите полный юридический адрес Вашей организации.<br/><strong>Например:</strong> 344001, Ростовская область, г.Ростов-на-Дону, ул.Республиканская, д.86" data-trigger="focus" data-placement="<?=POPUP_POSITION;?>" data-toggle="popover" data-original-title="Обязательное поле" name="uraddress"><?=$this->session->userdata('uraddress');?></textarea> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 						<p class="help-block">
 							344001, Ростовская область, г.Ростов-на-Дону,<br/> ул.Республиканская, д.86
@@ -33,7 +33,7 @@
 				<div class="control-group">
 					<label for="postaddress" class="control-label">Область, город, улица, дом, корпус, квартира, индекс</label>
 					<div class="controls">
-						<textarea rows="3" id="postaddress" class="span4 input-popover inpval" data-content="Введите полный почтовый адрес Вашей организации.<br/><strong>Например:</strong> 344001, Ростовская область, г.Ростов-на-Дону, ул.Республиканская, д.86" data-trigger="focus" data-placement="bottom" data-toggle="popover" data-original-title="Обязательное поле" name="postaddress"><?=$this->session->userdata('postaddress');?></textarea> <span class="badge badge-info">!</span>
+						<textarea rows="3" id="postaddress" class="span4 input-popover inpval" data-content="Введите полный почтовый адрес Вашей организации.<br/><strong>Например:</strong> 344001, Ростовская область, г.Ростов-на-Дону, ул.Республиканская, д.86" data-trigger="focus" data-placement="<?=POPUP_POSITION;?>" data-toggle="popover" data-original-title="Обязательное поле" name="postaddress"><?=$this->session->userdata('postaddress');?></textarea> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 						<p class="help-block">344001, Ростовская область, г.Ростов-на-Дону,<br/> ул.Республиканская, д.86</p>
 					</div>

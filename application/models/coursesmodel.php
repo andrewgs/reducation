@@ -20,7 +20,7 @@ class Coursesmodel extends CI_Model{
 	function insert_record($data){
 			
 		$this->title 		= htmlspecialchars($data['title']);
-		$this->note			= '';
+		$this->note			= $data['note'];
 		$this->price 		= $data['price'];
 		$this->trend  		= $data['trend'];
 		$this->view  		= $data['view'];
@@ -37,11 +37,11 @@ class Coursesmodel extends CI_Model{
 			
 		$this->db->set('code',$data['code']);
 		$this->db->set('title',htmlspecialchars($data['title']));
+		$this->db->set('note',$data['note']);
 		$this->db->set('price',$data['price']);
 		$this->db->set('hours',$data['hours']);
-		$this->db->set('note','');
 		$this->db->set('view',$data['view']);
-		$this->db->where('id',$data['icrs']);
+		$this->db->where('id',(int)$data['icrs']);
 		$this->db->update('courses');
 		return $this->db->affected_rows();
 	}

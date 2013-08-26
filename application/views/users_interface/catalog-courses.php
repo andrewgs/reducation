@@ -80,21 +80,26 @@
 							<div class="accordion-inner">
 								<table class="table table-striped">
 									<thead>
-										
 										<tr>
-											<th>Код</th>
-											<th>Название</th>
-											<th><nobr>Кол-во часов</nobr></th>
+											<th class="centerized">№</th>
+											<th class="span4 centerized">Название</th>
+											<th class="centerized">Код</th>
+											<th class="centerized">Виды работ</th>
+											<th class="centerized"><nobr>Кол-во<br/>часов</nobr></th>
+											<th class="centerized"><nobr>Цена (руб.)</nobr></th>
 										</tr>
-										
 									</thead>
 									<tbody>
-								<? for($j=0,$num=1;$j<count($courses);$j++,$num++):
+								<? for($j=0,$num=1;$j<count($courses);$j++):
 									 if($courses[$j]['trend'] == $trends[$i]['id']): ?>
 										<tr>
-											<td><?= $courses[$j]['code']; ?></td>
+											<td><?=$num?></td>
 											<td><span class="single-course"><?= $courses[$j]['title'] ?></span></td>
+											<td><?= $courses[$j]['code']; ?></td>
+											<td><?=nl2br($courses[$j]['note']);?></td>
 											<td class="centerized"><nobr><?= $courses[$j]['hours']; ?> ч.</nobr></td>
+											<td class="centerized"><?= $courses[$j]['price']; ?></td>
+											<?php $num++;?>
 										</tr>
 									<? endif; ?>
 								<? endfor; ?>

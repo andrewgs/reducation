@@ -36,6 +36,13 @@
 					</div>
 				</div>
 				<div class="control-group">
+					<label for="note" class="control-label">Виды работ: </label>
+					<div class="controls">
+						<textarea name="note" rows="3" id="eNoteCourse" class="input-xlarge einput"></textarea>
+						<span class="help-inline" style="display:none;">&nbsp;</span>
+					</div>
+				</div>
+				<div class="control-group">
 					<label for="ViewCourse" class="control-label">Видимость: </label>
 					<div class="controls">
 						<label class="checkbox">

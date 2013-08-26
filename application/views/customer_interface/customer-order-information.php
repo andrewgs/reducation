@@ -60,7 +60,7 @@
 									<?php if($order['numbercompletion']):?>
 										<p><?=anchor(uri_string().'/act-to-contract','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
 									<?php else:?>
-										<p><button class="btn btn-primary" disabled="disabled">Просмотр</button></p>
+										<p>Просмотр акта станет доступен после завершения обучения.</p>
 									<?php endif;?>
 									</div>
 								</div>
