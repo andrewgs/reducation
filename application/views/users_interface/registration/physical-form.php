@@ -33,6 +33,7 @@
 					<div class="controls">
 						<input type="text" id="inn" class="span3 input-popover inpval digital" data-content="Введите Ваш ИНН" data-trigger="focus" data-placement="bottom" data-toggle="popover" data-original-title="Обязательное поле" name="inn" value=""> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
+						<p class="help-block">Введите Ваш ИНН</p>
 					</div>
 				</div>
 				<div class="control-group">
@@ -40,6 +41,7 @@
 					<div class="controls">
 						<input type="text" id="phone" class="span3 input-popover inpval" data-content="Введите Ваш контактный номер телефона.<br/><strong>Например:</strong> (919)789-78-78" data-trigger="focus" data-placement="bottom" data-toggle="popover" data-original-title="Обязательное поле" name="phones" value=""> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
+						<p class="help-block">(919)789-78-78</p>
 					</div>
 				</div>
 				<div class="control-group">
@@ -55,6 +57,7 @@
 					<div class="controls">
 						<input type="text" id="email" class="span3 input-popover inpval" data-content="Введите Ваш адрес электронной почты (email).<br/><strong>Например:</strong> info@roscentrdpo.ru" data-trigger="focus" data-placement="bottom" data-toggle="popover" data-original-title="Обязательное поле" name="email" value=""> <span class="badge badge-info">!</span>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
+						<p class="help-block">info@roscentrdpo.ru</p>
 					</div>
 				</div>
 			</fieldset>
@@ -67,12 +70,12 @@
 				<div class="control-group">
 					<label for="accounttype" class="control-label">Тип счёта</label>
 					<div class="controls">
-						<select id="accounttype" name="accounttype" class="span3 input-popover" data-content="Выберите тип счета в банке для Вашей организации" data-trigger="hover" data-placement="bottom" data-toggle="popover" data-original-title="Выберите из списка">
+						<select id="accounttype" name="accounttype"  disabled="disabled" autocomplete="off" class="span3 input-popover" data-content="Выберите тип счета в банке для Вашей организации" data-trigger="hover" data-placement="bottom" data-toggle="popover" data-original-title="Выберите из списка">
 							<option value="1">Временный</option>
 							<option value="2">Текущий</option>
 							<option value="3">Карточный</option>
 							<option value="4">Именной</option>
-							<option value="5">Счет на физ.лицо</option>
+							<option selected="selected" value="5">Счет на физ.лицо</option>
 						</select>
 					</div>
 				</div>
@@ -81,6 +84,7 @@
 					<div class="controls">
 						<input type="text" id="accountnumber" class="span3 input-popover digital" data-content="Введите Ваш номер банковского счета" data-trigger="focus" data-placement="bottom" data-toggle="popover" data-original-title="Не обязательное поле" name="accountnumber" maxlength="20" value="">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
+						<p class="help-block">Номер банковского счета</p>
 					</div>
 				</div>
 				<div class="control-group">
@@ -108,7 +112,11 @@
 		</div>
 	</div>
 	<div class="clear"></div>
-	<div class="modal-footer">
-		<button class="btn btn-success" type="submit" id="send" name="submit" value="send">Зарегистрироваться <i class="icon-ok icon-white"></i></button>
+	<div class="modal-footer span11">
+		<label class="checkbox pull-right">
+			<input name="consent" id="input-consent" value="1" autocomplete="off" type="checkbox"> Даю согласие на обработку персональных данных
+		</label>
+		<div class="clear"></div>
+		<button class="btn btn-success" disabled="disabled" type="submit" id="send" name="submit" value="send">Зарегистрироваться <i class="icon-ok icon-white"></i></button>
 	</div>
 <?= form_close(); ?>

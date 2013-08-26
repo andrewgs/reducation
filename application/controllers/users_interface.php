@@ -324,7 +324,6 @@ class Users_interface extends MY_Controller{
 			$this->form_validation->set_rules('phones',' ','required|trim');
 			$this->form_validation->set_rules('postaddress',' ','required|trim');
 			$this->form_validation->set_rules('email',' ','required|valid_email|trim');
-			$this->form_validation->set_rules('accounttype',' ','trim');
 			$this->form_validation->set_rules('accountnumber',' ','trim');
 			$this->form_validation->set_rules('bank',' ','trim');
 			$this->form_validation->set_rules('accountkornumber',' ','trim');
@@ -448,7 +447,6 @@ class Users_interface extends MY_Controller{
 			$this->form_validation->set_rules('organization',' ','required|trim');
 			$this->form_validation->set_rules('inn',' ','required|trim');
 			$this->form_validation->set_rules('kpp',' ','required|trim');
-			$this->form_validation->set_rules('accounttype',' ','required|trim');
 			$this->form_validation->set_rules('accountnumber',' ','required|trim');
 			$this->form_validation->set_rules('bank',' ','required|trim');
 			$this->form_validation->set_rules('accountkornumber',' ','required|trim');
@@ -456,7 +454,7 @@ class Users_interface extends MY_Controller{
 			if(!$this->form_validation->run()):
 				$this->session->set_userdata('msgr','Ошибка. Не заполены необходимые поля.');
 			else:
-				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>2,'organization'=>htmlspecialchars($_POST['organization']),'inn'=>$_POST['inn'],'kpp'=>$_POST['kpp'],'accounttype'=>$_POST['accounttype'],'accountnumber'=>$_POST['accountnumber'],'bank'=>htmlspecialchars($_POST['bank']),'accountkornumber'=>$_POST['accountkornumber'],'bik'=>$_POST['bik'],'manager'=>htmlspecialchars($_POST['manager']),'fiomanager'=>htmlspecialchars($_POST['fiomanager']),'statutory'=>htmlspecialchars($_POST['statutory'])));
+				$this->session->set_userdata(array('regcustomer'=>TRUE,'step'=>2,'organization'=>htmlspecialchars($_POST['organization']),'inn'=>$_POST['inn'],'kpp'=>$_POST['kpp'],'accounttype'=>1,'accountnumber'=>$_POST['accountnumber'],'bank'=>htmlspecialchars($_POST['bank']),'accountkornumber'=>$_POST['accountkornumber'],'bik'=>$_POST['bik'],'manager'=>htmlspecialchars($_POST['manager']),'fiomanager'=>htmlspecialchars($_POST['fiomanager']),'statutory'=>htmlspecialchars($_POST['statutory'])));
 				$this->session->set_userdata('msgs','Данные сохранены.');
 			endif;
 			redirect('registration/customer/step/2');

@@ -38,7 +38,7 @@ class Physicalmodel extends CI_Model{
 		$this->bik				= $data['bik'];
 		$this->bank				= $data['bank'];
 		$this->email			= $data['email'];
-		$this->accounttype		= $data['accounttype'];
+		$this->accounttype		= 5;
 		$this->signupdate 		= date("Y-m-d");
 		$this->accountnumber	= $data['accountnumber'];
 		$this->accountkornumber	= $data['accountkornumber'];
@@ -110,7 +110,7 @@ class Physicalmodel extends CI_Model{
 		$this->db->set('bik',$data['bik']);
 		$this->db->set('bank',strip_tags($data['bank']));
 		$this->db->set('email',$data['email']);
-		$this->db->set('accounttype',$data['accounttype']);
+		$this->db->set('accounttype',5);
 		$this->db->set('accountnumber',$data['accountnumber']);
 		$this->db->set('accountkornumber',$data['accountkornumber']);
 		$this->db->where('id',$id);

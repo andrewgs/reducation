@@ -93,7 +93,6 @@ class Customer_interface extends MY_Controller{
 			$this->form_validation->set_rules('organization',' ','required|trim');
 			$this->form_validation->set_rules('inn',' ','required|trim');
 			$this->form_validation->set_rules('kpp',' ','required|trim');
-			$this->form_validation->set_rules('accounttype',' ','required|trim');
 			$this->form_validation->set_rules('accountnumber',' ','required|trim');
 			$this->form_validation->set_rules('bank',' ','required|trim');
 			$this->form_validation->set_rules('accountkornumber',' ','required|trim');
@@ -369,7 +368,7 @@ class Customer_interface extends MY_Controller{
 				$this->sendMail($_POST['personaemail'],'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 				$this->session->set_userdata('msgs','Слушатель зарегистрирован.<br/>Вы можете зарегистрировать еще слушателя или приступить к оформлению заказа.<br/>Для этого необходимо перейти по ссылке '.anchor("customer/registration/ordering",'"Оформление заказа"'));
 			endif;
-			redirect($this->uri->uri_string());
+			redirect(uri_string().'?register=successful');
 		endif;
 		
 		$this->load->view("customer_interface/registration-audience",$pagevar);

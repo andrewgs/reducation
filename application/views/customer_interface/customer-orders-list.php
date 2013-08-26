@@ -56,17 +56,17 @@
 							<?php endif;?>
 							</td>
 						<?php if($orders[$i]['numbercompletion']!=''):?>
-							<td class="short centerized"><span class="label label-success">Заказ закрыт</span></td>
+							<td class="short centerized"><span class="label label-success">Закрыт</span></td>
 						<?php else:?>
-							<td class="short centerized"><span class="label label-info">Заказ активен</span></td>
+							<td class="short centerized"><span class="label label-info">Активен</span></td>
 						<?php endif;?>
 						<?php if($orders[$i]['paid']):?>
-							<td class="short centerized"><span class="label label-success">Заказ оплачен</span></td>
+							<td class="short centerized"><span class="label label-success">Оплачен</span></td>
 						<?php else:?>
-							<td class="short centerized"><span class="label label-important">Заказ не оплачен</span></td>
+							<td class="short centerized"><span class="label label-important">Не оплачен</span></td>
 						<?php endif;?>
 						<?php if($orders[$i]['finish']):?>
-							<td class="short centerized"><span class="label label-success">Заказ оформлен</span></td>
+							<td class="short centerized"><span class="label label-success">Оформлен</span></td>
 							<td class="short centerized">&nbsp;</td>
 						<?php else:?>
 							<td class="short centerized"><span class="label label-important">Не оформлен</span></td>

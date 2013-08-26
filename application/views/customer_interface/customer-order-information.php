@@ -35,7 +35,7 @@
 									<div class="caption">
 										<h5>Счет</h5>
 										<p>Счет на оплату №<?=number_order($order['number'],$order['year']);?> от <?=$order['orderdate'];?></p>
-										<p><?=anchor($this->uri->uri_string().'/invoice-for-payment','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
+										<p><?=anchor(uri_string().'/invoice-for-payment','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
 									</div>
 								</div>
 							</li>
@@ -46,7 +46,7 @@
 									<div class="caption">
 										<h5>Договор на оказание образовательных услуг</h5>
 										<p>Договор №<?=number_order($order['number'],$order['year']);?> об оказании образовательных услуг с применением дистанционных технологий.</p>
-										<p><?=anchor($this->uri->uri_string().'/contract','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
+										<p><?=anchor(uri_string().'/contract','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
 									</div>
 								</div>
 							</li>
@@ -57,7 +57,11 @@
 									<div class="caption">
 										<h5>Акт к договору на оказание услуг</h5>
 										<p>Утвержденный акт об указании услуг в приложение к договору.</p>
-										<p><?=anchor($this->uri->uri_string().'/act-to-contract','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
+									<?php if($order['numbercompletion']):?>
+										<p><?=anchor(uri_string().'/act-to-contract','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
+									<?php else:?>
+										<p><button class="btn btn-primary" disabled="disabled">Просмотр</button></p>
+									<?php endif;?>
 									</div>
 								</div>
 							</li>

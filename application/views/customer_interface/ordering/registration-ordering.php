@@ -31,7 +31,6 @@
 По завершению оформления Вам будет выслано письмо-уведомление на указанный Вами E-mail.
 Так же будут уведомлены по почте все абитуриенты, зачисленные на повышение квалификации.
 
-<strong>Желаем Вам удачи!</strong> 
 </pre>
 				<p><?=anchor('customer/registration/ordering/step/1','<i class="icon-arrow-right icon-white"></i> Начать оформление',array('class'=>'btn btn-info'));?></p>
 			</div>

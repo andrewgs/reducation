@@ -16,7 +16,6 @@
 					Заполните Все обязательные поля. После заполнения полей нажмите кнопку "Зарегистрироваться".<br/>
 					По завершении регистрации будет выслано письмо-уведомление на указанный Вами E-mail.
 				</p>
-				<p>Желаем Вам удачи!</p>
 				<p><?=anchor('registration/physical-registration','<i class="icon-arrow-right icon-white"></i> Начать оформление',array('class'=>'btn btn-info'));?></p>
 			</div>
 		<?php if($this->loginstatus['status'] && $this->loginstatus['zak']):?>

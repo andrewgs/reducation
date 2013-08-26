@@ -15,7 +15,14 @@
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
+			<?php if($this->input->get('register') == 'successful'):?>
+				<p>
+					<?=anchor('customer/registration/audience','Оформить нового слушателя', array('class' => 'btn btn-small btn-info'));?>
+					<?=anchor('customer/registration/ordering','Оформить заказ', array('class' => 'btn btn-small btn-info'));?>
+				</p>
+			<?php else:?>
 				<?php $this->load->view('forms/registering-audience');?>
+			<?php endif;?>
 			</div>
 		<?php $this->load->view('users_interface/rightbarcus');?>
 		</div>
