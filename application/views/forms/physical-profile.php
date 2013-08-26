@@ -55,31 +55,6 @@
 				</div>
 			</div>
 			<legend>
-				Паспортные данные
-			</legend>
-			<div class="control-group">
-				<label for="passport" class="control-label">Серия и номер</label>
-				<div class="controls">
-					<input type="text" id="passport" class="span4 inpval" name="passport" value="<?=$physical['passport'];?>">
-					<span class="help-inline" style="display:none;">&nbsp;</span>
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="issued" class="control-label">Кем, когда выдан</label>
-				<div class="controls">
-					<textarea rows="3" id="textarea" class="span4 inpval" name="issued"><?=$physical['issued'];?></textarea>
-					<span class="help-inline" style="display:none;">&nbsp;</span>
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="propiska" class="control-label">Прописка</label>
-				<div class="controls">
-					<input type="text" class="span4 inpval" name="propiska" value="<?=$physical['propiska'];?>">
-					<span class="help-inline" style="display:none;">&nbsp;</span>
-					<p class="help-block">344001, г.Ростов-на-Дону, ул.Республиканская, д.86</p>
-				</div>
-			</div>
-			<legend>
 				Реквизиты
 			</legend>
 			<div class="control-group">

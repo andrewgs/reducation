@@ -2405,9 +2405,6 @@ class Admin_interface extends MY_Controller{
 			$this->form_validation->set_rules('phones',' ','required|trim');
 			$this->form_validation->set_rules('postaddress',' ','required|trim');
 			$this->form_validation->set_rules('email',' ','required|valid_email|trim');
-			$this->form_validation->set_rules('passport',' ','required|trim');
-			$this->form_validation->set_rules('issued',' ','required|trim');
-			$this->form_validation->set_rules('propiska',' ','required|trim');
 			$this->form_validation->set_rules('accounttype',' ','trim');
 			$this->form_validation->set_rules('accountnumber',' ','trim');
 			$this->form_validation->set_rules('bank',' ','trim');
