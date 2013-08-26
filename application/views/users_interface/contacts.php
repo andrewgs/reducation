@@ -62,7 +62,7 @@
 				</p>
 				<p><strong>На карте:</strong></p>
 				<div class="map-wrapper">
-					<div id="YMapsID" style="width: 600px; height: 400px;"></div>
+					<div id="YMapsID" style="width: 940px; height: 400px;"></div>
 				</div>
 			</div>
 			<? if($this->loginstatus['status'] && $this->loginstatus['zak']): ?>

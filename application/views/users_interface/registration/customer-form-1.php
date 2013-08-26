@@ -2,9 +2,7 @@
 	<div class="span12" style="margin-left:0px;">
 		<fieldset>
 			<div class="control-group">
-				<div class="controls">
-					<p class="help-block pull-right">Поля с знаком <span class="badge badge-info">!</span> - обязательные для заполнения</p>
-				</div>
+				<p class="help-block pull-left">Поля со знаком <span class="badge badge-info">!</span> обязательные для заполнения</p>
 			</div>
 		</fieldset>
 		<div class="span6" style="margin-left:0px;">
@@ -111,15 +109,14 @@
 						<p class="help-block">БИК банка Вашей организации</p>
 					</div>
 				</div>
+				<div class="control-group">
+					<input name="consent" id="input-consent" value="1" autocomplete="off" type="checkbox"> Даю согласие на обработку персональных данных
+				</div>
 			</fieldset>
 		</div>
 	</div>
 	<div class="clear"></div>
 	<div class="modal-footer span11">
-		<label class="checkbox pull-right">
-			<input name="consent" id="input-consent" value="1" autocomplete="off" type="checkbox"> Даю согласие на обработку персональных данных
-		</label>
-		<div class="clear"></div>
 		<button class="btn" id="cancel" data-toggle="modal" href="#cancelRegistration">Отменить</button>
 		<button class="btn btn-info" disabled="disabled" type="submit" id="send" name="submit" value="send">Далее <i class="icon-forward icon-white"></i></button>
 	</div>

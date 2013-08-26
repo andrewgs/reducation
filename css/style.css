@@ -30,6 +30,7 @@ header.admin { margin: 10px 0 20px; }
 .authorized-user i { font-weight: bold; font-size: 16px; }
 .auth-link { background: #538300; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; color: #fff; display: inline-block; margin: 0 0 0 5px; padding: 2px 5px; }
 .auth-link:hover { text-decoration: none; color: #fff; }
+#input-consent { position: relative; top: -1.6em; margin: 3em 0.5em 0 6.5em; }
 
 /* ==|== navigation ====================================================== */
 
@@ -111,7 +112,7 @@ p.caption .next { color: #e3e3e3; opacity: 0.7; font-size: 36px; display: inline
 
 ul.sidemenu { list-style: none; margin: 5em 0 0; padding: 0; }
 ul.sidemenu li { margin: 0 0 0.6em; }
-ul.sidemenu li a { color: #777; border-bottom: 1px solid; line-height: 1.1em; display: inline-block; text-transform: uppercase; font-size: 1.1em; margin: 0 0 0.3em; }
+ul.sidemenu li a { color: #777; border-bottom: 1px solid; line-height: 1.1em; display: inline-block; text-transform: uppercase; font-size: 1.1em; margin: 0 0 0.3em; text-decoration: none; }
 .span3.new { width: 190px; }
 .span9.new { width: 730px; }
 
@@ -251,6 +252,6 @@ p.intend { text-indent: 27px; }
 .photo { float: left; }
 .sign-wrapper { margin: 3em 0 0; }
 .otzv { list-style: none; margin: 0; padding: 0; }
-.otzv li { margin: 0 1em 1em 0; float: left; }
-.otzv li img { border-radius: 100px; width: 100px; height: 100px; padding: 4px; background: #fff; border: 1px solid #e0e0e0; }
+.otzv li { margin: 1em 1em 0 0; float: left; }
+.otzv li img { border-radius: 100px; width: 120px; height: 120px; padding: 4px; background: #fff; border: 1px solid #e0e0e0; }
 
