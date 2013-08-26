@@ -28,6 +28,8 @@ $route['registration/physical-registration/finish'] = "users_interface/physical_
 $route['catalog/courses'] 				= "users_interface/catalog_courses";
 $route['contacts'] 						= "users_interface/contacts";
 $route['information'] 					= "users_interface/information";
+$route['reviews'] 					= "users_interface/reviews";
+$route['presentation'] 					= "users_interface/presentation";
 
 /******************************************************** CUSTOMER INTRERFACE ***********************************************/
 

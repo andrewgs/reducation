@@ -133,6 +133,46 @@ class Users_interface extends MY_Controller{
 		$this->load->view("users_interface/information",$pagevar);
 	}
 	
+	public function reviews(){
+		
+		$pagevar = array(
+			'title'			=> 'Отзывы клиентов | Дистанционное обучение',					
+			'description'	=> 'Отзывы клиентов центра обучения о работе системы, удобстве прохождения тестирования и профессионализме наших сотрудников.',
+			'author'		=> '',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
+		$this->session->unset_userdata('msgauth');
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$this->load->view("users_interface/reviews",$pagevar);
+	}
+	
+	public function presentation(){
+		
+		$pagevar = array(
+			'title'			=> 'Видео-презентация центра | Дистанционное обучение',					
+			'description'	=> 'На видео презентации рассказывается об основых преимуществах сотрудничества с центром дистанционного обучения.',
+			'author'		=> '',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
+		$this->session->unset_userdata('msgauth');
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		
+		$this->load->view("users_interface/presentation",$pagevar);
+	}
+	
 	public function admin_login(){
 	
 		$pagevar = array(

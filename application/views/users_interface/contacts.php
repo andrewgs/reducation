@@ -5,7 +5,7 @@
 	<? $this->load->view('users_interface/header'); ?>
 	<div class="container">
 		<div class="row">
-			<div class="span9">
+			<div class="span12">
 				<h1>Контактная информация</h1>
 				<p>
 					Автономная некоммерческая организация дополнительного профессионального образования 
@@ -13,7 +13,6 @@
 					и жилищно-коммунального комплекса»
 				</p> 
 				<p>
-					<strong>Адрес:</strong><br/>
 					344001, Ростовская область, г.Ростов-на-Дону, ул.Республиканская, д.86 <br />
 					тел.: (863) 273-66-61, (863) 246-43-54 <br />
 					e-mail: <?= safe_mailto('info@roscentrdpo.ru', 'info@roscentrdpo.ru') ?> <br />
