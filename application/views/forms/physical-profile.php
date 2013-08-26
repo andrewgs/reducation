@@ -60,12 +60,12 @@
 			<div class="control-group">
 				<label for="accounttype" class="control-label">Тип счёта</label>
 				<div class="controls">
-					<select id="accounttype" name="accounttype" class="span4">
+					<select id="accounttype" disabled="disabled" autocomplete="off" name="accounttype" class="span4">
 						<option value="1">Временный</option>
 						<option value="2">Текущий</option>
 						<option value="3">Карточный</option>
 						<option value="4">Именной</option>
-						<option value="5">Счет на физ.лицо</option>
+						<option selected="selected" value="5">Счет на физ.лицо</option>
 					</select>
 				</div>
 			</div>

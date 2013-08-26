@@ -44,7 +44,7 @@ class Customersmodel extends CI_Model{
 		$this->bank				= $data['bank'];
 		$this->person			= $data['person'];
 		$this->personemail		= $data['personemail'];
-		$this->accounttype		= $data['accounttype'];
+		$this->accounttype		= 1;
 		$this->signupdate 		= date("Y-m-d");
 		$this->online 			= 0;
 		$this->accountnumber	= $data['accountnumber'];
@@ -125,7 +125,7 @@ class Customersmodel extends CI_Model{
 		$this->db->set('bank',strip_tags($data['bank']));
 		$this->db->set('person',htmlspecialchars($data['person']));
 		$this->db->set('personemail',$data['personemail']);
-		$this->db->set('accounttype',$data['accounttype']);
+		$this->db->set('accounttype',1);
 		$this->db->set('accountnumber',$data['accountnumber']);
 		$this->db->set('accountkornumber',$data['accountkornumber']);
 		$this->db->set('manager',$data['manager']);

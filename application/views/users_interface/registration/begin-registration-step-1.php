@@ -25,7 +25,7 @@
 		<?php $this->load->view('users_interface/modal/registration-cancel');?>
 		</div>
 		<hr>
-	<?php $this->load->view('users_interface/footer');?>	
+	<?php $this->load->view('users_interface/footer');?>
 	</div>
 	<?php $this->load->view('users_interface/scripts');?>
 	<script type="text/javascript">
@@ -34,7 +34,13 @@
 			$(".digital").keypress(function(e){
 				if(e.which!=8 && e.which!=46 && e.which!=0 && (e.which<48 || e.which>57)){return false;}
 			});
-			
+			$("#input-consent").click(function(){
+				if($(this).is(':checked') == true){
+					$("#send").removeAttr('disabled');
+				}else{
+					$("#send").attr('disabled','disabled');
+				}
+			});
 		<?php if($this->session->userdata('regcustomer')):?>
 			$("#accounttype").val("<?=$this->session->userdata('accounttype');?>");
 		<?php endif;?>
