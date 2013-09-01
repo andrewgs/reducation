@@ -2,9 +2,7 @@
 	<div class="span12" style="margin-left:0px;">
 		<fieldset>
 			<div class="control-group">
-				<div class="controls">
-					<p class="help-block pull-right">Поля с знаком <span class="badge badge-info">!</span> - обязательные для заполнения</p>
-				</div>
+				<p class="help-block pull-left">Поля со знаком <span class="badge badge-info">!</span>  обязательные для заполнения</p>
 			</div>
 		</fieldset>
 		<div class="span6" style="margin-left:0px;">
@@ -44,6 +42,13 @@
 						<p class="help-block">(919)789-78-78</p>
 					</div>
 				</div>
+			</fieldset>
+		</div>
+		<div class="span6" style="margin-left:0px;">
+			<fieldset>
+				<legend>
+					<br/>
+				</legend>
 				<div class="control-group">
 					<label for="postaddress" class="control-label">Почтовый адрес</label>
 					<div class="controls">
@@ -60,22 +65,14 @@
 						<p class="help-block">info@roscentrdpo.ru</p>
 					</div>
 				</div>
-			</fieldset>
-		</div>
-		<div class="span6" style="margin-left:0px;">
-			<fieldset>
-				<legend>
-					<br/>
-				</legend>
+				<div class="control-group">
+					<input name="consent" id="input-consent" value="1" autocomplete="off" type="checkbox"> Даю согласие на обработку персональных данных
+				</div>
 			</fieldset>
 		</div>
 	</div>
 	<div class="clear"></div>
 	<div class="modal-footer span11">
-		<label class="checkbox pull-right">
-			<input name="consent" id="input-consent" value="1" autocomplete="off" type="checkbox"> Даю согласие на обработку персональных данных
-		</label>
-		<div class="clear"></div>
 		<button class="btn btn-success" disabled="disabled" type="submit" id="send" name="submit" value="send">Зарегистрироваться <i class="icon-ok icon-white"></i></button>
 	</div>
 <?= form_close(); ?>

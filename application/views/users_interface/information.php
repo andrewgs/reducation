@@ -5,7 +5,13 @@
 	<?php $this->load->view('users_interface/header');?>
 	<div class="container">
 		<div class="row">
-			<div class="span9">
+			<div class="span3 new">
+				<ul class="sidemenu">
+					<li><?=anchor('reviews','Отзывы клиентов');?></li>
+					<li><?=anchor('presentation','Презентация');?></li>
+				</ul>
+			</div>
+			<div class="span9 new">
 				<h1>Информация</h1>
 				
 				<p>
@@ -24,78 +30,6 @@
 					существования только за 2012 год в учебном центре прошли обучение более 700 инженеров, 2013 год на сегодняшний 
 					день по всем показателям уже превышает предыдущий.
 				</p>
-				
-				<h2>Отзывы наших клиентов</h2>
-				<ul class="otzv clearfix">
-					<li>
-						<a href="<?=base_url();?>img/otzv_1.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_1.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_2.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_2.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_3.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_3.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_4.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_4.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_5.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_5.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_6.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_6.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_7.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_7.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_8.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_8.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_9.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_9.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_10.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_10.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_11.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_11.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_12.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_12.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<li>
-						<a href="<?=base_url();?>img/otzv_13.jpg" target="blank_">
-							<img src="<?=base_url();?>img/otzv_13.jpg" alt="Отзыв" />
-						</a>
-					</li>
-					<div class="clear"> </div>
-				</ul>
-				
-				<h2>Наши преимущества</h2>
 				<p> 
 					Преимущество обучения на электронном образовательном портале является его дистанционная форма, а так же низкая стоимость 
 					данного вида услуг. Все это благодаря полному переходу на электронный документооборот, который существенно 
