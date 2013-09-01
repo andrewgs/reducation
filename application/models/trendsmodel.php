@@ -71,6 +71,7 @@ class Trendsmodel extends CI_Model{
 		
 		$this->db->where('view',1);
 		$this->db->where('courses >',0);
+		$this->db->order_by('number');
 		$query = $this->db->get('trends');
 		$data = $query->result_array();
 		if(count($data)>0) return $data;

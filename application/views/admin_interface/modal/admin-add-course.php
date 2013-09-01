@@ -24,7 +24,7 @@
 				<div class="control-group">
 					<label for="price" class="control-label">Цена (руб.): </label>
 					<div class="controls">
-						<input type="text" id="PriceCourse" class="input-xlarge ainput" name="price">
+						<input type="text" id="PriceCourse" class="input-xlarge" name="price">
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 				<div class="control-group">
 					<label for="note" class="control-label">Виды работ: </label>
 					<div class="controls">
-						<textarea name="note" rows="3" id="NoteCourse" class="input-xlarge ainput"></textarea>
+						<textarea name="note" rows="3" id="NoteCourse" class="input-xlarge"></textarea>
 						<span class="help-inline" style="display:none;">&nbsp;</span>
 					</div>
 				</div>

@@ -10,7 +10,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="span<?=($this->loginstatus['status'])?'9':'12';?>">
-				<h1 class="bordered courses">Курсы повышения квалификации специалистов</h1>
+				<h1 class="bordered courses">Курсы повышения квалификации руководителей и специалистов</h1>
 				<div class="btn-toolbar inline-right">
 					<div class="btn-group">
 						<a href="<?= base_url(); ?>courses_list.xls" class="btn btn-info"><i class="icon-th-list icon-white"></i> Каталог курсов и прайс-лист</a>
@@ -73,11 +73,10 @@
 					<div class="accordion-group">
 						<div class="accordion-heading">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse<?=$i;?>">
-							
 								<?=$trends[$i]['title'];?> <span class="small">(курсов: <?=$numCourses;?>)</span>
 							</a>
 						</div>
-						<div id="collapse<?=$i;?>" class="accordion-body collapse">
+						<div id="collapse<?=$i;?>" class="accordion-body collapse <?=($i==0)?' in':'';?>">
 							<div class="accordion-inner">
 								<table class="table table-striped">
 									<thead>
@@ -92,7 +91,7 @@
 									</thead>
 									<tbody>
 								<? for($j=0,$num=1;$j<count($courses);$j++):
-									 if($courses[$j]['trend'] == $trends[$i]['id']): ?>
+									if($courses[$j]['trend'] == $trends[$i]['id']): ?>
 										<tr>
 											<td><?=$num?></td>
 											<td><span class="single-course"><?= $courses[$j]['title'] ?></span></td>

@@ -348,7 +348,7 @@ class Admin_interface extends MY_Controller{
 			$_POST['submit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
 			$this->form_validation->set_rules('code',' ','required|trim');
-			$this->form_validation->set_rules('price',' ','required|trim');
+			$this->form_validation->set_rules('price',' ','trim');
 			$this->form_validation->set_rules('hours',' ','required|trim');
 			$this->form_validation->set_rules('trend',' ','required|trim');
 			$this->form_validation->set_rules('note',' ','trim');
@@ -370,7 +370,7 @@ class Admin_interface extends MY_Controller{
 			$_POST['esubmit'] = NULL;
 			$this->form_validation->set_rules('title',' ','required|trim');
 			$this->form_validation->set_rules('code',' ','required|trim');
-			$this->form_validation->set_rules('price',' ','required|trim');
+			$this->form_validation->set_rules('price',' ','trim');
 			$this->form_validation->set_rules('hours',' ','required|trim');
 			$this->form_validation->set_rules('icrs',' ','required|trim');
 			$this->form_validation->set_rules('note',' ','trim');

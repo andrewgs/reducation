@@ -686,18 +686,18 @@ class Users_interface extends MY_Controller{
 	public function catalog_courses(){
 		
 		$pagevar = array(
-					'title'			=> 'Курсы повышения квалификации работников, инженеров, проектировщиков, строителей, энергетиков | Дистанционное повышение квалификации',
-					'description'	=> 'Каталог курсов по повышению квалификации инженеров, проектировщиков, строителей, энергетиков. Дистанционное обучение Ростов-на-Дону, Краснодар, Ставрополь, Сочи, Астрахань, Волгоград.',
-					'author'		=> '',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'trends'		=> $this->trendsmodel->read_view_records(),
-					'courses'		=> $this->coursesmodel->read_view_records(),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr'),
-					'msgauth'		=> $this->session->userdata('msgauth')
-			);
+			'title'			=> 'Курсы повышения квалификации работников, инженеров, проектировщиков, строителей, энергетиков | Дистанционное повышение квалификации',
+			'description'	=> 'Каталог курсов по повышению квалификации инженеров, проектировщиков, строителей, энергетиков. Дистанционное обучение Ростов-на-Дону, Краснодар, Ставрополь, Сочи, Астрахань, Волгоград.',
+			'author'		=> '',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'trends'		=> $this->trendsmodel->read_view_records(),
+			'courses'		=> $this->coursesmodel->read_view_records(),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
 		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
