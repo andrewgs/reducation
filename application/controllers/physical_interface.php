@@ -385,15 +385,28 @@ class Physical_interface extends MY_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-
-		for($i=0;$i<count($pagevar['courses']);$i++):
-			if(mb_strlen($pagevar['courses'][$i]['title'],'UTF-8') > 65):
-				$pagevar['courses'][$i]['title'] = mb_substr($pagevar['courses'][$i]['title'],0,65,'UTF-8');
-				$pagevar['courses'][$i]['title'] .= ' ... ';
-			endif;
-		endfor;
+		
 		
 		if($this->input->post('submit')):
+			$_POST['submit'] = NULL;
+			$this->form_validation->set_rules('course[]',' ','required|trim');
+			if(!$this->form_validation->run()):
+				$this->session->set_userdata('msgr','Ошибка. Не указан курс обучения.');
+			else:
+				for($i=0;$i<count($_POST['course']);$i++):
+					if($course = $this->coursesmodel->read_record($_POST['course'][$i],array('view'=>1))):
+						if(!$this->fizcourseordermodel->exist_course_order($_POST['course'][$i],$this->session->userdata('order'),$this->user['uid'])):
+							$corder = $this->fizcourseordermodel->insert_record($this->session->userdata('order'),$_POST['course'][$i],$this->user['uid'],$course['price']);
+							$this->fizcoursemodel->insert_record($corder,$this->user['uid'],$this->session->userdata('order'));
+							$this->session->set_userdata('msgs','Курсы обучения добавлены в заказ.');
+						endif;
+					endif;
+				endfor;
+			endif;
+			redirect(uri_string());
+		endif;
+		
+		/*if($this->input->post('submit')):
 			unset($_POST['submit']);
 			$this->form_validation->set_rules('course',' ','required|trim');
 			if(!$this->form_validation->run()):
@@ -413,7 +426,7 @@ class Physical_interface extends MY_Controller{
 				endif;
 			endif;
 			redirect($this->uri->uri_string());
-		endif;
+		endif;*/
 		
 		$this->load->view("physical_interface/ordering/registration-ordering-step2",$pagevar);
 	}

@@ -14,7 +14,7 @@
 					<?php $this->load->view('alert_messages/alert-error');?>
 					<?php $this->load->view('alert_messages/alert-success');?>
 				</div>
-				<?php $this->load->view('forms/physical/ordering-courses-list');?>
+				<legend>Выберите предложенные курсы (Шаг 2)</legend>
 				<?php $price = 0; ?>
 			<?php if(count($courseorder)):?>
 				<table class="table table-striped table-bordered">
@@ -42,6 +42,7 @@
 					</tbody>
 				</table>
 			<?php endif;?>
+				<?php $this->load->view('forms/physical/ordering-courses-list');?>
 				<div class="modal-footer">
 					<span>Цена заказа: <strong><u><?=$price;?> рублей.</u></strong></span>
 					<button class="btn" id="cancel" data-toggle="modal" href="#cancelRegistration">Отменить</button>

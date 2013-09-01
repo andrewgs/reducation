@@ -32,7 +32,6 @@
 		<?php if(!count($courses)):?>
 			<div class="controls" style="margin-left:0px;">
 				<div class="control-group">
-				
 					<span class="label label-warning">По какой-то не виданной причине отсутствуют курсы обучения.</span>
 					<div style="margin-top:20px;"></div>
 					<span class="label label-info">Свяжитесь с администрацией для выяснения причин. Спасибо за понимание.</span>

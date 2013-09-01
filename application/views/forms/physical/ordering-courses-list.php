@@ -1,17 +1,30 @@
-<?=form_open($this->uri->uri_string(),array('class'=>'form-horizontal')); ?>
+<?=form_open(uri_string(),array('class'=>'form-horizontal')); ?>
 	<fieldset>
-		<legend>Выберите предложенные курсы (Шаг 2)</legend>
 		<div class="control-group">
-			<div class="controls" style="margin-left:-60px;">
+			<div class="controls" style="margin-left:-160px;">
 				<div class="control-group">
 				<?php if(count($courses)):?>
-					<label for="course" class="control-label">Курс</label>
 					<div class="controls">
-						<select id="course" style="width: 600px;" name="course">
-						<?php for($i=0;$i<count($courses);$i++):?>
-							<option name="opcourse" id="opcourse<?=$i;?>" cusid="<?=$courses[$i]['code'];?>" costitle="<?=$courses[$i]['title'];?>" cosprice="<?=$courses[$i]['price'];?>" value="<?=$courses[$i]['id'];?>">Код: <?=$courses[$i]['code'].'. '.$courses[$i]['title'].'. Цена: '.$courses[$i]['price'];?></option>
-						<?php endfor;?>
-						</select>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Код</th>
+									<th>Название</th>
+									<th><nobr>Кол-во часов</nobr></th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php for($i=0;$i<count($courses);$i++):?>
+								<tr>
+									<td><input type="checkbox" name="course[]" value="<?=$courses[$i]['id']?>" /></td>
+									<td><?= $courses[$i]['code']; ?></td>
+									<td><span class="single-course"><?= $courses[$i]['title'] ?></span></td>
+									<td class="centerized"><nobr><?= $courses[$i]['hours']; ?> ч.</nobr></td>
+								</tr>
+							<? endfor; ?>
+							</tbody>
+						</table>
 					</div>
 				<?php endif;?>
 				</div>

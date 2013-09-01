@@ -6,26 +6,29 @@ class Courseordermodel extends CI_Model{
     var $order 		= '';
     var $course  	= '';
     var $customer  	= '';
+    var $price  	= '';
 
     function __construct(){
         parent::__construct();
     }
 	
-	function insert_record($order,$course,$customer){
+	function insert_record($order,$course,$customer,$price){
 			
 		$this->order 		= $order;
 		$this->course		= $course;
 		$this->customer		= $customer;
+		$this->price		= $price;
 		
 		$this->db->insert('courseorder',$this);
 		return $this->db->insert_id();
 	}
 	
-	function update_record($id,$order,$course,$customer){
+	function update_record($id,$order,$course,$customer,$price){
 			
 		$this->db->set('order',$order);
 		$this->db->set('course',$course);
 		$this->db->set('customer',$customer);
+		$this->db->set('price',$price);
 		$this->db->where('id',$id);
 		$this->db->update('courseorder');
 		return $this->db->affected_rows();
@@ -48,9 +51,12 @@ class Courseordermodel extends CI_Model{
 		return NULL;
 	}
 	
-	function read_record($id){
+	function read_record($id,$where = NULL){
 		
 		$this->db->where('id',$id);
+		if(!is_null($where)):
+			$this->db->where($where);
+		endif;
 		$query = $this->db->get('courseorder',1);
 		$data = $query->result_array();
 		if(isset($data[0])) return $data[0];

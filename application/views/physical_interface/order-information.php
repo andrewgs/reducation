@@ -57,7 +57,11 @@
 									<div class="caption">
 										<h5>Акт к договору на оказание услуг</h5>
 										<p>Утвержденный акт об указании услуг в приложение к договору.</p>
-										<p><?=anchor($this->uri->uri_string().'/act-to-contract','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
+									<?php if($order['numbercompletion']):?>
+										<p><?=anchor(uri_string().'/act-to-contract','Просмотр',array('class'=>'btn btn-primary','target'=>'_blank'));?></p>
+									<?php else:?>
+										<p>Просмотр акта станет доступен после завершения обучения.</p>
+									<?php endif;?>
 									</div>
 								</div>
 							</li>

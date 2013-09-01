@@ -180,7 +180,6 @@ class Customer_interface extends MY_Controller{
 			);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
-		
 		for($i=0;$i<count($pagevar['course']);$i++):
 			$pagevar['course'][$i]['caud'] = $this->audienceordermodel->count_course_record($pagevar['course'][$i]['id']);
 			$pagevar['course'][$i]['price'] = $pagevar['course'][$i]['price']-$pagevar['course'][$i]['discount'];
@@ -454,20 +453,20 @@ class Customer_interface extends MY_Controller{
 			endif;
 		endif;
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Оформление заказа - Выбор направления обучения - Шаг 2',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'price'			=> $this->ordersmodel->read_field($this->session->userdata('order'),'price'),
-					'courses'		=> $this->coursesmodel->read_trend_records($this->session->userdata('ordering')),
-					'courseorder'	=> $this->unionmodel->read_corder_records($this->session->userdata('order')),
-					'courseaudience'=> $this->unionmodel->read_caudience_records($this->session->userdata('order')),
-					'audience'		=> $this->audiencemodel->read_view_record($this->user['uid']),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Оформление заказа - Выбор направления обучения - Шаг 2',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'price'			=> $this->ordersmodel->read_field($this->session->userdata('order'),'price'),
+			'courses'		=> $this->coursesmodel->read_trend_records($this->session->userdata('ordering')),
+			'courseorder'	=> $this->unionmodel->read_corder_records($this->session->userdata('order')),
+			'courseaudience'=> $this->unionmodel->read_caudience_records($this->session->userdata('order')),
+			'audience'		=> $this->audiencemodel->read_view_record($this->user['uid']),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		if($this->input->post('submit')):
@@ -477,9 +476,9 @@ class Customer_interface extends MY_Controller{
 				$this->session->set_userdata('msgr','Ошибка. Не указан курс обучения.');
 			else:
 				for($i=0;$i<count($_POST['course']);$i++):
-					if($this->coursesmodel->read_field($_POST['course'][$i],'view')):
+					if($course = $this->coursesmodel->read_record($_POST['course'][$i],array('view'=>1))):
 						if(!$this->courseordermodel->exist_course_order($_POST['course'][$i],$this->session->userdata('order'),$this->user['uid'])):
-							$corder = $this->courseordermodel->insert_record($this->session->userdata('order'),$_POST['course'][$i],$this->user['uid']);
+							$corder = $this->courseordermodel->insert_record($this->session->userdata('order'),$_POST['course'][$i],$this->user['uid'],$course['price']);
 							$this->session->set_userdata('msgs','Курсы обучения добавлены в заказ.');
 						endif;
 					endif;

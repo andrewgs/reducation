@@ -1848,19 +1848,19 @@ class Admin_interface extends MY_Controller{
 	
 		$order = $this->uri->segment(5);
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Реестр слушателей',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
-					'regdateend'	=> '',
-					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
-					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
-					'hours'			=> 0,
-					'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
-					'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Реестр слушателей',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
+			'regdateend'	=> '',
+			'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+			'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
+			'hours'			=> 0,
+			'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
+			'info'			=> $this->unionmodel->read_fullinfo_audience($this->uri->segment(5))
+		);
 		if($pagevar['ncompletion']):
 			$pagevar['ncompletion'] = preg_replace("([^0-9\/])","",$pagevar['ncompletion']);
 		endif;

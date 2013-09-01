@@ -6,26 +6,29 @@ class Fizcourseordermodel extends CI_Model{
     var $order 		= '';
     var $course  	= '';
     var $physical  	= '';
+    var $price  	= '';
 
 	function __construct(){
 		parent::__construct();
 	}
 	
-	function insert_record($order,$course,$physical){
+	function insert_record($order,$course,$physical,$price){
 			
 		$this->order 		= $order;
 		$this->course		= $course;
 		$this->physical		= $physical;
+		$this->price		= $price;
 		
 		$this->db->insert('fizcourseorder',$this);
 		return $this->db->insert_id();
 	}
 	
-	function update_record($id,$order,$course,$physical){
+	function update_record($id,$order,$course,$physical,$price){
 			
 		$this->db->set('order',$order);
 		$this->db->set('course',$course);
 		$this->db->set('physical',$physical);
+		$this->db->set('price',$price);
 		$this->db->where('id',$id);
 		$this->db->update('fizcourseorder');
 		return $this->db->affected_rows();
