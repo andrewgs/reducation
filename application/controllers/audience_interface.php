@@ -382,6 +382,9 @@ class Audience_interface extends MY_Controller{
 						
 						ob_start();
 						?>
+						<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+						<?=anchor('','roscentrdpo.ru');?>
+						<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 						<p>АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 						<p>
 							Заказ №<?=$order;?> закрылся.<br/>

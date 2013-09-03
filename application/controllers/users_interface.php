@@ -293,6 +293,9 @@ class Users_interface extends MY_Controller{
 					$password = $this->encrypt->decode($user[0]['cryptpassword']);
 					ob_start();
 					?>
+					<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+					<?=anchor('','roscentrdpo.ru');?>
+					<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 					<p><strong>Здравствуйте, <?=$name;?></strong></p>
 					<p>Вами был произведен запрос на восстановления данных для авторизации на Образовательном портале АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 					<p><strong>Логин: <span style="font-size: 18px;"><?=$login;?></span> Пароль: <span style="font-size: 18px;"><?=$password;?></span></strong></p>
@@ -386,6 +389,9 @@ class Users_interface extends MY_Controller{
 				
 				ob_start();
 				?>
+				<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+				<?=anchor('','roscentrdpo.ru');?>
+				<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 				<p><strong>Здравствуйте, <?=$insert['fio'];?></strong></p>
 				<p>
 					Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» поздравляет с успешным завершением оформления заявки.<br/>
@@ -624,6 +630,9 @@ class Users_interface extends MY_Controller{
 			$email = $this->session->userdata('personemail');
 			ob_start();
 			?>
+			<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+			<?=anchor('','roscentrdpo.ru');?>
+			<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 			<p><strong>Здравствуйте, <?=$this->session->userdata('organization');?></strong></p>
 			<p>
 				Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» поздравляет с успешным завершением оформления заявки.<br/>

@@ -15,6 +15,9 @@ class Crontab_interface extends MY_Controller{
 		$customers = $query->result_array();
 		for($i=0;$i<count($customers);$i++):
 			ob_start();?>
+<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+<?=anchor('','roscentrdpo.ru');?>
+<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 <p>Здравствуйте, <?=$customers[$i]['organization'];?></p>
 <p>
 	Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации» 

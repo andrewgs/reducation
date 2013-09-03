@@ -54,6 +54,9 @@ class Admin_interface extends MY_Controller{
 										$email = $info['personemail'];
 										ob_start();
 										?>
+										<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+										<?=anchor('','roscentrdpo.ru');?>
+										<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 										<p><strong>Здравствуйте, <?=$info['organization']?></strong></p>
 										<p>Поздравляем! Вы успешно завершили оформление заявки. Вам доступны следующие документы:</p>
 										<ol>
@@ -83,6 +86,9 @@ class Admin_interface extends MY_Controller{
 										$email = $info['personaemail'];
 										ob_start();
 										?>
+										<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+										<?=anchor('','roscentrdpo.ru');?>
+										<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 										<p>Здравствуйте,  <?=$info['lastname'].' '.$info['name'].' '.$info['middlename'];?></p>
 										<p>
 											Поздравляем! Вас успешно зарегистрировали в статусе слушателя. 
@@ -106,6 +112,9 @@ class Admin_interface extends MY_Controller{
 										$email = $info['email'];
 										ob_start();
 										?>
+										<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+										<?=anchor('','roscentrdpo.ru');?>
+										<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 										<p><strong>Здравствуйте, <?=$info['fio']?></strong></p>
 										<p>Поздравляем! Вы успешно завершили оформление заявки. Вам доступны следующие документы:</p>
 										<ol>
@@ -1532,6 +1541,9 @@ class Admin_interface extends MY_Controller{
 		ob_start();
 		?>
 			<html><body>
+			<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+			<?=anchor('','roscentrdpo.ru');?>
+			<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 			<p>Здравствуйте, <?=$info['organization'];?></p>
 		<?php
 		$mailSubject = 'Извещение о невозможности оформления документов';
@@ -2896,6 +2908,9 @@ class Admin_interface extends MY_Controller{
 		$info['closedate'] = $this->operation_dot_date($info['closedate']);
 		ob_start();
 		?>
+			<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+			<?=anchor('','roscentrdpo.ru');?>
+			<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 			<p>Здравствуйте, <?=$info['fio'];?></p>
 		<?php
 		if($smtype == 'smtext'):

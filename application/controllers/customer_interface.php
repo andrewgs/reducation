@@ -348,7 +348,10 @@ class Customer_interface extends MY_Controller{
 				$this->audiencemodel->update_field($id,'cryptpassword',$this->encrypt->encode($password));
 				ob_start();
 				?>
-				<p>Здравствуйте,  <?=$_POST['lastname'].' '.$_POST['name'].' '.$_POST['middlename'];?></p>
+				<img src="<?=base_url('img/logo_small.png')?>" alt="" /><br/>
+				<?=anchor('','roscentrdpo.ru');?>
+				<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
+				<p>Здравствуйте, <?=$_POST['lastname'].' '.$_POST['name'].' '.$_POST['middlename'];?></p>
 				<p>
 					Поздравляем! Вас успешно зарегистрировали в статусе слушателя на Образовательном портале 
 					АНО ДПО «Южно-окружной центр повышения квалификации»<br/>
