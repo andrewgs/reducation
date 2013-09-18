@@ -2,9 +2,9 @@
 
 .sass-cache
 
+documents/*
 *.clpprj
 .project
 .htaccess
 application/config/database.php
 application/config/config.php
-

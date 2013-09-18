@@ -931,7 +931,6 @@ class Physical_interface extends MY_Controller{
 			$this->session->set_userdata('msgr','Не возможно получить доступ к списку литературы курса.');
 			redirect('physical/courses/current');
 		endif;
-		
 		$this->load->helper('download');
 		$file = getcwd().'/'.$this->fizunionmodel->read_course_libraries($this->user['uid'],$course,0);
 		if(!file_exists($file)):

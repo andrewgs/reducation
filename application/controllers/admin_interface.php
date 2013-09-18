@@ -447,25 +447,25 @@ class Admin_interface extends MY_Controller{
 			redirect('admin-panel/references/courses');
 		endif;
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | ',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'chapters'		=> $this->chaptermodel->read_records($course),
-					'lectures'		=> $this->lecturesmodel->read_records($course),
-					'trend'			=> $this->trendsmodel->read_field($trend,'code'),
-					'course'		=> $this->coursesmodel->read_field($course,'code'),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'finaltest'		=> $this->testsmodel->read_final_test($course),
-					'cntchapter'	=> $this->chaptermodel->count_records($course),
-					'document'		=> $this->coursesmodel->read_field($course,'libraries'),
-					'docvalue'		=> 'Список литературы',
-					'curriculum'	=> $this->coursesmodel->read_field($course,'curriculum'),
-					'metodical'		=> $this->coursesmodel->read_field($course,'metodical'),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | ',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'chapters'		=> $this->chaptermodel->read_records($course),
+			'lectures'		=> $this->lecturesmodel->read_records($course),
+			'trend'			=> $this->trendsmodel->read_field($trend,'code'),
+			'course'		=> $this->coursesmodel->read_field($course,'code'),
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'finaltest'		=> $this->testsmodel->read_final_test($course),
+			'cntchapter'	=> $this->chaptermodel->count_records($course),
+			'document'		=> $this->coursesmodel->read_field($course,'libraries'),
+			'docvalue'		=> 'Список литературы',
+			'curriculum'	=> $this->coursesmodel->read_field($course,'curriculum'),
+			'metodical'		=> $this->coursesmodel->read_field($course,'metodical'),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$pagevar['title'] .= 'Содержание курса "'.$pagevar['course'].'"';
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
@@ -597,7 +597,8 @@ class Admin_interface extends MY_Controller{
 				$this->session->set_userdata('msgr','Ошибка при загрузке документа. Не указан файл.');
 				redirect($this->uri->uri_string());
 			endif;
-			$_FILES['document']['name'] = preg_replace('/.+(.)(\.)+/',date("Ymdhis")."\$2", $_FILES['document']['name']);
+//			$_FILES['document']['name'] = preg_replace('/.+(.)(\.)+/',date("Ymdhis")."\$2", $_FILES['document']['name']);
+			$_FILES['document']['name'] = $this->translite(substr($_FILES['document']['name'],0,strripos($_FILES['document']['name'],'.'))).'.'.substr(strrchr($_FILES['document']['name'],'.'),1);
 			$document = 'documents/curriculum/'.$_FILES['document']['name'];
 			$olddoc = $this->coursesmodel->read_field($course,'curriculum');
 			if(!$this->fileupload('document',FALSE,'curriculum')):
@@ -2115,7 +2116,7 @@ class Admin_interface extends MY_Controller{
 			$this->form_validation->set_rules('organization',' ','required|trim');
 			$this->form_validation->set_rules('inn',' ','required|trim');
 			$this->form_validation->set_rules('kpp',' ','required|trim');
-			$this->form_validation->set_rules('accounttype',' ','required|trim');
+			$this->form_validation->set_rules('accounttype',' ','trim');
 			$this->form_validation->set_rules('accountnumber',' ','required|trim');
 			$this->form_validation->set_rules('bank',' ','required|trim');
 			$this->form_validation->set_rules('accountkornumber',' ','required|trim');

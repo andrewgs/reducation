@@ -746,6 +746,27 @@ class Users_interface extends MY_Controller{
 		return $model;
 	}
 	
+	public function courseGetCurriculum(){
+		
+		if($course = $this->coursesmodel->read_record($this->input->get('course'))):
+			if(file_exists(getcwd().'/'.$course['curriculum'])):
+				header('Pragma: public');
+				header('Expires: 0');
+				header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+				header('Last-Modified: '.gmdate ('D, d M Y H:i:s', filemtime(getcwd().'/'.$course['curriculum'])).' GMT');
+				header('Cache-Control: private',false);
+				header('Content-Type: application/pdf');
+				header('Content-Disposition: attachment; filename="'.basename(getcwd().'/'.$course['curriculum']).'"');
+				header('Content-Transfer-Encoding: binary');
+				header('Content-Length: '.filesize(getcwd().'/'.$course['curriculum']));
+				header('Connection: close');
+				readfile(getcwd().'/'.$course['curriculum']);
+				exit();
+			endif;
+		endif;
+		redirect('catalog/courses');
+	}
+	
 	public function randomPassword($length,$allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789"){
 	
 		$i = 1;
