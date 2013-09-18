@@ -12,7 +12,7 @@
 		</div>
 		<div class="row">
 			<div class="promo-12 span12">
-				<span class="title_">Внимание! </span> <div class="wrapp_"><span class="scrollingtext">Обучение по курсу «Охрана труда» - 1000 руб. Повышение квалификации строителей, проектировщиков, изыскателей - 4000 руб.</span></div>
+				<span class="title_">Внимание! </span> <div class="wrapp_"><span class="scrollingtext">Обучение по курсу «Охрана труда» - 1000 руб. Повышение квалификации строителей, проектировщиков, изыскателей, энергоаудиторов - 4000 руб.</span></div>
 			</div>
 		</div>
 		<div class="row">

@@ -112,9 +112,10 @@ p.caption .next { color: #e3e3e3; opacity: 0.7; font-size: 36px; display: inline
 
 ul.sidemenu { list-style: none; margin: 5em 0 0; padding: 0; }
 ul.sidemenu li { margin: 0 0 0.6em; }
-ul.sidemenu li a { color: #777; border-bottom: 1px solid; line-height: 1.1em; display: inline-block; text-transform: uppercase; font-size: 1.1em; margin: 0 0 0.3em; text-decoration: none; }
-.span3.new { width: 190px; }
-.span9.new { width: 730px; }
+ul.sidemenu li a { color: #777; border-bottom: 1px solid; line-height: 1.1em; display: inline-block; text-transform: uppercase; font-size: 0.9em; margin: 0 0 0.3em; text-decoration: none; }
+.span3.new { width: 195px; margin-left: -190px; text-align: right; }
+.span9.new { width: 930px; }
+.span9.new iframe { padding: 5px; background: #fff; border: 1px solid #e0e0e0; border-radius: 2px; }
 
 /* ==|== footer ====================================================== */
 
@@ -249,9 +250,14 @@ p.intend { text-indent: 27px; }
 	height: 18px; padding-top: 4px;
 }
 .sign { text-align: right; float: right; }
-.photo { float: left; }
+.photo { float: left; width: 12em; }
 .sign-wrapper { margin: 3em 0 0; }
 .otzv { list-style: none; margin: 0; padding: 0; }
-.otzv li { margin: 1em 1em 0 0; float: left; }
+.otzv li { margin: 1.25em 1.25em 0 0; float: left; width: 130px; height: 130px; }
 .otzv li img { border-radius: 100px; width: 120px; height: 120px; padding: 4px; background: #fff; border: 1px solid #e0e0e0; }
 
+.old-price { color: #d63020; text-decoration: line-through; display: block;}
+.h1-submenu { float: left; }
+.submenu { float: left; list-style: none; padding: 0; margin: 0 0 0 1.5em; }
+.submenu li { float: left; margin: 1.85em 0.25em 0; }
+.submenu li a { display: inline-block; color: #999; text-decoration: none; border-bottom: 1px solid rgba(0,0,0,0.35); text-transform: uppercase; margin: 0 0.5em 0 0; }

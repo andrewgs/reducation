@@ -2115,7 +2115,7 @@ class Admin_interface extends MY_Controller{
 			$this->form_validation->set_rules('organization',' ','required|trim');
 			$this->form_validation->set_rules('inn',' ','required|trim');
 			$this->form_validation->set_rules('kpp',' ','required|trim');
-			$this->form_validation->set_rules('accounttype',' ','required|trim');
+			$this->form_validation->set_rules('accounttype',' ','trim');
 			$this->form_validation->set_rules('accountnumber',' ','required|trim');
 			$this->form_validation->set_rules('bank',' ','required|trim');
 			$this->form_validation->set_rules('accountkornumber',' ','required|trim');

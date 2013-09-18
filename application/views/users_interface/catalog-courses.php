@@ -13,7 +13,7 @@
 				<h1 class="bordered courses">Курсы повышения квалификации руководителей и специалистов</h1>
 				<div class="btn-toolbar inline-right">
 					<div class="btn-group">
-						<a href="<?= base_url(); ?>courses_list.xls" class="btn btn-info"><i class="icon-th-list icon-white"></i> Каталог курсов и прайс-лист</a>
+						<a href="<?= base_url(); ?>courses_list.xls" class="btn btn-info"><i class="icon-th-list icon-white"></i> Каталог курсов и прайс-лист (.xls)</a>
 					</div>
 				</div>
 				<div class="clear"></div>
@@ -86,7 +86,7 @@
 											<th class="centerized">Код</th>
 											<th class="centerized">Виды работ</th>
 											<th class="centerized"><nobr>Кол-во<br/>часов</nobr></th>
-											<th class="centerized"><nobr>Цена (руб.)</nobr></th>
+											<th class="centerized" width="80px"><nobr>Цена</nobr></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -98,7 +98,16 @@
 											<td><?= $courses[$j]['code']; ?></td>
 											<td><?=nl2br($courses[$j]['note']);?></td>
 											<td class="centerized"><nobr><?= $courses[$j]['hours']; ?> ч.</nobr></td>
-											<td class="centerized"><?= $courses[$j]['price']; ?></td>
+											<td class="centerized">
+												<?= $courses[$j]['price']; ?> руб. 
+												<? if ( $j == 3 ): ?>
+												<span class="old-price">6000 руб.</span>
+												<? elseif ( $j == 33 || $j == 34 ): ?>
+												<span class="old-price">2000 руб.</span>
+												<? else: ?>
+												<span class="old-price">5000 руб.</span>
+												<? endif; ?>
+											</td>
 											<?php $num++;?>
 										</tr>
 									<? endif; ?>
