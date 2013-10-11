@@ -42,45 +42,32 @@ class MY_Controller extends CI_Controller{
 		return $this->pagination->create_links();
 	}
 	
-	public function sendMail($to,$from_mail,$from_name,$subject,$text,$attach = NULL) {
-
+	public function sendMail($to,$from_mail,$from_name,$subject,$text,$attach = NULL){
+		
 		$this->load->library('phpmailer');
 		$mail = new PHPMailer();
-		$mail->IsSendmail();
-		$mail->SetFrom($from_mail,'Климова Ольга');
+//		$mail->SMTPDebug = 1;
+		$mail->IsSMTP();
+		$mail->SMTPAuth = true;
+		$mail->SMTPSecure = "tls";
+		$mail->Host = "smtp.gmail.com";
+		$mail->Port = 587;
+		$mail->Username = "roscentrdpo@gmail.com";
+		$mail->Password = "gfdk43GGFS";
+
 		$mail->AddReplyTo($from_mail,'Климова Ольга');
 		$mail->AddAddress($to);
+		$mail->AddAddress('info@roscentrdpo.ru');
+		$mail->SetFrom($from_mail,'Климова Ольга');
+		$mail->IsHTML(true);
 		$mail->Subject = $subject;
+		$mail->AltBody = strip_tags($text,'<p>,<br>,<strong>');
 		$mail->MsgHTML($text);
-		$mail->AltBody = strip_tags($text); 
-		//$mail->AddAttachment('images/phpmailer-mini.gif');
-		if(!$mail->Send()):
-			$result = array('status' => 0,'request'=>$mail->ErrorInfo);
-		else:
-			$result = array('status' => 1,'request'=>'');
+		if(!is_null($attach) && file_exists($attach)):
+			$mail->AddAttachment($attach);
 		endif;
-		return $result;
+		return $mail->Send();
 		
-		
-		/*$this->load->library('email');
-		$this->email->clear();
-		$config['protocol'] = 'mail';
-		$config['smtp_host'] = 'localhost';
-		$config['charset'] = 'utf-8';
-		$config['wordwrap'] = TRUE;
-		$config['mailtype'] = 'html';
-		$this->email->initialize($config);
-		$this->email->to($to);
-		$this->email->reply_to($from_mail,'Климова Ольга');
-		$this->email->from($from_mail,'Климова Ольга');
-		$this->email->subject($subject);
-		for($i=0;$i<count($attach);$i++):
-			$this->email->attach($attach[$i]['path']);
-		endfor;
-		$this->email->message($text);
-		$status = $this->email->send();
-		return $result = array('status'=>$status,'request'=>$this->email->print_debugger());*/
-	 	
 	}
 	
 	public function translite($string){

@@ -749,7 +749,7 @@ class Users_interface extends MY_Controller{
 	public function courseGetCurriculum(){
 		
 		if($course = $this->coursesmodel->read_record($this->input->get('course'))):
-			if(file_exists(getcwd().'/'.$course['curriculum'])):
+			if(is_file(getcwd().'/'.$course['curriculum'])):
 				header('Pragma: public');
 				header('Expires: 0');
 				header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
