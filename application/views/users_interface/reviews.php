@@ -5,14 +5,13 @@
 	<?php $this->load->view('users_interface/header');?>
 	<div class="container">
 		<div class="row">
-			<div class="span3 new">
-				<ul class="sidemenu">
+			<div class="span12">
+				<h1 class="h1-submenu">Отзывы наших клиентов</h1>
+				<ul class="submenu">
 					<li><?=anchor('information','Информация');?></li>
 					<li><?=anchor('presentation','Видео-презентация');?></li>
 				</ul>
-			</div>
-			<div class="span9 new">
-				<h1>Отзывы наших клиентов</h1>
+				<div class="clear"> </div>
 				<ul class="otzv clearfix">
 					<li>
 						<a href="<?=base_url();?>img/otzv_1.jpg" target="blank_">
@@ -102,6 +101,51 @@
 					<li>
 						<a href="<?=base_url();?>img/otzv_18.jpg" target="blank_">
 							<img src="<?=base_url();?>img/otzv_18.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_19.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_19.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_20.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_20.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_21.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_21.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_22.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_22.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_23.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_23.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_24.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_24.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_25.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_25.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_26.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_26.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_27.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_27.jpg" alt="Отзыв" />
 						</a>
 					</li>
 					<div class="clear"> </div>

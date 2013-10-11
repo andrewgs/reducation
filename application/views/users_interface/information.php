@@ -5,15 +5,13 @@
 	<?php $this->load->view('users_interface/header');?>
 	<div class="container">
 		<div class="row">
-			<div class="span3 new">
-				<ul class="sidemenu">
+			<div class="span12">
+				<h1 class="h1-submenu">Информация</h1>
+				<ul class="submenu">
 					<li><?=anchor('reviews','Отзывы клиентов');?></li>
-					<li><?=anchor('presentation','Презентация');?></li>
+					<li><?=anchor('presentation','Видео-презентация');?></li>
 				</ul>
-			</div>
-			<div class="span9 new">
-				<h1>Информация</h1>
-				
+				<div class="clear"> </div>
 				<p>
 					Образовательный портал южно-окружного центра повышения квалификации – это система дистанционного обучения, 
 					предназначенная для повышения квалификации через Интернет с выдачей удостоверения государственного образца. 
@@ -48,7 +46,7 @@
 				</p>
 				<div class="sign-wrapper clearfix">
 					<p class="photo">
-						<img src="<?=base_url();?>img/photo.png" alt="Директор центра" />
+						<img src="<?=base_url();?>img/photo.jpg" alt="Директор центра" />
 					</p>
 					<p class="sign">
 						С уважением, <br/>
