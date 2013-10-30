@@ -12,7 +12,7 @@
 		</div>
 		<div class="row">
 			<div class="promo-12 span12">
-				<span class="title_">Внимание! </span> <div class="wrapp_"><span class="scrollingtext">Обучение по курсу «Охрана труда» - 1000 руб. Повышение квалификации строителей, проектировщиков, изыскателей, энергоаудиторов - 4000 руб.</span></div>
+				<span class="title_">Внимание! </span> <div class="wrapp_"><span class="scrollingtext">Предлагаем партнёрство на выгодных условиях! Обращаться по тел.: +7(951)522-82-94</span></div>
 			</div>
 		</div>
 		<div class="row">

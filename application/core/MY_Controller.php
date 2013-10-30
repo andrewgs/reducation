@@ -84,5 +84,19 @@ class MY_Controller extends CI_Controller{
 			return FALSE;
 		endif;
 	}
+
+	function culculateDiscountSumma($orderID,$fiz = FALSE){
+		
+		if($fiz === FALSE):
+			$course = $this->unionmodel->read_corder_group_records($orderID);
+		else:
+			$course = $this->fizunionmodel->read_corder_group_records($orderID);
+		endif;
+		$summa = 0;
+		for($i=0;$i<count($course);$i++):
+			$summa+=($course[$i]['cnt']*($course[$i]['price']-$course[$i]['discount']));
+		endfor;
+		return $summa;
+	}
 }
 ?>

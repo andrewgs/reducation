@@ -1483,7 +1483,7 @@ class Admin_interface extends MY_Controller{
 	}
 	
 	public function orders_paid(){
-	
+		
 		$order = $this->input->post('order');
 		if(!$order) show_404();
 		$access = $this->input->post('access');
@@ -1533,10 +1533,15 @@ class Admin_interface extends MY_Controller{
 	public function orders_send_mail(){
 		
 		$statusval = array('retvalue'=>'<i class="icon-ok" title="Отправлено"></i>','retemail'=>'');
-		$order = $this->input->post('order');
-		$smtype = $this->input->post('smtype');
+		if(!$order = $this->input->post('order')):
+			show_error('Error');
+		endif;
+		if(!$smtype = $this->input->post('smtype')):
+			show_error('Error');
+		endif;
 		$this->load->helper('date');
 		$info = $this->unionmodel->read_customer_info_order($order);
+		$info['price'] = $this->culculateDiscountSumma($order);
 		$info['orderdate'] = $this->operation_dot_date($info['orderdate']);
 		$info['closedate'] = $this->operation_dot_date($info['closedate']);
 		ob_start();
@@ -1973,18 +1978,18 @@ class Admin_interface extends MY_Controller{
 		
 		$this->uri->segment(6);
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - ',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'customer'		=> array(),
-					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
-					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'РосЦентр ДПО - ',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'customer'		=> array(),
+			'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+			'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		$pagevar['order']['date'] = $pagevar['order']['orderdate'];
@@ -2902,9 +2907,14 @@ class Admin_interface extends MY_Controller{
 	public function fiz_orders_send_mail(){
 		
 		$statusval = array('retvalue'=>'&nbsp;<i class="icon-ok" title="Отправлено"></i>','retemail'=>'');
-		$order = $this->input->post('order');
-		$smtype = $this->input->post('smtype');
+		if(!$order = $this->input->post('order')):
+			show_error('Error');
+		endif;
+		if(!$smtype = $this->input->post('smtype')):
+			show_error('Error');
+		endif;
 		$info = $this->fizunionmodel->read_physical_info_order($order);
+		$info['price'] = $this->culculateDiscountSumma($order,TRUE);
 		$info['orderdate'] = $this->operation_dot_date($info['orderdate']);
 		$info['closedate'] = $this->operation_dot_date($info['closedate']);
 		ob_start();
@@ -3217,18 +3227,18 @@ class Admin_interface extends MY_Controller{
 		
 		$this->uri->segment(6);
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - ',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'customer'		=> array(),
-					'order'			=> $this->fizordersmodel->read_record($this->uri->segment(5)),
-					'course'		=> $this->fizunionmodel->read_corder_group_records($this->uri->segment(5)),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'РосЦентр ДПО - ',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'customer'		=> array(),
+			'order'			=> $this->fizordersmodel->read_record($this->uri->segment(5)),
+			'course'		=> $this->fizunionmodel->read_corder_group_records($this->uri->segment(5)),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		

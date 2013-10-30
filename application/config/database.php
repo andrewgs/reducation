@@ -5,7 +5,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
 $db['default']['username'] = "root";
-$db['default']['password'] ="{bvthfVecrkm57";
+$db['default']['password'] ="";
 $db['default']['database'] = "reducation";
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = "";
