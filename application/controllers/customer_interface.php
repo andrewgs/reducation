@@ -367,7 +367,7 @@ class Customer_interface extends MY_Controller{
 				</p>
 				<?
 				$mailtext = ob_get_clean();
-				$this->sendMail($_POST['personaemail'],'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
+				$this->sendMail($_POST['personaemail'],'info@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 				$this->session->set_userdata('msgs','Слушатель зарегистрирован.<br/>Вы можете зарегистрировать еще слушателя или приступить к оформлению заказа.<br/>Для этого необходимо перейти по ссылке '.anchor("customer/registration/ordering",'"Оформление заказа"'));
 			endif;
 			redirect(uri_string().'?register=successful');

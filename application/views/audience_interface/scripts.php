@@ -6,19 +6,3 @@
 	$("#msgeclose").click(function(){$("#msgdealert").fadeOut(1000,function(){$(this).remove();});});
 	$("#msgsclose").click(function(){$("#msgdsalert").fadeOut(1000,function(){$(this).remove();});});
 </script>
-
-<!-- LiveTex Online Consultant -->
-<script type="text/javascript"><!-- /* build:::5 */ -->
-	var liveTex = true,
-		liveTexID = 54684,
-		liveTex_object = true;
-	(function() {
-		var lt = document.createElement('script');
-		lt.type ='text/javascript';
-		lt.async = true;
-		lt.src = 'http://cs15.livetex.ru/js/client.js';
-		var sc = document.getElementsByTagName('script')[0];
-		sc.parentNode.insertBefore(lt, sc);
-	})();
-</script>
-<!-- /LiveTex Online Consultant -->

@@ -808,6 +808,7 @@ class Physical_interface extends MY_Controller{
 							$next_numbers['placement'] = 1;
 						endif;
 						$year = $this->fizordersmodel->read_field($order,'year');
+						$order_number = $this->ordersmodel->read_field($order,'number');
 						$this->fizordersmodel->update_field($order,'numbercompletion',number_order($next_numbers['completion'],$year).'-О');
 						$this->fizordersmodel->update_field($order,'closedate',date("Y-m-d"));
 						
@@ -818,7 +819,7 @@ class Physical_interface extends MY_Controller{
 						<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 						<p>АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 						<p>
-							Заказ №<?=$order;?> закрылся.<br/>
+							Заказ №<?=number_order($order_number,$year);?> закрылся.<br/>
 							Дата закрытия: <?=date("d.m.Y");?>
 						</p>
 						<br/><br/>
@@ -829,7 +830,7 @@ class Physical_interface extends MY_Controller{
 						</p>
 						<?php
 						$mailtext = ob_get_clean();
-						$this->sendMail('info@roscentrpdo.ru','admin@roscentrdpo.ru','АНО ДПО',"Заказ №".$order." закрылся.",$mailtext);
+						$this->sendMail('info@roscentrpdo.ru','info@roscentrdpo.ru','АНО ДПО',"Заказ №".$order." закрылся.",$mailtext);
 					endif;
 					redirect('physical/courses/completed');
 				endif;

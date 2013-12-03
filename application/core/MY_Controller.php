@@ -49,15 +49,17 @@ class MY_Controller extends CI_Controller{
 //		$mail->SMTPDebug = 1;
 		$mail->IsSMTP();
 		$mail->SMTPAuth = true;
-		$mail->SMTPSecure = "tls";
+		$mail->SMTPSecure = "ssl";
 		$mail->Host = "smtp.gmail.com";
-		$mail->Port = 587;
+		$mail->Port = 465;
 		$mail->Username = "roscentrdpo@gmail.com";
 		$mail->Password = "gfdk43GGFS";
 
 		$mail->AddReplyTo($from_mail,'Климова Ольга');
 		$mail->AddAddress($to);
 		$mail->AddAddress('info@roscentrdpo.ru');
+		$mail->AddAddress('vkharseev@gmail.com');
+		
 		$mail->SetFrom($from_mail,'Климова Ольга');
 		$mail->IsHTML(true);
 		$mail->Subject = $subject;

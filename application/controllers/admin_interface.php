@@ -143,7 +143,7 @@ class Admin_interface extends MY_Controller{
 									break;
 			endswitch;
 			if($info && isset($mailtext)):
-				$this->sendMail($email,'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
+				$this->sendMail($email,'info@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 				$this->session->set_userdata('msgs','Успешно. Уведомление отправлено.');
 			endif;
 		endif;
@@ -153,16 +153,16 @@ class Admin_interface extends MY_Controller{
 	public function admin_panel(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Панель администрирования',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'seldate'		=> $this->calendarmodel->read_records(),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Панель администрирования',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'seldate'		=> $this->calendarmodel->read_records(),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -221,13 +221,13 @@ class Admin_interface extends MY_Controller{
 	public function admin_cabinet(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Личный кабинет',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Личный кабинет',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5)
+		);
 		$this->load->view("admin_interface/admin-cabinet",$pagevar);
 	}
 
@@ -259,16 +259,16 @@ class Admin_interface extends MY_Controller{
 	public function references_trends(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Список направлений обучения',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'trends'		=> $this->trendsmodel->read_records(),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Список направлений обучения',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'trends'		=> $this->trendsmodel->read_records(),
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		if($this->input->post('submit')):
@@ -340,17 +340,17 @@ class Admin_interface extends MY_Controller{
 	public function references_courses(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Список курсов',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'trends'		=> $this->trendsmodel->read_records(),
-					'courses'		=> $this->coursesmodel->read_records(),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Список курсов',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'trends'		=> $this->trendsmodel->read_records(),
+			'courses'		=> $this->coursesmodel->read_records(),
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		if($this->input->post('submit')):
@@ -1023,44 +1023,44 @@ class Admin_interface extends MY_Controller{
 	public function private_messages(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Личные сообщения',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Личные сообщения',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5)
+		);
 		$this->load->view("admin_interface/admin-private-messages",$pagevar);
 	}
 	
 	public function support_messages(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Техническая поддержка',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5)
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Техническая поддержка',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5)
+		);
 		$this->load->view("admin_interface/admin-support-messages",$pagevar);
 	}
 	
 	public function orders_messages(){
 	
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | ',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'orders'		=> array(),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'count'			=> 0,
-					'pages'			=> '',
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | ',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'orders'		=> array(),
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'count'			=> 0,
+			'pages'			=> '',
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -1219,18 +1219,18 @@ class Admin_interface extends MY_Controller{
 	public function deleted_orders(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Удаленные заказы',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'orders'		=> array(),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'count'			=> 0,
-					'pages'			=> '',
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Удаленные заказы',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'orders'		=> array(),
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'count'			=> 0,
+			'pages'			=> '',
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -1329,16 +1329,16 @@ class Admin_interface extends MY_Controller{
 	public function orders_search(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Поиск заказа',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'orders'		=> array(),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Поиск заказа',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'orders'		=> array(),
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -1637,16 +1637,16 @@ class Admin_interface extends MY_Controller{
 	public function orders_testing(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Итоговые тесты',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'audcourses'	=> $this->unionmodel->read_testing_order($this->uri->segment(5)),
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Итоговые тесты',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'audcourses'	=> $this->unionmodel->read_testing_order($this->uri->segment(5)),
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		for($i=0;$i<count($pagevar['audcourses']);$i++):
@@ -1677,17 +1677,17 @@ class Admin_interface extends MY_Controller{
 		
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Отчет о итоговом тестировании',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'report'		=> $this->testresultsmodel->read_record($reptest),
-					'audience'		=> $this->audiencemodel->read_full_name($audience),
-					'test'			=> array(),
-					'questions'		=> array(),
-					'answers'		=> array()
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Отчет о итоговом тестировании',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'report'		=> $this->testresultsmodel->read_record($reptest),
+			'audience'		=> $this->audiencemodel->read_full_name($audience),
+			'test'			=> array(),
+			'questions'		=> array(),
+			'answers'		=> array()
+		);
 		
 		$pagevar['report']['dataresult'] = unserialize($pagevar['report']['dataresult']);
 		$pagevar['test'] = $this->unionmodel->read_audience_testing($pagevar['report']['test'],$audience,$pagevar['report']['course']);
@@ -1735,16 +1735,16 @@ class Admin_interface extends MY_Controller{
 		
 		$order = $this->uri->segment(5);
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Ведомость итог.тестирования',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
-					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
-					'hours'			=> 0,
-					'courses'		=> $this->unionmodel->read_course_audience_records($order)
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Ведомость итог.тестирования',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
+			'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
+			'hours'			=> 0,
+			'courses'		=> $this->unionmodel->read_course_audience_records($order)
+		);
 		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
 		else:
@@ -1785,22 +1785,17 @@ class Admin_interface extends MY_Controller{
 	
 		$order = $this->uri->segment(5);
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Приказ об окончании',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
-					'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
-					'hours'			=> 0,
-					'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
-					'courses'		=> $this->unionmodel->read_course_audience_records($order)
-			);
-		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
-			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
-		else:
-			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
-		endif;*/
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Приказ об окончании',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
+			'dateend'		=> $this->ordersmodel->read_field($order,'closedate'),
+			'hours'			=> 0,
+			'ncompletion'	=> $this->ordersmodel->read_field($order,'numbercompletion'),
+			'courses'		=> $this->unionmodel->read_course_audience_records($order)
+		);
 		if($pagevar['datebegin']!='0000-00-00'):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
 		else:
@@ -1833,20 +1828,15 @@ class Admin_interface extends MY_Controller{
 	
 		$order = $this->uri->segment(5);
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Приказ о зачислении',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
-					'nplacement'	=> $this->ordersmodel->read_field($order,'numberplacement'),
-					'courses'		=> $this->unionmodel->read_course_audience_records($order)
-			);
-		/*if($pagevar['datebegin']!='Не оплачен' && !empty($pagevar['datebegin'])):
-			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->split_dot_date($pagevar['datebegin']));
-		else:
-			$pagevar['datebegin'] = array('&nbsp;&nbsp;','&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',date("Y"));
-		endif;*/
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Приказ о зачислении',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
+			'nplacement'	=> $this->ordersmodel->read_field($order,'numberplacement'),
+			'courses'		=> $this->unionmodel->read_course_audience_records($order)
+		);
 		if($pagevar['datebegin']!='0000-00-00'):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
 		else:
@@ -1931,16 +1921,16 @@ class Admin_interface extends MY_Controller{
 	
 		$order = $this->uri->segment(5);
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО | Справка',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
-					'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
-					'customer'		=> $this->unionmodel->read_customer_info_order($order),
-					'courses'		=> $this->unionmodel->read_course_audience_records($order)
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО | Справка',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+			'datebegin'		=> $this->ordersmodel->read_field($order,'paiddate'),
+			'customer'		=> $this->unionmodel->read_customer_info_order($order),
+			'courses'		=> $this->unionmodel->read_course_audience_records($order)
+		);
 		if($pagevar['datebegin']!='0000-00-00'):
 			$pagevar['datebegin'] = preg_split("/[ ]+/",$this->operation_date($pagevar['datebegin']));
 		else:
@@ -1952,18 +1942,18 @@ class Admin_interface extends MY_Controller{
 	public function invoice(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - ',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
-					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
-					'customer'		=> array(),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'РосЦентр ДПО - ',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+			'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
+			'customer'		=> array(),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		$pagevar['order']['orderddate'] = $this->operation_dot_date($pagevar['order']['orderdate']);
@@ -2004,18 +1994,18 @@ class Admin_interface extends MY_Controller{
 	public function act(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'РосЦентр ДПО - ',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'customer'		=> array(),
-					'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
-					'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'РосЦентр ДПО - ',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'customer'		=> array(),
+			'order'			=> $this->ordersmodel->read_record($this->uri->segment(5)),
+			'course'		=> $this->unionmodel->read_corder_group_records($this->uri->segment(5)),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		$pagevar['order']['date'] = $pagevar['order']['orderdate'];
@@ -2038,18 +2028,18 @@ class Admin_interface extends MY_Controller{
 		
 		$from = intval($this->uri->segment(5));
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'customers'		=> $this->customersmodel->read_records_pages(10,$from),
-					'count'			=> count($this->customersmodel->read_records()),
-					'pages'			=> '',
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'customers'		=> $this->customersmodel->read_records_pages(10,$from),
+			'count'			=> count($this->customersmodel->read_records()),
+			'pages'			=> '',
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		for($i=0;$i<count($pagevar['customers']);$i++):
@@ -2102,17 +2092,17 @@ class Admin_interface extends MY_Controller{
 	public function users_customer_info(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики - Информация',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'readonly'		=> FALSE,
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'customer'		=> $this->customersmodel->read_record($this->uri->segment(6)),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики - Информация',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'readonly'		=> FALSE,
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'customer'		=> $this->customersmodel->read_record($this->uri->segment(6)),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -2148,17 +2138,17 @@ class Admin_interface extends MY_Controller{
 	public function users_audience_info(){
 		
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики - Информация',
-					'baseurl' 		=> base_url(),
-					'userinfo'		=> $this->user,
-					'customer'		=> '',
-					'newcourses'	=> $this->coursesmodel->read_new_courses(5),
-					'audience'		=> $this->audiencemodel->read_record($this->uri->segment(6)),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Заказчики - Информация',
+			'baseurl' 		=> base_url(),
+			'userinfo'		=> $this->user,
+			'customer'		=> '',
+			'newcourses'	=> $this->coursesmodel->read_new_courses(5),
+			'audience'		=> $this->audiencemodel->read_record($this->uri->segment(6)),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		$pagevar['customer'] = $this->customersmodel->read_field($pagevar['audience']['customer'],'organization');

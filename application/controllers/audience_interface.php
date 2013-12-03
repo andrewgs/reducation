@@ -287,19 +287,19 @@ class Audience_interface extends MY_Controller{
 			endif;
 		endif;
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Тестирование',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'course'		=> $this->unionmodel->read_audience_currect_course($this->user['uid'],$course,0),
-					'test'			=> $this->unionmodel->read_audience_testing($test,$this->user['uid'],$course),
-					'questions'		=> array(),
-					'answers'		=> array(),
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров | Тестирование',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'course'		=> $this->unionmodel->read_audience_currect_course($this->user['uid'],$course,0),
+			'test'			=> $this->unionmodel->read_audience_testing($test,$this->user['uid'],$course),
+			'questions'		=> array(),
+			'answers'		=> array(),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr')
+		);
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
 		
@@ -377,6 +377,7 @@ class Audience_interface extends MY_Controller{
 							$next_numbers['placement'] = 1;
 						endif;
 						$year = $this->ordersmodel->read_field($order,'year');
+						$order_number = $this->ordersmodel->read_field($order,'number');
 						$this->ordersmodel->update_field($order,'numbercompletion',number_order($next_numbers['completion'],$year).'-О');
 						$this->ordersmodel->update_field($order,'closedate',date("Y-m-d"));
 						
@@ -387,7 +388,7 @@ class Audience_interface extends MY_Controller{
 						<p>Система дистанционного обучения АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 						<p>АНО ДПО «Южно-окружной центр повышения квалификации»</p>
 						<p>
-							Заказ №<?=$order;?> закрылся.<br/>
+							Заказ №<?=number_order($order_number,$year);?> закрылся.<br/>
 							Дата закрытия: <?=date("d.m.Y");?>
 						</p>
 						<br/><br/>
@@ -398,7 +399,7 @@ class Audience_interface extends MY_Controller{
 						</p>
 						<?php
 						$mailtext = ob_get_clean();
-						$this->sendMail('info@roscentrpdo.ru','admin@roscentrdpo.ru','АНО ДПО',"Заказ №".$order." закрылся.",$mailtext);
+						$this->sendMail('info@roscentrpdo.ru','info@roscentrdpo.ru','АНО ДПО',"Заказ №".$order." закрылся.",$mailtext);
 					endif;
 					redirect('audience/courses/completed');
 				endif;

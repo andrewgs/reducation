@@ -307,7 +307,7 @@ class Users_interface extends MY_Controller{
 					</p>
 					<?
 					$mailtext = ob_get_clean();
-					$this->sendMail($email,'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
+					$this->sendMail($email,'info@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 				endif;
 				$this->session->set_userdata('msgs','На адрес '.$email.' высланы логин и пароль.');
 			endif;
@@ -416,7 +416,7 @@ class Users_interface extends MY_Controller{
 				</p>
 				<?
 				$mailtext = ob_get_clean();
-				$this->sendMail($insert['email'],'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
+				$this->sendMail($insert['email'],'info@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 				$this->session->set_userdata('finishregphysical',TRUE);
 				redirect('registration/physical-registration/finish');
 			endif;
@@ -601,17 +601,17 @@ class Users_interface extends MY_Controller{
 			redirect('registration/customer');
 		endif;
 		$pagevar = array(
-					'description'	=> '',
-					'author'		=> '',
-					'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
-					'baseurl' 		=> base_url(),
-					'loginstatus'	=> $this->loginstatus,
-					'userinfo'		=> $this->user,
-					'msgs'			=> $this->session->userdata('msgs'),
-					'msgr'			=> $this->session->userdata('msgr'),
-					'finishreg'		=> $this->session->userdata('finishregcustomer'),
-					'msgauth'		=> $this->session->userdata('msgauth')
-			);
+			'description'	=> '',
+			'author'		=> '',
+			'title'			=> 'АНО ДПО Южно-окружной центр повышения квалификации и переподготовки кадров',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'finishreg'		=> $this->session->userdata('finishregcustomer'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
 		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
@@ -657,8 +657,7 @@ class Users_interface extends MY_Controller{
 			</p>
 			<?
 			$mailtext = ob_get_clean();
-			$this->sendMail($this->session->userdata('personemail'),'admin@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
-			
+			$this->sendMail($this->session->userdata('personemail'),'info@roscentrdpo.ru','АНО ДПО','Данные для доступа к личному кабинету',$mailtext);
 			$this->session->unset_userdata(array('regcustomer'=>'','step'=>'','organization'=>'','phones'=>'','inn'=>'','kpp'=>'','accounttype'=>'','accountnumber'=>'','uraddress'=>'','bank'=>'','accountkornumber'=>'','bik'=>'','uraddress'=>'','postaddress'=>'','personemail'=>'','person'=>'','manager'=>'','fiomanager'=>'','statutory'=>''));
 			$this->session->set_userdata('finishregcustomer',TRUE);
 			redirect('registration/customer/finish');
