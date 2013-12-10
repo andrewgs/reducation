@@ -701,11 +701,14 @@ class Users_interface extends MY_Controller{
 			'loginstatus'	=> $this->loginstatus,
 			'userinfo'		=> $this->user,
 			'trends'		=> $this->trendsmodel->read_view_records(),
-			'courses'		=> $this->coursesmodel->read_view_records(),
+			'courses'		=> array(),
 			'msgs'			=> $this->session->userdata('msgs'),
 			'msgr'			=> $this->session->userdata('msgr'),
 			'msgauth'		=> $this->session->userdata('msgauth')
 		);
+		if($courses = $this->coursesmodel->read_view_records()):
+			$pagevar['courses'] = $this->getCoursesList($courses);
+		endif;
 		$this->session->unset_userdata('msgauth');
 		$this->session->unset_userdata('msgs');
 		$this->session->unset_userdata('msgr');
@@ -766,6 +769,30 @@ class Users_interface extends MY_Controller{
 		redirect('catalog/courses');
 	}
 	
+	public function courseCurriculum(){
+		
+		$this->load->model('curriculums');
+		
+		$pagevar = array(
+			'title'			=> 'Курсы повышения квалификации работников, инженеров, проектировщиков, строителей, энергетиков | Дистанционное повышение квалификации',
+			'description'	=> 'Каталог курсов по повышению квалификации инженеров, проектировщиков, строителей, энергетиков. Дистанционное обучение Ростов-на-Дону, Краснодар, Ставрополь, Сочи, Астрахань, Волгоград.',
+			'author'		=> '',
+			'baseurl' 		=> base_url(),
+			'loginstatus'	=> $this->loginstatus,
+			'userinfo'		=> $this->user,
+			'curriculum' => $this->curriculums->getWhere($this->input->get('id')),
+			'msgs'			=> $this->session->userdata('msgs'),
+			'msgr'			=> $this->session->userdata('msgr'),
+			'msgauth'		=> $this->session->userdata('msgauth')
+		);
+		$pagevar['title'] = $this->coursesmodel->read_field($pagevar['curriculum']['course'],'title');
+
+		$this->session->unset_userdata('msgauth');
+		$this->session->unset_userdata('msgs');
+		$this->session->unset_userdata('msgr');
+		$this->load->view("users_interface/course-curriculum",$pagevar);
+	}
+	
 	public function randomPassword($length,$allow="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRSTUVWXYZ0123456789"){
 	
 		$i = 1;
@@ -778,5 +805,23 @@ class Users_interface extends MY_Controller{
 			$i++;
 		endwhile;
 		return $ret;
+	}
+
+	private function getCoursesList($courses){
+		
+		$this->load->model('curriculums');
+		for($i=0;$i<count($courses);$i++):
+			$courses[$i]['curriculum_exist'] = FALSE;
+		endfor;
+		if($curriculums = $this->curriculums->getAll()):
+			for($i=0;$i<count($courses);$i++):
+				for($j=0;$j<count($curriculums);$j++):
+					if($courses[$i]['id'] == $curriculums[$j]['course']):
+						$courses[$i]['curriculum_exist'] = $curriculums[$j]['id'];
+					endif;
+				endfor;
+			endfor;
+		endif;
+		return $courses;
 	}
 }

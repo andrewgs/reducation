@@ -93,14 +93,18 @@
 								<? for($j=0,$num=1;$j<count($courses);$j++):
 									if($courses[$j]['trend'] == $trends[$i]['id']): ?>
 										<tr>
-											<td><?=$num?></td>
+											<td><?=$courses[$j]['id']?></td>
 											<td>
-											<?php if(!empty($courses[$j]['curriculum']) && is_file(getcwd().'/'.$courses[$j]['curriculum'])):?>
+											<?php if(FALSE && !empty($courses[$j]['curriculum']) && is_file(getcwd().'/'.$courses[$j]['curriculum'])):?>
 												<a href="<?=site_url('catalog/courses/getCurriculum?course='.$courses[$j]['id']);?>" class="">
 													<?=$courses[$j]['title'];?>
 												</a>
+											<?php elseif($courses[$j]['curriculum_exist'] !== FALSE):?>
+												<a href="<?=site_url('catalog/courses/curriculum?id='.$courses[$j]['curriculum_exist']);?>" class="">
+													<?=$courses[$j]['title'];?>
+												</a>
 											<?php else:?>
-												<?=$courses[$j]['title'];?>
+												<a href="#"><?=$courses[$j]['title'];?></a>
 											<?php endif;?>
 											</td>
 											<td><?= $courses[$j]['code']; ?></td>

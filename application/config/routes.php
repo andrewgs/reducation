@@ -27,6 +27,7 @@ $route['registration/physical-registration/finish'] = "users_interface/physical_
 
 $route['catalog/courses'] = "users_interface/catalog_courses";
 $route['catalog/courses/getCurriculum'] = "users_interface/courseGetCurriculum";
+$route['catalog/courses/curriculum'] = "users_interface/courseCurriculum";
 
 $route['contacts'] = "users_interface/contacts";
 $route['information'] = "users_interface/information";
