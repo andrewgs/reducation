@@ -93,7 +93,7 @@
 								<? for($j=0,$num=1;$j<count($courses);$j++):
 									if($courses[$j]['trend'] == $trends[$i]['id']): ?>
 										<tr>
-											<td><?=$courses[$j]['id']?></td>
+											<td><?=$num?></td>
 											<td>
 											<?php if(FALSE && !empty($courses[$j]['curriculum']) && is_file(getcwd().'/'.$courses[$j]['curriculum'])):?>
 												<a href="<?=site_url('catalog/courses/getCurriculum?course='.$courses[$j]['id']);?>" class="">
@@ -104,7 +104,7 @@
 													<?=$courses[$j]['title'];?>
 												</a>
 											<?php else:?>
-												<a href="#"><?=$courses[$j]['title'];?></a>
+												<?=$courses[$j]['title'];?>
 											<?php endif;?>
 											</td>
 											<td><?= $courses[$j]['code']; ?></td>

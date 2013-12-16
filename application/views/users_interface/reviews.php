@@ -150,6 +150,8 @@
 					</li>
 					<div class="clear"> </div>
 				</ul>
+				
+				
 				<!--
 				<p>
 					<a class="license" href="<?=base_url();?>img/license.jpg" target="_blank">

@@ -61,18 +61,5 @@
 	<?php $this->load->view('users_interface/footer');?>
 	</div>
 	<?php $this->load->view('users_interface/scripts');?>
-	<script type="text/javascript">
-		
-		$(function(){
-			var td_len = $("table tr").eq(0).find('td').length;
-			var tds = '<tr>';
-			for (i = 0; i < td_len; i++){
-				tds += '<td>'+(i+1)+'</td>';
-			}
-			tds += '</tr>';
-			console.log(tds);
-			$("table tr").eq(0).after(tds);
-		});
-	</script>
 </body>
 </html>

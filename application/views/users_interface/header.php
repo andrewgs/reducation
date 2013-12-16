@@ -52,7 +52,7 @@
 				<ul>
 					<li><?=anchor('','Главная');?> <span class="lsep"> </span><span class="rsep"> </span></li>
 				<?php if($this->session->userdata('regcustomer')): ?>
-					<li nav="registration"><?=anchor('registration/customer/step/'.$this->session->userdata('step'),'Оформление заявки ЮЛ');?> <span class="lsep"> </span><span class="rsep"> </span></li>
+					<li nav="registration"><?=anchor('registration/customer/step/'.$this->session->userdata('step'),'Оформление заявки');?> <span class="lsep"> </span><span class="rsep"> </span></li>
 				<?php else: ?>
 					<li nav="registration"><?=anchor('registration/customer','Оформление заявки ЮЛ');?> <span class="lsep"> </span><span class="rsep"> </span></li>
 				<?php endif; ?>
