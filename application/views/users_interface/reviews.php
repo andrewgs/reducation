@@ -148,6 +148,16 @@
 							<img src="<?=base_url();?>img/otzv_27.jpg" alt="Отзыв" />
 						</a>
 					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_28.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_28.jpg" alt="Отзыв" />
+						</a>
+					</li>
+					<li>
+						<a href="<?=base_url();?>img/otzv_29.jpg" target="blank_">
+							<img src="<?=base_url();?>img/otzv_29.jpg" alt="Отзыв" />
+						</a>
+					</li>
 					<div class="clear"> </div>
 				</ul>
 				
