@@ -25,20 +25,6 @@
 	<?php $this->load->view('users_interface/header');?>
 	<div class="container">
 		<div class="row">
-		<?php if($this->loginstatus['status'] && $this->loginstatus['zak']):?>
-			<?php $this->load->view('users_interface/rightbarcus');?>
-		<?php endif;?>
-		<?php if($this->loginstatus['status'] && $this->loginstatus['slu']):?>
-			<?php $this->load->view('users_interface/rightbaraud');?>
-		<?php endif;?>
-		<?php if($this->loginstatus['status'] && $this->loginstatus['adm']):?>
-			<?php $this->load->view('users_interface/rightbaradm');?>
-		<?php endif;?>
-		<?php if($this->loginstatus['status'] && $this->loginstatus['fiz']):?>
-			<?php $this->load->view('users_interface/rightbarfiz');?>
-		<?php endif;?>
-		</div>
-		<div class="row">
 			<div class="span12">
 				<div class="content-title">
 					<?=$curriculum['title'];?>

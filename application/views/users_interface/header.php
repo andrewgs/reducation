@@ -1,7 +1,7 @@
 <header>
 	<div class="container">
 		<div class="row">
-			<div class="span7">
+			<div class="span7" style="position: relative;">
 				<a href="<?=base_url();?>" id="logo">Образовательный портал <br />АНО ДПО <span>Система Дистанционного Образования</span></a>
 			</div>
 			<div class="span5">
